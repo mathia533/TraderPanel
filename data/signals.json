@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-25T15:38:01.547176+00:00",
+ "generated_at": "2026-11-25T16:37:37.651869+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -250,8 +250,8 @@
    "label": "YPF",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 31.01,
-   "day_ch": -2.19,
+   "last": 31.38,
+   "day_ch": -1.04,
    "source": "yahoo",
    "degraded": false,
    "score": 19,
@@ -416,8 +416,8 @@
    "label": "PAM",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 60.53,
-   "day_ch": -1.03,
+   "last": 60.78,
+   "day_ch": -0.63,
    "source": "yahoo",
    "degraded": false,
    "score": 2,
@@ -482,8 +482,8 @@
    "label": "BMA",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 47.51,
-   "day_ch": -5.15,
+   "last": 47.12,
+   "day_ch": -5.93,
    "source": "yahoo",
    "degraded": false,
    "score": 4,
@@ -552,8 +552,8 @@
    "label": "VIST",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 49.17,
-   "day_ch": -0.89,
+   "last": 49.37,
+   "day_ch": -0.49,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -608,8 +608,18 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "ok",
-      "text": "No hubo noticias de VIST en las últimas horas: nada en contra"
+      "status": "warn",
+      "text": "1 noticias recientes de VIST (temas: balance). La última: «4 Stocks With Rising Cash Flows to Buy This Thanksgiving Week». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "items": [
+       {
+        "title": "4 Stocks With Rising Cash Flows to Buy This Thanksgiving Week",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/4-stocks-rising-cash-flows-150800426.html?.tsrc=rss",
+        "time": "2026-11-25T15:08:00+00:00",
+        "tags": [
+         "earnings"
+        ]
+       }
+      ]
      }
     ]
    },
@@ -622,8 +632,8 @@
    "label": "MELI",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 1416.0,
-   "day_ch": -2.33,
+   "last": 1414.0,
+   "day_ch": -2.47,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -677,8 +687,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "6 noticias recientes de MELI (temas: balance). La última: «Michael Burry Sells Remaining Nasdaq-100 Puts, Eyes Fresh Nvidia Short Near $200: ‘I Am Long Undervalued Common Stocks’». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "text": "7 noticias recientes de MELI. La última: «3 High-Growth Stocks That Could Make $10,000 Worth Much More by 2030». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
+       {
+        "title": "3 High-Growth Stocks That Could Make $10,000 Worth Much More by 2030",
+        "link": "https://247wallst.com/investing/2026/11/25/3-high-growth-stocks-that-could-make-10000-worth-much-more-by-2030/?.tsrc=rss",
+        "time": "2026-11-25T16:03:22+00:00",
+        "tags": []
+       },
        {
         "title": "Michael Burry Sells Remaining Nasdaq-100 Puts, Eyes Fresh Nvidia Short Near $200: ‘I Am Long Undervalued Common Stocks’",
         "link": "https://stocktwits.com/news-articles/markets/equity/michael-burry-sells-remaining-nasdaq-100-puts-eyes-fresh-nvidia-short-near-200/cNbHOX0R9lu?.tsrc=rss",
@@ -696,12 +712,6 @@
         "link": "https://finance.yahoo.com/markets/stocks/articles/nu-holdings-scales-mexico-unlock-171300545.html?.tsrc=rss",
         "time": "2026-11-24T17:13:00+00:00",
         "tags": []
-       },
-       {
-        "title": "How Investors May Respond To MercadoLibre (MELI) Logistics Spending Push",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/investors-may-respond-mercadolibre-meli-161118236.html?.tsrc=rss",
-        "time": "2026-11-24T16:11:18+00:00",
-        "tags": []
        }
       ]
      }
@@ -717,7 +727,7 @@
    "date": "2026-11-24",
    "live_date": "2026-11-25",
    "last": 19.17,
-   "day_ch": -1.47,
+   "day_ch": -1.41,
    "source": "yahoo",
    "degraded": false,
    "score": 2,
@@ -786,8 +796,8 @@
    "label": "CEPU",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 10.0,
-   "day_ch": -2.63,
+   "last": 9.97,
+   "day_ch": -2.92,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -862,8 +872,8 @@
    "label": "SUPV",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 4.28,
-   "day_ch": -6.85,
+   "last": 4.32,
+   "day_ch": -6.09,
    "source": "yahoo",
    "degraded": false,
    "score": 2,
@@ -940,8 +950,8 @@
    "label": "LOMA",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 7.97,
-   "day_ch": -3.15,
+   "last": 7.99,
+   "day_ch": -2.89,
    "source": "yahoo",
    "degraded": false,
    "score": 6,
@@ -1006,8 +1016,8 @@
    "label": "BBAR",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 8.22,
-   "day_ch": -10.16,
+   "last": 8.2,
+   "day_ch": -10.33,
    "source": "yahoo",
    "degraded": false,
    "score": 8,
@@ -1086,8 +1096,8 @@
    "label": "CRESY",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 7.91,
-   "day_ch": 0.51,
+   "last": 7.95,
+   "day_ch": 1.02,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -1152,8 +1162,8 @@
    "label": "EDN",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 11.17,
-   "day_ch": -3.71,
+   "last": 11.19,
+   "day_ch": -3.53,
    "source": "yahoo",
    "degraded": false,
    "score": 4,
@@ -1222,8 +1232,8 @@
    "label": "TEO",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 9.51,
-   "day_ch": -2.36,
+   "last": 9.81,
+   "day_ch": 0.72,
    "source": "yahoo",
    "degraded": false,
    "score": 6,
@@ -1288,8 +1298,8 @@
    "label": "IRS",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 10.53,
-   "day_ch": -2.86,
+   "last": 10.67,
+   "day_ch": -1.57,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -1354,8 +1364,8 @@
    "label": "GLOB",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 50.23,
-   "day_ch": 0.36,
+   "last": 49.83,
+   "day_ch": -0.44,
    "source": "yahoo",
    "degraded": false,
    "score": 50,
@@ -1458,8 +1468,8 @@
    "label": "GGAL",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 4438.0,
-   "day_ch": -3.74,
+   "last": 4360.0,
+   "day_ch": -5.42,
    "source": "yahoo",
    "degraded": false,
    "score": 11,
@@ -1528,8 +1538,8 @@
    "label": "YPFD",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 5480.0,
-   "day_ch": -4.45,
+   "last": 5520.0,
+   "day_ch": -3.75,
    "source": "yahoo",
    "degraded": false,
    "score": 49,
@@ -1626,8 +1636,8 @@
    "label": "PAMP",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 4275.0,
-   "day_ch": -2.79,
+   "last": 4260.0,
+   "day_ch": -3.13,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1692,8 +1702,8 @@
    "label": "BMA",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 8480.0,
-   "day_ch": -6.5,
+   "last": 8300.0,
+   "day_ch": -8.49,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1842,8 +1852,8 @@
    "label": "ALUA",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 824.0,
-   "day_ch": -1.32,
+   "last": 815.5,
+   "day_ch": -2.34,
    "source": "yahoo",
    "degraded": false,
    "score": 34,
@@ -1908,8 +1918,8 @@
    "label": "TXAR",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 698.0,
-   "day_ch": -0.29,
+   "last": 688.5,
+   "day_ch": -1.64,
    "source": "yahoo",
    "degraded": false,
    "score": 47,
@@ -2043,8 +2053,8 @@
    "label": "CEPU",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 1759.0,
-   "day_ch": -3.98,
+   "last": 1744.0,
+   "day_ch": -4.8,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2125,8 +2135,8 @@
    "label": "TGSU2",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 6785.0,
-   "day_ch": -3.9,
+   "last": 6740.0,
+   "day_ch": -4.53,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2193,8 +2203,8 @@
    "label": "SUPV",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 1540.0,
-   "day_ch": -6.72,
+   "last": 1518.0,
+   "day_ch": -8.06,
    "source": "yahoo",
    "degraded": false,
    "score": 5,
@@ -2273,8 +2283,8 @@
    "label": "BBAR",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 4882.0,
-   "day_ch": -10.98,
+   "last": 4860.0,
+   "day_ch": -11.39,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2355,8 +2365,8 @@
    "label": "LOMA",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 2818.0,
-   "day_ch": -3.68,
+   "last": 2800.0,
+   "day_ch": -4.27,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -2421,8 +2431,8 @@
    "label": "COME",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 27.3,
-   "day_ch": -3.5,
+   "last": 26.7,
+   "day_ch": -5.62,
    "source": "yahoo",
    "degraded": false,
    "score": 19,
@@ -2493,8 +2503,8 @@
    "label": "TECO2",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 3350.0,
-   "day_ch": -4.56,
+   "last": 3405.0,
+   "day_ch": -2.99,
    "source": "yahoo",
    "degraded": false,
    "score": 60,
@@ -2643,8 +2653,8 @@
    "label": "EDN",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 1004.0,
-   "day_ch": -4.38,
+   "last": 991.0,
+   "day_ch": -5.62,
    "source": "yahoo",
    "degraded": false,
    "score": 4,
@@ -2715,8 +2725,8 @@
    "label": "CRES",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 1396.0,
-   "day_ch": -2.38,
+   "last": 1404.0,
+   "day_ch": -1.82,
    "source": "yahoo",
    "degraded": false,
    "score": 37,
@@ -2783,8 +2793,8 @@
    "label": "TRAN",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 2041.0,
-   "day_ch": -2.11,
+   "last": 2023.0,
+   "day_ch": -2.97,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2855,8 +2865,8 @@
    "label": "BYMA",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 185.0,
-   "day_ch": -2.63,
+   "last": 182.0,
+   "day_ch": -4.21,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -2921,8 +2931,8 @@
    "label": "METR",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 1624.0,
-   "day_ch": -6.88,
+   "last": 1610.0,
+   "day_ch": -7.68,
    "source": "yahoo",
    "degraded": false,
    "score": 15,
@@ -2991,8 +3001,8 @@
    "label": "VALO",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 509.0,
-   "day_ch": -2.68,
+   "last": 487.0,
+   "day_ch": -6.88,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3061,8 +3071,8 @@
    "label": "MIRG",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 1660.0,
-   "day_ch": -2.64,
+   "last": 1650.0,
+   "day_ch": -3.23,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3167,8 +3177,8 @@
    "label": "BTC",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 58568.0,
-   "day_ch": -1.97,
+   "last": 58376.0,
+   "day_ch": -2.3,
    "source": "yahoo",
    "degraded": false,
    "score": 26,
@@ -3226,31 +3236,37 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "21 noticias recientes de BTC-USD. La última: «Arthur Hayes Predicts AI Crash Will Trigger Bailout and Bitcoin Boom, but Not Yet». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "text": "21 noticias recientes de BTC-USD (temas: macro, operación corporativa, riesgo). La última: «Prediction: IREN’s Microsoft Deal Could Be Just the Beginning of Its Next Growth Phase». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
-        "title": "Arthur Hayes Predicts AI Crash Will Trigger Bailout and Bitcoin Boom, but Not Yet",
-        "link": "https://www.cryptoprowl.com/releases/arthur-hayes-predicts-ai-crash-will-trigger-bailout-and-bitcoin-boom-but-not-yet-8071?.tsrc=rss",
-        "time": "2026-11-25T15:16:00+00:00",
+        "title": "Prediction: IREN’s Microsoft Deal Could Be Just the Beginning of Its Next Growth Phase",
+        "link": "https://247wallst.com/investing/2026/11/25/prediction-irens-microsoft-deal-could-be-just-the-beginning-of-its-next-growth-phase-massive-upside-ahead/?.tsrc=rss",
+        "time": "2026-11-25T16:33:59+00:00",
+        "tags": [
+         "deal"
+        ]
+       },
+       {
+        "title": "Bitcoin wallet COLDCARD patches code after August hack",
+        "link": "https://finance.yahoo.com/video/bitcoin-wallet-coldcard-patches-code-163000292.html?.tsrc=rss",
+        "time": "2026-11-25T16:30:00+00:00",
+        "tags": [
+         "risk"
+        ]
+       },
+       {
+        "title": "Tether Gold Under Pressure: Bitcoin and Gold Losses Erase 70% of USDT’s Cushion",
+        "link": "https://www.coinspeaker.com/tether-gold-under-pressure-bitcoin-and-gold-losses-erase-70-of-usdts-cushion/?.tsrc=rss",
+        "time": "2026-11-25T16:24:06+00:00",
         "tags": []
        },
        {
-        "title": "Stablecoin Redemptions Hit $12 Billion As Crypto Prices Fall",
-        "link": "https://www.cryptoprowl.com/releases/stablecoin-redemptions-hit-12-billion-as-crypto-prices-fall-8070?.tsrc=rss",
-        "time": "2026-11-25T15:05:00+00:00",
-        "tags": []
-       },
-       {
-        "title": "Strategy Now Holds More Than 850,000 Bitcoin. Where Could Its Stock Go Next?",
-        "link": "https://247wallst.com/investing/2026/11/25/strategy-now-holds-more-than-850000-bitcoin-where-could-its-stock-go-next/?.tsrc=rss",
-        "time": "2026-11-25T15:03:15+00:00",
-        "tags": []
-       },
-       {
-        "title": "Ukraine Officially Legalizes Cryptocurrencies",
-        "link": "https://www.cryptoprowl.com/releases/ukraine-officially-legalizes-cryptocurrencies-8069?.tsrc=rss",
-        "time": "2026-11-25T15:02:00+00:00",
-        "tags": []
+        "title": "Before the bell: Bitcoin's Thanksgiving comes with a tariff bill",
+        "link": "https://www.thestreet.com/crypto/markets/before-the-bell-bitcoins-thanksgiving-comes-with-a-tariff-bill-?.tsrc=rss",
+        "time": "2026-11-25T16:24:05+00:00",
+        "tags": [
+         "macro"
+        ]
        }
       ]
      }
@@ -3265,8 +3281,8 @@
    "label": "ETH",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 1651.0,
-   "day_ch": -1.59,
+   "last": 1637.0,
+   "day_ch": -2.4,
    "source": "yahoo",
    "degraded": false,
    "score": 14,
@@ -3363,8 +3379,8 @@
    "label": "SOL",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 67.56,
-   "day_ch": -2.98,
+   "last": 67.51,
+   "day_ch": -3.05,
    "source": "yahoo",
    "degraded": false,
    "score": 25,
@@ -3463,8 +3479,8 @@
    "label": "BNB",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 538.68,
-   "day_ch": -1.65,
+   "last": 536.22,
+   "day_ch": -2.1,
    "source": "yahoo",
    "degraded": false,
    "score": 32,
@@ -3553,8 +3569,8 @@
    "label": "XRP",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 0.9027,
-   "day_ch": -2.34,
+   "last": 0.9017,
+   "day_ch": -2.45,
    "source": "yahoo",
    "degraded": false,
    "score": 5,
@@ -3651,8 +3667,8 @@
    "label": "ADA",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 0.13945,
-   "day_ch": -3.4,
+   "last": 0.13904,
+   "day_ch": -3.68,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -3739,8 +3755,8 @@
    "label": "DOGE",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 0.05355,
-   "day_ch": -3.07,
+   "last": 0.05333,
+   "day_ch": -3.47,
    "source": "yahoo",
    "degraded": false,
    "score": 18,
@@ -3827,8 +3843,8 @@
    "label": "LINK",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 8.69,
-   "day_ch": -1.66,
+   "last": 8.63,
+   "day_ch": -2.34,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -3882,8 +3898,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "1 noticias recientes de LINK-USD. La última: «Fidelity Adds Aave, Chainlink and Uniswap to Its Crypto Trading Platform»",
+      "text": "2 noticias recientes de LINK-USD. La última: «Fidelity adds DeFi staples to its crypto trading platform»",
       "items": [
+       {
+        "title": "Fidelity adds DeFi staples to its crypto trading platform",
+        "link": "https://finance.yahoo.com/video/fidelity-adds-defi-staples-crypto-160000496.html?.tsrc=rss",
+        "time": "2026-11-25T16:00:00+00:00",
+        "tags": []
+       },
        {
         "title": "Fidelity Adds Aave, Chainlink and Uniswap to Its Crypto Trading Platform",
         "link": "https://www.cryptoprowl.com/releases/fidelity-adds-aave-chainlink-and-uniswap-to-its-crypto-trading-platform-8054?.tsrc=rss",
@@ -3903,8 +3925,8 @@
    "label": "AVAX",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 6.38,
-   "day_ch": -2.81,
+   "last": 6.34,
+   "day_ch": -3.39,
    "source": "yahoo",
    "degraded": false,
    "score": 16,
@@ -3971,8 +3993,8 @@
    "label": "TRX",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 0.303191,
-   "day_ch": -1.51,
+   "last": 0.303081,
+   "day_ch": -1.54,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -4062,7 +4084,7 @@
  "intraday": {
   "enabled": true,
   "date": "2026-11-25",
-  "time_ny": "11:31",
+  "time_ny": "11:37",
   "symbols": {
    "YPF": {
     "symbol": "YPF",
@@ -4081,9 +4103,9 @@
     },
     "level": 31.29,
     "last": {
-     "bar_start": "11:25",
-     "close": 31.25,
-     "vs_level_pct": -0.11
+     "bar_start": "11:30",
+     "close": 31.38,
+     "vs_level_pct": 0.29
     },
     "trigger": {
      "time": "10:00 AM",
@@ -4092,7 +4114,7 @@
      "bar_index": 5,
      "price": 31.4,
      "close": 31.395000457763672,
-     "volume": 9151,
+     "volume": 9070,
      "volume_x": 0.33,
      "pct_over": 0.34
     },
@@ -4113,10 +4135,10 @@
       "replays": 10000,
       "seed": 19,
       "bars_left": 71,
-      "p_target": 0.3529,
+      "p_target": 0.353,
       "p_stop": 0.6163,
-      "p_neither": 0.0308,
-      "p_green": 0.3669,
+      "p_neither": 0.0307,
+      "p_green": 0.3671,
       "median_close": 31.19,
       "p5_close": 30.2,
       "p95_close": 32.17,
@@ -4176,7 +4198,7 @@
         31.99
        ],
        [
-        30.51,
+        30.52,
         31.24,
         32.03
        ],
@@ -4256,19 +4278,19 @@
      "verdict": "En contra: el precio llegó primero al objetivo en el 35,3 % de las simulaciones y al stop en el 61,6 %.",
      "history": {
       "label": "la misma ruptura en las sesiones reales",
-      "fired": 28,
+      "fired": 27,
       "sessions": 56,
       "target": 12,
-      "stop": 10,
+      "stop": 9,
       "neither": 6,
-      "avg_R": 0.09
+      "avg_R": 0.13
      },
      "note": "A simulation built from YPF's own last 56 full sessions. It is not a prediction: earnings, news and halts can do things those sessions never did. Same seed, same numbers."
     },
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 91 minutos (máximo 30)",
+      "la ruptura fue hace 97 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 79.0,
@@ -4305,12 +4327,12 @@
     },
     "level": 25.33,
     "last": {
-     "bar_start": "11:25",
-     "close": 24.95,
-     "vs_level_pct": -1.5
+     "bar_start": "11:30",
+     "close": 25.02,
+     "vs_level_pct": -1.2
     },
     "trigger": null,
-    "reason": "last close $24.95 (11:25 bar), $0.38 under the range high $25.33 (-1.50%)"
+    "reason": "last close $25.02 (11:30 bar), $0.31 under the range high $25.33 (-1.20%)"
    },
    "PAM": {
     "symbol": "PAM",
@@ -4329,9 +4351,9 @@
     },
     "level": 61.06,
     "last": {
-     "bar_start": "11:25",
-     "close": 60.82,
-     "vs_level_pct": -0.39
+     "bar_start": "11:30",
+     "close": 60.66,
+     "vs_level_pct": -0.66
     },
     "trigger": {
      "time": "9:50 AM",
@@ -4361,7 +4383,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 101 minutos (máximo 30)",
+      "la ruptura fue hace 107 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 40.0,
@@ -4394,16 +4416,16 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 7866
+     "avg_volume": 4427
     },
     "level": 49.16,
     "last": {
-     "bar_start": "11:25",
-     "close": 47.31,
-     "vs_level_pct": -3.76
+     "bar_start": "11:30",
+     "close": 47.29,
+     "vs_level_pct": -3.8
     },
     "trigger": null,
-    "reason": "last close $47.31 (11:25 bar), $1.85 under the range high $49.16 (-3.76%)"
+    "reason": "last close $47.29 (11:30 bar), $1.87 under the range high $49.16 (-3.80%)"
    },
    "VIST": {
     "symbol": "VIST",
@@ -4422,9 +4444,9 @@
     },
     "level": 49.15,
     "last": {
-     "bar_start": "11:25",
-     "close": 49.26,
-     "vs_level_pct": 0.23
+     "bar_start": "11:30",
+     "close": 49.37,
+     "vs_level_pct": 0.44
     },
     "trigger": {
      "time": "9:50 AM",
@@ -4433,8 +4455,8 @@
      "bar_index": 3,
      "price": 49.25,
      "close": 49.249900817871094,
-     "volume": 39853,
-     "volume_x": 0.86,
+     "volume": 198803,
+     "volume_x": 4.27,
      "pct_over": 0.2
     },
     "reason": "the 9:45 bar closed above the range high",
@@ -4455,11 +4477,11 @@
       "seed": 19,
       "bars_left": 73,
       "p_target": 0.4507,
-      "p_stop": 0.5323,
-      "p_neither": 0.017,
-      "p_green": 0.4581,
+      "p_stop": 0.5324,
+      "p_neither": 0.0169,
+      "p_green": 0.4579,
       "median_close": 48.93,
-      "p5_close": 47.22,
+      "p5_close": 47.21,
       "p95_close": 50.65,
       "avg_R": -0.083,
       "r_at_target": 1.0,
@@ -4529,7 +4551,7 @@
        [
         47.58,
         49.08,
-        50.51
+        50.52
        ],
        [
         47.57,
@@ -4537,14 +4559,14 @@
         50.52
        ],
        [
-        47.56,
+        47.55,
         49.08,
         50.53
        ],
        [
         47.54,
         49.07,
-        50.6
+        50.61
        ],
        [
         47.48,
@@ -4552,23 +4574,23 @@
         50.6
        ],
        [
-        47.48,
+        47.47,
         49.06,
         50.65
        ],
        [
         47.42,
         49.02,
-        50.62
+        50.63
        ],
        [
         47.36,
         48.98,
-        50.6
+        50.59
        ],
        [
         47.37,
-        49.0,
+        48.99,
         50.61
        ],
        [
@@ -4577,24 +4599,24 @@
         50.7
        ],
        [
-        47.33,
+        47.34,
         49.0,
-        50.71
+        50.7
        ],
        [
-        47.28,
-        48.96,
+        47.27,
+        48.95,
         50.66
        ],
        [
         47.24,
-        48.95,
+        48.96,
         50.66
        ],
        [
         47.22,
         48.95,
-        50.69
+        50.67
        ]
       ]
      },
@@ -4614,7 +4636,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 101 minutos (máximo 30)",
+      "la ruptura fue hace 107 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 50.0,
@@ -4651,12 +4673,12 @@
     },
     "level": 1432.13,
     "last": {
-     "bar_start": "11:25",
-     "close": 1422.93,
-     "vs_level_pct": -0.64
+     "bar_start": "11:30",
+     "close": 1415.65,
+     "vs_level_pct": -1.15
     },
     "trigger": null,
-    "reason": "last close $1422.93 (11:25 bar), $9.20 under the range high $1432.13 (-0.64%)"
+    "reason": "last close $1415.65 (11:30 bar), $16.48 under the range high $1432.13 (-1.15%)"
    },
    "TGS": {
     "symbol": "TGS",
@@ -4695,16 +4717,16 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 5371
+     "avg_volume": 5384
     },
     "level": 10.31,
     "last": {
-     "bar_start": "11:25",
+     "bar_start": "11:30",
      "close": 9.99,
      "vs_level_pct": -3.1
     },
     "trigger": null,
-    "reason": "last close $9.99 (11:25 bar), $0.32 under the range high $10.31 (-3.10%)"
+    "reason": "last close $9.99 (11:30 bar), $0.32 under the range high $10.31 (-3.10%)"
    },
    "SUPV": {
     "symbol": "SUPV",
@@ -4719,16 +4741,16 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 14210
+     "avg_volume": 14243
     },
     "level": 4.51,
     "last": {
-     "bar_start": "11:25",
-     "close": 4.34,
-     "vs_level_pct": -3.77
+     "bar_start": "11:30",
+     "close": 4.32,
+     "vs_level_pct": -4.21
     },
     "trigger": null,
-    "reason": "last close $4.34 (11:25 bar), $0.17 under the range high $4.51 (-3.77%)"
+    "reason": "last close $4.32 (11:30 bar), $0.19 under the range high $4.51 (-4.21%)"
    },
    "LOMA": {
     "symbol": "LOMA",
@@ -4747,12 +4769,12 @@
     },
     "level": 8.17,
     "last": {
-     "bar_start": "11:20",
+     "bar_start": "11:25",
      "close": 8.01,
      "vs_level_pct": -1.99
     },
     "trigger": null,
-    "reason": "last close $8.01 (11:20 bar), $0.16 under the range high $8.17 (-1.99%)"
+    "reason": "last close $8.01 (11:25 bar), $0.16 under the range high $8.17 (-1.99%)"
    },
    "BBAR": {
     "symbol": "BBAR",
@@ -4771,12 +4793,12 @@
     },
     "level": 8.77,
     "last": {
-     "bar_start": "11:25",
-     "close": 8.27,
-     "vs_level_pct": -5.65
+     "bar_start": "11:30",
+     "close": 8.22,
+     "vs_level_pct": -6.27
     },
     "trigger": null,
-    "reason": "last close $8.27 (11:25 bar), $0.49 under the range high $8.77 (-5.65%)"
+    "reason": "last close $8.22 (11:30 bar), $0.55 under the range high $8.77 (-6.27%)"
    },
    "CRESY": {
     "symbol": "CRESY",
@@ -4795,9 +4817,9 @@
     },
     "level": 7.81,
     "last": {
-     "bar_start": "11:25",
-     "close": 7.99,
-     "vs_level_pct": 2.27
+     "bar_start": "11:30",
+     "close": 7.97,
+     "vs_level_pct": 2.01
     },
     "trigger": {
      "time": "10:00 AM",
@@ -4806,7 +4828,7 @@
      "bar_index": 5,
      "price": 7.9,
      "close": 7.900000095367432,
-     "volume": 6388,
+     "volume": 6386,
      "volume_x": 3.79,
      "pct_over": 1.12
     },
@@ -4827,7 +4849,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 91 minutos (máximo 30)",
+      "la ruptura fue hace 97 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 316.0,
@@ -4864,12 +4886,12 @@
     },
     "level": 11.36,
     "last": {
-     "bar_start": "11:15",
-     "close": 11.18,
-     "vs_level_pct": -1.58
+     "bar_start": "11:20",
+     "close": 11.2,
+     "vs_level_pct": -1.41
     },
     "trigger": null,
-    "reason": "last close $11.18 (11:15 bar), $0.18 under the range high $11.36 (-1.58%)"
+    "reason": "last close $11.20 (11:20 bar), $0.16 under the range high $11.36 (-1.41%)"
    },
    "TEO": {
     "symbol": "TEO",
@@ -4912,12 +4934,12 @@
     },
     "level": 11.1,
     "last": {
-     "bar_start": "11:15",
-     "close": 10.57,
-     "vs_level_pct": -4.73
+     "bar_start": "11:30",
+     "close": 10.67,
+     "vs_level_pct": -3.87
     },
     "trigger": null,
-    "reason": "last close $10.57 (11:15 bar), $0.53 under the range high $11.10 (-4.73%)"
+    "reason": "last close $10.67 (11:30 bar), $0.43 under the range high $11.10 (-3.87%)"
    },
    "GLOB": {
     "symbol": "GLOB",
@@ -4936,16 +4958,128 @@
     },
     "level": 51.0,
     "last": {
-     "bar_start": "11:25",
-     "close": 49.91,
-     "vs_level_pct": -2.14
+     "bar_start": "11:30",
+     "close": 49.79,
+     "vs_level_pct": -2.37
     },
     "trigger": null,
-    "reason": "last close $49.91 (11:25 bar), $1.09 under the range high $51.00 (-2.14%)"
+    "reason": "last close $49.79 (11:30 bar), $1.21 under the range high $51.00 (-2.37%)"
    }
   }
  },
  "news": [
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Prediction: IREN’s Microsoft Deal Could Be Just the Beginning of Its Next Growth Phase",
+   "link": "https://247wallst.com/investing/2026/11/25/prediction-irens-microsoft-deal-could-be-just-the-beginning-of-its-next-growth-phase-massive-upside-ahead/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T16:33:59+00:00",
+   "tags": [
+    "deal"
+   ],
+   "new": true,
+   "id": "df0a596acf9c3703",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Bitcoin wallet COLDCARD patches code after August hack",
+   "link": "https://finance.yahoo.com/video/bitcoin-wallet-coldcard-patches-code-163000292.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T16:30:00+00:00",
+   "tags": [
+    "risk"
+   ],
+   "new": true,
+   "id": "309cdc5f45b91fa7",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Tether Gold Under Pressure: Bitcoin and Gold Losses Erase 70% of USDT’s Cushion",
+   "link": "https://www.coinspeaker.com/tether-gold-under-pressure-bitcoin-and-gold-losses-erase-70-of-usdts-cushion/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T16:24:06+00:00",
+   "tags": [],
+   "new": true,
+   "id": "9330f99411c9bfc6",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Before the bell: Bitcoin's Thanksgiving comes with a tariff bill",
+   "link": "https://www.thestreet.com/crypto/markets/before-the-bell-bitcoins-thanksgiving-comes-with-a-tariff-bill-?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T16:24:05+00:00",
+   "tags": [
+    "macro"
+   ],
+   "new": true,
+   "id": "a27b7a701d7b63a4",
+   "form": null
+  },
+  {
+   "ticker": "MELI",
+   "touches": [
+    "MELI"
+   ],
+   "title": "3 High-Growth Stocks That Could Make $10,000 Worth Much More by 2030",
+   "link": "https://247wallst.com/investing/2026/11/25/3-high-growth-stocks-that-could-make-10000-worth-much-more-by-2030/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T16:03:22+00:00",
+   "tags": [],
+   "new": true,
+   "id": "df2e0e7fb82c3d8b",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD",
+    "LINK-USD"
+   ],
+   "title": "Fidelity adds DeFi staples to its crypto trading platform",
+   "link": "https://finance.yahoo.com/video/fidelity-adds-defi-staples-crypto-160000496.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T16:00:00+00:00",
+   "tags": [],
+   "new": true,
+   "id": "5fcd05ccd6ae288a",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Bitcoin Price Faces Alarming $58,000 Test as Selling Mounts",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-price-faces-alarming-58-155703029.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T15:57:03+00:00",
+   "tags": [],
+   "new": true,
+   "id": "9eecc74e4c6931da",
+   "form": null
+  },
   {
    "ticker": "BTC-USD",
    "touches": [
@@ -4957,8 +5091,25 @@
    "kind": "headline",
    "time": "2026-11-25T15:16:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "46394234bc2fb1da",
+   "form": null
+  },
+  {
+   "ticker": "VIST",
+   "touches": [
+    "VIST"
+   ],
+   "title": "4 Stocks With Rising Cash Flows to Buy This Thanksgiving Week",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/4-stocks-rising-cash-flows-150800426.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T15:08:00+00:00",
+   "tags": [
+    "earnings"
+   ],
+   "new": true,
+   "id": "e39c57234b36ac69",
    "form": null
   },
   {
@@ -4972,7 +5123,7 @@
    "kind": "headline",
    "time": "2026-11-25T15:05:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "65949b3fba1730b1",
    "form": null
   },
@@ -4987,7 +5138,7 @@
    "kind": "headline",
    "time": "2026-11-25T15:03:15+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "5de64ba7f3cc97d9",
    "form": null
   },
@@ -5002,7 +5153,7 @@
    "kind": "headline",
    "time": "2026-11-25T15:02:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "4b6eaa14dea13245",
    "form": null
   },
@@ -5017,7 +5168,7 @@
    "kind": "headline",
    "time": "2026-11-25T15:00:09+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "809249a12aa923a4",
    "form": null
   },
@@ -5032,25 +5183,8 @@
    "kind": "headline",
    "time": "2026-11-25T14:51:00+00:00",
    "tags": [],
-   "new": true,
-   "id": "dd219ade51992cd9",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Stock Market Today: Dow Dives 700 Points As Nvidia Sells Off, Inflation Rises; Anthropic Sinks (Live Coverage)",
-   "link": "https://finance.yahoo.com/m/90407e46-3b17-34e8-8c82-527bf00b63e4/stock-market-today%3A-dow-dives.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T14:50:50+00:00",
-   "tags": [
-    "macro"
-   ],
    "new": false,
-   "id": "48df8b125fadcd92",
+   "id": "dd219ade51992cd9",
    "form": null
   },
   {
@@ -5066,7 +5200,7 @@
    "tags": [
     "deal"
    ],
-   "new": true,
+   "new": false,
    "id": "bb2f8ab43e696823",
    "form": null
   },
@@ -5081,7 +5215,7 @@
    "kind": "headline",
    "time": "2026-11-25T14:43:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "e0fc4a715a25b398",
    "form": null
   },
@@ -5096,7 +5230,7 @@
    "kind": "headline",
    "time": "2026-11-25T14:41:02+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "24644c090bfc253d",
    "form": null
   },
@@ -5113,7 +5247,7 @@
    "tags": [
     "analyst"
    ],
-   "new": true,
+   "new": false,
    "id": "400965cc2607e470",
    "form": null
   },
@@ -5143,7 +5277,7 @@
    "kind": "headline",
    "time": "2026-11-25T14:30:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "d3f9512fa6faeb78",
    "form": null
   },
@@ -5158,7 +5292,7 @@
    "kind": "headline",
    "time": "2026-11-25T14:28:41+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "9906041963d9979d",
    "form": null
   },
@@ -5220,7 +5354,7 @@
    "tags": [
     "earnings"
    ],
-   "new": true,
+   "new": false,
    "id": "ed9d9a50c55340b9",
    "form": null
   },
@@ -5306,38 +5440,6 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Hyperliquid Leads Altcoin Losses as Bitcoin Slips Below $59K",
-   "link": "https://decrypt.co/383938/hyperliquid-leads-altcoin-losses-as-bitcoin-slips-below-59k?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T11:23:57+00:00",
-   "tags": [],
-   "new": false,
-   "id": "faf5f1b6b467783f",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Hyperliquid Strategies (PURR) Could Be A Bargain Following Its HYPE Treasury Pivot",
-   "link": "https://finance.yahoo.com/markets/crypto/articles/hyperliquid-strategies-purr-could-bargain-110905021.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T11:09:05+00:00",
-   "tags": [
-    "people"
-   ],
-   "new": false,
-   "id": "b0589d6b9ad4733c",
-   "form": null
-  },
-  {
    "ticker": "XRP-USD",
    "touches": [
     "XRP-USD"
@@ -5350,36 +5452,6 @@
    "tags": [],
    "new": false,
    "id": "19e3bfc7c42151ae",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Why Ryan Watkins Says Bitcoin Is Being Tested for the First Time",
-   "link": "https://unchainedcrypto.com/why-ryan-watkins-says-bitcoin-is-being-tested-for-the-first-time/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T11:00:43+00:00",
-   "tags": [],
-   "new": false,
-   "id": "3bd0ed6a295eea72",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "10 big money topics you might have to tackle over turkey: A Yahoo Finance guide to Nvidia, markets, and more",
-   "link": "https://finance.yahoo.com/markets/article/10-big-money-topics-you-might-have-to-tackle-over-turkey-a-yahoo-finance-guide-to-nvidia-markets-and-more-110000381.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T11:00:00+00:00",
-   "tags": [],
-   "new": false,
-   "id": "5eea79478b7677bb",
    "form": null
   },
   {
@@ -5397,21 +5469,6 @@
    ],
    "new": false,
    "id": "e91867a175377c73",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Michael Saylor Bought $100M In Bitcoin Before Strategy Did, Says The Man Who Convinced Him To Buy It — Now That Bet Is Around $589M",
-   "link": "https://stocktwits.com/news-articles/markets/equity/michael-saylor-100m-bitcoin-purchase-589m-bet/cNbHOY3R9lH?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T10:22:23+00:00",
-   "tags": [],
-   "new": false,
-   "id": "c61d351f526e493e",
    "form": null
   },
   {
@@ -5863,38 +5920,6 @@
    "new": false,
    "id": "1443119a61c5e371",
    "form": null
-  },
-  {
-   "ticker": "CEPU",
-   "touches": [
-    "CEPU"
-   ],
-   "title": "Texas Pacific Land's $3B EagleRock Deal Expands Permian Footprint",
-   "link": "https://finance.yahoo.com/energy/articles/texas-pacific-lands-3b-eaglerock-162700553.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T16:27:00+00:00",
-   "tags": [
-    "deal"
-   ],
-   "new": false,
-   "id": "90ffb88772a7b89f",
-   "form": null
-  },
-  {
-   "ticker": "MELI",
-   "touches": [
-    "MELI"
-   ],
-   "title": "How Investors May Respond To MercadoLibre (MELI) Logistics Spending Push",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/investors-may-respond-mercadolibre-meli-161118236.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T16:11:18+00:00",
-   "tags": [],
-   "new": false,
-   "id": "d5d53be157aa823c",
-   "form": null
   }
  ],
  "weekly": {
@@ -6054,6 +6079,5 @@
  },
  "errors": {
   "news": "no SEC CIK for ADA-USD; no SEC CIK for AVAX-USD; SEC 8-K for BBAR: HTTP 400 for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000913059&type=8-K&dateb=&owner=include&count=8&output=atom"
- },
- "intraday_at": "2026-11-25T16:31:16.006410+00:00"
+ }
 }
