@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-25T13:38:47.105932+00:00",
+ "generated_at": "2026-11-25T14:39:07.705042+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -249,9 +249,9 @@
    "id": "YPF",
    "label": "YPF",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 31.71,
-   "day_ch": -4.43,
+   "live_date": "2026-11-25",
+   "last": 30.99,
+   "day_ch": -2.27,
    "source": "yahoo",
    "degraded": false,
    "score": 19,
@@ -307,7 +307,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "2 titulares de YPF (balance, operación corporativa). Último: «Equinor Inks 18-Year Gas Supply Agreement With German Energy Firm VNG». Hay balance cerca: una operación de varios días queda expuesta.",
+      "text": "2 noticias recientes de YPF (temas: balance, operación corporativa). La última: «Equinor Inks 18-Year Gas Supply Agreement With German Energy Firm VNG». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "Equinor Inks 18-Year Gas Supply Agreement With German Energy Firm VNG",
@@ -337,9 +337,9 @@
    "id": "GGAL",
    "label": "GGAL",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 25.66,
-   "day_ch": -3.61,
+   "live_date": "2026-11-25",
+   "last": 25.06,
+   "day_ch": -2.34,
    "source": "yahoo",
    "degraded": false,
    "score": 2,
@@ -395,7 +395,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de GGAL en las últimas horas"
+      "text": "No hubo noticias de GGAL en las últimas horas: nada en contra"
      }
     ]
    },
@@ -407,9 +407,9 @@
    "id": "PAM",
    "label": "PAM",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 61.16,
-   "day_ch": -1.61,
+   "live_date": "2026-11-25",
+   "last": 60.65,
+   "day_ch": -0.83,
    "source": "yahoo",
    "degraded": false,
    "score": 2,
@@ -455,13 +455,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 31,2)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 31,2)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de PAM en las últimas horas"
+      "text": "No hubo noticias de PAM en las últimas horas: nada en contra"
      }
     ]
    },
@@ -473,9 +473,9 @@
    "id": "BMA",
    "label": "BMA",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 50.09,
-   "day_ch": -3.11,
+   "live_date": "2026-11-25",
+   "last": 48.6,
+   "day_ch": -2.97,
    "source": "yahoo",
    "degraded": false,
    "score": 4,
@@ -531,7 +531,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de BMA en las últimas horas"
+      "text": "No hubo noticias de BMA en las últimas horas: nada en contra"
      }
     ]
    },
@@ -543,9 +543,9 @@
    "id": "VIST",
    "label": "VIST",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 49.61,
-   "day_ch": -2.57,
+   "live_date": "2026-11-25",
+   "last": 48.59,
+   "day_ch": -2.06,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -601,7 +601,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de VIST en las últimas horas"
+      "text": "No hubo noticias de VIST en las últimas horas: nada en contra"
      }
     ]
    },
@@ -613,9 +613,9 @@
    "id": "MELI",
    "label": "MELI",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 1450.0,
-   "day_ch": 1.77,
+   "live_date": "2026-11-25",
+   "last": 1422.0,
+   "day_ch": -1.95,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -663,13 +663,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 38,6)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 38,6)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "6 titulares de MELI (balance). Último: «Michael Burry Sells Remaining Nasdaq-100 Puts, Eyes Fresh Nvidia Short Near $200: ‘I Am Long Undervalued Common Stocks’». Hay balance cerca: una operación de varios días queda expuesta.",
+      "text": "6 noticias recientes de MELI (temas: balance). La última: «Michael Burry Sells Remaining Nasdaq-100 Puts, Eyes Fresh Nvidia Short Near $200: ‘I Am Long Undervalued Common Stocks’». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "Michael Burry Sells Remaining Nasdaq-100 Puts, Eyes Fresh Nvidia Short Near $200: ‘I Am Long Undervalued Common Stocks’",
@@ -707,9 +707,9 @@
    "id": "TGS",
    "label": "TGS",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 19.45,
-   "day_ch": -1.97,
+   "live_date": "2026-11-25",
+   "last": 19.32,
+   "day_ch": -0.67,
    "source": "yahoo",
    "degraded": false,
    "score": 2,
@@ -765,7 +765,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de TGS en las últimas horas"
+      "text": "No hubo noticias de TGS en las últimas horas: nada en contra"
      }
     ]
    },
@@ -777,9 +777,9 @@
    "id": "CEPU",
    "label": "CEPU",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 10.27,
-   "day_ch": -0.68,
+   "live_date": "2026-11-25",
+   "last": 10.01,
+   "day_ch": -2.58,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -825,13 +825,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 42,2)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 42,2)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "1 titulares de CEPU (operación corporativa). Último: «Texas Pacific Land's $3B EagleRock Deal Expands Permian Footprint»",
+      "text": "1 noticias recientes de CEPU (temas: operación corporativa). La última: «Texas Pacific Land's $3B EagleRock Deal Expands Permian Footprint»",
       "items": [
        {
         "title": "Texas Pacific Land's $3B EagleRock Deal Expands Permian Footprint",
@@ -853,9 +853,9 @@
    "id": "SUPV",
    "label": "SUPV",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 4.6,
-   "day_ch": -2.34,
+   "live_date": "2026-11-25",
+   "last": 4.39,
+   "day_ch": -4.57,
    "source": "yahoo",
    "degraded": false,
    "score": 2,
@@ -911,7 +911,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "1 titulares de SUPV. Último: «Implied Volatility Surging for Grupo Supervielle Stock Options»",
+      "text": "1 noticias recientes de SUPV. La última: «Implied Volatility Surging for Grupo Supervielle Stock Options»",
       "items": [
        {
         "title": "Implied Volatility Surging for Grupo Supervielle Stock Options",
@@ -931,9 +931,9 @@
    "id": "LOMA",
    "label": "LOMA",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 8.23,
-   "day_ch": -1.2,
+   "live_date": "2026-11-25",
+   "last": 8.11,
+   "day_ch": -1.4,
    "source": "yahoo",
    "degraded": false,
    "score": 6,
@@ -979,13 +979,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 38)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 38)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de LOMA en las últimas horas"
+      "text": "No hubo noticias de LOMA en las últimas horas: nada en contra"
      }
     ]
    },
@@ -997,9 +997,9 @@
    "id": "BBAR",
    "label": "BBAR",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 9.15,
-   "day_ch": -0.54,
+   "live_date": "2026-11-25",
+   "last": 8.45,
+   "day_ch": -7.65,
    "source": "yahoo",
    "degraded": false,
    "score": 8,
@@ -1055,7 +1055,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "1 titulares de BBAR (balance). Último: «BBVA Argentina Announces Third Quarter 2026 Financial Results». Hay balance cerca: una operación de varios días queda expuesta.",
+      "text": "1 noticias recientes de BBAR (temas: balance). La última: «BBVA Argentina Announces Third Quarter 2026 Financial Results». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "BBVA Argentina Announces Third Quarter 2026 Financial Results",
@@ -1077,9 +1077,9 @@
    "id": "CRESY",
    "label": "CRESY",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 7.87,
-   "day_ch": -4.14,
+   "live_date": "2026-11-25",
+   "last": 7.73,
+   "day_ch": -1.78,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -1125,13 +1125,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 30,4)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 30,4)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de CRESY en las últimas horas"
+      "text": "No hubo noticias de CRESY en las últimas horas: nada en contra"
      }
     ]
    },
@@ -1143,9 +1143,9 @@
    "id": "EDN",
    "label": "EDN",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 11.6,
-   "day_ch": -1.69,
+   "live_date": "2026-11-25",
+   "last": 11.22,
+   "day_ch": -3.32,
    "source": "yahoo",
    "degraded": false,
    "score": 4,
@@ -1201,7 +1201,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de EDN en las últimas horas"
+      "text": "No hubo noticias de EDN en las últimas horas: nada en contra"
      }
     ]
    },
@@ -1213,9 +1213,9 @@
    "id": "TEO",
    "label": "TEO",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 9.74,
-   "day_ch": -0.51,
+   "live_date": "2026-11-25",
+   "last": 9.54,
+   "day_ch": -2.05,
    "source": "yahoo",
    "degraded": false,
    "score": 6,
@@ -1261,13 +1261,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 33,3)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 33,3)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de TEO en las últimas horas"
+      "text": "No hubo noticias de TEO en las últimas horas: nada en contra"
      }
     ]
    },
@@ -1279,9 +1279,9 @@
    "id": "IRS",
    "label": "IRS",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 10.84,
-   "day_ch": -1.81,
+   "live_date": "2026-11-25",
+   "last": 11.01,
+   "day_ch": 1.52,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -1327,13 +1327,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 31,5)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 31,5)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de IRS en las últimas horas"
+      "text": "No hubo noticias de IRS en las últimas horas: nada en contra"
      }
     ]
    },
@@ -1345,9 +1345,9 @@
    "id": "GLOB",
    "label": "GLOB",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 50.05,
-   "day_ch": 9.83,
+   "live_date": "2026-11-25",
+   "last": 50.01,
+   "day_ch": -0.08,
    "source": "yahoo",
    "degraded": false,
    "score": 50,
@@ -1406,7 +1406,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "2 titulares de GLOB (balance, dividendos/recompra). Último: «Globant Stock Has The Bull Case Changed After Lower Earnings Guidance». Hay balance cerca: una operación de varios días queda expuesta.",
+      "text": "2 noticias recientes de GLOB (temas: balance, dividendos/recompra). La última: «Globant Stock Has The Bull Case Changed After Lower Earnings Guidance». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "Globant Stock Has The Bull Case Changed After Lower Earnings Guidance",
@@ -1435,9 +1435,9 @@
    "id": "GGAL",
    "label": "GGAL",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 4610.0,
-   "day_ch": 1.15,
+   "live_date": "2026-11-25",
+   "last": 4515.0,
+   "day_ch": -2.06,
    "source": "yahoo",
    "degraded": false,
    "score": 11,
@@ -1493,7 +1493,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de GGAL en las últimas horas"
+      "text": "No hubo noticias de GGAL en las últimas horas: nada en contra"
      }
     ]
    },
@@ -1505,9 +1505,9 @@
    "id": "YPFD",
    "label": "YPFD",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 5735.0,
-   "day_ch": -1.71,
+   "live_date": "2026-11-25",
+   "last": 5610.0,
+   "day_ch": -2.18,
    "source": "yahoo",
    "degraded": false,
    "score": 49,
@@ -1565,7 +1565,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "2 titulares de YPF (balance, operación corporativa). Último: «Equinor Inks 18-Year Gas Supply Agreement With German Energy Firm VNG». Hay balance cerca: una operación de varios días queda expuesta.",
+      "text": "2 noticias recientes de YPF (temas: balance, operación corporativa). La última: «Equinor Inks 18-Year Gas Supply Agreement With German Energy Firm VNG». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "Equinor Inks 18-Year Gas Supply Agreement With German Energy Firm VNG",
@@ -1595,9 +1595,9 @@
    "id": "PAMP",
    "label": "PAMP",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 4398.0,
-   "day_ch": 0.86,
+   "live_date": "2026-11-25",
+   "last": 4310.0,
+   "day_ch": -1.99,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1643,13 +1643,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 41,3)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 41,3)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de PAM en las últimas horas"
+      "text": "No hubo noticias de PAM en las últimas horas: nada en contra"
      }
     ]
    },
@@ -1661,9 +1661,9 @@
    "id": "BMA",
    "label": "BMA",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 9070.0,
-   "day_ch": 0.89,
+   "live_date": "2026-11-25",
+   "last": 8790.0,
+   "day_ch": -3.09,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1712,25 +1712,30 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 34,9)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 34,9)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de BMA en las últimas horas"
+      "text": "No hubo noticias de BMA en las últimas horas: nada en contra"
      },
      {
       "key": "plan",
       "name": "Plan",
       "status": "ok",
-      "text": "Si dispara: entrada $ 9.070, stop $ 8.800, objetivo $ 9.610"
+      "text": "Si el precio llega a $ 9.070, compra. Después vende con pérdida si baja a $ 8.800 (stop) o con ganancia si sube a $ 9.610 (objetivo)",
+      "plan": {
+       "entry": 9070.0,
+       "stop": 8800.0,
+       "target": 9610.0
+      }
      },
      {
       "key": "timemachine",
       "name": "Time Machine",
       "status": "ok",
-      "text": "Parejo: a 2R el objetivo tiene que llegar primero en el 33 % de las repeticiones que tocan un lado, y llegó en el 29 % (objetivo primero 27,4 % y stop primero 67,5 %). Historia: 23 veces ruptura del máximo de 20 días, 6 al objetivo, 16 al stop, 1 sin definir (promedio -0,16R).",
+      "text": "Parejo: el precio llegó primero al objetivo en el 27,4 % de las simulaciones y al stop en el 67,5 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 29 de cada 100 (contando solo las que tocaron uno de los dos). En el pasado esta señal (ruptura del máximo de 20 días) apareció 23 veces en este activo: 6 llegaron al objetivo, 16 al stop y 1 a ninguno (resultado medio -0,16 veces lo arriesgado).",
       "data": {
        "ok": true,
        "kind": "diario",
@@ -1783,7 +1788,7 @@
         ]
        },
        "lean": "even",
-       "verdict": "Parejo: a 2R el objetivo tiene que llegar primero en el 33 % de las repeticiones que tocan un lado, y llegó en el 29 % (objetivo primero 27,4 % y stop primero 67,5 %).",
+       "verdict": "Parejo: el precio llegó primero al objetivo en el 27,4 % de las simulaciones y al stop en el 67,5 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 29 de cada 100 (contando solo las que tocaron uno de los dos).",
        "history": {
         "tag": "breakout_20d",
         "label": "ruptura del máximo de 20 días",
@@ -1806,9 +1811,9 @@
    "id": "ALUA",
    "label": "ALUA",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 835.0,
-   "day_ch": -1.24,
+   "live_date": "2026-11-25",
+   "last": 827.0,
+   "day_ch": -0.96,
    "source": "yahoo",
    "degraded": false,
    "score": 34,
@@ -1854,13 +1859,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 54,5)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 54,5)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "na",
-      "text": "Sin fuente de noticias para este activo"
+      "text": "No hay fuente de noticias para este activo"
      }
     ]
    },
@@ -1872,9 +1877,9 @@
    "id": "TXAR",
    "label": "TXAR",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 700.0,
-   "day_ch": -0.36,
+   "live_date": "2026-11-25",
+   "last": 690.0,
+   "day_ch": -1.43,
    "source": "yahoo",
    "degraded": false,
    "score": 47,
@@ -1922,13 +1927,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 48,5)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 48,5)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "na",
-      "text": "Sin fuente de noticias para este activo"
+      "text": "No hay fuente de noticias para este activo"
      }
     ]
    },
@@ -2007,9 +2012,9 @@
    "id": "CEPU",
    "label": "CEPU",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 1832.0,
-   "day_ch": 4.75,
+   "live_date": "2026-11-25",
+   "last": 1772.0,
+   "day_ch": -3.28,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2067,7 +2072,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "1 titulares de CEPU (operación corporativa). Último: «Texas Pacific Land's $3B EagleRock Deal Expands Permian Footprint»",
+      "text": "1 noticias recientes de CEPU (temas: operación corporativa). La última: «Texas Pacific Land's $3B EagleRock Deal Expands Permian Footprint»",
       "items": [
        {
         "title": "Texas Pacific Land's $3B EagleRock Deal Expands Permian Footprint",
@@ -2089,9 +2094,9 @@
    "id": "TGSU2",
    "label": "TGSU2",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 7060.0,
-   "day_ch": 1.07,
+   "live_date": "2026-11-25",
+   "last": 6870.0,
+   "day_ch": -2.69,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2139,13 +2144,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 36,4)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 36,4)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de TGS en las últimas horas"
+      "text": "No hubo noticias de TGS en las últimas horas: nada en contra"
      }
     ]
    },
@@ -2157,9 +2162,9 @@
    "id": "SUPV",
    "label": "SUPV",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 1651.0,
-   "day_ch": 2.17,
+   "live_date": "2026-11-25",
+   "last": 1608.0,
+   "day_ch": -2.6,
    "source": "yahoo",
    "degraded": false,
    "score": 5,
@@ -2217,7 +2222,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "1 titulares de SUPV. Último: «Implied Volatility Surging for Grupo Supervielle Stock Options»",
+      "text": "1 noticias recientes de SUPV. La última: «Implied Volatility Surging for Grupo Supervielle Stock Options»",
       "items": [
        {
         "title": "Implied Volatility Surging for Grupo Supervielle Stock Options",
@@ -2237,9 +2242,9 @@
    "id": "BBAR",
    "label": "BBAR",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 5485.0,
-   "day_ch": 3.98,
+   "live_date": "2026-11-25",
+   "last": 5270.0,
+   "day_ch": -3.92,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2297,7 +2302,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "1 titulares de BBAR (balance). Último: «BBVA Argentina Announces Third Quarter 2026 Financial Results». Hay balance cerca: una operación de varios días queda expuesta.",
+      "text": "1 noticias recientes de BBAR (temas: balance). La última: «BBVA Argentina Announces Third Quarter 2026 Financial Results». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "BBVA Argentina Announces Third Quarter 2026 Financial Results",
@@ -2319,9 +2324,9 @@
    "id": "LOMA",
    "label": "LOMA",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 2925.0,
-   "day_ch": 2.9,
+   "live_date": "2026-11-25",
+   "last": 2852.0,
+   "day_ch": -2.48,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -2367,13 +2372,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 48)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 48)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de LOMA en las últimas horas"
+      "text": "No hubo noticias de LOMA en las últimas horas: nada en contra"
      }
     ]
    },
@@ -2385,9 +2390,9 @@
    "id": "COME",
    "label": "COME",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 28.29,
-   "day_ch": 3.29,
+   "live_date": "2026-11-25",
+   "last": 27.55,
+   "day_ch": -2.62,
    "source": "yahoo",
    "degraded": false,
    "score": 19,
@@ -2445,7 +2450,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "na",
-      "text": "Sin fuente de noticias para este activo"
+      "text": "No hay fuente de noticias para este activo"
      }
     ]
    },
@@ -2457,9 +2462,9 @@
    "id": "TECO2",
    "label": "TECO2",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 3510.0,
-   "day_ch": 2.33,
+   "live_date": "2026-11-25",
+   "last": 3430.0,
+   "day_ch": -2.28,
    "source": "yahoo",
    "degraded": false,
    "score": 60,
@@ -2508,25 +2513,30 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 42,7)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 42,7)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de TEO en las últimas horas"
+      "text": "No hubo noticias de TEO en las últimas horas: nada en contra"
      },
      {
       "key": "plan",
       "name": "Plan",
       "status": "ok",
-      "text": "Si dispara: entrada $ 3.510, stop $ 3.380, objetivo $ 3.770"
+      "text": "Si el precio llega a $ 3.510, compra. Después vende con pérdida si baja a $ 3.380 (stop) o con ganancia si sube a $ 3.770 (objetivo)",
+      "plan": {
+       "entry": 3510.0,
+       "stop": 3380.0,
+       "target": 3770.0
+      }
      },
      {
       "key": "timemachine",
       "name": "Time Machine",
       "status": "warn",
-      "text": "Se inclina al stop: a 2R el objetivo tiene que llegar primero en el 33 % de las repeticiones que tocan un lado, y llegó en el 28 % (objetivo primero 23,0 % y stop primero 60,6 %). Historia: 25 veces ruptura del máximo de 20 días, 5 al objetivo, 19 al stop, 1 sin definir (promedio -0,33R).",
+      "text": "En contra: el precio llegó primero al objetivo en el 23,0 % de las simulaciones y al stop en el 60,6 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 28 de cada 100 (contando solo las que tocaron uno de los dos). En el pasado esta señal (ruptura del máximo de 20 días) apareció 25 veces en este activo: 5 llegaron al objetivo, 19 al stop y 1 a ninguno (resultado medio -0,33 veces lo arriesgado).",
       "data": {
        "ok": true,
        "kind": "diario",
@@ -2579,7 +2589,7 @@
         ]
        },
        "lean": "stop",
-       "verdict": "Se inclina al stop: a 2R el objetivo tiene que llegar primero en el 33 % de las repeticiones que tocan un lado, y llegó en el 28 % (objetivo primero 23,0 % y stop primero 60,6 %).",
+       "verdict": "En contra: el precio llegó primero al objetivo en el 23,0 % de las simulaciones y al stop en el 60,6 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 28 de cada 100 (contando solo las que tocaron uno de los dos).",
        "history": {
         "tag": "breakout_20d",
         "label": "ruptura del máximo de 20 días",
@@ -2602,9 +2612,9 @@
    "id": "EDN",
    "label": "EDN",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 1050.0,
-   "day_ch": 0.48,
+   "live_date": "2026-11-25",
+   "last": 1016.0,
+   "day_ch": -3.24,
    "source": "yahoo",
    "degraded": false,
    "score": 4,
@@ -2662,7 +2672,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de EDN en las últimas horas"
+      "text": "No hubo noticias de EDN en las últimas horas: nada en contra"
      }
     ]
    },
@@ -2674,9 +2684,9 @@
    "id": "CRES",
    "label": "CRES",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 1430.0,
-   "day_ch": 1.2,
+   "live_date": "2026-11-25",
+   "last": 1395.0,
+   "day_ch": -2.45,
    "source": "yahoo",
    "degraded": false,
    "score": 37,
@@ -2724,13 +2734,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 33,2)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 33,2)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de CRESY en las últimas horas"
+      "text": "No hubo noticias de CRESY en las últimas horas: nada en contra"
      }
     ]
    },
@@ -2742,9 +2752,9 @@
    "id": "TRAN",
    "label": "TRAN",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 2085.0,
-   "day_ch": 1.26,
+   "live_date": "2026-11-25",
+   "last": 2047.0,
+   "day_ch": -1.82,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2802,7 +2812,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "na",
-      "text": "Sin fuente de noticias para este activo"
+      "text": "No hay fuente de noticias para este activo"
      }
     ]
    },
@@ -2814,9 +2824,9 @@
    "id": "BYMA",
    "label": "BYMA",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 190.0,
-   "day_ch": -5.12,
+   "live_date": "2026-11-25",
+   "last": 184.0,
+   "day_ch": -3.16,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -2862,13 +2872,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 33,1)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 33,1)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "na",
-      "text": "Sin fuente de noticias para este activo"
+      "text": "No hay fuente de noticias para este activo"
      }
     ]
    },
@@ -2880,9 +2890,9 @@
    "id": "METR",
    "label": "METR",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 1744.0,
-   "day_ch": -6.09,
+   "live_date": "2026-11-25",
+   "last": 1655.0,
+   "day_ch": -5.1,
    "source": "yahoo",
    "degraded": false,
    "score": 15,
@@ -2938,7 +2948,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "na",
-      "text": "Sin fuente de noticias para este activo"
+      "text": "No hay fuente de noticias para este activo"
      }
     ]
    },
@@ -2950,9 +2960,9 @@
    "id": "VALO",
    "label": "VALO",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 523.0,
-   "day_ch": 1.75,
+   "live_date": "2026-11-25",
+   "last": 520.0,
+   "day_ch": -0.57,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3008,7 +3018,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "na",
-      "text": "Sin fuente de noticias para este activo"
+      "text": "No hay fuente de noticias para este activo"
      }
     ]
    },
@@ -3020,9 +3030,9 @@
    "id": "MIRG",
    "label": "MIRG",
    "date": "2026-11-24",
-   "live_date": null,
-   "last": 1705.0,
-   "day_ch": 0.59,
+   "live_date": "2026-11-25",
+   "last": 1645.0,
+   "day_ch": -3.52,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3070,13 +3080,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 40,9)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 40,9)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "na",
-      "text": "Sin fuente de noticias para este activo"
+      "text": "No hay fuente de noticias para este activo"
      }
     ]
    },
@@ -3127,8 +3137,8 @@
    "label": "BTC",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 58301.0,
-   "day_ch": -2.42,
+   "last": 57772.0,
+   "day_ch": -3.31,
    "source": "yahoo",
    "degraded": false,
    "score": 26,
@@ -3186,12 +3196,24 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "20 titulares de BTC-USD (balance, directivos, macro). Último: «Stock Market Today: Dow Dives Ahead Of Fed Inflation Data; Nvidia, Anthropic Plunge (Live Coverage)». Hay balance cerca: una operación de varios días queda expuesta.",
+      "text": "21 noticias recientes de BTC-USD (temas: directivos, macro). La última: «Bitcoin slides below $59,000, on pace for its worst month since June 2022». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
-        "title": "Stock Market Today: Dow Dives Ahead Of Fed Inflation Data; Nvidia, Anthropic Plunge (Live Coverage)",
+        "title": "Bitcoin slides below $59,000, on pace for its worst month since June 2022",
+        "link": "https://finance.yahoo.com/markets/article/bitcoin-sinks-in-brutal-november-sell-off-as-broader-market-slides-143727717.html?.tsrc=rss",
+        "time": "2026-11-25T14:37:27+00:00",
+        "tags": []
+       },
+       {
+        "title": "Bitcoin trades as a high-beta tech proxy amid a strong downtrend",
+        "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-trades-high-beta-tech-141218301.html?.tsrc=rss",
+        "time": "2026-11-25T14:12:18+00:00",
+        "tags": []
+       },
+       {
+        "title": "Stock Market Today: Dow Dives On Surprise Inflation Data; Nvidia, Anthropic Plunge (Live Coverage)",
         "link": "https://finance.yahoo.com/m/90407e46-3b17-34e8-8c82-527bf00b63e4/stock-market-today%3A-dow-dives.html?.tsrc=rss",
-        "time": "2026-11-25T13:14:04+00:00",
+        "time": "2026-11-25T13:54:31+00:00",
         "tags": [
          "macro"
         ]
@@ -3202,20 +3224,6 @@
         "time": "2026-11-25T13:02:15+00:00",
         "tags": [
          "people"
-        ]
-       },
-       {
-        "title": "Bitcoin Slips Below $59K Ahead Of PCE Report, Heads For Worst Month Since July 2022",
-        "link": "https://stocktwits.com/news-articles/markets/equity/bitcoin-slips-below-59-k-ahead-of-pce-report-heads-for-worst-month-since-july-2022/cNbHhdsR9ma?.tsrc=rss",
-        "time": "2026-11-25T12:31:56+00:00",
-        "tags": []
-       },
-       {
-        "title": "CleanSpark Shares Fall 3% as Revenue Miss and Data Centre Delays Overshadow Earnings Beat",
-        "link": "https://investorshub.advfn.com/market-news/article/40705/cleanspark-shares-fall-3-as-revenue-miss-and-data-centre-delays-overshadow-earnings-beat?.tsrc=rss",
-        "time": "2026-11-25T11:39:26+00:00",
-        "tags": [
-         "earnings"
         ]
        }
       ]
@@ -3231,8 +3239,8 @@
    "label": "ETH",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 1638.0,
-   "day_ch": -2.38,
+   "last": 1621.0,
+   "day_ch": -3.35,
    "source": "yahoo",
    "degraded": false,
    "score": 14,
@@ -3290,7 +3298,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "20 titulares de ETH-USD. Último: «Bitcoin Slips Below $59K Ahead Of PCE Report, Heads For Worst Month Since July 2022». Hay balance cerca: una operación de varios días queda expuesta.",
+      "text": "20 noticias recientes de ETH-USD. La última: «Bitcoin Slips Below $59K Ahead Of PCE Report, Heads For Worst Month Since July 2022». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "Bitcoin Slips Below $59K Ahead Of PCE Report, Heads For Worst Month Since July 2022",
@@ -3329,8 +3337,8 @@
    "label": "SOL",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 67.27,
-   "day_ch": -3.4,
+   "last": 66.6,
+   "day_ch": -4.36,
    "source": "yahoo",
    "degraded": false,
    "score": 25,
@@ -3388,7 +3396,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "14 titulares de SOL-USD (directivos). Último: «BTC News: ARK Sells $6.8M Bitcoin ETF as $4.9B Outflows Deepen Market Fear»",
+      "text": "14 noticias recientes de SOL-USD (temas: directivos). La última: «BTC News: ARK Sells $6.8M Bitcoin ETF as $4.9B Outflows Deepen Market Fear»",
       "items": [
        {
         "title": "BTC News: ARK Sells $6.8M Bitcoin ETF as $4.9B Outflows Deepen Market Fear",
@@ -3429,8 +3437,8 @@
    "label": "BNB",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 535.69,
-   "day_ch": -2.2,
+   "last": 529.51,
+   "day_ch": -3.33,
    "source": "yahoo",
    "degraded": false,
    "score": 32,
@@ -3488,7 +3496,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "2 titulares de BNB-USD (balance, suspensión). Último: «Bitcoin now counts as collateral: From the CFTC to the ECB». Hay balance cerca: una operación de varios días queda expuesta.",
+      "text": "2 noticias recientes de BNB-USD (temas: balance, suspensión). La última: «Bitcoin now counts as collateral: From the CFTC to the ECB». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "Bitcoin now counts as collateral: From the CFTC to the ECB",
@@ -3519,8 +3527,8 @@
    "label": "XRP",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 0.9021,
-   "day_ch": -2.41,
+   "last": 0.8953,
+   "day_ch": -3.15,
    "source": "yahoo",
    "degraded": false,
    "score": 5,
@@ -3568,14 +3576,26 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 30,3)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 30,3)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "15 titulares de XRP-USD (directivos, operación corporativa). Último: «Cathie Wood's ARK Buys Anthropic as Ripple CEO Predicts Post-IPO Crypto Rally»",
+      "text": "17 noticias recientes de XRP-USD (temas: directivos, operación corporativa). La última: «XRP Just Dropped Below $1. Here's the Contrarian Case for Buying XRP Right Now.»",
       "items": [
+       {
+        "title": "XRP Just Dropped Below $1. Here's the Contrarian Case for Buying XRP Right Now.",
+        "link": "https://www.fool.com/investing/2026/11/25/xrp-just-dropped-below-1-heres-the-contrarian-case-for-buying-xrp-right-now/?.tsrc=rss",
+        "time": "2026-11-25T14:17:01+00:00",
+        "tags": []
+       },
+       {
+        "title": "10 Accounts Drove 65% of XRPL Order-Book Volume as XRP Pundit Floats $15,000",
+        "link": "https://www.ccn.com/news/business/10-accounts-drove-65-xrpl-order-book-volume-xrp-pundit-floats-15000/?.tsrc=rss",
+        "time": "2026-11-25T14:07:15+00:00",
+        "tags": []
+       },
        {
         "title": "Cathie Wood's ARK Buys Anthropic as Ripple CEO Predicts Post-IPO Crypto Rally",
         "link": "https://www.ccn.com/news/crypto/cathie-woods-ark-bitcoin-etf-anthropic-ripple-ceo-crypto-rebound/?.tsrc=rss",
@@ -3588,20 +3608,6 @@
         "title": "Ripple's David Schwartz Questions Secret XRP Buying as EGRAG Reveals $8.20 Sell Plan",
         "link": "https://www.ccn.com/news/crypto/xrp-egrag-reveals-sell-plan-schwartz-questions-secret-xrp-buying/?.tsrc=rss",
         "time": "2026-11-25T11:07:15+00:00",
-        "tags": []
-       },
-       {
-        "title": "Ripple Lands Major Turkish Bank Deal – So Why is XRP/Lira Trading Down 70%?",
-        "link": "https://www.coinspeaker.com/ripple-news-yapi-kredi-picks-ripple-custody-in-turkiye/?.tsrc=rss",
-        "time": "2026-11-25T10:08:41+00:00",
-        "tags": [
-         "deal"
-        ]
-       },
-       {
-        "title": "What Would It Take for XRP to Reach $100?",
-        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/24/what-would-it-take-for-xrp-to-reach-100/?.tsrc=rss",
-        "time": "2026-11-24T23:52:57+00:00",
         "tags": []
        }
       ]
@@ -3617,8 +3623,8 @@
    "label": "ADA",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 0.13856,
-   "day_ch": -4.01,
+   "last": 0.13684,
+   "day_ch": -5.2,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -3676,7 +3682,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "2 titulares de ADA-USD (suspensión). Último: «Tom Lee Says Ethereum Is as Scarce as Bitcoin: Do the Supply Numbers Agree?»",
+      "text": "2 noticias recientes de ADA-USD (temas: suspensión). La última: «Tom Lee Says Ethereum Is as Scarce as Bitcoin: Do the Supply Numbers Agree?»",
       "items": [
        {
         "title": "Tom Lee Says Ethereum Is as Scarce as Bitcoin: Do the Supply Numbers Agree?",
@@ -3705,8 +3711,8 @@
    "label": "DOGE",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 0.05324,
-   "day_ch": -3.63,
+   "last": 0.05256,
+   "day_ch": -4.87,
    "source": "yahoo",
    "degraded": false,
    "score": 18,
@@ -3764,7 +3770,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "2 titulares de DOGE-USD (suspensión). Último: «The “Dogecoin Millionaire” Shares Brutal Advices For Crypto Investors»",
+      "text": "2 noticias recientes de DOGE-USD (temas: suspensión). La última: «The “Dogecoin Millionaire” Shares Brutal Advices For Crypto Investors»",
       "items": [
        {
         "title": "The “Dogecoin Millionaire” Shares Brutal Advices For Crypto Investors",
@@ -3793,8 +3799,8 @@
    "label": "LINK",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 8.59,
-   "day_ch": -2.79,
+   "last": 8.54,
+   "day_ch": -3.4,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -3842,13 +3848,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 35)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 35)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "1 titulares de LINK-USD. Último: «Fidelity Adds Aave, Chainlink and Uniswap to Its Crypto Trading Platform»",
+      "text": "1 noticias recientes de LINK-USD. La última: «Fidelity Adds Aave, Chainlink and Uniswap to Its Crypto Trading Platform»",
       "items": [
        {
         "title": "Fidelity Adds Aave, Chainlink and Uniswap to Its Crypto Trading Platform",
@@ -3869,8 +3875,8 @@
    "label": "AVAX",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 6.37,
-   "day_ch": -2.95,
+   "last": 6.3,
+   "day_ch": -4.1,
    "source": "yahoo",
    "degraded": false,
    "score": 16,
@@ -3918,13 +3924,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 31,9)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 31,9)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de AVAX-USD en las últimas horas"
+      "text": "No hubo noticias de AVAX-USD en las últimas horas: nada en contra"
      }
     ]
    },
@@ -3937,8 +3943,8 @@
    "label": "TRX",
    "date": "2026-11-24",
    "live_date": "2026-11-25",
-   "last": 0.306673,
-   "day_ch": -0.38,
+   "last": 0.303335,
+   "day_ch": -1.46,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3986,13 +3992,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Sin setups del escáner diario (RSI 42,9)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 42,9)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "Sin titulares de TRX-USD en las últimas horas"
+      "text": "No hubo noticias de TRX-USD en las últimas horas: nada en contra"
      }
     ]
    },
@@ -4025,22 +4031,408 @@
    "why": "Momentum Burst Watch (watch only): revisar gráfico."
   }
  ],
- "intraday": null,
+ "intraday": {
+  "enabled": true,
+  "date": "2026-11-25",
+  "time_ny": "09:39",
+  "symbols": {
+   "YPF": {
+    "symbol": "YPF",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 31.26,
+     "low": 30.9,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 48181
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "GGAL": {
+    "symbol": "GGAL",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 25.33,
+     "low": 24.96,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 36802
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "PAM": {
+    "symbol": "PAM",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 61.06,
+     "low": 60.19,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 8305
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "BMA": {
+    "symbol": "BMA",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 49.16,
+     "low": 48.1,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 4551
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "VIST": {
+    "symbol": "VIST",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 49.14,
+     "low": 48.6,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 73303
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "MELI": {
+    "symbol": "MELI",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 1432.13,
+     "low": 1415.23,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 21055
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "TGS": {
+    "symbol": "TGS",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 19.37,
+     "low": 19.17,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 1993
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "CEPU": {
+    "symbol": "CEPU",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 10.31,
+     "low": 10.04,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 584
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "SUPV": {
+    "symbol": "SUPV",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 4.45,
+     "low": 4.45,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 0
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "LOMA": {
+    "symbol": "LOMA",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 8.11,
+     "low": 8.11,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 0
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "BBAR": {
+    "symbol": "BBAR",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 8.77,
+     "low": 8.39,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 65724
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "CRESY": {
+    "symbol": "CRESY",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 7.81,
+     "low": 7.64,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 2876
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "EDN": {
+    "symbol": "EDN",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 11.26,
+     "low": 10.91,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 0
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "TEO": {
+    "symbol": "TEO",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 9.93,
+     "low": 9.6,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 37762
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "IRS": {
+    "symbol": "IRS",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 11.1,
+     "low": 10.73,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 378
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   },
+   "GLOB": {
+    "symbol": "GLOB",
+    "date": "2026-11-25",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": {
+     "high": 51.0,
+     "low": 50.25,
+     "minutes": 15,
+     "bars": 1,
+     "of": 3,
+     "complete": false,
+     "avg_volume": 8591
+    },
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+   }
+  }
+ },
  "news": [
   {
    "ticker": "BTC-USD",
    "touches": [
     "BTC-USD"
    ],
-   "title": "Stock Market Today: Dow Dives Ahead Of Fed Inflation Data; Nvidia, Anthropic Plunge (Live Coverage)",
+   "title": "Bitcoin slides below $59,000, on pace for its worst month since June 2022",
+   "link": "https://finance.yahoo.com/markets/article/bitcoin-sinks-in-brutal-november-sell-off-as-broader-market-slides-143727717.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T14:37:27+00:00",
+   "tags": [],
+   "new": true,
+   "id": "05924e5745261b06",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "XRP Just Dropped Below $1. Here's the Contrarian Case for Buying XRP Right Now.",
+   "link": "https://www.fool.com/investing/2026/11/25/xrp-just-dropped-below-1-heres-the-contrarian-case-for-buying-xrp-right-now/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T14:17:01+00:00",
+   "tags": [],
+   "new": true,
+   "id": "347c23a0ab1f494b",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Bitcoin trades as a high-beta tech proxy amid a strong downtrend",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-trades-high-beta-tech-141218301.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T14:12:18+00:00",
+   "tags": [],
+   "new": true,
+   "id": "7288426f9b4f02c1",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "10 Accounts Drove 65% of XRPL Order-Book Volume as XRP Pundit Floats $15,000",
+   "link": "https://www.ccn.com/news/business/10-accounts-drove-65-xrpl-order-book-volume-xrp-pundit-floats-15000/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T14:07:15+00:00",
+   "tags": [],
+   "new": true,
+   "id": "ff14766fdcc9235a",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Stock Market Today: Dow Dives On Surprise Inflation Data; Nvidia, Anthropic Plunge (Live Coverage)",
    "link": "https://finance.yahoo.com/m/90407e46-3b17-34e8-8c82-527bf00b63e4/stock-market-today%3A-dow-dives.html?.tsrc=rss",
    "source": "Yahoo Finance",
    "kind": "headline",
-   "time": "2026-11-25T13:14:04+00:00",
+   "time": "2026-11-25T13:54:31+00:00",
    "tags": [
     "macro"
    ],
-   "new": true,
+   "new": false,
    "id": "48df8b125fadcd92",
    "form": null
   },
@@ -4058,8 +4450,23 @@
    "tags": [
     "people"
    ],
-   "new": true,
+   "new": false,
    "id": "68cec2653e57576b",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Bitcoin Is on Track for Its Second-Worst Q4 Ever, and One Signal Points to 2027",
+   "link": "https://beincrypto.com/bitcoin-worst-q4-returns-2027-outlook/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T13:00:00+00:00",
+   "tags": [],
+   "new": true,
+   "id": "2980badd5d07bf0d",
    "form": null
   },
   {
@@ -4074,7 +4481,7 @@
    "kind": "headline",
    "time": "2026-11-25T12:31:56+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "14786402771bba70",
    "form": null
   },
@@ -4091,7 +4498,7 @@
    "tags": [
     "earnings"
    ],
-   "new": true,
+   "new": false,
    "id": "0514fcf250261967",
    "form": null
   },
@@ -4106,7 +4513,7 @@
    "kind": "headline",
    "time": "2026-11-25T11:30:36+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "3d1fdb2f9590fe5c",
    "form": null
   },
@@ -4121,7 +4528,7 @@
    "kind": "headline",
    "time": "2026-11-25T11:23:57+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "faf5f1b6b467783f",
    "form": null
   },
@@ -4138,7 +4545,7 @@
    "tags": [
     "people"
    ],
-   "new": true,
+   "new": false,
    "id": "b0589d6b9ad4733c",
    "form": null
   },
@@ -4153,7 +4560,7 @@
    "kind": "headline",
    "time": "2026-11-25T11:07:15+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "19e3bfc7c42151ae",
    "form": null
   },
@@ -4168,7 +4575,7 @@
    "kind": "headline",
    "time": "2026-11-25T11:00:43+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "3bd0ed6a295eea72",
    "form": null
   },
@@ -4183,7 +4590,7 @@
    "kind": "headline",
    "time": "2026-11-25T11:00:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "5eea79478b7677bb",
    "form": null
   },
@@ -4200,7 +4607,7 @@
    "tags": [
     "deal"
    ],
-   "new": true,
+   "new": false,
    "id": "e91867a175377c73",
    "form": null
   },
@@ -4215,7 +4622,7 @@
    "kind": "headline",
    "time": "2026-11-25T10:22:23+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "c61d351f526e493e",
    "form": null
   },
@@ -4230,7 +4637,7 @@
    "kind": "headline",
    "time": "2026-11-25T10:09:40+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "7f345f4d14425e23",
    "form": null
   },
@@ -4247,7 +4654,7 @@
    "tags": [
     "deal"
    ],
-   "new": true,
+   "new": false,
    "id": "04e99a715fa01a3f",
    "form": null
   },
@@ -4262,7 +4669,7 @@
    "kind": "headline",
    "time": "2026-11-25T10:02:16+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "56eee64c13e1d6a7",
    "form": null
   },
@@ -4277,7 +4684,7 @@
    "kind": "headline",
    "time": "2026-11-25T09:27:36+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "e06c3fc367be1203",
    "form": null
   },
@@ -4292,7 +4699,7 @@
    "kind": "headline",
    "time": "2026-11-25T09:12:22+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "1953e71c1012335e",
    "form": null
   },
@@ -4309,7 +4716,7 @@
    "kind": "headline",
    "time": "2026-11-25T09:05:13+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "14a58b6726759a3f",
    "form": null
   },
@@ -4324,7 +4731,7 @@
    "kind": "headline",
    "time": "2026-11-25T09:02:16+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "02d9bef1c9aabff5",
    "form": null
   },
@@ -4339,8 +4746,25 @@
    "kind": "headline",
    "time": "2026-11-25T08:43:21+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "92cc68303144e734",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "CleanSpark Sinks 17% in a Week, IREN Down 18%, as Bitcoin Slides Below $60,000 Into Earnings",
+   "link": "https://www.tikr.com/blog/cleanspark-sinks-17-in-a-week-iren-down-18-as-bitcoin-slides-below-60000-into-earnings?ref=yahoofinance&tlnk=yf-261125-x5wfr65q&.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T08:08:24+00:00",
+   "tags": [
+    "earnings"
+   ],
+   "new": true,
+   "id": "94533b9cff2be6cb",
    "form": null
   },
   {
@@ -4356,7 +4780,7 @@
    "tags": [
     "macro"
    ],
-   "new": true,
+   "new": false,
    "id": "49c40045f2246900",
    "form": null
   },
@@ -4365,63 +4789,16 @@
    "touches": [
     "BTC-USD"
    ],
-   "title": "Bitcoin falls below $59,000 as November ETF outflows approach $5 billion",
+   "title": "Bitcoin slides toward worst month since 2022 as ETF outflows, Fed hike bets bite",
    "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-extends-losses-below-59-064934005.html?.tsrc=rss",
    "source": "Yahoo Finance",
    "kind": "headline",
    "time": "2026-11-25T06:49:34+00:00",
-   "tags": [],
-   "new": true,
-   "id": "cf142e199b1db2df",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Why Is Crypto Tokenization Booming on Wall Street While Bitcoin ETF Demand Shrinks?",
-   "link": "https://beincrypto.com/crypto-tokenization-booms-bitcoin-etf-demand/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T06:30:00+00:00",
-   "tags": [],
-   "new": true,
-   "id": "b88dafc3a031df4e",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Bitcoin Miner Turned AI Landlord TeraWulf Says Selloff Hits Price, Not Demand",
-   "link": "https://beincrypto.com/terawulf-ceo-tech-selloff-price-demand/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T05:24:31+00:00",
-   "tags": [
-    "people"
-   ],
-   "new": true,
-   "id": "feb5f0d711bac6e8",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "BlackRock Says Markets Overprice Fed Hikes: Will Bitcoin Catch a Break?",
-   "link": "https://beincrypto.com/blackrock-fed-hikes-bitcoin-relief/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T05:20:52+00:00",
    "tags": [
     "macro"
    ],
-   "new": true,
-   "id": "4136bf681a2b2897",
+   "new": false,
+   "id": "cf142e199b1db2df",
    "form": null
   },
   {
@@ -4940,53 +5317,6 @@
    "tags": [],
    "new": false,
    "id": "d3e4b19fe7c3b43c",
-   "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD"
-   ],
-   "title": "These 4 Cryptocurrencies Could See the Biggest Gains in 2027, According to BitMEX Co-Founder Arthur Hayes",
-   "link": "https://www.fool.com/investing/2026/11/24/these-4-cryptocurrencies-could-see-the-biggest-gains-in-2027-according-to-bitmex-co-founder-arthur-hayes/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T14:20:02+00:00",
-   "tags": [],
-   "new": false,
-   "id": "5d0f675549dce9d0",
-   "form": null
-  },
-  {
-   "ticker": "XRP-USD",
-   "touches": [
-    "XRP-USD"
-   ],
-   "title": "Securitize’s High-Yield Fund HINC Goes Live as Collateral on Aave Horizon",
-   "link": "https://unchainedcrypto.com/securitizes-high-yield-fund-hinc-goes-live-as-collateral-on-aave-horizon/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T14:01:54+00:00",
-   "tags": [],
-   "new": false,
-   "id": "99f5b0bdaaccfe8a",
-   "form": null
-  },
-  {
-   "ticker": "MELI",
-   "touches": [
-    "MELI"
-   ],
-   "title": "MercadoLibre vs. Target: Which Stock Looks More Compelling Now?",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/mercadolibre-vs-target-stock-looks-133200636.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T13:32:00+00:00",
-   "tags": [
-    "earnings"
-   ],
-   "new": false,
-   "id": "d34ac459712a0ebc",
    "form": null
   }
  ],
