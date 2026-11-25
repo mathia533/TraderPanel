@@ -131,3 +131,18 @@ def test_upload_from_browser_roundtrip(tmp_path, monkeypatch):
 def test_chat_for_profile():
     assert cartera.chat_for({"telegram": {"chat": "default"}}, {"TELEGRAM_CHAT_ID": "-1001"}) == "-1001"
     assert cartera.chat_for({"telegram": {"chat": ""}}, {"TELEGRAM_CHAT_ID": "-1001"}) is None
+
+
+def test_manual_holdings_priced_from_byma():
+    src = {"source": "manual", "holdings": [{"symbol": "ko", "qty": 13, "ppc": 30000}, {"symbol": "AL30", "qty": 1000},
+                                            {"symbol": "IOLCAMA", "qty": 100, "value": 1268}, {"symbol": "XXX", "qty": 0}]}
+    h, _ = cartera.normalize(src)
+    assert [x["symbol"] for x in h] == ["KO", "AL30", "IOLCAMA"]
+    cartera.price_manual(h, {"KO": ("cedear", 34920.0, -0.6), "AL30": ("bono", 81800.0, 1.7)})
+    ko, al, fci = h
+    assert ko["type"] == "cedear" and ko["value"] == 13 * 34920 and ko["gain_pct"] == pytest.approx(16.4)
+    assert ko["gain"] == pytest.approx(13 * 34920 - 13 * 30000)
+    assert al["type"] == "bono" and al["value"] == pytest.approx(1000 * 818)
+    assert fci["type"] == "fci" and fci["value"] == 1268 and fci["price"] is None
+    rep = cartera.build(h, [], json.load(open(cartera.CONFIG)), {}, fetch=fake_fetch, now=NOW)
+    assert {r["symbol"]: r["analysis"]["verdict"] for r in rep["holdings"]}["AL30"] == "na"
