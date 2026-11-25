@@ -229,6 +229,9 @@ fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
 .tmap .tl.big b{font-size:17px}.tmap .tl.big .num{font-size:14px}
 .tmap .tl.xs b,.tmap .tl.xs .num{display:none}
 .tmap .tl.sm .num{display:none}
+.srk .brd{font-family:var(--mono);font-size:13px;color:var(--mute)}
+.srk .who{font-size:12.5px;color:var(--mute)}
+@media (max-width:640px){.srk .h5{display:none}}
 @media (max-width:640px){.tmap{height:520px}.mpleg{display:none}}
 
 /* Pipeline de las skills */
@@ -481,6 +484,7 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
       </div>
       <div class="tmap" id="tmap" role="list" aria-label="Mapa de calor por sector"><p class="empty">Cargando el mapa…</p></div>
       <p class="rvnote" id="mpNote"></p>
+      <div class="rvt" id="secRank"><h3>Ranking de sectores locales · BYMA</h3><p class="empty">Cargando…</p></div>
     </div>
   </section>
 
@@ -1338,9 +1342,41 @@ function renderMap() {
     }
   }
   box.innerHTML = html;
+  renderSecRank();
   const n = secs.reduce((a, s) => a + s.items.length, 0);
   $('mpNote').textContent = day ? `Cierre del ${day} contra la rueda anterior, con las velas del motor (solo las acciones de su watchlist: ${n}).`
     : `${n} acciones de data912 con demora. Tocá una para ver su ficha. Para repasar ruedas anteriores, mové la barra o tocá ▶.`;
+}
+
+// Ranking de sectores: hoy en vivo (mismo cálculo que engine/sectors.py) + 5 y 20 ruedas del registro diario
+let SECR = null;
+async function loadSecRank() { SECR = await repoJSON('data/sectors.json'); renderSecRank(); }
+function secToday() {
+  const out = {};
+  for (const [key, sc] of Object.entries(SECT || {})) {
+    const items = (sc.byma || []).map(t => mapRaw.byma?.[t]).filter(r => r && +r.c > 0 && r.pct_change != null).map(r => ({t: String(r.symbol).toUpperCase(), ch: +r.pct_change, w: (+r.v || 0) * +r.c}));
+    if (!items.length) continue;
+    const vol = items.reduce((a, x) => a + x.w, 0);
+    const ch = vol > 0 ? items.reduce((a, x) => a + x.ch * x.w, 0) / vol : items.reduce((a, x) => a + x.ch, 0) / items.length;
+    const srt = [...items].sort((a, b) => b.ch - a.ch);
+    out[key] = {ch, n: items.length, up: items.filter(x => x.ch > 0).length, down: items.filter(x => x.ch < 0).length, vol, best: [srt[0].t, srt[0].ch], worst: [srt.at(-1).t, srt.at(-1).ch]};
+  }
+  return out;
+}
+function renderSecRank() {
+  const box = $('secRank'); if (!box) return;
+  const live = secToday(), file = Object.fromEntries((SECR?.ranking || []).map(r => [r.key, r]));
+  const keys = Object.keys(SECT || {}).filter(k => live[k] || file[k]);
+  if (!keys.length) { box.innerHTML = '<h3>Ranking de sectores locales · BYMA</h3><p class="empty">Todavía no hay datos de sectores.</p>'; return; }
+  const total = keys.reduce((a, k) => a + ((live[k] || file[k]).vol || 0), 0) || 1;
+  const rows = keys.map(k => ({key: k, name: SECT[k]?.name || k, ...(file[k] || {}), ...(live[k] || {}), live: !!live[k]})).sort((a, b) => b.ch - a.ch);
+  const pc = v => v == null ? '<span class="mute">—</span>' : `<span class="${v >= 0 ? 'up' : 'dn'}">${v >= 0 ? '+' : '−'}${fmt(Math.abs(v), v != null && Math.abs(v) >= 10 ? 1 : 2)} %</span>`;
+  const bars = sp => { if (!sp?.length) return ''; const mx = Math.max(...sp.map(Math.abs), 0.5);
+    return `<svg width="${sp.length * 6}" height="24" viewBox="0 0 ${sp.length * 6} 24" aria-hidden="true" style="vertical-align:middle"><line x1="0" x2="${sp.length * 6}" y1="12" y2="12" stroke="var(--line2)"/>${sp.map((v, i) => { const hh = Math.max(1, Math.abs(v) / mx * 11); return `<rect x="${i * 6}" y="${v >= 0 ? 12 - hh : 12}" width="4" height="${hh.toFixed(1)}" rx="1" fill="var(${v >= 0 ? '--up' : '--dn'})"/>`; }).join('')}</svg>`; };
+  const asOf = SECR?.date ? ` · ${SECR.days} ${SECR.days === 1 ? 'rueda registrada' : 'ruedas registradas'}` : '';
+  box.innerHTML = `<h3>Ranking de sectores locales · BYMA${asOf}</h3><div class="tbl"><table class="srk"><thead><tr><th scope="col">Sector</th><th scope="col">Hoy</th><th scope="col">5 ruedas</th><th scope="col" class="h5">20 ruedas</th><th scope="col" class="hide-s">Suben / bajan</th><th scope="col" class="hide-s">Monto</th><th scope="col" class="h5">Últimas 20</th></tr></thead><tbody>${rows.map((r, i) =>
+    `<tr><td><b>${i + 1}. ${esc(r.name)}</b><div class="who">${r.best ? (r.n > 1 ? `▲ ${esc(r.best[0])} ${pc(r.best[1])} · ▼ ${esc(r.worst[0])} ${pc(r.worst[1])}` : esc(r.best[0])) : ''}</div></td><td class="num">${pc(r.ch)}</td><td class="num">${pc(r.ch5)}</td><td class="num h5">${pc(r.ch20)}</td><td class="brd hide-s">${r.up ?? '—'} / ${r.down ?? '—'} de ${r.n ?? '—'}</td><td class="num hide-s">${fmt(100 * (r.vol || 0) / total, 0)} %</td><td class="h5">${bars(r.spark)}</td></tr>`).join('')}</tbody></table></div>
+    <p class="rvnote" style="padding:10px 14px">Variación ponderada por monto operado. "Hoy" es en vivo (data912); 5 y 20 ruedas salen del registro diario que guarda el motor en <code>data/sectors.json</code>.</p>`;
 }
 $('mpTabs').addEventListener('click', e => { const b = e.target.closest('[data-mp]'); if (!b) return; mpTab = b.dataset.mp; store.set('tp_mp', mpTab); mpStop(); renderMap(); });
 $('mpDay').addEventListener('input', () => { mpStop(); renderMap(); });
@@ -1596,7 +1632,7 @@ for (const kind of ['dolar', 'adr', 'byma', 'cripto']) {
 render();
 $('refresh').addEventListener('click', all);
 all().then(hashFicha);
-renderTelegram(); loadTelegram(); loadOps(); loadSectors(); loadCandles().then(renderMap).catch(() => {}); if (plTab === 'sec') loadSec();
+renderTelegram(); loadTelegram(); loadOps(); loadSectors().then(loadSecRank); loadCandles().then(renderMap).catch(() => {}); if (plTab === 'sec') loadSec();
 setInterval(() => { if (!document.hidden) { loadTelegram(); loadOps(); } }, 5 * 60000);
 setInterval(() => { if (!document.hidden) all(); }, 60000);
 setInterval(renderMarkets, 60000);

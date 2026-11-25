@@ -60,6 +60,11 @@ jobs:
         # Independiente del motor: si Yahoo falla, el panel conserva el dato anterior
         continue-on-error: true
         run: python -m engine.indices
+      - name: Ranking de sectores
+        if: steps.modo.outputs.intradia != 'true'
+        # Registro diario por sector (BYMA, data912). Si falla, queda el archivo anterior
+        continue-on-error: true
+        run: python -m engine.sectors
       - name: Publicar señales
         run: |
           git config user.name "traderpanel-bot"
