@@ -4062,7 +4062,7 @@
  "intraday": {
   "enabled": true,
   "date": "2026-11-25",
-  "time_ny": "10:38",
+  "time_ny": "10:55",
   "symbols": {
    "YPF": {
     "symbol": "YPF",
@@ -4081,9 +4081,9 @@
     },
     "level": 31.29,
     "last": {
-     "bar_start": "10:30",
-     "close": 30.92,
-     "vs_level_pct": -1.2
+     "bar_start": "10:50",
+     "close": 31.22,
+     "vs_level_pct": -0.22
     },
     "trigger": {
      "time": "10:00 AM",
@@ -4092,7 +4092,7 @@
      "bar_index": 5,
      "price": 31.4,
      "close": 31.395000457763672,
-     "volume": 9151,
+     "volume": 9070,
      "volume_x": 0.33,
      "pct_over": 0.34
     },
@@ -4113,10 +4113,10 @@
       "replays": 10000,
       "seed": 19,
       "bars_left": 71,
-      "p_target": 0.3529,
+      "p_target": 0.353,
       "p_stop": 0.6163,
-      "p_neither": 0.0308,
-      "p_green": 0.3669,
+      "p_neither": 0.0307,
+      "p_green": 0.3671,
       "median_close": 31.19,
       "p5_close": 30.2,
       "p95_close": 32.17,
@@ -4176,7 +4176,7 @@
         31.99
        ],
        [
-        30.51,
+        30.52,
         31.24,
         32.03
        ],
@@ -4256,19 +4256,19 @@
      "verdict": "En contra: el precio llegó primero al objetivo en el 35,3 % de las simulaciones y al stop en el 61,6 %.",
      "history": {
       "label": "la misma ruptura en las sesiones reales",
-      "fired": 28,
+      "fired": 27,
       "sessions": 56,
       "target": 12,
-      "stop": 10,
+      "stop": 9,
       "neither": 6,
-      "avg_R": 0.09
+      "avg_R": 0.13
      },
      "note": "A simulation built from YPF's own last 56 full sessions. It is not a prediction: earnings, news and halts can do things those sessions never did. Same seed, same numbers."
     },
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 38 minutos (máximo 30)",
+      "la ruptura fue hace 55 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 79.0,
@@ -4305,12 +4305,12 @@
     },
     "level": 25.33,
     "last": {
-     "bar_start": "10:30",
-     "close": 24.93,
-     "vs_level_pct": -1.58
+     "bar_start": "10:50",
+     "close": 24.87,
+     "vs_level_pct": -1.82
     },
     "trigger": null,
-    "reason": "last close $24.93 (10:30 bar), $0.40 under the range high $25.33 (-1.58%)"
+    "reason": "last close $24.87 (10:50 bar), $0.46 under the range high $25.33 (-1.82%)"
    },
    "PAM": {
     "symbol": "PAM",
@@ -4329,9 +4329,9 @@
     },
     "level": 61.06,
     "last": {
-     "bar_start": "10:30",
-     "close": 60.41,
-     "vs_level_pct": -1.06
+     "bar_start": "10:45",
+     "close": 60.71,
+     "vs_level_pct": -0.57
     },
     "trigger": {
      "time": "9:50 AM",
@@ -4361,7 +4361,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 48 minutos (máximo 30)",
+      "la ruptura fue hace 65 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 40.0,
@@ -4394,16 +4394,16 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 7866
+     "avg_volume": 4427
     },
     "level": 49.16,
     "last": {
-     "bar_start": "10:25",
-     "close": 47.47,
-     "vs_level_pct": -3.44
+     "bar_start": "10:45",
+     "close": 47.19,
+     "vs_level_pct": -4.0
     },
     "trigger": null,
-    "reason": "last close $47.47 (10:25 bar), $1.69 under the range high $49.16 (-3.44%)"
+    "reason": "last close $47.19 (10:45 bar), $1.97 under the range high $49.16 (-4.00%)"
    },
    "VIST": {
     "symbol": "VIST",
@@ -4422,9 +4422,9 @@
     },
     "level": 49.15,
     "last": {
-     "bar_start": "10:30",
-     "close": 49.03,
-     "vs_level_pct": -0.24
+     "bar_start": "10:45",
+     "close": 49.65,
+     "vs_level_pct": 1.03
     },
     "trigger": {
      "time": "9:50 AM",
@@ -4433,8 +4433,8 @@
      "bar_index": 3,
      "price": 49.25,
      "close": 49.249900817871094,
-     "volume": 39853,
-     "volume_x": 0.86,
+     "volume": 198803,
+     "volume_x": 4.27,
      "pct_over": 0.2
     },
     "reason": "the 9:45 bar closed above the range high",
@@ -4455,11 +4455,11 @@
       "seed": 19,
       "bars_left": 73,
       "p_target": 0.4507,
-      "p_stop": 0.5323,
-      "p_neither": 0.017,
-      "p_green": 0.4581,
+      "p_stop": 0.5324,
+      "p_neither": 0.0169,
+      "p_green": 0.4579,
       "median_close": 48.93,
-      "p5_close": 47.22,
+      "p5_close": 47.21,
       "p95_close": 50.65,
       "avg_R": -0.083,
       "r_at_target": 1.0,
@@ -4529,7 +4529,7 @@
        [
         47.58,
         49.08,
-        50.51
+        50.52
        ],
        [
         47.57,
@@ -4537,14 +4537,14 @@
         50.52
        ],
        [
-        47.56,
+        47.55,
         49.08,
         50.53
        ],
        [
         47.54,
         49.07,
-        50.6
+        50.61
        ],
        [
         47.48,
@@ -4552,23 +4552,23 @@
         50.6
        ],
        [
-        47.48,
+        47.47,
         49.06,
         50.65
        ],
        [
         47.42,
         49.02,
-        50.62
+        50.63
        ],
        [
         47.36,
         48.98,
-        50.6
+        50.59
        ],
        [
         47.37,
-        49.0,
+        48.99,
         50.61
        ],
        [
@@ -4577,24 +4577,24 @@
         50.7
        ],
        [
-        47.33,
+        47.34,
         49.0,
-        50.71
+        50.7
        ],
        [
-        47.28,
-        48.96,
+        47.27,
+        48.95,
         50.66
        ],
        [
         47.24,
-        48.95,
+        48.96,
         50.66
        ],
        [
         47.22,
         48.95,
-        50.69
+        50.67
        ]
       ]
      },
@@ -4614,7 +4614,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 48 minutos (máximo 30)",
+      "la ruptura fue hace 65 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 50.0,
@@ -4651,12 +4651,12 @@
     },
     "level": 1432.13,
     "last": {
-     "bar_start": "10:30",
-     "close": 1415.52,
-     "vs_level_pct": -1.16
+     "bar_start": "10:50",
+     "close": 1415.88,
+     "vs_level_pct": -1.13
     },
     "trigger": null,
-    "reason": "last close $1415.52 (10:30 bar), $16.61 under the range high $1432.13 (-1.16%)"
+    "reason": "last close $1415.88 (10:50 bar), $16.25 under the range high $1432.13 (-1.13%)"
    },
    "TGS": {
     "symbol": "TGS",
@@ -4675,12 +4675,12 @@
     },
     "level": 19.42,
     "last": {
-     "bar_start": "10:30",
-     "close": 19.16,
-     "vs_level_pct": -1.34
+     "bar_start": "10:45",
+     "close": 19.14,
+     "vs_level_pct": -1.44
     },
     "trigger": null,
-    "reason": "last close $19.16 (10:30 bar), $0.26 under the range high $19.42 (-1.34%)"
+    "reason": "last close $19.14 (10:45 bar), $0.28 under the range high $19.42 (-1.44%)"
    },
    "CEPU": {
     "symbol": "CEPU",
@@ -4695,16 +4695,16 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 5371
+     "avg_volume": 5384
     },
     "level": 10.31,
     "last": {
-     "bar_start": "10:30",
-     "close": 9.97,
-     "vs_level_pct": -3.35
+     "bar_start": "10:40",
+     "close": 9.98,
+     "vs_level_pct": -3.25
     },
     "trigger": null,
-    "reason": "last close $9.97 (10:30 bar), $0.35 under the range high $10.31 (-3.35%)"
+    "reason": "last close $9.98 (10:40 bar), $0.34 under the range high $10.31 (-3.25%)"
    },
    "SUPV": {
     "symbol": "SUPV",
@@ -4719,16 +4719,16 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 14210
+     "avg_volume": 14243
     },
     "level": 4.51,
     "last": {
-     "bar_start": "10:30",
-     "close": 4.27,
-     "vs_level_pct": -5.32
+     "bar_start": "10:50",
+     "close": 4.25,
+     "vs_level_pct": -5.76
     },
     "trigger": null,
-    "reason": "last close $4.27 (10:30 bar), $0.24 under the range high $4.51 (-5.32%)"
+    "reason": "last close $4.25 (10:50 bar), $0.26 under the range high $4.51 (-5.76%)"
    },
    "LOMA": {
     "symbol": "LOMA",
@@ -4747,12 +4747,12 @@
     },
     "level": 8.17,
     "last": {
-     "bar_start": "10:30",
-     "close": 7.94,
-     "vs_level_pct": -2.85
+     "bar_start": "10:45",
+     "close": 7.97,
+     "vs_level_pct": -2.54
     },
     "trigger": null,
-    "reason": "last close $7.94 (10:30 bar), $0.23 under the range high $8.17 (-2.85%)"
+    "reason": "last close $7.97 (10:45 bar), $0.21 under the range high $8.17 (-2.54%)"
    },
    "BBAR": {
     "symbol": "BBAR",
@@ -4771,12 +4771,12 @@
     },
     "level": 8.77,
     "last": {
-     "bar_start": "10:30",
-     "close": 8.23,
-     "vs_level_pct": -6.16
+     "bar_start": "10:50",
+     "close": 8.05,
+     "vs_level_pct": -8.16
     },
     "trigger": null,
-    "reason": "last close $8.23 (10:30 bar), $0.54 under the range high $8.77 (-6.16%)"
+    "reason": "last close $8.05 (10:50 bar), $0.72 under the range high $8.77 (-8.16%)"
    },
    "CRESY": {
     "symbol": "CRESY",
@@ -4795,9 +4795,9 @@
     },
     "level": 7.81,
     "last": {
-     "bar_start": "10:30",
-     "close": 7.87,
-     "vs_level_pct": 0.76
+     "bar_start": "10:45",
+     "close": 7.92,
+     "vs_level_pct": 1.37
     },
     "trigger": {
      "time": "10:00 AM",
@@ -4806,7 +4806,7 @@
      "bar_index": 5,
      "price": 7.9,
      "close": 7.900000095367432,
-     "volume": 6388,
+     "volume": 6386,
      "volume_x": 3.79,
      "pct_over": 1.12
     },
@@ -4827,7 +4827,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 38 minutos (máximo 30)",
+      "la ruptura fue hace 55 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 316.0,
@@ -4864,12 +4864,12 @@
     },
     "level": 11.36,
     "last": {
-     "bar_start": "10:30",
+     "bar_start": "10:45",
      "close": 11.17,
-     "vs_level_pct": -1.67
+     "vs_level_pct": -1.7
     },
     "trigger": null,
-    "reason": "last close $11.17 (10:30 bar), $0.19 under the range high $11.36 (-1.67%)"
+    "reason": "last close $11.17 (10:45 bar), $0.19 under the range high $11.36 (-1.70%)"
    },
    "TEO": {
     "symbol": "TEO",
@@ -4888,12 +4888,12 @@
     },
     "level": 9.93,
     "last": {
-     "bar_start": "10:25",
-     "close": 9.51,
-     "vs_level_pct": -4.23
+     "bar_start": "10:50",
+     "close": 9.62,
+     "vs_level_pct": -3.12
     },
     "trigger": null,
-    "reason": "last close $9.51 (10:25 bar), $0.42 under the range high $9.93 (-4.23%)"
+    "reason": "last close $9.62 (10:50 bar), $0.31 under the range high $9.93 (-3.12%)"
    },
    "IRS": {
     "symbol": "IRS",
@@ -4912,12 +4912,12 @@
     },
     "level": 11.1,
     "last": {
-     "bar_start": "10:30",
-     "close": 10.55,
-     "vs_level_pct": -4.95
+     "bar_start": "10:45",
+     "close": 10.52,
+     "vs_level_pct": -5.18
     },
     "trigger": null,
-    "reason": "last close $10.55 (10:30 bar), $0.55 under the range high $11.10 (-4.95%)"
+    "reason": "last close $10.52 (10:45 bar), $0.58 under the range high $11.10 (-5.18%)"
    },
    "GLOB": {
     "symbol": "GLOB",
@@ -4936,12 +4936,12 @@
     },
     "level": 51.0,
     "last": {
-     "bar_start": "10:30",
-     "close": 50.21,
-     "vs_level_pct": -1.56
+     "bar_start": "10:50",
+     "close": 50.46,
+     "vs_level_pct": -1.06
     },
     "trigger": null,
-    "reason": "last close $50.21 (10:30 bar), $0.79 under the range high $51.00 (-1.56%)"
+    "reason": "last close $50.46 (10:50 bar), $0.54 under the range high $51.00 (-1.06%)"
    }
   }
  },
@@ -6054,5 +6054,6 @@
  },
  "errors": {
   "news": "no SEC CIK for ADA-USD; no SEC CIK for AVAX-USD; SEC 8-K for BBAR: HTTP 400 for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000913059&type=8-K&dateb=&owner=include&count=8&output=atom"
- }
+ },
+ "intraday_at": "2026-11-25T15:55:12.807248+00:00"
 }
