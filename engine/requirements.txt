@@ -1,2 +1,6 @@
 requests>=2.31.0
 pytest>=8
+# drawdown-circuit-breaker y breakout-trade-planner (tradermonty) usan el calendario de NYSE
+PyYAML>=6.0
+pandas>=2.0
+pandas-market-calendars==5.2.2

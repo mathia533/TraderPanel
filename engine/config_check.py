@@ -116,7 +116,67 @@ def validate_engine(cfg) -> list[str]:
     _subset(errs, "setups.vcp_watch_rating", st.get("vcp_watch_rating"), VCP_RATINGS, non_empty=False)
     _subset(errs, "setups.burst_entry_states", st.get("burst_entry_states"), BURST_STATES, non_empty=False)
     _subset(errs, "setups.burst_watch_states", st.get("burst_watch_states"), BURST_STATES, non_empty=False)
+    _validate_pipeline(errs, cfg)
     return errs
+
+
+LEANS = ["stop_strong", "stop", "even", "none"]
+HHMM = re.compile(r"^([01]\d|2[0-3]):[0-5]\d$")
+
+
+def _validate_pipeline(errs, cfg):
+    """Secciones opcionales del pipeline de day-trader-skill (si faltan, el motor usa los valores por defecto)."""
+    p = cfg.get("pipeline")
+    if p is not None:
+        p = _obj(errs, "pipeline", p)
+        if "timemachine_block" in p:
+            _subset(errs, "pipeline.timemachine_block", p["timemachine_block"], LEANS, non_empty=False)
+        for k, lo, hi, integer in (("max_daily_loss_pct", 0.1, 50, False), ("max_trades_per_day", 1, 100, True),
+                                   ("cash_buffer_pct", 0, 90, False)):
+            if k in p:
+                _num(errs, f"pipeline.{k}", p[k], lo, hi, integer)
+        for k, v in (p.get("horizon") or {}).items():
+            _num(errs, f"pipeline.horizon.{k}", v, 1, 77, True)
+    i = cfg.get("intraday")
+    if i is not None:
+        i = _obj(errs, "intraday", i)
+        for k in ("enabled", "market_gate"):
+            if k in i and not isinstance(i[k], bool):
+                errs.append(f"intraday.{k}: tiene que ser verdadero o falso")
+        for k in ("flat_by", "no_entries_before", "no_entries_after"):
+            if k in i and not (isinstance(i[k], str) and HHMM.match(i[k])):
+                errs.append(f"intraday.{k}: hora de NY tipo 15:55")
+        if "or_minutes" in i:
+            _num(errs, "intraday.or_minutes", i["or_minutes"], 5, 120, True)
+            if isinstance(i["or_minutes"], int) and i["or_minutes"] % 5:
+                errs.append("intraday.or_minutes: tiene que ser múltiplo de 5")
+        for k, lo, hi, integer in (("target_r", 0.5, 10, False), ("max_trigger_age_min", 5, 390, True),
+                                   ("replays", 100, 100000, True)):
+            if k in i:
+                _num(errs, f"intraday.{k}", i[k], lo, hi, integer)
+        syms = i.get("symbols", [])
+        if not isinstance(syms, list) or not all(isinstance(x, str) and TICKER["adr"].match(x) for x in syms):
+            errs.append("intraday.symbols: lista de tickers de EE. UU. (vacía = todos los ADRs)")
+    cb = cfg.get("circuit_breaker")
+    if cb is not None:
+        cb = _obj(errs, "circuit_breaker", cb)
+        for k, lo, hi, integer in (("max_daily_loss_pct", 0.1, 50, False), ("losing_streak_n", 1, 20, True),
+                                   ("cooldown_hours", 1, 720, False), ("weekly_drawdown_pct", 0.1, 90, False),
+                                   ("monthly_drawdown_pct", 0.1, 90, False)):
+            if k in cb:
+                _num(errs, f"circuit_breaker.{k}", cb[k], lo, hi, integer)
+    n = cfg.get("news")
+    if n is not None:
+        n = _obj(errs, "news", n)
+        if "hours" in n:
+            _num(errs, "news.hours", n["hours"], 1, 240, True)
+        am = n.get("adr_map", {})
+        if not isinstance(am, dict) or not all(isinstance(v, str) and TICKER["adr"].match(v) for v in am.values()):
+            errs.append("news.adr_map: tiene que ser {\"TICKER BYMA\": \"ADR\"}")
+    for sec in ("us_market", "analyst", "congress", "weekly"):
+        s = cfg.get(sec)
+        if s is not None and not isinstance(_obj(errs, sec, s).get("enabled", True), bool):
+            errs.append(f"{sec}.enabled: tiene que ser verdadero o falso")
 
 
 ONLY = re.compile(r"^(adr|byma|cripto):[A-Za-z0-9.\-^]{1,50}$")
@@ -130,6 +190,8 @@ def validate_telegram(cfg) -> list[str]:
         for k in keys:
             if not isinstance(g.get(k), bool):
                 errs.append(f"{group}.{k}: tiene que ser verdadero o falso")
+        if group == "types" and "info" in g and not isinstance(g["info"], bool):
+            errs.append("types.info: tiene que ser verdadero o falso")
     only = cfg.get("only", [])
     if not isinstance(only, list) or not all(isinstance(x, str) and ONLY.match(x) for x in only):
         errs.append("only: tiene que ser una lista tipo [\"adr:YPF\", \"cripto:BTC\"]")

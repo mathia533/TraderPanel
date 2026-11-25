@@ -112,6 +112,7 @@ def run_vcp(bars: list[dict], benchmark: list[dict] | None, *, lookback_days: in
         "pivot": pivot,
         "stop": piv.get("stop_loss_price"),
         "risk_pct": piv.get("risk_pct"),
+        "last_low": last_low,
         "distance_pct": piv.get("distance_from_pivot_pct"),
         "state": state,
         "pattern": pattern,

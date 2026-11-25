@@ -36,6 +36,15 @@ test('una operación registrada genera entrada, ajustes de stop y salida', () =>
   assert.match(textFor(ev[0], otro, {}), /6 acciones/);     // 20 USD / 3
 });
 
+test('noticias, balances y resúmenes (info) llegan salvo que se apaguen', () => {
+  const info = {src: 'engine', id: 'weekly:2027-01-04', type: 'info', kind: 'adr', label: 'Semana', text: '🗓 <b>RESUMEN SEMANAL</b>'};
+  const flat = {src: 'engine', id: 'x', type: 'exit', reason: 'flat', kind: 'adr', label: 'YPF', price: 31, entry: 30, initial_stop: 29.5, text: '🔔 <b>SALIDA · YPF</b>'};
+  const u = {login: 'yo', risk: risk(10000), telegram: tgPrefs()};
+  assert.ok(wants(u, info) && wants(u, flat));
+  assert.ok(!wants({...u, telegram: tgPrefs({types: {entry: true, exit: true, update: false, info: false}})}, info));
+  assert.match(textFor(info, u, {}), /RESUMEN SEMANAL/);
+});
+
 test('envía a cada usuario con su tamaño y no repite', async () => {
   const got = [];
   const srv = createServer((req, res) => { let b = ''; req.on('data', c => b += c); req.on('end', () => { got.push(JSON.parse(b)); res.setHeader('content-type', 'application/json'); res.end('{"ok":true}'); }); });

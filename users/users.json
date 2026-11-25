@@ -13,7 +13,7 @@
         "chat": "default",
         "engine": true,
         "follow": [],
-        "types": {"entry": true, "exit": true, "update": false},
+        "types": {"entry": true, "exit": true, "update": false, "info": true},
         "kinds": {"adr": true, "byma": true, "cripto": true},
         "only": []
       }
@@ -30,7 +30,7 @@
         "chat": "",
         "engine": true,
         "follow": ["mathia533"],
-        "types": {"entry": true, "exit": true, "update": false},
+        "types": {"entry": true, "exit": true, "update": false, "info": true},
         "kinds": {"adr": true, "byma": true, "cripto": true},
         "only": []
       }

@@ -608,6 +608,7 @@ const CMP = [
   ['telegram.types.entry', 'Avisos de entradas', 'Avisos', yn],
   ['telegram.types.exit', 'Avisos de salidas', 'Avisos', yn],
   ['telegram.types.update', 'Avisos de ajustes de stop', 'Avisos', yn],
+  ['telegram.types.info', 'Noticias y resúmenes', 'Avisos', v => yn(v ?? true)],
   ['telegram.follow', 'Sigue las operaciones de', 'Avisos', (v, all) => (v || []).map(x => all[x]?.name || x).join(', ') || 'nadie', true]
 ];
 function renderCompare() {
@@ -696,6 +697,7 @@ function buildProfile() {
         ${swField('users', `${P}.telegram.types.entry`, 'Entradas', 'Cuándo y cuánto comprar.', 1)}
         ${swField('users', `${P}.telegram.types.exit`, 'Salidas', 'Stop u objetivo tocado.', 1)}
         ${swField('users', `${P}.telegram.types.update`, 'Ajustes de stop', 'Cuando el motor sube el stop.', 1)}
+        ${swField('users', `${P}.telegram.types.info`, 'Noticias y resúmenes', 'Balances, noticias fuertes, operaciones de congresistas y el resumen del viernes.', 1)}
         <div class="f" style="padding-top:14px;border-top:1px solid var(--line)"><span class="lbl">Mercados (señales del motor)</span><div class="pills">${MARKETS.map(m => `<label><input type="checkbox" data-file="users" data-path="${P}.telegram.kinds.${m}" data-kind="bool"> ${MK[m].name}</label>`).join('')}</div></div>
         <div style="margin-top:16px">${chipsField('users', `${P}.telegram.only`, 'Del motor, solo estos activos (vacío = todos)', 'Formato mercado:ACTIVO, por ejemplo adr:YPF o cripto:BTC.', 'only')}
           <div class="row" style="margin-top:8px"><button class="btn" type="button" id="useBell" hidden>Usar los activos con campanita del panel</button></div></div>
@@ -1024,7 +1026,7 @@ function ensureProfile(user) {
     risk: Object.fromEntries(MARKETS.map(m => [m, { budget: eng[m].budget, max_loss_pct: eng[m].max_loss_pct, max_position_pct: eng[m].max_position_pct, ...(m === 'cripto' ? { fractional: true } : {}) }])),
     max_open_positions: eng.max_open_positions,
     telegram: { chat: S.login === REPO.owner ? 'default' : '', engine: true, follow: Object.keys(S.orig.users.users).filter(x => x !== S.login),
-      types: clone(tg.types || { entry: true, exit: true, update: false }), kinds: clone(tg.kinds || { adr: true, byma: true, cripto: true }), only: [] }
+      types: clone(tg.types || { entry: true, exit: true, update: false, info: true }), kinds: clone(tg.kinds || { adr: true, byma: true, cripto: true }), only: [] }
   };
   return true;
 }
