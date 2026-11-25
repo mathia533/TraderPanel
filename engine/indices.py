@@ -35,7 +35,8 @@ INDICES = [
     ("^RUT", "Russell 2000", "usa", "Empresas chicas de EE. UU.", "pts"),
     ("^VIX", "VIX", "usa", "Volatilidad esperada del S&P 500 (miedo)", "pts"),
     ("^TNX", "Bono 10 años EE. UU.", "usa", "Tasa del Tesoro a 10 años", "%"),
-    ("^MERV", "Merval", "arg", "Panel líder de BYMA, en pesos", "pts"),
+    # Yahoo dejó de actualizar ^MERV (oct. 2026); el ETF ARGT sigue a las acciones argentinas en dólares
+    ("ARGT", "Argentina (ETF ARGT)", "arg", "Acciones argentinas en Nueva York, en dólares", "US$"),
     ("^BVSP", "Bovespa", "mundo", "Bolsa de Brasil", "pts"),
     ("^STOXX50E", "Euro Stoxx 50", "mundo", "50 grandes de la zona euro", "pts"),
     ("^N225", "Nikkei 225", "mundo", "Bolsa de Japón", "pts"),
