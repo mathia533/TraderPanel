@@ -37,7 +37,7 @@ GitHub Action (cada hora con mercado abierto, cada 4 h el fin de semana)
        └─ data/signals.json  → lo lee el panel
           data/events.json   → avisos de entrada/salida, cada uno una sola vez, con el texto para Telegram
           data/state.json    → posiciones abiertas y avisos emitidos
-          data/indices.json  → pestaña Índices (S&P 500, Nasdaq, Dow, Russell, VIX, Merval y más), de engine/indices.py
+          data/indices.json  → pestaña Índices (S&P 500, Nasdaq, Dow, Russell, VIX, ARGT y más), de engine/indices.py
 ```
 
 **Entradas.** VCP con calificación *Good* o mejor que rompe el pivote con volumen, o Momentum Burst *ACTIONABLE_DAY1*. Se calculan sólo con velas cerradas. No se abre nada si el stop queda a más del 12 %, si ya hay 8 posiciones abiertas o si el mercado de referencia está en modo defensivo (SPY para ADRs, Merval para BYMA o un índice propio de la watchlist si Yahoo no lo da, régimen cripto para cripto).

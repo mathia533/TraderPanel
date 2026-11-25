@@ -603,7 +603,7 @@ function renderIndices() {
     let sub = esc(l.desc);
     if (x.id === '^MERV' && ccl) sub = `En dólares CCL ≈ <span class="num">${fmt(l.last / ccl, 0)}</span>`;
     if (l.stale) sub += ' · <span class="dn">sin actualizar</span>';
-    const val = l.unit === '%' ? fmt(l.last, 2) + ' %' : fmt(l.last, 2);
+    const val = l.unit === '%' ? fmt(l.last, 2) + ' %' : l.unit === 'US$' ? usd(l.last) : fmt(l.last, 2);
     html += `<tr><td><span class="t">${esc(l.name)}</span><small>${sub}</small></td><td><span class="num" style="font-weight:500">${val}</span><span class="ch-s">${pctHtml(ch)}</span></td><td class="hide-s">${pctHtml(ch)}</td><td class="hide-s">${spark(s ? s.c.slice(-30) : null, 88, 28)}</td><td>${sig}</td><td></td></tr>`;
   }
   body.innerHTML = html;
