@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TraderPanel</title>
 <meta name="description" content="Panel de dólar, acciones argentinas y cripto con señales técnicas de entrada y salida.">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#020617">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TraderPanel">
+<link rel="apple-touch-icon" href="icons/apple-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -212,6 +219,26 @@ fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
 .rvnote{font-size:13px;color:var(--mute)}
 @media (max-width:520px){.rvt th,.rvt td{padding:8px 10px}.rvt th:nth-child(5),.rvt td:nth-child(5){display:none}.rvctl{width:100%}}
 
+/* Búsqueda rápida ("/") e instalación */
+kbd{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line2);border-bottom-width:2px;border-radius:5px;padding:0 5px;color:var(--mute);background:var(--bg)}
+.qbtn{gap:8px;color:var(--ink2)}
+.qbtn kbd{margin-left:4px}
+dialog.qs{border:1px solid var(--line2);border-radius:14px;background:var(--card);color:var(--ink);padding:0;width:min(620px,calc(100vw - 24px));margin:10vh auto auto;max-height:76vh}
+dialog.qs::backdrop{background:rgba(2,6,23,.7)}
+.qin{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.qin svg{width:20px;height:20px;color:var(--mute)}
+.qin input{flex:1;min-height:40px;border:0;background:transparent;color:var(--ink);font:inherit;font-size:17px;outline:none}
+.qin input::-webkit-search-cancel-button{display:none}
+#qList{list-style:none;margin:0;padding:6px;max-height:52vh;overflow:auto}
+#qList li{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:9px;cursor:pointer;min-height:44px}
+#qList li[aria-selected=true]{background:var(--line)}
+#qList .qt{font-weight:600}
+#qList .qs2{font-size:13px;color:var(--mute);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#qList .qk{font-size:11.5px;color:var(--mute);border:1px solid var(--line2);border-radius:6px;padding:1px 7px;white-space:nowrap}
+#qList .qe{padding:16px 12px;color:var(--mute)}
+.qhelp{padding:10px 16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mute);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+@media (max-width:760px){.qbtn .ql,.qbtn kbd{display:none}.qbtn{width:44px;padding:0}dialog.qs{margin-top:12px}.qhelp{display:none}}
+
 /* Mapa de calor por sector */
 #mapa .sh{border-bottom:1px solid var(--line)}
 .mptool{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
@@ -386,6 +413,8 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
   <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></symbol>
   <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
   <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></symbol>
@@ -412,6 +441,8 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
       <span class="pill off" id="mNYSE"><span class="dot"></span>NYSE</span>
       <a class="pill warn" id="tgPill" href="config.html#s-misavisos" title="Tus avisos se configuran al entrar con tu cuenta" style="text-decoration:none"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg><span id="tgPillTxt">Telegram: sin conectar</span></a>
       <span class="stamp" id="stamp" aria-live="polite">Cargando cotizaciones…</span>
+      <button class="btn qbtn" id="qOpen" type="button" aria-label="Buscar un activo o una sección (tecla /)" aria-keyshortcuts="/ Control+K"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><span class="ql">Buscar</span><kbd>/</kbd></button>
+      <button class="btn" id="install" type="button" hidden title="Instalar TraderPanel como app"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>Instalar</button>
       <a class="btn icon" href="config.html" aria-label="Configurar el motor y las alertas" title="Configurar el motor y las alertas"><svg class="i" aria-hidden="true"><use href="#i-gear"/></svg></a>
       <button class="btn icon" id="theme" type="button" aria-label="Cambiar a modo claro"><svg class="i" aria-hidden="true"><use href="#i-sun"/></svg></button>
       <button class="btn" id="refresh" type="button"><svg class="i" aria-hidden="true"><use href="#i-refresh"/></svg>Actualizar</button>
@@ -537,6 +568,12 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
   <a href="#pipeline"><svg class="i" aria-hidden="true"><use href="#i-logo"/></svg>Pipeline</a>
   <a href="#operaciones"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg>Operaciones</a>
 </nav>
+
+<dialog class="qs" id="qs" aria-label="Búsqueda rápida">
+  <div class="qin"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><input type="search" id="qIn" placeholder="Activo, ticker o sección…" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="qList" aria-autocomplete="list"><kbd>Esc</kbd></div>
+  <ul id="qList" role="listbox" aria-label="Resultados"></ul>
+  <p class="qhelp"><kbd>↑</kbd><kbd>↓</kbd> elegir · <kbd>Enter</kbd> abrir · <kbd>/</kbd> o <kbd>Ctrl K</kbd> desde cualquier parte</p>
+</dialog>
 
 <dialog class="ficha" id="ficha" aria-labelledby="fTitle">
   <div class="fh">
@@ -1644,6 +1681,65 @@ $('theme').addEventListener('click', () => { const t = document.documentElement.
 // Navegación: marca la sección elegida
 const navs = document.querySelectorAll('.nav a, .bnav a');
 for (const a of navs) a.addEventListener('click', () => { for (const x of navs) if (x.getAttribute('href') === a.getAttribute('href')) x.setAttribute('aria-current', 'page'); else x.removeAttribute('aria-current'); });
+
+/* ---------- Búsqueda rápida: "/" o Ctrl+K ---------- */
+const QSEC = [['Señales activas', '#senales'], ['Watchlist', '#watchlist'], ['Operaciones de los usuarios', '#operaciones'], ['Mapa del mercado', '#mapa'],
+  ['Revisión de resultados', '#resultados'], ['Pipeline de las skills', '#pipeline'], ['Mis operaciones (registrar)', 'operaciones.html'],
+  ['Alertas de precio', 'alertas.html'], ['Configuración', 'config.html']];
+const QMK = {adr: 'ADR', byma: 'BYMA', cripto: 'Cripto', dolar: 'Dólar', indice: 'Índice'};
+const norm = t => String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+function qItems() {
+  const out = new Map(), add = (key, title, sub) => { if (!out.has(key)) out.set(key, {key, title, sub}); };
+  for (const k of ['adr', 'byma']) {
+    for (const t of lists[k]) add(`${k}:${t}`, t, live[k]?.[t]?.last ? `${QMK[k]} · ${k === 'byma' ? '$' : 'US$'} ${px(live[k][t].last)}` : QMK[k]);
+    for (const [, sc] of Object.entries(SECT || {})) for (const t of sc[k] || []) add(`${k}:${t}`, t, `${QMK[k]} · ${sc.name}`);
+  }
+  for (const id of lists.cripto) { const l = live.cripto?.[id]; add(`cripto:${id}`, l?.sym || id.toUpperCase(), `Cripto · ${l?.name || id}`); }
+  for (const [c, d] of Object.entries(live.dolar || {})) add(`dolar:${c}`, `Dólar ${d.name || c}`, d.sub || 'Dólar');
+  for (const x of IDX?.items || []) add(`indice:${x.id}`, x.name, `Índice · ${x.desc || ''}`);
+  for (const [k, a] of Object.entries(ENG?.assets || {})) add(k, a.label, QMK[a.kind]);
+  return [...out.values()];
+}
+let qRes = [], qSel = 0;
+function qRender() {
+  const q = norm($('qIn').value.trim());
+  const secs = QSEC.map(([t, href]) => ({sec: true, title: t, href, sub: href.startsWith('#') ? 'Sección del panel' : 'Página'}));
+  const score = it => { const t = norm(it.title), sub = norm(it.sub), k = norm(it.key || ''); if (!q) return 1;
+    return t === q ? 100 : t.startsWith(q) ? 80 : k.includes(':' + q) ? 70 : t.includes(q) ? 50 : sub.includes(q) ? 20 : 0; };
+  const all = [...qItems(), ...secs].map(it => ({it, s: score(it)})).filter(x => x.s > 0);
+  all.sort((a, b) => b.s - a.s || (a.it.sec - b.it.sec) || a.it.title.localeCompare(b.it.title));
+  qRes = (q ? all : all.filter(x => x.it.sec).concat(all.filter(x => !x.it.sec).slice(0, 8))).slice(0, 30).map(x => x.it);
+  qSel = Math.min(qSel, Math.max(0, qRes.length - 1));
+  $('qList').innerHTML = qRes.length ? qRes.map((it, i) => `<li role="option" id="qo${i}" data-i="${i}" aria-selected="${i === qSel}"><span class="qt">${esc(it.title)}</span><span class="qs2">${esc(it.sub || '')}</span><span class="qk">${it.sec ? 'Ir' : 'Ficha'}</span></li>`).join('')
+    : `<li class="qe" role="presentation">Nada con “${esc($('qIn').value)}”. Probá con el ticker (YPF, GGAL) o el nombre de la cripto.</li>`;
+  $('qIn').setAttribute('aria-activedescendant', qRes.length ? 'qo' + qSel : '');
+  document.getElementById('qo' + qSel)?.scrollIntoView({block: 'nearest'});
+}
+function qOpen() { if ($('qs').open) return; if ($('ficha').open) closeFicha(); $('qIn').value = ''; qSel = 0; qRender(); $('qs').showModal(); $('qIn').focus(); }
+function qGo(it) {
+  if (!it) return; $('qs').close();
+  if (!it.sec) return openFicha(it.key);
+  if (it.href.startsWith('#')) { location.hash = it.href; document.querySelector(it.href)?.scrollIntoView({behavior: 'smooth'}); } else location.href = it.href;
+}
+$('qOpen').addEventListener('click', qOpen);
+$('qIn').addEventListener('input', () => { qSel = 0; qRender(); });
+$('qIn').addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); qSel = (qSel + (e.key === 'ArrowDown' ? 1 : qRes.length - 1)) % Math.max(1, qRes.length); qRender(); }
+  else if (e.key === 'Enter') { e.preventDefault(); qGo(qRes[qSel]); }
+});
+$('qList').addEventListener('click', e => { const li = e.target.closest('li[data-i]'); if (li) qGo(qRes[+li.dataset.i]); });
+$('qs').addEventListener('click', e => { if (e.target === $('qs')) $('qs').close(); });
+document.addEventListener('keydown', e => {
+  const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName) || document.activeElement?.isContentEditable;
+  if ((e.key === '/' && !typing && !e.ctrlKey && !e.metaKey && !e.altKey) || ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k')) { e.preventDefault(); qOpen(); }
+});
+
+/* ---------- App instalable (PWA) ---------- */
+let installEvt = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installEvt = e; $('install').hidden = false; });
+window.addEventListener('appinstalled', () => { installEvt = null; $('install').hidden = true; });
+$('install').addEventListener('click', async () => { if (!installEvt) return; installEvt.prompt(); await installEvt.userChoice.catch(() => null); installEvt = null; $('install').hidden = true; });
+if ('serviceWorker' in navigator && location.protocol === 'https:') window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 
 /* ---------- Ciclo de actualización ---------- */
 let busy = false;
