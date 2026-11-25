@@ -16,6 +16,11 @@ imprime cantidades, nunca activos ni montos.
 Variables de entorno (secrets del repo):
   IOL_USUARIO, IOL_CLAVE   usuario y contraseña de IOL (con la API habilitada)
   CARTERA_CLAVE            frase para cifrar (12 caracteres o más)
+
+Una cartera por usuario de users/users.json: los secrets llevan de sufijo el login
+en mayúsculas y con "_" en vez de "-" (IOL_USUARIO_LEOLOPEZDIE_BIT, ...). El dueño
+del repo puede usar los nombres sin sufijo. El workflow pasa todos los secrets en
+SECRETS_JSON. Cada uno queda en data/cartera/<login>.enc con su propia frase.
   TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID   opcional: aviso privado cuando cambia el veredicto de un activo
 """
 
@@ -38,7 +43,9 @@ from . import dtskills, planner, skills, sources
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 CONFIG = Path(__file__).resolve().parent / "config.json"
-OUT = DATA / "cartera.enc"
+LEGACY = DATA / "cartera.enc"   # versión de un solo usuario (PR #23)
+OUT_DIR = DATA / "cartera"       # una cartera cifrada por usuario: <login>.enc
+USERS = ROOT / "users" / "users.json"
 IOL = "https://api.invertironline.com"
 KDF_ITER = 250_000
 MIN_KEY = 12
@@ -360,8 +367,8 @@ def verdict_changes(prev: dict | None, cur: dict) -> list[str]:
     return msgs
 
 
-def send_telegram(msgs: list[str]) -> int:
-    tok, chat = os.environ.get("TELEGRAM_BOT_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID")
+def send_telegram(msgs: list[str], chat: str | None = None) -> int:
+    tok = os.environ.get("TELEGRAM_BOT_TOKEN")
     if not (tok and chat and msgs):
         return 0
     sent = 0
@@ -378,37 +385,73 @@ def send_telegram(msgs: list[str]) -> int:
 
 
 # ------------------------------------------------------------------ main
+def suffix(login: str) -> str:
+    return "".join(ch if ch.isalnum() else "_" for ch in login.upper())
+
+
+def secrets_env() -> dict:
+    env = dict(os.environ)
+    try:
+        env.update({k: v for k, v in json.loads(os.environ.get("SECRETS_JSON") or "{}").items() if isinstance(v, str)})
+    except ValueError:
+        pass
+    return env
+
+
+def creds_for(login: str, env: dict, owner: str | None) -> dict:
+    """{user, password, key} del usuario; el dueño del repo también puede usar los nombres sin sufijo."""
+    sfx = suffix(login)
+    get = lambda name: env.get(f"{name}_{sfx}") or (env.get(name) if login == owner else None)
+    return {"user": get("IOL_USUARIO"), "password": get("IOL_CLAVE"), "key": get("CARTERA_CLAVE") or ""}
+
+
+def chat_for(profile: dict, env: dict) -> str | None:
+    """Chat privado del usuario según su perfil: "default" es el secret TELEGRAM_CHAT_ID."""
+    chat = str(((profile or {}).get("telegram") or {}).get("chat") or "").strip()
+    if chat == "default":
+        return env.get("TELEGRAM_CHAT_ID")
+    return chat if chat.startswith(("-", "@")) or chat.isdigit() else None
+
+
+def run_user(login: str, src: dict, key: str, *, cfg: dict, signals: dict, chat: str | None, fetch=None,
+             out_dir: Path = OUT_DIR) -> dict:
+    holdings, cash = normalize(src)
+    report = build(holdings, cash, cfg, signals, fetch=fetch)
+    report["source"] = src.get("source", "conector") if isinstance(src, dict) else "conector"
+    report["login"] = login
+    out = out_dir / f"{login}.enc"
+    prev = None
+    for f in (out, LEGACY):
+        if f.exists():
+            try:
+                prev = decrypt(json.loads(f.read_text()), key)
+                break
+            except Exception:
+                pass
+    if os.environ.get("CARTERA_AVISOS", "1") != "0":
+        n = send_telegram(verdict_changes(prev, report), chat)
+        if n:
+            print(f"cartera {login}: {n} avisos privados enviados")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(encrypt(report, key)))
+    print(f"cartera {login}: {len(holdings)} tenencias, {report['errors']} sin velas, cifrada")
+    return report
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--desde", type=Path, help="cartera guardada (JSON de la API de IOL o del conector)")
+    ap.add_argument("--usuario", help="login de GitHub para --desde (por defecto, el dueño del repo)")
     ap.add_argument("--sin-cifrar", type=Path, help="escribe el informe en claro en este archivo (solo pruebas, fuera de data/)")
     ap.add_argument("--offline", type=Path, help="carpeta con velas guardadas (<kind>_<símbolo>.json)")
     args = ap.parse_args(argv)
 
-    key = os.environ.get("CARTERA_CLAVE", "")
-    if args.sin_cifrar:
-        if DATA.resolve() in args.sin_cifrar.resolve().parents:
-            print("cartera: --sin-cifrar no puede escribir dentro de data/ (es público)")
-            return 2
-    elif len(key) < MIN_KEY:
-        print(f"cartera: falta el secret CARTERA_CLAVE (mínimo {MIN_KEY} caracteres); no se publica nada")
-        return 0
-
-    if args.desde:
-        src = json.loads(args.desde.read_text())
-    else:
-        user, pw = os.environ.get("IOL_USUARIO"), os.environ.get("IOL_CLAVE")
-        if not (user and pw):
-            print("cartera: faltan los secrets IOL_USUARIO / IOL_CLAVE; se saltea")
-            return 0
-        try:
-            src = fetch_iol(user, pw)
-        except Exception as exc:
-            # No mostrar el detalle: puede traer datos de la cuenta
-            print(f"cartera: no se pudo entrar a IOL ({type(exc).__name__})")
-            return 1
-
-    holdings, cash = normalize(src)
+    env = secrets_env()
+    try:
+        profiles = json.loads(USERS.read_text()).get("users") or {}
+    except Exception:
+        profiles = {}
+    owner = env.get("GITHUB_REPOSITORY_OWNER") or (next(iter(profiles), None))
     cfg = json.loads(CONFIG.read_text())
     try:
         signals = json.loads((DATA / "signals.json").read_text())
@@ -418,28 +461,51 @@ def main(argv=None) -> int:
     if args.offline:
         def fetch(kind, sym):
             return json.loads((args.offline / f"{kind}_{sym}.json").read_text()), "offline"
-    report = build(holdings, cash, cfg, signals, fetch=fetch)
-    report["source"] = src.get("source", "conector") if isinstance(src, dict) else "conector"
 
-    if args.sin_cifrar:
-        args.sin_cifrar.write_text(json.dumps(report, ensure_ascii=False, indent=1))
-        print(f"cartera: {len(holdings)} tenencias, informe en claro escrito")
+    if args.sin_cifrar and DATA.resolve() in args.sin_cifrar.resolve().parents:
+        print("cartera: --sin-cifrar no puede escribir dentro de data/ (es público)")
+        return 2
+
+    if args.desde:
+        src = json.loads(args.desde.read_text())
+        if args.sin_cifrar:
+            h, cash = normalize(src)
+            report = build(h, cash, cfg, signals, fetch=fetch)
+            report["source"] = src.get("source", "conector") if isinstance(src, dict) else "conector"
+            args.sin_cifrar.write_text(json.dumps(report, ensure_ascii=False, indent=1))
+            print(f"cartera: {len(h)} tenencias, informe en claro escrito")
+            return 0
+        login = args.usuario or owner or "local"
+        key = creds_for(login, env, owner)["key"]
+        if len(key) < MIN_KEY:
+            print(f"cartera {login}: falta CARTERA_CLAVE (mínimo {MIN_KEY} caracteres); no se publica nada")
+            return 0
+        run_user(login, src, key, cfg=cfg, signals=signals, chat=chat_for(profiles.get(login), env), fetch=fetch)
         return 0
 
-    prev = None
-    if OUT.exists():
+    logins = list(profiles) or ([owner] if owner else [])
+    done, failed = 0, 0
+    for login in logins:
+        c = creds_for(login, env, owner)
+        if not (c["user"] and c["password"]):
+            continue
+        if len(c["key"]) < MIN_KEY:
+            print(f"cartera {login}: falta CARTERA_CLAVE_{suffix(login)} (mínimo {MIN_KEY} caracteres); se saltea")
+            continue
         try:
-            prev = decrypt(json.loads(OUT.read_text()), key)
-        except Exception:
-            print("cartera: el archivo anterior no se pudo abrir con la clave actual (¿cambió?)")
-    if os.environ.get("CARTERA_AVISOS", "1") != "0":
-        n = send_telegram(verdict_changes(prev, report))
-        if n:
-            print(f"cartera: {n} avisos privados enviados")
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(encrypt(report, key)))
-    print(f"cartera: {len(holdings)} tenencias, {report['errors']} sin velas, cifrado en data/cartera.enc")
-    return 0
+            src = fetch_iol(c["user"], c["password"])
+        except Exception as exc:
+            # No mostrar el detalle: puede traer datos de la cuenta
+            print(f"cartera {login}: no se pudo entrar a IOL ({type(exc).__name__})")
+            failed += 1
+            continue
+        run_user(login, src, c["key"], cfg=cfg, signals=signals, chat=chat_for(profiles.get(login), env), fetch=fetch)
+        done += 1
+    if done and LEGACY.exists():
+        LEGACY.unlink()  # el archivo de un solo usuario pasó a data/cartera/<login>.enc
+    if not done and not failed:
+        print("cartera: ningún usuario tiene cargados sus secrets de IOL; se saltea")
+    return 1 if failed and not done else 0
 
 
 if __name__ == "__main__":

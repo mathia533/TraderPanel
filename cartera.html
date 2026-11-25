@@ -203,11 +203,12 @@ select{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--
     <h1>Mi cartera</h1>
     <p>Lo que tenés en InvertirOnline, leído con las mismas reglas que el motor usa para la watchlist: tendencia, stop de protección, setups de las skills y la Time Machine. El archivo está cifrado; solo se abre con tu frase, acá en el navegador.</p>
   </div>
+  <div class="row" id="whoRow" hidden><label for="who" class="mute">Cartera de</label><select id="who" style="min-height:40px;border-radius:10px;border:1px solid var(--line2);background:var(--card);color:var(--ink);padding:0 10px"></select></div>
   <div id="loadMsg" role="status"></div>
 
   <section class="card setup" id="unlock" hidden aria-labelledby="unH">
     <h2 id="unH">Abrir mi cartera</h2>
-    <p class="sub" id="unSub">Escribí la frase que cargaste como <code>CARTERA_CLAVE</code> en los secrets del repo.</p>
+    <p class="sub" id="unSub"></p>
     <div class="f"><label for="pass">Frase</label><input type="password" id="pass" autocomplete="current-password" spellcheck="false"></div>
     <label class="check"><input type="checkbox" id="remember">Recordarla en este navegador</label>
     <div class="row"><button class="btn go" id="open" type="button"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Abrir</button>
@@ -217,10 +218,10 @@ select{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--
 
   <section class="card setup" id="nofile" hidden aria-labelledby="nfH">
     <h2 id="nfH">Todavía no hay cartera publicada</h2>
-    <p class="sub">El motor la baja de InvertirOnline en cada corrida, cuando el repo tiene estos tres secrets (Settings → Secrets and variables → Actions):</p>
+    <p class="sub">El motor la baja de InvertirOnline en cada corrida, cuando el repo tiene estos tres secrets (Settings → Secrets and variables → Actions). Solo el dueño del repo puede cargarlos.</p>
     <ol>
-      <li><code>IOL_USUARIO</code> y <code>IOL_CLAVE</code>: tu usuario y contraseña de IOL. La cuenta tiene que tener habilitado el acceso por API. Solo se lee la cartera: nunca se mandan órdenes.</li>
-      <li><code>CARTERA_CLAVE</code>: una frase larga (12 caracteres o más) que inventás vos. Con ella se cifra el archivo y con ella lo abrís acá.</li>
+      <li><code class="sx">IOL_USUARIO</code> y <code class="sx">IOL_CLAVE</code>: usuario y contraseña de IOL. La cuenta tiene que tener habilitado el acceso por API. Solo se lee la cartera: nunca se mandan órdenes.</li>
+      <li><code class="sx">CARTERA_CLAVE</code>: una frase larga (12 caracteres o más) que inventa el dueño de la cartera. Con ella se cifra el archivo y con ella se abre acá.</li>
       <li>Después corré <b>Actions → Motor de señales → Run workflow</b>, o esperá la próxima corrida.</li>
     </ol>
     <div class="row"><label class="btn" for="file2">Abrir un archivo…</label><input type="file" id="file2" accept=".json,.enc,application/json" hidden></div>
@@ -285,7 +286,9 @@ async function decrypt(blob, pass) {
   return JSON.parse(new TextDecoder().decode(pt));
 }
 
-let BLOB = null, REP = null, FILTER = 'all';
+let BLOB = null, REP = null, FILTER = 'all', WHO = null, OWNER = GH.owner, USERS = {};
+const sfx = l => l.toUpperCase().replace(/[^A-Z0-9]/g, '_');
+const kKey = () => 'tp_cartera_k_' + WHO;
 const VER = {favor: ['✓', 'A FAVOR'], ojo: ['!', 'OJO'], contra: ['✕', 'EN CONTRA'], na: ['–', 'NO APLICA'], nodata: ['–', 'SIN DATOS']};
 const GATE = {allowed: 'a favor', neutral: 'neutral', restrictive: 'defensivo'};
 const MKN = {adr: 'EE. UU.', byma: 'BYMA', cripto: 'Cripto'};
@@ -298,10 +301,10 @@ async function tryOpen(pass, remember) {
     REP = await decrypt(BLOB, pass);
   } catch {
     $('unMsg').innerHTML = '<div class="msg bad" style="margin-top:8px">Esa frase no abre el archivo. Revisá mayúsculas y espacios: tiene que ser igual al secret CARTERA_CLAVE.</div>';
-    store.del('tp_cartera_k');
+    store.del(kKey());
     return false;
   }
-  if (remember) store.set('tp_cartera_k', pass);
+  if (remember) store.set(kKey(), pass);
   show();
   return true;
 }
@@ -317,7 +320,7 @@ function show() {
   $('unlock').hidden = true; $('nofile').hidden = true; $('app').hidden = false; $('lock').hidden = false;
   const r = REP, t = r.totals || {}, ars = (t.by_currency || {})['$'] || 0, usd = (t.by_currency || {})['US$'];
   const when = r.generated_at ? new Date(r.generated_at).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'}) : '—';
-  $('sumSub').textContent = `${r.holdings.length} activos · actualizado ${when}${r.source === 'conector' ? ' · tomado del conector de IOL' : ''}`;
+  $('sumSub').textContent = `${USERS[WHO]?.name || WHO || 'Cartera'} · ${r.holdings.length} activos · actualizado ${when}${r.source === 'conector' ? ' · tomado del conector de IOL' : ''}`;
   const cashArs = (r.cash || []).filter(c => c.currency === '$').reduce((a, c) => a + c.amount, 0);
   const cashUsd = (r.cash || []).filter(c => c.currency === 'US$').reduce((a, c) => a + c.amount, 0);
   const gainTxt = t.gain != null ? `<b class="${cls(t.gain)}">${money(t.gain)}</b><small>contra lo que pagaste (según IOL)</small>` : '<b>—</b><small>IOL no mandó el precio de compra</small>';
@@ -369,7 +372,7 @@ function list() {
 $('filters').addEventListener('click', e => { const b = e.target.closest('button[data-f]'); if (!b) return; FILTER = b.dataset.f; for (const x of $('filters').children) x.setAttribute('aria-pressed', x === b); list(); });
 $('open').onclick = () => tryOpen($('pass').value, $('remember').checked);
 $('pass').addEventListener('keydown', e => { if (e.key === 'Enter') $('open').click(); });
-$('lock').onclick = () => { store.del('tp_cartera_k'); REP = null; $('app').hidden = true; $('lock').hidden = true; $('pass').value = ''; if (BLOB) $('unlock').hidden = false; else $('nofile').hidden = false; };
+$('lock').onclick = () => { store.del(kKey()); REP = null; $('app').hidden = true; $('lock').hidden = true; $('pass').value = ''; if (BLOB) $('unlock').hidden = false; else $('nofile').hidden = false; };
 
 async function fromFile(f) {
   try {
@@ -381,13 +384,38 @@ async function fromFile(f) {
 }
 for (const id of ['file', 'file2']) $(id).addEventListener('change', e => e.target.files[0] && fromFile(e.target.files[0]));
 
-(async () => {
-  BLOB = await repoJSON('data/cartera.enc');
-  if (!BLOB?.data) { $('nofile').hidden = false; return; }
+async function load(login) {
+  WHO = login; store.set('tp_cartera_u', login);
+  REP = null; BLOB = null; FILTER = 'all';
+  for (const id of ['app', 'unlock', 'nofile', 'lock']) $(id).hidden = true;
+  $('pass').value = ''; $('unMsg').innerHTML = ''; $('loadMsg').innerHTML = '';
+  const name = USERS[login]?.name || login, own = login === OWNER;
+  const names = ['IOL_USUARIO', 'IOL_CLAVE', 'CARTERA_CLAVE'].map(n => n + '_' + sfx(login));
+  BLOB = await repoJSON(`data/cartera/${login}.enc`);
+  if (!BLOB?.data && own) BLOB = await repoJSON('data/cartera.enc');
+  if (!BLOB?.data) {
+    document.querySelectorAll('#nofile code.sx').forEach((c, i) => c.textContent = names[i] + (own ? ` (o ${names[i].replace('_' + sfx(login), '')})` : ''));
+    $('nfH').textContent = `Todavía no hay cartera publicada de ${name}`;
+    $('nofile').hidden = false; return;
+  }
+  $('unSub').innerHTML = `Escribí la frase de ${esc(name)}: la que se cargó como <code>${esc(names[2])}</code>${own ? ' (o <code>CARTERA_CLAVE</code>)' : ''} en los secrets del repo.`;
+  if (BLOB.updated) $('unSub').innerHTML += ` Última actualización: ${esc(new Date(BLOB.updated).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'}))}`;
   $('unlock').hidden = false;
-  if (BLOB.updated) $('unSub').innerHTML += ` Última actualización: ${esc(new Date(BLOB.updated).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'}))}.`;
-  const k = store.get('tp_cartera_k', null);
+  const k = store.get(kKey(), null);
   if (k) { $('remember').checked = true; await tryOpen(k, true); }
+}
+$('who').addEventListener('change', e => load(e.target.value));
+
+(async () => {
+  USERS = (await repoJSON('users/users.json'))?.users || {};
+  const logins = Object.keys(USERS).length ? Object.keys(USERS) : [OWNER];
+  if (!logins.includes(OWNER)) logins.unshift(OWNER);
+  $('who').innerHTML = logins.map(l => `<option value="${esc(l)}">${esc(USERS[l]?.name || l)}</option>`).join('');
+  $('whoRow').hidden = logins.length < 2;
+  const want = new URLSearchParams(location.search).get('u') || store.get('tp_cartera_u', OWNER);
+  const first = logins.includes(want) ? want : OWNER;
+  $('who').value = first;
+  await load(first);
 })();
 </script>
 </body>

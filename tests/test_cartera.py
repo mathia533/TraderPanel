@@ -85,3 +85,23 @@ def test_main_refuses_plaintext_in_data(tmp_path, monkeypatch):
     monkeypatch.delenv("CARTERA_CLAVE", raising=False)
     assert cartera.main(["--desde", str(f)]) == 0  # sin clave no escribe nada
     assert not (cartera.DATA / "x.json").exists()
+
+
+def test_creds_per_user_and_owner_fallback():
+    env = {"IOL_USUARIO": "m", "IOL_CLAVE": "p", "CARTERA_CLAVE": "frase del dueño",
+           "IOL_USUARIO_LEOLOPEZDIE_BIT": "l", "IOL_CLAVE_LEOLOPEZDIE_BIT": "q", "CARTERA_CLAVE_LEOLOPEZDIE_BIT": "frase de leo larga"}
+    assert cartera.suffix("leolopezdie-bit") == "LEOLOPEZDIE_BIT"
+    assert cartera.creds_for("mathia533", env, "mathia533") == {"user": "m", "password": "p", "key": "frase del dueño"}
+    assert cartera.creds_for("leolopezdie-bit", env, "mathia533")["user"] == "l"
+    # Un colaborador nunca toma los secrets sin sufijo del dueño
+    assert cartera.creds_for("otro", env, "mathia533")["user"] is None
+    assert cartera.chat_for({"telegram": {"chat": "default"}}, {"TELEGRAM_CHAT_ID": "-1001"}) == "-1001"
+    assert cartera.chat_for({"telegram": {"chat": ""}}, {"TELEGRAM_CHAT_ID": "-1001"}) is None
+
+
+def test_run_user_writes_own_file(tmp_path):
+    h_src = API
+    rep = cartera.run_user("leo-x", h_src, "frase de leo larga", cfg=json.load(open(cartera.CONFIG)), signals={},
+                           chat=None, fetch=fake_fetch, out_dir=tmp_path)
+    blob = json.loads((tmp_path / "leo-x.enc").read_text())
+    assert cartera.decrypt(blob, "frase de leo larga")["login"] == "leo-x" and rep["login"] == "leo-x"

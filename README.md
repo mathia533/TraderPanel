@@ -83,14 +83,16 @@ Las señales son resultados de reglas técnicas sobre datos con demora. No son a
 
 Cómo llega: el paso **Mi cartera** del workflow *Motor de señales* (`engine/cartera.py`) entra a la API de IOL **solo para leer** la cartera y el estado de cuenta. Nunca manda, cancela ni modifica órdenes. Como el repo es público, el resultado se publica **cifrado** en `data/cartera.enc` (AES-256-GCM, clave PBKDF2 de tu frase) y se descifra en el navegador. Los logs no muestran activos ni montos.
 
-Para activarlo, cargá en **Settings → Secrets and variables → Actions**:
+**Una cartera por usuario.** Cada usuario de `users/users.json` tiene su cartera, su frase y su archivo `data/cartera/<login>.enc`. Los secrets (**Settings → Secrets and variables → Actions**, solo los puede cargar el dueño del repo) llevan de sufijo el login en mayúsculas, con `_` en vez de `-`:
 
 | Secret | Qué es |
 |---|---|
-| `IOL_USUARIO` / `IOL_CLAVE` | Tu usuario y contraseña de IOL. La cuenta necesita el acceso por API habilitado. |
-| `CARTERA_CLAVE` | Una frase de 12 caracteres o más que inventás. Es la que escribís en `cartera.html`. |
+| `IOL_USUARIO_<LOGIN>` / `IOL_CLAVE_<LOGIN>` | Usuario y contraseña de IOL de esa persona. La cuenta necesita el acceso por API habilitado. |
+| `CARTERA_CLAVE_<LOGIN>` | Una frase de 12 caracteres o más que inventa esa persona. Es la que escribe en `cartera.html`. |
 
-Si un activo cambia de veredicto (✓ a favor, ! ojo, ✕ en contra) te llega un aviso privado al chat de `TELEGRAM_CHAT_ID`. Para apagarlo, agregá la variable `CARTERA_AVISOS=0` al paso.
+Ejemplo para Leo: `IOL_USUARIO_LEOLOPEZDIE_BIT`, `IOL_CLAVE_LEOLOPEZDIE_BIT`, `CARTERA_CLAVE_LEOLOPEZDIE_BIT`. El dueño del repo también puede usar los nombres sin sufijo (`IOL_USUARIO`, `IOL_CLAVE`, `CARTERA_CLAVE`). En `cartera.html` se elige de quién es la cartera; sin la frase de esa persona no se puede abrir.
+
+Si un activo cambia de veredicto (✓ a favor, ! ojo, ✕ en contra) le llega un aviso privado al chat de su perfil (`telegram.chat`; `default` es `TELEGRAM_CHAT_ID`). Para apagarlo, agregá la variable `CARTERA_AVISOS=0` al paso.
 
 ## Alertas por Telegram
 
