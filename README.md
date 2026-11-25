@@ -77,6 +77,21 @@ GitHub Action
 
 Las señales son resultados de reglas técnicas sobre datos con demora. No son asesoramiento financiero ni órdenes: nada en este repo opera por vos.
 
+## Mi cartera (InvertirOnline)
+
+`cartera.html` muestra lo que tenés en IOL leído con las reglas del motor: tendencia (medias de 50 y 200), stop de protección (mínimo de 10 ruedas, al menos 1,5 ATR, tope 12 %), setups de las skills (VCP, Momentum Burst, trader-scanner) y la Time Machine a 10 ruedas. Los CEDEARs se analizan sobre la acción en EE. UU.; bonos, ONs y fondos se muestran sin análisis de tendencia.
+
+Cómo llega: el paso **Mi cartera** del workflow *Motor de señales* (`engine/cartera.py`) entra a la API de IOL **solo para leer** la cartera y el estado de cuenta. Nunca manda, cancela ni modifica órdenes. Como el repo es público, el resultado se publica **cifrado** en `data/cartera.enc` (AES-256-GCM, clave PBKDF2 de tu frase) y se descifra en el navegador. Los logs no muestran activos ni montos.
+
+Para activarlo, cargá en **Settings → Secrets and variables → Actions**:
+
+| Secret | Qué es |
+|---|---|
+| `IOL_USUARIO` / `IOL_CLAVE` | Tu usuario y contraseña de IOL. La cuenta necesita el acceso por API habilitado. |
+| `CARTERA_CLAVE` | Una frase de 12 caracteres o más que inventás. Es la que escribís en `cartera.html`. |
+
+Si un activo cambia de veredicto (✓ a favor, ! ojo, ✕ en contra) te llega un aviso privado al chat de `TELEGRAM_CHAT_ID`. Para apagarlo, agregá la variable `CARTERA_AVISOS=0` al paso.
+
 ## Alertas por Telegram
 
 El envío corre en GitHub, no en el navegador, así el token del bot nunca queda expuesto.

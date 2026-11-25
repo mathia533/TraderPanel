@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Mi cartera: el archivo va cifrado y se descifra acá, en el navegador. La frase nunca sale de esta página. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://raw.githubusercontent.com; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>TraderPanel · Mi cartera</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322C55E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3 17 9 11 13 15 21 7'/%3E%3Cpolyline points='15 7 21 7 21 13'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#020617;--bg2:#050B1F;--card:#0E1223;--inset:#020617;--hover:#111833;
+  --line:#1E293B;--line2:#334155;--ink:#F8FAFC;--ink2:#CBD5E1;--mute:#94A3B8;
+  --up:#4ADE80;--upbg:#052E1A;--dn:#F87171;--dnbg:#3B0D0D;--dnfg:#FCA5A5;
+  --warn:#FCD34D;--warnbg:#3B2A06;--info:#93C5FD;--infobg:#0C1A33;
+  --accent:#22C55E;--on-accent:#052E1A;--primary:#1D4ED8;--primary-line:#3B82F6;--focus:#60A5FA;
+  --sans:'Fira Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'Fira Code',ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+:root[data-theme=light]{
+  --bg:#F1F5F9;--bg2:#FFFFFF;--card:#FFFFFF;--inset:#F1F5F9;--hover:#F8FAFC;
+  --line:#E2E8F0;--line2:#CBD5E1;--ink:#0F172A;--ink2:#334155;--mute:#475569;
+  --up:#15803D;--upbg:#DCFCE7;--dn:#B91C1C;--dnbg:#FEE2E2;--dnfg:#991B1B;
+  --warn:#92400E;--warnbg:#FEF3C7;--info:#1D4ED8;--infobg:#DBEAFE;
+  --accent:#15803D;--on-accent:#FFFFFF;--primary:#1D4ED8;--primary-line:#1D4ED8;--focus:#2563EB;
+  color-scheme:light;
+}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--sans);overflow-x:clip}
+h1,h2,h3,p{margin:0}
+a{color:var(--info)}
+[hidden]{display:none!important}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.55}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.mute{color:var(--mute)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+code{font-family:var(--mono);font-size:12.5px;background:var(--line);border-radius:4px;padding:1px 5px}
+.btn{min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--line2);background:var(--card);display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:500;text-decoration:none;color:var(--ink)}
+.btn:hover:not(:disabled){border-color:var(--mute)}
+.btn.go{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+.btn.primary{background:var(--primary);border-color:var(--primary-line);color:#fff;font-weight:600}
+.btn.icon{width:44px;padding:0}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:500}
+.pill.ok{background:var(--upbg);color:var(--up)}
+.pill.warn{background:var(--warnbg);color:var(--warn)}
+svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.top{background:var(--bg2);border-bottom:1px solid var(--line)}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:16px}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--ink);text-decoration:none}
+.brand svg{width:28px;height:28px;stroke:var(--accent)}
+.top .right{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.who{display:flex;align-items:center;gap:8px;font-size:14px}
+.who img{width:28px;height:28px;border-radius:50%}
+main.wrap{padding-block:24px 120px;display:flex;flex-direction:column;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card>h2{font-size:18px;font-weight:600;margin-bottom:4px}
+.card>.sub{color:var(--mute);font-size:14px;margin-bottom:16px}
+.lead h1{font-size:24px;font-weight:700;letter-spacing:-.01em}
+.lead p{color:var(--ink2);margin-top:6px;max-width:72ch}
+
+.login{max-width:640px;display:flex;flex-direction:column;gap:14px}
+.login ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;color:var(--ink2)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.check{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink2);min-height:32px}
+.check input{width:18px;height:18px;accent-color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.mk{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--inset)}
+.mk h3{font-size:16px;font-weight:600;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.mk h3 small{font-weight:400;color:var(--mute);font-size:13px}
+.f{display:flex;flex-direction:column;gap:6px}
+.f label,.f .lbl{font-size:13px;color:var(--ink2);font-weight:500}
+.f .help{font-size:12.5px;color:var(--mute)}
+.f input[type=text],.f input[type=number],.f input[type=url],.f input[type=password]{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font-size:16px;width:100%}
+.f input.num{font-family:var(--mono)}
+.f.bad input{border-color:var(--dn)}
+.f .err{font-size:12.5px;color:var(--dn)}
+.f.chg label::after{content:" · modificado";color:var(--warn);font-weight:400}
+.calc{font-size:12.5px;color:var(--mute)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:8px;border:1px solid var(--line2);border-radius:10px;background:var(--bg);min-height:48px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:2px;padding:2px 2px 2px 10px;border-radius:8px;background:var(--line);font-family:var(--mono);font-size:13px}
+.chip.new{background:var(--upbg);color:var(--up)}
+.chip button{border:0;background:transparent;width:28px;height:28px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;color:var(--mute)}
+.chip button:hover{background:var(--line2);color:var(--ink)}
+.chips input{border:0;background:transparent;flex:1 1 120px;min-height:32px;font-family:var(--mono);font-size:14px;padding:0 6px;color:var(--ink)}
+.chips input:focus{outline:none}
+.chips:focus-within{outline:2px solid var(--focus);outline-offset:1px}
+.opts{display:flex;flex-wrap:wrap;gap:4px 16px}
+
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--bg2);border-top:1px solid var(--line);z-index:5}
+.bar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:12px}
+.bar .state{font-size:14px;color:var(--ink2);margin-right:auto}
+.bar .state b{color:var(--warn)}
+.bar .state.bad b{color:var(--dn)}
+
+dialog{border:1px solid var(--line2);border-radius:14px;background:var(--card);color:var(--ink);padding:0;width:min(680px,calc(100vw - 32px));max-height:calc(100vh - 32px)}
+dialog::backdrop{background:rgba(2,6,23,.7)}
+.dlg{padding:20px;display:flex;flex-direction:column;gap:14px}
+.dlg h2{font-size:18px}
+.diff{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:10px;max-height:46vh;overflow:auto}
+.diff li{padding:10px 12px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.diff li:last-child{border-bottom:0}
+.diff .p{font-size:13px;color:var(--ink2)}
+.diff .v{font-family:var(--mono);font-size:13px;overflow-wrap:anywhere}
+.diff del{color:var(--dnfg);text-decoration:line-through}
+.diff ins{color:var(--up);text-decoration:none}
+.msg{padding:12px 14px;border-radius:10px;font-size:14px}
+.msg.ok{background:var(--upbg);color:var(--up)}
+.msg.bad{background:var(--dnbg);color:var(--dnfg)}
+.msg.info{background:var(--infobg);color:var(--info)}
+.secnav{display:flex;flex-wrap:wrap;gap:6px}
+.secnav a{padding:8px 12px;border-radius:8px;border:1px solid var(--line2);color:var(--ink2);text-decoration:none;font-size:14px}
+.secnav a:hover{background:var(--hover)}
+@media (max-width:560px){.bar .state{width:100%}.bar .btn{flex:1}}
+select{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font-size:16px}
+.f input[type=number]{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font-size:16px}
+.f .row input{flex:1 1 120px;width:auto}
+.list{display:flex;flex-direction:column;gap:8px}
+.tr{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--inset)}
+.tr summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;gap:2px}
+.tr summary::-webkit-details-marker{display:none}
+.tr[open] summary{margin-bottom:12px}
+.acts{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:12px}
+.up{color:var(--up)}.dn{color:var(--dn)}
+.err{font-size:12.5px;color:var(--dn)}
+.rstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.rstats div{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--inset);display:flex;flex-direction:column;gap:2px}
+.rstats span{font-size:12.5px;color:var(--mute)}
+.rstats b{font-family:var(--mono);font-size:20px;font-weight:600}
+/* ---- Mi cartera ---- */
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.kp .k{background:var(--inset);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.kp .k span{font-size:13px;color:var(--mute)}
+.kp .k b{font-family:var(--mono);font-size:20px;font-weight:500}
+.kp .k small{font-size:12.5px;color:var(--mute)}
+.up{color:var(--up)}.dn{color:var(--dn)}
+.mixbar{display:flex;height:14px;border-radius:999px;overflow:hidden;background:var(--line);margin:10px 0 8px}
+.mixbar i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.notes{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;color:var(--ink2);font-size:14px}
+.hl{display:flex;flex-direction:column;gap:12px}
+.h{border:1px solid var(--line);border-radius:12px;background:var(--inset);padding:14px 16px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 150px;gap:8px 18px;align-items:start}
+.h .nm{display:flex;flex-direction:column;gap:2px}
+.h .nm b{font-size:16px}
+.h .nm small{color:var(--mute);font-size:12.5px}
+.h .fig{display:grid;grid-template-columns:auto auto;gap:2px 12px;font-size:13px;color:var(--mute);align-content:start}
+.h .fig b{font-family:var(--mono);font-weight:500;color:var(--ink);text-align:right}
+.h .rd{grid-column:1/-1;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--ink2);border-top:1px dashed var(--line);padding-top:10px}
+.h .rd .lv{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--mute)}
+.h .rd .lv b{font-family:var(--mono);font-weight:500;color:var(--ink)}
+.h svg.sp{width:150px;height:44px}
+.h svg.sp polyline{fill:none;stroke-width:1.6}
+.v{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12.5px;font-weight:600;letter-spacing:.02em;width:max-content}
+.v.favor{background:var(--upbg);color:var(--up)}
+.v.ojo{background:var(--warnbg);color:var(--warn)}
+.v.contra{background:var(--dnbg);color:var(--dnfg)}
+.v.na,.v.nodata{background:var(--line);color:var(--ink2)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.filters button{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--line2);background:var(--card);font-size:13px}
+.filters button[aria-pressed=true]{background:var(--primary);border-color:var(--primary-line);color:#fff}
+.setup{max-width:760px;display:flex;flex-direction:column;gap:12px}
+.setup ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;color:var(--ink2)}
+@media (max-width:720px){.h{grid-template-columns:1fr}.h svg.sp{width:100%}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 21 2M16 7l3 3M18 5l2 2"/></symbol>
+  <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><svg class="i" aria-hidden="true"><use href="#i-logo"/></svg>TraderPanel</a>
+    <span class="mute">Mi cartera</span>
+    <div class="right">
+      <button class="btn icon" id="theme" type="button" aria-label="Cambiar tema"></button>
+      <button class="btn" id="lock" type="button" hidden><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Bloquear</button>
+      <a class="btn" href="operaciones.html">Mis operaciones</a>
+      <a class="btn" href="./"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg>Volver al panel</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="lead">
+    <h1>Mi cartera</h1>
+    <p>Lo que tenés en InvertirOnline, leído con las mismas reglas que el motor usa para la watchlist: tendencia, stop de protección, setups de las skills y la Time Machine. El archivo está cifrado; solo se abre con tu frase, acá en el navegador.</p>
+  </div>
+  <div id="loadMsg" role="status"></div>
+
+  <section class="card setup" id="unlock" hidden aria-labelledby="unH">
+    <h2 id="unH">Abrir mi cartera</h2>
+    <p class="sub" id="unSub">Escribí la frase que cargaste como <code>CARTERA_CLAVE</code> en los secrets del repo.</p>
+    <div class="f"><label for="pass">Frase</label><input type="password" id="pass" autocomplete="current-password" spellcheck="false"></div>
+    <label class="check"><input type="checkbox" id="remember">Recordarla en este navegador</label>
+    <div class="row"><button class="btn go" id="open" type="button"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Abrir</button>
+      <label class="btn" for="file">Abrir un archivo…</label><input type="file" id="file" accept=".json,.enc,application/json" hidden></div>
+    <div id="unMsg" role="status"></div>
+  </section>
+
+  <section class="card setup" id="nofile" hidden aria-labelledby="nfH">
+    <h2 id="nfH">Todavía no hay cartera publicada</h2>
+    <p class="sub">El motor la baja de InvertirOnline en cada corrida, cuando el repo tiene estos tres secrets (Settings → Secrets and variables → Actions):</p>
+    <ol>
+      <li><code>IOL_USUARIO</code> y <code>IOL_CLAVE</code>: tu usuario y contraseña de IOL. La cuenta tiene que tener habilitado el acceso por API. Solo se lee la cartera: nunca se mandan órdenes.</li>
+      <li><code>CARTERA_CLAVE</code>: una frase larga (12 caracteres o más) que inventás vos. Con ella se cifra el archivo y con ella lo abrís acá.</li>
+      <li>Después corré <b>Actions → Motor de señales → Run workflow</b>, o esperá la próxima corrida.</li>
+    </ol>
+    <div class="row"><label class="btn" for="file2">Abrir un archivo…</label><input type="file" id="file2" accept=".json,.enc,application/json" hidden></div>
+  </section>
+
+  <div id="app" hidden style="display:flex;flex-direction:column;gap:20px">
+    <section class="card" aria-labelledby="sumH">
+      <h2 id="sumH">Resumen</h2>
+      <p class="sub" id="sumSub"></p>
+      <div class="kp" id="kpis"></div>
+      <div id="mix"></div>
+    </section>
+    <section class="card" id="alertsCard" aria-labelledby="alH" hidden>
+      <h2 id="alH">Para mirar</h2>
+      <p class="sub">Lo que el motor marcaría si fuera su propia cartera.</p>
+      <ul class="notes" id="alerts"></ul>
+    </section>
+    <section class="card" aria-labelledby="hlH">
+      <h2 id="hlH">Activo por activo</h2>
+      <p class="sub">✓ a favor · ! ojo · ✕ en contra · – no aplica. Es una lectura técnica, no una recomendación de compra o venta.</p>
+      <div class="filters" id="filters" role="group" aria-label="Filtrar"></div>
+      <div class="hl" id="list"></div>
+    </section>
+  </div>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[c]);
+const nf = (v, d = 2) => v == null || !isFinite(v) ? '—' : Number(v).toLocaleString('es-AR', {minimumFractionDigits: d, maximumFractionDigits: d});
+const money = (v, cur = '$') => v == null ? '—' : `${cur} ${nf(v, Math.abs(v) >= 1000 ? 0 : 2)}`;
+const px = v => v == null ? '—' : nf(v, Math.abs(v) >= 1000 ? 0 : 2);
+const pct = (v, sign = true) => v == null ? '—' : `${sign && v > 0 ? '+' : ''}${nf(v, 2)} %`;
+const cls = v => v == null ? '' : v > 0 ? 'up' : v < 0 ? 'dn' : '';
+const store = {get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+               set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }, del(k) { try { localStorage.removeItem(k); } catch {} }};
+
+function applyTheme(t) {
+  document.documentElement.dataset.theme = t;
+  $('theme').innerHTML = `<svg class="i" aria-hidden="true"><use href="#i-${t === 'dark' ? 'sun' : 'moon'}"/></svg>`;
+}
+applyTheme(store.get('tp_theme', 'dark'));
+$('theme').onclick = () => { const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; store.set('tp_theme', t); applyTheme(t); };
+
+const GH = (() => {
+  const h = location.hostname, seg = location.pathname.split('/').filter(Boolean)[0];
+  return h.endsWith('.github.io') && seg ? {owner: h.split('.')[0], repo: seg} : {owner: 'mathia533', repo: 'TraderPanel'};
+})();
+const RAW = `https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/main/`;
+const getJSON = async u => { const r = await fetch(u, {cache: 'no-store'}); if (!r.ok) throw new Error(r.status); return r.json(); };
+async function repoJSON(path) {
+  try { return await getJSON(path + '?t=' + Date.now()); } catch { return getJSON(RAW + path).catch(() => null); }
+}
+
+/* ---------- descifrado (mismo formato que engine/cartera.py) ---------- */
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+async function decrypt(blob, pass) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey({name: 'PBKDF2', hash: 'SHA-256', salt: b64(blob.salt), iterations: blob.iter || 250000},
+    base, {name: 'AES-GCM', length: 256}, false, ['decrypt']);
+  const pt = await crypto.subtle.decrypt({name: 'AES-GCM', iv: b64(blob.iv)}, key, b64(blob.data));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+
+let BLOB = null, REP = null, FILTER = 'all';
+const VER = {favor: ['✓', 'A FAVOR'], ojo: ['!', 'OJO'], contra: ['✕', 'EN CONTRA'], na: ['–', 'NO APLICA'], nodata: ['–', 'SIN DATOS']};
+const GATE = {allowed: 'a favor', neutral: 'neutral', restrictive: 'defensivo'};
+const MKN = {adr: 'EE. UU.', byma: 'BYMA', cripto: 'Cripto'};
+const COLORS = ['#3B82F6', '#22C55E', '#F59E0B', '#A855F7', '#EC4899', '#14B8A6', '#94A3B8'];
+
+async function tryOpen(pass, remember) {
+  $('unMsg').innerHTML = '';
+  if (!crypto?.subtle) { $('unMsg').innerHTML = '<div class="msg bad" style="margin-top:8px">Este navegador no puede descifrar acá. Abrí el panel desde https://mathia533.github.io/TraderPanel/.</div>'; return false; }
+  try {
+    REP = await decrypt(BLOB, pass);
+  } catch {
+    $('unMsg').innerHTML = '<div class="msg bad" style="margin-top:8px">Esa frase no abre el archivo. Revisá mayúsculas y espacios: tiene que ser igual al secret CARTERA_CLAVE.</div>';
+    store.del('tp_cartera_k');
+    return false;
+  }
+  if (remember) store.set('tp_cartera_k', pass);
+  show();
+  return true;
+}
+
+function spark(vals, up) {
+  if (!vals || vals.length < 2) return '';
+  const W = 150, H = 44, lo = Math.min(...vals), hi = Math.max(...vals), r = hi - lo || 1;
+  const pts = vals.map((v, i) => `${(i * W / (vals.length - 1)).toFixed(1)},${(H - 3 - (v - lo) / r * (H - 6)).toFixed(1)}`).join(' ');
+  return `<svg class="sp" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Últimas ${vals.length} ruedas"><polyline points="${pts}" style="stroke:var(--${up ? 'up' : 'dn'})"/></svg>`;
+}
+
+function show() {
+  $('unlock').hidden = true; $('nofile').hidden = true; $('app').hidden = false; $('lock').hidden = false;
+  const r = REP, t = r.totals || {}, ars = (t.by_currency || {})['$'] || 0, usd = (t.by_currency || {})['US$'];
+  const when = r.generated_at ? new Date(r.generated_at).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'}) : '—';
+  $('sumSub').textContent = `${r.holdings.length} activos · actualizado ${when}${r.source === 'conector' ? ' · tomado del conector de IOL' : ''}`;
+  const cashArs = (r.cash || []).filter(c => c.currency === '$').reduce((a, c) => a + c.amount, 0);
+  const cashUsd = (r.cash || []).filter(c => c.currency === 'US$').reduce((a, c) => a + c.amount, 0);
+  const gainTxt = t.gain != null ? `<b class="${cls(t.gain)}">${money(t.gain)}</b><small>contra lo que pagaste (según IOL)</small>` : '<b>—</b><small>IOL no mandó el precio de compra</small>';
+  $('kpis').innerHTML = [
+    `<div class="k"><span>Valor en pesos</span><b>${money(ars)}</b>${usd ? `<small>y US$ ${nf(usd, 2)} en dólares</small>` : '<small>al último precio</small>'}</div>`,
+    `<div class="k"><span>Ganancia</span>${gainTxt}</div>`,
+    `<div class="k"><span>Si todo toca su stop</span><b class="dn">${money(t.at_risk ? -t.at_risk : 0)}</b><small>${t.at_risk_pct != null ? nf(t.at_risk_pct, 1) + ' % de la cartera (solo acciones y CEDEARs)' : ''}</small></div>`,
+    `<div class="k"><span>Efectivo disponible</span><b>${money(cashArs)}</b><small>${cashUsd ? 'y US$ ' + nf(cashUsd, 2) : 'en pesos'}</small></div>`,
+  ].join('');
+  const types = Object.entries(t.by_type || {}).sort((a, b) => b[1] - a[1]), tot = types.reduce((a, x) => a + x[1], 0) || 1;
+  $('mix').innerHTML = types.length ? `<div class="mixbar" role="img" aria-label="Distribución por tipo">${types.map(([, v], i) => `<i style="width:${v / tot * 100}%;background:${COLORS[i % COLORS.length]}"></i>`).join('')}</div>
+    <div class="legend">${types.map(([k, v], i) => `<span><i style="background:${COLORS[i % COLORS.length]}"></i>${esc(k)} ${nf(v / tot * 100, 0)} %</span>`).join('')}</div>` : '';
+  const al = [...(r.alerts || [])];
+  const c = r.counts || {};
+  if (c.contra) al.push(`${c.contra} ${c.contra > 1 ? 'activos están' : 'activo está'} con la tendencia en contra (✕).`);
+  for (const [k, g] of Object.entries(r.regime || {})) if (g.gate === 'restrictive' && r.holdings.some(h => h.ref?.kind === k)) al.push(`Mercado ${MKN[k] || k} en modo defensivo: ${g.why}.`);
+  $('alertsCard').hidden = !al.length;
+  $('alerts').innerHTML = al.map(x => `<li>${esc(x)}</li>`).join('');
+  const opts = [['all', 'Todos'], ['favor', '✓ A favor'], ['ojo', '! Ojo'], ['contra', '✕ En contra'], ['na', '– Renta fija y fondos']].filter(([k]) => k === 'all' || r.holdings.some(h => h.analysis.verdict === k || (k === 'na' && h.analysis.verdict === 'nodata')));
+  $('filters').innerHTML = opts.map(([k, l]) => `<button type="button" data-f="${k}" aria-pressed="${FILTER === k}">${l}</button>`).join('');
+  list();
+}
+
+function list() {
+  const order = {contra: 0, ojo: 1, favor: 2, nodata: 3, na: 4};
+  const rows = REP.holdings.filter(h => FILTER === 'all' || h.analysis.verdict === FILTER || (FILTER === 'na' && h.analysis.verdict === 'nodata'))
+    .sort((a, b) => (order[a.analysis.verdict] - order[b.analysis.verdict]) || ((b.weight || 0) - (a.weight || 0)));
+  $('list').innerHTML = rows.map(h => {
+    const a = h.analysis, [sym, lbl] = VER[a.verdict] || VER.na, cur = h.currency;
+    const und = h.ref?.underlying ? `Analizado sobre ${esc(h.ref.symbol)} en EE. UU. (US$ ${px(a.price)}).` : '';
+    const lv = a.stop ? `<div class="lv"><span>Stop de protección <b>${money(a.stop_local ?? a.stop, cur)}</b> (−${nf(a.stop_pct, 1)} %)</span>
+        ${a.at_risk ? `<span>Perderías <b>${money(a.at_risk, cur)}</b></span>` : ''}
+        ${a.rsi != null ? `<span>RSI <b>${nf(a.rsi, 0)}</b></span>` : ''}
+        <span>Puntaje <b>${a.score}</b>/100</span>
+        ${a.setups?.length ? `<span>Setups: <b>${esc(a.setups.join(', '))}</b></span>` : ''}</div>` : '';
+    const tm = a.tm ? `<div><b>Time Machine</b> (10 ruedas, objetivo a 2 veces lo arriesgado): ${esc(a.tm.verdict)}</div>` : '';
+    const notes = (a.notes || []).map(n => `<div class="mute">• ${esc(n)}</div>`).join('');
+    return `<article class="h">
+      <div class="nm"><span class="v ${a.verdict}">${sym} ${lbl}</span><b>${esc(h.symbol)}</b><small>${esc(h.desc)} · ${esc(h.type_es)}</small></div>
+      <div class="fig"><span>Cantidad</span><b>${nf(h.qty, h.qty % 1 ? 2 : 0)}</b><span>Precio</span><b>${px(h.price)}</b><span>Valor</span><b>${money(h.value, cur)}</b>
+        <span>Peso</span><b>${h.weight != null ? nf(h.weight, 1) + ' %' : '—'}</b><span>Hoy</span><b class="${cls(h.day_pct)}">${pct(h.day_pct)}</b>
+        ${h.gain_pct != null ? `<span>Ganancia</span><b class="${cls(h.gain_pct)}">${pct(h.gain_pct)}</b>` : ''}</div>
+      <div>${spark(a.spark, a.verdict === 'favor')}</div>
+      <div class="rd"><div>${esc(a.why)} ${und}</div>${lv}${tm}${notes}</div>
+    </article>`;
+  }).join('') || '<p class="mute">No hay activos con ese filtro.</p>';
+}
+
+$('filters').addEventListener('click', e => { const b = e.target.closest('button[data-f]'); if (!b) return; FILTER = b.dataset.f; for (const x of $('filters').children) x.setAttribute('aria-pressed', x === b); list(); });
+$('open').onclick = () => tryOpen($('pass').value, $('remember').checked);
+$('pass').addEventListener('keydown', e => { if (e.key === 'Enter') $('open').click(); });
+$('lock').onclick = () => { store.del('tp_cartera_k'); REP = null; $('app').hidden = true; $('lock').hidden = true; $('pass').value = ''; if (BLOB) $('unlock').hidden = false; else $('nofile').hidden = false; };
+
+async function fromFile(f) {
+  try {
+    const j = JSON.parse(await f.text());
+    if (j.data && j.salt) { BLOB = j; $('nofile').hidden = true; $('unlock').hidden = false; $('unSub').textContent = `Archivo ${f.name}: escribí la frase con la que se cifró.`; }
+    else if (j.holdings) { REP = j; show(); }
+    else throw new Error();
+  } catch { $('loadMsg').innerHTML = '<div class="msg bad">Ese archivo no es una cartera de TraderPanel.</div>'; }
+}
+for (const id of ['file', 'file2']) $(id).addEventListener('change', e => e.target.files[0] && fromFile(e.target.files[0]));
+
+(async () => {
+  BLOB = await repoJSON('data/cartera.enc');
+  if (!BLOB?.data) { $('nofile').hidden = false; return; }
+  $('unlock').hidden = false;
+  if (BLOB.updated) $('unSub').innerHTML += ` Última actualización: ${esc(new Date(BLOB.updated).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'}))}.`;
+  const k = store.get('tp_cartera_k', null);
+  if (k) { $('remember').checked = true; await tryOpen(k, true); }
+})();
+</script>
+</body>
+</html>

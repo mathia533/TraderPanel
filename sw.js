@@ -2,8 +2,8 @@
 // Siempre va primero a la red (los datos y las páginas cambian seguido); la copia guardada
 // se usa solo si no hay conexión. Nunca toca pedidos a otros dominios (APIs de mercado,
 // api.github.com con el token del usuario, Telegram): esos pasan directo.
-const CACHE = 'tp-v3';
-const SHELL = ['./', './index.html', './operaciones.html', './alertas.html', './config.html', './simulador.html', './lib/timemachine.mjs', './manifest.webmanifest',
+const CACHE = 'tp-v4';
+const SHELL = ['./', './index.html', './operaciones.html', './alertas.html', './config.html', './simulador.html', './cartera.html', './lib/timemachine.mjs', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './engine/sectors.json'];
 
 self.addEventListener('install', e => {
