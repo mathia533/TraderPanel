@@ -107,7 +107,9 @@ Cada usuario entra a **Configuración** con su token de GitHub y queda identific
 
 **Token de un colaborador.** GitHub no deja usar tokens *Fine-grained* en repos personales de otra persona: el colaborador usa un token clásico con `public_repo` (y `workflow` si quiere correr el motor o la prueba de Telegram desde el panel).
 
-Un usuario nuevo no recibe lo que ya había antes de crear su perfil. Pruebas del envío: `node --test tests/alerts.test.mjs`.
+Un usuario nuevo no recibe lo que ya había antes de crear su perfil. Pruebas del envío: `node --test tests/alerts.test.mjs tests/prices.test.mjs`.
+
+**Alertas de precio personales.** En **Alertas de precio** (`alertas.html`, o el botón *Avisarme* de la ficha de cada activo) cada uno arma sus propias alertas: BYMA, ADRs, cripto o dólar; "sube a", "baja a" o "sube/baja X % en el día"; una sola vez o cada vez que lo cruce (una vez por día si es por variación). Se guardan en `avisos/<login>.json` y solo le llegan a su dueño, al chat de su perfil. El workflow **Alertas de precio** (`.github/workflows/precios.yml`) corre `alerts/prices.mjs` cada 10 minutos de lunes a viernes de 10 a 18 (Buenos Aires), una vez por hora el resto del tiempo y apenas alguien guarda una alerta; toma precios en vivo de data912, CoinGecko y DolarAPI. Lo que ya saltó queda en `data/avisos_estado.json` (solo se hace commit cuando salta una alerta o aparece una nueva). Máximo 30 por usuario.
 
 Para probar localmente sin enviar: `node alerts/send.mjs --dry-run`.
 

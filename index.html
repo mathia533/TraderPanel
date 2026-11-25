@@ -288,6 +288,7 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
 .fh .px{display:flex;flex-direction:column;align-items:flex-end;gap:2px;margin-left:auto}
 .fh .px .big{font-size:26px;font-weight:600;line-height:1.1}
 .fh .cl{flex:none}
+.fh .falert{min-height:40px;text-decoration:none;color:var(--ink);align-self:center}
 .fbody{padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px}
 .ftool{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
 .fleg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--ink2)}
@@ -449,6 +450,7 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
     <div><p class="lbl" id="fMk"></p><h2 id="fTitle">—</h2><p class="mute" id="fSub" style="font-size:13px"></p></div>
     <div class="px"><span class="big num" id="fPx">—</span><span id="fCh"></span></div>
     <span id="fSig"></span>
+    <a class="btn falert" id="fAlert" href="alertas.html" title="Crear una alerta de precio que te llega por Telegram"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg>Avisarme</a>
     <button class="btn icon cl" type="button" id="fClose" aria-label="Cerrar la ficha"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>
   </div>
   <div class="fbody">
@@ -1276,6 +1278,8 @@ async function openFicha(key, push = true) {
   const sg = a ? {label: a.signal, score: a.score} : analyze(kind, id);
   $('fSig').innerHTML = sg ? `<span class="sig ${sg.label === 'COMPRA' ? 'buy' : sg.label === 'VENTA' ? 'sell' : 'flat'}">${esc(sg.label)}<span class="num">${sg.score}</span></span>` : '';
   $('fInfo').innerHTML = fichaInfo(kind, id);
+  $('fAlert').hidden = kind === 'indice';
+  $('fAlert').href = `alertas.html#nueva=${encodeURIComponent(kind + ':' + id)}${last > 0 ? '&p=' + last : ''}${kind === 'cripto' ? '&l=' + encodeURIComponent(label) : ''}`;
   $('fChart').innerHTML = '<p class="empty">Cargando velas…</p>'; $('fRead').innerHTML = ''; $('fLeg').innerHTML = ''; $('fSrc').textContent = '';
   const dlg = $('ficha');
   if (!dlg.open) dlg.showModal();

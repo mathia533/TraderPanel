@@ -84,7 +84,7 @@ function resultLine(u, e) {
 }
 
 /* ---------- Telegram ---------- */
-async function tg(chat, text) {
+export async function tg(chat, text) {
   for (let i = 1; i <= 3; i++) {
     let status = 0, j = {};
     try {
@@ -208,7 +208,7 @@ async function loadUsers(cfg) {
   return [{login: OWNER || 'default', name: '', risk: eng.risk || {}, max_open_positions: eng.risk?.max_open_positions,
     telegram: {chat: 'default', engine: true, follow: [], types: cfg.types, kinds: cfg.kinds, only: cfg.only || []}}];
 }
-const chatOf = u => { const c = (u.telegram?.chat || '').trim(); return c === 'default' ? DEFAULT_CHAT : c; };
+export const chatOf = u => { const c = (u.telegram?.chat || '').trim(); return c === 'default' ? DEFAULT_CHAT : c; };
 
 export function wants(u, e) {
   const t = u.telegram || {};

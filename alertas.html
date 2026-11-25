@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Esta página maneja un token de GitHub: solo puede hablar con api.github.com y no carga scripts externos. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://api.github.com; img-src data: https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>TraderPanel · Alertas de precio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322C55E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3 17 9 11 13 15 21 7'/%3E%3Cpolyline points='15 7 21 7 21 13'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#020617;--bg2:#050B1F;--card:#0E1223;--inset:#020617;--hover:#111833;
+  --line:#1E293B;--line2:#334155;--ink:#F8FAFC;--ink2:#CBD5E1;--mute:#94A3B8;
+  --up:#4ADE80;--upbg:#052E1A;--dn:#F87171;--dnbg:#3B0D0D;--dnfg:#FCA5A5;
+  --warn:#FCD34D;--warnbg:#3B2A06;--info:#93C5FD;--infobg:#0C1A33;
+  --accent:#22C55E;--on-accent:#052E1A;--primary:#1D4ED8;--primary-line:#3B82F6;--focus:#60A5FA;
+  --sans:'Fira Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'Fira Code',ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+:root[data-theme=light]{
+  --bg:#F1F5F9;--bg2:#FFFFFF;--card:#FFFFFF;--inset:#F1F5F9;--hover:#F8FAFC;
+  --line:#E2E8F0;--line2:#CBD5E1;--ink:#0F172A;--ink2:#334155;--mute:#475569;
+  --up:#15803D;--upbg:#DCFCE7;--dn:#B91C1C;--dnbg:#FEE2E2;--dnfg:#991B1B;
+  --warn:#92400E;--warnbg:#FEF3C7;--info:#1D4ED8;--infobg:#DBEAFE;
+  --accent:#15803D;--on-accent:#FFFFFF;--primary:#1D4ED8;--primary-line:#1D4ED8;--focus:#2563EB;
+  color-scheme:light;
+}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--sans);overflow-x:clip}
+h1,h2,h3,p{margin:0}
+a{color:var(--info)}
+[hidden]{display:none!important}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.55}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.mute{color:var(--mute)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+code{font-family:var(--mono);font-size:12.5px;background:var(--line);border-radius:4px;padding:1px 5px}
+.btn{min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--line2);background:var(--card);display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:500;text-decoration:none;color:var(--ink)}
+.btn:hover:not(:disabled){border-color:var(--mute)}
+.btn.go{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+.btn.primary{background:var(--primary);border-color:var(--primary-line);color:#fff;font-weight:600}
+.btn.icon{width:44px;padding:0}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:500}
+.pill.ok{background:var(--upbg);color:var(--up)}
+.pill.warn{background:var(--warnbg);color:var(--warn)}
+svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.top{background:var(--bg2);border-bottom:1px solid var(--line)}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:16px}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--ink);text-decoration:none}
+.brand svg{width:28px;height:28px;stroke:var(--accent)}
+.top .right{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.who{display:flex;align-items:center;gap:8px;font-size:14px}
+.who img{width:28px;height:28px;border-radius:50%}
+main.wrap{padding-block:24px 120px;display:flex;flex-direction:column;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card>h2{font-size:18px;font-weight:600;margin-bottom:4px}
+.card>.sub{color:var(--mute);font-size:14px;margin-bottom:16px}
+.lead h1{font-size:24px;font-weight:700;letter-spacing:-.01em}
+.lead p{color:var(--ink2);margin-top:6px;max-width:72ch}
+
+.login{max-width:640px;display:flex;flex-direction:column;gap:14px}
+.login ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;color:var(--ink2)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.check{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink2);min-height:32px}
+.check input{width:18px;height:18px;accent-color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.mk{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--inset)}
+.mk h3{font-size:16px;font-weight:600;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.mk h3 small{font-weight:400;color:var(--mute);font-size:13px}
+.f{display:flex;flex-direction:column;gap:6px}
+.f label,.f .lbl{font-size:13px;color:var(--ink2);font-weight:500}
+.f .help{font-size:12.5px;color:var(--mute)}
+.f input[type=text],.f input[type=number],.f input[type=url],.f input[type=password]{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font-size:16px;width:100%}
+.f input.num{font-family:var(--mono)}
+.f.bad input{border-color:var(--dn)}
+.f .err{font-size:12.5px;color:var(--dn)}
+.f.chg label::after{content:" · modificado";color:var(--warn);font-weight:400}
+.calc{font-size:12.5px;color:var(--mute)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:8px;border:1px solid var(--line2);border-radius:10px;background:var(--bg);min-height:48px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:2px;padding:2px 2px 2px 10px;border-radius:8px;background:var(--line);font-family:var(--mono);font-size:13px}
+.chip.new{background:var(--upbg);color:var(--up)}
+.chip button{border:0;background:transparent;width:28px;height:28px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;color:var(--mute)}
+.chip button:hover{background:var(--line2);color:var(--ink)}
+.chips input{border:0;background:transparent;flex:1 1 120px;min-height:32px;font-family:var(--mono);font-size:14px;padding:0 6px;color:var(--ink)}
+.chips input:focus{outline:none}
+.chips:focus-within{outline:2px solid var(--focus);outline-offset:1px}
+.opts{display:flex;flex-wrap:wrap;gap:4px 16px}
+
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--bg2);border-top:1px solid var(--line);z-index:5}
+.bar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:12px}
+.bar .state{font-size:14px;color:var(--ink2);margin-right:auto}
+.bar .state b{color:var(--warn)}
+.bar .state.bad b{color:var(--dn)}
+
+dialog{border:1px solid var(--line2);border-radius:14px;background:var(--card);color:var(--ink);padding:0;width:min(680px,calc(100vw - 32px));max-height:calc(100vh - 32px)}
+dialog::backdrop{background:rgba(2,6,23,.7)}
+.dlg{padding:20px;display:flex;flex-direction:column;gap:14px}
+.dlg h2{font-size:18px}
+.diff{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:10px;max-height:46vh;overflow:auto}
+.diff li{padding:10px 12px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.diff li:last-child{border-bottom:0}
+.diff .p{font-size:13px;color:var(--ink2)}
+.diff .v{font-family:var(--mono);font-size:13px;overflow-wrap:anywhere}
+.diff del{color:var(--dnfg);text-decoration:line-through}
+.diff ins{color:var(--up);text-decoration:none}
+.msg{padding:12px 14px;border-radius:10px;font-size:14px}
+.msg.ok{background:var(--upbg);color:var(--up)}
+.msg.bad{background:var(--dnbg);color:var(--dnfg)}
+.msg.info{background:var(--infobg);color:var(--info)}
+.secnav{display:flex;flex-wrap:wrap;gap:6px}
+.secnav a{padding:8px 12px;border-radius:8px;border:1px solid var(--line2);color:var(--ink2);text-decoration:none;font-size:14px}
+.secnav a:hover{background:var(--hover)}
+@media (max-width:560px){.bar .state{width:100%}.bar .btn{flex:1}}
+select{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font-size:16px}
+.f input[type=number]{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font-size:16px}
+.f .row input{flex:1 1 120px;width:auto}
+.list{display:flex;flex-direction:column;gap:8px}
+.tr{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--inset)}
+.tr summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;gap:2px}
+.tr summary::-webkit-details-marker{display:none}
+.tr[open] summary{margin-bottom:12px}
+.acts{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:12px}
+.up{color:var(--up)}.dn{color:var(--dn)}
+.err{font-size:12.5px;color:var(--dn)}
+.cond{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.al{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--inset);display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.al .what{display:flex;flex-direction:column;gap:2px;flex:1 1 260px}
+.al .what b{font-size:15px}
+.al .meta{font-size:13px;color:var(--mute)}
+.al .acts2{display:flex;gap:8px;flex-wrap:wrap}
+.al .acts2 .btn{min-height:40px}
+.al.off{opacity:.6}
+.st{display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:999px;font-size:12.5px;font-weight:500;background:var(--line);color:var(--ink2);width:max-content}
+.st.ok{background:var(--upbg);color:var(--up)}
+.st.warn{background:var(--warnbg);color:var(--warn)}
+.st.info{background:var(--infobg);color:var(--info)}
+.seg{align-self:flex-start;display:inline-flex;border:1px solid var(--line2);border-radius:10px;padding:3px;gap:3px;background:var(--bg);flex-wrap:wrap}
+.seg button{min-height:38px;padding:0 12px;border:0;border-radius:7px;background:transparent;color:var(--ink2);font-size:14px}
+.seg button[aria-pressed=true]{background:var(--card);color:var(--ink);box-shadow:0 0 0 1px var(--line2)}
+.hint{font-size:13px;color:var(--info)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 21 2M16 7l3 3M18 5l2 2"/></symbol>
+  <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><svg class="i" aria-hidden="true"><use href="#i-logo"/></svg>TraderPanel</a>
+    <span class="mute">Alertas de precio</span>
+    <div class="right">
+      <div class="who" id="who" hidden></div>
+      <button class="btn icon" id="theme" type="button" aria-label="Cambiar tema"></button>
+      <a class="btn" href="operaciones.html">Mis operaciones</a>
+      <a class="btn" href="./"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg>Volver al panel</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="lead">
+    <h1>Alertas de precio</h1>
+    <p>Elegí un activo y un nivel, y te llega un mensaje a <b>tu</b> Telegram cuando lo cruza. Son tuyas: no le llegan a nadie más. Se revisan cada 10 minutos con el mercado abierto (lunes a viernes, 10 a 18 h) y una vez por hora el resto del tiempo. Se guardan en <code id="fileName">avisos/</code>; el repo es público, así que cualquiera puede verlas.</p>
+  </div>
+
+  <section class="card" id="needLogin" hidden>
+    <h2>Primero entrá con tu cuenta</h2>
+    <p class="sub">Usás el mismo token de GitHub que en Configuración.</p>
+    <div class="row"><a class="btn go" href="config.html"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Entrar desde Configuración</a></div>
+  </section>
+  <div id="loadMsg" role="status"></div>
+
+  <div id="app" hidden style="display:flex;flex-direction:column;gap:20px">
+    <div id="tgMsg"></div>
+    <div id="appMsg" role="status"></div>
+
+    <section class="card" aria-labelledby="newH">
+      <h2 id="newH">Nueva alerta</h2>
+      <p class="sub" id="nPre">Desde la ficha de cualquier activo del panel, el botón <b>Avisarme</b> te trae acá con el precio cargado.</p>
+      <div class="rules">
+        <div class="f"><label for="nKind">Mercado</label>
+          <select id="nKind"><option value="byma">BYMA ($)</option><option value="adr">ADR (US$)</option><option value="cripto">Cripto (US$)</option><option value="dolar">Dólar ($)</option></select></div>
+        <div class="f" id="fAsset"><label for="nAsset">Activo</label><input type="text" id="nAsset" spellcheck="false" autocomplete="off" placeholder="YPF, GGAL, BTC…"><span class="help" id="hAsset"></span><span class="err" id="eAsset"></span></div>
+        <div class="f" id="fCasa" hidden><label for="nCasa">Cuál</label>
+          <select id="nCasa"><option value="blue">Blue</option><option value="bolsa">MEP</option><option value="contadoconliqui">CCL</option><option value="oficial">Oficial</option><option value="mayorista">Mayorista</option><option value="cripto">Cripto</option><option value="tarjeta">Tarjeta</option></select></div>
+      </div>
+      <div class="f" style="margin-top:16px"><span class="lbl" id="condL">Avisarme cuando</span>
+        <div class="seg" role="group" aria-labelledby="condL" id="nCond">
+          <button type="button" data-c="gte" aria-pressed="true">Sube a</button>
+          <button type="button" data-c="lte" aria-pressed="false">Baja a</button>
+          <button type="button" data-c="chg_up" aria-pressed="false">Sube % en el día</button>
+          <button type="button" data-c="chg_dn" aria-pressed="false">Baja % en el día</button>
+        </div></div>
+      <div class="cond" style="margin-top:16px">
+        <div class="f"><label for="nValue" id="vLabel">Precio</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="nValue"><span class="hint" id="hValue"></span><span class="err" id="eValue"></span></div>
+        <div class="f"><span class="lbl">Cuántas veces</span>
+          <label class="check"><input type="radio" name="rep" value="0" checked> Una sola vez</label>
+          <label class="check"><input type="radio" name="rep" value="1"> <span id="repL">Cada vez que lo cruce</span></label></div>
+      </div>
+      <div class="f" style="margin-top:16px"><label for="nNote">Nota (opcional, va en el mensaje)</label><input type="text" id="nNote" maxlength="200" placeholder="Ej.: zona de compra, revisar el stop"></div>
+      <div class="row" style="margin-top:16px"><button class="btn go" id="nSave" type="button" disabled><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg>Crear alerta</button><span class="calc" id="nCount"></span></div>
+    </section>
+
+    <section class="card" aria-labelledby="listH">
+      <h2 id="listH">Mis alertas</h2>
+      <p class="sub">“Esperando” quiere decir que todavía no se cumplió. Pausala si no la querés por un tiempo.</p>
+      <div id="list" class="list"></div>
+    </section>
+  </div>
+</main>
+
+<script>
+'use strict';
+const REPO = (() => {
+  const h = location.hostname, seg = location.pathname.split('/').filter(Boolean)[0];
+  if (h.endsWith('.github.io') && seg) return { owner: h.split('.')[0], name: seg };
+  return { owner: 'mathia533', name: 'TraderPanel' };
+})();
+const API = 'https://api.github.com', TK = 'tp_gh_token', MAX = 30;
+const MK = { adr: { name: 'ADR', cur: 'US$' }, byma: { name: 'BYMA', cur: '$' }, cripto: { name: 'Cripto', cur: 'US$' }, dolar: { name: 'Dólar', cur: '$' } };
+const CASAS = { oficial: 'Oficial', blue: 'Blue', bolsa: 'MEP', contadoconliqui: 'CCL', mayorista: 'Mayorista', cripto: 'Cripto', tarjeta: 'Tarjeta' };
+// Las cripto se guardan con el id de CoinGecko (el mismo que usa la watchlist)
+const COINS = { BTC: 'bitcoin', ETH: 'ethereum', USDT: 'tether', USDC: 'usd-coin', SOL: 'solana', BNB: 'binancecoin', XRP: 'ripple', ADA: 'cardano', DOGE: 'dogecoin', TRX: 'tron', DOT: 'polkadot', AVAX: 'avalanche-2', LINK: 'chainlink', MATIC: 'matic-network', POL: 'polygon-ecosystem-token', LTC: 'litecoin', TON: 'the-open-network', DAI: 'dai' };
+const ASSET = { adr: /^[A-Z][A-Z0-9.\-]{0,9}$/, byma: /^[A-Z][A-Z0-9.\-]{0,9}$/, cripto: /^[a-z0-9][a-z0-9\-]{0,49}$/ };
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const msg = (el, kind, html) => { $(el).innerHTML = html ? `<div class="msg ${kind}">${html}</div>` : ''; };
+const nf = (v, d = 2) => v == null || !isFinite(v) ? '—' : Number(v).toLocaleString('es-AR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const px = v => nf(v, Math.abs(v) >= 1000 ? 0 : Math.abs(v) >= 1 ? 2 : 4);
+const when = s => s ? new Date(s).toLocaleString('es-AR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '';
+
+function applyTheme(t) {
+  document.documentElement.dataset.theme = t;
+  $('theme').innerHTML = `<svg class="i" aria-hidden="true"><use href="#i-${t === 'dark' ? 'sun' : 'moon'}"/></svg>`;
+}
+try { applyTheme(JSON.parse(localStorage.getItem('tp_theme')) || 'dark'); } catch { applyTheme('dark'); }
+$('theme').onclick = () => { const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; try { localStorage.setItem('tp_theme', JSON.stringify(t)); } catch {} applyTheme(t); };
+
+let token = '';
+try { token = sessionStorage.getItem(TK) || localStorage.getItem(TK) || ''; } catch {}
+async function gh(path, opts = {}) {
+  const r = await fetch(API + path, { ...opts, cache: 'no-store',
+    headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', Authorization: `Bearer ${token}`, ...(opts.body ? { 'Content-Type': 'application/json' } : {}) } });
+  const body = await r.json().catch(() => ({}));
+  if (!r.ok) { const e = new Error(body.message || `HTTP ${r.status}`); e.status = r.status; throw e; }
+  return body;
+}
+const b64dec = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g, '')), c => c.charCodeAt(0)));
+const b64enc = s => { let bin = ''; for (const b of new TextEncoder().encode(s)) bin += String.fromCharCode(b); return btoa(bin); };
+const contents = p => gh(`/repos/${REPO.owner}/${REPO.name}/contents/${p}?ref=${encodeURIComponent(S.branch)}`);
+
+const S = { login: '', branch: 'main', list: [], sha: null, me: null, state: {}, cond: 'gte', pre: null };
+const PATH = () => `avisos/${S.login}.json`;
+const fmtFile = list => `{\n "avisos": [${list.length ? '\n' + list.map(a => '  ' + JSON.stringify(a)).join(',\n') + '\n ' : ''}]\n}\n`;
+const PRE0 = document.getElementById('nPre').innerHTML;
+const keyOf = a => `${S.login}|${a.id}|${a.cond}|${a.value}`; // igual que alerts/prices.mjs
+
+async function load() {
+  try { const r = await contents(PATH()); S.sha = r.sha; S.list = JSON.parse(b64dec(r.content)).avisos || []; }
+  catch (e) { if (e.status !== 404) throw e; S.sha = null; S.list = []; }
+}
+async function loadState() {
+  try { const r = await contents('data/avisos_estado.json'); S.state = JSON.parse(b64dec(r.content)).items || {}; } catch { S.state = {}; }
+}
+async function commit(change, message) {
+  for (let i = 0; i < 3; i++) {
+    const next = change(structuredClone(S.list));
+    try {
+      const r = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${PATH()}`, { method: 'PUT',
+        body: JSON.stringify({ message, content: b64enc(fmtFile(next)), ...(S.sha ? { sha: S.sha } : {}), branch: S.branch }) });
+      S.sha = r.content.sha; S.list = next;
+      return r.commit.html_url;
+    } catch (e) { if (e.status !== 409 && e.status !== 422) throw e; await load(); }
+  }
+  throw new Error('GitHub rechazó el cambio por un conflicto. Recargá la página.');
+}
+function saveError(e) {
+  if (e.status === 401) return 'El token venció. Entrá de nuevo desde Configuración.';
+  if (e.status === 403 || e.status === 404) return 'Tu token no puede escribir en el repo. Revisá en Configuración que tenga permiso de escritura.';
+  return esc(e.message);
+}
+
+/* ---------- Formulario ---------- */
+const kind = () => $('nKind').value;
+const isPct = () => S.cond.startsWith('chg');
+function asset() {
+  const k = kind();
+  if (k === 'dolar') return $('nCasa').value;
+  const v = $('nAsset').value.trim();
+  if (k === 'cripto') return COINS[v.toUpperCase()] || v.toLowerCase();
+  return v.toUpperCase();
+}
+function setCond(c) {
+  S.cond = c;
+  for (const b of $('nCond').querySelectorAll('button')) b.setAttribute('aria-pressed', String(b.dataset.c === c));
+  check();
+}
+function check() {
+  const k = kind(), a = asset(), v = $('nValue').value === '' ? null : Number($('nValue').value);
+  $('fAsset').hidden = k === 'dolar'; $('fCasa').hidden = k !== 'dolar';
+  for (const b of $('nCond').querySelectorAll('[data-c^=chg]')) b.hidden = k === 'dolar';
+  if (k === 'dolar' && isPct()) return setCond('gte');
+  $('nAsset').placeholder = k === 'cripto' ? 'BTC, ETH, solana…' : k === 'adr' ? 'YPF, GGAL, MELI…' : 'YPF, GGAL, PAMP…';
+  $('hAsset').textContent = k === 'cripto' && a && a !== $('nAsset').value.trim() ? `Se guarda como “${a}” (CoinGecko).` : '';
+  $('vLabel').textContent = isPct() ? 'Variación en el día (%)' : `Precio (${MK[k].cur})`;
+  $('repL').textContent = isPct() ? 'Una vez por día' : 'Cada vez que lo cruce';
+  const raw = $('nAsset').value.trim();
+  const eA = k !== 'dolar' && raw && !ASSET[k].test(a) ? (k === 'cripto' ? 'Usá el símbolo (BTC) o el id de CoinGecko (bitcoin).' : 'Ticker en mayúsculas, sin espacios (ej. YPF).') : '';
+  const eV = v != null && !(v > 0) ? 'Tiene que ser mayor que cero.' : isPct() && v > 100 ? 'Hasta 100 %.' : '';
+  $('eAsset').textContent = eA; $('eValue').textContent = eV;
+  // Precio que trajo la ficha: ayuda a no crear una alerta que ya se cumple
+  const same = S.pre && S.pre.kind === k && S.pre.asset === a, pre = same ? S.pre.price : null;
+  if (S.pre) { S.preTxt ||= $('nPre').innerHTML; $('nPre').innerHTML = same ? S.preTxt : PRE0; }
+  let hint = '';
+  if (pre && !isPct()) {
+    hint = `Ahora está en ${MK[k].cur} ${px(pre)}.`;
+    if (v > 0) {
+      const d = (v / pre - 1) * 100;
+      hint += ` Tu nivel queda a ${d >= 0 ? '+' : '−'}${nf(Math.abs(d), 1)} %.`;
+      if ((S.cond === 'gte' && v <= pre) || (S.cond === 'lte' && v >= pre)) hint += ' Ya se cumple: te va a llegar en la próxima revisión.';
+    }
+  }
+  $('hValue').textContent = hint;
+  const full = S.list.length >= MAX;
+  $('nCount').textContent = full ? `Llegaste al máximo de ${MAX} alertas. Borrá alguna para crear otra.` : `${S.list.length} de ${MAX}`;
+  const ok = !full && (k === 'dolar' || (raw && !eA)) && v > 0 && !eV;
+  $('nSave').disabled = !ok;
+  return ok && { kind: k, asset: a, cond: S.cond, value: v };
+}
+$('nCond').addEventListener('click', e => { const b = e.target.closest('button[data-c]'); if (b) setCond(b.dataset.c); });
+for (const id of ['nKind', 'nAsset', 'nCasa', 'nValue']) $(id).addEventListener('input', check);
+$('nSave').onclick = async () => {
+  const v = check(); if (!v) return;
+  $('nSave').disabled = true; msg('appMsg', 'info', 'Guardando…');
+  const now = new Date(), raw = $('nAsset').value.trim().toUpperCase();
+  const a = { id: `p${now.toISOString().slice(0, 16).replace(/\D/g, '')}-${Math.random().toString(36).slice(2, 6)}`, ...v,
+    ...(v.kind === 'cripto' && raw && raw.toLowerCase() !== v.asset ? { label: raw } : v.kind === 'cripto' && S.pre?.label && S.pre.asset === v.asset ? { label: S.pre.label } : {}),
+    repeat: document.querySelector('input[name=rep]:checked').value === '1', note: $('nNote').value.trim().slice(0, 200), active: true, created_at: now.toISOString() };
+  try {
+    const url = await commit(list => [a, ...list], `Alerta de precio ${labelOf(a)} (${S.login})`);
+    $('nValue').value = ''; $('nNote').value = '';
+    check(); render();
+    msg('appMsg', 'ok', `Listo: ${esc(describe(a))}. Queda activa desde la próxima revisión. <a href="${esc(url)}" target="_blank" rel="noopener">Ver commit</a>`);
+  } catch (e) { msg('appMsg', 'bad', saveError(e)); check(); }
+};
+
+/* ---------- Lista ---------- */
+const labelOf = a => a.kind === 'dolar' ? `Dólar ${CASAS[a.asset] || a.asset}` : a.kind === 'cripto' ? (a.label || a.asset).toUpperCase() : a.asset;
+function describe(a) {
+  const c = MK[a.kind].cur;
+  const what = a.cond === 'gte' ? `sube a ${c} ${px(a.value)} o más` : a.cond === 'lte' ? `baja a ${c} ${px(a.value)} o menos`
+    : `${a.cond === 'chg_up' ? 'sube' : 'baja'} ${nf(a.value, 1)} % o más en el día`;
+  return `${labelOf(a)} ${what}`;
+}
+function status(a) {
+  const st = S.state[keyOf(a)];
+  if (a.active === false) return '<span class="st">Pausada</span>';
+  if (!st) return '<span class="st info">Nueva: entra en la próxima revisión</span>';
+  if (st.fired_at) {
+    const at = `${when(st.fired_at)} a ${MK[a.kind].cur} ${px(st.fired_price)}`;
+    if (st.status === 'sin_telegram') return `<span class="st warn">Saltó el ${at}, pero no tenías Telegram</span>`;
+    if (st.status === 'fallo') return `<span class="st warn">Saltó el ${at}; el mensaje falló, se reintenta</span>`;
+    if (st.done) return `<span class="st ok">Cumplida el ${at}</span>`;
+    return `<span class="st ok">Última vez: ${at}${st.count > 1 ? ` · ${st.count} veces` : ''}</span>`;
+  }
+  return '<span class="st">Esperando</span>';
+}
+function render() {
+  $('list').innerHTML = S.list.length ? S.list.map(a => `<div class="al${a.active === false ? ' off' : ''}" data-id="${esc(a.id)}">
+    <div class="what"><b>${esc(describe(a))}</b>
+      <span class="meta">${MK[a.kind].name} · ${a.repeat ? (a.cond.startsWith('chg') ? 'una vez por día' : 'cada vez que lo cruce') : 'una sola vez'} · creada ${when(a.created_at)}${a.note ? ' · ' + esc(a.note) : ''}</span>
+      ${status(a)}</div>
+    <div class="acts2">
+      <button class="btn" type="button" data-act="toggle"><svg class="i" aria-hidden="true"><use href="#i-${a.active === false ? 'play' : 'pause'}"/></svg>${a.active === false ? 'Activar' : 'Pausar'}</button>
+      <button class="btn" type="button" data-act="del" aria-label="Borrar la alerta de ${esc(labelOf(a))}"><svg class="i" aria-hidden="true"><use href="#i-trash"/></svg>Borrar</button>
+    </div></div>`).join('') : '<p class="mute">Todavía no tenés alertas.</p>';
+}
+$('list').addEventListener('click', async ev => {
+  const b = ev.target.closest('button[data-act]'); if (!b) return;
+  const id = b.closest('[data-id]').dataset.id, a = S.list.find(x => x.id === id); if (!a) return;
+  const del = b.dataset.act === 'del';
+  for (const x of b.parentElement.querySelectorAll('button')) x.disabled = true;
+  msg('appMsg', 'info', 'Guardando…');
+  try {
+    const url = await commit(list => del ? list.filter(x => x.id !== id) : list.map(x => x.id === id ? { ...x, active: x.active === false } : x),
+      `${del ? 'Borrar' : a.active === false ? 'Activar' : 'Pausar'} alerta ${labelOf(a)} (${S.login})`);
+    render(); check();
+    msg('appMsg', 'ok', `${del ? 'Borrada' : a.active === false ? 'Activada' : 'Pausada'}: ${esc(describe(a))}. <a href="${esc(url)}" target="_blank" rel="noopener">Ver commit</a>`);
+  } catch (e) { msg('appMsg', 'bad', saveError(e)); render(); }
+});
+
+// alertas.html#nueva=byma%3AYPF&p=35200&l=YPF  (lo arma el botón Avisarme de la ficha)
+function prefill() {
+  let hash = location.hash;
+  try { if (!hash.startsWith('#nueva=')) hash = sessionStorage.getItem('tp_alerta_pre') || ''; sessionStorage.removeItem('tp_alerta_pre'); } catch {}
+  const h = new URLSearchParams(hash.slice(1)), key = h.get('nueva'); if (!key) return;
+  const i = key.indexOf(':'), k = key.slice(0, i), id = key.slice(i + 1), p = Number(h.get('p'));
+  if (!MK[k] || !id) return;
+  $('nKind').value = k;
+  if (k === 'dolar') $('nCasa').value = CASAS[id] ? id : 'blue';
+  else $('nAsset').value = k === 'cripto' ? (h.get('l') || id).toUpperCase() : id;
+  S.pre = { kind: k, asset: k === 'cripto' ? id : id.toUpperCase(), price: p > 0 ? p : null, label: k === 'cripto' ? (h.get('l') || '').toUpperCase() : '' };
+  if (S.pre.price) $('nValue').value = String(+(S.pre.price * 1.05).toPrecision(4));
+  $('nPre').innerHTML = `Desde la ficha de <b>${esc(k === 'dolar' ? 'Dólar ' + (CASAS[id] || id) : S.pre.label || id)}</b>${S.pre.price ? `: está en ${MK[k].cur} ${px(S.pre.price)}. Te propongo un 5 % arriba; cambialo a gusto.` : '.'}`;
+  history.replaceState(null, '', location.pathname + location.search);
+  setTimeout(() => $('nValue').focus(), 0);
+}
+
+(async () => {
+  if (!token) { $('needLogin').hidden = false; try { if (location.hash.startsWith('#nueva=')) sessionStorage.setItem('tp_alerta_pre', location.hash); } catch {} return; }
+  msg('loadMsg', 'info', 'Cargando…');
+  try {
+    const [user, repo] = await Promise.all([gh('/user'), gh(`/repos/${REPO.owner}/${REPO.name}`)]);
+    if (!repo.permissions?.push) throw Object.assign(new Error(`Tu cuenta (${user.login}) no tiene permiso de escritura en ${REPO.owner}/${REPO.name}.`), { status: 0 });
+    S.login = user.login; S.branch = repo.default_branch || 'main';
+    try { const u = await contents('users/users.json'); S.me = JSON.parse(b64dec(u.content)).users?.[S.login] || null; } catch {}
+    await Promise.all([load(), loadState()]);
+    $('fileName').textContent = PATH();
+    $('who').innerHTML = `${user.avatar_url ? `<img src="${esc(user.avatar_url)}&s=56" alt="">` : ''}<span class="pill ok">${esc(user.login)}</span>`;
+    $('who').hidden = false; $('app').hidden = false; msg('loadMsg');
+    if (!(S.me?.telegram?.chat || '').trim()) msg('tgMsg', 'info', 'Todavía no tenés un chat de Telegram en tu perfil: las alertas se revisan igual, pero no te va a llegar nada. Cargalo en <a href="config.html#avisos">Configuración › Mis avisos</a>.');
+    prefill(); check(); render();
+  } catch (e) {
+    if (e.status === 401) { try { sessionStorage.removeItem(TK); localStorage.removeItem(TK); } catch {} $('needLogin').hidden = false; msg('loadMsg', 'bad', 'El token venció. Entrá de nuevo.'); }
+    else msg('loadMsg', 'bad', esc(e.message));
+  }
+})();
+</script>
+</body>
+</html>
