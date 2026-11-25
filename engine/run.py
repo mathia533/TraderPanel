@@ -21,7 +21,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import config_check, dtskills, pipeline, planner, skills, sources, tmextra
+from . import config_check, dtskills, pipeline, planner, review, skills, sources, tmextra
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -376,6 +376,7 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None, intraday_fetch=Non
                            "stop_pct": plan["stop_pct"], "units": sz["units"], "notional": sz["notional"],
                            "max_loss": sz["max_loss"], "limited_by": sz["bound_by"],
                            "score": cand["score"], "why": cand["why"], "bar_date": closed[0]["date"],
+                           "gate": gate,
                            "timemachine": {"lean": tm.get("lean"), "verdict": tm.get("verdict")} if tm.get("ok") else None,
                            "opened_at": now.isoformat(), "last": rnd(last["close"]), "r_now": 0.0, "sessions": 0}
                     state["positions"][key] = pos
@@ -481,6 +482,7 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None, intraday_fetch=Non
                       "congress": bool(congress)},
         "events": events[:50],
         "closed": state.get("closed", [])[:30],
+        "review": review.build_review(state.get("closed", []), cfg),
         "errors": errors,
     }
     return signals, {"events": events}, state, fresh
