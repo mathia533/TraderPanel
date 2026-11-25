@@ -2,8 +2,8 @@
 // Siempre va primero a la red (los datos y las páginas cambian seguido); la copia guardada
 // se usa solo si no hay conexión. Nunca toca pedidos a otros dominios (APIs de mercado,
 // api.github.com con el token del usuario, Telegram): esos pasan directo.
-const CACHE = 'tp-v1';
-const SHELL = ['./', './index.html', './operaciones.html', './alertas.html', './config.html', './manifest.webmanifest',
+const CACHE = 'tp-v2';
+const SHELL = ['./', './index.html', './operaciones.html', './alertas.html', './config.html', './simulador.html', './lib/timemachine.mjs', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './engine/sectors.json'];
 
 self.addEventListener('install', e => {
@@ -21,7 +21,7 @@ self.addEventListener('fetch', e => {
     const key = url.pathname.endsWith('.json') ? url.origin + url.pathname : req;
     try {
       const res = await fetch(req);
-      if (res.ok && (req.mode === 'navigate' || /\.(json|html|png|webmanifest)$/.test(url.pathname) || url.pathname.endsWith('/'))) cache.put(key, res.clone());
+      if (res.ok && (req.mode === 'navigate' || /\.(json|html|png|webmanifest|mjs)$/.test(url.pathname) || url.pathname.endsWith('/'))) cache.put(key, res.clone());
       return res;
     } catch (err) {
       const hit = await cache.match(key, {ignoreSearch: true}) || (req.mode === 'navigate' ? await cache.match('./index.html') : null);

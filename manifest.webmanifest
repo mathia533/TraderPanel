@@ -16,6 +16,7 @@
   "shortcuts": [
     {"name": "Mis operaciones", "url": "./operaciones.html"},
     {"name": "Alertas de precio", "url": "./alertas.html"},
+    {"name": "Simulador", "url": "./simulador.html"},
     {"name": "Configuración", "url": "./config.html"}
   ]
 }
