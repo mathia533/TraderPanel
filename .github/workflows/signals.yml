@@ -36,6 +36,10 @@ jobs:
       - name: Correr el motor
         run: |
           if [ "${{ inputs.sin_regimen_cripto }}" = "true" ]; then python -m engine.run --no-crypto-regime; else python -m engine.run; fi
+      - name: Índices bursátiles
+        # Independiente del motor: si Yahoo falla, el panel conserva el dato anterior
+        continue-on-error: true
+        run: python -m engine.indices
       - name: Publicar señales
         run: |
           git config user.name "traderpanel-bot"
