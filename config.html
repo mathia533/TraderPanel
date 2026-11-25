@@ -132,9 +132,105 @@ dialog::backdrop{background:rgba(2,6,23,.7)}
 .how summary{cursor:pointer;font-weight:500}
 .how ol{margin:8px 0;padding-left:20px;display:flex;flex-direction:column;gap:6px;color:var(--ink2);font-size:14px}
 .how p{font-size:13.5px}
-.secnav{display:flex;flex-wrap:wrap;gap:6px}
-.secnav a{padding:8px 12px;border-radius:8px;border:1px solid var(--line2);color:var(--ink2);text-decoration:none;font-size:14px}
-.secnav a:hover{background:var(--hover)}
+/* ---- Rediseño: menú lateral, secciones de a una ---- */
+.login{margin:24px auto 0;width:100%;max-width:600px;padding:28px}
+.login .lh{display:flex;align-items:center;gap:10px}
+.login .lh svg{width:28px;height:28px;stroke:var(--accent)}
+.login .lh h2{font-size:22px;font-weight:700}
+.login #loginBtn{width:100%}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.steps li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--ink2)}
+.steps li>span{width:26px;height:26px;border-radius:50%;background:var(--upbg);color:var(--up);font-size:13px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.cfg{display:grid;grid-template-columns:240px minmax(0,1fr);gap:28px;align-items:start}
+.side{position:sticky;top:16px;display:flex;flex-direction:column;gap:18px}
+.side .g{display:flex;flex-direction:column;gap:2px}
+.side .gt{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);padding:0 12px 4px}
+.side a{position:relative;display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px;border-radius:10px;color:var(--ink2);text-decoration:none;font-weight:500}
+.side a:hover{background:var(--hover);color:var(--ink)}
+.side a[aria-current=page]{background:var(--hover);color:var(--ink)}
+.side a[aria-current=page]::before{content:"";position:absolute;left:3px;top:12px;bottom:12px;width:3px;border-radius:2px;background:var(--accent)}
+.side .l{flex:1}
+.cnt{min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--warnbg);color:var(--warn);font:12px var(--mono);display:inline-flex;align-items:center;justify-content:center}
+.cnt.bad{background:var(--dnbg);color:var(--dnfg)}
+.side .note{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:13px;color:var(--mute);display:flex;flex-direction:column;gap:4px}
+.side .note b{color:var(--ink2);font-weight:500}
+.panes{display:flex;flex-direction:column;gap:16px;min-width:0}
+.pane{display:flex;flex-direction:column;gap:20px}
+.ph{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 20px}
+.ph>div{flex:1 1 320px}
+.ph h1{font-size:26px;font-weight:700;letter-spacing:-.01em}
+.ph p{color:var(--ink2);margin-top:4px;max-width:70ch}
+.ph .f{flex:0 1 220px}
+.shared{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--warnbg);color:var(--warn);font-size:13px;font-weight:500;white-space:nowrap}
+.card-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.card-h h2{font-size:18px;font-weight:600}
+.card-h p{color:var(--mute);font-size:14px}
+.seg{display:inline-flex;gap:4px;padding:4px;background:var(--inset);border:1px solid var(--line);border-radius:10px}
+.seg.full{display:flex}.seg.full button{flex:1}
+.seg button{min-height:40px;padding:0 16px;border:0;border-radius:8px;background:transparent;color:var(--mute);font-weight:500;font-size:14px}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-selected=true]{background:var(--line);color:var(--ink)}
+.live{margin-top:16px;background:var(--inset);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.live .k{display:block;font-size:12.5px;color:var(--mute)}
+.live .v{display:block;font:500 20px/1.3 var(--mono)}
+.live .v.risk{color:var(--dnfg)}
+.live .ex{grid-column:span 2;font-size:14px;color:var(--ink2)}
+.live .ex b{font-family:var(--mono);color:var(--up)}
+.tip{background:var(--infobg);color:var(--info);border-radius:12px;padding:12px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;font-size:14px}
+.tip>span{flex:1 1 280px}
+.btn.ghost{background:transparent;border-color:var(--primary-line);color:var(--info);min-height:40px}
+.split{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+.split>.main{flex:999 1 420px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.split>aside{flex:1 1 280px}
+.dest{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line2);border-radius:10px;cursor:pointer}
+.dest:has(input:checked){border-color:var(--accent);background:color-mix(in srgb,var(--upbg) 55%,transparent)}
+.dest input{width:18px;height:18px;margin-top:3px;accent-color:var(--accent);flex:none}
+.dest b{font-weight:600}
+.dest small{display:block;color:var(--mute);font-size:13px}
+.dests{display:flex;flex-direction:column;gap:10px}
+.swr{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
+.swr:first-of-type{border-top:0}
+.swr.swsub{padding-left:24px}
+.swr .t{flex:1}
+.swr .t small{display:block;color:var(--mute);font-size:13px}
+input.sw{appearance:none;-webkit-appearance:none;width:44px;height:26px;border-radius:999px;background:var(--line2);position:relative;cursor:pointer;flex:none;margin:0}
+input.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--mute);transition:transform .18s ease-out}
+input.sw:checked{background:var(--accent)}
+input.sw:checked::after{transform:translateX(18px);background:var(--on-accent)}
+input.sw:disabled{opacity:.45;cursor:not-allowed}
+.swr:has(input:disabled){cursor:not-allowed;color:var(--mute)}
+@media (prefers-reduced-motion:reduce){input.sw::after{transition:none}}
+.f.chg .swr-l::after,.swr.chg .t>span::after{content:" · modificado";color:var(--warn);font-weight:400;font-size:12.5px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills label{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1px solid var(--line2);border-radius:10px;font-size:14px;cursor:pointer}
+.pills label:has(input:checked){border-color:var(--accent);color:var(--up)}
+.pills input{accent-color:var(--accent);width:16px;height:16px}
+.ptbl td.r,.ptbl th.r{text-align:right}
+.ptbl tr.diff td{background:var(--infobg)}
+.ptbl td .copied{color:var(--warn);font-size:13px}
+.rdiag{display:flex;flex-direction:column;gap:8px}
+.rdiag .lab{display:flex;justify-content:space-between;gap:8px;font:12.5px var(--mono);flex-wrap:wrap}
+.rdiag .rb{display:flex;gap:2px;height:12px}
+.rdiag .rb i{border-radius:3px}
+.rdiag .rb .s{background:var(--dnbg)}.rdiag .rb .w{background:var(--upbg)}
+@media (max-width:860px){
+  .cfg{grid-template-columns:minmax(0,1fr);gap:16px}
+  .side{position:static;flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:4px;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}
+  .side .gt,.side .note{display:none}
+  .side .g{flex-direction:row;gap:6px;flex:none}
+  .side a{flex:none}
+  .side a{white-space:nowrap;border:1px solid var(--line2);border-radius:999px;min-height:40px;font-size:14px}
+  .side a[aria-current=page]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .side a[aria-current=page]::before{display:none}
+  .live .ex{grid-column:auto}
+  .login{padding:20px}
+}
+.sel{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font-size:15px;width:100%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.f label.swr,.f label.dest{font-size:15px;color:var(--ink);font-weight:400}
+.f.chg label.swr::after,.f.chg label.dest::after{content:none}
+.tgside{display:flex;flex-direction:column;gap:12px}
+.tgside .btn{width:100%}
 @media (max-width:560px){.bar .state{width:100%}.bar .btn{flex:1}}
 </style>
 </head>
@@ -143,6 +239,7 @@ dialog::backdrop{background:rgba(2,6,23,.7)}
   <symbol id="i-logo" viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
   <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 21 2M16 7l3 3M18 5l2 2"/></symbol>
@@ -164,38 +261,58 @@ dialog::backdrop{background:rgba(2,6,23,.7)}
 </header>
 
 <main class="wrap">
-  <div class="lead">
-    <h1>Configuración del motor y las alertas</h1>
-    <p><b>Tu perfil</b> es tuyo: tu presupuesto, tu tope de posiciones y qué avisos te llegan (se guarda en <code>users/users.json</code>). <b>Lo común</b> lo comparten todos: qué analiza el motor y con qué reglas (<code id="repoName">engine/config.json</code> y <code>alerts/telegram.json</code>). Todo se guarda como un commit en el repo.</p>
-  </div>
-
   <!-- Entrar -->
   <section class="card login" id="loginCard" aria-labelledby="loginH">
-    <h2 id="loginH">Entrar con tu cuenta de GitHub</h2>
-    <p class="mute">Solo quien tiene permiso de escritura en el repositorio puede guardar cambios. Para entrar usás un token de acceso de GitHub. El token queda únicamente en este navegador y viaja solo a api.github.com. Tu perfil se identifica con tu usuario de GitHub.</p>
-    <p class="mute"><b>Si sos el dueño del repo</b>, seguí estos pasos:</p>
-    <ol>
-      <li>Abrí <a id="patLink" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">crear token en GitHub</a> (tipo <b>Fine-grained</b>).</li>
-      <li>En <b>Repository access</b> elegí <b>Only select repositories</b> y marcá <span id="repoName2">TraderPanel</span>.</li>
-      <li>En <b>Permissions → Repository</b>: <b>Contents: Read and write</b>. Opcional: <b>Actions: Read and write</b> para poder correr el motor apenas guardás.</li>
-      <li>Ponele vencimiento (90 días está bien), generalo y pegalo acá.</li>
+    <div class="lh"><svg class="i" aria-hidden="true"><use href="#i-logo"/></svg><h2 id="loginH">Entrar a la configuración</h2></div>
+    <p class="mute">Usás un token de GitHub. Queda solo en este navegador y viaja solo a api.github.com. Tu perfil se identifica con tu usuario de GitHub; solo quien tiene permiso de escritura en el repo puede guardar.</p>
+    <div class="seg full" role="tablist" aria-label="Tipo de cuenta">
+      <button type="button" role="tab" id="tabOwner" aria-selected="true" aria-controls="howOwner">Soy el dueño del repo</button>
+      <button type="button" role="tab" id="tabCollab" aria-selected="false" aria-controls="howCollab">Me sumaron como colaborador</button>
+    </div>
+    <ol class="steps" id="howOwner" role="tabpanel" aria-labelledby="tabOwner">
+      <li><span>1</span><div>Abrí <a id="patLink" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">crear el token en GitHub</a>: el link ya trae marcados el repo <b id="repoName2">TraderPanel</b> y los permisos (tipo <b>Fine-grained</b>).</div></li>
+      <li><span>2</span><div>Revisá que diga <b>Contents: Read and write</b>. Opcional: <b>Actions: Read and write</b> para correr el motor apenas guardás.</div></li>
+      <li><span>3</span><div>Ponele vencimiento (90 días está bien), generalo y pegalo abajo.</div></li>
     </ol>
-    <p class="mute"><b>Si te sumaron como colaborador</b> (el repo es de otra persona), GitHub no deja usar tokens Fine-grained en repos ajenos: abrí <a id="classicLink" href="https://github.com/settings/tokens/new" target="_blank" rel="noopener">crear token clásico</a>, marcá solo el permiso <b>public_repo</b> (y <b>workflow</b> si querés correr el motor), ponele vencimiento y pegalo acá. Antes aceptá la invitación al repo que te llegó por mail.</p>
+    <ol class="steps" id="howCollab" role="tabpanel" aria-labelledby="tabCollab" hidden>
+      <li><span>1</span><div>Aceptá la invitación al repo que te llegó por mail.</div></li>
+      <li><span>2</span><div>Abrí <a id="classicLink" href="https://github.com/settings/tokens/new" target="_blank" rel="noopener">crear token clásico</a> (GitHub no deja usar tokens Fine-grained en repos ajenos). Dejá marcado solo <b>public_repo</b>, y <b>workflow</b> si querés correr el motor.</div></li>
+      <li><span>3</span><div>Ponele vencimiento, generalo y pegalo abajo.</div></li>
+    </ol>
     <div class="f">
       <label for="token">Token</label>
       <input type="password" id="token" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
     </div>
     <label class="check"><input type="checkbox" id="remember"> Recordarme en este navegador (si no, se borra al cerrar la pestaña)</label>
-    <div class="row"><button class="btn go" id="loginBtn" type="button"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Entrar</button></div>
+    <button class="btn go" id="loginBtn" type="button"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Entrar</button>
     <div id="loginMsg" role="status"></div>
   </section>
 
   <div id="app" hidden>
-    <div id="appMsg" role="status" style="margin-bottom:16px"></div>
-    <nav class="secnav" aria-label="Secciones" style="margin-bottom:20px">
-      <a href="#s-todos">Perfiles de todos</a><a href="#s-perfil">Perfil</a><a href="#s-misavisos">Mis avisos</a><a href="#s-reglas">Común: reglas</a><a href="#s-watch">Común: watchlist</a><a href="#s-setups">Común: setups</a><a href="#s-mercados">Común: mercados</a><a href="#s-tg">Común: Telegram</a>
-    </nav>
-    <div style="display:flex;flex-direction:column;gap:20px" id="form"></div>
+    <div class="cfg">
+      <nav class="side" id="side" aria-label="Secciones de configuración">
+        <div class="g"><span class="gt">Mi cuenta</span>
+          <a href="#perfil" data-go="perfil"><span class="l">Mi perfil</span><span class="cnt" hidden></span></a>
+          <a href="#avisos" data-go="avisos"><span class="l">Mis avisos</span><span class="cnt" hidden></span></a>
+        </div>
+        <div class="g"><span class="gt" id="sideOthers">Con los demás</span>
+          <a href="#comparar" data-go="comparar"><span class="l">Comparar perfiles</span><span class="cnt" hidden></span></a>
+        </div>
+        <div class="g"><span class="gt">Motor · común a todos</span>
+          <a href="#reglas" data-go="reglas"><span class="l">Reglas de operación</span><span class="cnt" hidden></span></a>
+          <a href="#watch" data-go="watch"><span class="l">Watchlist</span><span class="cnt" hidden></span></a>
+          <a href="#setups" data-go="setups"><span class="l">Setups</span><span class="cnt" hidden></span></a>
+          <a href="#mercados" data-go="mercados"><span class="l">Mercados</span><span class="cnt" hidden></span></a>
+          <a href="#tg" data-go="tg"><span class="l">Telegram (general)</span><span class="cnt" hidden></span></a>
+        </div>
+        <div class="note"><b>Se guarda en GitHub</b>Cada guardado es un commit firmado con tu usuario en <code id="repoName">users/users.json</code> o en la config común del motor.</div>
+      </nav>
+      <div class="panes">
+        <div id="appMsg" role="status"></div>
+        <div id="viewing"></div>
+        <div id="form"></div>
+      </div>
+    </div>
   </div>
 </main>
 
@@ -369,7 +486,7 @@ function validateMe(c, login) {
 }
 
 /* ---------- Estado ---------- */
-const S = { orig: {}, draft: {}, sha: {}, branch: 'main', canRun: true, login: '', profile: '' };
+const S = { orig: {}, draft: {}, sha: {}, branch: 'main', canRun: true, login: '', profile: '', pane: 'perfil', mk: 'adr', cmp: '', cmpOnly: false, copied: new Set(), destOwn: false };
 const errors = () => [...validateEngine(S.draft.engine), ...validateTg(S.draft.tg), ...validateMe(S.draft.users, S.profile)];
 
 /* ---------- Etiquetas legibles para el resumen de cambios ---------- */
@@ -445,68 +562,178 @@ function chipsField(file, path, label, help, norm) {
     ${help ? `<span class="help">${esc(help)}</span>` : ''}<span class="err" aria-live="polite"></span></div>`;
 }
 
+/* ---------- Secciones (una a la vez, con el menú lateral) ---------- */
+const PANES = ['perfil', 'avisos', 'comparar', 'reglas', 'watch', 'setups', 'mercados', 'tg'];
+const PANE_NAME = { perfil: 'Mi perfil', avisos: 'Mis avisos', comparar: 'Comparar', reglas: 'Reglas', watch: 'Watchlist', setups: 'Setups', mercados: 'Mercados', tg: 'Telegram' };
+const LEGACY = { 's-perfil': 'perfil', 's-misavisos': 'avisos', 's-todos': 'comparar', 's-reglas': 'reglas', 's-watch': 'watch', 's-setups': 'setups', 's-mercados': 'mercados', 's-tg': 'tg' };
+const paneFromHash = () => { const h = decodeURIComponent(location.hash.slice(1)); return LEGACY[h] || (PANES.includes(h) ? h : 'perfil'); };
+function paneOf(key) {
+  const i = key.indexOf(':'), f = key.slice(0, i), p = key.slice(i + 1);
+  if (f === 'tg') return 'tg';
+  if (f === 'users') return /^users\.[^.]+\.telegram\./.test(p) ? 'avisos' : 'perfil';
+  if (p.startsWith('watchlist.')) return 'watch';
+  if (p.startsWith('setups.')) return 'setups';
+  if (/^(risk\.(adr|byma|cripto)\.|filters\.|benchmarks\.)/.test(p)) return 'mercados';
+  return 'reglas';
+}
+function go(p, focus) {
+  if (!PANES.includes(p)) p = 'perfil';
+  S.pane = p;
+  for (const el of document.querySelectorAll('#form .pane')) el.hidden = el.dataset.pane !== p;
+  for (const a of document.querySelectorAll('#side a[data-go]')) { if (a.dataset.go === p) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }
+  if (location.hash !== '#' + p) history.replaceState(null, '', '#' + p);
+  if (focus) {
+    window.scrollTo({ top: 0 });
+    document.querySelector(`#form .pane[data-pane="${p}"] h1`)?.focus({ preventScroll: true });
+    document.querySelector(`#side a[data-go="${p}"]`)?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
+}
+function swField(file, path, label, help, sub) {
+  return `<label class="swr${sub ? ' swsub' : ''}"><span class="t"><span>${esc(label)}</span>${help ? `<small>${esc(help)}</small>` : ''}</span><input class="sw" type="checkbox" role="switch" data-file="${file}" data-path="${path}" data-kind="bool"></label>`;
+}
+const sharedPill = () => { const n = Object.values(get(S.draft.users, 'users') || {}).map(u => u?.name).filter(Boolean);
+  return `<span class="shared"><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Afecta a ${n.length > 1 ? esc(n.slice(0, -1).join(', ') + ' y ' + n.at(-1)) : 'todos'}</span>`; };
+const motorHead = (h, p) => `<div class="ph"><div><h1 tabindex="-1">${h}</h1><p>${p}</p></div>${sharedPill()}</div>`;
+
+/* ---------- Comparar perfiles ---------- */
+const pct = v => isNum(v) ? `${v.toLocaleString('es-AR')} %` : '—';
+const yn = v => typeof v === 'boolean' ? (v ? 'sí' : 'no') : '—';
+const CMP = [
+  ...MARKETS.flatMap(m => [
+    [`risk.${m}.budget`, 'Presupuesto', MK[m].name, v => isNum(v) ? `${MK[m].cur} ${v.toLocaleString('es-AR', { maximumFractionDigits: 0 })}` : '—'],
+    [`risk.${m}.max_loss_pct`, 'Pérdida máx. por operación', MK[m].name, pct],
+    [`risk.${m}.max_position_pct`, 'Posición máx.', MK[m].name, pct]]),
+  ['max_open_positions', 'Tope de operaciones abiertas', 'General', v => isNum(v) ? String(v) : '—'],
+  ['telegram.engine', 'Recibe las señales del motor', 'Avisos', yn],
+  ['telegram.types.entry', 'Avisos de entradas', 'Avisos', yn],
+  ['telegram.types.exit', 'Avisos de salidas', 'Avisos', yn],
+  ['telegram.types.update', 'Avisos de ajustes de stop', 'Avisos', yn],
+  ['telegram.follow', 'Sigue las operaciones de', 'Avisos', (v, all) => (v || []).map(x => all[x]?.name || x).join(', ') || 'nadie', true]
+];
+function renderCompare() {
+  const box = $('cmpBox'); if (!box) return;
+  const all = get(S.draft.users, 'users') || {}, a = all[S.profile] || {}, b = all[S.cmp];
+  if (!b) { box.innerHTML = '<div class="card"><p class="mute">Todavía no hay otros usuarios. Aparecen acá cuando entran al panel con su cuenta y guardan su perfil.</p></div>'; return; }
+  const nm = l => esc(all[l]?.name || l), same = (x, y) => JSON.stringify(x ?? null) === JSON.stringify(y ?? null);
+  const nd = CMP.filter(([p]) => !same(get(a, p), get(b, p))).length;
+  const rows = CMP.map(([p, label, group, f, noCopy]) => {
+    const va = get(a, p), vb = get(b, p), diff = !same(va, vb), copied = !diff && S.copied.has(p) && !same(va, get(S.orig.users, `users.${S.profile}.${p}`));
+    if (S.cmpOnly && !diff && !copied) return '';
+    return `<tr class="${diff ? 'diff' : ''}"><td>${esc(label)}<br><span class="mute">${esc(group)}</span></td><td class="r num">${esc(f(va, all))}</td><td class="r num" style="color:var(--info)">${esc(f(vb, all))}</td>
+      <td class="r">${diff && !noCopy ? `<button class="btn" type="button" data-copy="${p}" style="min-height:36px">Copiar el de ${nm(S.cmp)}</button>` : copied ? '<span class="copied">copiado · sin guardar</span>' : ''}</td></tr>`;
+  }).join('');
+  box.innerHTML = `<div class="card" style="padding:0;overflow:hidden">
+    <div class="card-h" style="padding:16px 20px 0;margin-bottom:12px"><p>${nd ? `${nd} ${nd === 1 ? 'diferencia' : 'diferencias'} con ${nm(S.cmp)}` : `Tienen la misma configuración que ${nm(S.cmp)}.`}</p>
+      <label class="check"><input type="checkbox" id="cmpOnly"${S.cmpOnly ? ' checked' : ''}> Solo diferencias</label></div>
+    <div class="tblwrap" style="border:0;border-top:1px solid var(--line);border-radius:0"><table class="ptbl"><thead><tr><th scope="col">Concepto</th><th scope="col" class="r">${S.profile === S.login ? 'Vos · ' : ''}${nm(S.profile)}</th><th scope="col" class="r">${nm(S.cmp)}</th><th scope="col"><span class="sr">Acción</span></th></tr></thead>
+    <tbody>${rows || '<tr><td colspan="4" class="mute">No hay diferencias.</td></tr>'}</tbody></table></div></div>
+    <div class="row"><button class="btn" type="button" data-profile="${esc(S.cmp)}">Abrir el perfil de ${nm(S.cmp)} para ayudarlo</button><span class="mute" style="font-size:13px">Si lo cambiás y guardás, el commit queda firmado por vos.</span></div>`;
+  const tip = $('tipTxt');
+  if (tip) {
+    const first = CMP.find(([p, , , , noCopy]) => !noCopy && !same(get(a, p), get(b, p)));
+    tip.innerHTML = first ? `${nm(S.cmp)} tiene <b>${esc(first[1].toLowerCase())}</b> en ${esc(first[2])}: <b class="num">${esc(first[3](get(b, first[0]), all))}</b>, y ${S.profile === S.login ? 'vos' : nm(S.profile)} <b class="num">${esc(first[3](get(a, first[0]), all))}</b>. ${nd > 1 ? `Hay ${nd} diferencias en total.` : ''}`
+      : `${S.profile === S.login ? 'Tenés' : 'Tiene'} la misma configuración que ${nm(S.cmp)}.`;
+  }
+}
+
+/* ---------- Destino de los avisos ---------- */
+function updateDest() {
+  const chat = get(S.draft.users, `users.${S.profile}.telegram.chat`) ?? '';
+  const v = chat === 'default' ? 'default' : chat === '' && !S.destOwn ? 'none' : 'own';
+  for (const r of document.querySelectorAll('#form input[name=dest]')) r.checked = r.value === v;
+  const own = $('ownChat'); if (own) own.hidden = v !== 'own';
+}
+function onDest(v) {
+  const p = `users.${S.profile}.telegram.chat`, cur = get(S.draft.users, p) ?? '';
+  S.destOwn = v === 'own';
+  if (v === 'default') set(S.draft.users, p, 'default');
+  else if (v === 'none') set(S.draft.users, p, '');
+  else { const o = get(S.orig.users, p) ?? ''; set(S.draft.users, p, cur !== 'default' ? cur : (o !== 'default' ? o : '')); }
+  fillForm();
+  if (v === 'own') document.querySelector('#ownChat input')?.focus();
+}
+
 function buildProfile() {
   const L = S.profile, P = `users.${L}`, mine = L === S.login;
   const all = get(S.draft.users, 'users') || {}, others = Object.keys(all).filter(x => x !== L);
   const nm = l => esc(all[l]?.name || l);
-  const money = (m, v) => isNum(v) ? `${MK[m].cur} ${v.toLocaleString('es-AR', { maximumFractionDigits: 0 })}` : '—';
-  const table = `<div class="tblwrap"><table class="ptbl"><thead><tr><th>Usuario</th>${MARKETS.map(m => `<th>${MK[m].name}</th>`).join('')}<th>Tope</th><th>Sigue a</th><th></th></tr></thead><tbody>${Object.keys(all).map(l => {
-    const u = all[l] || {};
-    return `<tr${l === L ? ' class="sel"' : ''}><td><b>${nm(l)}</b>${l === S.login ? ' <span class="mute">(vos)</span>' : ''}</td>${MARKETS.map(m => { const r = get(u, `risk.${m}`) || {};
-      return `<td class="num">${money(m, r.budget)}<br><span class="mute">riesgo ${isNum(r.max_loss_pct) ? r.max_loss_pct.toLocaleString('es-AR') : '—'} % · pos. ${isNum(r.max_position_pct) ? r.max_position_pct : '—'} %</span></td>`; }).join('')}
-      <td class="num">${u.max_open_positions ?? '—'}</td><td>${(get(u, 'telegram.follow') || []).map(nm).join(', ') || '<span class="mute">nadie</span>'}</td>
-      <td>${l === L ? '<span class="mute">viendo</span>' : `<button class="btn" type="button" data-profile="${esc(l)}">${l === S.login ? 'Ver el mío' : 'Ver y editar'}</button>`}</td></tr>`; }).join('')}</tbody></table></div>`;
-  const cards = MARKETS.map(m => `<div class="mk"><h3>${MK[m].name} <small>montos en ${MK[m].cur}</small></h3>
-    ${numField('users', `${P}.risk.${m}.budget`, `Tu presupuesto (${MK[m].cur})`, { min: 1, calc: 'u:' + m })}
-    ${numField('users', `${P}.risk.${m}.max_loss_pct`, 'Pérdida máx. por operación (%)', { min: 0.05, max: 10, step: 0.05, help: 'Si toca el stop perdés este % del presupuesto. Con esto se calcula tu cantidad.' })}
-    ${numField('users', `${P}.risk.${m}.max_position_pct`, 'Posición máx. (% del presupuesto)', { min: 1, max: 100, step: 1 })}
-  </div>`).join('');
-  return `
-  <section class="card" id="s-todos"><h2>Perfiles de todos</h2><p class="sub">Así configuró cada uno su presupuesto y su riesgo. Cualquiera puede abrir el perfil de otro para ayudarlo; el cambio queda firmado con su usuario en el commit.</p>${table}</section>
-  ${mine ? '' : `<div class="msg info">Estás viendo el perfil de <b>${nm(L)}</b>. Si lo cambiás y guardás, el commit queda a tu nombre (${esc(S.login)}). <button class="btn" type="button" data-profile="${esc(S.login)}" style="min-height:36px;margin-left:8px">Volver al mío</button></div>`}
-  <section class="card" id="s-perfil"><h2>${mine ? 'Mi perfil' : 'Perfil de ' + nm(L)} · ${esc(L)}</h2><p class="sub">Con estos números cada alerta ${mine ? 'te dice cuántas acciones comprar a vos' : `le dice a ${nm(L)} cuántas acciones comprar`}, aunque la operación la haya hecho otro.</p>
-    <div class="rules" style="margin-bottom:16px">
-      ${textField('users', `${P}.name`, 'Tu nombre', 'Así te ven los demás en las alertas y en el panel.')}
-      ${numField('users', `${P}.max_open_positions`, 'Tope de operaciones abiertas', { min: 1, max: 50, step: 1, help: 'Si ya seguís más que esto abiertas, la alerta de entrada te avisa.' })}
-    </div>
-    <div class="grid">${cards}</div></section>
-
-  <section class="card" id="s-misavisos"><h2>Mis avisos por Telegram</h2><p class="sub">Qué te llega y a dónde.</p>
+  if (!others.includes(S.cmp)) S.cmp = others[0] || '';
+  $('sideOthers').textContent = others.length === 1 ? `Con ${all[others[0]]?.name || others[0]}` : 'Con los demás';
+  $('viewing').innerHTML = mine ? '' : `<div class="msg info">Estás viendo el perfil de <b>${nm(L)}</b>. Si lo cambiás y guardás, el commit queda a tu nombre (${esc(S.login)}). <button class="btn" type="button" data-profile="${esc(S.login)}" style="min-height:36px;margin-left:8px">Volver al mío</button></div>`;
+  const mkTabs = `<div class="seg" role="tablist" aria-label="Mercado">${MARKETS.map(m => `<button type="button" role="tab" id="mkt-${m}" data-mk="${m}" aria-selected="${m === S.mk}" aria-controls="mk-${m}">${MK[m].name}</button>`).join('')}</div>`;
+  const mkPanes = MARKETS.map(m => `<div id="mk-${m}" role="tabpanel" aria-labelledby="mkt-${m}" data-mkp="${m}"${m === S.mk ? '' : ' hidden'}>
     <div class="rules">
-      ${textField('users', `${P}.telegram.chat`, 'Chat de Telegram', 'default = el canal principal del repo. Para tu propio canal: el id que empieza con -100 o el @canal, con el bot agregado como administrador. Vacío = sin Telegram. Ojo: el repo es público.')}
-      <div class="f" data-key="users:${P}.telegram.follow"><span class="lbl">Seguir las operaciones de</span><div class="opts">${others.length ? others.map(o =>
-        `<label class="check"><input type="checkbox" data-file="users" data-path="${P}.telegram.follow" data-kind="set" value="${esc(o)}"> ${esc(get(S.draft.users, `users.${o}.name`) || o)} <span class="mute">(${esc(o)})</span></label>`).join('') : '<span class="mute">Todavía no hay otros usuarios. Aparecen acá cuando entran al panel con su cuenta y guardan su perfil.</span>'}</div>
-        <span class="help">Te llega cada compra, venta y cambio de stop que registren, con la cantidad calculada para tu presupuesto.</span><span class="err" aria-live="polite"></span></div>
-      <div class="f"><span class="lbl">Señales del motor</span>${checkField('users', `${P}.telegram.engine`, 'Recibir las señales del motor')}${checkField('users', `${P}.telegram.types.entry`, 'Entradas')}${checkField('users', `${P}.telegram.types.exit`, 'Salidas (stop u objetivo tocado)')}${checkField('users', `${P}.telegram.types.update`, 'Ajustes de stop')}</div>
-      <div class="f"><span class="lbl">Mercados (señales del motor)</span>${MARKETS.map(m => checkField('users', `${P}.telegram.kinds.${m}`, MK[m].name)).join('')}</div>
+      ${numField('users', `${P}.risk.${m}.budget`, `${mine ? 'Tu presupuesto' : 'Presupuesto'} (${MK[m].cur})`, { min: 1, help: `Lo que ${mine ? 'tenés' : 'tiene'} para operar ${MK[m].name}.` })}
+      ${numField('users', `${P}.risk.${m}.max_loss_pct`, 'Pérdida máx. por operación (%)', { min: 0.05, max: 10, step: 0.05, help: 'Si toca el stop se pierde este % del presupuesto.' })}
+      ${numField('users', `${P}.risk.${m}.max_position_pct`, 'Posición máx. (% del presupuesto)', { min: 1, max: 100, step: 1, help: 'Lo máximo en un solo activo.' })}
     </div>
-    <div style="margin-top:16px">${chipsField('users', `${P}.telegram.only`, 'Del motor, solo estos activos (vacío = todos)', 'Formato mercado:ACTIVO, por ejemplo adr:YPF o cripto:BTC.', 'only')}
-      <div class="row" style="margin-top:8px"><button class="btn" type="button" id="useBell" hidden>Usar los activos con campanita del panel</button></div></div>
-    <div class="tgbox">
-      <div class="row" style="justify-content:space-between"><b>Estado</b><span class="pill warn" id="tgState">Revisando…</span></div>
+    ${m === 'cripto' ? swField('users', `${P}.risk.cripto.fractional`, 'Permite comprar fracciones', 'Por ejemplo 0,0125 BTC en vez de unidades enteras.') : ''}
+    <div class="live" data-live="${m}" aria-live="polite"></div>
+  </div>`).join('');
+  const perfil = `<section class="pane" data-pane="perfil" hidden>
+    <div class="ph"><div><h1 tabindex="-1">${mine ? 'Mi perfil' : 'Perfil de ' + nm(L)}</h1><p>Con estos números cada alerta ${mine ? 'te dice cuánto comprar a vos' : `le dice a ${nm(L)} cuánto comprar`}, aunque la operación la haya hecho otro.</p></div>
+      ${Object.keys(all).length > 1 ? `<div class="f"><label for="viewSel">Viendo el perfil de</label><select id="viewSel" class="sel">${Object.keys(all).map(l => `<option value="${esc(l)}"${l === L ? ' selected' : ''}>${nm(l)}${l === S.login ? ' (vos)' : ''}</option>`).join('')}</select></div>` : ''}</div>
+    <section class="card" aria-label="Datos generales"><div class="rules">
+      ${textField('users', `${P}.name`, mine ? 'Tu nombre' : 'Nombre', 'Así se ve en las alertas y en el panel.')}
+      ${numField('users', `${P}.max_open_positions`, 'Tope de operaciones abiertas', { min: 1, max: 50, step: 1, help: 'Si ya hay más abiertas, la alerta de entrada lo avisa.' })}
+    </div></section>
+    <section class="card" aria-labelledby="presH"><div class="card-h"><div><h2 id="presH">Presupuesto y riesgo</h2><p>Uno por mercado. Elegí cuál editar.</p></div>${mkTabs}</div>${mkPanes}</section>
+    ${others.length ? `<div class="tip"><span id="tipTxt"></span><button class="btn ghost" type="button" data-go="comparar">Comparar con ${nm(S.cmp)}</button></div>` : ''}
+  </section>`;
+  const avisos = `<section class="pane" data-pane="avisos" hidden>
+    <div class="ph"><div><h1 tabindex="-1">${mine ? 'Mis avisos' : 'Avisos de ' + nm(L)} por Telegram</h1><p>Qué ${mine ? 'te' : 'le'} llega y a dónde.</p></div></div>
+    <div class="split"><div class="main">
+      <section class="card" aria-labelledby="destH"><div class="card-h"><h2 id="destH">A dónde</h2></div>
+        <div class="dests f" data-key="users:${P}.telegram.chat" role="radiogroup" aria-labelledby="destH">
+          <label class="dest"><input type="radio" name="dest" value="default"><span><b>Canal principal</b><small>El canal que cargó el dueño del repo (TraderPanel Alertas).</small></span></label>
+          <label class="dest"><input type="radio" name="dest" value="own"><span><b>${mine ? 'Mi' : 'Su'} propio canal</b><small>El id que empieza con -100 o el @canal, con el bot como administrador.</small></span></label>
+          <div id="ownChat" hidden><label for="users-${P.replace(/\./g, '-')}-telegram-chat">Id o @canal</label><input type="text" id="users-${P.replace(/\./g, '-')}-telegram-chat" data-file="users" data-path="${P}.telegram.chat" data-kind="text" spellcheck="false" autocomplete="off" placeholder="-100… o @canal"><span class="help">Ojo: el repo es público. Más abajo, a la derecha, está cómo conseguir el id.</span></div>
+          <label class="dest"><input type="radio" name="dest" value="none"><span><b>Sin Telegram</b><small>No ${mine ? 'te' : 'le'} llega nada; todo se sigue viendo en el panel.</small></span></label>
+          <span class="err" aria-live="polite"></span>
+        </div></section>
+      <section class="card" aria-labelledby="queH"><div class="card-h"><h2 id="queH">Qué ${mine ? 'te' : 'le'} llega</h2></div>
+        ${swField('users', `${P}.telegram.engine`, 'Señales del motor', 'Las entradas y salidas que detectan las skills.')}
+        ${swField('users', `${P}.telegram.types.entry`, 'Entradas', 'Cuándo y cuánto comprar.', 1)}
+        ${swField('users', `${P}.telegram.types.exit`, 'Salidas', 'Stop u objetivo tocado.', 1)}
+        ${swField('users', `${P}.telegram.types.update`, 'Ajustes de stop', 'Cuando el motor sube el stop.', 1)}
+        <div class="f" style="padding-top:14px;border-top:1px solid var(--line)"><span class="lbl">Mercados (señales del motor)</span><div class="pills">${MARKETS.map(m => `<label><input type="checkbox" data-file="users" data-path="${P}.telegram.kinds.${m}" data-kind="bool"> ${MK[m].name}</label>`).join('')}</div></div>
+        <div style="margin-top:16px">${chipsField('users', `${P}.telegram.only`, 'Del motor, solo estos activos (vacío = todos)', 'Formato mercado:ACTIVO, por ejemplo adr:YPF o cripto:BTC.', 'only')}
+          <div class="row" style="margin-top:8px"><button class="btn" type="button" id="useBell" hidden>Usar los activos con campanita del panel</button></div></div>
+      </section>
+      <section class="card" aria-labelledby="folH"><div class="card-h"><div><h2 id="folH">Operaciones de los demás</h2><p>Cada compra, venta y cambio de stop que registren, con la cantidad calculada para ${mine ? 'tu' : 'su'} presupuesto.</p></div></div>
+        <div class="f" data-key="users:${P}.telegram.follow">${others.length ? others.map(o => `<label class="swr"><span class="t"><span>${nm(o)}</span><small>${esc(o)}</small></span><input class="sw" type="checkbox" role="switch" data-file="users" data-path="${P}.telegram.follow" data-kind="set" value="${esc(o)}"></label>`).join('') : '<span class="mute">Todavía no hay otros usuarios. Aparecen acá cuando entran al panel con su cuenta y guardan su perfil.</span>'}<span class="err" aria-live="polite"></span></div>
+      </section>
+    </div>
+    <aside class="card tgside" aria-labelledby="estH">
+      <div class="row" style="justify-content:space-between"><h2 id="estH" style="font-size:17px">Estado</h2><span class="pill warn" id="tgState">Revisando…</span></div>
       <p class="mute" id="tgSum" style="font-size:14px">Buscando el registro de envíos…</p>
-      <div><p class="lbl" style="font-size:13px;font-weight:500;margin-bottom:6px">Últimas alertas que te llegaron</p><ul class="tglist" id="tgList"><li class="mute">—</li></ul></div>
-      <div class="row"><button class="btn primary" type="button" id="tgTest">Mandar mensaje de prueba</button><a class="btn" id="tgRuns" target="_blank" rel="noopener">Ver envíos en GitHub</a></div>
+      <div><p class="lbl" style="font-size:13px;font-weight:500;margin-bottom:6px">Últimas que ${mine ? 'te' : 'le'} llegaron</p><ul class="tglist" id="tgList"><li class="mute">—</li></ul></div>
+      <button class="btn primary" type="button" id="tgTest">Mandar mensaje de prueba</button><a class="btn" id="tgRuns" target="_blank" rel="noopener">Ver envíos en GitHub</a>
       <div id="tgMsg" role="status"></div>
-      <details class="how"><summary>Cómo recibir los avisos en tu propio Telegram</summary>
+      <details class="how"><summary>Cómo armar ${mine ? 'tu' : 'su'} propio canal</summary>
         <ol>
           <li>Creá un canal en Telegram (puede ser privado).</li>
           <li>En <i>Administradores</i>, agregá al bot de TraderPanel con permiso para publicar. Pedile el nombre del bot al dueño del repo.</li>
           <li>Conseguí el id del canal: reenviá un mensaje del canal a <b>@userinfobot</b>, o abrilo en web.telegram.org y copiá el número de la URL con <code>-100</code> adelante.</li>
-          <li>Pegalo arriba en <b>Chat de Telegram</b>, guardá y tocá <b>Mandar mensaje de prueba</b>.</li>
+          <li>Elegí <b>Propio canal</b>, pegalo, guardá y tocá <b>Mandar mensaje de prueba</b>.</li>
         </ol>
-        <p class="mute">El dueño del repo puede dejar <code>default</code>: usa el canal cargado en el secret <code>TELEGRAM_CHAT_ID</code>. El token del bot queda solo en GitHub; esta página nunca lo ve.</p>
+        <p class="mute">El token del bot queda solo en GitHub; esta página nunca lo ve.</p>
       </details>
-    </div>
-  </section>
-  <h2 style="font-size:20px;margin-top:12px">Común <span class="mute" style="font-size:15px;font-weight:400">· lo comparten todos los usuarios</span></h2>`;
+    </aside></div>
+  </section>`;
+  const comparar = `<section class="pane" data-pane="comparar" hidden>
+    <div class="ph"><div><h1 tabindex="-1">Comparar perfiles</h1><p>${mine ? 'Tu configuración' : `La configuración de ${nm(L)}`} al lado de la de otro. Las diferencias quedan marcadas y podés copiar un valor con un toque.</p></div>
+      ${others.length > 1 ? `<div class="f"><label for="cmpSel">Comparar con</label><select id="cmpSel" class="sel">${others.map(o => `<option value="${esc(o)}"${o === S.cmp ? ' selected' : ''}>${nm(o)}</option>`).join('')}</select></div>` : ''}</div>
+    <div id="cmpBox" style="display:flex;flex-direction:column;gap:12px"></div>
+  </section>`;
+  return perfil + avisos + comparar;
 }
 
 function buildForm() {
   const mkCards = MARKETS.map(m => `<div class="mk"><h3>${MK[m].name} <small>montos en ${MK[m].cur}</small></h3>
-    ${numField('engine', `risk.${m}.budget`, `Cartera de referencia (${MK[m].cur})`, { min: 1, calc: m, help: 'Solo para los resultados que muestra el panel. Tu tamaño sale de tu perfil.' })}
-    ${numField('engine', `risk.${m}.max_loss_pct`, 'Pérdida máx. por operación (%)', { min: 0.05, max: 10, step: 0.05, help: 'Con esto se calcula el tamaño: si toca el stop perdés este % del presupuesto.' })}
-    ${numField('engine', `risk.${m}.max_position_pct`, 'Posición máx. (% del presupuesto)', { min: 1, max: 100, step: 1 })}
+    ${numField('engine', `risk.${m}.budget`, `Cartera de referencia (${MK[m].cur})`, { min: 1, calc: m, help: 'Solo para los resultados que muestra el panel. El tamaño de cada uno sale de su perfil.' })}
+    ${numField('engine', `risk.${m}.max_loss_pct`, 'Pérdida máx. por operación (%)', { min: 0.05, max: 10, step: 0.05, help: 'Con esto se calcula el tamaño: si toca el stop se pierde este % de la cartera.' })}
+    ${numField('engine', `risk.${m}.max_position_pct`, 'Posición máx. (% de la cartera)', { min: 1, max: 100, step: 1 })}
     ${m === 'cripto' ? checkField('engine', `risk.${m}.fractional`, 'Permite comprar fracciones') : ''}
     ${numField('engine', `filters.${m}.min_price`, `Precio mínimo (${MK[m].cur})`, { min: 0, help: 'Debajo de esto el activo no se analiza.' })}
     ${numField('engine', `filters.${m}.min_volume`, 'Volumen diario mínimo', { min: 0, step: 1 })}
@@ -514,40 +741,49 @@ function buildForm() {
   </div>`).join('');
 
   $('form').innerHTML = buildProfile() + `
-
-  <section class="card" id="s-reglas"><h2>Reglas de operación</h2><p class="sub">Valen para todos los mercados. R es la distancia entre la entrada y el stop.</p>
-    <div class="rules">
+  <section class="pane" data-pane="reglas" hidden>
+    ${motorHead('Reglas de operación', 'Valen para todos los mercados y cambian qué señales abre el motor para todos.')}
+    <section class="card" aria-label="Cómo queda una operación"><p class="lbl" style="font-size:13px;font-weight:500;color:var(--ink2);margin-bottom:10px">Así queda una operación con estas reglas</p><div class="rdiag" id="rdiag"></div></section>
+    <section class="card" aria-label="Reglas"><div class="rules">
       ${numField('engine', 'risk.target_r', 'Objetivo (R)', { min: 0.5, max: 20, step: 0.1, help: 'El objetivo de ganancia se pone a esta cantidad de R.' })}
       ${numField('engine', 'risk.min_reward_risk', 'R:R mínimo', { min: 0.5, max: 10, step: 0.1, help: 'Operaciones con menos relación ganancia/riesgo se descartan.' })}
       ${numField('engine', 'risk.max_stop_pct', 'Stop máximo (%)', { min: 0.5, max: 50, step: 0.5, help: 'Si el stop queda más lejos que esto, no se entra.' })}
-      ${numField('engine', 'risk.max_open_positions', 'Posiciones abiertas máx. del motor', { min: 1, max: 50, step: 1, help: 'Cuántas señales abiertas sigue el motor a la vez. Tu tope personal está en tu perfil.' })}
       ${numField('engine', 'risk.breakeven_after_r', 'Stop a la entrada después de (R)', { min: 0.1, max: 10, step: 0.1, help: 'Al ganar esta cantidad de R, el stop sube al precio de entrada.' })}
+      ${numField('engine', 'risk.max_open_positions', 'Posiciones abiertas del motor', { min: 1, max: 50, step: 1, help: 'Cuántas señales abiertas sigue el motor a la vez. El tope de cada uno está en su perfil.' })}
       ${numField('engine', 'risk.burst_max_sessions', 'Momentum Burst: ruedas máx.', { min: 1, max: 60, step: 1, help: 'Salida por tiempo si no llegó al objetivo.' })}
     </div></section>
+  </section>
 
-  <section class="card" id="s-watch"><h2>Watchlist del motor</h2><p class="sub">Los activos que analiza el motor cada hora (máximo ${MAX_WL} por mercado). Es independiente de la lista que armás en el panel.</p>
-    <div style="display:flex;flex-direction:column;gap:16px">
+  <section class="pane" data-pane="watch" hidden>
+    ${motorHead('Watchlist del motor', `Los activos que analiza el motor cada hora, hasta ${MAX_WL} por mercado. Es aparte de la lista que armás en el panel.`)}
+    <section class="card" style="display:flex;flex-direction:column;gap:16px">
       ${chipsField('engine', 'watchlist.adr', 'ADRs (ticker de NYSE/Nasdaq)', 'Ej.: YPF, GGAL, MELI.', 'upper')}
       ${chipsField('engine', 'watchlist.byma', 'BYMA (ticker local)', 'Ej.: GGAL, YPFD, PAMP. Se buscan como TICKER.BA en Yahoo.', 'upper')}
       ${chipsField('engine', 'watchlist.cripto', 'Cripto (id de CoinGecko)', 'Ej.: bitcoin, ethereum, solana. Es el id que aparece en la URL de coingecko.com.', 'lower')}
-    </div></section>
+    </section>
+  </section>
 
-  <section class="card" id="s-setups"><h2>Setups que disparan señales</h2><p class="sub">Qué calificaciones de las skills cuentan como entrada y cuáles como "preparado" (aviso de que está cerca).</p>
-    <div class="rules">
+  <section class="pane" data-pane="setups" hidden>
+    ${motorHead('Setups que disparan señales', 'Qué calificaciones de las skills cuentan como entrada y cuáles como “preparado” (aviso de que está cerca).')}
+    <section class="card"><div class="rules">
       ${setField('engine', 'setups.vcp_min_rating', 'VCP: para entrar', VCP, 'Además tiene que romper el pivote con volumen.')}
-      ${setField('engine', 'setups.vcp_watch_rating', 'VCP: para "preparado"', VCP)}
+      ${setField('engine', 'setups.vcp_watch_rating', 'VCP: para “preparado”', VCP)}
       ${setField('engine', 'setups.burst_entry_states', 'Momentum Burst: para entrar', BURST, 'ACTIONABLE_DAY1 es la ruptura del día con volumen.')}
-      ${setField('engine', 'setups.burst_watch_states', 'Momentum Burst: para "preparado"', BURST)}
+      ${setField('engine', 'setups.burst_watch_states', 'Momentum Burst: para “preparado”', BURST)}
     </div></section>
+  </section>
 
-  <section class="card" id="s-mercados"><h2>Mercados y cartera de referencia del motor</h2><p class="sub">Filtros de cada mercado y la cartera con la que el motor simula sus resultados en el panel.</p>
-    <div class="grid">${mkCards}</div></section>
+  <section class="pane" data-pane="mercados" hidden>
+    ${motorHead('Mercados y cartera de referencia', 'Filtros de cada mercado y la cartera con la que el motor simula sus resultados en el panel.')}
+    <div class="grid">${mkCards}</div>
+  </section>
 
-  <section class="card" id="s-tg"><h2>Alertas por Telegram</h2><p class="sub">Valen para todos. Qué te llega a vos se elige en <a href="#s-misavisos">Mis avisos</a>.</p>
-    <div class="rules">
-      ${numField('tg', 'max_age_hours', 'No mandar avisos más viejos que (horas)', { min: 1, max: 720, step: 1 })}
+  <section class="pane" data-pane="tg" hidden>
+    ${motorHead('Telegram (general)', 'Vale para todos. Qué le llega a cada uno se elige en <a href="#avisos" data-go="avisos">Mis avisos</a>.')}
+    <section class="card"><div class="rules">
+      ${numField('tg', 'max_age_hours', 'No mandar avisos más viejos que (horas)', { min: 1, max: 720, step: 1, help: 'Evita que llegue una señal vieja si el motor estuvo caído.' })}
       ${textField('tg', 'panel_url', 'Link al panel en los mensajes', '', 'url')}
-    </div>
+    </div></section>
   </section>`;
 
   for (const el of document.querySelectorAll('#form input[data-path]')) el.addEventListener(el.type === 'checkbox' ? 'change' : 'input', onInput);
@@ -602,6 +838,28 @@ function fillForm() {
   for (const box of document.querySelectorAll('#form .chips')) renderChips(box);
   refresh();
 }
+const money = (m, v, d = 0) => `${MK[m].cur} ${v.toLocaleString('es-AR', { maximumFractionDigits: d })}`;
+function liveBoxes() {
+  for (const box of document.querySelectorAll('#form [data-live]')) {
+    const m = box.dataset.live, r = get(S.draft.users, `users.${S.profile}.risk.${m}`) || {};
+    if (!(isNum(r.budget) && isNum(r.max_loss_pct) && isNum(r.max_position_pct))) { box.innerHTML = '<span class="ex mute">Completá los tres valores para ver la cuenta.</span>'; continue; }
+    const risk = r.budget * r.max_loss_pct / 100, pos = r.budget * r.max_position_pct / 100, at5 = Math.min(risk / 0.05, pos);
+    const px = m === 'byma' ? 5000 : 50, q = m === 'cripto' && r.fractional !== false ? (at5 / px).toLocaleString('es-AR', { maximumFractionDigits: 4 }) : Math.floor(at5 / px).toLocaleString('es-AR');
+    box.innerHTML = `<div><span class="k">Arriesga por operación</span><span class="v risk">${money(m, risk, 2)}</span></div>
+      <div><span class="k">Máximo en un activo</span><span class="v">${money(m, pos)}</span></div>
+      <div><span class="k">Con stop a 5 % compra hasta</span><span class="v">${money(m, at5)}</span></div>
+      <span class="ex">Ejemplo: con un activo de ${money(m, px)} y stop a 5 %, son <b>${q} ${m === 'cripto' ? 'unidades' : 'acciones'}</b>${at5 < risk / 0.05 ? ' (lo limita la posición máxima)' : ''}.</span>`;
+  }
+}
+function ruleDiag() {
+  const box = $('rdiag'); if (!box) return;
+  const r = S.draft.engine.risk || {}, t = r.target_r, be = r.breakeven_after_r, st = r.max_stop_pct;
+  if (!(isNum(t) && t > 0)) { box.innerHTML = '<span class="mute">Poné un objetivo para ver el dibujo.</span>'; return; }
+  const n = (v, d = 1) => v.toLocaleString('es-AR', { maximumFractionDigits: d });
+  box.innerHTML = `<div class="lab"><span style="color:var(--dnfg)">Stop −1R${isNum(st) ? ` (hasta ${n(st)} %)` : ''}</span><span>Entrada</span>${isNum(be) ? `<span style="color:var(--warn)">+${n(be)}R: stop a la entrada</span>` : ''}<span style="color:var(--up)">Objetivo +${n(t)}R</span></div>
+    <div class="rb" aria-hidden="true"><i class="s" style="flex:1"></i><i class="w" style="flex:${t}"></i></div>
+    <span class="mute" style="font-size:13px">Por cada ${isNum(st) ? 'peso' : 'unidad'} que arriesgás buscás ganar ${n(t)}. ${isNum(r.min_reward_risk) ? `Se descartan las de R:R menor a ${n(r.min_reward_risk)}.` : ''}</span>`;
+}
 function refresh() {
   const E = errors(), D = diffs();
   for (const f of document.querySelectorAll('#form .f[data-key]')) {
@@ -616,12 +874,75 @@ function refresh() {
     c.textContent = isNum(r.budget) && isNum(r.max_loss_pct) && isNum(r.max_position_pct)
       ? `Arriesga hasta ${MK[m].cur} ${(r.budget * r.max_loss_pct / 100).toLocaleString('es-AR', { maximumFractionDigits: 2 })} por operación, con posiciones de hasta ${MK[m].cur} ${(r.budget * r.max_position_pct / 100).toLocaleString('es-AR', { maximumFractionDigits: 0 })}.` : '';
   }
+  liveBoxes(); ruleDiag();
+  // Interruptores: marcar cambios y apagar los que dependen de "Señales del motor"
+  for (const el of document.querySelectorAll('#form label.swr input[data-path]')) {
+    const k = `${el.dataset.file}:${el.dataset.path}`, ch = el.dataset.kind === 'set'
+      ? (get(S.draft[el.dataset.file], el.dataset.path) || []).includes(el.value) !== (get(S.orig[el.dataset.file], el.dataset.path) || []).includes(el.value)
+      : D.some(x => x.key === k);
+    el.closest('.swr').classList.toggle('chg', ch);
+  }
+  const eng = get(S.draft.users, `users.${S.profile}.telegram.engine`) !== false;
+  for (const el of document.querySelectorAll('#form .swr.swsub input, #form .pills input')) el.disabled = !eng;
+  // Contadores del menú: cambios (amarillo) o errores (rojo) por sección
+  const per = {};
+  for (const d of D) { const p = paneOf(d.key); (per[p] ||= { d: 0, e: 0 }).d++; }
+  for (const x of E) { const p = paneOf(x.p); (per[p] ||= { d: 0, e: 0 }).e++; }
+  for (const a of document.querySelectorAll('#side a[data-go]')) {
+    const c = a.querySelector('.cnt'), v = per[a.dataset.go];
+    c.hidden = !v; if (!v) continue;
+    c.classList.toggle('bad', v.e > 0); c.textContent = v.e || v.d;
+    c.setAttribute('aria-label', v.e ? `${v.e} con error` : `${v.d} sin guardar`);
+  }
+  const where = Object.keys(per).sort((a, b) => PANES.indexOf(a) - PANES.indexOf(b)).map(p => PANE_NAME[p]).join(', ');
   const st = $('barState');
   st.classList.toggle('bad', E.length > 0);
-  st.innerHTML = E.length ? `<b>${E.length} ${E.length === 1 ? 'valor a corregir' : 'valores a corregir'}</b>` : D.length ? `<b>${D.length} ${D.length === 1 ? 'cambio' : 'cambios'}</b> sin guardar` : 'Sin cambios';
+  st.innerHTML = (E.length ? `<b>${E.length} ${E.length === 1 ? 'valor a corregir' : 'valores a corregir'}</b>` : D.length ? `<b>${D.length} ${D.length === 1 ? 'cambio' : 'cambios'}</b> sin guardar` : 'Sin cambios') + (where ? ` <span class="mute">· en ${esc(where)}</span>` : '');
+  renderCompare(); updateDest();
   $('discard').disabled = !D.length;
   $('review').disabled = !D.length || E.length > 0;
 }
+
+/* ---------- Clicks y cambios dentro del formulario (delegados: el form se rearma) ---------- */
+function wireForm() {
+  $('form').addEventListener('click', ev => {
+    const t = ev.target.closest('[data-profile],[data-go],[data-mk],[data-copy]'); if (!t) return;
+    if (t.dataset.profile) switchProfile(t.dataset.profile);
+    else if (t.dataset.go) { ev.preventDefault(); go(t.dataset.go, true); }
+    else if (t.dataset.mk) selMk(t.dataset.mk, true);
+    else if (t.dataset.copy) {
+      const p = t.dataset.copy, v = get(S.draft.users, `users.${S.cmp}.${p}`);
+      set(S.draft.users, `users.${S.profile}.${p}`, clone(v)); S.copied.add(p);
+      fillForm();
+      const nxt = document.querySelector('#cmpBox [data-copy]'); (nxt || $('cmpBox').querySelector('table'))?.focus?.();
+    }
+  });
+  $('form').addEventListener('keydown', ev => {
+    const t = ev.target.closest('[data-mk]'); if (!t || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(ev.key)) return;
+    ev.preventDefault(); const i = MARKETS.indexOf(t.dataset.mk), n = MARKETS.length;
+    selMk(MARKETS[ev.key === 'Home' ? 0 : ev.key === 'End' ? n - 1 : (i + (ev.key === 'ArrowRight' ? 1 : n - 1)) % n], true);
+  });
+  $('form').addEventListener('change', ev => {
+    const t = ev.target;
+    if (t.id === 'cmpSel') { S.cmp = t.value; S.copied.clear(); renderCompare(); }
+    else if (t.id === 'viewSel') switchProfile(t.value);
+    else if (t.id === 'cmpOnly') { S.cmpOnly = t.checked; renderCompare(); $('cmpOnly')?.focus(); }
+    else if (t.name === 'dest') onDest(t.value);
+  });
+}
+function selMk(m, focus) {
+  S.mk = m;
+  for (const b of document.querySelectorAll('#form [data-mk]')) { const on = b.dataset.mk === m; b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1; }
+  for (const p of document.querySelectorAll('#form [data-mkp]')) p.hidden = p.dataset.mkp !== m;
+  if (focus) $('mkt-' + m)?.focus();
+}
+$('side').addEventListener('click', ev => { const a = ev.target.closest('a[data-go]'); if (a) { ev.preventDefault(); go(a.dataset.go, true); } });
+window.addEventListener('hashchange', () => { if (!$('app').hidden) go(paneFromHash(), true); });
+for (const [tab, other] of [['tabOwner', 'tabCollab'], ['tabCollab', 'tabOwner']]) $(tab).onclick = () => {
+  $(tab).setAttribute('aria-selected', 'true'); $(other).setAttribute('aria-selected', 'false');
+  $(tab === 'tabOwner' ? 'howOwner' : 'howCollab').hidden = false; $(tab === 'tabOwner' ? 'howCollab' : 'howOwner').hidden = true;
+  $('token').placeholder = tab === 'tabOwner' ? 'github_pat_…' : 'ghp_…';
+};
 
 /* ---------- Ver o editar el perfil de otro usuario ---------- */
 function switchProfile(l) {
@@ -629,9 +950,9 @@ function switchProfile(l) {
   const pending = diffs().filter(d => d.key.startsWith('users:'));
   if (pending.length && !confirm('Tenés cambios sin guardar en este perfil. ¿Descartarlos y cambiar de perfil?')) return;
   if (pending.length) S.draft.users = clone(S.orig.users);
-  S.profile = l;
+  S.profile = l; S.copied.clear(); S.destOwn = false;
   buildForm(); fillForm(); wireTg();
-  $('s-todos').scrollIntoView({ block: 'start' });
+  go('perfil', true);
 }
 
 /* ---------- Telegram (estado, prueba y campanita) ---------- */
@@ -653,7 +974,7 @@ async function loadTgStatus() {
   $('tgState').className = 'pill ' + cls; $('tgState').textContent = txt;
   const when = s => new Date(s).toLocaleString('es-AR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
   const chat = get(S.draft.users, `users.${S.profile}.telegram.chat`);
-  $('tgSum').textContent = !reg ? 'Todavía no corrió el envío.' : `Última revisión ${when(reg.last_run)}.` + (!chat ? ' No pusiste chat: no te llega nada.' : '') + (reg.last_error ? ` ${reg.last_error}.` : '');
+  $('tgSum').textContent = !reg ? 'Todavía no corrió el envío.' : `Última revisión ${when(reg.last_run).replace(/\.$/, '')}.` + (!chat ? ' No pusiste chat: no te llega nada.' : '') + (reg.last_error ? ` ${reg.last_error}.` : '');
   const mine = (reg?.recent || []).filter(x => x.status === 'enviado' && (x.to ? x.to === S.profile : S.profile === REPO.owner)).slice(0, 6);
   const TAG = { entry: ['in', 'ENTRADA'], exit: ['out', 'SALIDA'], update: ['', 'AJUSTE'] };
   $('tgList').innerHTML = mine.length ? mine.map(x => { const [c, t] = TAG[x.type] || ['', esc(x.type)];
@@ -720,12 +1041,9 @@ async function login(t, remember) {
   $('who').innerHTML = `${user.avatar_url ? `<img src="${esc(user.avatar_url)}&s=56" alt="">` : ''}<span class="pill ok">${esc(user.login)}</span>`;
   $('who').hidden = $('logout').hidden = false;
   $('loginCard').hidden = true; $('app').hidden = $('bar').hidden = false;
-  if (!$('form').children.length) buildForm();
-  fillForm();
-  if (!$('form').dataset.wired) {
-    $('form').dataset.wired = '1';
-    $('form').addEventListener('click', ev => { const b = ev.target.closest('button[data-profile]'); if (b) switchProfile(b.dataset.profile); });
-  }
+  if (!$('form').children.length) { buildForm(); S.pane = paneFromHash(); }
+  fillForm(); go(S.pane);
+  if (!$('form').dataset.wired) { $('form').dataset.wired = '1'; wireForm(); }
   wireTg();
   if (created) msg('appMsg', 'info', `Todavía no tenías perfil, así que armé uno con valores de ejemplo. Poné <b>tu</b> presupuesto, elegí a quién seguir y tocá <b>Revisar y guardar</b>.`);
 }
@@ -750,7 +1068,7 @@ $('logout').onclick = () => {
   if (diffs().length && !confirm('Tenés cambios sin guardar. ¿Salir igual?')) return;
   tok.clear(); token = ''; location.reload();
 };
-$('discard').onclick = () => { S.draft = clone(S.orig); fillForm(); msg('appMsg'); };
+$('discard').onclick = () => { S.draft = clone(S.orig); S.copied.clear(); S.destOwn = false; fillForm(); msg('appMsg'); };
 window.addEventListener('beforeunload', e => { if (S.orig.engine && diffs().length) e.preventDefault(); });
 
 /* ---------- Guardar ---------- */
@@ -818,8 +1136,9 @@ $('save').onclick = async () => {
     } else ran = changed.some(f => f !== 'users') ? ' El motor los toma en la próxima corrida programada.' : ' Tus avisos ya usan estos valores.';
     $('dlg').close();
     msg('appMsg', 'ok', `Guardado. ${commits.map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener">Ver commit${commits.length > 1 ? ' ' + (i + 1) : ''}</a>`).join(' · ')}.${ran}`);
+    S.copied.clear();
     if (changed.includes('users')) { buildForm(); wireTg(); }
-    fillForm();
+    fillForm(); go(S.pane);
   } catch (e) {
     if (commits.length) { msg('appMsg', 'info', 'Se guardó una parte de los cambios.'); }
     if (e.stale) msg('dlgMsg', 'bad', `${esc(e.stale)} cambió en GitHub mientras editabas. Copiá tus cambios, recargá la página y volvé a aplicarlos.`);
@@ -832,7 +1151,6 @@ $('save').onclick = async () => {
 };
 
 /* ---------- Inicio ---------- */
-$('repoName').textContent = 'engine/config.json';
 $('repoName2').textContent = `${REPO.owner}/${REPO.name}`;
 $('classicLink').href = `https://github.com/settings/tokens/new?scopes=public_repo,workflow&description=${encodeURIComponent('TraderPanel')}`;
 $('patLink').href = `https://github.com/settings/personal-access-tokens/new?name=${encodeURIComponent('TraderPanel config')}&description=${encodeURIComponent('Editar la config del motor desde el panel')}&target_name=${encodeURIComponent(REPO.owner)}&expires_in=90&contents=write&actions=write`;
