@@ -21,7 +21,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import planner, skills, sources
+from . import config_check, planner, skills, sources
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -389,6 +389,9 @@ def main(argv=None):
     ap.add_argument("--config", default=str(CONFIG))
     a = ap.parse_args(argv)
     cfg = json.loads(Path(a.config).read_text())
+    problems = config_check.validate_engine(cfg)
+    if problems:
+        raise SystemExit("config.json inválido:\n  " + "\n  ".join(problems))
     signals, events, state, fresh = analyze_all(cfg, Path(a.offline) if a.offline else None,
                                                 use_regime=not a.no_crypto_regime)
     save_json(DATA / "signals.json", signals)
