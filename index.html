@@ -114,6 +114,8 @@ th:first-child,td:first-child{text-align:left}
 tbody tr:hover{background:var(--hover)}
 td .t{font-weight:600}
 td small{display:block;color:var(--mute);font-size:12px;font-weight:400}
+tr.grp td{padding:14px 12px 6px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);background:transparent;border-bottom:1px solid var(--line)}
+tbody tr.grp:hover{background:transparent}
 td .acts{display:inline-flex;gap:6px}
 .sig{display:inline-flex;align-items:center;gap:8px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.03em}
 .sig.buy{background:var(--upbg);color:var(--up)}
@@ -267,6 +269,7 @@ footer a{color:inherit}
           <button type="button" role="tab" data-tab="byma">BYMA (ARS)</button>
           <button type="button" role="tab" data-tab="cripto">Cripto</button>
           <button type="button" role="tab" data-tab="dolar">Dólares</button>
+          <button type="button" role="tab" data-tab="indice">Índices</button>
         </div>
       </div>
       <p class="summary" id="wlSum"></p>
@@ -311,7 +314,7 @@ footer a{color:inherit}
   </div>
 
   <footer>
-    <span>Fuentes: <a href="https://dolarapi.com" target="_blank" rel="noopener">DolarAPI</a> · <a href="https://argentinadatos.com" target="_blank" rel="noopener">ArgentinaDatos</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko</a> · <a href="https://data912.com" target="_blank" rel="noopener">data912</a>. Se actualiza cada 60 s con la pestaña abierta.</span>
+    <span>Fuentes: <a href="https://dolarapi.com" target="_blank" rel="noopener">DolarAPI</a> · <a href="https://argentinadatos.com" target="_blank" rel="noopener">ArgentinaDatos</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko</a> · <a href="https://data912.com" target="_blank" rel="noopener">data912</a> · <a href="https://finance.yahoo.com" target="_blank" rel="noopener">Yahoo Finance</a> (índices). Se actualiza cada 60 s con la pestaña abierta.</span>
     <span>Datos con demora. Las señales son indicadores técnicos simples, no asesoramiento financiero.</span>
   </footer>
 </main>
@@ -353,6 +356,7 @@ const lists = {
 const LKEY = {adr: 'mar_adrs', byma: 'mar_args', cripto: 'mar_coins'};
 let follow = new Set(arr('tp_follow', []));
 let tab = store.get('tp_tab', 'adr');
+if (!['adr', 'byma', 'cripto', 'dolar', 'indice'].includes(tab)) tab = 'adr';
 let filter = 'all';
 
 /* ---------- Red ---------- */
@@ -394,13 +398,14 @@ async function pool(items, n, fn, gap = 0) {
 }
 
 /* ---------- Estado de datos ---------- */
-const live = {adr: {}, byma: {}, cripto: {}, dolar: {}};   // id -> {last, ch, name, sub}
+const live = {adr: {}, byma: {}, cripto: {}, dolar: {}, indice: {}};   // id -> {last, ch, name, sub}
 const H = {};                                             // `${kind}:${id}` -> {d, c}
 const errs = {};
 
 /* ---------- Indicadores y señales ---------- */
 function series(kind, id) {
   const h = H[`${kind}:${id}`]; if (!h) return null;
+  if (kind === 'indice') return {d: h.d, c: h.c};   // el JSON ya trae el último valor
   const d = h.d.slice(), c = h.c.slice();
   const l = live[kind][id]?.last;
   if (l != null && isFinite(l)) { if (d.at(-1) === today()) c[c.length - 1] = l; else { d.push(today()); c.push(l); } }
@@ -507,6 +512,22 @@ async function loadCripto() {
     delete errs.cripto;
   } catch (e) { errs.cripto = e.message; }
 }
+// Índices: los baja engine/indices.py en el Action del motor (Yahoo no deja leerlo desde el navegador)
+let IDX = null;
+async function loadIndices() {
+  try {
+    const r = await fetch('data/indices.json?t=' + Math.floor(Date.now() / 60000), {cache: 'no-store'});
+    if (!r.ok) throw new Error(r.status === 404 ? 'todavía no se generó' : 'HTTP ' + r.status);
+    const j = await r.json();
+    if (!Array.isArray(j?.items)) throw new Error('formato inesperado');
+    IDX = j;
+    for (const x of j.items) {
+      live.indice[x.id] = {last: x.last, ch: x.ch, name: x.name, desc: x.desc, unit: x.unit, group: x.group, at: x.at, stale: x.stale};
+      if (Array.isArray(x.c) && x.c.length) H[`indice:${x.id}`] = {t: Date.now(), d: x.d, c: x.c};
+    }
+    delete errs.indice;
+  } catch (e) { errs.indice = e.message; }
+}
 async function loadHist() {
   const want = [];
   for (const k of ['oficial', 'blue', 'bolsa', 'contadoconliqui']) want.push(['dolar', k]);
@@ -553,12 +574,46 @@ const TABS = {
   adr: {sub: 'ADRs y acciones en Nueva York, en dólares · demorado', ph: 'Ticker de EE. UU. (ej. TGS, LOMA, SUPV)', fmt: usd},
   byma: {sub: 'Panel BYMA, en pesos · demorado', ph: 'Ticker de BYMA (ej. LOMA, COME, TECO2)', fmt: pesos},
   cripto: {sub: 'Precio en dólares · variación 24 h · CoinGecko', ph: 'Id de CoinGecko (ej. cardano, dogecoin)', fmt: usd},
-  dolar: {sub: 'Pesos por dólar · venta · DolarAPI', ph: '', fmt: pesos}
+  dolar: {sub: 'Pesos por dólar · venta · DolarAPI', ph: '', fmt: pesos},
+  indice: {sub: 'Índices de referencia · Yahoo Finance · demorado', ph: '', fmt: v => fmt(v, 2)}
 };
+const IGRP = {usa: 'Estados Unidos', arg: 'Argentina', mundo: 'Mundo'};
+const NOTREND = new Set(['^VIX', '^TNX', 'DX-Y.NYB']);   // no son índices de acciones: sin señal
+function renderIndices() {
+  const body = $('rows');
+  const upd = IDX?.generated_at ? ` · actualizado ${new Date(IDX.generated_at).toLocaleString('es-AR', {timeZone: TZ, day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'})}` : '';
+  $('wlSub').textContent = TABS.indice.sub + upd;
+  if (!IDX) {
+    body.innerHTML = `<tr><td colspan="6" class="${errs.indice ? 'err' : 'empty'}">${errs.indice ? `No se pudieron cargar los índices (${esc(errs.indice)}). Se publican con cada corrida del motor, cada hora en días hábiles.` : 'Cargando…'}</td></tr>`;
+    $('wlSum').textContent = ''; return;
+  }
+  let ups = 0, dns = 0, html = '', grp = null;
+  const ccl = live.dolar.contadoconliqui?.last;
+  for (const x of IDX.items) {
+    if (x.group !== grp) { grp = x.group; html += `<tr class="grp"><td colspan="6">${esc(IGRP[grp] || grp)}</td></tr>`; }
+    const l = live.indice[x.id]; const ch = l.ch;
+    if (ch > 0) ups++; else if (ch < 0) dns++;
+    const s = series('indice', x.id);
+    const a = NOTREND.has(x.id) ? null : analyze('indice', x.id);
+    const sig = !a ? '<span class="mute">—</span>' : (() => {
+      const cls = a.label === 'COMPRA' ? 'buy' : a.label === 'VENTA' ? 'sell' : 'flat';
+      const lbl = a.label === 'COMPRA' ? 'ALCISTA' : a.label === 'VENTA' ? 'BAJISTA' : 'NEUTRAL';
+      return `<span class="sig ${cls}" title="Tendencia técnica ${a.score}/100 (medias de 20 y 50, RSI y momentum; cálculo local)">${lbl}<span class="num">${a.score}</span></span>`;
+    })();
+    let sub = esc(l.desc);
+    if (x.id === '^MERV' && ccl) sub = `En dólares CCL ≈ <span class="num">${fmt(l.last / ccl, 0)}</span>`;
+    if (l.stale) sub += ' · <span class="dn">sin actualizar</span>';
+    const val = l.unit === '%' ? fmt(l.last, 2) + ' %' : fmt(l.last, 2);
+    html += `<tr><td><span class="t">${esc(l.name)}</span><small>${sub}</small></td><td><span class="num" style="font-weight:500">${val}</span><span class="ch-s">${pctHtml(ch)}</span></td><td class="hide-s">${pctHtml(ch)}</td><td class="hide-s">${spark(s ? s.c.slice(-30) : null, 88, 28)}</td><td>${sig}</td><td></td></tr>`;
+  }
+  body.innerHTML = html;
+  $('wlSum').textContent = `${IDX.items.length} índices · ${ups} suben · ${dns} bajan`;
+}
 function renderTable() {
   for (const b of $('tabs').querySelectorAll('button')) b.setAttribute('aria-selected', b.dataset.tab === tab);
   $('wlSub').textContent = TABS[tab].sub;
-  $('addForm').hidden = tab === 'dolar';
+  $('addForm').hidden = tab === 'dolar' || tab === 'indice';
+  if (tab === 'indice') return renderIndices();
   $('addIn').placeholder = TABS[tab].ph;
   const body = $('rows');
   const ids = tab === 'dolar' ? dolares.map(d => d.casa) : lists[tab];
@@ -804,7 +859,7 @@ async function all() {
   if (busy) return; busy = true;
   $('stamp').textContent = 'Actualizando…'; $('refresh').disabled = true;
   renderMarkets();
-  await Promise.all([loadDolar(), loadAcc('adr'), loadAcc('byma'), loadCripto(), loadEngine()]);
+  await Promise.all([loadDolar(), loadAcc('adr'), loadAcc('byma'), loadCripto(), loadEngine(), loadIndices()]);
   render();
   $('stamp').textContent = 'Actualizado ' + new Date().toLocaleTimeString('es-AR', {timeZone: TZ, hour: '2-digit', minute: '2-digit', second: '2-digit'});
   $('refresh').disabled = false; busy = false;
