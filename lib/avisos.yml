@@ -1,0 +1,35 @@
+# Avisos de Mi cartera por Telegram (lo instala TraderPanel desde Mi cartera).
+# Corre en este repo privado con sus propios secrets: TELEGRAM_BOT_TOKEN y TELEGRAM_CHAT_ID.
+name: Avisos de mi cartera
+on:
+  schedule:
+    - cron: "23 14-20 * * 1-5"   # cada hora de 11:23 a 17:23 de Argentina, de lunes a viernes
+  workflow_dispatch:
+  push:
+    paths: ["cartera.json"]
+permissions:
+  contents: write
+concurrency:
+  group: avisos
+  cancel-in-progress: false
+jobs:
+  avisos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Revisar la cartera y avisar
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node .tp/avisos.mjs
+      - name: Guardar el estado
+        run: |
+          git config user.name "traderpanel-avisos"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add estado.json 2>/dev/null || exit 0
+          git diff --cached --quiet && exit 0
+          git commit -m "Estado de los avisos" && git push

@@ -73,3 +73,42 @@ test('barsFromData912 y changesSince', () => {
   assert.deepEqual(changesSince({KO: 'favor', AL30: 'na'}, rep), [{symbol: 'KO', from: 'favor', to: 'contra'}]);
   assert.deepEqual(changesSince(null, rep), []);
 });
+
+/* ---------- avisos (lib/avisos.mjs) y sealed box (lib/sealbox.mjs) ---------- */
+import {messagesFor, stateFor} from '../lib/avisos.mjs';
+import {blake2b, seal} from '../lib/sealbox.mjs';
+import {createHash} from 'node:crypto';
+import {createRequire} from 'node:module';
+
+const rep = (v, price = 100, stop = 90) => ({generated_at: 't', counts: {favor: 1}, holdings: [{symbol: 'KO', price, analysis: {verdict: v, why: 'porque sí', stop}}]});
+
+test('avisos: la primera vez solo da la bienvenida', () => {
+  const m = messagesFor(rep('favor'), null);
+  assert.equal(m.length, 1);
+  assert.match(m[0], /activados/);
+});
+
+test('avisos: cambio de veredicto y stop tocado', () => {
+  const prev = stateFor(rep('favor'));
+  assert.deepEqual(messagesFor(rep('favor', 95), prev), []);
+  const m = messagesFor(rep('contra', 89), prev);
+  assert.equal(m.length, 2);
+  assert.match(m[0], /KO: pasó de a favor ✓ a en contra ✕/);
+  assert.match(m[1], /tocó su stop/);
+});
+
+test('BLAKE2b coincide con el de Node', () => {
+  for (const n of [0, 1, 64, 128, 129, 1000]) {
+    const x = new Uint8Array(n).map((_, i) => i * 31);
+    assert.equal(Buffer.from(blake2b(x, 64)).toString('hex'), createHash('blake2b512').update(x).digest('hex'));
+  }
+});
+
+test('sealed box: el destinatario la abre', () => {
+  const nacl = createRequire(import.meta.url)('../lib/vendor/nacl-fast.min.js');
+  const kp = nacl.box.keyPair(), msg = new TextEncoder().encode('123:token');
+  const c = seal(nacl, msg, kp.publicKey);
+  const epk = c.subarray(0, 32), nin = new Uint8Array(64); nin.set(epk); nin.set(kp.publicKey, 32);
+  const open = nacl.box.open(c.subarray(32), blake2b(nin, 24), epk, kp.secretKey);
+  assert.equal(new TextDecoder().decode(open), '123:token');
+});
