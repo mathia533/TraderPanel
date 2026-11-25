@@ -12,9 +12,6 @@ on:
         description: "Saltear el régimen cripto (más rápido)"
         type: boolean
         default: false
-  push:
-    branches: [motor-senales-skills]
-    paths: ["engine/**", "vendor/**", ".github/workflows/signals.yml"]
 
 permissions:
   contents: write
