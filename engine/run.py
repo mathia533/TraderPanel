@@ -87,11 +87,26 @@ def get_bars(kind: str, ident: str, offline: Path | None):
     return sources.fetch_history(kind, ident)
 
 
-def bench_kind(kind):
-    return kind
+def synthetic_index(series: list[list[dict]]) -> list[dict]:
+    """Índice igual ponderado (base 100) con las fechas que comparten los activos."""
+    series = [b for b in series if len(b) >= 200]
+    if len(series) < 3:
+        return []
+    maps = [{x["date"]: x["close"] for x in b} for b in series]
+    dates = sorted(set.intersection(*(set(m) for m in maps)))[-400:]
+    if len(dates) < 200:
+        return []
+    out = []
+    for d in dates:
+        v = 100 * sum(m[d] / m[dates[0]] for m in maps) / len(maps)
+        out.append({"date": d, "open": v, "high": v, "low": v, "close": v, "volume": 0})
+    out.reverse()
+    return out
 
 
 # ------------------------------------------------------------------ textos
+TAGS = {"4pct_breakout": "ruptura del 4 %", "dollar_breakout": "ruptura en dólares",
+        "range_expansion": "expansión de rango", "9m_volume": "volumen de 9 M"}
 SETUP_NAME = {"vcp": "VCP (Minervini)", "burst": "Momentum Burst (Stockbee)"}
 
 
@@ -135,19 +150,33 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
     new_events, errors, assets, watch = [], {}, {}, []
     regime_out = {}
 
+    # Velas de todos los activos primero (el índice sintético las necesita)
+    fetched = {}
+    for kind, ids in cfg["watchlist"].items():
+        for ident in ids:
+            try:
+                fetched[f"{kind}:{ident}"] = get_bars(kind, ident, offline)
+            except Exception as exc:
+                errors[f"{kind}:{ident}"] = str(exc)[:200]
+            if not offline:
+                time.sleep(0.3)  # no saturar Yahoo
+
     # Índices de referencia y filtro de mercado
-    bench = {}
+    bench, bench_src = {}, {}
     for kind, sym in cfg["benchmarks"].items():
         try:
             if offline:
                 b, _ = get_bars(kind, sym, offline)
             else:
                 b = sources.fetch_yahoo(sym)
-            b, _ = sources.split_partial(kind, b, now)
-            bench[kind] = b
+            bench_src[kind] = sym
         except Exception as exc:
-            bench[kind] = []
-            errors[f"bench:{sym}"] = str(exc)[:200]
+            # Sin índice: promedio igual ponderado de la watchlist de ese mercado
+            b = synthetic_index([fetched[k][0] for k in fetched if k.startswith(kind + ":")])
+            bench_src[kind] = "índice propio de la watchlist" if b else sym
+            if not b:
+                errors[f"bench:{sym}"] = str(exc)[:200]
+        bench[kind], _ = sources.split_partial(kind, b, now) if b else ([], None)
     crypto_regime = None
     if use_regime and not offline:
         try:
@@ -159,7 +188,7 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
             gate, why = planner.market_gate_from_regime(crypto_regime, bench.get("cripto"))
         else:
             gate, why = planner.market_gate_from_trend(bench.get(kind))
-        regime_out[kind] = {"gate": gate, "why": why, "benchmark": cfg["benchmarks"][kind]}
+        regime_out[kind] = {"gate": gate, "why": why, "benchmark": bench_src.get(kind, cfg["benchmarks"][kind])}
         if kind == "cripto" and crypto_regime:
             regime_out[kind]["regime"] = crypto_regime.get("composite")
             regime_out[kind]["components"] = crypto_regime.get("components")
@@ -169,11 +198,9 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
         gate = regime_out[kind]["gate"]
         for ident in ids:
             key = f"{kind}:{ident}"
-            try:
-                bars, src = get_bars(kind, ident, offline)
-            except Exception as exc:
-                errors[key] = str(exc)[:200]
+            if key not in fetched:
                 continue
+            bars, src = fetched[key]
             closed, live = sources.split_partial(kind, bars, now)
             if len(closed) < 60:
                 errors[key] = f"historial corto ({len(closed)} velas)"
@@ -245,7 +272,7 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
             elif burst.get("ok") and burst["state"] in cfg["setups"]["burst_entry_states"]:
                 cand = {"setup": "burst", "score": burst["score"], "entry": closed[0]["close"], "stop": burst.get("stop"),
                         "why": f"Momentum Burst {burst['rating']}: +{fmt(burst['day_gain_pct'], 1)} % en el día, "
-                               f"volumen {fmt(burst['volume_ratio_20d'], 1)}x el promedio ({', '.join(burst['tags'])})"}
+                               f"volumen {fmt(burst['volume_ratio_20d'], 1)}x el promedio ({', '.join(TAGS.get(t, t) for t in burst['tags'])})"}
             blocked = None
             entered_today = False
             if cand and not pos and not exited_now and state.get("last_exit", {}).get(key) != closed[0]["date"] \
@@ -316,8 +343,6 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
                                                      "volume_ratio_20d", "error")} if burst else None,
                 "position": pos,
             }
-            if not offline:
-                time.sleep(0.4)  # no saturar Yahoo
 
     # ---- avisos una sola vez (trader-alerts)
     rung = state.setdefault("rung", {})

@@ -196,6 +196,7 @@ def run_crypto_regime(data_dir: Path, *, top_n: int = 20, timeout: int = 900) ->
     Guarda el historial de dominancia de BTC en data/ para que el componente de
     dominancia tenga sus 31 días con el tiempo.
     """
+    data_dir.mkdir(parents=True, exist_ok=True)
     out_file = data_dir / "crypto_regime.json"
     today = datetime.now(timezone.utc).date().isoformat()
     if out_file.exists():
