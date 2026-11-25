@@ -1,8 +1,11 @@
 {
  "sent": {},
  "recent": [],
- "last_run": "2026-11-25T01:03:56.959Z",
+ "last_run": "2026-11-25T01:24:46.985Z",
  "telegram": true,
  "last_error": null,
- "last_test": "2026-11-25T00:43:53.242Z"
+ "last_test": "2026-11-25T00:43:53.242Z",
+ "users": {
+  "mathia533": "2026-11-25T01:24:46.985Z"
+ }
 }
