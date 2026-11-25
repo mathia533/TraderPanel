@@ -4116,7 +4116,7 @@
  "intraday": {
   "enabled": true,
   "date": "2026-11-25",
-  "time_ny": "13:38",
+  "time_ny": "13:55",
   "symbols": {
    "YPF": {
     "symbol": "YPF",
@@ -4135,9 +4135,9 @@
     },
     "level": 31.29,
     "last": {
-     "bar_start": "13:30",
-     "close": 31.65,
-     "vs_level_pct": 1.14
+     "bar_start": "13:50",
+     "close": 31.87,
+     "vs_level_pct": 1.85
     },
     "trigger": {
      "time": "10:00 AM",
@@ -4322,7 +4322,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 218 minutos (máximo 30)",
+      "la ruptura fue hace 235 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 79.0,
@@ -4359,9 +4359,9 @@
     },
     "level": 25.33,
     "last": {
-     "bar_start": "13:30",
-     "close": 26.18,
-     "vs_level_pct": 3.36
+     "bar_start": "13:45",
+     "close": 26.67,
+     "vs_level_pct": 5.29
     },
     "trigger": {
      "time": "11:50 AM",
@@ -4551,7 +4551,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 108 minutos (máximo 30)",
+      "la ruptura fue hace 125 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 98.0,
@@ -4588,9 +4588,9 @@
     },
     "level": 61.06,
     "last": {
-     "bar_start": "13:30",
-     "close": 62.49,
-     "vs_level_pct": 2.35
+     "bar_start": "13:45",
+     "close": 62.52,
+     "vs_level_pct": 2.39
     },
     "trigger": {
      "time": "9:50 AM",
@@ -4620,7 +4620,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 228 minutos (máximo 30)",
+      "la ruptura fue hace 245 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 40.0,
@@ -4657,9 +4657,9 @@
     },
     "level": 49.16,
     "last": {
-     "bar_start": "13:30",
-     "close": 49.74,
-     "vs_level_pct": 1.18
+     "bar_start": "13:45",
+     "close": 50.36,
+     "vs_level_pct": 2.44
     },
     "trigger": {
      "time": "12:20 PM",
@@ -4689,7 +4689,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 78 minutos (máximo 30)",
+      "la ruptura fue hace 95 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 50.0,
@@ -4726,9 +4726,9 @@
     },
     "level": 49.15,
     "last": {
-     "bar_start": "13:30",
-     "close": 50.6,
-     "vs_level_pct": 2.95
+     "bar_start": "13:50",
+     "close": 50.84,
+     "vs_level_pct": 3.44
     },
     "trigger": {
      "time": "9:50 AM",
@@ -4918,7 +4918,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 228 minutos (máximo 30)",
+      "la ruptura fue hace 245 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 50.0,
@@ -4955,9 +4955,9 @@
     },
     "level": 1432.13,
     "last": {
-     "bar_start": "13:30",
-     "close": 1471.82,
-     "vs_level_pct": 2.77
+     "bar_start": "13:50",
+     "close": 1482.0,
+     "vs_level_pct": 3.48
     },
     "trigger": {
      "time": "12:00 PM",
@@ -5142,7 +5142,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 98 minutos (máximo 30)",
+      "la ruptura fue hace 115 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 1.0,
@@ -5179,9 +5179,9 @@
     },
     "level": 19.42,
     "last": {
-     "bar_start": "13:30",
-     "close": 19.7,
-     "vs_level_pct": 1.47
+     "bar_start": "13:45",
+     "close": 19.68,
+     "vs_level_pct": 1.34
     },
     "trigger": {
      "time": "12:10 PM",
@@ -5211,7 +5211,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 88 minutos (máximo 30)",
+      "la ruptura fue hace 105 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 128.0,
@@ -5248,9 +5248,9 @@
     },
     "level": 10.31,
     "last": {
-     "bar_start": "13:30",
-     "close": 10.29,
-     "vs_level_pct": -0.19
+     "bar_start": "13:45",
+     "close": 10.42,
+     "vs_level_pct": 1.07
     },
     "trigger": {
      "time": "1:20 PM",
@@ -5280,6 +5280,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
+      "la ruptura fue hace 35 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 242.0,
@@ -5316,9 +5317,9 @@
     },
     "level": 4.51,
     "last": {
-     "bar_start": "13:30",
-     "close": 4.58,
-     "vs_level_pct": 1.63
+     "bar_start": "13:45",
+     "close": 4.71,
+     "vs_level_pct": 4.43
     },
     "trigger": {
      "time": "12:35 PM",
@@ -5348,7 +5349,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 63 minutos (máximo 30)",
+      "la ruptura fue hace 80 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 553.0,
@@ -5385,9 +5386,9 @@
     },
     "level": 8.17,
     "last": {
-     "bar_start": "13:30",
-     "close": 8.35,
-     "vs_level_pct": 2.23
+     "bar_start": "13:45",
+     "close": 8.4,
+     "vs_level_pct": 2.84
     },
     "trigger": {
      "time": "12:05 PM",
@@ -5417,7 +5418,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 93 minutos (máximo 30)",
+      "la ruptura fue hace 110 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 304.0,
@@ -5440,8 +5441,8 @@
    "BBAR": {
     "symbol": "BBAR",
     "date": "2026-11-25",
-    "status": "waiting",
-    "status_es": "esperando",
+    "status": "triggered",
+    "status_es": "disparó",
     "phase": "rueda abierta",
     "opening_range": {
      "high": 8.77,
@@ -5454,12 +5455,216 @@
     },
     "level": 8.77,
     "last": {
-     "bar_start": "13:30",
-     "close": 8.69,
-     "vs_level_pct": -0.86
+     "bar_start": "13:50",
+     "close": 8.76,
+     "vs_level_pct": -0.11
     },
-    "trigger": null,
-    "reason": "last close $8.69 (13:30 bar), $0.08 under the range high $8.77 (-0.86%)"
+    "trigger": {
+     "time": "1:50 PM",
+     "close_time": "13:50",
+     "bar_start": "13:45",
+     "bar_index": 51,
+     "price": 8.81,
+     "close": 8.8100004196167,
+     "volume": 4267,
+     "volume_x": 0.08,
+     "pct_over": 0.51
+    },
+    "reason": "the 13:45 bar closed above the range high",
+    "plan": {
+     "entry": 8.81,
+     "stop": 8.49,
+     "target": 9.13,
+     "risk": 0.32,
+     "reward_risk": 1.0,
+     "flat_by": "15:55",
+     "stop_label": "medio del rango de apertura"
+    },
+    "timemachine": {
+     "ok": true,
+     "kind": "intradía",
+     "mc": {
+      "replays": 10000,
+      "seed": 19,
+      "bars_left": 25,
+      "p_target": 0.0036,
+      "p_stop": 0.0048,
+      "p_neither": 0.9916,
+      "p_green": 0.4415,
+      "median_close": 8.79,
+      "p5_close": 8.62,
+      "p95_close": 8.98,
+      "avg_R": -0.047,
+      "r_at_target": 1.0,
+      "pool_sessions": 24,
+      "until": "15:55",
+      "fan": [
+       [
+        8.81,
+        8.81,
+        8.81
+       ],
+       [
+        8.77,
+        8.81,
+        8.86
+       ],
+       [
+        8.75,
+        8.81,
+        8.87
+       ],
+       [
+        8.75,
+        8.81,
+        8.88
+       ],
+       [
+        8.73,
+        8.81,
+        8.89
+       ],
+       [
+        8.72,
+        8.81,
+        8.9
+       ],
+       [
+        8.71,
+        8.81,
+        8.9
+       ],
+       [
+        8.7,
+        8.8,
+        8.9
+       ],
+       [
+        8.69,
+        8.8,
+        8.9
+       ],
+       [
+        8.69,
+        8.8,
+        8.91
+       ],
+       [
+        8.68,
+        8.8,
+        8.91
+       ],
+       [
+        8.67,
+        8.79,
+        8.91
+       ],
+       [
+        8.67,
+        8.8,
+        8.92
+       ],
+       [
+        8.66,
+        8.8,
+        8.92
+       ],
+       [
+        8.66,
+        8.8,
+        8.93
+       ],
+       [
+        8.66,
+        8.8,
+        8.93
+       ],
+       [
+        8.66,
+        8.8,
+        8.95
+       ],
+       [
+        8.66,
+        8.81,
+        8.95
+       ],
+       [
+        8.65,
+        8.81,
+        8.96
+       ],
+       [
+        8.65,
+        8.81,
+        8.96
+       ],
+       [
+        8.64,
+        8.8,
+        8.96
+       ],
+       [
+        8.63,
+        8.8,
+        8.97
+       ],
+       [
+        8.62,
+        8.8,
+        8.97
+       ],
+       [
+        8.61,
+        8.8,
+        8.97
+       ],
+       [
+        8.61,
+        8.8,
+        8.97
+       ],
+       [
+        8.61,
+        8.79,
+        8.97
+       ]
+      ]
+     },
+     "lean": "stop",
+     "verdict": "En contra: el precio llegó primero al objetivo en el 0,4 % de las simulaciones y al stop en el 0,5 %. El 99 % no tocó ninguno antes de las 15:55: ahí cuenta dónde termina el precio (resultado medio de todas: -0,05 veces lo arriesgado).",
+     "history": {
+      "label": "la misma ruptura en las sesiones reales",
+      "fired": 14,
+      "sessions": 24,
+      "target": 5,
+      "stop": 9,
+      "neither": 0,
+      "avg_R": -0.286
+     },
+     "note": "A simulation built from BBAR's own last 24 full sessions. It is not a prediction: earnings, news and halts can do things those sessions never did. Same seed, same numbers."
+    },
+    "risk": {
+     "verdict": "BLOCK",
+     "reasons": [
+      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
+     ],
+     "units": 283.0,
+     "notional": 2493.23,
+     "max_loss": 90.56,
+     "ticket": {
+      "symbol": "BBAR",
+      "side": "compra",
+      "units": 283.0,
+      "type": "bracket",
+      "entry": 8.81,
+      "stop": 8.49,
+      "target": 9.13,
+      "flat_by": "15:55",
+      "text": "Comprar 283 BBAR a mercado, stop 8,49, objetivo 9,13 y cerrar a las 15:55 NY",
+      "sent": false
+     }
+    }
    },
    "CRESY": {
     "symbol": "CRESY",
@@ -5478,9 +5683,9 @@
     },
     "level": 7.81,
     "last": {
-     "bar_start": "13:30",
-     "close": 8.15,
-     "vs_level_pct": 4.32
+     "bar_start": "13:45",
+     "close": 8.19,
+     "vs_level_pct": 4.83
     },
     "trigger": {
      "time": "10:00 AM",
@@ -5510,7 +5715,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 218 minutos (máximo 30)",
+      "la ruptura fue hace 235 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 316.0,
@@ -5547,9 +5752,9 @@
     },
     "level": 11.36,
     "last": {
-     "bar_start": "13:25",
-     "close": 11.74,
-     "vs_level_pct": 3.34
+     "bar_start": "13:45",
+     "close": 11.87,
+     "vs_level_pct": 4.49
     },
     "trigger": {
      "time": "12:00 PM",
@@ -5579,7 +5784,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 98 minutos (máximo 30)",
+      "la ruptura fue hace 115 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 219.0,
@@ -5616,9 +5821,9 @@
     },
     "level": 9.93,
     "last": {
-     "bar_start": "13:30",
-     "close": 10.27,
-     "vs_level_pct": 3.42
+     "bar_start": "13:45",
+     "close": 10.35,
+     "vs_level_pct": 4.23
     },
     "trigger": {
      "time": "12:05 PM",
@@ -5648,7 +5853,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 93 minutos (máximo 30)",
+      "la ruptura fue hace 110 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 250.0,
@@ -5685,18 +5890,18 @@
     },
     "level": 11.1,
     "last": {
-     "bar_start": "13:25",
-     "close": 10.97,
-     "vs_level_pct": -1.17
+     "bar_start": "13:45",
+     "close": 11.02,
+     "vs_level_pct": -0.72
     },
     "trigger": null,
-    "reason": "last close $10.97 (13:25 bar), $0.13 under the range high $11.10 (-1.17%)"
+    "reason": "last close $11.02 (13:45 bar), $0.08 under the range high $11.10 (-0.72%)"
    },
    "GLOB": {
     "symbol": "GLOB",
     "date": "2026-11-25",
-    "status": "waiting",
-    "status_es": "esperando",
+    "status": "triggered",
+    "status_es": "disparó",
     "phase": "rueda abierta",
     "opening_range": {
      "high": 51.0,
@@ -5709,12 +5914,216 @@
     },
     "level": 51.0,
     "last": {
-     "bar_start": "13:30",
-     "close": 50.74,
-     "vs_level_pct": -0.51
+     "bar_start": "13:50",
+     "close": 50.94,
+     "vs_level_pct": -0.13
     },
-    "trigger": null,
-    "reason": "last close $50.74 (13:30 bar), $0.26 under the range high $51.00 (-0.51%)"
+    "trigger": {
+     "time": "1:50 PM",
+     "close_time": "13:50",
+     "bar_start": "13:45",
+     "bar_index": 51,
+     "price": 51.01,
+     "close": 51.0099983215332,
+     "volume": 28643,
+     "volume_x": 1.25,
+     "pct_over": 0.02
+    },
+    "reason": "the 13:45 bar closed above the range high",
+    "plan": {
+     "entry": 51.01,
+     "stop": 50.13,
+     "target": 51.89,
+     "risk": 0.88,
+     "reward_risk": 1.0,
+     "flat_by": "15:55",
+     "stop_label": "medio del rango de apertura"
+    },
+    "timemachine": {
+     "ok": true,
+     "kind": "intradía",
+     "mc": {
+      "replays": 10000,
+      "seed": 19,
+      "bars_left": 25,
+      "p_target": 0.16,
+      "p_stop": 0.1056,
+      "p_neither": 0.7344,
+      "p_green": 0.5273,
+      "median_close": 51.05,
+      "p5_close": 50.11,
+      "p95_close": 52.05,
+      "avg_R": 0.055,
+      "r_at_target": 1.0,
+      "pool_sessions": 52,
+      "until": "15:55",
+      "fan": [
+       [
+        51.01,
+        51.01,
+        51.01
+       ],
+       [
+        50.84,
+        51.02,
+        51.17
+       ],
+       [
+        50.77,
+        51.02,
+        51.27
+       ],
+       [
+        50.74,
+        51.02,
+        51.35
+       ],
+       [
+        50.69,
+        51.03,
+        51.41
+       ],
+       [
+        50.65,
+        51.03,
+        51.46
+       ],
+       [
+        50.6,
+        51.02,
+        51.49
+       ],
+       [
+        50.55,
+        51.02,
+        51.5
+       ],
+       [
+        50.52,
+        51.01,
+        51.54
+       ],
+       [
+        50.48,
+        51.01,
+        51.56
+       ],
+       [
+        50.45,
+        51.02,
+        51.61
+       ],
+       [
+        50.45,
+        51.02,
+        51.64
+       ],
+       [
+        50.43,
+        51.03,
+        51.66
+       ],
+       [
+        50.39,
+        51.03,
+        51.7
+       ],
+       [
+        50.38,
+        51.04,
+        51.74
+       ],
+       [
+        50.37,
+        51.04,
+        51.78
+       ],
+       [
+        50.35,
+        51.05,
+        51.8
+       ],
+       [
+        50.34,
+        51.06,
+        51.87
+       ],
+       [
+        50.34,
+        51.07,
+        51.9
+       ],
+       [
+        50.31,
+        51.07,
+        51.93
+       ],
+       [
+        50.3,
+        51.08,
+        51.96
+       ],
+       [
+        50.28,
+        51.09,
+        51.95
+       ],
+       [
+        50.25,
+        51.09,
+        52.01
+       ],
+       [
+        50.2,
+        51.08,
+        52.02
+       ],
+       [
+        50.17,
+        51.05,
+        52.04
+       ],
+       [
+        50.14,
+        51.05,
+        52.08
+       ]
+      ]
+     },
+     "lean": "target",
+     "verdict": "A favor: el precio llegó primero al objetivo en el 16,0 % de las simulaciones y al stop en el 10,6 %. El 73 % no tocó ninguno antes de las 15:55: ahí cuenta dónde termina el precio (resultado medio de todas: 0,06 veces lo arriesgado).",
+     "history": {
+      "label": "la misma ruptura en las sesiones reales",
+      "fired": 28,
+      "sessions": 52,
+      "target": 10,
+      "stop": 12,
+      "neither": 6,
+      "avg_R": -0.099
+     },
+     "note": "A simulation built from GLOB's own last 52 full sessions. It is not a prediction: earnings, news and halts can do things those sessions never did. Same seed, same numbers."
+    },
+    "risk": {
+     "verdict": "BLOCK",
+     "reasons": [
+      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
+     ],
+     "units": 49.0,
+     "notional": 2499.49,
+     "max_loss": 43.12,
+     "ticket": {
+      "symbol": "GLOB",
+      "side": "compra",
+      "units": 49.0,
+      "type": "bracket",
+      "entry": 51.01,
+      "stop": 50.13,
+      "target": 51.89,
+      "flat_by": "15:55",
+      "text": "Comprar 49 GLOB a mercado, stop 50,13, objetivo 51,89 y cerrar a las 15:55 NY",
+      "sent": false
+     }
+    }
    }
   }
  },
@@ -6848,5 +7257,6 @@
  },
  "errors": {
   "news": "no SEC CIK for ADA-USD; no SEC CIK for AVAX-USD; SEC 8-K for BBAR: HTTP 400 for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000913059&type=8-K&dateb=&owner=include&count=8&output=atom"
- }
+ },
+ "intraday_at": "2026-11-25T18:55:05.942112+00:00"
 }
