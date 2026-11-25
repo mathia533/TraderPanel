@@ -1,0 +1,105 @@
+{
+ "date": "2026-11-25",
+ "generated_at": "2026-11-25T04:43:37.384332+00:00",
+ "errors": {},
+ "breadth": {
+  "score": 32.8,
+  "zone": "Weakening",
+  "guidance": "40-60%",
+  "as_of": null
+ },
+ "uptrend": {
+  "score": 19.7,
+  "zone": "Bear",
+  "guidance": "Capital Preservation (0-30%)",
+  "warnings": [
+   "SECTOR DIVERGENCE WARNING"
+  ]
+ },
+ "sector": {
+  "phase": "recession",
+  "phase_es": "recesión",
+  "confidence": "moderate",
+  "leaders": [
+   "Healthcare",
+   "Consumer Defensive",
+   "Communication Services"
+  ],
+  "laggards": [
+   "Basic Materials",
+   "Utilities",
+   "Energy"
+  ],
+  "rows": [
+   {
+    "sector": "Healthcare",
+    "pct": 29.9,
+    "trend": "Down"
+   },
+   {
+    "sector": "Consumer Defensive",
+    "pct": 22.9,
+    "trend": "Down"
+   },
+   {
+    "sector": "Communication Services",
+    "pct": 21.0,
+    "trend": "Down"
+   },
+   {
+    "sector": "Technology",
+    "pct": 15.1,
+    "trend": "Down"
+   },
+   {
+    "sector": "Consumer Cyclical",
+    "pct": 14.7,
+    "trend": "Down"
+   },
+   {
+    "sector": "Real Estate",
+    "pct": 10.2,
+    "trend": "Down"
+   },
+   {
+    "sector": "Financial",
+    "pct": 8.0,
+    "trend": "Down"
+   },
+   {
+    "sector": "Industrials",
+    "pct": 8.0,
+    "trend": "Down"
+   },
+   {
+    "sector": "Basic Materials",
+    "pct": 1.5,
+    "trend": "Down"
+   },
+   {
+    "sector": "Utilities",
+    "pct": 1.3,
+    "trend": "Down"
+   },
+   {
+    "sector": "Energy",
+    "pct": 0.0,
+    "trend": "Down"
+   }
+  ]
+ },
+ "exposure": {
+  "ceiling_pct": 1,
+  "recommendation": "CASH_PRIORITY",
+  "recommendation_es": "priorizar liquidez",
+  "bias": "NEUTRAL",
+  "participation": "NARROW",
+  "confidence": "LOW",
+  "inputs": [
+   "breadth",
+   "uptrend",
+   "sector"
+  ],
+  "rationale": "Narrow participation suggests fragile market structure. Missing critical inputs (regime, top_risk) reduce confidence. Capital preservation is the priority. Sector score uses an uncalibrated equal-sector uptrend-health heuristic; it shares upstream data with Uptrend and does not independently set bias or participation. Confidence measures input completeness, not verified quality or independent confirmation."
+ }
+}
