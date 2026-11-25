@@ -87,7 +87,15 @@ Las señales son resultados de reglas técnicas sobre datos con demora. No son a
 2. **Cargar:** **Importar archivo** con el formato genérico ([docs/cartera-formato.md](docs/cartera-formato.md), [plantilla](docs/cartera-plantilla.json)). Con InvertirOnline, Claude lo arma con el conector; con otro broker se completa la plantilla. También se puede pegar un activo por línea.
 3. **Ver:** al abrir la página se analiza con los precios del momento y muestra qué veredictos cambiaron desde la última vez (se recuerda solo en ese navegador).
 
-Si el repo `traderpanel-cartera` es público, la página no guarda ni muestra nada. No hay avisos automáticos por Telegram de la cartera: el motor no la puede leer.
+Si el repo `traderpanel-cartera` es público, la página no guarda ni muestra nada.
+
+**Avisos por Telegram de la cartera.** El motor del panel no la puede leer, así que los avisos corren en el repo privado de cada uno. En **Avisos por Telegram** pegás el token de un bot (de @BotFather), le escribís al bot y la página:
+
+- copia el código del análisis a `.tp/` de tu repo (`lib/cartera.mjs`, `lib/timemachine.mjs`, `lib/avisos.mjs`): queda fijo ahí, el panel no lo puede cambiar después;
+- instala el workflow `.github/workflows/avisos.yml` (copia de `lib/avisos.yml`): corre cada hora de 11 a 17 de lunes a viernes y cuando actualizás la cartera;
+- guarda `TELEGRAM_BOT_TOKEN` y `TELEGRAM_CHAT_ID` como secrets de tu repo, cifrados en el navegador con la llave del repo (sealed box de libsodium: `lib/sealbox.mjs` + tweetnacl).
+
+Avisa cuando un activo cambia de veredicto o toca su stop de protección; guarda lo último en `estado.json` del mismo repo. Usa los minutos de Actions de tu cuenta (unos 150 por mes; el plan gratis trae 2000 para repos privados). Para el token: Fine-grained con Contents, Secrets, Workflows y Actions en *Read and write* sobre `traderpanel-cartera`; clásico con `repo` y `workflow`.
 
 ## Alertas por Telegram
 

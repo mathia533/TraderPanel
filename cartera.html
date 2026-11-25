@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Mi cartera: vive en un repo privado del propio usuario y solo se lee con su token de GitHub. Nada se publica. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://raw.githubusercontent.com https://api.github.com https://data912.com; img-src data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://raw.githubusercontent.com https://api.github.com https://data912.com https://api.telegram.org; img-src data:; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
 <title>TraderPanel · Mi cartera</title>
@@ -264,10 +264,32 @@ table.pv input{width:110px;min-height:36px;padding:0 8px;border-radius:8px;borde
     <div id="syMsg" role="status"></div>
   </section>
 
+  <section class="card setup" id="tg" hidden aria-labelledby="tgH">
+    <h2 id="tgH">Avisos por Telegram</h2>
+    <p class="sub">Te escribe cuando un activo cambia de veredicto o toca su stop de protección. Corre en tu repo privado, con tu bot y tu chat: nadie más ve tu cartera ni los avisos.</p>
+    <div id="tgOn" hidden style="display:flex;flex-direction:column;gap:10px">
+      <p class="pill ok" style="width:max-content">Avisos activos</p>
+      <p class="mute" style="font-size:14px">Revisa tu cartera cada hora mientras opera BYMA (de 11 a 17, lunes a viernes) y cada vez que la actualizás. Solo escribe si algo cambió.</p>
+      <div class="row"><button class="btn" id="tgRedo" type="button">Cambiar bot o chat</button><button class="btn" id="tgOff" type="button">Apagar los avisos</button></div>
+    </div>
+    <div id="tgForm" style="display:flex;flex-direction:column;gap:10px">
+      <ol>
+        <li>En Telegram abrí <a href="https://t.me/BotFather" target="_blank" rel="noopener">@BotFather</a>, mandá <code>/newbot</code> y elegí un nombre. Te contesta con un token. Si ya tenés un bot, usá ese.</li>
+        <li>Pegá el token acá y tocá <b>Conectar</b>. Después te pido que le escribas al bot, así sé a qué chat mandar.</li>
+      </ol>
+      <div class="f"><label for="tgTok">Token del bot</label><input type="password" id="tgTok" autocomplete="off" spellcheck="false" placeholder="123456789:AA…"></div>
+      <div class="f" id="tgChatF" hidden><label for="tgChat">Tu número de chat de Telegram</label><input type="text" id="tgChat" inputmode="numeric" spellcheck="false"><span class="help">Escribile a <a href="https://t.me/userinfobot" target="_blank" rel="noopener">@userinfobot</a> y te lo dice.</span></div>
+      <div class="row"><button class="btn primary" id="tgGo" type="button">Conectar</button></div>
+    </div>
+    <div id="tgMsg" role="status"></div>
+  </section>
+
 </main>
 
+<script src="lib/vendor/nacl-fast.min.js"></script>
 <script type="module">
-import {FORMAT, LIVE_KINDS, HIST_PATH, PER_100, TYPE_ES, parseText, fromGeneric, toGeneric, buildReport, barsFromData912, changesSince} from './lib/cartera.mjs';
+import {FORMAT, PER_100, TYPE_ES, parseText, fromGeneric, toGeneric, fetchLive, analyzePortfolio, changesSince} from './lib/cartera.mjs';
+import {seal} from './lib/sealbox.mjs';
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[c]);
@@ -293,7 +315,7 @@ const getJSON = async u => { const r = await fetch(u, {cache: 'no-store'}); if (
 /* ---------- GitHub: mismo token que Configuración. La cartera vive en un repo PRIVADO del usuario ---------- */
 const API = 'https://api.github.com', TK = 'tp_gh_token', REPO = 'traderpanel-cartera', FILE = 'cartera.json';
 const token = (() => { try { return sessionStorage.getItem(TK) || localStorage.getItem(TK) || ''; } catch { return ''; } })();
-let ME = null, SCOPES = null, SHA = null;
+let ME = null, SCOPES = null, SHA = null, REPOINFO = null;
 async function gh(path, opts = {}) {
   const r = await fetch(API + path, {...opts, cache: 'no-store',
     headers: {Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', Authorization: `Bearer ${token}`, ...(opts.body ? {'Content-Type': 'application/json'} : {})}});
@@ -317,33 +339,8 @@ async function readMine() {
 
 /* ---------- precios y velas (data912, BYMA) ---------- */
 let LIVE = null;
-async function liveMap() {
-  if (LIVE) return LIVE;
-  const m = {};
-  await Promise.all(Object.entries(LIVE_KINDS).map(async ([k, type]) => {
-    try { for (const r of await getJSON('https://data912.com/live/' + k)) if (r.symbol && !m[r.symbol] && +r.c) m[r.symbol] = {type, c: +r.c, pct: r.pct_change != null ? +r.pct_change : null}; } catch {}
-  }));
-  return (LIVE = m);
-}
-async function gates() {
-  const out = {};
-  try {
-    const j = await getJSON('data/signals.json?t=' + Date.now());
-    for (const [k, m] of Object.entries(j.markets || {})) if (m?.gate) out[k] = {gate: m.gate, why: m.why || ''};
-  } catch {}
-  return out;
-}
-async function analyze(src) {
-  const {rows, cash} = fromGeneric(src);
-  const [live, g] = await Promise.all([liveMap(), gates()]);
-  const bars = {};
-  await Promise.all(rows.map(async r => {
-    const p = HIST_PATH[live[r.symbol]?.type || r.type];
-    if (!p) return;
-    try { bars[r.symbol] = barsFromData912(await getJSON(`https://data912.com/historical/${p}/${encodeURIComponent(r.symbol)}`)); } catch {}
-  }));
-  return buildReport(rows, cash, {live, bars, gates: g});
-}
+const liveMap = async () => LIVE || (LIVE = await fetchLive(getJSON));
+const analyze = async src => analyzePortfolio(src, {getJSON, live: await liveMap(), signalsUrl: 'data/signals.json?t=' + Date.now()});
 
 /* ---------- mostrar ---------- */
 let REP = null, SRC = null, FILTER = 'all', CHANGES = [];
@@ -493,15 +490,16 @@ function showSetup() {
   $('rpName').textContent = `${ME}/${REPO}`;
   $('rpNew').href = `https://github.com/new?name=${REPO}&visibility=private&description=${encodeURIComponent('Mi cartera para TraderPanel (privado)')}`;
   $('rpTok').innerHTML = SCOPES != null
-    ? 'Tu token es clásico: para leer repos privados necesita el permiso <b>repo</b>. <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Editalo en GitHub</a>, marcá <b>repo</b> y guardalo (el mismo token sigue andando en el panel).'
-    : `Tu token es Fine-grained: <a href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener">editalo en GitHub</a>, en <b>Repository access</b> sumá <code>${esc(REPO)}</code> y dale <b>Contents: Read and write</b>.`;
+    ? 'Tu token es clásico: <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">editalo en GitHub</a> y marcá <b>repo</b> y <b>workflow</b> (el mismo token sigue andando en el panel).'
+    : `Tu token es Fine-grained: <a href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener">editalo en GitHub</a>, en <b>Repository access</b> sumá <code>${esc(REPO)}</code> y en permisos poné <b>Read and write</b> en Contents, Secrets, Workflows y Actions (los últimos tres son para los avisos por Telegram).`;
 }
 $('rpGo').onclick = async () => {
   $('rpGo').disabled = true; smsg('rpMsg', '', '');
   try {
     await gh('/user/repos', {method: 'POST', body: JSON.stringify({name: REPO, private: true, auto_init: true, description: 'Mi cartera para TraderPanel (privado)'})});
-    $('repoSetup').hidden = true; $('sync').hidden = false;
+    await start();
     smsg('syMsg', 'ok', `Listo: creé <code>${esc(ME)}/${REPO}</code>, privado. Ahora importá tu cartera.`);
+    return;
   } catch (e) {
     console.warn('[cartera] crear repo:', e.status || e.message);
     if (e.status === 422) return start();  // ya existía
@@ -511,8 +509,90 @@ $('rpGo').onclick = async () => {
 };
 $('rpRetry').onclick = () => start();
 
+/* ---------- avisos por Telegram: workflow + secrets en el repo privado del usuario ---------- */
+const WF = '.github/workflows/avisos.yml';
+async function getFile(path) { try { return await gh(`/repos/${ME}/${REPO}/contents/${path}`); } catch (e) { if (e.status === 404) return null; throw e; } }
+async function putRepoFile(path, text, message) {
+  const cur = await getFile(path);
+  return gh(`/repos/${ME}/${REPO}/contents/${path}`, {method: 'PUT', body: JSON.stringify({message, content: enc64(text), ...(cur ? {sha: cur.sha} : {})})});
+}
+const tgApi = async (tok, method, body) => (await fetch(`https://api.telegram.org/bot${tok}/${method}`, body
+  ? {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)} : {cache: 'no-store'})).json();
+const PERM = {files: 'Contents', wf: 'Workflows', sec: 'Secrets'};
+const permErr = (e, what) => new Error(e.status === 401 ? 'Tu sesión de GitHub venció: entrá de nuevo en Configuración.'
+  : e.status === 403 || e.status === 404 ? (SCOPES != null ? `Tu token necesita el permiso <b>${what === 'wf' ? 'workflow' : 'repo'}</b>. <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Editalo</a> y probá de nuevo.`
+    : `Tu token necesita <b>${PERM[what]}: Read and write</b> en <code>${esc(REPO)}</code>. <a href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener">Editalo</a> y probá de nuevo.`)
+  : 'GitHub no respondió. Probá de nuevo.');
+
+async function tgStatus() {
+  $('tg').hidden = false;
+  const wf = await getFile(WF).catch(() => null);
+  $('tgOn').hidden = !wf; $('tgForm').hidden = !!wf;
+}
+async function findChat(tok, ms = 120000) {
+  const end = Date.now() + ms;
+  while (Date.now() < end) {
+    const u = await tgApi(tok, 'getUpdates', {timeout: 0, allowed_updates: ['message']});
+    if (!u.ok) { const e = new Error(u.description || 'getUpdates'); e.tg = u.error_code; throw e; }
+    const m = [...u.result].reverse().find(x => x.message?.chat?.type === 'private');
+    if (m) return String(m.message.chat.id);
+    await new Promise(r => setTimeout(r, 3000));
+  }
+  return null;
+}
+$('tgGo').onclick = async () => {
+  const tok = $('tgTok').value.trim();
+  if (!/^\d{5,}:[\w-]{30,}$/.test(tok)) return smsg('tgMsg', 'bad', 'Ese no parece un token de bot. Es algo como <code>123456789:AA…</code>, tal cual te lo dio @BotFather.');
+  let chat = $('tgChat').value.trim();
+  $('tgGo').disabled = true;
+  try {
+    if (!chat) {
+      let me;
+      try { me = await tgApi(tok, 'getMe'); } catch { me = null; }
+      if (me && !me.ok) throw new Error('Telegram no reconoce ese token. Copialo de nuevo de @BotFather.');
+      if (me) {
+        smsg('tgMsg', 'info', `Ahora abrí <a href="https://t.me/${esc(me.result.username)}" target="_blank" rel="noopener">@${esc(me.result.username)}</a> en Telegram y tocá <b>Iniciar</b> (o mandale cualquier mensaje). Te espero acá…`);
+        try { chat = await findChat(tok); } catch (e) { chat = null; }
+      }
+      if (!chat) { $('tgChatF').hidden = false; throw new Error(me ? 'No vi tu mensaje al bot. Mandale algo y tocá Conectar de nuevo, o escribí tu número de chat.' : 'No pude hablar con Telegram desde acá. Escribí tu número de chat y tocá Conectar.'); }
+    }
+    if (!/^-?\d{4,}$/.test(chat)) throw new Error('El número de chat son solo dígitos.');
+    smsg('tgMsg', 'info', 'Instalando los avisos en tu repo privado…');
+    try {
+      for (const f of ['cartera.mjs', 'timemachine.mjs', 'avisos.mjs']) await putRepoFile('.tp/' + f, await (await fetch('lib/' + f, {cache: 'no-store'})).text(), 'Avisos: código del análisis (copiado de TraderPanel)');
+    } catch (e) { throw permErr(e, 'files'); }
+    try { await putRepoFile(WF, await (await fetch('lib/avisos.yml', {cache: 'no-store'})).text(), 'Avisos de mi cartera por Telegram'); } catch (e) { throw permErr(e, 'wf'); }
+    try {
+      const key = await gh(`/repos/${ME}/${REPO}/actions/secrets/public-key`), pk = Uint8Array.from(atob(key.key), c => c.charCodeAt(0));
+      for (const [name, val] of [['TELEGRAM_BOT_TOKEN', tok], ['TELEGRAM_CHAT_ID', chat]]) {
+        const sealed = seal(window.nacl, new TextEncoder().encode(val), pk);
+        let bin = ''; for (const b of sealed) bin += String.fromCharCode(b);
+        await gh(`/repos/${ME}/${REPO}/actions/secrets/${name}`, {method: 'PUT', body: JSON.stringify({encrypted_value: btoa(bin), key_id: key.key_id})});
+      }
+    } catch (e) { throw permErr(e, 'sec'); }
+    let ran = true;
+    try { await gh(`/repos/${ME}/${REPO}/actions/workflows/avisos.yml/dispatches`, {method: 'POST', body: JSON.stringify({ref: REPOINFO?.default_branch || 'main'})}); } catch { ran = false; }
+    $('tgTok').value = ''; $('tgChat').value = ''; $('tgChatF').hidden = true;
+    await tgStatus();
+    smsg('tgMsg', 'ok', ran ? 'Listo. En uno o dos minutos te llega un mensaje de bienvenida al chat.' : 'Listo. El mensaje de bienvenida llega en la próxima revisión (en menos de una hora mientras opera BYMA) o cuando actualices tu cartera.');
+  } catch (e) {
+    smsg('tgMsg', 'bad', e.message);
+  } finally { $('tgGo').disabled = false; }
+};
+$('tgRedo').onclick = () => { $('tgOn').hidden = true; $('tgForm').hidden = false; smsg('tgMsg', '', ''); };
+$('tgOff').onclick = async () => {
+  if (!$('tgOff').dataset.confirm) { $('tgOff').dataset.confirm = '1'; return smsg('tgMsg', 'info', 'Se borra el workflow de avisos de tu repo privado. Tocá de nuevo para confirmar.'); }
+  delete $('tgOff').dataset.confirm;
+  try {
+    const cur = await getFile(WF);
+    if (cur) await gh(`/repos/${ME}/${REPO}/contents/${WF}`, {method: 'DELETE', body: JSON.stringify({message: 'Apagar avisos de mi cartera', sha: cur.sha})});
+    await tgStatus();
+    smsg('tgMsg', 'ok', 'Avisos apagados. Los podés volver a prender cuando quieras.');
+  } catch (e) { smsg('tgMsg', 'bad', permErr(e, 'wf').message); }
+};
+
 async function start() {
-  for (const id of ['needLogin', 'repoSetup', 'sync', 'app']) $(id).hidden = true;
+  for (const id of ['needLogin', 'repoSetup', 'sync', 'app', 'tg']) $(id).hidden = true;
   smsg('loadMsg', '', '');
   for (const el of document.querySelectorAll('.rpName2')) el.textContent = `${ME || 'tu-usuario'}/${REPO}`;
   if (!token) { $('needLogin').hidden = false; return; }
@@ -524,8 +604,10 @@ async function start() {
   let st;
   try { st = await readMine(); } catch (e) { return smsg('loadMsg', 'bad', 'No pude leer tu cartera de GitHub. Recargá en un rato.'); }
   if (!st) return showSetup();
+  REPOINFO = st.repo;
   if (!st.repo.private) { smsg('loadMsg', 'bad', `<code>${esc(ME)}/${REPO}</code> es público: cualquiera vería tu cartera. Hacelo privado en GitHub (Settings → Change visibility) y recargá.`); return; }
   $('sync').hidden = false;
+  tgStatus();
   if (!st.file) return;
   $('syH').textContent = 'Actualizar mi cartera';
   try { await open(st.file); } catch (e) { console.warn('[cartera] abrir:', e.message); smsg('loadMsg', 'bad', 'Tu archivo de cartera no se pudo leer: ' + esc(e.message) + ' Importalo de nuevo.'); }
