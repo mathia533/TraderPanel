@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-25T00:34:04.908607+00:00",
+ "generated_at": "2026-11-25T02:54:13.630299+00:00",
  "engine": {
   "version": "1.0",
   "skills": [
@@ -11,8 +11,8 @@
  },
  "risk": {
   "min_reward_risk": 1.5,
-  "target_r": 2.0,
-  "max_stop_pct": 12.0,
+  "target_r": 2,
+  "max_stop_pct": 12,
   "max_open_positions": 8
  },
  "markets": {
@@ -27,49 +27,9 @@
    "benchmark": "índice propio de la watchlist"
   },
   "cripto": {
-   "gate": "restrictive",
-   "why": "régimen cripto 29/100 (RISK_OFF)",
-   "benchmark": "BTC-USD",
-   "regime": {
-    "score": 29.3,
-    "zone": "RISK_OFF",
-    "guidance": "Defensive market conditions observed; review existing risk controls",
-    "effective_weights": {
-     "btc_trend": 0.3571,
-     "alt_breadth": 0.2857,
-     "drawdown_vol": 0.2143,
-     "momentum_thrust": 0.1429
-    },
-    "components_available": 4,
-    "components_total": 6,
-    "available_weight": 0.7
-   },
-   "components": {
-    "btc_trend": {
-     "score": 45,
-     "data_available": true
-    },
-    "alt_breadth": {
-     "score": 10,
-     "data_available": true
-    },
-    "dominance": {
-     "score": 50,
-     "data_available": false
-    },
-    "funding": {
-     "score": 50,
-     "data_available": false
-    },
-    "drawdown_vol": {
-     "score": 25,
-     "data_available": true
-    },
-    "momentum_thrust": {
-     "score": 35,
-     "data_available": true
-    }
-   }
+   "gate": "neutral",
+   "why": "régimen cripto no disponible; BTC sin tendencia clara",
+   "benchmark": "BTC-USD"
   }
  },
  "assets": {
@@ -1544,10 +1504,10 @@
    "label": "BTC",
    "date": "2026-11-23",
    "live_date": "2026-11-25",
-   "last": 59488.0,
+   "last": 59112.0,
    "source": "yahoo",
    "degraded": false,
-   "score": 41,
+   "score": 44,
    "signal": "NEUTRAL",
    "stage4": false,
    "sma50": 76159.0,
@@ -1569,7 +1529,7 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 41,
+    "score": 44,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout",
@@ -1587,7 +1547,7 @@
    "label": "ETH",
    "date": "2026-11-23",
    "live_date": "2026-11-25",
-   "last": 1669.0,
+   "last": 1652.0,
    "source": "yahoo",
    "degraded": false,
    "score": 14,
@@ -1629,10 +1589,10 @@
    "label": "SOL",
    "date": "2026-11-23",
    "live_date": "2026-11-25",
-   "last": 69.58,
+   "last": 68.62,
    "source": "yahoo",
    "degraded": false,
-   "score": 53,
+   "score": 56,
    "signal": "NEUTRAL",
    "stage4": false,
    "sma50": 94.21,
@@ -1652,9 +1612,9 @@
     "error": null
    },
    "burst": {
-    "state": "REJECTED",
-    "rating": "Reject",
-    "score": 53,
+    "state": "WATCH_ONLY",
+    "rating": "Watch",
+    "score": 56,
     "trigger": "range_expansion",
     "tags": [
      "dollar_breakout",
@@ -1673,7 +1633,7 @@
    "label": "BNB",
    "date": "2026-11-23",
    "live_date": "2026-11-25",
-   "last": 545.9,
+   "last": 540.46,
    "source": "yahoo",
    "degraded": false,
    "score": 36,
@@ -1715,7 +1675,7 @@
    "label": "XRP",
    "date": "2026-11-23",
    "live_date": "2026-11-25",
-   "last": 0.9208,
+   "last": 0.9164,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1740,7 +1700,7 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 50,
+    "score": 53,
     "trigger": "range_expansion",
     "tags": [
      "range_expansion",
@@ -1758,7 +1718,7 @@
    "label": "ADA",
    "date": "2026-11-23",
    "live_date": "2026-11-25",
-   "last": 0.14383,
+   "last": 0.14183,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -1800,7 +1760,7 @@
    "label": "DOGE",
    "date": "2026-11-23",
    "live_date": "2026-11-25",
-   "last": 0.05499,
+   "last": 0.05449,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1825,7 +1785,7 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 40,
+    "score": 43,
     "trigger": "range_expansion",
     "tags": [
      "range_expansion",
@@ -1843,7 +1803,7 @@
    "label": "LINK",
    "date": "2026-11-23",
    "live_date": "2026-11-25",
-   "last": 8.79,
+   "last": 8.73,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -1885,10 +1845,10 @@
    "label": "AVAX",
    "date": "2026-11-23",
    "live_date": "2026-11-25",
-   "last": 6.53,
+   "last": 6.46,
    "source": "yahoo",
    "degraded": false,
-   "score": 40,
+   "score": 43,
    "signal": "NEUTRAL",
    "stage4": false,
    "sma50": 8.82,
@@ -1910,7 +1870,7 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 40,
+    "score": 43,
     "trigger": "range_expansion",
     "tags": [
      "range_expansion",
@@ -1928,7 +1888,7 @@
    "label": "TRX",
    "date": "2026-11-23",
    "live_date": "2026-11-25",
-   "last": 0.307392,
+   "last": 0.307706,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1990,6 +1950,17 @@
    "why": "Momentum Burst Watch (watch only): revisar gráfico."
   },
   {
+   "kind": "cripto",
+   "id": "solana",
+   "label": "SOL",
+   "setup": "burst",
+   "score": 56,
+   "rating": "Watch",
+   "trigger": 71.98,
+   "stop": 69.87,
+   "why": "Momentum Burst Watch (watch only): revisar gráfico."
+  },
+  {
    "kind": "adr",
    "id": "MELI",
    "label": "MELI",
@@ -1997,7 +1968,7 @@
    "score": 55,
    "rating": "Watch",
    "trigger": 1450.31,
-   "stop": 1405.87,
+   "stop": 1405.55,
    "why": "Momentum Burst Watch (watch only): revisar gráfico."
   }
  ],
