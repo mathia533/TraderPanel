@@ -1,0 +1,22 @@
+{
+  "_nota": "Perfil de cada usuario (clave = login de GitHub). Lo edita cada uno desde config.html. El repo es público: no pongas datos sensibles.",
+  "users": {
+    "mathia533": {
+      "name": "Mathias",
+      "risk": {
+        "adr": {"budget": 10000, "max_loss_pct": 1, "max_position_pct": 25},
+        "byma": {"budget": 10000000, "max_loss_pct": 1, "max_position_pct": 25},
+        "cripto": {"budget": 5000, "max_loss_pct": 1, "max_position_pct": 25, "fractional": true}
+      },
+      "max_open_positions": 8,
+      "telegram": {
+        "chat": "default",
+        "engine": true,
+        "follow": [],
+        "types": {"entry": true, "exit": true, "update": false},
+        "kinds": {"adr": true, "byma": true, "cripto": true},
+        "only": []
+      }
+    }
+  }
+}

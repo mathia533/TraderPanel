@@ -117,6 +117,14 @@ dialog::backdrop{background:rgba(2,6,23,.7)}
 .msg.ok{background:var(--upbg);color:var(--up)}
 .msg.bad{background:var(--dnbg);color:var(--dnfg)}
 .msg.info{background:var(--infobg);color:var(--info)}
+.tgbox{margin-top:20px;border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--inset);display:flex;flex-direction:column;gap:12px}
+.tglist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.tglist li{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tag{padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.05em;background:var(--infobg);color:var(--info)}
+.tag.in{background:var(--upbg);color:var(--up)}.tag.out{background:var(--dnbg);color:var(--dnfg)}
+.how summary{cursor:pointer;font-weight:500}
+.how ol{margin:8px 0;padding-left:20px;display:flex;flex-direction:column;gap:6px;color:var(--ink2);font-size:14px}
+.how p{font-size:13.5px}
 .secnav{display:flex;flex-wrap:wrap;gap:6px}
 .secnav a{padding:8px 12px;border-radius:8px;border:1px solid var(--line2);color:var(--ink2);text-decoration:none;font-size:14px}
 .secnav a:hover{background:var(--hover)}
@@ -142,6 +150,7 @@ dialog::backdrop{background:rgba(2,6,23,.7)}
       <div class="who" id="who" hidden></div>
       <button class="btn" id="logout" type="button" hidden>Salir</button>
       <button class="btn icon" id="theme" type="button" aria-label="Cambiar tema"></button>
+      <a class="btn" href="operaciones.html">Mis operaciones</a>
       <a class="btn" href="./"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg>Volver al panel</a>
     </div>
   </div>
@@ -150,19 +159,21 @@ dialog::backdrop{background:rgba(2,6,23,.7)}
 <main class="wrap">
   <div class="lead">
     <h1>Configuración del motor y las alertas</h1>
-    <p>Los cambios se guardan como un commit en <code id="repoName">engine/config.json</code> y <code>alerts/telegram.json</code>. La próxima corrida del motor de señales ya usa los valores nuevos.</p>
+    <p><b>Tu perfil</b> es tuyo: tu presupuesto, tu tope de posiciones y qué avisos te llegan (se guarda en <code>users/users.json</code>). <b>Lo común</b> lo comparten todos: qué analiza el motor y con qué reglas (<code id="repoName">engine/config.json</code> y <code>alerts/telegram.json</code>). Todo se guarda como un commit en el repo.</p>
   </div>
 
   <!-- Entrar -->
   <section class="card login" id="loginCard" aria-labelledby="loginH">
     <h2 id="loginH">Entrar con tu cuenta de GitHub</h2>
-    <p class="mute">Solo quien tiene permiso de escritura en el repositorio puede guardar cambios. Para entrar usás un token de acceso de GitHub limitado a este repo. El token queda únicamente en este navegador y viaja solo a api.github.com.</p>
+    <p class="mute">Solo quien tiene permiso de escritura en el repositorio puede guardar cambios. Para entrar usás un token de acceso de GitHub. El token queda únicamente en este navegador y viaja solo a api.github.com. Tu perfil se identifica con tu usuario de GitHub.</p>
+    <p class="mute"><b>Si sos el dueño del repo</b>, seguí estos pasos:</p>
     <ol>
       <li>Abrí <a id="patLink" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">crear token en GitHub</a> (tipo <b>Fine-grained</b>).</li>
       <li>En <b>Repository access</b> elegí <b>Only select repositories</b> y marcá <span id="repoName2">TraderPanel</span>.</li>
       <li>En <b>Permissions → Repository</b>: <b>Contents: Read and write</b>. Opcional: <b>Actions: Read and write</b> para poder correr el motor apenas guardás.</li>
       <li>Ponele vencimiento (90 días está bien), generalo y pegalo acá.</li>
     </ol>
+    <p class="mute"><b>Si te sumaron como colaborador</b> (el repo es de otra persona), GitHub no deja usar tokens Fine-grained en repos ajenos: abrí <a id="classicLink" href="https://github.com/settings/tokens/new" target="_blank" rel="noopener">crear token clásico</a>, marcá solo el permiso <b>public_repo</b> (y <b>workflow</b> si querés correr el motor), ponele vencimiento y pegalo acá. Antes aceptá la invitación al repo que te llegó por mail.</p>
     <div class="f">
       <label for="token">Token</label>
       <input type="password" id="token" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
@@ -175,7 +186,7 @@ dialog::backdrop{background:rgba(2,6,23,.7)}
   <div id="app" hidden>
     <div id="appMsg" role="status" style="margin-bottom:16px"></div>
     <nav class="secnav" aria-label="Secciones" style="margin-bottom:20px">
-      <a href="#s-mercados">Presupuesto por mercado</a><a href="#s-reglas">Reglas de operación</a><a href="#s-watch">Watchlist</a><a href="#s-setups">Setups</a><a href="#s-tg">Alertas Telegram</a>
+      <a href="#s-perfil">Mi perfil</a><a href="#s-misavisos">Mis avisos</a><a href="#s-reglas">Común: reglas</a><a href="#s-watch">Común: watchlist</a><a href="#s-setups">Común: setups</a><a href="#s-mercados">Común: mercados</a><a href="#s-tg">Común: Telegram</a>
     </nav>
     <div style="display:flex;flex-direction:column;gap:20px" id="form"></div>
   </div>
@@ -215,7 +226,7 @@ const REPO = (() => {
   if (h.endsWith('.github.io') && seg) return { owner: h.split('.')[0], name: seg };
   return { owner: 'mathia533', name: 'TraderPanel' };
 })();
-const FILES = { engine: 'engine/config.json', tg: 'alerts/telegram.json' };
+const FILES = { engine: 'engine/config.json', tg: 'alerts/telegram.json', users: 'users/users.json' };
 const WORKFLOW = 'signals.yml';
 const API = 'https://api.github.com';
 const TK = 'tp_gh_token';
@@ -326,9 +337,33 @@ function validateTg(c) {
   return E;
 }
 
+const LOGIN_RE = /^[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,38}$/, CHAT_RE = /^(default|-?\d{5,20}|@[A-Za-z0-9_]{5,32})?$/;
+// Mismas reglas que validate_users en engine/config_check.py, solo para el perfil propio
+function validateMe(c, login) {
+  const E = []; const P = `users.${login}`; const e = (p, m) => E.push({ p: `users:${P}.${p}`, m });
+  const num = (p, v, lo, hi, int) => {
+    if (!isNum(v)) e(p, 'Tiene que ser un número.');
+    else if (int && !Number.isInteger(v)) e(p, 'Tiene que ser un número entero.');
+    else if (v < lo || v > hi) e(p, `Tiene que estar entre ${lo.toLocaleString('es-AR')} y ${hi.toLocaleString('es-AR')}.`);
+  };
+  const u = get(c, P) || {};
+  if (typeof u.name !== 'string' || u.name.length > 40) e('name', 'Hasta 40 caracteres.');
+  for (const m of MARKETS) {
+    for (const [k, lo, hi] of RISK_MK) num(`risk.${m}.${k}`, get(u, `risk.${m}.${k}`), lo, hi);
+    const lp = get(u, `risk.${m}.max_loss_pct`), pp = get(u, `risk.${m}.max_position_pct`);
+    if (isNum(lp) && isNum(pp) && lp > pp) e(`risk.${m}.max_loss_pct`, 'No puede superar el tamaño máximo de posición.');
+  }
+  num('max_open_positions', u.max_open_positions, 1, 50, true);
+  const t = u.telegram || {};
+  if (typeof t.chat !== 'string' || !CHAT_RE.test(t.chat)) e('telegram.chat', 'Escribí default, un id que empiece con -100 o un @canal. Vacío = sin Telegram.');
+  if (!Array.isArray(t.follow) || t.follow.some(x => !LOGIN_RE.test(x))) e('telegram.follow', 'Valores no válidos.');
+  if (!Array.isArray(t.only) || t.only.some(x => !ONLY.test(x))) e('telegram.only', 'Formato mercado:ACTIVO, por ejemplo adr:YPF o cripto:BTC.');
+  return E;
+}
+
 /* ---------- Estado ---------- */
-const S = { orig: {}, draft: {}, sha: {}, branch: 'main', canRun: true };
-const errors = () => [...validateEngine(S.draft.engine), ...validateTg(S.draft.tg)];
+const S = { orig: {}, draft: {}, sha: {}, branch: 'main', canRun: true, login: '' };
+const errors = () => [...validateEngine(S.draft.engine), ...validateTg(S.draft.tg), ...validateMe(S.draft.users, S.login)];
 
 /* ---------- Etiquetas legibles para el resumen de cambios ---------- */
 const LABEL = {
@@ -337,10 +372,17 @@ const LABEL = {
   max_open_positions: 'Posiciones abiertas máx.', burst_max_sessions: 'Momentum Burst: ruedas máx.', breakeven_after_r: 'Stop a la entrada después de (R)',
   vcp_min_rating: 'VCP: calificación para entrar', vcp_watch_rating: 'VCP: calificación para "preparado"', burst_entry_states: 'Momentum Burst: estados para entrar',
   burst_watch_states: 'Momentum Burst: estados para "preparado"', only: 'Solo estos activos', max_age_hours: 'Antigüedad máx. del aviso (h)', panel_url: 'Link al panel',
-  entry: 'Avisar entradas', exit: 'Avisar salidas', update: 'Avisar ajustes de stop'
+  entry: 'Avisar entradas', exit: 'Avisar salidas', update: 'Avisar ajustes de stop',
+  name: 'Nombre', chat: 'Chat de Telegram', engine: 'Recibir señales del motor', follow: 'Seguir las operaciones de'
 };
 function labelOf(key) {
-  const [file, path] = key.split(':'); const ks = path.split('.');
+  const [file, path] = key.split(':'); let ks = path.split('.');
+  if (file === 'users') {
+    ks = ks.slice(2);
+    const mk = ks.find(k => MK[k]);
+    if (ks[0] === 'telegram' && ks[1] === 'kinds') return `Tu perfil · avisar ${MK[ks[2]].name}`;
+    return `Tu perfil · ${LABEL[ks.at(-1)] || ks.at(-1)}${mk ? ` · ${MK[mk].name}` : ''}`;
+  }
   const mk = ks.find(k => MK[k]);
   let base = LABEL[ks.at(-1)] || ks.at(-1);
   if (ks[0] === 'watchlist') base = 'Watchlist';
@@ -355,7 +397,7 @@ function leaves(o, pre = '', out = {}) {
 }
 function diffs() {
   const out = [];
-  for (const f of ['engine', 'tg']) {
+  for (const f of ['engine', 'tg', 'users']) {
     const a = leaves(S.orig[f]), b = leaves(S.draft[f]);
     for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) if (JSON.stringify(a[k]) !== JSON.stringify(b[k])) out.push({ key: `${f}:${k}`, from: a[k], to: b[k] });
   }
@@ -396,9 +438,56 @@ function chipsField(file, path, label, help, norm) {
     ${help ? `<span class="help">${esc(help)}</span>` : ''}<span class="err" aria-live="polite"></span></div>`;
 }
 
+function buildProfile() {
+  const L = S.login, P = `users.${L}`;
+  const others = Object.keys(get(S.draft.users, 'users') || {}).filter(x => x !== L);
+  const cards = MARKETS.map(m => `<div class="mk"><h3>${MK[m].name} <small>montos en ${MK[m].cur}</small></h3>
+    ${numField('users', `${P}.risk.${m}.budget`, `Tu presupuesto (${MK[m].cur})`, { min: 1, calc: 'u:' + m })}
+    ${numField('users', `${P}.risk.${m}.max_loss_pct`, 'Pérdida máx. por operación (%)', { min: 0.05, max: 10, step: 0.05, help: 'Si toca el stop perdés este % del presupuesto. Con esto se calcula tu cantidad.' })}
+    ${numField('users', `${P}.risk.${m}.max_position_pct`, 'Posición máx. (% del presupuesto)', { min: 1, max: 100, step: 1 })}
+  </div>`).join('');
+  return `
+  <section class="card" id="s-perfil"><h2>Mi perfil · ${esc(L)}</h2><p class="sub">Con estos números cada alerta te dice cuántas acciones comprar a vos, aunque la operación la haya hecho otro.</p>
+    <div class="rules" style="margin-bottom:16px">
+      ${textField('users', `${P}.name`, 'Tu nombre', 'Así te ven los demás en las alertas y en el panel.')}
+      ${numField('users', `${P}.max_open_positions`, 'Tope de operaciones abiertas', { min: 1, max: 50, step: 1, help: 'Si ya seguís más que esto abiertas, la alerta de entrada te avisa.' })}
+    </div>
+    <div class="grid">${cards}</div></section>
+
+  <section class="card" id="s-misavisos"><h2>Mis avisos por Telegram</h2><p class="sub">Qué te llega y a dónde.</p>
+    <div class="rules">
+      ${textField('users', `${P}.telegram.chat`, 'Chat de Telegram', 'default = el canal principal del repo. Para tu propio canal: el id que empieza con -100 o el @canal, con el bot agregado como administrador. Vacío = sin Telegram. Ojo: el repo es público.')}
+      <div class="f" data-key="users:${P}.telegram.follow"><span class="lbl">Seguir las operaciones de</span><div class="opts">${others.length ? others.map(o =>
+        `<label class="check"><input type="checkbox" data-file="users" data-path="${P}.telegram.follow" data-kind="set" value="${esc(o)}"> ${esc(get(S.draft.users, `users.${o}.name`) || o)} <span class="mute">(${esc(o)})</span></label>`).join('') : '<span class="mute">Todavía no hay otros usuarios. Aparecen acá cuando entran al panel con su cuenta y guardan su perfil.</span>'}</div>
+        <span class="help">Te llega cada compra, venta y cambio de stop que registren, con la cantidad calculada para tu presupuesto.</span><span class="err" aria-live="polite"></span></div>
+      <div class="f"><span class="lbl">Señales del motor</span>${checkField('users', `${P}.telegram.engine`, 'Recibir las señales del motor')}${checkField('users', `${P}.telegram.types.entry`, 'Entradas')}${checkField('users', `${P}.telegram.types.exit`, 'Salidas (stop u objetivo tocado)')}${checkField('users', `${P}.telegram.types.update`, 'Ajustes de stop')}</div>
+      <div class="f"><span class="lbl">Mercados (señales del motor)</span>${MARKETS.map(m => checkField('users', `${P}.telegram.kinds.${m}`, MK[m].name)).join('')}</div>
+    </div>
+    <div style="margin-top:16px">${chipsField('users', `${P}.telegram.only`, 'Del motor, solo estos activos (vacío = todos)', 'Formato mercado:ACTIVO, por ejemplo adr:YPF o cripto:BTC.', 'only')}
+      <div class="row" style="margin-top:8px"><button class="btn" type="button" id="useBell" hidden>Usar los activos con campanita del panel</button></div></div>
+    <div class="tgbox">
+      <div class="row" style="justify-content:space-between"><b>Estado</b><span class="pill warn" id="tgState">Revisando…</span></div>
+      <p class="mute" id="tgSum" style="font-size:14px">Buscando el registro de envíos…</p>
+      <div><p class="lbl" style="font-size:13px;font-weight:500;margin-bottom:6px">Últimas alertas que te llegaron</p><ul class="tglist" id="tgList"><li class="mute">—</li></ul></div>
+      <div class="row"><button class="btn primary" type="button" id="tgTest">Mandar mensaje de prueba</button><a class="btn" id="tgRuns" target="_blank" rel="noopener">Ver envíos en GitHub</a></div>
+      <div id="tgMsg" role="status"></div>
+      <details class="how"><summary>Cómo recibir los avisos en tu propio Telegram</summary>
+        <ol>
+          <li>Creá un canal en Telegram (puede ser privado).</li>
+          <li>En <i>Administradores</i>, agregá al bot de TraderPanel con permiso para publicar. Pedile el nombre del bot al dueño del repo.</li>
+          <li>Conseguí el id del canal: reenviá un mensaje del canal a <b>@userinfobot</b>, o abrilo en web.telegram.org y copiá el número de la URL con <code>-100</code> adelante.</li>
+          <li>Pegalo arriba en <b>Chat de Telegram</b>, guardá y tocá <b>Mandar mensaje de prueba</b>.</li>
+        </ol>
+        <p class="mute">El dueño del repo puede dejar <code>default</code>: usa el canal cargado en el secret <code>TELEGRAM_CHAT_ID</code>. El token del bot queda solo en GitHub; esta página nunca lo ve.</p>
+      </details>
+    </div>
+  </section>
+  <h2 style="font-size:20px;margin-top:12px">Común <span class="mute" style="font-size:15px;font-weight:400">· lo comparten todos los usuarios</span></h2>`;
+}
+
 function buildForm() {
   const mkCards = MARKETS.map(m => `<div class="mk"><h3>${MK[m].name} <small>montos en ${MK[m].cur}</small></h3>
-    ${numField('engine', `risk.${m}.budget`, `Presupuesto (${MK[m].cur})`, { min: 1, calc: m })}
+    ${numField('engine', `risk.${m}.budget`, `Cartera de referencia (${MK[m].cur})`, { min: 1, calc: m, help: 'Solo para los resultados que muestra el panel. Tu tamaño sale de tu perfil.' })}
     ${numField('engine', `risk.${m}.max_loss_pct`, 'Pérdida máx. por operación (%)', { min: 0.05, max: 10, step: 0.05, help: 'Con esto se calcula el tamaño: si toca el stop perdés este % del presupuesto.' })}
     ${numField('engine', `risk.${m}.max_position_pct`, 'Posición máx. (% del presupuesto)', { min: 1, max: 100, step: 1 })}
     ${m === 'cripto' ? checkField('engine', `risk.${m}.fractional`, 'Permite comprar fracciones') : ''}
@@ -407,16 +496,14 @@ function buildForm() {
     ${textField('engine', `benchmarks.${m}`, 'Índice de referencia (Yahoo)', m === 'byma' ? 'Si Yahoo no lo trae, el motor usa un índice propio de la watchlist.' : '')}
   </div>`).join('');
 
-  $('form').innerHTML = `
-  <section class="card" id="s-mercados"><h2>Presupuesto y riesgo por mercado</h2><p class="sub">Cuánta plata destinás a cada mercado y cuánto estás dispuesto a perder por operación.</p>
-    <div class="grid">${mkCards}</div></section>
+  $('form').innerHTML = buildProfile() + `
 
   <section class="card" id="s-reglas"><h2>Reglas de operación</h2><p class="sub">Valen para todos los mercados. R es la distancia entre la entrada y el stop.</p>
     <div class="rules">
       ${numField('engine', 'risk.target_r', 'Objetivo (R)', { min: 0.5, max: 20, step: 0.1, help: 'El objetivo de ganancia se pone a esta cantidad de R.' })}
       ${numField('engine', 'risk.min_reward_risk', 'R:R mínimo', { min: 0.5, max: 10, step: 0.1, help: 'Operaciones con menos relación ganancia/riesgo se descartan.' })}
       ${numField('engine', 'risk.max_stop_pct', 'Stop máximo (%)', { min: 0.5, max: 50, step: 0.5, help: 'Si el stop queda más lejos que esto, no se entra.' })}
-      ${numField('engine', 'risk.max_open_positions', 'Posiciones abiertas máx.', { min: 1, max: 50, step: 1 })}
+      ${numField('engine', 'risk.max_open_positions', 'Posiciones abiertas máx. del motor', { min: 1, max: 50, step: 1, help: 'Cuántas señales abiertas sigue el motor a la vez. Tu tope personal está en tu perfil.' })}
       ${numField('engine', 'risk.breakeven_after_r', 'Stop a la entrada después de (R)', { min: 0.1, max: 10, step: 0.1, help: 'Al ganar esta cantidad de R, el stop sube al precio de entrada.' })}
       ${numField('engine', 'risk.burst_max_sessions', 'Momentum Burst: ruedas máx.', { min: 1, max: 60, step: 1, help: 'Salida por tiempo si no llegó al objetivo.' })}
     </div></section>
@@ -436,14 +523,14 @@ function buildForm() {
       ${setField('engine', 'setups.burst_watch_states', 'Momentum Burst: para "preparado"', BURST)}
     </div></section>
 
-  <section class="card" id="s-tg"><h2>Alertas por Telegram</h2><p class="sub">Qué avisos manda el bot al canal.</p>
+  <section class="card" id="s-mercados"><h2>Mercados y cartera de referencia del motor</h2><p class="sub">Filtros de cada mercado y la cartera con la que el motor simula sus resultados en el panel.</p>
+    <div class="grid">${mkCards}</div></section>
+
+  <section class="card" id="s-tg"><h2>Alertas por Telegram</h2><p class="sub">Valen para todos. Qué te llega a vos se elige en <a href="#s-misavisos">Mis avisos</a>.</p>
     <div class="rules">
-      <div class="f"><span class="lbl">Tipos de aviso</span>${checkField('tg', 'types.entry', 'Entradas')}${checkField('tg', 'types.exit', 'Salidas (stop u objetivo tocado)')}${checkField('tg', 'types.update', 'Ajustes de stop')}</div>
-      <div class="f"><span class="lbl">Mercados</span>${MARKETS.map(m => checkField('tg', `kinds.${m}`, MK[m].name)).join('')}</div>
       ${numField('tg', 'max_age_hours', 'No mandar avisos más viejos que (horas)', { min: 1, max: 720, step: 1 })}
       ${textField('tg', 'panel_url', 'Link al panel en los mensajes', '', 'url')}
     </div>
-    <div style="margin-top:16px">${chipsField('tg', 'only', 'Solo estos activos (vacío = todos)', 'Formato mercado:ACTIVO, por ejemplo adr:YPF o cripto:BTC.', 'only')}</div>
   </section>`;
 
   for (const el of document.querySelectorAll('#form input[data-path]')) el.addEventListener(el.type === 'checkbox' ? 'change' : 'input', onInput);
@@ -507,7 +594,8 @@ function refresh() {
     f.classList.toggle('chg', D.some(x => x.key === k || x.key.startsWith(k + '.')));
   }
   for (const c of document.querySelectorAll('[data-calc]')) {
-    const m = c.dataset.calc, r = get(S.draft.engine, `risk.${m}`) || {};
+    const u = c.dataset.calc.startsWith('u:'), m = c.dataset.calc.replace('u:', '');
+    const r = (u ? get(S.draft.users, `users.${S.login}.risk.${m}`) : get(S.draft.engine, `risk.${m}`)) || {};
     c.textContent = isNum(r.budget) && isNum(r.max_loss_pct) && isNum(r.max_position_pct)
       ? `Arriesga hasta ${MK[m].cur} ${(r.budget * r.max_loss_pct / 100).toLocaleString('es-AR', { maximumFractionDigits: 2 })} por operación, con posiciones de hasta ${MK[m].cur} ${(r.budget * r.max_position_pct / 100).toLocaleString('es-AR', { maximumFractionDigits: 0 })}.` : '';
   }
@@ -518,14 +606,72 @@ function refresh() {
   $('review').disabled = !D.length || E.length > 0;
 }
 
+/* ---------- Telegram (estado, prueba y campanita) ---------- */
+async function repoFile(path) {
+  const r = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${path}?ref=${encodeURIComponent(S.branch)}`);
+  return JSON.parse(b64dec(r.content));
+}
+async function loadTgStatus() {
+  let reg = null;
+  try { reg = await repoFile('data/telegram_sent.json'); } catch {}
+  const on = !!reg?.telegram, fresh = reg?.last_run && Date.now() - Date.parse(reg.last_run) < 3 * 3600e3;
+  const [cls, txt] = !reg ? ['warn', 'Sin datos'] : !on ? ['warn', 'Sin configurar'] : fresh ? ['ok', 'Conectado'] : ['warn', 'Sin corridas recientes'];
+  $('tgState').className = 'pill ' + cls; $('tgState').textContent = txt;
+  const when = s => new Date(s).toLocaleString('es-AR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+  const chat = get(S.draft.users, `users.${S.login}.telegram.chat`);
+  $('tgSum').textContent = !reg ? 'Todavía no corrió el envío.' : `Última revisión ${when(reg.last_run)}.` + (!chat ? ' No pusiste chat: no te llega nada.' : '') + (reg.last_error ? ` ${reg.last_error}.` : '');
+  const mine = (reg?.recent || []).filter(x => x.status === 'enviado' && (x.to ? x.to === S.login : S.login === REPO.owner)).slice(0, 6);
+  const TAG = { entry: ['in', 'ENTRADA'], exit: ['out', 'SALIDA'], update: ['', 'AJUSTE'] };
+  $('tgList').innerHTML = mine.length ? mine.map(x => { const [c, t] = TAG[x.type] || ['', esc(x.type)];
+    return `<li><span class="tag ${c}">${t}</span><b>${esc(x.label)}</b>${x.who ? `<span class="mute">de ${esc(get(S.orig.users, `users.${x.who}.name`) || x.who)}</span>` : '<span class="mute">motor</span>'}<span style="flex:1"></span><span class="mute num" style="font-size:12px">${when(x.at)}</span></li>`; }).join('')
+    : '<li class="mute">Todavía no te llegó ninguna.</li>';
+}
+async function tgTest() {
+  $('tgTest').disabled = true;
+  try {
+    await gh(`/repos/${REPO.owner}/${REPO.name}/actions/workflows/telegram.yml/dispatches`, { method: 'POST', body: JSON.stringify({ ref: S.branch, inputs: { prueba: "true" } }) });
+    msg('tgMsg', 'ok', 'Listo: en un minuto llega un ✅ a cada chat configurado (al tuyo también, si ya guardaste el perfil con tu chat).');
+  } catch (e) {
+    msg('tgMsg', 'bad', `No pude dispararlo desde acá (${esc(e.status === 403 || e.status === 404 ? 'el token no tiene permiso de Actions' : e.message)}). Abrí <a href="https://github.com/${esc(REPO.owner)}/${esc(REPO.name)}/actions/workflows/telegram.yml" target="_blank" rel="noopener">Alertas Telegram</a> → <i>Run workflow</i> con la casilla de prueba marcada.`);
+  } finally { $('tgTest').disabled = false; }
+}
+// Los activos con campanita del panel viven en este navegador (localStorage tp_follow)
+function bellList() { try { return JSON.parse(localStorage.getItem('tp_follow')) || []; } catch { return []; } }
+async function useBell() {
+  let labels = {};
+  try { const sig = await repoFile('data/signals.json'); labels = Object.fromEntries(Object.entries(sig.assets || {}).map(([k, a]) => [k, a.label])); } catch {}
+  const add = bellList().map(k => { const [kind, id] = k.split(':'); return kind === 'cripto' ? (labels[k] ? `cripto:${labels[k]}` : null) : `${kind}:${id.toUpperCase()}`; }).filter(x => x && ONLY.test(x));
+  const box = document.querySelector(`.chips[data-path="users.${S.login}.telegram.only"]`);
+  if (add.length && box) addChips(box, add.join(' '));
+}
+
 /* ---------- Carga desde GitHub ---------- */
 async function loadFiles() {
   for (const [f, path] of Object.entries(FILES)) {
-    const r = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${path}?ref=${encodeURIComponent(S.branch)}`);
-    S.sha[f] = r.sha;
-    S.orig[f] = JSON.parse(b64dec(r.content));
+    try {
+      const r = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${path}?ref=${encodeURIComponent(S.branch)}`);
+      S.sha[f] = r.sha;
+      S.orig[f] = JSON.parse(b64dec(r.content));
+    } catch (e) {
+      if (f !== 'users' || e.status !== 404) throw e;
+      S.sha[f] = null; S.orig[f] = { users: {} };
+    }
   }
+  S.orig.users.users ||= {};
   S.draft = clone(S.orig);
+}
+// Perfil nuevo: arranca con la cartera de referencia del motor y los avisos comunes
+function ensureProfile(user) {
+  if (get(S.draft.users, `users.${S.login}`)) return false;
+  const eng = S.orig.engine.risk, tg = S.orig.tg;
+  S.draft.users.users[S.login] = {
+    name: (user.name || S.login).slice(0, 40),
+    risk: Object.fromEntries(MARKETS.map(m => [m, { budget: eng[m].budget, max_loss_pct: eng[m].max_loss_pct, max_position_pct: eng[m].max_position_pct, ...(m === 'cripto' ? { fractional: true } : {}) }])),
+    max_open_positions: eng.max_open_positions,
+    telegram: { chat: S.login === REPO.owner ? 'default' : '', engine: true, follow: Object.keys(S.orig.users.users).filter(x => x !== S.login),
+      types: clone(tg.types || { entry: true, exit: true, update: false }), kinds: clone(tg.kinds || { adr: true, byma: true, cripto: true }), only: [] }
+  };
+  return true;
 }
 
 async function login(t, remember) {
@@ -533,13 +679,20 @@ async function login(t, remember) {
   const [user, repo] = await Promise.all([gh('/user'), gh(`/repos/${REPO.owner}/${REPO.name}`)]);
   if (!repo.permissions || !repo.permissions.push) { const e = new Error(`Tu cuenta (${user.login}) no tiene permiso de escritura en ${REPO.owner}/${REPO.name}.`); e.status = 403; throw e; }
   S.branch = repo.default_branch || 'main';
+  S.login = user.login;
   await loadFiles();
+  const created = ensureProfile(user);
   tok.save(t, remember);
   $('who').innerHTML = `${user.avatar_url ? `<img src="${esc(user.avatar_url)}&s=56" alt="">` : ''}<span class="pill ok">${esc(user.login)}</span>`;
   $('who').hidden = $('logout').hidden = false;
   $('loginCard').hidden = true; $('app').hidden = $('bar').hidden = false;
   if (!$('form').children.length) buildForm();
   fillForm();
+  $('tgRuns').href = `https://github.com/${REPO.owner}/${REPO.name}/actions/workflows/telegram.yml`;
+  $('tgTest').onclick = tgTest;
+  $('useBell').hidden = !bellList().length; $('useBell').onclick = useBell;
+  loadTgStatus();
+  if (created) msg('appMsg', 'info', `Todavía no tenías perfil, así que armé uno con valores de ejemplo. Poné <b>tu</b> presupuesto, elegí a quién seguir y tocá <b>Revisar y guardar</b>.`);
 }
 function loginError(e) {
   token = '';
@@ -566,6 +719,27 @@ $('discard').onclick = () => { S.draft = clone(S.orig); fillForm(); msg('appMsg'
 window.addEventListener('beforeunload', e => { if (S.orig.engine && diffs().length) e.preventDefault(); });
 
 /* ---------- Guardar ---------- */
+// El perfil se guarda mezclando: solo se reemplaza tu entrada, así no pisás el perfil de otro
+async function saveProfile() {
+  for (let i = 0; i < 3; i++) {
+    let cur = { users: {} }, sha = null;
+    try {
+      const r = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${FILES.users}?ref=${encodeURIComponent(S.branch)}`);
+      cur = JSON.parse(b64dec(r.content)); sha = r.sha;
+    } catch (e) { if (e.status !== 404) throw e; }
+    if (!cur._nota) cur = { _nota: 'Perfil de cada usuario (clave = login de GitHub). Lo edita cada uno desde config.html. El repo es público: no pongas datos sensibles.', ...cur };
+    cur.users ||= {};
+    cur.users[S.login] = clone(S.draft.users.users[S.login]);
+    try {
+      const r = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${FILES.users}`, {
+        method: 'PUT', body: JSON.stringify({ message: $('cmsg').value.trim() || `Perfil de ${S.login}`, content: b64enc(fmt(cur) + '\n'), ...(sha ? { sha } : {}), branch: S.branch })
+      });
+      S.sha.users = r.content.sha; S.orig.users = clone(cur); S.draft.users = clone(cur);
+      return r.commit.html_url;
+    } catch (e) { if (e.status !== 409 && e.status !== 422) throw e; }
+  }
+  const e = new Error('conflicto'); e.status = 409; throw e;
+}
 $('review').onclick = () => {
   const D = diffs();
   const val = d => {
@@ -577,7 +751,7 @@ $('review').onclick = () => {
   };
   $('diff').innerHTML = D.map(d => `<li><span class="p">${esc(labelOf(d.key))}</span><span class="v">${val(d)}</span></li>`).join('');
   const files = [...new Set(D.map(d => d.key.split(':')[0]))];
-  $('cmsg').value = files.length === 1 && files[0] === 'tg' ? 'Alertas Telegram: ajustes desde el panel' : 'Config del motor: ajustes desde el panel';
+  $('cmsg').value = files.length === 1 && files[0] === 'users' ? `Perfil de ${S.login} desde el panel` : files.length === 1 && files[0] === 'tg' ? 'Alertas Telegram: ajustes desde el panel' : 'Config del motor: ajustes desde el panel';
   $('runWrap').hidden = !S.canRun;
   msg('dlgMsg'); $('save').disabled = false;
   $('dlg').showModal();
@@ -591,6 +765,7 @@ $('save').onclick = async () => {
   try {
     for (const f of changed) {
       const path = FILES[f];
+      if (f === 'users') { commits.push(await saveProfile()); continue; }
       // Si alguien cambió el archivo en GitHub mientras editabas, no lo piso.
       const cur = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${path}?ref=${encodeURIComponent(S.branch)}`);
       if (cur.sha !== S.sha[f]) { const e = new Error('stale'); e.stale = path; throw e; }
@@ -605,7 +780,7 @@ $('save').onclick = async () => {
     if ($('runNow').checked && !$('runWrap').hidden) {
       try { await gh(`/repos/${REPO.owner}/${REPO.name}/actions/workflows/${WORKFLOW}/dispatches`, { method: 'POST', body: JSON.stringify({ ref: S.branch }) }); ran = ` El motor ya está corriendo: <a href="https://github.com/${esc(REPO.owner)}/${esc(REPO.name)}/actions/workflows/${WORKFLOW}" target="_blank" rel="noopener">ver en Actions</a>.`; }
       catch (e) { S.canRun = false; ran = ' No pude correr el motor (el token no tiene permiso de Actions); toma los valores en la próxima corrida programada.'; }
-    } else ran = ' El motor los toma en la próxima corrida programada.';
+    } else ran = changed.some(f => f !== 'users') ? ' El motor los toma en la próxima corrida programada.' : ' Tus avisos ya usan estos valores.';
     $('dlg').close();
     msg('appMsg', 'ok', `Guardado. ${commits.map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener">Ver commit${commits.length > 1 ? ' ' + (i + 1) : ''}</a>`).join(' · ')}.${ran}`);
     fillForm();
@@ -623,6 +798,7 @@ $('save').onclick = async () => {
 /* ---------- Inicio ---------- */
 $('repoName').textContent = 'engine/config.json';
 $('repoName2').textContent = `${REPO.owner}/${REPO.name}`;
+$('classicLink').href = `https://github.com/settings/tokens/new?scopes=public_repo,workflow&description=${encodeURIComponent('TraderPanel')}`;
 $('patLink').href = `https://github.com/settings/personal-access-tokens/new?name=${encodeURIComponent('TraderPanel config')}&description=${encodeURIComponent('Editar la config del motor desde el panel')}&target_name=${encodeURIComponent(REPO.owner)}&expires_in=90&contents=write&actions=write`;
 (async () => {
   const t = tok.get();

@@ -68,14 +68,25 @@ El envío corre en GitHub, no en el navegador, así el token del bot nunca queda
 
 La primera corrida normal marca como vistas las señales que ya existían, para no llenar el canal de alertas viejas.
 
-### Elegir qué se avisa
+### Varios usuarios: perfil propio y seguir las operaciones de otro
 
-Editá `alerts/telegram.json`:
+Cada usuario entra a **Configuración** con su token de GitHub y queda identificado por su login.
 
-- `types`: `entry` (entradas), `exit` (salidas, incluye stop u objetivo tocado), `update` (ajustes).
-- `kinds`: mercados `adr`, `byma`, `cripto`.
-- `only`: lista opcional de activos, por ejemplo `["adr:YPF", "cripto:BTC"]`. Vacía avisa todos. El botón *Copiar activos seguidos* del panel arma esta lista con los activos que marcaste con la campanita.
-- `max_age_hours`: eventos más viejos que esto no se mandan (evita avalanchas después de una caída).
+| Común (lo comparten todos) | Por usuario (`users/users.json`, cada uno el suyo) |
+|---|---|
+| Watchlist del motor, setups, reglas técnicas (stop máx., objetivo en R, R:R mínimo) — `engine/config.json` | Presupuesto, pérdida máx. y posición máx. por mercado |
+| Antigüedad máx. de los avisos y link al panel — `alerts/telegram.json` | Tope de operaciones abiertas |
+| Cartera de referencia del motor (solo para los resultados del panel) | Chat de Telegram, qué señales del motor recibe y a quién sigue |
+
+**Registrar operaciones.** En **Mis operaciones** (`operaciones.html`) cada uno anota sus compras (precio, stop obligatorio, objetivo opcional y nota), mueve el stop y registra la venta. Se guarda en `trades/<login>.json` y el push dispara **Alertas Telegram** al instante.
+
+**Seguir a alguien.** En *Mis avisos* marcás a quién seguís. Te llega cada compra, cambio de stop y venta suya, con la cantidad calculada para **tu** presupuesto (mismas reglas que el motor: el stop decide el tamaño). Las señales del motor también llegan con el tamaño de cada uno. Si ya seguís más operaciones abiertas que tu tope, la alerta de entrada te lo marca.
+
+**Chat.** `default` usa el secret `TELEGRAM_CHAT_ID`. Cualquier otro usuario pone el id de su canal (`-100…`) o `@canal`, con el bot como administrador. El repo es público: lo que va en `users/` y `trades/` se ve.
+
+**Token de un colaborador.** GitHub no deja usar tokens *Fine-grained* en repos personales de otra persona: el colaborador usa un token clásico con `public_repo` (y `workflow` si quiere correr el motor o la prueba de Telegram desde el panel).
+
+Un usuario nuevo no recibe lo que ya había antes de crear su perfil. Pruebas del envío: `node --test tests/alerts.test.mjs`.
 
 Para probar localmente sin enviar: `node alerts/send.mjs --dry-run`.
 

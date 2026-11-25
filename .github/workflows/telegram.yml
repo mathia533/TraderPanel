@@ -1,11 +1,15 @@
 name: Alertas Telegram
 
-# Corre cada vez que termina el motor de señales y manda a Telegram solo los eventos nuevos.
+# Corre cada vez que termina el motor de señales, y cada vez que alguien registra o cierra
+# una operación desde el panel (trades/), y manda a Telegram solo los avisos nuevos.
 # Necesita los secrets TELEGRAM_BOT_TOKEN y TELEGRAM_CHAT_ID (ver README).
 on:
   workflow_run:
     workflows: ["Motor de señales"]
     types: [completed]
+  push:
+    branches: [main]
+    paths: ["trades/**"]
   workflow_dispatch:
     inputs:
       prueba:
@@ -22,7 +26,7 @@ concurrency:
 
 jobs:
   enviar:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
