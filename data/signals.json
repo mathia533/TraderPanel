@@ -4116,7 +4116,7 @@
  "intraday": {
   "enabled": true,
   "date": "2026-11-25",
-  "time_ny": "14:12",
+  "time_ny": "14:24",
   "symbols": {
    "YPF": {
     "symbol": "YPF",
@@ -4135,9 +4135,9 @@
     },
     "level": 31.29,
     "last": {
-     "bar_start": "14:05",
-     "close": 32.08,
-     "vs_level_pct": 2.52
+     "bar_start": "14:15",
+     "close": 31.93,
+     "vs_level_pct": 2.04
     },
     "trigger": {
      "time": "10:00 AM",
@@ -4322,7 +4322,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 252 minutos (máximo 30)",
+      "la ruptura fue hace 264 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 79.0,
@@ -4359,9 +4359,9 @@
     },
     "level": 25.33,
     "last": {
-     "bar_start": "14:05",
-     "close": 26.55,
-     "vs_level_pct": 4.82
+     "bar_start": "14:15",
+     "close": 26.49,
+     "vs_level_pct": 4.58
     },
     "trigger": {
      "time": "11:50 AM",
@@ -4551,7 +4551,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 142 minutos (máximo 30)",
+      "la ruptura fue hace 154 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 98.0,
@@ -4588,9 +4588,9 @@
     },
     "level": 61.06,
     "last": {
-     "bar_start": "14:05",
-     "close": 62.14,
-     "vs_level_pct": 1.77
+     "bar_start": "14:15",
+     "close": 61.88,
+     "vs_level_pct": 1.33
     },
     "trigger": {
      "time": "9:50 AM",
@@ -4620,7 +4620,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 262 minutos (máximo 30)",
+      "la ruptura fue hace 274 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 40.0,
@@ -4657,9 +4657,9 @@
     },
     "level": 49.16,
     "last": {
-     "bar_start": "14:05",
-     "close": 50.34,
-     "vs_level_pct": 2.4
+     "bar_start": "14:15",
+     "close": 50.08,
+     "vs_level_pct": 1.86
     },
     "trigger": {
      "time": "12:20 PM",
@@ -4689,7 +4689,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 112 minutos (máximo 30)",
+      "la ruptura fue hace 124 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 50.0,
@@ -4726,9 +4726,9 @@
     },
     "level": 49.15,
     "last": {
-     "bar_start": "14:05",
-     "close": 50.87,
-     "vs_level_pct": 3.49
+     "bar_start": "14:15",
+     "close": 50.65,
+     "vs_level_pct": 3.04
     },
     "trigger": {
      "time": "9:50 AM",
@@ -4918,7 +4918,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 262 minutos (máximo 30)",
+      "la ruptura fue hace 274 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 50.0,
@@ -4955,9 +4955,9 @@
     },
     "level": 1432.13,
     "last": {
-     "bar_start": "14:05",
-     "close": 1480.12,
-     "vs_level_pct": 3.35
+     "bar_start": "14:15",
+     "close": 1476.58,
+     "vs_level_pct": 3.1
     },
     "trigger": {
      "time": "12:00 PM",
@@ -5142,7 +5142,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 132 minutos (máximo 30)",
+      "la ruptura fue hace 144 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 1.0,
@@ -5179,9 +5179,9 @@
     },
     "level": 19.42,
     "last": {
-     "bar_start": "14:05",
-     "close": 19.76,
-     "vs_level_pct": 1.75
+     "bar_start": "14:15",
+     "close": 19.89,
+     "vs_level_pct": 2.42
     },
     "trigger": {
      "time": "12:10 PM",
@@ -5211,7 +5211,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 122 minutos (máximo 30)",
+      "la ruptura fue hace 134 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 128.0,
@@ -5248,9 +5248,9 @@
     },
     "level": 10.31,
     "last": {
-     "bar_start": "14:05",
-     "close": 10.32,
-     "vs_level_pct": 0.12
+     "bar_start": "14:15",
+     "close": 10.28,
+     "vs_level_pct": -0.29
     },
     "trigger": {
      "time": "1:20 PM",
@@ -5280,7 +5280,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 52 minutos (máximo 30)",
+      "la ruptura fue hace 64 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 242.0,
@@ -5317,9 +5317,9 @@
     },
     "level": 4.51,
     "last": {
-     "bar_start": "14:05",
-     "close": 4.72,
-     "vs_level_pct": 4.66
+     "bar_start": "14:15",
+     "close": 4.7,
+     "vs_level_pct": 4.32
     },
     "trigger": {
      "time": "12:35 PM",
@@ -5349,7 +5349,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 97 minutos (máximo 30)",
+      "la ruptura fue hace 109 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 553.0,
@@ -5386,9 +5386,9 @@
     },
     "level": 8.17,
     "last": {
-     "bar_start": "14:05",
-     "close": 8.4,
-     "vs_level_pct": 2.72
+     "bar_start": "14:15",
+     "close": 8.41,
+     "vs_level_pct": 2.9
     },
     "trigger": {
      "time": "12:05 PM",
@@ -5418,7 +5418,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 127 minutos (máximo 30)",
+      "la ruptura fue hace 139 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 304.0,
@@ -5455,9 +5455,9 @@
     },
     "level": 8.77,
     "last": {
-     "bar_start": "14:05",
-     "close": 8.92,
-     "vs_level_pct": 1.77
+     "bar_start": "14:15",
+     "close": 8.84,
+     "vs_level_pct": 0.8
     },
     "trigger": {
      "time": "1:50 PM",
@@ -5647,6 +5647,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
+      "la ruptura fue hace 34 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 283.0,
@@ -5684,8 +5685,8 @@
     "level": 7.81,
     "last": {
      "bar_start": "14:05",
-     "close": 8.21,
-     "vs_level_pct": 5.08
+     "close": 8.22,
+     "vs_level_pct": 5.15
     },
     "trigger": {
      "time": "10:00 AM",
@@ -5715,7 +5716,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 252 minutos (máximo 30)",
+      "la ruptura fue hace 264 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 316.0,
@@ -5752,9 +5753,9 @@
     },
     "level": 11.36,
     "last": {
-     "bar_start": "13:50",
-     "close": 11.84,
-     "vs_level_pct": 4.23
+     "bar_start": "14:15",
+     "close": 11.82,
+     "vs_level_pct": 4.05
     },
     "trigger": {
      "time": "12:00 PM",
@@ -5784,7 +5785,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 132 minutos (máximo 30)",
+      "la ruptura fue hace 144 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 219.0,
@@ -5853,7 +5854,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 127 minutos (máximo 30)",
+      "la ruptura fue hace 139 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 250.0,
@@ -5890,12 +5891,12 @@
     },
     "level": 11.1,
     "last": {
-     "bar_start": "14:00",
-     "close": 11.01,
-     "vs_level_pct": -0.81
+     "bar_start": "14:05",
+     "close": 11.03,
+     "vs_level_pct": -0.63
     },
     "trigger": null,
-    "reason": "last close $11.01 (14:00 bar), $0.09 under the range high $11.10 (-0.81%)"
+    "reason": "last close $11.03 (14:05 bar), $0.07 under the range high $11.10 (-0.63%)"
    },
    "GLOB": {
     "symbol": "GLOB",
@@ -5914,9 +5915,9 @@
     },
     "level": 51.0,
     "last": {
-     "bar_start": "14:05",
-     "close": 50.69,
-     "vs_level_pct": -0.62
+     "bar_start": "14:15",
+     "close": 50.5,
+     "vs_level_pct": -0.98
     },
     "trigger": {
      "time": "1:50 PM",
@@ -6106,6 +6107,7 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
+      "la ruptura fue hace 34 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
      ],
      "units": 49.0,
@@ -7258,5 +7260,5 @@
  "errors": {
   "news": "no SEC CIK for ADA-USD; no SEC CIK for AVAX-USD; SEC 8-K for BBAR: HTTP 400 for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000913059&type=8-K&dateb=&owner=include&count=8&output=atom"
  },
- "intraday_at": "2026-11-25T19:12:39.015855+00:00"
+ "intraday_at": "2026-11-25T19:24:50.352289+00:00"
 }
