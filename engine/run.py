@@ -249,6 +249,7 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
                     r_mult = (ex["price"] - pos["entry"]) / (pos["entry"] - pos["initial_stop"])
                     ev = {"type": "exit", "reason": ex["reason"], "kind": kind, "id": ident, "label": label,
                           "setup": pos["setup"], "price": rnd(ex["price"]), "entry": pos["entry"],
+                          "initial_stop": pos["initial_stop"],
                           "why": ex["why"], "pnl_pct": round(pnl, 2), "r": round(r_mult, 2),
                           "bar_date": last_bar["date"], "opened_at": pos["opened_at"]}
                     ev["id_ev"] = f"{key}:exit:{pos['bar_date']}:{ex['reason']}"

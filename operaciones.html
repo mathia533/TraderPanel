@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Esta página maneja un token de GitHub: solo puede hablar con api.github.com y no carga scripts externos. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://api.github.com; img-src data: https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>TraderPanel · Mis operaciones</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322C55E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3 17 9 11 13 15 21 7'/%3E%3Cpolyline points='15 7 21 7 21 13'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#020617;--bg2:#050B1F;--card:#0E1223;--inset:#020617;--hover:#111833;
+  --line:#1E293B;--line2:#334155;--ink:#F8FAFC;--ink2:#CBD5E1;--mute:#94A3B8;
+  --up:#4ADE80;--upbg:#052E1A;--dn:#F87171;--dnbg:#3B0D0D;--dnfg:#FCA5A5;
+  --warn:#FCD34D;--warnbg:#3B2A06;--info:#93C5FD;--infobg:#0C1A33;
+  --accent:#22C55E;--on-accent:#052E1A;--primary:#1D4ED8;--primary-line:#3B82F6;--focus:#60A5FA;
+  --sans:'Fira Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'Fira Code',ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+:root[data-theme=light]{
+  --bg:#F1F5F9;--bg2:#FFFFFF;--card:#FFFFFF;--inset:#F1F5F9;--hover:#F8FAFC;
+  --line:#E2E8F0;--line2:#CBD5E1;--ink:#0F172A;--ink2:#334155;--mute:#475569;
+  --up:#15803D;--upbg:#DCFCE7;--dn:#B91C1C;--dnbg:#FEE2E2;--dnfg:#991B1B;
+  --warn:#92400E;--warnbg:#FEF3C7;--info:#1D4ED8;--infobg:#DBEAFE;
+  --accent:#15803D;--on-accent:#FFFFFF;--primary:#1D4ED8;--primary-line:#1D4ED8;--focus:#2563EB;
+  color-scheme:light;
+}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--sans);overflow-x:clip}
+h1,h2,h3,p{margin:0}
+a{color:var(--info)}
+[hidden]{display:none!important}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.55}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.mute{color:var(--mute)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+code{font-family:var(--mono);font-size:12.5px;background:var(--line);border-radius:4px;padding:1px 5px}
+.btn{min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--line2);background:var(--card);display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:500;text-decoration:none;color:var(--ink)}
+.btn:hover:not(:disabled){border-color:var(--mute)}
+.btn.go{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+.btn.primary{background:var(--primary);border-color:var(--primary-line);color:#fff;font-weight:600}
+.btn.icon{width:44px;padding:0}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:500}
+.pill.ok{background:var(--upbg);color:var(--up)}
+.pill.warn{background:var(--warnbg);color:var(--warn)}
+svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.top{background:var(--bg2);border-bottom:1px solid var(--line)}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:16px}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--ink);text-decoration:none}
+.brand svg{width:28px;height:28px;stroke:var(--accent)}
+.top .right{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.who{display:flex;align-items:center;gap:8px;font-size:14px}
+.who img{width:28px;height:28px;border-radius:50%}
+main.wrap{padding-block:24px 120px;display:flex;flex-direction:column;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card>h2{font-size:18px;font-weight:600;margin-bottom:4px}
+.card>.sub{color:var(--mute);font-size:14px;margin-bottom:16px}
+.lead h1{font-size:24px;font-weight:700;letter-spacing:-.01em}
+.lead p{color:var(--ink2);margin-top:6px;max-width:72ch}
+
+.login{max-width:640px;display:flex;flex-direction:column;gap:14px}
+.login ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;color:var(--ink2)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.check{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink2);min-height:32px}
+.check input{width:18px;height:18px;accent-color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.mk{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--inset)}
+.mk h3{font-size:16px;font-weight:600;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.mk h3 small{font-weight:400;color:var(--mute);font-size:13px}
+.f{display:flex;flex-direction:column;gap:6px}
+.f label,.f .lbl{font-size:13px;color:var(--ink2);font-weight:500}
+.f .help{font-size:12.5px;color:var(--mute)}
+.f input[type=text],.f input[type=number],.f input[type=url],.f input[type=password]{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font-size:16px;width:100%}
+.f input.num{font-family:var(--mono)}
+.f.bad input{border-color:var(--dn)}
+.f .err{font-size:12.5px;color:var(--dn)}
+.f.chg label::after{content:" · modificado";color:var(--warn);font-weight:400}
+.calc{font-size:12.5px;color:var(--mute)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:8px;border:1px solid var(--line2);border-radius:10px;background:var(--bg);min-height:48px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:2px;padding:2px 2px 2px 10px;border-radius:8px;background:var(--line);font-family:var(--mono);font-size:13px}
+.chip.new{background:var(--upbg);color:var(--up)}
+.chip button{border:0;background:transparent;width:28px;height:28px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;color:var(--mute)}
+.chip button:hover{background:var(--line2);color:var(--ink)}
+.chips input{border:0;background:transparent;flex:1 1 120px;min-height:32px;font-family:var(--mono);font-size:14px;padding:0 6px;color:var(--ink)}
+.chips input:focus{outline:none}
+.chips:focus-within{outline:2px solid var(--focus);outline-offset:1px}
+.opts{display:flex;flex-wrap:wrap;gap:4px 16px}
+
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--bg2);border-top:1px solid var(--line);z-index:5}
+.bar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:12px}
+.bar .state{font-size:14px;color:var(--ink2);margin-right:auto}
+.bar .state b{color:var(--warn)}
+.bar .state.bad b{color:var(--dn)}
+
+dialog{border:1px solid var(--line2);border-radius:14px;background:var(--card);color:var(--ink);padding:0;width:min(680px,calc(100vw - 32px));max-height:calc(100vh - 32px)}
+dialog::backdrop{background:rgba(2,6,23,.7)}
+.dlg{padding:20px;display:flex;flex-direction:column;gap:14px}
+.dlg h2{font-size:18px}
+.diff{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:10px;max-height:46vh;overflow:auto}
+.diff li{padding:10px 12px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.diff li:last-child{border-bottom:0}
+.diff .p{font-size:13px;color:var(--ink2)}
+.diff .v{font-family:var(--mono);font-size:13px;overflow-wrap:anywhere}
+.diff del{color:var(--dnfg);text-decoration:line-through}
+.diff ins{color:var(--up);text-decoration:none}
+.msg{padding:12px 14px;border-radius:10px;font-size:14px}
+.msg.ok{background:var(--upbg);color:var(--up)}
+.msg.bad{background:var(--dnbg);color:var(--dnfg)}
+.msg.info{background:var(--infobg);color:var(--info)}
+.secnav{display:flex;flex-wrap:wrap;gap:6px}
+.secnav a{padding:8px 12px;border-radius:8px;border:1px solid var(--line2);color:var(--ink2);text-decoration:none;font-size:14px}
+.secnav a:hover{background:var(--hover)}
+@media (max-width:560px){.bar .state{width:100%}.bar .btn{flex:1}}
+select{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font-size:16px}
+.f input[type=number]{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font-size:16px}
+.f .row input{flex:1 1 120px;width:auto}
+.list{display:flex;flex-direction:column;gap:8px}
+.tr{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--inset)}
+.tr summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;gap:2px}
+.tr summary::-webkit-details-marker{display:none}
+.tr[open] summary{margin-bottom:12px}
+.acts{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:12px}
+.up{color:var(--up)}.dn{color:var(--dn)}
+.err{font-size:12.5px;color:var(--dn)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 21 2M16 7l3 3M18 5l2 2"/></symbol>
+  <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></symbol>
+</svg>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><svg class="i" aria-hidden="true"><use href="#i-logo"/></svg>TraderPanel</a>
+    <span class="mute">Mis operaciones</span>
+    <div class="right">
+      <div class="who" id="who" hidden></div>
+      <button class="btn icon" id="theme" type="button" aria-label="Cambiar tema"></button>
+      <a class="btn" href="config.html">Configuración</a>
+      <a class="btn" href="./"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg>Volver al panel</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="lead">
+    <h1>Mis operaciones</h1>
+    <p>Registrá acá lo que comprás y vendés. Cada movimiento se guarda en <code id="fileName">trades/</code> y los que te siguen reciben el aviso por Telegram con la cantidad calculada para su propio presupuesto. Solo compras (posiciones largas).</p>
+  </div>
+
+  <section class="card" id="needLogin" hidden>
+    <h2>Primero entrá con tu cuenta</h2>
+    <p class="sub">Usás el mismo token de GitHub que en Configuración.</p>
+    <div class="row"><a class="btn go" href="config.html"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Entrar desde Configuración</a></div>
+  </section>
+  <div id="loadMsg" role="status"></div>
+
+  <div id="app" hidden style="display:flex;flex-direction:column;gap:20px">
+    <div id="appMsg" role="status"></div>
+
+    <section class="card" aria-labelledby="newH">
+      <h2 id="newH">Registrar una compra</h2>
+      <p class="sub">El stop es obligatorio: con él se calcula cuánto compra cada uno que te sigue.</p>
+      <div class="rules">
+        <div class="f"><label for="nKind">Mercado</label>
+          <select id="nKind"><option value="adr">ADR (US$)</option><option value="byma">BYMA ($)</option><option value="cripto">Cripto (US$)</option></select></div>
+        <div class="f"><label for="nAsset">Activo</label><input type="text" id="nAsset" spellcheck="false" autocomplete="off" placeholder="YPF, GGAL, BTC…"><span class="err" id="eAsset"></span></div>
+        <div class="f"><label for="nEntry">Precio de compra</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="nEntry"></div>
+        <div class="f"><label for="nStop">Stop</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="nStop"><span class="err" id="eStop"></span></div>
+        <div class="f"><label for="nTarget">Objetivo (opcional)</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="nTarget"><span class="err" id="eTarget"></span></div>
+        <div class="f"><label for="nUnits">Cantidad que compraste (opcional)</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="nUnits"><span class="help">No se manda a nadie; queda para tu registro.</span></div>
+      </div>
+      <div class="f" style="margin-top:16px"><label for="nNote">Por qué entrás (opcional)</label><input type="text" id="nNote" maxlength="280" placeholder="Ej.: rompió máximos con volumen, earnings buenos"></div>
+      <p class="calc" id="nCalc" style="margin-top:12px"></p>
+      <div class="row" style="margin-top:12px"><button class="btn go" id="nSave" type="button" disabled>Registrar compra</button></div>
+    </section>
+
+    <section class="card" aria-labelledby="openH">
+      <h2 id="openH">Abiertas</h2>
+      <p class="sub">Para cerrar o mover el stop, tocá la operación.</p>
+      <div id="openList" class="list"></div>
+    </section>
+
+    <section class="card" aria-labelledby="closedH">
+      <h2 id="closedH">Cerradas</h2>
+      <div id="closedList" class="list"></div>
+    </section>
+  </div>
+</main>
+
+<script>
+'use strict';
+const REPO = (() => {
+  const h = location.hostname, seg = location.pathname.split('/').filter(Boolean)[0];
+  if (h.endsWith('.github.io') && seg) return { owner: h.split('.')[0], name: seg };
+  return { owner: 'mathia533', name: 'TraderPanel' };
+})();
+const API = 'https://api.github.com', TK = 'tp_gh_token';
+const MK = { adr: { name: 'ADR', cur: 'US$' }, byma: { name: 'BYMA', cur: '$' }, cripto: { name: 'Cripto', cur: 'US$' } };
+const REASON = { target: 'Llegó al objetivo', stop: 'Tocó el stop', manual: 'Cierre manual' };
+const ASSET = /^[A-Z0-9][A-Z0-9.\-]{0,14}$/;
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const msg = (el, kind, html) => { $(el).innerHTML = html ? `<div class="msg ${kind}">${html}</div>` : ''; };
+const nf = (v, d = 2) => v == null || !isFinite(v) ? '—' : Number(v).toLocaleString('es-AR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const px = v => nf(v, Math.abs(v) >= 1000 ? 0 : Math.abs(v) >= 1 ? 2 : 4);
+const when = s => s ? new Date(s).toLocaleString('es-AR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '';
+const num = id => { const v = $(id).value; return v === '' ? null : Number(v); };
+
+function applyTheme(t) {
+  document.documentElement.dataset.theme = t;
+  $('theme').innerHTML = `<svg class="i" aria-hidden="true"><use href="#i-${t === 'dark' ? 'sun' : 'moon'}"/></svg>`;
+}
+try { applyTheme(JSON.parse(localStorage.getItem('tp_theme')) || 'dark'); } catch { applyTheme('dark'); }
+$('theme').onclick = () => { const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; try { localStorage.setItem('tp_theme', JSON.stringify(t)); } catch {} applyTheme(t); };
+
+let token = '';
+try { token = sessionStorage.getItem(TK) || localStorage.getItem(TK) || ''; } catch {}
+async function gh(path, opts = {}) {
+  const r = await fetch(API + path, { ...opts, cache: 'no-store',
+    headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', Authorization: `Bearer ${token}`, ...(opts.body ? { 'Content-Type': 'application/json' } : {}) } });
+  const body = await r.json().catch(() => ({}));
+  if (!r.ok) { const e = new Error(body.message || `HTTP ${r.status}`); e.status = r.status; throw e; }
+  return body;
+}
+const b64dec = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g, '')), c => c.charCodeAt(0)));
+const b64enc = s => { let bin = ''; for (const b of new TextEncoder().encode(s)) bin += String.fromCharCode(b); return btoa(bin); };
+
+const S = { login: '', branch: 'main', trades: [], sha: null, me: null };
+const PATH = () => `trades/${S.login}.json`;
+// Un objeto por línea: el diff del commit queda legible
+const fmtFile = list => `{\n "trades": [${list.length ? '\n' + list.map(t => '  ' + JSON.stringify(t)).join(',\n') + '\n ' : ''}]\n}\n`;
+
+async function load() {
+  try {
+    const r = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${PATH()}?ref=${encodeURIComponent(S.branch)}`);
+    S.sha = r.sha; S.trades = JSON.parse(b64dec(r.content)).trades || [];
+  } catch (e) { if (e.status !== 404) throw e; S.sha = null; S.trades = []; }
+}
+// Aplica un cambio y lo guarda. Si alguien guardó en el medio (otra pestaña), recarga y lo vuelve a aplicar.
+async function commit(change, message) {
+  for (let i = 0; i < 3; i++) {
+    const next = change(structuredClone(S.trades));
+    try {
+      const r = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${PATH()}`, { method: 'PUT',
+        body: JSON.stringify({ message, content: b64enc(fmtFile(next)), ...(S.sha ? { sha: S.sha } : {}), branch: S.branch }) });
+      S.sha = r.content.sha; S.trades = next;
+      return r.commit.html_url;
+    } catch (e) { if (e.status !== 409 && e.status !== 422) throw e; await load(); }
+  }
+  throw new Error('GitHub rechazó el cambio por un conflicto. Recargá la página.');
+}
+function saveError(e) {
+  if (e.status === 401) return 'El token venció. Entrá de nuevo desde Configuración.';
+  if (e.status === 403 || e.status === 404) return 'Tu token no puede escribir en el repo. Revisá en Configuración que tenga permiso de escritura.';
+  return esc(e.message);
+}
+
+/* ---------- Tamaño (mismas reglas que el motor) ---------- */
+function sizeFor(r, entry, stop) {
+  if (!r || !(entry > stop) || !(stop > 0)) return null;
+  const byLoss = r.budget * r.max_loss_pct / 100 / (entry - stop), byCap = r.budget * r.max_position_pct / 100 / entry;
+  let u = Math.min(byLoss, byCap); u = r.fractional ? Math.floor(u * 1e6) / 1e6 : Math.floor(u);
+  return { units: u, notional: u * entry, risk: u * (entry - stop) };
+}
+
+/* ---------- Nueva compra ---------- */
+function checkNew() {
+  const kind = $('nKind').value, asset = $('nAsset').value.trim().toUpperCase(), e = num('nEntry'), s = num('nStop'), t = num('nTarget');
+  const eA = asset && !ASSET.test(asset) ? 'Ticker en mayúsculas, sin espacios (ej. YPF, GGAL, BTC).' : '';
+  const eS = e > 0 && s != null && s >= e ? 'El stop tiene que quedar debajo del precio de compra.' : '';
+  const eT = e > 0 && t != null && t <= e ? 'El objetivo tiene que quedar arriba del precio de compra.' : '';
+  $('eAsset').textContent = eA; $('eStop').textContent = eS; $('eTarget').textContent = eT;
+  const ok = asset && !eA && e > 0 && s > 0 && !eS && !eT && (t == null || t > 0);
+  $('nSave').disabled = !ok;
+  if (ok) {
+    const c = MK[kind].cur, stopPct = (e - s) / e * 100, rr = t ? (t - e) / (e - s) : null;
+    const sz = sizeFor(S.me?.risk?.[kind], e, s);
+    $('nCalc').innerHTML = `Stop a ${nf(stopPct, 1)} % de la entrada${rr != null ? ` · R:R ${nf(rr, 1)}` : ''}.` +
+      (sz ? ` Con tu perfil te tocarían ${sz.units.toLocaleString('es-AR', { maximumFractionDigits: 6 })} unidades (${c} ${nf(sz.notional, 0)}, riesgo ${c} ${nf(sz.risk, 0)}).` : '');
+  } else $('nCalc').textContent = '';
+  return ok && { kind, asset, entry: e, stop: s, target: t };
+}
+for (const id of ['nKind', 'nAsset', 'nEntry', 'nStop', 'nTarget']) $(id).addEventListener('input', checkNew);
+$('nSave').onclick = async () => {
+  const v = checkNew(); if (!v) return;
+  $('nSave').disabled = true; msg('appMsg', 'info', 'Guardando…');
+  const now = new Date(), stamp = now.toISOString().slice(0, 16).replace(/\D/g, '');
+  const t = { id: `t${stamp}-${v.asset.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${Math.random().toString(36).slice(2, 6)}`, kind: v.kind, asset: v.asset,
+    entry: v.entry, stop: v.stop, target: v.target, units: num('nUnits'), opened_at: now.toISOString(), note: $('nNote').value.trim().slice(0, 280),
+    stop_history: [], exit: null, exit_reason: null, closed_at: null };
+  try {
+    const url = await commit(list => [t, ...list], `Compra ${v.asset} (${S.login})`);
+    for (const id of ['nAsset', 'nEntry', 'nStop', 'nTarget', 'nUnits', 'nNote']) $(id).value = '';
+    checkNew(); render();
+    msg('appMsg', 'ok', `Registrada la compra de ${esc(v.asset)}. Los que te siguen reciben el aviso en un par de minutos. <a href="${esc(url)}" target="_blank" rel="noopener">Ver commit</a>`);
+  } catch (e) { msg('appMsg', 'bad', saveError(e)); checkNew(); }
+};
+
+/* ---------- Listas ---------- */
+const curStop = t => (t.stop_history?.length ? t.stop_history.at(-1).stop : t.stop);
+function row(t) {
+  const c = MK[t.kind].cur, open = t.exit == null;
+  const head = `<b>${esc(t.asset)}</b> <span class="mute">${MK[t.kind].name} · ${when(t.opened_at)}</span>`;
+  if (!open) {
+    const pnl = (t.exit / t.entry - 1) * 100;
+    return `<div class="tr"><div>${head}<div class="num">${c} ${px(t.entry)} → ${c} ${px(t.exit)} · <span class="${pnl >= 0 ? 'up' : 'dn'}">${pnl >= 0 ? '+' : '−'}${nf(Math.abs(pnl), 1)} %</span></div>
+      <div class="mute" style="font-size:13px">${REASON[t.exit_reason] || 'Cierre'} · ${when(t.closed_at)}${t.note ? ' · ' + esc(t.note) : ''}</div></div></div>`;
+  }
+  return `<details class="tr" data-id="${esc(t.id)}"><summary>${head}<div class="num">Compra ${c} ${px(t.entry)} · stop ${c} ${px(curStop(t))}${t.target ? ` · objetivo ${c} ${px(t.target)}` : ''}</div>${t.note ? `<div class="mute" style="font-size:13px">${esc(t.note)}</div>` : ''}</summary>
+    <div class="acts">
+      <div class="f"><label>Mover el stop a</label><div class="row"><input class="num" type="number" step="any" min="0" data-f="stop" value="${curStop(t)}"><button class="btn" type="button" data-act="stop">Mover stop</button></div></div>
+      <div class="f"><label>Vender a</label><div class="row"><input class="num" type="number" step="any" min="0" data-f="exit" placeholder="precio">
+        <select data-f="reason"><option value="manual">Cierre manual</option><option value="target">Llegó al objetivo</option><option value="stop">Tocó el stop</option></select>
+        <button class="btn primary" type="button" data-act="exit">Registrar venta</button></div></div>
+      <div class="f"><label>Comentario (opcional)</label><input type="text" maxlength="280" data-f="note" placeholder="Se manda con el aviso"></div>
+      <span class="err" data-f="err"></span>
+    </div></details>`;
+}
+function render() {
+  const open = S.trades.filter(t => t.exit == null), closed = S.trades.filter(t => t.exit != null).sort((a, b) => (b.closed_at || '').localeCompare(a.closed_at || ''));
+  $('openList').innerHTML = open.length ? open.map(row).join('') : '<p class="mute">No tenés operaciones abiertas.</p>';
+  $('closedList').innerHTML = closed.length ? closed.slice(0, 30).map(row).join('') : '<p class="mute">Todavía no cerraste ninguna.</p>';
+}
+$('openList').addEventListener('click', async ev => {
+  const b = ev.target.closest('button[data-act]'); if (!b) return;
+  const box = b.closest('details'), id = box.dataset.id, t = S.trades.find(x => x.id === id);
+  const f = k => box.querySelector(`[data-f=${k}]`), note = f('note').value.trim().slice(0, 280);
+  const err = m => { f('err').textContent = m; };
+  let change, label;
+  if (b.dataset.act === 'stop') {
+    const s = Number(f('stop').value);
+    if (!(s > 0)) return err('Poné el precio del stop nuevo.');
+    if (s === curStop(t)) return err('Es el mismo stop que ya tenía.');
+    change = list => list.map(x => x.id === id ? { ...x, stop_history: [...(x.stop_history || []), { at: new Date().toISOString(), stop: s, ...(note ? { note } : {}) }] } : x);
+    label = `Stop de ${t.asset} a ${s} (${S.login})`;
+  } else {
+    const p = Number(f('exit').value);
+    if (!(p > 0)) return err('Poné el precio al que vendiste.');
+    change = list => list.map(x => x.id === id ? { ...x, exit: p, exit_reason: f('reason').value, closed_at: new Date().toISOString(), ...(note ? { exit_note: note } : {}) } : x);
+    label = `Venta ${t.asset} (${S.login})`;
+  }
+  err(''); b.disabled = true; msg('appMsg', 'info', 'Guardando…');
+  try {
+    const url = await commit(change, label); render();
+    msg('appMsg', 'ok', `Guardado. Los que te siguen reciben el aviso en un par de minutos. <a href="${esc(url)}" target="_blank" rel="noopener">Ver commit</a>`);
+  } catch (e) { msg('appMsg', 'bad', saveError(e)); b.disabled = false; }
+});
+
+(async () => {
+  if (!token) { $('needLogin').hidden = false; return; }
+  msg('loadMsg', 'info', 'Cargando…');
+  try {
+    const [user, repo] = await Promise.all([gh('/user'), gh(`/repos/${REPO.owner}/${REPO.name}`)]);
+    if (!repo.permissions?.push) throw Object.assign(new Error(`Tu cuenta (${user.login}) no tiene permiso de escritura en ${REPO.owner}/${REPO.name}.`), { status: 0 });
+    S.login = user.login; S.branch = repo.default_branch || 'main';
+    try { const u = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/users/users.json?ref=${encodeURIComponent(S.branch)}`); S.me = JSON.parse(b64dec(u.content)).users?.[S.login] || null; } catch {}
+    await load();
+    $('fileName').textContent = PATH();
+    $('who').innerHTML = `${user.avatar_url ? `<img src="${esc(user.avatar_url)}&s=56" alt="">` : ''}<span class="pill ok">${esc(user.login)}</span>`;
+    $('who').hidden = false; $('app').hidden = false; msg('loadMsg');
+    if (!S.me) msg('appMsg', 'info', 'Todavía no guardaste tu perfil. Podés registrar operaciones igual; en <a href="config.html">Configuración</a> ponés tu nombre y tu presupuesto.');
+    render();
+  } catch (e) {
+    if (e.status === 401) { try { sessionStorage.removeItem(TK); localStorage.removeItem(TK); } catch {} $('needLogin').hidden = false; msg('loadMsg', 'bad', 'El token venció. Entrá de nuevo.'); }
+    else msg('loadMsg', 'bad', esc(e.message));
+  }
+})();
+</script>
+</body>
+</html>
