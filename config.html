@@ -264,7 +264,7 @@ input.sw:disabled{opacity:.45;cursor:not-allowed}
   <!-- Entrar -->
   <section class="card login" id="loginCard" aria-labelledby="loginH">
     <div class="lh"><svg class="i" aria-hidden="true"><use href="#i-logo"/></svg><h2 id="loginH">Entrar a la configuración</h2></div>
-    <p class="mute">Usás un token de GitHub. Queda solo en este navegador y viaja solo a api.github.com. Tu perfil se identifica con tu usuario de GitHub; solo quien tiene permiso de escritura en el repo puede guardar.</p>
+    <p class="mute">Para entrar se usa un token de GitHub, una clave que generás vos y que podés borrar cuando quieras. Se guarda solo en este navegador y solo se manda a GitHub. Tu perfil queda asociado a tu usuario de GitHub, y solo quien tiene permiso sobre el repositorio puede guardar cambios.</p>
     <div class="seg full" role="tablist" aria-label="Tipo de cuenta">
       <button type="button" role="tab" id="tabOwner" aria-selected="true" aria-controls="howOwner">Soy el dueño del repo</button>
       <button type="button" role="tab" id="tabCollab" aria-selected="false" aria-controls="howCollab">Me sumaron como colaborador</button>
@@ -280,7 +280,7 @@ input.sw:disabled{opacity:.45;cursor:not-allowed}
       <li><span>3</span><div>Ponele vencimiento, generalo y pegalo abajo.</div></li>
     </ol>
     <div class="f">
-      <label for="token">Token</label>
+      <label for="token">Token de GitHub</label>
       <input type="password" id="token" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
     </div>
     <label class="check"><input type="checkbox" id="remember"> Recordarme en este navegador (si no, se borra al cerrar la pestaña)</label>
@@ -299,14 +299,14 @@ input.sw:disabled{opacity:.45;cursor:not-allowed}
         <div class="g"><span class="gt" id="sideOthers">Con los demás</span>
           <a href="#comparar" data-go="comparar"><span class="l">Comparar perfiles</span><span class="cnt" hidden></span></a>
         </div>
-        <div class="g"><span class="gt">Motor · común a todos</span>
-          <a href="#reglas" data-go="reglas"><span class="l">Reglas de operación</span><span class="cnt" hidden></span></a>
-          <a href="#watch" data-go="watch"><span class="l">Watchlist</span><span class="cnt" hidden></span></a>
-          <a href="#setups" data-go="setups"><span class="l">Setups</span><span class="cnt" hidden></span></a>
-          <a href="#mercados" data-go="mercados"><span class="l">Mercados</span><span class="cnt" hidden></span></a>
+        <div class="g"><span class="gt">Motor · vale para todos</span>
+          <a href="#reglas" data-go="reglas"><span class="l">Reglas de compra y venta</span><span class="cnt" hidden></span></a>
+          <a href="#watch" data-go="watch"><span class="l">Activos que analiza</span><span class="cnt" hidden></span></a>
+          <a href="#setups" data-go="setups"><span class="l">Cuándo avisa</span><span class="cnt" hidden></span></a>
+          <a href="#mercados" data-go="mercados"><span class="l">Filtros por mercado</span><span class="cnt" hidden></span></a>
           <a href="#tg" data-go="tg"><span class="l">Telegram (general)</span><span class="cnt" hidden></span></a>
         </div>
-        <div class="note"><b>Se guarda en GitHub</b>Cada guardado es un commit firmado con tu usuario en <code id="repoName">users/users.json</code> o en la config común del motor.</div>
+        <div class="note"><b>Se guarda en GitHub</b>Cada vez que guardás queda registrado con tu usuario y la fecha, así se puede ver quién cambió qué. <code id="repoName" hidden>users/users.json</code></div>
       </nav>
       <div class="panes">
         <div id="appMsg" role="status"></div>
@@ -330,10 +330,10 @@ input.sw:disabled{opacity:.45;cursor:not-allowed}
     <h2 id="dlgH">Revisá los cambios</h2>
     <ul class="diff" id="diff"></ul>
     <div class="f">
-      <label for="cmsg">Mensaje del commit</label>
+      <label for="cmsg">Nota del cambio (queda en el historial)</label>
       <input type="text" id="cmsg" maxlength="120">
     </div>
-    <label class="check" id="runWrap"><input type="checkbox" id="runNow"> Correr el motor de señales apenas se guarde (el token necesita <b>Actions: Read and write</b>)</label>
+    <label class="check" id="runWrap"><input type="checkbox" id="runNow"> Hacer que el motor revise todo de nuevo apenas se guarde (el token necesita el permiso <b>Actions: Read and write</b>)</label>
     <div id="dlgMsg" role="status"></div>
     <div class="row" style="justify-content:flex-end">
       <button class="btn" id="dlgCancel" type="button">Seguir editando</button>
@@ -445,7 +445,7 @@ function validateEngine(c) {
   }
   for (const [k, lo, hi, int] of RISK_G) num(`risk.${k}`, get(c, `risk.${k}`), lo, hi, int);
   const tr = get(c, 'risk.target_r'), mr = get(c, 'risk.min_reward_risk');
-  if (isNum(tr) && isNum(mr) && tr < mr) e('risk.target_r', 'Es menor que el R:R mínimo: el motor no abriría ninguna operación.');
+  if (isNum(tr) && isNum(mr) && tr < mr) e('risk.target_r', 'Es menor que la ganancia mínima por peso arriesgado: el motor no haría ninguna operación.');
   const sub = (p, allowed, need) => { const v = get(c, p); if (!Array.isArray(v) || v.some(x => !allowed.includes(x))) e(p, 'Valores no válidos.'); else if (need && !v.length) e(p, 'Elegí al menos uno.'); };
   sub('setups.vcp_min_rating', VCP, true); sub('setups.vcp_watch_rating', VCP); sub('setups.burst_entry_states', BURST); sub('setups.burst_watch_states', BURST);
   return E;
@@ -492,12 +492,12 @@ const errors = () => [...validateEngine(S.draft.engine), ...validateTg(S.draft.t
 
 /* ---------- Etiquetas legibles para el resumen de cambios ---------- */
 const LABEL = {
-  budget: 'Presupuesto', max_loss_pct: 'Pérdida máx. por operación (%)', max_position_pct: 'Posición máx. (% del presupuesto)', fractional: 'Permite fracciones',
-  min_price: 'Precio mínimo', min_volume: 'Volumen mínimo', min_reward_risk: 'R:R mínimo', target_r: 'Objetivo (R)', max_stop_pct: 'Stop máx. (%)',
-  max_open_positions: 'Posiciones abiertas máx.', burst_max_sessions: 'Momentum Burst: ruedas máx.', breakeven_after_r: 'Stop a la entrada después de (R)',
-  vcp_min_rating: 'VCP: calificación para entrar', vcp_watch_rating: 'VCP: calificación para "preparado"', burst_entry_states: 'Momentum Burst: estados para entrar',
-  burst_watch_states: 'Momentum Burst: estados para "preparado"', only: 'Solo estos activos', max_age_hours: 'Antigüedad máx. del aviso (h)', panel_url: 'Link al panel',
-  entry: 'Avisar entradas', exit: 'Avisar salidas', update: 'Avisar ajustes de stop',
+  budget: 'Presupuesto', max_loss_pct: 'Pérdida máxima por operación (%)', max_position_pct: 'Máximo en un solo activo (%)', fractional: 'Permite fracciones',
+  min_price: 'Precio mínimo', min_volume: 'Volumen diario mínimo', min_reward_risk: 'Ganancia mínima por peso arriesgado', target_r: 'Objetivo (veces lo arriesgado)', max_stop_pct: 'Pérdida máxima hasta el stop (%)',
+  max_open_positions: 'Compras abiertas a la vez', burst_max_sessions: 'Arranque fuerte: días máximos', breakeven_after_r: 'Proteger la compra al ganar (veces lo arriesgado)',
+  vcp_min_rating: 'Compresión (VCP): cuándo compra', vcp_watch_rating: 'Compresión (VCP): cuándo queda en espera', burst_entry_states: 'Arranque fuerte: cuándo compra',
+  burst_watch_states: 'Arranque fuerte: cuándo queda en espera', only: 'Solo estos activos', max_age_hours: 'Antigüedad máxima del aviso (horas)', panel_url: 'Link al panel',
+  entry: 'Avisar compras', exit: 'Avisar ventas', update: 'Avisar cambios de stop',
   name: 'Nombre', chat: 'Chat de Telegram', engine: 'Recibir señales del motor', follow: 'Seguir las operaciones de'
 };
 function labelOf(key) {
@@ -510,7 +510,7 @@ function labelOf(key) {
   }
   const mk = ks.find(k => MK[k]);
   let base = LABEL[ks.at(-1)] || ks.at(-1);
-  if (ks[0] === 'watchlist') base = 'Watchlist';
+  if (ks[0] === 'watchlist') base = 'Activos que analiza el motor';
   if (ks[0] === 'benchmarks') base = 'Índice de referencia';
   if (ks[0] === 'kinds') return `Telegram · avisar ${MK[ks[1]].name}`;
   return (file === 'tg' ? 'Telegram · ' : '') + base + (mk ? ` · ${MK[mk].name}` : '');
@@ -551,9 +551,14 @@ function textField(file, path, label, help, type = 'text') {
 function checkField(file, path, label) {
   return `<label class="check"><input type="checkbox" data-file="${file}" data-path="${path}" data-kind="bool"> ${esc(label)}</label>`;
 }
+const OPT_ES = {
+  'Textbook VCP': 'De manual: la figura perfecta', 'Strong VCP': 'Fuerte', 'Good VCP': 'Buena', 'Developing VCP': 'Todavía formándose', 'Weak VCP': 'Débil',
+  ACTIONABLE_DAY1: 'Saltó hoy con mucho volumen (lista para comprar)', MANUAL_REVIEW: 'Pinta bien, conviene mirar el gráfico',
+  MANUAL_REVIEW_ONLY: 'Dudosa, solo con revisión a mano', WATCH_ONLY: 'Solo para vigilar'
+};
 function setField(file, path, label, options, help) {
   return `<div class="f" data-key="${file}:${path}"><span class="lbl">${esc(label)}</span><div class="opts">${options.map(o =>
-    `<label class="check"><input type="checkbox" data-file="${file}" data-path="${path}" data-kind="set" value="${esc(o)}"> ${esc(o)}</label>`).join('')}</div>
+    `<label class="check" title="${esc(o)}"><input type="checkbox" data-file="${file}" data-path="${path}" data-kind="set" value="${esc(o)}"> ${esc(OPT_ES[o] || o)}</label>`).join('')}</div>
     ${help ? `<span class="help">${esc(help)}</span>` : ''}<span class="err" aria-live="polite"></span></div>`;
 }
 function chipsField(file, path, label, help, norm) {
@@ -565,7 +570,7 @@ function chipsField(file, path, label, help, norm) {
 
 /* ---------- Secciones (una a la vez, con el menú lateral) ---------- */
 const PANES = ['perfil', 'avisos', 'comparar', 'reglas', 'watch', 'setups', 'mercados', 'tg'];
-const PANE_NAME = { perfil: 'Mi perfil', avisos: 'Mis avisos', comparar: 'Comparar', reglas: 'Reglas', watch: 'Watchlist', setups: 'Setups', mercados: 'Mercados', tg: 'Telegram' };
+const PANE_NAME = { perfil: 'Mi perfil', avisos: 'Mis avisos', comparar: 'Comparar', reglas: 'Reglas de compra y venta', watch: 'Activos que analiza', setups: 'Cuándo avisa', mercados: 'Filtros por mercado', tg: 'Telegram' };
 const LEGACY = { 's-perfil': 'perfil', 's-misavisos': 'avisos', 's-todos': 'comparar', 's-reglas': 'reglas', 's-watch': 'watch', 's-setups': 'setups', 's-mercados': 'mercados', 's-tg': 'tg' };
 const paneFromHash = () => { const h = decodeURIComponent(location.hash.slice(1)); return LEGACY[h] || (PANES.includes(h) ? h : 'perfil'); };
 function paneOf(key) {
@@ -602,13 +607,13 @@ const yn = v => typeof v === 'boolean' ? (v ? 'sí' : 'no') : '—';
 const CMP = [
   ...MARKETS.flatMap(m => [
     [`risk.${m}.budget`, 'Presupuesto', MK[m].name, v => isNum(v) ? `${MK[m].cur} ${v.toLocaleString('es-AR', { maximumFractionDigits: 0 })}` : '—'],
-    [`risk.${m}.max_loss_pct`, 'Pérdida máx. por operación', MK[m].name, pct],
-    [`risk.${m}.max_position_pct`, 'Posición máx.', MK[m].name, pct]]),
-  ['max_open_positions', 'Tope de operaciones abiertas', 'General', v => isNum(v) ? String(v) : '—'],
+    [`risk.${m}.max_loss_pct`, 'Pérdida máxima por operación', MK[m].name, pct],
+    [`risk.${m}.max_position_pct`, 'Máximo en un solo activo', MK[m].name, pct]]),
+  ['max_open_positions', 'Compras abiertas a la vez', 'General', v => isNum(v) ? String(v) : '—'],
   ['telegram.engine', 'Recibe las señales del motor', 'Avisos', yn],
-  ['telegram.types.entry', 'Avisos de entradas', 'Avisos', yn],
-  ['telegram.types.exit', 'Avisos de salidas', 'Avisos', yn],
-  ['telegram.types.update', 'Avisos de ajustes de stop', 'Avisos', yn],
+  ['telegram.types.entry', 'Avisos de compras', 'Avisos', yn],
+  ['telegram.types.exit', 'Avisos de ventas', 'Avisos', yn],
+  ['telegram.types.update', 'Avisos de cambios de stop', 'Avisos', yn],
   ['telegram.types.info', 'Noticias y resúmenes', 'Avisos', v => yn(v ?? true)],
   ['telegram.follow', 'Sigue las operaciones de', 'Avisos', (v, all) => (v || []).map(x => all[x]?.name || x).join(', ') || 'nadie', true]
 ];
@@ -629,7 +634,7 @@ function renderCompare() {
       <label class="check"><input type="checkbox" id="cmpOnly"${S.cmpOnly ? ' checked' : ''}> Solo diferencias</label></div>
     <div class="tblwrap" style="border:0;border-top:1px solid var(--line);border-radius:0"><table class="ptbl"><thead><tr><th scope="col">Concepto</th><th scope="col" class="r">${S.profile === S.login ? 'Vos · ' : ''}${nm(S.profile)}</th><th scope="col" class="r">${nm(S.cmp)}</th><th scope="col"><span class="sr">Acción</span></th></tr></thead>
     <tbody>${rows || '<tr><td colspan="4" class="mute">No hay diferencias.</td></tr>'}</tbody></table></div></div>
-    <div class="row"><button class="btn" type="button" data-profile="${esc(S.cmp)}">Abrir el perfil de ${nm(S.cmp)} para ayudarlo</button><span class="mute" style="font-size:13px">Si lo cambiás y guardás, el commit queda firmado por vos.</span></div>`;
+    <div class="row"><button class="btn" type="button" data-profile="${esc(S.cmp)}">Abrir el perfil de ${nm(S.cmp)} para ayudarlo</button><span class="mute" style="font-size:13px">Si lo cambiás y guardás, el cambio queda registrado a tu nombre.</span></div>`;
   const tip = $('tipTxt');
   if (tip) {
     const first = CMP.find(([p, , , , noCopy]) => !noCopy && !same(get(a, p), get(b, p)));
@@ -661,13 +666,13 @@ function buildProfile() {
   const nm = l => esc(all[l]?.name || l);
   if (!others.includes(S.cmp)) S.cmp = others[0] || '';
   $('sideOthers').textContent = others.length === 1 ? `Con ${all[others[0]]?.name || others[0]}` : 'Con los demás';
-  $('viewing').innerHTML = mine ? '' : `<div class="msg info">Estás viendo el perfil de <b>${nm(L)}</b>. Si lo cambiás y guardás, el commit queda a tu nombre (${esc(S.login)}). <button class="btn" type="button" data-profile="${esc(S.login)}" style="min-height:36px;margin-left:8px">Volver al mío</button></div>`;
+  $('viewing').innerHTML = mine ? '' : `<div class="msg info">Estás viendo el perfil de <b>${nm(L)}</b>. Si lo cambiás y guardás, el cambio queda registrado a tu nombre (${esc(S.login)}). <button class="btn" type="button" data-profile="${esc(S.login)}" style="min-height:36px;margin-left:8px">Volver al mío</button></div>`;
   const mkTabs = `<div class="seg" role="tablist" aria-label="Mercado">${MARKETS.map(m => `<button type="button" role="tab" id="mkt-${m}" data-mk="${m}" aria-selected="${m === S.mk}" aria-controls="mk-${m}">${MK[m].name}</button>`).join('')}</div>`;
   const mkPanes = MARKETS.map(m => `<div id="mk-${m}" role="tabpanel" aria-labelledby="mkt-${m}" data-mkp="${m}"${m === S.mk ? '' : ' hidden'}>
     <div class="rules">
       ${numField('users', `${P}.risk.${m}.budget`, `${mine ? 'Tu presupuesto' : 'Presupuesto'} (${MK[m].cur})`, { min: 1, help: `Lo que ${mine ? 'tenés' : 'tiene'} para operar ${MK[m].name}.` })}
-      ${numField('users', `${P}.risk.${m}.max_loss_pct`, 'Pérdida máx. por operación (%)', { min: 0.05, max: 10, step: 0.05, help: 'Si toca el stop se pierde este % del presupuesto.' })}
-      ${numField('users', `${P}.risk.${m}.max_position_pct`, 'Posición máx. (% del presupuesto)', { min: 1, max: 100, step: 1, help: 'Lo máximo en un solo activo.' })}
+      ${numField('users', `${P}.risk.${m}.max_loss_pct`, 'Pérdida máxima por operación (%)', { min: 0.05, max: 10, step: 0.05, help: 'Si una compra sale mal y toca el stop, se pierde como mucho este porcentaje del presupuesto. Con esto se calcula cuánto comprar.' })}
+      ${numField('users', `${P}.risk.${m}.max_position_pct`, 'Máximo en un solo activo (% del presupuesto)', { min: 1, max: 100, step: 1, help: 'Para no poner demasiado en una sola cosa.' })}
     </div>
     ${m === 'cripto' ? swField('users', `${P}.risk.cripto.fractional`, 'Permite comprar fracciones', 'Por ejemplo 0,0125 BTC en vez de unidades enteras.') : ''}
     <div class="live" data-live="${m}" aria-live="polite"></div>
@@ -677,9 +682,9 @@ function buildProfile() {
       ${Object.keys(all).length > 1 ? `<div class="f"><label for="viewSel">Viendo el perfil de</label><select id="viewSel" class="sel">${Object.keys(all).map(l => `<option value="${esc(l)}"${l === L ? ' selected' : ''}>${nm(l)}${l === S.login ? ' (vos)' : ''}</option>`).join('')}</select></div>` : ''}</div>
     <section class="card" aria-label="Datos generales"><div class="rules">
       ${textField('users', `${P}.name`, mine ? 'Tu nombre' : 'Nombre', 'Así se ve en las alertas y en el panel.')}
-      ${numField('users', `${P}.max_open_positions`, 'Tope de operaciones abiertas', { min: 1, max: 50, step: 1, help: 'Si ya hay más abiertas, la alerta de entrada lo avisa.' })}
+      ${numField('users', `${P}.max_open_positions`, 'Compras abiertas a la vez', { min: 1, max: 50, step: 1, help: 'Si ya tenés esta cantidad abierta, el aviso de compra te lo recuerda.' })}
     </div></section>
-    <section class="card" aria-labelledby="presH"><div class="card-h"><div><h2 id="presH">Presupuesto y riesgo</h2><p>Uno por mercado. Elegí cuál editar.</p></div>${mkTabs}</div>${mkPanes}</section>
+    <section class="card" aria-labelledby="presH"><div class="card-h"><div><h2 id="presH">Presupuesto y riesgo</h2><p>Cuánta plata tenés para cada mercado y cuánto estás dispuesto a perder por operación. Elegí el mercado arriba.</p></div>${mkTabs}</div>${mkPanes}</section>
     ${others.length ? `<div class="tip"><span id="tipTxt"></span><button class="btn ghost" type="button" data-go="comparar">Comparar con ${nm(S.cmp)}</button></div>` : ''}
   </section>`;
   const avisos = `<section class="pane" data-pane="avisos" hidden>
@@ -694,13 +699,13 @@ function buildProfile() {
           <span class="err" aria-live="polite"></span>
         </div></section>
       <section class="card" aria-labelledby="queH"><div class="card-h"><h2 id="queH">Qué ${mine ? 'te' : 'le'} llega</h2></div>
-        ${swField('users', `${P}.telegram.engine`, 'Señales del motor', 'Las entradas y salidas que detectan las skills.')}
-        ${swField('users', `${P}.telegram.types.entry`, 'Entradas', 'Cuándo y cuánto comprar.', 1)}
-        ${swField('users', `${P}.telegram.types.exit`, 'Salidas', 'Stop u objetivo tocado.', 1)}
-        ${swField('users', `${P}.telegram.types.update`, 'Ajustes de stop', 'Cuando el motor sube el stop.', 1)}
-        ${swField('users', `${P}.telegram.types.info`, 'Noticias y resúmenes', 'Balances, noticias fuertes, operaciones de congresistas y el resumen del viernes.', 1)}
+        ${swField('users', `${P}.telegram.engine`, 'Señales del motor', 'Las compras y ventas que propone el motor.')}
+        ${swField('users', `${P}.telegram.types.entry`, 'Compras', 'Cuándo y cuánto comprar.', 1)}
+        ${swField('users', `${P}.telegram.types.exit`, 'Ventas', 'Cuando toca el stop (pérdida) o el objetivo (ganancia).', 1)}
+        ${swField('users', `${P}.telegram.types.update`, 'Cambios de stop', 'Cuando el motor sube el precio de corte para proteger la ganancia.', 1)}
+        ${swField('users', `${P}.telegram.types.info`, 'Noticias y resúmenes', 'Balances, noticias importantes, compras y ventas de legisladores de EE. UU. y el resumen de los viernes.', 1)}
         <div class="f" style="padding-top:14px;border-top:1px solid var(--line)"><span class="lbl">Mercados (señales del motor)</span><div class="pills">${MARKETS.map(m => `<label><input type="checkbox" data-file="users" data-path="${P}.telegram.kinds.${m}" data-kind="bool"> ${MK[m].name}</label>`).join('')}</div></div>
-        <div style="margin-top:16px">${chipsField('users', `${P}.telegram.only`, 'Del motor, solo estos activos (vacío = todos)', 'Formato mercado:ACTIVO, por ejemplo adr:YPF o cripto:BTC.', 'only')}
+        <div style="margin-top:16px">${chipsField('users', `${P}.telegram.only`, 'Avisarme solo de estos activos (vacío = de todos)', 'Escribí mercado:ACTIVO, por ejemplo adr:YPF, byma:GGAL o cripto:BTC.', 'only')}
           <div class="row" style="margin-top:8px"><button class="btn" type="button" id="useBell" hidden>Usar los activos con campanita del panel</button></div></div>
       </section>
       <section class="card" aria-labelledby="folH"><div class="card-h"><div><h2 id="folH">Operaciones de los demás</h2><p>Cada compra, venta y cambio de stop que registren, con la cantidad calculada para ${mine ? 'tu' : 'su'} presupuesto.</p></div></div>
@@ -734,57 +739,57 @@ function buildProfile() {
 
 function buildForm() {
   const mkCards = MARKETS.map(m => `<div class="mk"><h3>${MK[m].name} <small>montos en ${MK[m].cur}</small></h3>
-    ${numField('engine', `risk.${m}.budget`, `Cartera de referencia (${MK[m].cur})`, { min: 1, calc: m, help: 'Solo para los resultados que muestra el panel. El tamaño de cada uno sale de su perfil.' })}
-    ${numField('engine', `risk.${m}.max_loss_pct`, 'Pérdida máx. por operación (%)', { min: 0.05, max: 10, step: 0.05, help: 'Con esto se calcula el tamaño: si toca el stop se pierde este % de la cartera.' })}
-    ${numField('engine', `risk.${m}.max_position_pct`, 'Posición máx. (% de la cartera)', { min: 1, max: 100, step: 1 })}
+    ${numField('engine', `risk.${m}.budget`, `Cartera de ejemplo (${MK[m].cur})`, { min: 1, calc: m, help: 'La plata imaginaria con la que el motor calcula sus propios resultados en el panel. Lo que compra cada uno sale de su perfil.' })}
+    ${numField('engine', `risk.${m}.max_loss_pct`, 'Pérdida máxima por operación (%)', { min: 0.05, max: 10, step: 0.05, help: 'Si toca el stop se pierde este porcentaje de la cartera de ejemplo. Con eso se calcula cuánto compra.' })}
+    ${numField('engine', `risk.${m}.max_position_pct`, 'Máximo en un solo activo (% de la cartera)', { min: 1, max: 100, step: 1 })}
     ${m === 'cripto' ? checkField('engine', `risk.${m}.fractional`, 'Permite comprar fracciones') : ''}
-    ${numField('engine', `filters.${m}.min_price`, `Precio mínimo (${MK[m].cur})`, { min: 0, help: 'Debajo de esto el activo no se analiza.' })}
-    ${numField('engine', `filters.${m}.min_volume`, 'Volumen diario mínimo', { min: 0, step: 1 })}
-    ${textField('engine', `benchmarks.${m}`, 'Índice de referencia (Yahoo)', m === 'byma' ? 'Si Yahoo no lo trae, el motor usa un índice propio de la watchlist.' : '')}
+    ${numField('engine', `filters.${m}.min_price`, `Precio mínimo (${MK[m].cur})`, { min: 0, help: 'Los activos más baratos que esto no se analizan.' })}
+    ${numField('engine', `filters.${m}.min_volume`, 'Volumen diario mínimo', { min: 0, step: 1, help: 'Cuántas acciones tienen que operarse por día. Con poco movimiento cuesta comprar y vender al precio que querés.' })}
+    ${textField('engine', `benchmarks.${m}`, 'Índice para medir el clima del mercado (código de Yahoo)', m === 'byma' ? 'Si Yahoo no lo trae, el motor arma un índice con los activos que analiza.' : 'Con este índice el motor decide si el mercado está a favor o flojo.')}
   </div>`).join('');
 
   $('form').innerHTML = buildProfile() + `
   <section class="pane" data-pane="reglas" hidden>
-    ${motorHead('Reglas de operación', 'Valen para todos los mercados y cambian qué señales abre el motor para todos.')}
+    ${motorHead('Reglas de compra y venta', 'Cómo arma el motor cada operación: cuánto busca ganar, cuánto acepta perder y cuándo vende. Valen para todos los mercados y para todos los usuarios.')}
     <section class="card" aria-label="Cómo queda una operación"><p class="lbl" style="font-size:13px;font-weight:500;color:var(--ink2);margin-bottom:10px">Así queda una operación con estas reglas</p><div class="rdiag" id="rdiag"></div></section>
     <section class="card" aria-label="Reglas"><div class="rules">
-      ${numField('engine', 'risk.target_r', 'Objetivo (R)', { min: 0.5, max: 20, step: 0.1, help: 'El objetivo de ganancia se pone a esta cantidad de R.' })}
-      ${numField('engine', 'risk.min_reward_risk', 'R:R mínimo', { min: 0.5, max: 10, step: 0.1, help: 'Operaciones con menos relación ganancia/riesgo se descartan.' })}
-      ${numField('engine', 'risk.max_stop_pct', 'Stop máximo (%)', { min: 0.5, max: 50, step: 0.5, help: 'Si el stop queda más lejos que esto, no se entra.' })}
-      ${numField('engine', 'risk.breakeven_after_r', 'Stop a la entrada después de (R)', { min: 0.1, max: 10, step: 0.1, help: 'Al ganar esta cantidad de R, el stop sube al precio de entrada.' })}
-      ${numField('engine', 'risk.max_open_positions', 'Posiciones abiertas del motor', { min: 1, max: 50, step: 1, help: 'Cuántas señales abiertas sigue el motor a la vez. El tope de cada uno está en su perfil.' })}
-      ${numField('engine', 'risk.burst_max_sessions', 'Momentum Burst: ruedas máx.', { min: 1, max: 60, step: 1, help: 'Salida por tiempo si no llegó al objetivo.' })}
+      ${numField('engine', 'risk.target_r', 'Objetivo (veces lo arriesgado)', { min: 0.5, max: 20, step: 0.1, help: 'Cuánto busca ganar comparado con lo que puede perder. 2 quiere decir ganar el doble de lo que se pierde si toca el stop.' })}
+      ${numField('engine', 'risk.min_reward_risk', 'Ganancia mínima por peso arriesgado', { min: 0.5, max: 10, step: 0.1, help: 'Si una operación promete ganar menos que esto por cada peso que arriesga, no la hace.' })}
+      ${numField('engine', 'risk.max_stop_pct', 'Pérdida máxima hasta el stop (%)', { min: 0.5, max: 50, step: 0.5, help: 'Si el stop queda más lejos que este porcentaje del precio de compra, no compra.' })}
+      ${numField('engine', 'risk.breakeven_after_r', 'Proteger la compra al ganar (veces lo arriesgado)', { min: 0.1, max: 10, step: 0.1, help: 'Cuando la ganancia llega a esto, el stop sube al precio de compra: desde ahí, en el peor caso sale sin perder.' })}
+      ${numField('engine', 'risk.max_open_positions', 'Compras abiertas del motor a la vez', { min: 1, max: 50, step: 1, help: 'Cuántas compras sigue el motor al mismo tiempo. El tope de cada usuario está en su perfil.' })}
+      ${numField('engine', 'risk.burst_max_sessions', 'Arranque fuerte: días máximos', { min: 1, max: 60, step: 1, help: 'Si en esta cantidad de días de mercado no llegó al objetivo, vende igual. Este tipo de suba suele durar poco.' })}
     </div></section>
   </section>
 
   <section class="pane" data-pane="watch" hidden>
-    ${motorHead('Watchlist del motor', `Los activos que analiza el motor cada hora, hasta ${MAX_WL} por mercado. Es aparte de la lista que armás en el panel.`)}
+    ${motorHead('Activos que analiza el motor', `Los activos que el motor revisa cada hora, hasta ${MAX_WL} por mercado. Es aparte de la lista «Mis activos» que armás en el panel.`)}
     <section class="card" style="display:flex;flex-direction:column;gap:16px">
-      ${chipsField('engine', 'watchlist.adr', 'ADRs (ticker de NYSE/Nasdaq)', 'Ej.: YPF, GGAL, MELI.', 'upper')}
-      ${chipsField('engine', 'watchlist.byma', 'BYMA (ticker local)', 'Ej.: GGAL, YPFD, PAMP. Se buscan como TICKER.BA en Yahoo.', 'upper')}
-      ${chipsField('engine', 'watchlist.cripto', 'Cripto (id de CoinGecko)', 'Ej.: bitcoin, ethereum, solana. Es el id que aparece en la URL de coingecko.com.', 'lower')}
+      ${chipsField('engine', 'watchlist.adr', 'ADRs (código en Nueva York)', 'Ej.: YPF, GGAL, MELI.', 'upper')}
+      ${chipsField('engine', 'watchlist.byma', 'BYMA (código en Buenos Aires)', 'Ej.: GGAL, YPFD, PAMP.', 'upper')}
+      ${chipsField('engine', 'watchlist.cripto', 'Cripto (nombre en CoinGecko)', 'Ej.: bitcoin, ethereum, solana. Es el nombre que aparece en la dirección de la página de cada moneda en coingecko.com.', 'lower')}
     </section>
   </section>
 
   <section class="pane" data-pane="setups" hidden>
-    ${motorHead('Setups que disparan señales', 'Qué calificaciones de las skills cuentan como entrada y cuáles como “preparado” (aviso de que está cerca).')}
+    ${motorHead('Cuándo avisa el motor', 'El motor busca dos tipos de oportunidad y a cada una le pone una nota. Acá elegís con qué notas compra y con cuáles la deja EN ESPERA (aviso de que está cerca).')}
     <section class="card"><div class="rules">
-      ${setField('engine', 'setups.vcp_min_rating', 'VCP: para entrar', VCP, 'Además tiene que romper el pivote con volumen.')}
-      ${setField('engine', 'setups.vcp_watch_rating', 'VCP: para “preparado”', VCP)}
-      ${setField('engine', 'setups.burst_entry_states', 'Momentum Burst: para entrar', BURST, 'ACTIONABLE_DAY1 es la ruptura del día con volumen.')}
-      ${setField('engine', 'setups.burst_watch_states', 'Momentum Burst: para “preparado”', BURST)}
+      ${setField('engine', 'setups.vcp_min_rating', 'Compresión antes de subir (VCP): compra con nota', VCP, 'El precio se mueve cada vez menos, como un resorte. Además tiene que superar su máximo reciente con mucho volumen.')}
+      ${setField('engine', 'setups.vcp_watch_rating', 'Compresión antes de subir (VCP): queda EN ESPERA con nota', VCP)}
+      ${setField('engine', 'setups.burst_entry_states', 'Arranque fuerte (Momentum Burst): compra cuando', BURST, 'Un salto grande en un día con mucho volumen, después de estar quieto.')}
+      ${setField('engine', 'setups.burst_watch_states', 'Arranque fuerte (Momentum Burst): queda EN ESPERA cuando', BURST)}
     </div></section>
   </section>
 
   <section class="pane" data-pane="mercados" hidden>
-    ${motorHead('Mercados y cartera de referencia', 'Filtros de cada mercado y la cartera con la que el motor simula sus resultados en el panel.')}
+    ${motorHead('Filtros por mercado', 'Qué activos descarta el motor en cada mercado y con qué cartera de ejemplo calcula sus resultados.')}
     <div class="grid">${mkCards}</div>
   </section>
 
   <section class="pane" data-pane="tg" hidden>
     ${motorHead('Telegram (general)', 'Vale para todos. Qué le llega a cada uno se elige en <a href="#avisos" data-go="avisos">Mis avisos</a>.')}
     <section class="card"><div class="rules">
-      ${numField('tg', 'max_age_hours', 'No mandar avisos más viejos que (horas)', { min: 1, max: 720, step: 1, help: 'Evita que llegue una señal vieja si el motor estuvo caído.' })}
+      ${numField('tg', 'max_age_hours', 'No mandar avisos más viejos que (horas)', { min: 1, max: 720, step: 1, help: 'Si el motor estuvo parado, evita que lleguen de golpe avisos que ya no sirven.' })}
       ${textField('tg', 'panel_url', 'Link al panel en los mensajes', '', 'url')}
     </div></section>
   </section>`;
@@ -848,10 +853,10 @@ function liveBoxes() {
     if (!(isNum(r.budget) && isNum(r.max_loss_pct) && isNum(r.max_position_pct))) { box.innerHTML = '<span class="ex mute">Completá los tres valores para ver la cuenta.</span>'; continue; }
     const risk = r.budget * r.max_loss_pct / 100, pos = r.budget * r.max_position_pct / 100, at5 = Math.min(risk / 0.05, pos);
     const px = m === 'byma' ? 5000 : 50, q = m === 'cripto' && r.fractional !== false ? (at5 / px).toLocaleString('es-AR', { maximumFractionDigits: 4 }) : Math.floor(at5 / px).toLocaleString('es-AR');
-    box.innerHTML = `<div><span class="k">Arriesga por operación</span><span class="v risk">${money(m, risk, 2)}</span></div>
+    box.innerHTML = `<div><span class="k">Pierde como mucho por operación</span><span class="v risk">${money(m, risk, 2)}</span></div>
       <div><span class="k">Máximo en un activo</span><span class="v">${money(m, pos)}</span></div>
-      <div><span class="k">Con stop a 5 % compra hasta</span><span class="v">${money(m, at5)}</span></div>
-      <span class="ex">Ejemplo: con un activo de ${money(m, px)} y stop a 5 %, son <b>${q} ${m === 'cripto' ? 'unidades' : 'acciones'}</b>${at5 < risk / 0.05 ? ' (lo limita la posición máxima)' : ''}.</span>`;
+      <div><span class="k">Si el stop está 5 % abajo, compra hasta</span><span class="v">${money(m, at5)}</span></div>
+      <span class="ex">Ejemplo: con un activo de ${money(m, px)} y stop a 5 %, son <b>${q} ${m === 'cripto' ? 'unidades' : 'acciones'}</b>${at5 < risk / 0.05 ? ' (lo limita el máximo en un solo activo)' : ''}.</span>`;
   }
 }
 function ruleDiag() {
@@ -859,9 +864,9 @@ function ruleDiag() {
   const r = S.draft.engine.risk || {}, t = r.target_r, be = r.breakeven_after_r, st = r.max_stop_pct;
   if (!(isNum(t) && t > 0)) { box.innerHTML = '<span class="mute">Poné un objetivo para ver el dibujo.</span>'; return; }
   const n = (v, d = 1) => v.toLocaleString('es-AR', { maximumFractionDigits: d });
-  box.innerHTML = `<div class="lab"><span style="color:var(--dnfg)">Stop −1R${isNum(st) ? ` (hasta ${n(st)} %)` : ''}</span><span>Entrada</span>${isNum(be) ? `<span style="color:var(--warn)">+${n(be)}R: stop a la entrada</span>` : ''}<span style="color:var(--up)">Objetivo +${n(t)}R</span></div>
+  box.innerHTML = `<div class="lab"><span style="color:var(--dnfg)">Stop: pierde 1${isNum(st) ? ` (como mucho ${n(st)} %)` : ''}</span><span>Compra</span>${isNum(be) ? `<span style="color:var(--warn)">Gana ${n(be)}: stop sube a la compra</span>` : ''}<span style="color:var(--up)">Objetivo: gana ${n(t)}</span></div>
     <div class="rb" aria-hidden="true"><i class="s" style="flex:1"></i><i class="w" style="flex:${t}"></i></div>
-    <span class="mute" style="font-size:13px">Por cada ${isNum(st) ? 'peso' : 'unidad'} que arriesgás buscás ganar ${n(t)}. ${isNum(r.min_reward_risk) ? `Se descartan las de R:R menor a ${n(r.min_reward_risk)}.` : ''}</span>`;
+    <span class="mute" style="font-size:13px">Por cada peso que arriesgás buscás ganar ${n(t)}. ${isNum(r.min_reward_risk) ? `Si una operación promete menos de ${n(r.min_reward_risk)} por peso arriesgado, no se hace.` : ''}</span>`;
 }
 function refresh() {
   const E = errors(), D = diffs();
@@ -979,7 +984,7 @@ async function loadTgStatus() {
   const chat = get(S.draft.users, `users.${S.profile}.telegram.chat`);
   $('tgSum').textContent = !reg ? 'Todavía no corrió el envío.' : `Última revisión ${when(reg.last_run).replace(/\.$/, '')}.` + (!chat ? ' No pusiste chat: no te llega nada.' : '') + (reg.last_error ? ` ${reg.last_error}.` : '');
   const mine = (reg?.recent || []).filter(x => x.status === 'enviado' && (x.to ? x.to === S.profile : S.profile === REPO.owner)).slice(0, 6);
-  const TAG = { entry: ['in', 'ENTRADA'], exit: ['out', 'SALIDA'], update: ['', 'AJUSTE'] };
+  const TAG = { entry: ['in', 'COMPRA'], exit: ['out', 'VENTA'], update: ['', 'STOP AJUSTADO'] };
   $('tgList').innerHTML = mine.length ? mine.map(x => { const [c, t] = TAG[x.type] || ['', esc(x.type)];
     return `<li><span class="tag ${c}">${t}</span><b>${esc(x.label)}</b>${x.who ? `<span class="mute">de ${esc(get(S.orig.users, `users.${x.who}.name`) || x.who)}</span>` : '<span class="mute">motor</span>'}<span style="flex:1"></span><span class="mute num" style="font-size:12px">${when(x.at)}</span></li>`; }).join('')
     : '<li class="mute">Todavía no te llegó ninguna.</li>';
@@ -1101,7 +1106,7 @@ $('review').onclick = () => {
   const val = d => {
     if (Array.isArray(d.from) && Array.isArray(d.to)) {
       const add = d.to.filter(x => !d.from.includes(x)), rm = d.from.filter(x => !d.to.includes(x));
-      if (add.length || rm.length) return [rm.length ? `<del>quita ${esc(rm.join(', '))}</del>` : '', add.length ? `<ins>agrega ${esc(add.join(', '))}</ins>` : ''].filter(Boolean).join(' · ');
+      if (add.length || rm.length) return [rm.length ? `<del>quita ${esc(rm.map(x => OPT_ES[x] || x).join(', '))}</del>` : '', add.length ? `<ins>agrega ${esc(add.map(x => OPT_ES[x] || x).join(', '))}</ins>` : ''].filter(Boolean).join(' · ');
     }
     return `<del>${esc(show(d.from))}</del> → <ins>${esc(show(d.to))}</ins>`;
   };
@@ -1138,7 +1143,7 @@ $('save').onclick = async () => {
       catch (e) { S.canRun = false; ran = ' No pude correr el motor (el token no tiene permiso de Actions); toma los valores en la próxima corrida programada.'; }
     } else ran = changed.some(f => f !== 'users') ? ' El motor los toma en la próxima corrida programada.' : ' Tus avisos ya usan estos valores.';
     $('dlg').close();
-    msg('appMsg', 'ok', `Guardado. ${commits.map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener">Ver commit${commits.length > 1 ? ' ' + (i + 1) : ''}</a>`).join(' · ')}.${ran}`);
+    msg('appMsg', 'ok', `Guardado. ${commits.map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener">Ver el cambio en GitHub${commits.length > 1 ? ' ' + (i + 1) : ''}</a>`).join(' · ')}.${ran}`);
     S.copied.clear();
     if (changed.includes('users')) { buildForm(); wireTg(); }
     fillForm(); go(S.pane);
