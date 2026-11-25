@@ -70,10 +70,15 @@ jobs:
         # Solo lectura de la cuenta. Sin los secrets se saltea. Publica data/cartera.enc cifrado
         # (el repo es público); los logs no muestran activos ni montos.
         continue-on-error: true
-        # Una cartera por usuario de users/users.json: IOL_USUARIO_<LOGIN>, IOL_CLAVE_<LOGIN> y
-        # CARTERA_CLAVE_<LOGIN> (login en mayúsculas, "-" pasa a "_"). El dueño puede usar los nombres sin sufijo.
+        # Cada uno sincroniza su cartera desde cartera.html con su propio usuario de IOL; acá se
+        # vuelve a analizar con los precios del momento. Los secrets de IOL son opcionales y solo del dueño.
         env:
-          SECRETS_JSON: ${{ toJSON(secrets) }}
+          CARTERA_PRIVADA: ${{ secrets.CARTERA_PRIVADA }}
+          IOL_USUARIO: ${{ secrets.IOL_USUARIO }}
+          IOL_CLAVE: ${{ secrets.IOL_CLAVE }}
+          CARTERA_CLAVE: ${{ secrets.CARTERA_CLAVE }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python -m engine.cartera
       - name: Publicar señales
         run: |
