@@ -1,7 +1,85 @@
 {
- "sent": {},
- "recent": [],
- "last_run": "2026-11-25T20:55:54.806Z",
+ "sent": {
+  "mathia533|report:2026-11-25": {
+   "at": "2026-11-25T21:40:19.904Z",
+   "status": "enviado"
+  },
+  "mathia533|byma:TXAR:pattern:double_bottom:2026-09-04": {
+   "at": "2026-11-25T21:40:21.287Z",
+   "status": "enviado"
+  },
+  "leolopezdie-bit|report:2026-11-25": {
+   "at": "2026-11-25T21:40:22.388Z",
+   "status": "sin_telegram"
+  },
+  "leolopezdie-bit|byma:TXAR:pattern:double_bottom:2026-09-04": {
+   "at": "2026-11-25T21:40:22.388Z",
+   "status": "sin_telegram"
+  }
+ },
+ "recent": [
+  {
+   "id": "byma:TXAR:pattern:double_bottom:2026-09-04",
+   "to": "leolopezdie-bit",
+   "src": "engine",
+   "who": null,
+   "ts": "2026-11-25T21:37:55.143239+00:00",
+   "kind": "byma",
+   "label": "TXAR",
+   "type": "info",
+   "reason": null,
+   "setup": null,
+   "price": null,
+   "status": "sin_telegram",
+   "at": "2026-11-25T21:40:22.388Z"
+  },
+  {
+   "id": "report:2026-11-25",
+   "to": "leolopezdie-bit",
+   "src": "engine",
+   "who": null,
+   "ts": "2026-11-25T21:37:55.143239+00:00",
+   "kind": "adr",
+   "label": "Cierre",
+   "type": "info",
+   "reason": null,
+   "setup": null,
+   "price": null,
+   "status": "sin_telegram",
+   "at": "2026-11-25T21:40:22.388Z"
+  },
+  {
+   "id": "byma:TXAR:pattern:double_bottom:2026-09-04",
+   "to": "mathia533",
+   "src": "engine",
+   "who": null,
+   "ts": "2026-11-25T21:37:55.143239+00:00",
+   "kind": "byma",
+   "label": "TXAR",
+   "type": "info",
+   "reason": null,
+   "setup": null,
+   "price": null,
+   "status": "enviado",
+   "at": "2026-11-25T21:40:21.287Z"
+  },
+  {
+   "id": "report:2026-11-25",
+   "to": "mathia533",
+   "src": "engine",
+   "who": null,
+   "ts": "2026-11-25T21:37:55.143239+00:00",
+   "kind": "adr",
+   "label": "Cierre",
+   "type": "info",
+   "reason": null,
+   "setup": null,
+   "price": null,
+   "status": "enviado",
+   "at": "2026-11-25T21:40:19.904Z"
+  }
+ ],
+ "last_run": "2026-11-25T21:40:18.264Z",
  "telegram": true,
  "last_error": null,
  "last_test": "2026-11-25T15:28:03.993Z",
