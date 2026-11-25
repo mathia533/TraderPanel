@@ -122,7 +122,8 @@ def test_candles_file_for_panel(tmp_path, monkeypatch):
     bars = make(burst_last=True, seed=3)
     bench = make(seed=99, drift=0.001)
     off, data, cfg = _setup(tmp_path, monkeypatch, {"adr_TST": bars, "adr_SPY": bench, "byma__MERV": bench, "cripto_BTC-USD": bench})
-    run.analyze_all(cfg, off, use_regime=False, now=datetime(2027, 1, 1, tzinfo=timezone.utc))
+    sig, *_ = run.analyze_all(cfg, off, use_regime=False, now=datetime(2027, 1, 1, tzinfo=timezone.utc))
+    assert "all" in sig["review"] and "curve" in sig["review"]               # revisión de resultados
     c = json.loads((data / "candles.json").read_text())
     it = c["items"]["adr:TST"]
     assert it["ohlc"] and 0 < len(it["bars"]) <= run.CANDLES_KEEP

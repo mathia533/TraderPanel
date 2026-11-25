@@ -22,6 +22,8 @@
     "burst_max_sessions": 5,
     "breakeven_after_r": 1
   },
+  "_nota_costs": "Costo ida y vuelta en % del monto (comisión, derechos y spread). Sólo se usa para la revisión de resultados.",
+  "costs": {"adr": 0.3, "byma": 1.2, "cripto": 0.4},
   "setups": {
     "vcp_min_rating": ["Textbook VCP", "Strong VCP", "Good VCP"],
     "vcp_watch_rating": ["Textbook VCP", "Strong VCP", "Good VCP", "Developing VCP"],

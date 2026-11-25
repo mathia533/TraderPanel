@@ -116,6 +116,11 @@ def validate_engine(cfg) -> list[str]:
     _subset(errs, "setups.vcp_watch_rating", st.get("vcp_watch_rating"), VCP_RATINGS, non_empty=False)
     _subset(errs, "setups.burst_entry_states", st.get("burst_entry_states"), BURST_STATES, non_empty=False)
     _subset(errs, "setups.burst_watch_states", st.get("burst_watch_states"), BURST_STATES, non_empty=False)
+    if "costs" in cfg:  # opcional: costo ida y vuelta en % por mercado (revisión de resultados)
+        co = _obj(errs, "costs", cfg.get("costs"))
+        for m in MARKETS:
+            if m in co:
+                _num(errs, f"costs.{m}", co[m], 0, 20, False)
     _validate_pipeline(errs, cfg)
     return errs
 

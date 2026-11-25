@@ -187,6 +187,31 @@ fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
 .tgcard code{font-family:var(--mono);font-size:12px;background:var(--line);border-radius:4px;padding:1px 4px}
 .pill.ok{background:var(--upbg);color:var(--up)}
 
+/* Revisión de resultados */
+#resultados .sh{border-bottom:1px solid var(--line)}
+.rvctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#rvWho{min-height:40px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);padding:0 10px;font:inherit}
+.rvk{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.rvk div{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--bg2);display:flex;flex-direction:column;gap:4px}
+.rvk b{font-family:var(--mono);font-size:22px;font-weight:600;line-height:1.1}
+.rvk small{font-size:12px;color:var(--mute)}
+.rvcurve{border:1px solid var(--line);border-radius:12px;background:var(--bg2);padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.rvcurve svg{display:block;width:100%;height:170px;overflow:visible}
+.rvcurve .ln{fill:none;stroke:var(--info);stroke-width:2;vector-effect:non-scaling-stroke}
+.rvcurve .ar{fill:var(--info);opacity:.12}
+.rvcurve .z{stroke:var(--line2);stroke-dasharray:4 4;vector-effect:non-scaling-stroke}
+.rvcurve .ax{display:flex;justify-content:space-between;font-size:12px;color:var(--mute);font-family:var(--mono)}
+.rvgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.rvt{border:1px solid var(--line);border-radius:12px;background:var(--bg2);overflow:hidden}
+.rvt h3{font-size:13px;font-weight:500;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;padding:10px 14px;border-bottom:1px solid var(--line)}
+.rvt table{width:100%;border-collapse:collapse;font-size:14px}
+.rvt th,.rvt td{padding:8px 14px;text-align:right;white-space:nowrap}
+.rvt th:first-child,.rvt td:first-child{text-align:left;white-space:normal}
+.rvt thead th{font-size:12px;color:var(--mute);font-weight:500}
+.rvt tbody tr+tr td{border-top:1px solid var(--line)}
+.rvnote{font-size:13px;color:var(--mute)}
+@media (max-width:520px){.rvt th,.rvt td{padding:8px 10px}.rvt th:nth-child(5),.rvt td:nth-child(5){display:none}.rvctl{width:100%}}
+
 /* Pipeline de las skills */
 #pipeline .sh{border-bottom:1px solid var(--line)}
 .pbody{padding:16px 20px;display:flex;flex-direction:column;gap:16px}
@@ -348,6 +373,7 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
       <a href="#senales">Señales</a>
       <a href="#watchlist">Watchlist</a>
       <a href="#operaciones">Operaciones</a>
+      <a href="#resultados">Resultados</a>
     </nav>
     <div class="status">
       <span class="pill off" id="mBYMA"><span class="dot"></span>BYMA</span>
@@ -413,7 +439,6 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
         <div><p class="legend" style="margin-bottom:6px">Abiertas</p><ul class="tglist oplist" id="opOpen"><li class="mute">Cargando…</li></ul></div>
         <div><p class="legend" style="margin-bottom:6px">Últimas cerradas</p><ul class="tglist oplist" id="opClosed"><li class="mute">—</li></ul></div>
       </section>
-      </section>
     </aside>
   </div>
 
@@ -429,6 +454,20 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
       </div>
     </div>
     <div class="pbody" id="plBody" aria-live="polite"><p class="empty">Cargando el pipeline…</p></div>
+  </section>
+
+  <section class="card" id="resultados" aria-labelledby="rvTitle">
+    <div class="sh">
+      <div><h2 id="rvTitle">Revisión de resultados</h2><p id="rvSub">Cómo les fue a las operaciones ya cerradas, neto de costos</p></div>
+      <div class="rvctl">
+        <select id="rvWho" aria-label="De quién" hidden></select>
+        <div class="seg" role="tablist" aria-label="Qué operaciones" id="rvTabs">
+          <button type="button" role="tab" data-rv="eng">Señales del motor</button>
+          <button type="button" role="tab" data-rv="users">Operaciones de los usuarios</button>
+        </div>
+      </div>
+    </div>
+    <div class="pbody" id="rvBody" aria-live="polite"><p class="empty">Cargando…</p></div>
   </section>
 
   <footer>
@@ -992,7 +1031,7 @@ function renderMarkets() {
   set($('mNYSE'), 'NYSE', marketOpen('America/New_York', 570, 960), '9:30–16:00 (NY)');
 }
 
-function render() { renderKPIs(); renderTable(); renderSignals(); renderOps(); renderPipeline(); }
+function render() { renderKPIs(); renderTable(); renderSignals(); renderOps(); renderPipeline(); renderReview(); }
 
 /* ---------- Eventos ---------- */
 $('tabs').addEventListener('click', e => {
@@ -1099,8 +1138,84 @@ async function loadOps() {
   sel.value = logins.includes(keep) ? keep : '';
   $('opMeWrap').hidden = logins.length < 2;
   renderOps();
+  renderReview();
 }
 $('opMe').addEventListener('change', () => { store.set('tp_me', $('opMe').value); renderOps(); });
+
+/* ---------- Revisión de resultados (motor: signals.review · usuarios: trades/) ---------- */
+const MKNAME = {adr: 'ADRs', byma: 'BYMA', cripto: 'cripto'};
+const RV_COSTS = {adr: 0.3, byma: 1.2, cripto: 0.4}; // mismos valores por defecto que engine/review.py
+const RV_GATE = {allowed: 'favorable', neutral: 'neutral', restrictive: 'defensivo'};
+const RV_SETUP = {vcp: 'VCP', burst: 'Momentum Burst', orb: 'Rango de apertura'};
+const RV_REASON = {target: 'Objetivo', stop: 'Stop', manual: 'Manual', trend: 'Tendencia', time: 'Tiempo', flat: 'Cierre del día'};
+let rvTab = store.get('tp_rv', 'eng');
+function rvStats(rows) {
+  const n = rows.length; if (!n) return {n: 0};
+  const rs = rows.map(x => x.r_net), wins = rs.filter(r => r > 0), losses = rs.filter(r => r <= 0), sum = a => a.reduce((x, y) => x + y, 0);
+  let eq = 0, peak = 0, dd = 0; for (const r of rs) { eq += r; peak = Math.max(peak, eq); dd = Math.max(dd, peak - eq); }
+  return {n, win_rate: 100 * wins.length / n, avg_r: sum(rows.map(x => x.r)) / n, avg_r_net: sum(rs) / n, total_r_net: sum(rs),
+    profit_factor: losses.length && sum(losses) < 0 ? sum(wins) / -sum(losses) : null, max_dd_r: dd, avg_pnl_net: sum(rows.map(x => x.pnl_net)) / n};
+}
+function rvUserRows(who) {
+  const costs = {...RV_COSTS, ...(ENG?.review?.costs || {})};
+  return Object.entries(opTrades).filter(([l]) => !who || l === who).flatMap(([l, list]) => list.filter(t => t.exit != null && t.entry > t.stop && t.stop > 0).map(t => {
+    const risk = (t.entry - t.stop) / t.entry * 100, pnl = (t.exit / t.entry - 1) * 100, c = costs[t.kind] ?? 0;
+    return {who: l, kind: t.kind, label: t.asset, reason: t.exit_reason, closed_at: t.closed_at, r: (t.exit - t.entry) / (t.entry - t.stop), r_net: (pnl - c) / risk, pnl_net: pnl - c};
+  })).sort((a, b) => (a.closed_at || '').localeCompare(b.closed_at || ''));
+}
+function rvGroup(rows, field, names) {
+  const g = {}; for (const x of rows) (g[x[field] ?? 'none'] ||= []).push(x);
+  return Object.entries(g).map(([k, v]) => ({key: k, name: names[k] || (k === 'none' ? 'sin dato' : k), ...rvStats(v)})).sort((a, b) => b.n - a.n);
+}
+const rvR = (v, d = 2) => v == null ? '—' : `${v > 0 ? '+' : v < 0 ? '−' : ''}${fmt(Math.abs(v), d)}R`;
+const rvCls = v => v > 0 ? 'up' : v < 0 ? 'dn' : '';
+function rvKpis(a) {
+  const t = (lbl, val, sub, cls = '') => `<div><span class="lbl">${lbl}</span><b class="${cls}">${val}</b>${sub ? `<small>${sub}</small>` : ''}</div>`;
+  return `<div class="rvk">${t('Operaciones', a.n)}${t('Ganadoras', fmt(a.win_rate, 0) + ' %')}${t('Promedio neto', rvR(a.avg_r_net), `bruto ${rvR(a.avg_r)}`, rvCls(a.avg_r_net))}${t('Resultado neto', rvR(a.total_r_net, 1), a.avg_pnl_net != null ? `${fmt(a.avg_pnl_net, 1)} % por operación` : '', rvCls(a.total_r_net))}${t('Factor de beneficio', a.profit_factor == null ? '—' : fmt(a.profit_factor, 2), 'ganado ÷ perdido')}${t('Caída máxima', a.max_dd_r ? '−' + fmt(a.max_dd_r, 1) + 'R' : '0R', 'desde el mejor punto')}</div>`;
+}
+function rvCurve(pts) {
+  if (pts.length < 2) return '';
+  const W = 600, H = 160, eqs = [0, ...pts.map(p => p.eq)], lo = Math.min(0, ...eqs), hi = Math.max(0, ...eqs), span = hi - lo || 1;
+  const x = i => i / (eqs.length - 1) * W, y = v => H - (v - lo) / span * H;
+  const line = eqs.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
+  const last = pts.at(-1);
+  return `<div class="rvcurve"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span class="lbl">Curva de resultados (R acumulados, neto)</span><span class="num ${rvCls(last.eq)}">${rvR(last.eq, 1)}</span></div>
+    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Resultado acumulado: de 0 a ${rvR(last.eq, 1)} en ${pts.length} operaciones">
+      <polygon class="ar" points="0,${y(0).toFixed(1)} ${line} ${W},${y(0).toFixed(1)}"/><line class="z" x1="0" x2="${W}" y1="${y(0).toFixed(1)}" y2="${y(0).toFixed(1)}"/><polyline class="ln" points="${line}"/></svg>
+    <div class="ax"><span>${esc(pts[0].t || '')}</span><span>${esc(last.t || '')}</span></div></div>`;
+}
+function rvTable(title, groups) {
+  if (!groups.length) return '';
+  return `<div class="rvt"><h3>${title}</h3><table><thead><tr><th scope="col"></th><th scope="col">Op.</th><th scope="col">Gan.</th><th scope="col">Prom. neto</th><th scope="col">Total</th></tr></thead><tbody>${groups.map(g =>
+    `<tr><td>${esc(g.name)}</td><td class="num">${g.n}</td><td class="num">${fmt(g.win_rate, 0)} %</td><td class="num ${rvCls(g.avg_r_net)}">${rvR(g.avg_r_net)}</td><td class="num ${rvCls(g.total_r_net)}">${rvR(g.total_r_net, 1)}</td></tr>`).join('')}</tbody></table></div>`;
+}
+function renderReview() {
+  for (const b of $('rvTabs').querySelectorAll('button')) b.setAttribute('aria-selected', b.dataset.rv === rvTab);
+  const sel = $('rvWho'), logins = Object.keys(opUsers);
+  sel.hidden = rvTab !== 'users' || logins.length < 2;
+  if (sel.options.length !== logins.length + 1) {
+    const keep = sel.value || store.get('tp_me', '');
+    sel.innerHTML = '<option value="">Todos</option>' + logins.map(l => `<option value="${esc(l)}">${esc(opUsers[l]?.name || l)}</option>`).join('');
+    sel.value = logins.includes(keep) ? keep : '';
+  }
+  const costs = {...RV_COSTS, ...(ENG?.review?.costs || {})};
+  const cnote = `<p class="rvnote">R = resultado dividido el riesgo inicial (entrada − stop). Neto descuenta un costo ida y vuelta de ${['adr', 'byma', 'cripto'].map(k => `${fmt(costs[k], 1)} % en ${MKNAME[k] || k}`).join(', ')} (se cambia en <code>engine/config.json</code> → <code>costs</code>). Resultados pasados no garantizan los futuros.</p>`;
+  if (rvTab === 'eng') {
+    const rv = ENG?.review;
+    $('rvSub').textContent = 'Señales del motor ya cerradas, por régimen de mercado al entrar';
+    if (!rv) { $('rvBody').innerHTML = '<p class="empty">La revisión aparece cuando corre el motor con esta versión.</p>'; return; }
+    if (!rv.all?.n) { $('rvBody').innerHTML = '<p class="empty">El motor todavía no cerró ninguna operación. Cuando cierre la primera, acá vas a ver el porcentaje de ganadoras, el R promedio neto de costos y la curva.</p>' + cnote; return; }
+    $('rvBody').innerHTML = rvKpis(rv.all) + rvCurve(rv.curve || []) + `<div class="rvgrid">${rvTable('Por régimen al entrar', rv.by_gate || [])}${rvTable('Por setup', (rv.by_setup || []).map(g => ({...g, name: RV_SETUP[g.key] || g.name})))}${rvTable('Por mercado', (rv.by_kind || []).map(g => ({...g, name: MKNAME[g.key] || g.name})))}</div>` + cnote;
+    return;
+  }
+  const who = sel.hidden ? '' : sel.value, rows = rvUserRows(who), all = rvStats(rows);
+  $('rvSub').textContent = who ? `Operaciones cerradas de ${opUsers[who]?.name || who}` : 'Operaciones cerradas registradas en Mis operaciones';
+  if (!all.n) { $('rvBody').innerHTML = `<p class="empty">${who ? 'Todavía no cerró' : 'Todavía nadie cerró'} ninguna operación. Se registran en <a href="operaciones.html">Mis operaciones</a>.</p>` + cnote; return; }
+  let eq = 0; const pts = rows.map(x => ({t: (x.closed_at || '').slice(0, 10), eq: (eq += x.r_net)}));
+  $('rvBody').innerHTML = rvKpis(all) + rvCurve(pts) + `<div class="rvgrid">${!who && logins.length > 1 ? rvTable('Por usuario', rvGroup(rows, 'who', Object.fromEntries(logins.map(l => [l, opUsers[l]?.name || l])))) : ''}${rvTable('Por mercado', rvGroup(rows, 'kind', MKNAME))}${rvTable('Por motivo de salida', rvGroup(rows, 'reason', RV_REASON))}</div>` + cnote;
+}
+$('rvTabs').addEventListener('click', e => { const b = e.target.closest('[data-rv]'); if (!b) return; rvTab = b.dataset.rv; store.set('tp_rv', rvTab); renderReview(); });
+$('rvWho').addEventListener('change', renderReview);
 
 /* ---------- Ficha del activo: velas, niveles del motor y de los usuarios ---------- */
 // Velas: data/candles.json (las escribe el motor con Yahoo). Si el activo no está en la

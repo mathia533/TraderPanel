@@ -132,6 +132,10 @@ select{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--
 .acts{display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:12px}
 .up{color:var(--up)}.dn{color:var(--dn)}
 .err{font-size:12.5px;color:var(--dn)}
+.rstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.rstats div{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--inset);display:flex;flex-direction:column;gap:2px}
+.rstats span{font-size:12.5px;color:var(--mute)}
+.rstats b{font-family:var(--mono);font-size:20px;font-weight:600}
 </style>
 </head>
 <body>
@@ -197,6 +201,12 @@ select{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--
       <h2 id="openH">Abiertas</h2>
       <p class="sub">Para cerrar o mover el stop, tocá la operación.</p>
       <div id="openList" class="list"></div>
+    </section>
+
+    <section class="card" aria-labelledby="resH" id="resCard" hidden>
+      <h2 id="resH">Mis resultados</h2>
+      <p class="sub">Sobre tus operaciones cerradas. R = resultado dividido el riesgo inicial (compra − stop). <a href="./#resultados">Ver la revisión completa en el panel</a> (curva, por mercado y neto de costos).</p>
+      <div class="rstats" id="resStats"></div>
     </section>
 
     <section class="card" aria-labelledby="closedH">
@@ -335,9 +345,19 @@ function row(t) {
       <span class="err" data-f="err"></span>
     </div></details>`;
 }
+function renderStats(closed) {
+  const rows = closed.filter(t => t.entry > t.stop && t.stop > 0).map(t => ({ r: (t.exit - t.entry) / (t.entry - t.stop), pnl: (t.exit / t.entry - 1) * 100 }));
+  $('resCard').hidden = !rows.length; if (!rows.length) return;
+  const n = rows.length, wins = rows.filter(x => x.r > 0).length, tot = rows.reduce((a, x) => a + x.r, 0);
+  const sr = v => `${v > 0 ? '+' : v < 0 ? '−' : ''}${nf(Math.abs(v), 2)}R`, cls = v => v > 0 ? 'up' : v < 0 ? 'dn' : '';
+  const best = Math.max(...rows.map(x => x.r)), worst = Math.min(...rows.map(x => x.r));
+  $('resStats').innerHTML = [['Cerradas', n, ''], ['Ganadoras', `${nf(100 * wins / n, 0)} %`, ''], ['Promedio', sr(tot / n), cls(tot)], ['Total', sr(tot), cls(tot)], ['Mejor', sr(best), cls(best)], ['Peor', sr(worst), cls(worst)]]
+    .map(([l, v, c]) => `<div><span>${l}</span><b class="${c}">${v}</b></div>`).join('');
+}
 function render() {
   const open = S.trades.filter(t => t.exit == null), closed = S.trades.filter(t => t.exit != null).sort((a, b) => (b.closed_at || '').localeCompare(a.closed_at || ''));
   $('openList').innerHTML = open.length ? open.map(row).join('') : '<p class="mute">No tenés operaciones abiertas.</p>';
+  renderStats(closed);
   $('closedList').innerHTML = closed.length ? closed.slice(0, 30).map(row).join('') : '<p class="mute">Todavía no cerraste ninguna.</p>';
 }
 $('openList').addEventListener('click', async ev => {
