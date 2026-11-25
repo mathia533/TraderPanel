@@ -81,16 +81,19 @@ Las señales son resultados de reglas técnicas sobre datos con demora. No son a
 
 `cartera.html` muestra lo que tenés en IOL leído con las reglas del motor: tendencia (medias de 50 y 200), stop de protección (mínimo de 10 ruedas, al menos 1,5 ATR, tope 12 %), setups de las skills (VCP, Momentum Burst, trader-scanner) y la Time Machine a 10 ruedas. Los CEDEARs se analizan sobre la acción en EE. UU.; bonos, ONs y fondos se muestran sin análisis de tendencia.
 
-Cómo llega: el paso **Mi cartera** del workflow *Motor de señales* (`engine/cartera.py`) entra a la API de IOL **solo para leer** la cartera y el estado de cuenta. Nunca manda, cancela ni modifica órdenes. Como el repo es público, el resultado se publica **cifrado** en `data/cartera.enc` (AES-256-GCM, clave PBKDF2 de tu frase) y se descifra en el navegador. Los logs no muestran activos ni montos.
+**Cada uno trae la suya, con su propio usuario.** En `cartera.html`, entrando con tu cuenta de GitHub (el mismo token de Configuración), completás usuario y clave de IOL y una frase propia:
 
-Para activarlo, cargá en **Settings → Secrets and variables → Actions**:
+1. Tu navegador entra a IOL directo (la API de IOL acepta pedidos desde el panel). La clave no se guarda ni pasa por GitHub, y solo se lee la cartera y el estado de cuenta: nunca se mandan órdenes.
+2. La cartera se cifra en tu navegador con una clave que sale de tu frase (PBKDF2-SHA256 + AES-256-GCM) y se sube a `carteras/<login>.json`. Esa clave viaja envuelta con la llave pública del motor (`engine/cartera_pub.json`, RSA-OAEP 3072).
+3. El workflow **Mi cartera** (al subirla) y **Motor de señales** (cada hora) la abren con el secret `CARTERA_PRIVADA`, la analizan con los precios del momento y publican `data/cartera/<login>.enc`, cifrado con tu misma clave. Lo abrís con tu frase.
 
-| Secret | Qué es |
-|---|---|
-| `IOL_USUARIO` / `IOL_CLAVE` | Tu usuario y contraseña de IOL. La cuenta necesita el acceso por API habilitado. |
-| `CARTERA_CLAVE` | Una frase de 12 caracteres o más que inventás. Es la que escribís en `cartera.html`. |
+Las cantidades quedan como en el momento en que las traés: para actualizarlas, las traés de nuevo. Quien tenga `CARTERA_PRIVADA` (el dueño del repo) técnicamente podría ver la composición de una cartera, pero nunca la clave de IOL. Los logs de Actions no muestran activos ni montos.
 
-Si un activo cambia de veredicto (✓ a favor, ! ojo, ✕ en contra) te llega un aviso privado al chat de `TELEGRAM_CHAT_ID`. Para apagarlo, agregá la variable `CARTERA_AVISOS=0` al paso.
+**Preparación, una sola vez y solo el dueño:** en `cartera.html`, tocá **Crear las llaves**. La pública se guarda en el repo; la privada la pegás como secret `CARTERA_PRIVADA`.
+
+**Opcional, solo el dueño:** los secrets `IOL_USUARIO`, `IOL_CLAVE` y `CARTERA_CLAVE` (de #23) siguen andando para traer su cartera en cada corrida sin entrar a la página.
+
+Si un activo cambia de veredicto (✓ a favor, ! ojo, ✕ en contra) le llega un aviso privado al chat de su perfil (`telegram.chat`; `default` es `TELEGRAM_CHAT_ID`). Para apagarlo, agregá la variable `CARTERA_AVISOS=0` al paso.
 
 ## Alertas por Telegram
 

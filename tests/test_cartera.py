@@ -83,5 +83,51 @@ def test_main_refuses_plaintext_in_data(tmp_path, monkeypatch):
     f = tmp_path / "c.json"; f.write_text(json.dumps(CONN))
     assert cartera.main(["--desde", str(f), "--sin-cifrar", str(cartera.DATA / "x.json")]) == 2
     monkeypatch.delenv("CARTERA_CLAVE", raising=False)
-    assert cartera.main(["--desde", str(f)]) == 0  # sin clave no escribe nada
+    assert cartera.main(["--desde", str(f), "--subidas", str(tmp_path / "nada")]) == 0  # sin clave no escribe nada
     assert not (cartera.DATA / "x.json").exists()
+
+
+def _browser_upload(login, src, phrase, pub):
+    """Hace lo mismo que cartera.html: K = PBKDF2(frase), cartera cifrada con K y K envuelta con RSA-OAEP."""
+    import base64, os
+    from cryptography.hazmat.primitives import hashes
+    from cryptography.hazmat.primitives.asymmetric import padding
+    salt = os.urandom(16)
+    k = cartera._key(phrase, salt)
+    blob = cartera.encrypt(src, key=k, salt=salt)
+    blob["login"] = login
+    blob["key"] = base64.b64encode(pub.encrypt(k, padding.OAEP(mgf=padding.MGF1(hashes.SHA256()), algorithm=hashes.SHA256(), label=None))).decode()
+    return blob
+
+
+def test_upload_from_browser_roundtrip(tmp_path, monkeypatch):
+    from cryptography.hazmat.primitives import serialization
+    from cryptography.hazmat.primitives.asymmetric import rsa
+    priv = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+    pem = priv.private_bytes(serialization.Encoding.PEM, serialization.PrivateFormat.PKCS8, serialization.NoEncryption()).decode()
+    up_dir, out_dir = tmp_path / "carteras", tmp_path / "out"
+    up_dir.mkdir()
+    (up_dir / "leo-x.json").write_text(json.dumps(_browser_upload("leo-x", API, "frase de leo larga", priv.public_key())))
+    # un archivo con el login cambiado no se procesa
+    (up_dir / "otro.json").write_text(json.dumps(_browser_upload("leo-x", API, "frase de leo larga", priv.public_key())))
+    monkeypatch.setenv("CARTERA_PRIVADA", pem)
+    for k in ("IOL_USUARIO", "IOL_CLAVE", "CARTERA_CLAVE"):
+        monkeypatch.delenv(k, raising=False)
+    monkeypatch.setattr(cartera, "OUT_DIR", out_dir)
+    monkeypatch.setattr(cartera, "LEGACY", tmp_path / "legacy.enc")
+    real_run = cartera.run_user
+    monkeypatch.setattr(cartera, "run_user", lambda *a, **kw: real_run(*a, **{**kw, "fetch": fake_fetch, "out_dir": out_dir}))
+    assert cartera.main(["--subidas", str(up_dir)]) == 0
+    assert not (out_dir / "otro.enc").exists()
+    rep = cartera.decrypt(json.loads((out_dir / "leo-x.enc").read_text()), "frase de leo larga")
+    assert rep["login"] == "leo-x" and {h["symbol"] for h in rep["holdings"]} == {"AAA", "BON30"}
+    # sin la llave privada no se abre nada
+    monkeypatch.delenv("CARTERA_PRIVADA")
+    (out_dir / "leo-x.enc").unlink()
+    assert cartera.main(["--subidas", str(up_dir)]) == 0
+    assert not (out_dir / "leo-x.enc").exists()
+
+
+def test_chat_for_profile():
+    assert cartera.chat_for({"telegram": {"chat": "default"}}, {"TELEGRAM_CHAT_ID": "-1001"}) == "-1001"
+    assert cartera.chat_for({"telegram": {"chat": ""}}, {"TELEGRAM_CHAT_ID": "-1001"}) is None

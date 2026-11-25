@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Mi cartera: el archivo va cifrado y se descifra acá, en el navegador. La frase nunca sale de esta página. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://raw.githubusercontent.com; img-src data:; base-uri 'none'; form-action 'none'">
+<!-- Mi cartera: la clave de IOL va solo de este navegador a IOL y no se guarda. La cartera viaja y se publica cifrada; la frase nunca sale de esta página. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://raw.githubusercontent.com https://api.github.com https://api.invertironline.com; img-src data:; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
 <title>TraderPanel · Mi cartera</title>
@@ -203,11 +203,12 @@ select{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--
     <h1>Mi cartera</h1>
     <p>Lo que tenés en InvertirOnline, leído con las mismas reglas que el motor usa para la watchlist: tendencia, stop de protección, setups de las skills y la Time Machine. El archivo está cifrado; solo se abre con tu frase, acá en el navegador.</p>
   </div>
+  <div class="row" id="whoRow" hidden><label for="who" class="mute">Cartera de</label><select id="who" style="min-height:40px;border-radius:10px;border:1px solid var(--line2);background:var(--card);color:var(--ink);padding:0 10px"></select></div>
   <div id="loadMsg" role="status"></div>
 
   <section class="card setup" id="unlock" hidden aria-labelledby="unH">
     <h2 id="unH">Abrir mi cartera</h2>
-    <p class="sub" id="unSub">Escribí la frase que cargaste como <code>CARTERA_CLAVE</code> en los secrets del repo.</p>
+    <p class="sub" id="unSub"></p>
     <div class="f"><label for="pass">Frase</label><input type="password" id="pass" autocomplete="current-password" spellcheck="false"></div>
     <label class="check"><input type="checkbox" id="remember">Recordarla en este navegador</label>
     <div class="row"><button class="btn go" id="open" type="button"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Abrir</button>
@@ -217,12 +218,7 @@ select{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--
 
   <section class="card setup" id="nofile" hidden aria-labelledby="nfH">
     <h2 id="nfH">Todavía no hay cartera publicada</h2>
-    <p class="sub">El motor la baja de InvertirOnline en cada corrida, cuando el repo tiene estos tres secrets (Settings → Secrets and variables → Actions):</p>
-    <ol>
-      <li><code>IOL_USUARIO</code> y <code>IOL_CLAVE</code>: tu usuario y contraseña de IOL. La cuenta tiene que tener habilitado el acceso por API. Solo se lee la cartera: nunca se mandan órdenes.</li>
-      <li><code>CARTERA_CLAVE</code>: una frase larga (12 caracteres o más) que inventás vos. Con ella se cifra el archivo y con ella lo abrís acá.</li>
-      <li>Después corré <b>Actions → Motor de señales → Run workflow</b>, o esperá la próxima corrida.</li>
-    </ol>
+    <p class="sub" id="nfSub"></p>
     <div class="row"><label class="btn" for="file2">Abrir un archivo…</label><input type="file" id="file2" accept=".json,.enc,application/json" hidden></div>
   </section>
 
@@ -245,6 +241,35 @@ select{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--
       <div class="hl" id="list"></div>
     </section>
   </div>
+  <section class="card setup" id="sync" hidden aria-labelledby="syH">
+    <h2 id="syH">Traer mi cartera de InvertirOnline</h2>
+    <p class="sub">Entrás a IOL con tu usuario, acá mismo. Tu navegador habla directo con IOL: la clave no se guarda en ningún lado ni pasa por GitHub, y solo se lee la cartera (nunca se mandan órdenes). Lo que se sube al repo va cifrado con tu frase.</p>
+    <div class="grid">
+      <div class="f"><label for="iolU">Usuario de IOL</label><input type="text" id="iolU" autocomplete="username" spellcheck="false"></div>
+      <div class="f"><label for="iolP">Clave de IOL</label><input type="password" id="iolP" autocomplete="current-password"></div>
+    </div>
+    <div class="f"><label for="syPhrase">Tu frase para abrir la cartera</label><input type="password" id="syPhrase" autocomplete="new-password" spellcheck="false"><span class="help" id="syHelp">12 caracteres o más. La inventás vos y nadie más la sabe; sin ella no se puede ver tu cartera.</span></div>
+    <div class="row"><button class="btn go" id="syGo" type="button"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Traer de IOL</button></div>
+    <p class="help mute" style="font-size:12.5px">La cuenta tiene que tener habilitado el acceso por API en IOL. Las cantidades quedan como en el momento en que las traés; el análisis se actualiza solo cada hora con los precios del día. Para que el motor lea la cartera usa una llave que guarda el dueño del repo: técnicamente él podría ver qué tenés, nunca tu clave de IOL.</p>
+    <div id="syMsg" role="status"></div>
+  </section>
+
+  <section class="card setup" id="keySetup" hidden aria-labelledby="kyH">
+    <h2 id="kyH">Preparar la llave del motor (una sola vez)</h2>
+    <p class="sub">Para que cada uno pueda traer su cartera, el motor necesita un par de llaves. Se crean acá en tu navegador: la pública se guarda en el repo y la privada la cargás vos como secret.</p>
+    <div class="row"><button class="btn go" id="kyGo" type="button"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Crear las llaves</button></div>
+    <div id="kyOut" hidden style="display:flex;flex-direction:column;gap:10px">
+      <ol>
+        <li>Copiá la llave privada de abajo.</li>
+        <li>En GitHub: <a id="kyLink" target="_blank" rel="noopener">Settings → Secrets → Actions</a> → <b>New repository secret</b>, nombre <code>CARTERA_PRIVADA</code>, y pegala.</li>
+        <li>Cerrá esta página: la llave privada no se guarda en ningún otro lado.</li>
+      </ol>
+      <textarea id="kyPriv" readonly rows="8" style="width:100%;font-family:var(--mono);font-size:12px;background:var(--bg);color:var(--ink);border:1px solid var(--line2);border-radius:10px;padding:10px"></textarea>
+      <div class="row"><button class="btn" id="kyCopy" type="button">Copiar la llave privada</button></div>
+    </div>
+    <div id="kyMsg" role="status"></div>
+  </section>
+
 </main>
 
 <script>
@@ -285,7 +310,8 @@ async function decrypt(blob, pass) {
   return JSON.parse(new TextDecoder().decode(pt));
 }
 
-let BLOB = null, REP = null, FILTER = 'all';
+let BLOB = null, REP = null, FILTER = 'all', WHO = null, OWNER = GH.owner, USERS = {};
+const kKey = () => 'tp_cartera_k_' + WHO;
 const VER = {favor: ['✓', 'A FAVOR'], ojo: ['!', 'OJO'], contra: ['✕', 'EN CONTRA'], na: ['–', 'NO APLICA'], nodata: ['–', 'SIN DATOS']};
 const GATE = {allowed: 'a favor', neutral: 'neutral', restrictive: 'defensivo'};
 const MKN = {adr: 'EE. UU.', byma: 'BYMA', cripto: 'Cripto'};
@@ -298,10 +324,10 @@ async function tryOpen(pass, remember) {
     REP = await decrypt(BLOB, pass);
   } catch {
     $('unMsg').innerHTML = '<div class="msg bad" style="margin-top:8px">Esa frase no abre el archivo. Revisá mayúsculas y espacios: tiene que ser igual al secret CARTERA_CLAVE.</div>';
-    store.del('tp_cartera_k');
+    store.del(kKey());
     return false;
   }
-  if (remember) store.set('tp_cartera_k', pass);
+  if (remember) store.set(kKey(), pass);
   show();
   return true;
 }
@@ -314,10 +340,10 @@ function spark(vals, up) {
 }
 
 function show() {
-  $('unlock').hidden = true; $('nofile').hidden = true; $('app').hidden = false; $('lock').hidden = false;
+  $('unlock').hidden = true; $('nofile').hidden = true; $('app').hidden = false; $('lock').hidden = false; showSync();
   const r = REP, t = r.totals || {}, ars = (t.by_currency || {})['$'] || 0, usd = (t.by_currency || {})['US$'];
   const when = r.generated_at ? new Date(r.generated_at).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'}) : '—';
-  $('sumSub').textContent = `${r.holdings.length} activos · actualizado ${when}${r.source === 'conector' ? ' · tomado del conector de IOL' : ''}`;
+  $('sumSub').textContent = `${USERS[WHO]?.name || WHO || 'Cartera'} · ${r.holdings.length} activos · actualizado ${when}${r.synced_at ? ' · cantidades traídas de IOL el ' + new Date(r.synced_at).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'}) : r.source === 'conector' ? ' · tomado del conector de IOL' : ''}`;
   const cashArs = (r.cash || []).filter(c => c.currency === '$').reduce((a, c) => a + c.amount, 0);
   const cashUsd = (r.cash || []).filter(c => c.currency === 'US$').reduce((a, c) => a + c.amount, 0);
   const gainTxt = t.gain != null ? `<b class="${cls(t.gain)}">${money(t.gain)}</b><small>contra lo que pagaste (según IOL)</small>` : '<b>—</b><small>IOL no mandó el precio de compra</small>';
@@ -369,7 +395,7 @@ function list() {
 $('filters').addEventListener('click', e => { const b = e.target.closest('button[data-f]'); if (!b) return; FILTER = b.dataset.f; for (const x of $('filters').children) x.setAttribute('aria-pressed', x === b); list(); });
 $('open').onclick = () => tryOpen($('pass').value, $('remember').checked);
 $('pass').addEventListener('keydown', e => { if (e.key === 'Enter') $('open').click(); });
-$('lock').onclick = () => { store.del('tp_cartera_k'); REP = null; $('app').hidden = true; $('lock').hidden = true; $('pass').value = ''; if (BLOB) $('unlock').hidden = false; else $('nofile').hidden = false; };
+$('lock').onclick = () => { store.del(kKey()); REP = null; $('app').hidden = true; $('lock').hidden = true; $('pass').value = ''; if (BLOB) $('unlock').hidden = false; else $('nofile').hidden = false; };
 
 async function fromFile(f) {
   try {
@@ -381,13 +407,142 @@ async function fromFile(f) {
 }
 for (const id of ['file', 'file2']) $(id).addEventListener('change', e => e.target.files[0] && fromFile(e.target.files[0]));
 
-(async () => {
-  BLOB = await repoJSON('data/cartera.enc');
-  if (!BLOB?.data) { $('nofile').hidden = false; return; }
+async function load(login) {
+  WHO = login; store.set('tp_cartera_u', login);
+  REP = null; BLOB = null; FILTER = 'all';
+  for (const id of ['app', 'unlock', 'nofile', 'lock', 'sync', 'keySetup']) $(id).hidden = true;
+  $('pass').value = ''; $('unMsg').innerHTML = ''; $('loadMsg').innerHTML = '';
+  const name = USERS[login]?.name || login, own = login === OWNER;
+  BLOB = (login === ME && await freshBlob(login)) || await repoJSON(`data/cartera/${login}.enc`);
+  if (!BLOB?.data && own) BLOB = await repoJSON('data/cartera.enc');
+  showSync();
+  if (!BLOB?.data) {
+    $('nfH').textContent = `Todavía no hay cartera publicada de ${name}`;
+    $('nfSub').innerHTML = ME === login ? (PUB ? 'Traela desde InvertirOnline con tu usuario, acá abajo.' : (own ? 'Primero preparamos la llave del motor, acá abajo.' : 'El dueño del repo todavía no preparó la llave del motor. Avisale.'))
+      : ME ? `Solo ${esc(name)} puede traer su cartera, entrando con su usuario de GitHub.` : `Si sos ${esc(name)}, <a href="config.html">entrá con tu cuenta de GitHub</a> y volvé acá para traer tu cartera desde InvertirOnline.`;
+    $('nofile').hidden = false; return;
+  }
+  $('unSub').innerHTML = `Escribí la frase de ${esc(name)}: la que usó al traer su cartera desde InvertirOnline${own ? ' (o la del secret <code>CARTERA_CLAVE</code>)' : ''}.`;
+  if (BLOB.updated) $('unSub').innerHTML += ` Última actualización: ${esc(new Date(BLOB.updated).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'}))}`;
   $('unlock').hidden = false;
-  if (BLOB.updated) $('unSub').innerHTML += ` Última actualización: ${esc(new Date(BLOB.updated).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'}))}.`;
-  const k = store.get('tp_cartera_k', null);
+  const k = store.get(kKey(), null);
   if (k) { $('remember').checked = true; await tryOpen(k, true); }
+}
+$('who').addEventListener('change', e => load(e.target.value));
+
+/* ---------- GitHub (mismo token que Configuración y Mis operaciones) ---------- */
+const API = 'https://api.github.com', TK = 'tp_gh_token';
+const token = (() => { try { return sessionStorage.getItem(TK) || localStorage.getItem(TK) || ''; } catch { return ''; } })();
+let ME = null, PUB = null;
+async function gh(path, opts = {}) {
+  const r = await fetch(API + path, {...opts, cache: 'no-store',
+    headers: {Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', Authorization: `Bearer ${token}`, ...(opts.body ? {'Content-Type': 'application/json'} : {})}});
+  const body = await r.json().catch(() => ({}));
+  if (!r.ok) { const e = new Error(body.message || `HTTP ${r.status}`); e.status = r.status; throw e; }
+  return body;
+}
+const enc64 = buf => { let bin = ''; for (const b of new Uint8Array(buf)) bin += String.fromCharCode(b); return btoa(bin); };
+const txt64 = s => enc64(new TextEncoder().encode(s));
+async function putFile(path, text, message) {
+  let sha;
+  try { sha = (await gh(`/repos/${GH.owner}/${GH.repo}/contents/${path}`)).sha; } catch (e) { if (e.status !== 404) throw e; }
+  return gh(`/repos/${GH.owner}/${GH.repo}/contents/${path}`, {method: 'PUT', body: JSON.stringify({message, content: txt64(text), ...(sha ? {sha} : {})})});
+}
+async function freshBlob(login) {
+  if (!token) return null;
+  try { const r = await gh(`/repos/${GH.owner}/${GH.repo}/contents/data/cartera/${login}.enc`); return JSON.parse(atob(r.content.replace(/\s/g, ''))); } catch { return null; }
+}
+const smsg = (id, cls, html) => { $(id).innerHTML = html ? `<div class="msg ${cls}" style="margin-top:8px">${html}</div>` : ''; };
+
+/* ---------- Traer la cartera de IOL desde este navegador ---------- */
+const IOL = 'https://api.invertironline.com';
+async function iolFetch(user, pass) {
+  const r = await fetch(IOL + '/token', {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    body: new URLSearchParams({username: user, password: pass, grant_type: 'password'})});
+  if (!r.ok) throw new Error(r.status === 401 || r.status === 400 ? 'IOL no aceptó el usuario o la clave (o la cuenta no tiene habilitada la API).' : `IOL respondió ${r.status}.`);
+  const tok = (await r.json()).access_token;
+  const get = async path => { const x = await fetch(IOL + path, {headers: {Authorization: `Bearer ${tok}`, Accept: 'application/json'}}); if (!x.ok) throw new Error(x.status); return x.json(); };
+  const portafolio = [];
+  for (const pais of ['argentina', 'estados_Unidos']) { try { portafolio.push(await get('/api/v2/portafolio/' + pais)); } catch {} }
+  if (!portafolio.length) throw new Error('IOL no devolvió la cartera.');
+  let estadocuenta = null; try { estadocuenta = await get('/api/v2/estadocuenta'); } catch {}
+  return {source: 'navegador', synced_at: new Date().toISOString(), portafolio, estadocuenta};
+}
+async function sealUpload(login, src, phrase) {
+  const salt = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12)), iter = 250000;
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(phrase), 'PBKDF2', false, ['deriveBits']);
+  const raw = await crypto.subtle.deriveBits({name: 'PBKDF2', hash: 'SHA-256', salt, iterations: iter}, base, 256);
+  const k = await crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['encrypt']);
+  const data = await crypto.subtle.encrypt({name: 'AES-GCM', iv}, k, new TextEncoder().encode(JSON.stringify(src)));
+  const pub = await crypto.subtle.importKey('jwk', PUB, {name: 'RSA-OAEP', hash: 'SHA-256'}, false, ['encrypt']);
+  const wrapped = await crypto.subtle.encrypt({name: 'RSA-OAEP'}, pub, raw);
+  return {v: 1, login, alg: 'AES-256-GCM', kdf: 'PBKDF2-SHA256', iter, salt: enc64(salt), iv: enc64(iv), data: enc64(data), key: enc64(wrapped), updated: src.synced_at};
+}
+$('syGo').onclick = async () => {
+  const user = $('iolU').value.trim(), pass = $('iolP').value, phrase = $('syPhrase').value;
+  if (!user || !pass) return smsg('syMsg', 'bad', 'Completá usuario y clave de IOL.');
+  if (phrase.length < 12) return smsg('syMsg', 'bad', 'La frase tiene que tener 12 caracteres o más.');
+  if (BLOB?.data) { try { await decrypt(BLOB, phrase); } catch {
+    if (!$('syGo').dataset.confirm) { $('syGo').dataset.confirm = '1'; return smsg('syMsg', 'info', 'Esa frase no es la de tu cartera actual. Si seguís, la anterior se reemplaza y desde ahora se abre con esta. Tocá de nuevo para confirmar.'); } } }
+  $('syGo').disabled = true;
+  try {
+    smsg('syMsg', 'info', 'Entrando a IOL…');
+    const src = await iolFetch(user, pass);
+    $('iolP').value = '';
+    const n = src.portafolio.reduce((a, p) => a + (p.activos || []).length, 0);
+    smsg('syMsg', 'info', `IOL devolvió ${n} activos. Cifrando y subiendo…`);
+    const before = BLOB?.updated || '';
+    await putFile(`carteras/${ME}.json`, JSON.stringify(await sealUpload(ME, src, phrase)) + '\n', `Cartera de ${ME} sincronizada desde IOL (cifrada)`);
+    if ($('remember').checked || store.get(kKey(), null)) store.set(kKey(), phrase);
+    smsg('syMsg', 'ok', 'Listo. El motor la está analizando; en 1 o 2 minutos aparece acá abajo sola.');
+    for (let i = 0; i < 30; i++) {
+      await new Promise(r => setTimeout(r, 15000));
+      const b = await freshBlob(ME);
+      if (b?.data && b.updated !== before) { BLOB = b; $('sync').hidden = true; await tryOpen(phrase, !!store.get(kKey(), null)); smsg('syMsg', '', ''); return; }
+    }
+    smsg('syMsg', 'info', 'El motor todavía no terminó. Recargá la página en unos minutos.');
+  } catch (e) {
+    smsg('syMsg', 'bad', esc(e.message === 'Failed to fetch' ? 'No se pudo hablar con IOL desde este navegador.' : e.status === 403 || e.status === 404 ? 'GitHub no dejó guardar: revisá que tu token tenga permiso de escritura en el repo.' : e.message));
+  } finally { $('syGo').disabled = false; delete $('syGo').dataset.confirm; }
+};
+
+/* ---------- Llaves del motor (solo el dueño, una vez) ---------- */
+$('kyGo').onclick = async () => {
+  $('kyGo').disabled = true;
+  try {
+    const kp = await crypto.subtle.generateKey({name: 'RSA-OAEP', modulusLength: 3072, publicExponent: new Uint8Array([1, 0, 1]), hash: 'SHA-256'}, true, ['encrypt', 'decrypt']);
+    const jwk = await crypto.subtle.exportKey('jwk', kp.publicKey);
+    const pk = enc64(await crypto.subtle.exportKey('pkcs8', kp.privateKey));
+    $('kyPriv').value = `-----BEGIN PRIVATE KEY-----\n${pk.match(/.{1,64}/g).join('\n')}\n-----END PRIVATE KEY-----\n`;
+    await putFile('engine/cartera_pub.json', JSON.stringify({kty: jwk.kty, n: jwk.n, e: jwk.e, alg: 'RSA-OAEP-256', ext: true}) + '\n', 'Llave pública para las carteras de IOL');
+    PUB = {kty: jwk.kty, n: jwk.n, e: jwk.e, alg: 'RSA-OAEP-256', ext: true};
+    $('kyLink').href = `https://github.com/${GH.owner}/${GH.repo}/settings/secrets/actions/new`;
+    $('kyOut').hidden = false; $('kyGo').hidden = true;
+    smsg('kyMsg', 'ok', 'La llave pública quedó en el repo. Falta que cargues la privada como secret; después ya podés traer tu cartera.');
+    showSync(); $('keySetup').hidden = false;
+  } catch (e) { smsg('kyMsg', 'bad', esc(e.message)); $('kyGo').disabled = false; }
+};
+$('kyCopy').onclick = async () => { try { await navigator.clipboard.writeText($('kyPriv').value); $('kyCopy').textContent = 'Copiada'; } catch { $('kyPriv').select(); } };
+
+function showSync() {
+  const mine = ME && WHO === ME;
+  $('keySetup').hidden = !(mine && ME === OWNER && !PUB);
+  $('sync').hidden = !(mine && PUB);
+  if (!$('sync').hidden && BLOB?.data) { $('syH').textContent = 'Actualizar mi cartera desde InvertirOnline'; $('syHelp').textContent = 'La misma frase con la que abrís tu cartera.'; }
+}
+
+(async () => {
+  [USERS, PUB] = await Promise.all([repoJSON('users/users.json').then(j => j?.users || {}), repoJSON('engine/cartera_pub.json').then(j => j?.n ? j : null)]);
+  if (token) { try { ME = (await gh('/user')).login; } catch {} }
+  const logins = Object.keys(USERS).length ? Object.keys(USERS) : [OWNER];
+  if (!logins.includes(OWNER)) logins.unshift(OWNER);
+  if (ME && !logins.includes(ME)) logins.push(ME);
+  $('who').innerHTML = logins.map(l => `<option value="${esc(l)}">${esc(USERS[l]?.name || l)}${l === ME ? ' (vos)' : ''}</option>`).join('');
+  $('whoRow').hidden = logins.length < 2;
+  const want = new URLSearchParams(location.search).get('u') || store.get('tp_cartera_u', ME || OWNER);
+  const first = logins.includes(want) ? want : OWNER;
+  $('who').value = first;
+  await load(first);
 })();
 </script>
 </body>
