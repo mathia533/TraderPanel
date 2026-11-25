@@ -21,7 +21,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import config_check, dtskills, pipeline, planner, review, skills, sources, tmextra
+from . import config_check, dtskills, patterns, pipeline, planner, review, skills, sources, tmextra
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -59,6 +59,10 @@ def rnd(v, ref=None):
     ref = abs(ref if ref is not None else v)
     d = 0 if ref >= 1000 else 2 if ref >= 1 else 6
     return round(float(v), d)
+
+
+MK_NAME = {"adr": "ADR", "byma": "BYMA", "cripto": "Cripto"}
+esc = pipeline.esc
 
 
 def units_txt(u):
@@ -428,6 +432,22 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None, intraday_fetch=Non
                 lab = "VENTA"
             else:
                 lab = "NEUTRAL"
+            # ---- patrones clásicos (doble piso, HCH, triángulos): entrada condicional
+            try:
+                pats = patterns.scan(closed)
+            except Exception as exc:  # noqa: BLE001
+                pats, errors[f"{key}:patrones"] = [], str(exc)[:200]
+            for pt in pats:
+                if pt["state"] == "ruptura":
+                    icon = "📐" if pt["bias"] == "alcista" else "⚠️"
+                    verb = (f"rompió el gatillo {fmt(pt['trigger'])}. Stop {fmt(pt['stop'])} · objetivo {fmt(pt['target'])}"
+                            + (f" · R:R {fmt(pt['rr'], 1)}" if pt.get("rr") else "")) if pt["bias"] == "alcista" else \
+                        f"perdió {fmt(pt['trigger'])}: aviso para el que está comprado"
+                    new_events.append({"type": "info", "info": "pattern", "kind": kind, "id": ident, "label": label,
+                                       "why": pt["why"], "id_ev": f"{key}:pattern:{pt['type']}:{pt['points'][0][0]}",
+                                       "text_override": f"{icon} <b>PATRÓN · {esc(label)}</b> ({MK_NAME.get(kind, kind)})\n"
+                                                        f"{pt['name']} {verb}.\n<i>{esc(pt['why'])}</i>"
+                                                        + ("\nMercado defensivo: el motor no abre compras nuevas." if gate == "restrictive" and pt["bias"] == "alcista" else "")})
             assets[key] = {
                 "kind": kind, "id": ident, "label": label, "date": closed[0]["date"], "live_date": live["date"] if live else None,
                 "last": rnd(last["close"]), "source": src, "degraded": degraded,
@@ -441,6 +461,7 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None, intraday_fetch=Non
                 "news_ticker": news_t,
                 "pipeline": pipe,
                 "position": pos,
+                "patterns": pats,
             }
 
     # ---- intradía: ruptura del rango de apertura en ADRs (mientras opera NY)
@@ -481,6 +502,9 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None, intraday_fetch=Non
                       "analyst_note": (analyst or {}).get("note"),
                       "congress": bool(congress)},
         "events": events[:50],
+        "patterns": sorted(({"key": k, "kind": a["kind"], "id": a["id"], "label": a["label"], **p}
+                            for k, a in assets.items() for p in a.get("patterns") or []),
+                           key=lambda p: (p["state"] != "ruptura", p["bias"] != "alcista", p["label"])),
         "closed": state.get("closed", [])[:30],
         "review": review.build_review(state.get("closed", []), cfg),
         "errors": errors,

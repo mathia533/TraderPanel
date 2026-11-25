@@ -74,6 +74,7 @@ def test_entry_then_target_exit_once(tmp_path, monkeypatch):
     now = datetime(2027, 1, 1, tzinfo=timezone.utc)
 
     sig, ev, st, fresh = run.analyze_all(cfg, off, use_regime=False, now=now)
+    fresh = [e for e in fresh if e.get("info") != "pattern"]   # los avisos de patrones se prueban en test_patterns
     assert [e["type"] for e in fresh] == ["entry"]
     assert "ENTRADA · TST" in fresh[0]["text"]
     pos = st["positions"]["adr:TST"]
@@ -115,7 +116,7 @@ def test_restrictive_market_blocks_entries(tmp_path, monkeypatch):
     off, data, cfg = _setup(tmp_path, monkeypatch, {"adr_TST": bars, "adr_SPY": bear, "byma__MERV": bear, "cripto_BTC-USD": bear})
     sig, _, st, fresh = run.analyze_all(cfg, off, use_regime=False, now=datetime(2027, 1, 1, tzinfo=timezone.utc))
     assert sig["markets"]["adr"]["gate"] == "restrictive"
-    assert fresh == [] and not st["positions"]
+    assert [e for e in fresh if e.get("info") != "pattern"] == [] and not st["positions"]
 
 
 def test_candles_file_for_panel(tmp_path, monkeypatch):
@@ -124,6 +125,8 @@ def test_candles_file_for_panel(tmp_path, monkeypatch):
     off, data, cfg = _setup(tmp_path, monkeypatch, {"adr_TST": bars, "adr_SPY": bench, "byma__MERV": bench, "cripto_BTC-USD": bench})
     sig, *_ = run.analyze_all(cfg, off, use_regime=False, now=datetime(2027, 1, 1, tzinfo=timezone.utc))
     assert "all" in sig["review"] and "curve" in sig["review"]               # revisión de resultados
+    assert isinstance(sig["patterns"], list) and all(p["key"] == "adr:TST" for p in sig["patterns"])
+    assert sig["assets"]["adr:TST"]["patterns"] == [{k: v for k, v in p.items() if k not in ("key", "kind", "id", "label")} for p in sig["patterns"]]
     c = json.loads((data / "candles.json").read_text())
     it = c["items"]["adr:TST"]
     assert it["ohlc"] and 0 < len(it["bars"]) <= run.CANDLES_KEEP
