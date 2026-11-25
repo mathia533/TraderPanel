@@ -245,11 +245,12 @@ select{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--
     <h2 id="syH">Traer mi cartera de InvertirOnline</h2>
     <p class="sub">Entrás a IOL con tu usuario, acá mismo. Tu navegador habla directo con IOL: la clave no se guarda en ningún lado ni pasa por GitHub, y solo se lee la cartera (nunca se mandan órdenes). Lo que se sube al repo va cifrado con tu frase.</p>
     <div class="grid">
-      <div class="f"><label for="iolU">Usuario de IOL</label><input type="text" id="iolU" autocomplete="username" spellcheck="false"></div>
+      <div class="f"><label for="iolU">Usuario de IOL</label><span class="help">El mismo con el que entrás a invertironline.com.</span><input type="text" id="iolU" autocomplete="username" spellcheck="false"></div>
       <div class="f"><label for="iolP">Clave de IOL</label><input type="password" id="iolP" autocomplete="current-password"></div>
     </div>
-    <div class="f"><label for="syPhrase">Tu frase para abrir la cartera</label><input type="password" id="syPhrase" autocomplete="new-password" spellcheck="false"><span class="help" id="syHelp">12 caracteres o más. La inventás vos y nadie más la sabe; sin ella no se puede ver tu cartera.</span></div>
-    <div class="row"><button class="btn go" id="syGo" type="button"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Traer de IOL</button></div>
+    <div class="f"><label for="syPhrase">Una frase tuya para ver la cartera</label><input type="password" id="syPhrase" autocomplete="new-password" spellcheck="false"><span class="help" id="syHelp">Inventá una (12 caracteres o más). Protege tu cartera en el repo público: sin ella nadie la puede ver. Queda recordada en este navegador.</span></div>
+    <div class="row"><button class="btn go" id="syGo" type="button"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Traer de IOL</button>
+      <button class="btn" id="kyRedo" type="button" hidden title="Si no llegaste a cargar la llave privada como secret">Rehacer la llave del motor</button></div>
     <p class="help mute" style="font-size:12.5px">La cuenta tiene que tener habilitado el acceso por API en IOL. Las cantidades quedan como en el momento en que las traés; el análisis se actualiza solo cada hora con los precios del día. Para que el motor lea la cartera usa una llave que guarda el dueño del repo: técnicamente él podría ver qué tenés, nunca tu clave de IOL.</p>
     <div id="syMsg" role="status"></div>
   </section>
@@ -266,6 +267,7 @@ select{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--
       </ol>
       <textarea id="kyPriv" readonly rows="8" style="width:100%;font-family:var(--mono);font-size:12px;background:var(--bg);color:var(--ink);border:1px solid var(--line2);border-radius:10px;padding:10px"></textarea>
       <div class="row"><button class="btn" id="kyCopy" type="button">Copiar la llave privada</button></div>
+      <label class="check"><input type="checkbox" id="kyDone">Ya la pegué en GitHub como <code>CARTERA_PRIVADA</code></label>
     </div>
     <div id="kyMsg" role="status"></div>
   </section>
@@ -456,15 +458,34 @@ const smsg = (id, cls, html) => { $(id).innerHTML = html ? `<div class="msg ${cl
 
 /* ---------- Traer la cartera de IOL desde este navegador ---------- */
 const IOL = 'https://api.invertironline.com';
+// Cada paso tiene su propio mensaje: así se sabe dónde se cortó y qué hacer
+class StepError extends Error { constructor(msg, step) { super(msg); this.step = step; } }
+const NET = 'Failed to fetch|NetworkError|Load failed';
 async function iolFetch(user, pass) {
-  const r = await fetch(IOL + '/token', {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: new URLSearchParams({username: user, password: pass, grant_type: 'password'})});
-  if (!r.ok) throw new Error(r.status === 401 || r.status === 400 ? 'IOL no aceptó el usuario o la clave (o la cuenta no tiene habilitada la API).' : `IOL respondió ${r.status}.`);
+  let r;
+  try {
+    r = await fetch(IOL + '/token', {method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({username: user, password: pass, grant_type: 'password'})});
+  } catch (e) {
+    console.warn('[cartera] login IOL: sin respuesta legible', e.message);
+    throw new StepError('IOL no dejó que el panel lea su respuesta al entrar (bloqueo del navegador, CORS). No es tu clave. Probá desde otro navegador o avisá para usar el plan B.', 'login');
+  }
+  console.info('[cartera] login IOL:', r.status);
+  if (r.status === 400 || r.status === 401) throw new StepError('IOL rechazó el usuario o la clave. Usá los mismos datos con los que entrás a invertironline.com. Si son correctos, tu cuenta todavía no tiene habilitado el acceso por API: se pide en IOL desde Mi cuenta.', 'login');
+  if (!r.ok) throw new StepError(`IOL respondió con un error (${r.status}) al entrar. Probá de nuevo en un rato.`, 'login');
   const tok = (await r.json()).access_token;
-  const get = async path => { const x = await fetch(IOL + path, {headers: {Authorization: `Bearer ${tok}`, Accept: 'application/json'}}); if (!x.ok) throw new Error(x.status); return x.json(); };
-  const portafolio = [];
-  for (const pais of ['argentina', 'estados_Unidos']) { try { portafolio.push(await get('/api/v2/portafolio/' + pais)); } catch {} }
-  if (!portafolio.length) throw new Error('IOL no devolvió la cartera.');
+  if (!tok) throw new StepError('IOL no devolvió el permiso de lectura. Revisá que la cuenta tenga habilitado el acceso por API.', 'login');
+  const get = async path => {
+    let x;
+    try { x = await fetch(IOL + path, {headers: {Authorization: `Bearer ${tok}`, Accept: 'application/json'}}); }
+    catch (e) { console.warn('[cartera] IOL', path, 'sin respuesta legible', e.message); throw new StepError('Entraste a IOL, pero el navegador no pudo leer la cartera (bloqueo CORS de IOL).', 'cartera'); }
+    console.info('[cartera] IOL', path, x.status);
+    if (!x.ok) throw new StepError(`IOL respondió ${x.status} al pedir la cartera.`, 'cartera');
+    return x.json();
+  };
+  const portafolio = []; let firstErr = null;
+  for (const pais of ['argentina', 'estados_Unidos']) { try { portafolio.push(await get('/api/v2/portafolio/' + pais)); } catch (e) { firstErr ||= e; } }
+  if (!portafolio.length) throw firstErr || new StepError('IOL no devolvió la cartera.', 'cartera');
   let estadocuenta = null; try { estadocuenta = await get('/api/v2/estadocuenta'); } catch {}
   return {source: 'navegador', synced_at: new Date().toISOString(), portafolio, estadocuenta};
 }
@@ -492,8 +513,13 @@ $('syGo').onclick = async () => {
     const n = src.portafolio.reduce((a, p) => a + (p.activos || []).length, 0);
     smsg('syMsg', 'info', `IOL devolvió ${n} activos. Cifrando y subiendo…`);
     const before = BLOB?.updated || '';
-    await putFile(`carteras/${ME}.json`, JSON.stringify(await sealUpload(ME, src, phrase)) + '\n', `Cartera de ${ME} sincronizada desde IOL (cifrada)`);
-    if ($('remember').checked || store.get(kKey(), null)) store.set(kKey(), phrase);
+    try {
+      await putFile(`carteras/${ME}.json`, JSON.stringify(await sealUpload(ME, src, phrase)) + '\n', `Cartera de ${ME} sincronizada desde IOL (cifrada)`);
+    } catch (e) {
+      console.warn('[cartera] subir a GitHub:', e.status || e.message);
+      throw new StepError(e.status === 401 ? 'Tu sesión de GitHub venció: entrá de nuevo en Configuración y volvé.' : e.status === 403 || e.status === 404 ? 'GitHub no dejó guardar: tu token necesita permiso de escritura (Contents) en este repo.' : 'No se pudo guardar en GitHub. Probá de nuevo.', 'github');
+    }
+    store.set(kKey(), phrase);  // la frase queda en este navegador para no pedirla cada vez
     smsg('syMsg', 'ok', 'Listo. El motor la está analizando; en 1 o 2 minutos aparece acá abajo sola.');
     for (let i = 0; i < 30; i++) {
       await new Promise(r => setTimeout(r, 15000));
@@ -502,7 +528,8 @@ $('syGo').onclick = async () => {
     }
     smsg('syMsg', 'info', 'El motor todavía no terminó. Recargá la página en unos minutos.');
   } catch (e) {
-    smsg('syMsg', 'bad', esc(e.message === 'Failed to fetch' ? 'No se pudo hablar con IOL desde este navegador.' : e.status === 403 || e.status === 404 ? 'GitHub no dejó guardar: revisá que tu token tenga permiso de escritura en el repo.' : e.message));
+    const where = {login: 'Paso 1 de 3, entrar a IOL', cartera: 'Paso 2 de 3, leer la cartera', github: 'Paso 3 de 3, guardar cifrada'}[e.step];
+    smsg('syMsg', 'bad', (where ? `<b>${where}:</b> ` : '') + esc(new RegExp(NET).test(e.message) ? 'Se cortó la conexión. Probá de nuevo.' : e.message));
   } finally { $('syGo').disabled = false; delete $('syGo').dataset.confirm; }
 };
 
@@ -518,16 +545,30 @@ $('kyGo').onclick = async () => {
     PUB = {kty: jwk.kty, n: jwk.n, e: jwk.e, alg: 'RSA-OAEP-256', ext: true};
     $('kyLink').href = `https://github.com/${GH.owner}/${GH.repo}/settings/secrets/actions/new`;
     $('kyOut').hidden = false; $('kyGo').hidden = true;
-    smsg('kyMsg', 'ok', 'La llave pública quedó en el repo. Falta que cargues la privada como secret; después ya podés traer tu cartera.');
+    KEYPENDING = true;
+    smsg('kyMsg', 'ok', 'La llave pública quedó en el repo. Ahora copiá la privada, cargala como secret y marcá la casilla.');
     showSync(); $('keySetup').hidden = false;
   } catch (e) { smsg('kyMsg', 'bad', esc(e.message)); $('kyGo').disabled = false; }
+};
+let KEYPENDING = false;
+window.addEventListener('beforeunload', e => { if (KEYPENDING) { e.preventDefault(); e.returnValue = ''; } });
+$('kyDone').onchange = () => { KEYPENDING = !$('kyDone').checked; showSync(); if (!KEYPENDING) { $('keySetup').hidden = true; smsg('syMsg', 'ok', 'Listo, la llave quedó configurada. Ya podés traer tu cartera.'); } };
+$('kyRedo').onclick = () => {
+  if (!$('kyRedo').dataset.confirm) { $('kyRedo').dataset.confirm = '1'; smsg('syMsg', 'info', 'Se crean llaves nuevas y la vieja deja de servir: quien ya haya traído su cartera tiene que traerla de nuevo. Tocá otra vez para seguir.'); return; }
+  delete $('kyRedo').dataset.confirm; smsg('syMsg', '', '');
+  $('kyOut').hidden = true; $('kyGo').hidden = false; $('kyGo').disabled = false; $('kyDone').checked = false; smsg('kyMsg', '', '');
+  $('keySetup').hidden = false; $('sync').hidden = true; $('keySetup').scrollIntoView({behavior: 'smooth'});
 };
 $('kyCopy').onclick = async () => { try { await navigator.clipboard.writeText($('kyPriv').value); $('kyCopy').textContent = 'Copiada'; } catch { $('kyPriv').select(); } };
 
 function showSync() {
+  const saved = store.get(kKey(), null);
+  if (saved && !$('syPhrase').value) $('syPhrase').value = saved;
+  $('syPhrase').closest('.f').hidden = !!saved && !!BLOB?.data;
   const mine = ME && WHO === ME;
-  $('keySetup').hidden = !(mine && ME === OWNER && !PUB);
-  $('sync').hidden = !(mine && PUB);
+  $('keySetup').hidden = !(mine && ME === OWNER && (!PUB || KEYPENDING));
+  $('sync').hidden = !(mine && PUB && !KEYPENDING);
+  $('kyRedo').hidden = !(mine && ME === OWNER);
   if (!$('sync').hidden && BLOB?.data) { $('syH').textContent = 'Actualizar mi cartera desde InvertirOnline'; $('syHelp').textContent = 'La misma frase con la que abrís tu cartera.'; }
 }
 
