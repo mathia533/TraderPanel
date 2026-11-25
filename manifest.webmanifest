@@ -1,0 +1,21 @@
+{
+  "name": "TraderPanel",
+  "short_name": "TraderPanel",
+  "description": "Dólar, acciones argentinas y cripto con señales de entrada y salida.",
+  "lang": "es-AR",
+  "start_url": "./?app=1",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Mis operaciones", "url": "./operaciones.html"},
+    {"name": "Alertas de precio", "url": "./alertas.html"},
+    {"name": "Configuración", "url": "./config.html"}
+  ]
+}
