@@ -1,0 +1,65 @@
+name: Alertas Telegram
+
+# Corre cada vez que termina el motor de señales y manda a Telegram solo los eventos nuevos.
+# Necesita los secrets TELEGRAM_BOT_TOKEN y TELEGRAM_CHAT_ID (ver README).
+on:
+  workflow_run:
+    workflows: ["Motor de señales"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      prueba:
+        description: "Mandar solo un mensaje de prueba al canal"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: telegram-alertas
+  cancel-in-progress: false
+
+jobs:
+  enviar:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Mensaje de prueba
+        if: github.event_name == 'workflow_dispatch' && inputs.prueba
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node alerts/send.mjs --test
+
+      - name: Enviar alertas nuevas
+        if: github.event_name != 'workflow_dispatch' || !inputs.prueba
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node alerts/send.mjs
+
+      - name: Guardar registro de enviados
+        if: always()
+        run: |
+          [ -f data/telegram_sent.json ] || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/telegram_sent.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Registro de alertas de Telegram [skip ci]"
+          for i in 1 2 3 4; do
+            git pull --rebase --autostash origin "${{ github.event.repository.default_branch }}" && git push && exit 0
+            sleep $((i * 5))
+          done
+          exit 1

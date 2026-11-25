@@ -158,6 +158,18 @@ fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
 .chk{display:flex;align-items:center;gap:10px;min-height:40px;font-size:14px;cursor:pointer}
 .chk input{width:18px;height:18px;accent-color:var(--accent)}
 .note{font-size:13px;color:var(--ink2);background:var(--inset);border-radius:10px;padding:10px 12px}
+.tgsum{font-size:14px;color:var(--ink2)}
+.tglist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.tglist li{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tglist .tag{font-size:11px;padding:2px 8px}
+.tgbtns{display:flex;flex-wrap:wrap;gap:8px}
+.tgbtns .btn{text-decoration:none;color:inherit}
+.tgbtns .btn.primary{color:#fff}
+.tgcard details summary{cursor:pointer;font-weight:500;color:var(--ink)}
+.tgcard details ol{margin:8px 0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.tgcard details p{margin-top:6px}
+.tgcard code{font-family:var(--mono);font-size:12px;background:var(--line);border-radius:4px;padding:1px 4px}
+.pill.ok{background:var(--upbg);color:var(--up)}
 
 footer{color:var(--mute);font-size:13px;border-top:1px solid var(--line);padding-top:16px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
 footer a{color:inherit}
@@ -219,7 +231,7 @@ footer a{color:inherit}
     <div class="status">
       <span class="pill off" id="mBYMA"><span class="dot"></span>BYMA</span>
       <span class="pill off" id="mNYSE"><span class="dot"></span>NYSE</span>
-      <a class="pill warn" id="tgPill" href="#telegram" style="text-decoration:none"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Telegram: sin conectar</a>
+      <a class="pill warn" id="tgPill" href="#telegram" style="text-decoration:none"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg><span id="tgPillTxt">Telegram: sin conectar</span></a>
       <span class="stamp" id="stamp" aria-live="polite">Cargando cotizaciones…</span>
       <button class="btn icon" id="theme" type="button" aria-label="Cambiar a modo claro"><svg class="i" aria-hidden="true"><use href="#i-sun"/></svg></button>
       <button class="btn" id="refresh" type="button"><svg class="i" aria-hidden="true"><use href="#i-refresh"/></svg>Actualizar</button>
@@ -268,17 +280,32 @@ footer a{color:inherit}
       </section>
 
       <section class="card tgcard" id="telegram" aria-labelledby="tgTitle">
-        <div class="h"><h2 id="tgTitle">Alertas por Telegram</h2><span class="pill warn">Sin conectar</span></div>
-        <div class="field"><label for="tgChat">Canal o chat</label><input type="text" id="tgChat" placeholder="@mi_canal_de_alertas" autocomplete="off"></div>
-        <fieldset id="tgPrefs">
-          <legend class="legend" style="margin-bottom:6px">Avisarme cuando…</legend>
-          <label class="chk"><input type="checkbox" data-k="in" checked>Hay una señal de entrada</label>
-          <label class="chk"><input type="checkbox" data-k="out" checked>Hay una señal de salida</label>
-          <label class="chk"><input type="checkbox" data-k="lvl" checked>Un precio toca el stop o el objetivo</label>
-          <label class="chk"><input type="checkbox" data-k="gap">La brecha del blue supera el 20 %</label>
-        </fieldset>
-        <button class="btn primary" type="button" id="tgConnect"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Conectar bot de Telegram</button>
-        <p class="note" id="tgNote" hidden>La conexión con el bot es el próximo paso del proyecto. El canal, tus preferencias y los activos con campanita ya quedan guardados en este navegador.</p>
+        <div class="h"><h2 id="tgTitle">Alertas por Telegram</h2><span class="pill warn" id="tgState">Revisando…</span></div>
+        <p class="tgsum" id="tgSum">Buscando el registro de envíos…</p>
+        <div>
+          <p class="legend" style="margin-bottom:6px">Últimas alertas</p>
+          <ul class="tglist" id="tgList"><li class="mute">Todavía no hay alertas.</li></ul>
+        </div>
+        <div>
+          <p class="legend" style="margin-bottom:6px">Qué se avisa</p>
+          <p class="tgsum" id="tgPrefs">—</p>
+        </div>
+        <div class="tgbtns">
+          <a class="btn primary" id="tgTest" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Mandar mensaje de prueba</a>
+          <a class="btn" id="tgEdit" target="_blank" rel="noopener">Cambiar qué se avisa</a>
+          <button class="btn" type="button" id="tgCopy" hidden>Copiar activos seguidos</button>
+        </div>
+        <details class="note" id="tgHow">
+          <summary>Cómo conectar el canal</summary>
+          <ol>
+            <li>En Telegram, hablale a <b>@BotFather</b>, mandá <code>/newbot</code> y guardá el token que te da.</li>
+            <li>Creá un canal y agregá al bot como <b>administrador</b> con permiso para publicar.</li>
+            <li>En GitHub: <i>Settings → Secrets and variables → Actions</i>, cargá <code>TELEGRAM_BOT_TOKEN</code> (el token) y <code>TELEGRAM_CHAT_ID</code> (el @ del canal, o su id <code>-100…</code> si es privado).</li>
+            <li>Tocá <b>Mandar mensaje de prueba</b> y después <i>Run workflow</i> con la casilla de prueba marcada.</li>
+          </ol>
+          <p>El token queda solo en GitHub; este panel nunca lo ve.</p>
+        </details>
+      </section>
       </section>
     </aside>
   </div>
@@ -607,12 +634,66 @@ $('sgFilters').addEventListener('click', e => {
   const b = e.target.closest('[data-f]'); if (!b) return;
   filter = b.dataset.f; for (const x of $('sgFilters').querySelectorAll('button')) x.setAttribute('aria-pressed', x === b); renderSignals();
 });
-// Telegram (configuración local; el envío real llega con el bot)
-const tg = store.get('tp_tg', {chat: '', in: true, out: true, lvl: true, gap: false});
-$('tgChat').value = tg.chat || '';
-for (const c of $('tgPrefs').querySelectorAll('input')) { c.checked = !!tg[c.dataset.k]; c.addEventListener('change', () => { tg[c.dataset.k] = c.checked; store.set('tp_tg', tg); }); }
-$('tgChat').addEventListener('change', () => { tg.chat = $('tgChat').value.trim(); store.set('tp_tg', tg); });
-$('tgConnect').addEventListener('click', () => { $('tgNote').hidden = false; });
+// Telegram: el envío lo hace el Action "Alertas Telegram" (alerts/send.mjs) con secrets de GitHub.
+// Acá solo se lee el registro público de envíos (data/telegram_sent.json) y la config (alerts/telegram.json).
+const GH = (() => {
+  const h = location.hostname, seg = location.pathname.split('/').filter(Boolean)[0];
+  return h.endsWith('.github.io') && seg ? {owner: h.split('.')[0], repo: seg} : {owner: 'mathia533', repo: 'TraderPanel'};
+})();
+const GH_URL = `https://github.com/${GH.owner}/${GH.repo}`;
+const RAW = `https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/main/`;
+async function repoJSON(path) {
+  try { return await getJSON(path + '?t=' + Date.now()); }
+  catch { return getJSON(RAW + path).catch(() => null); }
+}
+let tgReg = null, tgCfg = null;
+const TG_ST = {enviado: 'Enviada', backlog: 'Anterior a la conexión', viejo: 'Llegó tarde, no se envió', filtrado: 'Tipo no avisado', sin_telegram: 'Telegram sin configurar', dry: 'Prueba'};
+const tgFresh = () => tgReg?.last_run && Date.now() - Date.parse(tgReg.last_run) < 3 * 3600e3;
+// Texto de la línea de Telegram de cada señal del feed (la llama renderSignals)
+window.tgStatus = e => {
+  if (!tgReg) return 'Telegram sin conectar';
+  const r = e?.id && tgReg.sent?.[e.id];
+  if (r) return r.status === 'enviado' ? `Enviada a Telegram ${hhmm(r.at)}` : TG_ST[r.status] || r.status;
+  return tgReg.telegram ? 'Se envía en la próxima corrida' : 'Telegram sin configurar';
+};
+function renderTelegram() {
+  const st = $('tgState'), pill = $('tgPill');
+  const on = !!tgReg?.telegram, fresh = tgFresh();
+  const [cls, txt] = !tgReg ? ['warn', 'Sin datos'] : !on ? ['warn', 'Sin configurar'] : fresh ? ['ok', 'Conectado'] : ['warn', 'Sin corridas recientes'];
+  st.className = 'pill ' + cls; st.textContent = txt;
+  pill.className = 'pill ' + cls; $('tgPillTxt').textContent = 'Telegram: ' + txt.toLowerCase();
+  const sentToday = (tgReg?.recent || []).filter(x => x.status === 'enviado' && x.at && new Date(x.at).toLocaleDateString('en-CA', {timeZone: TZ}) === today()).length;
+  $('tgSum').textContent = !tgReg
+    ? 'Todavía no corrió el envío. Seguí los pasos de abajo para conectar el canal.'
+    : `Última revisión ${new Date(tgReg.last_run).toLocaleString('es-AR', {timeZone: TZ, day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'})} · ${sentToday} ${sentToday === 1 ? 'alerta enviada' : 'alertas enviadas'} hoy` + (tgReg.last_error ? ` · ${tgReg.last_error}` : '');
+  const rec = (tgReg?.recent || []).filter(x => x.status === 'enviado').slice(0, 6);
+  const TAG = {entry: ['in', 'ENTRADA'], exit: ['out', 'SALIDA'], update: ['', 'AJUSTE']};
+  $('tgList').innerHTML = rec.length ? rec.map(x => { const [c, t] = TAG[x.type] || ['', esc(x.type)];
+    return `<li><span class="tag ${c}">${t}</span><b>${esc(x.label)}</b>${x.price != null ? `<span class="num mute">${px(x.price)}</span>` : ''}<span style="flex:1"></span><span class="num mute" style="font-size:12px">${hhmm(x.at)}</span></li>`; }).join('')
+    : '<li class="mute">Todavía no hay alertas enviadas.</li>';
+  if (tgCfg) {
+    const T = {entry: 'entradas', exit: 'salidas', update: 'ajustes de stop/objetivo'}, K = {adr: 'ADRs', byma: 'BYMA', cripto: 'cripto'};
+    const ty = Object.keys(T).filter(k => tgCfg.types?.[k]).map(k => T[k]);
+    const ki = Object.keys(K).filter(k => tgCfg.kinds?.[k] !== false).map(k => K[k]);
+    const only = Array.isArray(tgCfg.only) && tgCfg.only.length ? ` · solo ${tgCfg.only.length} activos elegidos` : '';
+    $('tgPrefs').textContent = (ty.length ? ty.join(', ') : 'nada') + ' de ' + (ki.join(', ') || 'ningún mercado') + only + '.';
+  }
+  $('tgCopy').hidden = !follow.size;
+}
+$('tgTest').href = `${GH_URL}/actions/workflows/telegram.yml`;
+$('tgEdit').href = `${GH_URL}/edit/main/alerts/telegram.json`;
+// Copia los activos con campanita en el formato de "only" de alerts/telegram.json
+$('tgCopy').addEventListener('click', async () => {
+  const txt = JSON.stringify([...follow].map(k => { const [kind, id] = k.split(':'); return `${kind}:${kind === 'cripto' ? (live.cripto[id]?.sym || id) : id}`; }));
+  try { await navigator.clipboard.writeText(txt); $('tgCopy').textContent = 'Copiado: pegalo en "only"'; }
+  catch { prompt('Copiá esta lista y pegala en "only" de alerts/telegram.json', txt); }
+  setTimeout(() => { $('tgCopy').textContent = 'Copiar activos seguidos'; }, 4000);
+});
+async function loadTelegram() {
+  [tgReg, tgCfg] = await Promise.all([repoJSON('data/telegram_sent.json'), repoJSON('alerts/telegram.json')]);
+  renderTelegram();
+  if (typeof renderSignals === 'function') renderSignals();
+}
 // Tema
 function applyTheme(t) {
   document.documentElement.dataset.theme = t;
@@ -646,6 +727,8 @@ for (const kind of ['dolar', 'adr', 'byma', 'cripto']) {
 render();
 $('refresh').addEventListener('click', all);
 all();
+renderTelegram(); loadTelegram();
+setInterval(() => { if (!document.hidden) loadTelegram(); }, 5 * 60000);
 setInterval(() => { if (!document.hidden) all(); }, 60000);
 setInterval(renderMarkets, 60000);
 }

@@ -1,0 +1,7 @@
+{
+  "types": {"entry": true, "exit": true, "update": false},
+  "kinds": {"adr": true, "byma": true, "cripto": true},
+  "only": [],
+  "max_age_hours": 24,
+  "panel_url": "https://mathia533.github.io/TraderPanel/"
+}
