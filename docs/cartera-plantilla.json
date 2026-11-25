@@ -1,0 +1,14 @@
+{
+ "formato": "traderpanel-cartera",
+ "version": 1,
+ "broker": "Mi broker",
+ "fecha": "2026-11-25",
+ "moneda": "ARS",
+ "activos": [
+  {"simbolo": "KO", "cantidad": 10, "precio_compra": 30000, "tipo": "cedear", "descripcion": "Coca-Cola (CEDEAR)"},
+  {"simbolo": "GGAL", "cantidad": 100, "tipo": "accion"},
+  {"simbolo": "AL30", "cantidad": 1000, "precio_compra": 75000, "tipo": "bono"},
+  {"simbolo": "MI_FONDO", "cantidad": 5000, "tipo": "fci", "valor": 63000}
+ ],
+ "efectivo": [{"moneda": "ARS", "monto": 15000}]
+}

@@ -6,5 +6,3 @@ pandas>=2.0
 pandas-market-calendars==5.2.2
 # Tarjeta del informe del cierre (engine/report.py)
 Pillow>=10.1
-# Mi cartera (engine/cartera.py): cifra la cartera de IOL antes de publicarla
-cryptography>=42

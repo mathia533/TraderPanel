@@ -77,24 +77,17 @@ GitHub Action
 
 Las señales son resultados de reglas técnicas sobre datos con demora. No son asesoramiento financiero ni órdenes: nada en este repo opera por vos.
 
-## Mi cartera (InvertirOnline)
+## Mi cartera
 
-`cartera.html` muestra lo que tenés en IOL leído con las reglas del motor: tendencia (medias de 50 y 200), stop de protección (mínimo de 10 ruedas, al menos 1,5 ATR, tope 12 %), setups de las skills (VCP, Momentum Burst, trader-scanner) y la Time Machine a 10 ruedas. Los CEDEARs se analizan sobre la acción en EE. UU.; bonos, ONs y fondos se muestran sin análisis de tendencia.
+`cartera.html` muestra lo que tenés en tu broker leído con las reglas del motor: tendencia (medias de 50 y 200), stop de protección (mínimo de 10 ruedas, al menos 1,5 ATR, tope 12 %), setups de las skills (VCP, Momentum Burst, trader-scanner) y la Time Machine a 10 ruedas. Acciones y CEDEARs se analizan con sus velas de BYMA; bonos, ONs y fondos se muestran sin análisis de tendencia.
 
-**Cada uno carga la suya, sin claves de IOL.** En `cartera.html`, entrando con tu cuenta de GitHub (el mismo token de Configuración), pegás la tabla de **Mi portafolio** de invertironline.com (o escribís un activo por línea: símbolo, cantidad y, opcional, precio de compra) y una frase propia. La página muestra qué entendió, con el precio de hoy de BYMA, para que lo revises.
+**Solo se ve estando logueado, y cada uno ve solo la suya.** La cartera no se guarda en este repo (que es público) sino en un repo **privado** de cada usuario, `<login>/traderpanel-cartera`, archivo `cartera.json`. La página la lee y la escribe con el token de GitHub de quien entra (el mismo de Configuración). Ni el motor ni el dueño del panel la ven. El análisis corre en el navegador al abrirla, con precios y velas de data912.
 
-1. La cartera se cifra en tu navegador con una clave que sale de tu frase (PBKDF2-SHA256 + AES-256-GCM) y se sube a `carteras/<login>.json`. Esa clave viaja envuelta con la llave pública del motor (`engine/cartera_pub.json`, RSA-OAEP 3072).
-2. El workflow **Mi cartera** (al subirla) y **Motor de señales** (cada hora) la abren con el secret `CARTERA_PRIVADA`, le ponen precio con los paneles en vivo de BYMA (data912), la analizan y publican `data/cartera/<login>.enc` cifrado con tu misma clave. Lo abrís con tu frase.
+1. **Una vez:** en `cartera.html`, **Crear el repo privado**. Si el token no puede crear repos, la página da el link para crearlo a mano y dice cómo sumarle permiso al token: Fine-grained → agregar el repo con *Contents: Read and write*; clásico → marcar `repo`.
+2. **Cargar:** **Importar archivo** con el formato genérico ([docs/cartera-formato.md](docs/cartera-formato.md), [plantilla](docs/cartera-plantilla.json)). Con InvertirOnline, Claude lo arma con el conector; con otro broker se completa la plantilla. También se puede pegar un activo por línea.
+3. **Ver:** al abrir la página se analiza con los precios del momento y muestra qué veredictos cambiaron desde la última vez (se recuerda solo en ese navegador).
 
-Entrar a IOL desde el navegador no es posible: la API de IOL bloquea por CORS la respuesta de un login real.
-
-Las cantidades quedan como las cargaste hasta que las vuelvas a pegar; los precios se actualizan cada hora. Quien tenga `CARTERA_PRIVADA` (el dueño del repo) técnicamente podría ver la composición de una cartera. Los logs de Actions no muestran activos ni montos.
-
-**Preparación, una sola vez y solo el dueño:** en `cartera.html`, tocá **Crear las llaves** (o **Rehacer la llave del motor** si no llegaste a copiar la privada). La pública se guarda en el repo; la privada la pegás como secret `CARTERA_PRIVADA`.
-
-**Opcional, solo el dueño:** los secrets `IOL_USUARIO`, `IOL_CLAVE` y `CARTERA_CLAVE` (de #23) siguen andando para traer su cartera en cada corrida sin entrar a la página.
-
-Si un activo cambia de veredicto (✓ a favor, ! ojo, ✕ en contra) le llega un aviso privado al chat de su perfil (`telegram.chat`; `default` es `TELEGRAM_CHAT_ID`). Para apagarlo, agregá la variable `CARTERA_AVISOS=0` al paso.
+Si el repo `traderpanel-cartera` es público, la página no guarda ni muestra nada. No hay avisos automáticos por Telegram de la cartera: el motor no la puede leer.
 
 ## Alertas por Telegram
 
