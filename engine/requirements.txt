@@ -4,3 +4,5 @@ pytest>=8
 PyYAML>=6.0
 pandas>=2.0
 pandas-market-calendars==5.2.2
+# Tarjeta del informe del cierre (engine/report.py)
+Pillow>=10.1

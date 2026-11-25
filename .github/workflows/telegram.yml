@@ -39,6 +39,23 @@ jobs:
         with:
           node-version: 20
 
+      # Tarjeta vertical del informe del cierre (solo si el motor dejó uno): se manda como foto
+      - name: ¿Hay informe del cierre?
+        id: informe
+        run: grep -q '"report:' data/events.json 2>/dev/null && echo "si=1" >> "$GITHUB_OUTPUT" || true
+
+      - uses: actions/setup-python@v5
+        if: steps.informe.outputs.si
+        with:
+          python-version: "3.12"
+
+      - name: Dibujar la tarjeta
+        if: steps.informe.outputs.si
+        continue-on-error: true
+        run: |
+          pip install --quiet "pillow>=10.1"
+          python -m engine.report --render "$RUNNER_TEMP/cards"
+
       - name: Mensaje de prueba
         if: github.event_name == 'workflow_dispatch' && inputs.prueba
         env:
@@ -52,7 +69,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         # A mano, si no hay nada nuevo, manda igual un resumen para que se vea en el canal
-        run: node alerts/send.mjs ${{ github.event_name == 'workflow_dispatch' && '--report' || '' }}
+        run: node alerts/send.mjs --cards-dir "$RUNNER_TEMP/cards" ${{ github.event_name == 'workflow_dispatch' && '--report' || '' }}
 
       - name: Guardar registro de enviados
         if: always()
