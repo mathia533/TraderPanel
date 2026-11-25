@@ -580,6 +580,7 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
     <div><p class="lbl" id="fMk"></p><h2 id="fTitle">—</h2><p class="mute" id="fSub" style="font-size:13px"></p></div>
     <div class="px"><span class="big num" id="fPx">—</span><span id="fCh"></span></div>
     <span id="fSig"></span>
+    <a class="btn falert" id="fSim" href="simulador.html" title="Simular una operación con la Time Machine"><svg class="i" aria-hidden="true"><use href="#i-pulse"/></svg>Simular</a>
     <a class="btn falert" id="fAlert" href="alertas.html" title="Crear una alerta de precio que te llega por Telegram"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg>Avisarme</a>
     <button class="btn icon cl" type="button" id="fClose" aria-label="Cerrar la ficha"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>
   </div>
@@ -1644,6 +1645,8 @@ async function openFicha(key, push = true) {
   $('fSig').innerHTML = sg ? `<span class="sig ${sg.label === 'COMPRA' ? 'buy' : sg.label === 'VENTA' ? 'sell' : 'flat'}">${esc(sg.label)}<span class="num">${sg.score}</span></span>` : '';
   $('fInfo').innerHTML = fichaInfo(kind, id);
   $('fAlert').hidden = kind === 'indice';
+  $('fSim').hidden = !['adr', 'byma', 'cripto'].includes(kind);
+  $('fSim').href = `simulador.html#a=${encodeURIComponent(kind + ':' + id)}`;
   $('fAlert').href = `alertas.html#nueva=${encodeURIComponent(kind + ':' + id)}${last > 0 ? '&p=' + last : ''}${kind === 'cripto' ? '&l=' + encodeURIComponent(label) : ''}`;
   $('fChart').innerHTML = '<p class="empty">Cargando velas…</p>'; $('fRead').innerHTML = ''; $('fLeg').innerHTML = ''; $('fSrc').textContent = '';
   const dlg = $('ficha');
@@ -1684,7 +1687,7 @@ for (const a of navs) a.addEventListener('click', () => { for (const x of navs) 
 
 /* ---------- Búsqueda rápida: "/" o Ctrl+K ---------- */
 const QSEC = [['Señales activas', '#senales'], ['Watchlist', '#watchlist'], ['Operaciones de los usuarios', '#operaciones'], ['Mapa del mercado', '#mapa'],
-  ['Revisión de resultados', '#resultados'], ['Pipeline de las skills', '#pipeline'], ['Mis operaciones (registrar)', 'operaciones.html'],
+  ['Revisión de resultados', '#resultados'], ['Pipeline de las skills', '#pipeline'], ['Mis operaciones (registrar)', 'operaciones.html'], ['Simulador de operaciones', 'simulador.html'],
   ['Alertas de precio', 'alertas.html'], ['Configuración', 'config.html']];
 const QMK = {adr: 'ADR', byma: 'BYMA', cripto: 'Cripto', dolar: 'Dólar', indice: 'Índice'};
 const norm = t => String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
