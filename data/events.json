@@ -1,3 +1,146 @@
 {
- "events": []
+ "events": [
+  {
+   "type": "info",
+   "info": "report",
+   "kind": "adr",
+   "id": "report:2026-11-25",
+   "label": "Cierre",
+   "why": "Informe del cierre",
+   "report": {
+    "date": "2026-11-25",
+    "gates": {
+     "adr": "defensivo",
+     "byma": "defensivo",
+     "cripto": "defensivo"
+    },
+    "movers": {
+     "adr": {
+      "up": [
+       [
+        "TEO",
+        5.65
+       ],
+       [
+        "CRESY",
+        4.32
+       ],
+       [
+        "SUPV",
+        3.91
+       ]
+      ],
+      "down": [
+       [
+        "BBAR",
+        -1.97
+       ],
+       [
+        "YPF",
+        -0.82
+       ]
+      ],
+      "breadth": [
+       14,
+       16
+      ]
+     },
+     "byma": {
+      "up": [
+       [
+        "TRAN",
+        7.05
+       ],
+       [
+        "TECO2",
+        5.06
+       ],
+       [
+        "METR",
+        4.99
+       ]
+      ],
+      "down": [
+       [
+        "VALO",
+        -5.16
+       ],
+       [
+        "BBAR",
+        -2.19
+       ],
+       [
+        "YPFD",
+        -2.01
+       ]
+      ],
+      "breadth": [
+       15,
+       20
+      ]
+     },
+     "cripto": {
+      "up": [
+       [
+        "LINK",
+        2.65
+       ],
+       [
+        "XRP",
+        2.1
+       ],
+       [
+        "SOL",
+        1.79
+       ]
+      ],
+      "down": [
+       [
+        "TRX",
+        -1.5
+       ]
+      ],
+      "breadth": [
+       9,
+       10
+      ]
+     }
+    },
+    "entries": [],
+    "exits": [],
+    "positions": [],
+    "patterns": [
+     [
+      "TXAR",
+      "Doble piso",
+      "alcista"
+     ]
+    ],
+    "sectors": {
+     "best": [
+      "Electricidad y gas",
+      5.63
+     ],
+     "worst": [
+      "Petróleo y gas",
+      -0.302
+     ]
+    }
+   },
+   "ts": "2026-11-25T21:37:55.143239+00:00",
+   "text": "🌙 <b>INFORME DEL CIERRE</b> · 25/11\n<b>ADRs</b> (14/16 suben): ▲ TEO +5,7 %, CRESY +4,3 % · ▼ BBAR −2,0 %, YPF −0,8 %\n<b>BYMA</b> (15/20 suben): ▲ TRAN +7,0 %, TECO2 +5,1 % · ▼ VALO −5,2 %, BBAR −2,2 %\n<b>Cripto</b> (9/10 suben): ▲ LINK +2,6 %, XRP +2,1 % · ▼ TRX −1,5 %\nSectores BYMA: mejor Electricidad y gas +5,6 %, peor Petróleo y gas −0,3 %\nMotor hoy: sin entradas ni salidas.\nPosiciones abiertas: 0\nPatrones que rompieron: TXAR (doble piso)\nMercado: ADRs defensivo · BYMA defensivo · Cripto defensivo",
+   "asset": "adr:Cierre"
+  },
+  {
+   "type": "info",
+   "info": "pattern",
+   "kind": "byma",
+   "id": "byma:TXAR:pattern:double_bottom:2026-09-04",
+   "label": "TXAR",
+   "why": "Dos mínimos en 657,50 y 650,00 con rebote a 705,00. Entrada si cierra arriba de 705,00.",
+   "ts": "2026-11-25T21:37:55.143239+00:00",
+   "text": "📐 <b>PATRÓN · TXAR</b> (BYMA)\nDoble piso rompió el gatillo 705,00. Stop 643,50 · objetivo 760,00 · R:R 0,9.\n<i>Dos mínimos en 657,50 y 650,00 con rebote a 705,00. Entrada si cierra arriba de 705,00.</i>\nMercado defensivo: el motor no abre compras nuevas.",
+   "asset": "byma:TXAR"
+  }
+ ]
 }
