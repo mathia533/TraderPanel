@@ -212,6 +212,25 @@ fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
 .rvnote{font-size:13px;color:var(--mute)}
 @media (max-width:520px){.rvt th,.rvt td{padding:8px 10px}.rvt th:nth-child(5),.rvt td:nth-child(5){display:none}.rvctl{width:100%}}
 
+/* Mapa de calor por sector */
+#mapa .sh{border-bottom:1px solid var(--line)}
+.mptool{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.mptool input[type=range]{flex:1 1 200px;accent-color:var(--accent);min-height:32px}
+#mpDayL{font-size:13px;color:var(--ink2);min-width:120px}
+.mpleg{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--mute);font-family:var(--mono)}
+.mpleg i{display:block;width:110px;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--dn),var(--bg2),var(--up))}
+.tmap{position:relative;height:440px;border-radius:12px;overflow:hidden;background:var(--bg2);border:1px solid var(--line)}
+.tmap .sec{position:absolute;border:1px solid var(--bg);box-sizing:border-box}
+.tmap .sec>span{position:absolute;left:0;right:0;top:0;height:20px;padding:2px 6px;font-size:11.5px;font-weight:600;color:var(--ink2);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--bg2)}
+.tmap .tl{position:absolute;box-sizing:border-box;border:1px solid var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:var(--ink);overflow:hidden;padding:2px;text-align:center;font:inherit;cursor:pointer}
+.tmap .tl:hover{outline:2px solid var(--focus);outline-offset:-2px;z-index:1}
+.tmap .tl b{font-size:13px;font-weight:600;line-height:1.1}
+.tmap .tl .num{font-size:12px;opacity:.9}
+.tmap .tl.big b{font-size:17px}.tmap .tl.big .num{font-size:14px}
+.tmap .tl.xs b,.tmap .tl.xs .num{display:none}
+.tmap .tl.sm .num{display:none}
+@media (max-width:640px){.tmap{height:520px}.mpleg{display:none}}
+
 /* Pipeline de las skills */
 #pipeline .sh{border-bottom:1px solid var(--line)}
 .pbody{padding:16px 20px;display:flex;flex-direction:column;gap:16px}
@@ -362,6 +381,8 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/></symbol>
   <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></symbol>
   <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
   <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
 </svg>
 
@@ -373,6 +394,7 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
       <a href="#senales">Señales</a>
       <a href="#watchlist">Watchlist</a>
       <a href="#operaciones">Operaciones</a>
+      <a href="#mapa">Mapa</a>
       <a href="#resultados">Resultados</a>
     </nav>
     <div class="status">
@@ -441,6 +463,26 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
       </section>
     </aside>
   </div>
+
+  <section class="card" id="mapa" aria-labelledby="mpTitle">
+    <div class="sh">
+      <div><h2 id="mpTitle">Mapa del mercado</h2><p id="mpSub">Acciones argentinas por sector · tamaño según el monto operado, color según la variación del día</p></div>
+      <div class="seg" role="tablist" aria-label="Mercado del mapa" id="mpTabs">
+        <button type="button" role="tab" data-mp="byma">BYMA (ARS)</button>
+        <button type="button" role="tab" data-mp="adr">ADRs (USD)</button>
+      </div>
+    </div>
+    <div class="pbody">
+      <div class="mptool">
+        <button class="btn icon" type="button" id="mpPlay" aria-label="Repasar las últimas ruedas" title="Repasar las últimas ruedas"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg></button>
+        <input type="range" id="mpDay" min="0" max="0" value="0" aria-label="Rueda">
+        <span class="num" id="mpDayL">Hoy · en vivo</span>
+        <span class="mpleg" aria-hidden="true"><span>−3 %</span><i></i><span>+3 %</span></span>
+      </div>
+      <div class="tmap" id="tmap" role="list" aria-label="Mapa de calor por sector"><p class="empty">Cargando el mapa…</p></div>
+      <p class="rvnote" id="mpNote"></p>
+    </div>
+  </section>
 
   <section class="card" id="pipeline" aria-labelledby="plTitle">
     <div class="sh">
@@ -670,6 +712,7 @@ async function loadAcc(kind) {
     if (kind === 'adr') { try { data = data.concat(await getJSON('https://data912.com/live/usa_stocks')); } catch {} }
     const by = {};
     for (const r of data) { const s = String(r.symbol || '').toUpperCase(); if (s && !by[s]) by[s] = r; }
+    mapRaw[kind] = by;
     for (const t of lists[kind]) {
       const r = by[t];
       live[kind][t] = r ? {last: +r.c, ch: r.pct_change != null ? +r.pct_change : null, bid: r.px_bid, ask: r.px_ask, vol: r.v} : {missing: true};
@@ -1031,7 +1074,7 @@ function renderMarkets() {
   set($('mNYSE'), 'NYSE', marketOpen('America/New_York', 570, 960), '9:30–16:00 (NY)');
 }
 
-function render() { renderKPIs(); renderTable(); renderSignals(); renderOps(); renderPipeline(); renderReview(); }
+function render() { renderKPIs(); renderTable(); renderSignals(); renderOps(); renderPipeline(); renderReview(); renderMap(); }
 
 /* ---------- Eventos ---------- */
 $('tabs').addEventListener('click', e => {
@@ -1216,6 +1259,106 @@ function renderReview() {
 }
 $('rvTabs').addEventListener('click', e => { const b = e.target.closest('[data-rv]'); if (!b) return; rvTab = b.dataset.rv; store.set('tp_rv', rvTab); renderReview(); });
 $('rvWho').addEventListener('change', renderReview);
+
+/* ---------- Mapa de calor por sector (engine/sectors.json + data912 en vivo + velas del motor para repasar) ---------- */
+let SECT = null, mapRaw = {adr: {}, byma: {}}, mpTab = store.get('tp_mp', 'byma'), mpTimer = 0;
+async function loadSectors() { SECT = (await repoJSON('engine/sectors.json'))?.sectors || null; renderMap(); }
+// Ruedas disponibles para repasar: las de las velas del motor de las acciones del mapa
+function mpDays(kind) {
+  const set = new Set();
+  for (const [k, it] of Object.entries(CANDLES?.items || {})) if (k.startsWith(kind + ':')) for (const b of it.bars.slice(-21)) set.add(b[0]);
+  return [...set].sort().slice(-20).filter(d => d !== today());
+}
+function mpItems(kind, day) {
+  const out = [];
+  for (const [key, sc] of Object.entries(SECT || {})) {
+    const items = [];
+    for (const t of sc[kind] || []) {
+      if (!day) {
+        const r = mapRaw[kind]?.[t]; const c = +r?.c;
+        if (!(c > 0)) continue;
+        items.push({t, ch: r.pct_change != null ? +r.pct_change : null, w: Math.max(0, (+r.v || 0) * c), px: c});
+      } else {
+        const bars = CANDLES?.items?.[`${kind}:${t}`]?.bars; if (!bars) continue;
+        const i = bars.findIndex(b => b[0] === day); if (i < 1) continue;
+        items.push({t, ch: (bars[i][4] / bars[i - 1][4] - 1) * 100, w: bars[i][4] * (bars[i][5] || 0), px: bars[i][4]});
+      }
+    }
+    if (items.length) out.push({key, name: sc.name, items});
+  }
+  // Piso de tamaño: que ninguna quede invisible por no tener volumen
+  const tot = out.reduce((a, s) => a + s.items.reduce((b, x) => b + x.w, 0), 0) || 1;
+  for (const s of out) { for (const x of s.items) x.w = Math.max(x.w, tot * 0.006); s.w = s.items.reduce((a, x) => a + x.w, 0); s.items.sort((a, b) => b.w - a.w); }
+  return out.sort((a, b) => b.w - a.w);
+}
+// Treemap "squarified" (Bruls, Huizing, van Wijk): rectángulos lo más cuadrados posible
+function squarify(items, x, y, w, h) {
+  const out = [], total = items.reduce((a, it) => a + it.w, 0); if (!total || w <= 0 || h <= 0) return out;
+  const scale = w * h / total, rest = items.map(it => ({it, a: it.w * scale}));
+  const worst = (row, side) => { const s = row.reduce((a, r) => a + r.a, 0), mx = Math.max(...row.map(r => r.a)), mn = Math.min(...row.map(r => r.a)); return Math.max(side * side * mx / (s * s), s * s / (side * side * mn)); };
+  while (rest.length) {
+    const side = Math.min(w, h); let row = [rest.shift()];
+    while (rest.length && worst([...row, rest[0]], side) <= worst(row, side)) row.push(rest.shift());
+    const s = row.reduce((a, r) => a + r.a, 0);
+    if (w >= h) { const cw = s / h; let cy = y; for (const r of row) { const ch = r.a / cw; out.push({it: r.it, x, y: cy, w: cw, h: ch}); cy += ch; } x += cw; w -= cw; }
+    else { const rh = s / w; let cx = x; for (const r of row) { const cw = r.a / rh; out.push({it: r.it, x: cx, y, w: cw, h: rh}); cx += cw; } y += rh; h -= rh; }
+  }
+  return out;
+}
+function mpColor(ch) {
+  if (ch == null || !isFinite(ch)) return 'var(--line)';
+  const t = Math.min(1, Math.abs(ch) / 3), pct = Math.round(14 + 66 * t);
+  return `color-mix(in srgb, var(${ch >= 0 ? '--up' : '--dn'}) ${pct}%, var(--bg2))`;
+}
+function renderMap() {
+  for (const b of $('mpTabs').querySelectorAll('button')) b.setAttribute('aria-selected', b.dataset.mp === mpTab);
+  const box = $('tmap');
+  if (!SECT) { box.innerHTML = '<p class="empty">Falta la lista de sectores (engine/sectors.json).</p>'; return; }
+  const days = mpDays(mpTab), sl = $('mpDay');
+  const wasLive = +sl.value >= +(sl.dataset.n || 0);
+  sl.max = String(days.length);
+  if (wasLive || +sl.value > days.length || sl.dataset.kind !== mpTab) sl.value = String(days.length);
+  sl.dataset.kind = mpTab; sl.dataset.n = String(days.length);
+  sl.disabled = !days.length; $('mpPlay').disabled = !days.length;
+  const day = +sl.value < days.length ? days[+sl.value] : null;
+  $('mpDayL').textContent = day ? new Date(day + 'T12:00:00').toLocaleDateString('es-AR', {weekday: 'short', day: '2-digit', month: '2-digit'}) + ' · cierre' : 'Hoy · en vivo';
+  const secs = mpItems(mpTab, day);
+  if (!secs.length) { box.innerHTML = `<p class="empty">${errs[mpTab] ? 'No se pudieron bajar las cotizaciones de data912.' : day ? 'No hay velas de ese día.' : 'Cargando cotizaciones…'}</p>`; return; }
+  const W = box.clientWidth || 800, H = box.clientHeight || 440, HEAD = 20, cur = mpTab === 'byma' ? '$' : 'US$';
+  const pct = v => `${(v / W * 100).toFixed(3)}%`, pcy = v => `${(v / H * 100).toFixed(3)}%`;
+  let html = '';
+  for (const s of squarify(secs, 0, 0, W, H)) {
+    const sec = s.it, inner = squarify(sec.items, s.x, s.y + (s.h > 60 ? HEAD : 0), s.w, s.h - (s.h > 60 ? HEAD : 0));
+    const sch = sec.items.reduce((a, x) => a + (x.ch ?? 0) * x.w, 0) / sec.w;
+    html += `<div class="sec" role="presentation" style="left:${pct(s.x)};top:${pcy(s.y)};width:${pct(s.w)};height:${pcy(s.h)}">${s.h > 60 ? `<span title="${esc(sec.name)}: ${fmt(sch, 2)} % ponderado por monto">${esc(sec.name)} <span class="num ${sch >= 0 ? 'up' : 'dn'}" style="text-transform:none">${sch >= 0 ? '+' : '−'}${fmt(Math.abs(sch), 1)} %</span></span>` : ''}</div>`;
+    for (const r of inner) {
+      const x = r.it, size = r.w < 44 || r.h < 26 ? 'xs' : r.w < 70 || r.h < 40 ? 'sm' : r.w > 150 && r.h > 90 ? 'big' : '';
+      const chT = x.ch == null ? '—' : `${x.ch >= 0 ? '+' : '−'}${fmt(Math.abs(x.ch), 2)} %`;
+      html += `<button type="button" role="listitem" class="tl ${size}" data-open="${esc(mpTab + ':' + x.t)}" style="left:${pct(r.x)};top:${pcy(r.y)};width:${pct(r.w)};height:${pcy(r.h)};background:${mpColor(x.ch)}" title="${esc(x.t)} · ${esc(sec.name)} · ${cur} ${px(x.px)} · ${chT}" aria-label="${esc(x.t)}, ${esc(sec.name)}, ${chT}"><b>${esc(x.t)}</b><span class="num">${chT}</span></button>`;
+    }
+  }
+  box.innerHTML = html;
+  const n = secs.reduce((a, s) => a + s.items.length, 0);
+  $('mpNote').textContent = day ? `Cierre del ${day} contra la rueda anterior, con las velas del motor (solo las acciones de su watchlist: ${n}).`
+    : `${n} acciones de data912 con demora. Tocá una para ver su ficha. Para repasar ruedas anteriores, mové la barra o tocá ▶.`;
+}
+$('mpTabs').addEventListener('click', e => { const b = e.target.closest('[data-mp]'); if (!b) return; mpTab = b.dataset.mp; store.set('tp_mp', mpTab); mpStop(); renderMap(); });
+$('mpDay').addEventListener('input', () => { mpStop(); renderMap(); });
+function mpStop() { clearInterval(mpTimer); mpTimer = 0; $('mpPlay').innerHTML = '<svg class="i" aria-hidden="true"><use href="#i-play"/></svg>'; $('mpPlay').setAttribute('aria-label', 'Repasar las últimas ruedas'); }
+$('mpPlay').addEventListener('click', () => {
+  if (mpTimer) return mpStop();
+  const sl = $('mpDay'); if (+sl.value >= +sl.max) sl.value = '0';
+  $('mpPlay').innerHTML = '<svg class="i" aria-hidden="true"><use href="#i-pause"/></svg>'; $('mpPlay').setAttribute('aria-label', 'Pausar');
+  renderMap();
+  mpTimer = setInterval(() => { if (+sl.value >= +sl.max) return mpStop(); sl.value = String(+sl.value + 1); renderMap(); }, 900);
+});
+// Al abrir la ficha desde el mapa, una acción fuera de la watchlist igual trae su precio
+document.addEventListener('click', e => {
+  const b = e.target.closest('.tmap [data-open]'); if (!b) return;
+  const [k, t] = b.dataset.open.split(':'), r = mapRaw[k]?.[t];
+  if (r && !live[k][t]?.last) live[k][t] = {last: +r.c, ch: r.pct_change != null ? +r.pct_change : null, bid: r.px_bid, ask: r.px_ask, vol: r.v};
+}, true);
+let mpRz = 0; window.addEventListener('resize', () => { clearTimeout(mpRz); mpRz = setTimeout(renderMap, 150); });
 
 /* ---------- Ficha del activo: velas, niveles del motor y de los usuarios ---------- */
 // Velas: data/candles.json (las escribe el motor con Yahoo). Si el activo no está en la
@@ -1453,7 +1596,7 @@ for (const kind of ['dolar', 'adr', 'byma', 'cripto']) {
 render();
 $('refresh').addEventListener('click', all);
 all().then(hashFicha);
-renderTelegram(); loadTelegram(); loadOps(); if (plTab === 'sec') loadSec();
+renderTelegram(); loadTelegram(); loadOps(); loadSectors(); loadCandles().then(renderMap).catch(() => {}); if (plTab === 'sec') loadSec();
 setInterval(() => { if (!document.hidden) { loadTelegram(); loadOps(); } }, 5 * 60000);
 setInterval(() => { if (!document.hidden) all(); }, 60000);
 setInterval(renderMarkets, 60000);

@@ -1,0 +1,14 @@
+{
+  "_nota": "Sector de cada acción argentina, en BYMA y su ADR en Nueva York. Lo usan el mapa de calor del panel y el ranking de sectores. Para agregar una: sumala a la lista del sector (BYMA y/o ADR).",
+  "sectors": {
+    "bancos": {"name": "Bancos", "byma": ["GGAL", "BMA", "BBAR", "SUPV", "VALO", "BHIP", "BPAT"], "adr": ["GGAL", "BMA", "BBAR", "SUPV"]},
+    "energia": {"name": "Petróleo y gas", "byma": ["YPFD", "PAMP", "VIST", "TGSU2", "TGNO4", "CAPX"], "adr": ["YPF", "PAM", "VIST", "TGS"]},
+    "utilities": {"name": "Electricidad y gas", "byma": ["CEPU", "EDN", "TRAN", "METR", "DGCU2", "CGPA2", "CECO2"], "adr": ["CEPU", "EDN"]},
+    "materiales": {"name": "Materiales", "byma": ["ALUA", "TXAR", "LOMA", "HARG", "FERR"], "adr": ["LOMA", "TX"]},
+    "telecom": {"name": "Telecomunicaciones", "byma": ["TECO2", "CVH"], "adr": ["TEO"]},
+    "consumo": {"name": "Consumo y agro", "byma": ["COME", "MIRG", "MOLI", "LEDE", "AGRO", "SAMI", "MORI"], "adr": ["AGRO", "ARCO", "BIOX"]},
+    "inmobiliario": {"name": "Real estate", "byma": ["CRES", "IRSA"], "adr": ["CRESY", "IRS"]},
+    "servicios": {"name": "Servicios e infraestructura", "byma": ["BYMA"], "adr": ["CAAP"]},
+    "tecnologia": {"name": "Tecnología", "byma": [], "adr": ["MELI", "GLOB"]}
+  }
+}
