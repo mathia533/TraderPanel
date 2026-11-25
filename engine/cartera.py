@@ -15,12 +15,14 @@ imprime cantidades, nunca activos ni montos.
 
 Dos caminos para traer una cartera:
 
-1. Desde el navegador (cada usuario con su propia cuenta): en cartera.html cada uno
-   entra a IOL con SU usuario y clave. El navegador habla directo con IOL; la clave
-   no se guarda ni pasa por GitHub. La cartera se sube cifrada a carteras/<login>.json
-   con una clave K que sale de la frase del usuario. K viaja envuelta con la llave
-   pública del repo (engine/cartera_pub.json); el motor la abre con el secret
-   CARTERA_PRIVADA, analiza y devuelve data/cartera/<login>.enc cifrado con la misma K.
+1. Cargada por cada usuario en cartera.html: pega su cartera copiada de IOL (o la
+   escribe: símbolo y cantidad). No hace falta ninguna clave de IOL. Se sube cifrada a
+   carteras/<login>.json con una clave K que sale de su frase; K viaja envuelta con la
+   llave pública del repo (engine/cartera_pub.json). El motor la abre con el secret
+   CARTERA_PRIVADA, le pone precio con los paneles en vivo de BYMA (data912), analiza y
+   devuelve data/cartera/<login>.enc cifrado con la misma K.
+   (Entrar a IOL desde el navegador no sirve: la API de IOL bloquea por CORS la respuesta
+   de un login real.)
 
 2. Solo el dueño del repo, opcional: secrets IOL_USUARIO, IOL_CLAVE y CARTERA_CLAVE.
 
@@ -173,8 +175,58 @@ def normalize(src: dict) -> tuple[list[dict], list[dict]]:
     for c in (src.get("cash") or []) if isinstance(src, dict) else []:
         if _f(c.get("amount")):
             cash.append({"currency": c.get("currency", "$"), "amount": _f(c["amount"])})
+    for a in (src.get("holdings") or []) if isinstance(src, dict) else []:  # cargada a mano o pegada
+        holdings.append({
+            "symbol": str(a.get("symbol", "")).upper().strip(), "desc": a.get("desc") or "", "type": a.get("type") or "otro",
+            "market": "BCBA", "currency": "$", "qty": _f(a.get("qty")), "price": None, "value": _f(a.get("value")),
+            "ppc": _f(a.get("ppc")), "gain_pct": None, "gain": None, "day_pct": None, "manual": True,
+        })
     holdings = [h for h in holdings if h["symbol"] and (h["qty"] or 0) > 0]
     return holdings, cash
+
+
+# ------------------------------------------------------------------ precios de BYMA (data912) para lo cargado a mano
+LIVE_KINDS = {"arg_cedears": "cedear", "arg_stocks": "accion", "arg_bonds": "bono", "arg_corp": "on", "arg_notes": "letra"}
+PER_100 = {"bono", "on", "letra"}   # BYMA cotiza la renta fija cada 100 de valor nominal
+
+
+_LIVE = None
+
+
+def fetch_live() -> dict:
+    """{símbolo: (tipo, último, variación %)} de los paneles en vivo de BYMA (una vez por corrida)."""
+    global _LIVE
+    if _LIVE is not None:
+        return _LIVE
+    out = {}
+    for path, kind in LIVE_KINDS.items():
+        try:
+            for r in sources._get_json(f"https://data912.com/live/{path}") or []:
+                sym = str(r.get("symbol", "")).upper()
+                if sym and sym not in out and _f(r.get("c")):
+                    out[sym] = (kind, _f(r.get("c")), _f(r.get("pct_change")))
+        except Exception as exc:
+            print(f"cartera: precios {path} no disponibles ({type(exc).__name__})")
+    _LIVE = out
+    return out
+
+
+def price_manual(holdings: list[dict], live: dict) -> None:
+    """Completa tipo, precio, valor y ganancia de las tenencias cargadas a mano con el último precio de BYMA."""
+    for h in holdings:
+        if not h.get("manual"):
+            continue
+        hit = live.get(h["symbol"])
+        if hit:
+            kind, px, chg = hit
+            h["type"], h["price"], h["day_pct"] = kind, px, chg
+            h["value"] = h["qty"] * px / (100 if kind in PER_100 else 1)
+        elif h["symbol"].startswith("IOL") or h["type"] == "fci":
+            h["type"] = "fci"
+        if h.get("ppc") and h.get("price"):
+            h["gain_pct"] = round((h["price"] / h["ppc"] - 1) * 100, 2)
+            cost = h["qty"] * h["ppc"] / (100 if h["type"] in PER_100 else 1)
+            h["gain"] = round(h["value"] - cost, 2) if h.get("value") else None
 
 
 # ------------------------------------------------------------------ análisis
@@ -427,8 +479,10 @@ def chat_for(profile: dict, env: dict) -> str | None:
 
 def run_user(login: str, src: dict, *, passphrase: str | None = None, key: bytes | None = None,
              salt: bytes | None = None, iters: int = KDF_ITER, cfg: dict, signals: dict, chat: str | None,
-             fetch=None, out_dir: Path = OUT_DIR) -> dict:
+             fetch=None, live=None, out_dir: Path = OUT_DIR) -> dict:
     holdings, cash = normalize(src)
+    if any(h.get("manual") for h in holdings):
+        price_manual(holdings, live() if callable(live) else (live if live is not None else fetch_live()))
     report = build(holdings, cash, cfg, signals, fetch=fetch)
     report["source"] = src.get("source", "conector") if isinstance(src, dict) else "conector"
     report["synced_at"] = src.get("synced_at") if isinstance(src, dict) else None

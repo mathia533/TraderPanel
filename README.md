@@ -81,15 +81,16 @@ Las señales son resultados de reglas técnicas sobre datos con demora. No son a
 
 `cartera.html` muestra lo que tenés en IOL leído con las reglas del motor: tendencia (medias de 50 y 200), stop de protección (mínimo de 10 ruedas, al menos 1,5 ATR, tope 12 %), setups de las skills (VCP, Momentum Burst, trader-scanner) y la Time Machine a 10 ruedas. Los CEDEARs se analizan sobre la acción en EE. UU.; bonos, ONs y fondos se muestran sin análisis de tendencia.
 
-**Cada uno trae la suya, con su propio usuario.** En `cartera.html`, entrando con tu cuenta de GitHub (el mismo token de Configuración), completás usuario y clave de IOL y una frase propia:
+**Cada uno carga la suya, sin claves de IOL.** En `cartera.html`, entrando con tu cuenta de GitHub (el mismo token de Configuración), pegás la tabla de **Mi portafolio** de invertironline.com (o escribís un activo por línea: símbolo, cantidad y, opcional, precio de compra) y una frase propia. La página muestra qué entendió, con el precio de hoy de BYMA, para que lo revises.
 
-1. Tu navegador entra a IOL directo (la API de IOL acepta pedidos desde el panel). La clave no se guarda ni pasa por GitHub, y solo se lee la cartera y el estado de cuenta: nunca se mandan órdenes.
-2. La cartera se cifra en tu navegador con una clave que sale de tu frase (PBKDF2-SHA256 + AES-256-GCM) y se sube a `carteras/<login>.json`. Esa clave viaja envuelta con la llave pública del motor (`engine/cartera_pub.json`, RSA-OAEP 3072).
-3. El workflow **Mi cartera** (al subirla) y **Motor de señales** (cada hora) la abren con el secret `CARTERA_PRIVADA`, la analizan con los precios del momento y publican `data/cartera/<login>.enc`, cifrado con tu misma clave. Lo abrís con tu frase.
+1. La cartera se cifra en tu navegador con una clave que sale de tu frase (PBKDF2-SHA256 + AES-256-GCM) y se sube a `carteras/<login>.json`. Esa clave viaja envuelta con la llave pública del motor (`engine/cartera_pub.json`, RSA-OAEP 3072).
+2. El workflow **Mi cartera** (al subirla) y **Motor de señales** (cada hora) la abren con el secret `CARTERA_PRIVADA`, le ponen precio con los paneles en vivo de BYMA (data912), la analizan y publican `data/cartera/<login>.enc` cifrado con tu misma clave. Lo abrís con tu frase.
 
-Las cantidades quedan como en el momento en que las traés: para actualizarlas, las traés de nuevo. Quien tenga `CARTERA_PRIVADA` (el dueño del repo) técnicamente podría ver la composición de una cartera, pero nunca la clave de IOL. Los logs de Actions no muestran activos ni montos.
+Entrar a IOL desde el navegador no es posible: la API de IOL bloquea por CORS la respuesta de un login real.
 
-**Preparación, una sola vez y solo el dueño:** en `cartera.html`, tocá **Crear las llaves**. La pública se guarda en el repo; la privada la pegás como secret `CARTERA_PRIVADA`.
+Las cantidades quedan como las cargaste hasta que las vuelvas a pegar; los precios se actualizan cada hora. Quien tenga `CARTERA_PRIVADA` (el dueño del repo) técnicamente podría ver la composición de una cartera. Los logs de Actions no muestran activos ni montos.
+
+**Preparación, una sola vez y solo el dueño:** en `cartera.html`, tocá **Crear las llaves** (o **Rehacer la llave del motor** si no llegaste a copiar la privada). La pública se guarda en el repo; la privada la pegás como secret `CARTERA_PRIVADA`.
 
 **Opcional, solo el dueño:** los secrets `IOL_USUARIO`, `IOL_CLAVE` y `CARTERA_CLAVE` (de #23) siguen andando para traer su cartera en cada corrida sin entrar a la página.
 
