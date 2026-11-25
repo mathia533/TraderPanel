@@ -1,0 +1,53 @@
+name: Motor de señales
+
+on:
+  schedule:
+    # Días hábiles, cada hora mientras operan NYSE (9:30-16 NY) y BYMA (11-17 AR), más una corrida al cierre
+    - cron: "35 13-22 * * 1-5"
+    # Cripto opera siempre: fines de semana cada 4 horas
+    - cron: "10 */4 * * 0,6"
+  workflow_dispatch:
+    inputs:
+      sin_regimen_cripto:
+        description: "Saltear el régimen cripto (más rápido)"
+        type: boolean
+        default: false
+  push:
+    branches: [motor-senales-skills]
+    paths: ["engine/**", "vendor/**", ".github/workflows/signals.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: motor-senales
+  cancel-in-progress: false
+
+jobs:
+  senales:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Dependencias
+        run: pip install -r engine/requirements.txt
+      - name: Pruebas
+        run: python -m pytest -q tests
+      - name: Correr el motor
+        run: |
+          if [ "${{ inputs.sin_regimen_cripto }}" = "true" ]; then python -m engine.run --no-crypto-regime; else python -m engine.run; fi
+      - name: Publicar señales
+        run: |
+          git config user.name "traderpanel-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then echo "Sin cambios"; exit 0; fi
+          git commit -m "Señales $(date -u +'%Y-%m-%d %H:%M') UTC"
+          for i in 1 2 3 4; do
+            git pull --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
