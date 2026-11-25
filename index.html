@@ -354,6 +354,13 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
 .fchart .close{fill:none;stroke:var(--ink2);stroke-width:1.75}
 .fchart .s20{fill:none;stroke:var(--info);stroke-width:1.5}
 .fchart .s50{fill:none;stroke:var(--warn);stroke-width:1.5}
+.fchart .pat{fill:none;stroke:#C084FC;stroke-width:2;stroke-dasharray:6 3;stroke-linejoin:round}
+.fchart .patd{fill:#C084FC}
+.bias{padding:3px 10px;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:.04em}
+.bias.alcista{background:var(--upbg);color:var(--up)}
+.bias.bajista{background:var(--dnbg);color:var(--dnfg)}
+.pkv{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:14px;color:var(--ink2)}
+.pkv b{font-family:var(--mono);font-weight:500;color:var(--ink)}
 .fchart .lv{stroke-width:1.5;stroke-dasharray:6 4}
 .fchart .lv.ent,.fchart .lv.usr{stroke:var(--ink2)}.fchart .lv.stp{stroke:var(--dn)}.fchart .lv.tgt{stroke:var(--up)}.fchart .lv.trg{stroke:var(--info)}.fchart .lv.piv{stroke:var(--mute)}
 .fchart .lt{font:600 11px var(--mono)}
@@ -493,6 +500,7 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
       <div><h2 id="plTitle">Pipeline de las skills</h2><p id="plSub">Escáner, noticias, entrada, plan, Time Machine, tamaño y riesgo (day-trader-skill + tradermonty)</p></div>
       <div class="seg" role="tablist" aria-label="Vista del pipeline" id="plTabs">
         <button type="button" role="tab" data-pl="cand">Candidatas <span class="n" id="plNc">0</span></button>
+        <button type="button" role="tab" data-pl="pat">Patrones <span class="n" id="plNp">0</span></button>
         <button type="button" role="tab" data-pl="intra">Intradía ADRs</button>
         <button type="button" role="tab" data-pl="usa">Mercado EE. UU.</button>
         <button type="button" role="tab" data-pl="news">Noticias <span class="n" id="plNn">0</span></button>
@@ -994,6 +1002,19 @@ function candHtml() {
   const scanHtml = scan.length ? `<div><p class="legend" style="margin-bottom:6px">Escáner diario (trader-scanner): otros setups</p><div class="tbl"><table class="ptbl"><thead><tr><th scope="col">Activo</th><th scope="col">Setups</th><th scope="col">RSI</th></tr></thead><tbody>${scan.map(a => `<tr><td><span class="t">${esc(a.label)}</span><small>${MKN[a.kind]}</small></td><td style="text-align:left">${esc(a.scanner.labels.join(', '))}</td><td class="num">${fmt(a.scanner.rsi, 1)}</td></tr>`).join('')}</tbody></table></div></div>` : '';
   return (cards || `<p class="empty">Ningún activo tiene hoy un setup de entrada (VCP o Momentum Burst) ni está preparado. El motor revisa cada hora.</p>`) + scanHtml;
 }
+
+const PAT_ST = {'ruptura': 'RUPTURA', 'formándose': 'FORMÁNDOSE'};
+function patCard(p, withName = true) {
+  const c = p.kind === 'byma' ? '$' : 'US$', bull = p.bias === 'alcista';
+  return `<article class="pcard"><div class="h"><span class="verdict ${p.state === 'ruptura' ? (bull ? 'PASS' : 'BLOCK') : 'WATCH'}">${PAT_ST[p.state] || esc(p.state)}</span>${withName ? `<button class="tk" type="button" data-open="${esc(p.kind + ':' + p.id)}">${esc(p.label)}</button><span class="mute" style="font-size:13px">${MKN[p.kind]}</span>` : ''}<span class="setup">${esc(p.name)}</span><span class="bias ${esc(p.bias)}">${bull ? 'Alcista' : 'Bajista'}</span></div>
+    <div class="pkv"><span>${bull ? 'Entrada si cierra arriba de' : 'Aviso si cierra abajo de'} <b>${c} ${px(p.trigger)}</b></span>${bull ? `<span>Stop <b class="dn">${px(p.stop)}</b></span><span>Objetivo <b class="up">${px(p.target)}</b></span>${p.rr != null ? `<span>R:R <b>${fmt(p.rr, 1)}</b></span>` : ''}` : `<span>Proyección <b class="dn">${px(p.target)}</b></span>`}</div>
+    <p class="mute" style="font-size:13px">${esc(p.why)}</p></article>`;
+}
+function patHtml() {
+  const ps = ENG.patterns || [];
+  if (!ps.length) return '<p class="empty">Ningún activo de la watchlist del motor tiene hoy un doble piso, hombro-cabeza-hombro o triángulo cerca de definirse. Se revisa en cada corrida.</p>';
+  return ps.map(p => patCard(p)).join('') + '<p class="rvnote">Detección geométrica sobre velas diarias de las últimas 90 ruedas: es una ayuda para mirar, no una orden. El objetivo es la altura del patrón proyectada desde el gatillo.</p>';
+}
 function intraHtml() {
   const it = ENG.intraday;
   if (!it || !it.symbols) return `<p class="empty">El intradía corre con la rueda de NY abierta (9:30 a 16:00), cada 15 minutos. Todavía no hay corrida.</p>`;
@@ -1053,7 +1074,8 @@ function renderPipeline() {
   if (!ENG) { $('plBody').innerHTML = '<p class="empty">El pipeline aparece cuando corre el motor de señales.</p>'; return; }
   const n = ENG.news || []; $('plNn').textContent = n.length;
   $('plNc').textContent = Object.values(ENG.assets || {}).filter(a => a.pipeline?.setup).length;
-  $('plBody').innerHTML = plTab === 'intra' ? intraHtml() : plTab === 'usa' ? usaHtml() : plTab === 'news' ? newsHtml() : plTab === 'sec' ? secHtml() : candHtml();
+  $('plNp').textContent = (ENG.patterns || []).length;
+  $('plBody').innerHTML = plTab === 'pat' ? patHtml() : plTab === 'intra' ? intraHtml() : plTab === 'usa' ? usaHtml() : plTab === 'news' ? newsHtml() : plTab === 'sec' ? secHtml() : candHtml();
 }
 $('plTabs').addEventListener('click', e => {
   const b = e.target.closest('[data-pl]'); if (!b) return;
@@ -1443,6 +1465,8 @@ function fichaLevels(kind, id) {
     if (tk) L.push({v: tk.entry, t: 'Plan', c: 'ent'}, {v: tk.stop, t: 'Stop', c: 'stp'}, {v: tk.target, t: 'Objetivo', c: 'tgt'});
     else if (w) L.push({v: w.trigger, t: 'Gatillo', c: 'trg'}, {v: w.stop, t: 'Stop', c: 'stp'});
     else if (a?.vcp?.pivot) L.push({v: a.vcp.pivot, t: 'Pivote VCP', c: 'piv'});
+    const pt = a?.patterns?.[0];
+    if (pt && !tk && !w) L.push({v: pt.trigger, t: `Gatillo ${pt.name.toLowerCase()}`, c: 'trg'});
   }
   for (const [who, list] of Object.entries(opTrades)) for (const t of list) {
     if (t.exit != null || t.kind !== kind || t.asset !== id) continue;
@@ -1494,11 +1518,19 @@ function chartSvg(st) {
   } else body = `<polyline class="close" points="${vis.map((b, i) => `${x(i).toFixed(1)},${y(b[4]).toFixed(1)}`).join(' ')}"/>`;
   const line = (arr, cls) => { const p = arr.map((v, i) => v == null ? null : `${x(i).toFixed(1)},${y(v).toFixed(1)}`).filter(Boolean); return p.length > 1 ? `<polyline class="${cls}" points="${p.join(' ')}"/>` : ''; };
   const ma = st.ma ? line(s20, 's20') + line(s50, 's50') : '';
+  // Patrones del motor: los puntos (fecha, precio) que lo forman
+  let pat = '';
+  const dIdx = Object.fromEntries(vis.map((b, i) => [b[0], i]));
+  for (const p of st.pats || []) {
+    const pts = p.points.map(([d, v]) => dIdx[d] != null ? [x(dIdx[d]), y(v)] : null);
+    const segs = p.type.endsWith('triangle') ? [pts.slice(0, 2), pts.slice(2, 4)] : [pts];
+    for (const sg of segs) if (sg.every(Boolean)) pat += `<polyline class="pat" points="${sg.map(([a, b]) => `${a.toFixed(1)},${b.toFixed(1)}`).join(' ')}"><title>${esc(p.name)}</title></polyline>`;
+  }
   const last = vis.at(-1), first = vis[0], chg = (last[4] / first[4] - 1) * 100;
   const label = `Velas diarias de ${n} ruedas: de ${px(first[4])} a ${px(last[4])} (${chg >= 0 ? '+' : '−'}${fmt(Math.abs(chg), 1)} %). ${lvls.length ? 'Niveles: ' + lvls.map(l => `${l.t} ${px(l.v)}`).join(', ') + '.' : ''}`;
   st.geo = {x0: PL, cw, n, off, W, H, top: PT, bot: PT + HC + GAP + HV};
   st.far = new Set(st.levels.filter((l, i) => !lvls[i].near));
-  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)}">${g}${HV ? `<line class="gl" x1="${PL}" x2="${W - PR}" y1="${PT + HC + GAP / 2}" y2="${PT + HC + GAP / 2}"/>` : ''}${ma}${body}${lv}<line class="xh" id="fXh" x1="-10" x2="-10" y1="${PT}" y2="${PT + HC + GAP + HV}"/></svg>`;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)}">${g}${HV ? `<line class="gl" x1="${PL}" x2="${W - PR}" y1="${PT + HC + GAP / 2}" y2="${PT + HC + GAP / 2}"/>` : ''}${ma}${body}${pat}${lv}<line class="xh" id="fXh" x1="-10" x2="-10" y1="${PT}" y2="${PT + HC + GAP + HV}"/></svg>`;
 }
 function fRead(i) {
   const st = fState; if (!st?.geo) return;
@@ -1522,6 +1554,7 @@ function drawChart() {
   const leg = [st.ohlc ? '' : '<span><i></i>Cierre</span>', st.ma ? '<span style="color:var(--info)"><i></i>Media 20</span><span style="color:var(--warn)"><i></i>Media 50</span>' : ''];
   const seen = new Set();
   for (const l of st.levels) { const k = l.c + l.t; if (seen.has(k)) continue; seen.add(k); const col = {ent: 'var(--ink2)', usr: 'var(--ink2)', stp: 'var(--dn)', tgt: 'var(--up)', trg: 'var(--info)', piv: 'var(--mute)'}[l.c]; leg.push(`<span style="color:${col}"><i class="d"></i>${esc(l.t)} <b class="num">${px(l.v)}</b>${st.far?.has(l) ? ' (fuera del gráfico)' : ''}</span>`); }
+  for (const p of st.pats || []) leg.push(`<span style="color:#C084FC"><i class="d"></i>${esc(p.name)}</span>`);
   $('fLeg').innerHTML = leg.join('');
 }
 function fichaInfo(kind, id) {
@@ -1534,6 +1567,7 @@ function fichaInfo(kind, id) {
     if (a.scanner?.labels?.length) rows.push(['Escáner', esc(a.scanner.labels.join(', '))]);
     const pos = a.position;
     if (pos) rows.push(['Posición', `abierta en ${px(pos.entry)} · ${pos.r_now >= 0 ? '+' : '−'}${fmt(Math.abs(pos.r_now || 0), 1)}R`]);
+    if (a.patterns?.length) rows.push(['Patrones', a.patterns.map(p => `${esc(p.name)} · ${esc(p.state)} · gatillo ${px(p.trigger)}`).join('<br>')]);
     out.push(`<div class="kbox"><h3>Qué ve el motor</h3><dl class="fkv">${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl><p class="fnote">Analizado ${when(ENG.generated_at)}</p></div>`);
   } else if (kind !== 'dolar') {
     const l = analyze(kind, id);
@@ -1578,7 +1612,7 @@ async function openFicha(key, push = true) {
   const dlg = $('ficha');
   if (!dlg.open) dlg.showModal();
   if (push) history.replaceState(null, '', '#ficha=' + encodeURIComponent(key));
-  fState = {key, kind, id, n: store.get('tp_frange', 63), bars: null, ohlc: true, ma: kind !== 'dolar', levels: fichaLevels(kind, id)};
+  fState = {key, kind, id, n: store.get('tp_frange', 63), bars: null, ohlc: true, ma: kind !== 'dolar', levels: fichaLevels(kind, id), pats: engAsset(kind, id)?.patterns || []};
   const r = await fichaBars(kind, id);
   if (fState?.key !== key) return;
   fState.bars = r ? withLive(kind, id, r.bars) : [];
