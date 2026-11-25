@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Mi cartera: no pide claves de IOL. La cartera viaja y se publica cifrada; la frase nunca sale de esta página. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://raw.githubusercontent.com https://api.github.com https://data912.com; img-src data:; base-uri 'none'; form-action 'none'">
+<!-- Mi cartera: vive en un repo privado del propio usuario y solo se lee con su token de GitHub. Nada se publica. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://raw.githubusercontent.com https://api.github.com https://data912.com; img-src data:; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex">
 <title>TraderPanel · Mi cartera</title>
@@ -195,7 +195,6 @@ table.pv input{width:110px;min-height:36px;padding:0 8px;border-radius:8px;borde
     <span class="mute">Mi cartera</span>
     <div class="right">
       <button class="btn icon" id="theme" type="button" aria-label="Cambiar tema"></button>
-      <button class="btn" id="lock" type="button" hidden><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Bloquear</button>
       <a class="btn" href="operaciones.html">Mis operaciones</a>
       <a class="btn" href="./"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg>Volver al panel</a>
     </div>
@@ -205,25 +204,29 @@ table.pv input{width:110px;min-height:36px;padding:0 8px;border-radius:8px;borde
 <main class="wrap">
   <div class="lead">
     <h1>Mi cartera</h1>
-    <p>Lo que tenés en InvertirOnline, leído con las mismas reglas que el motor usa para la watchlist: tendencia, stop de protección, setups de las skills y la Time Machine. El archivo está cifrado; solo se abre con tu frase, acá en el navegador.</p>
+    <p>Lo que tenés en tu broker, leído con las mismas reglas que el motor usa para la watchlist: tendencia, stop de protección, setups de las skills y la Time Machine. Solo la ves vos, entrando con tu cuenta de GitHub: se guarda en un repo privado tuyo, no en el panel.</p>
   </div>
-  <div class="row" id="whoRow" hidden><label for="who" class="mute">Cartera de</label><select id="who" style="min-height:40px;border-radius:10px;border:1px solid var(--line2);background:var(--card);color:var(--ink);padding:0 10px"></select></div>
   <div id="loadMsg" role="status"></div>
 
-  <section class="card setup" id="unlock" hidden aria-labelledby="unH">
-    <h2 id="unH">Abrir mi cartera</h2>
-    <p class="sub" id="unSub"></p>
-    <div class="f"><label for="pass">Frase</label><input type="password" id="pass" autocomplete="current-password" spellcheck="false"></div>
-    <label class="check"><input type="checkbox" id="remember">Recordarla en este navegador</label>
-    <div class="row"><button class="btn go" id="open" type="button"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Abrir</button>
-      <label class="btn" for="file">Abrir un archivo…</label><input type="file" id="file" accept=".json,.enc,application/json" hidden></div>
-    <div id="unMsg" role="status"></div>
+  <section class="card setup" id="needLogin" hidden aria-labelledby="lgH">
+    <h2 id="lgH">Entrá con tu cuenta de GitHub</h2>
+    <p class="sub" id="lgSub">Tu cartera solo se ve estando logueado. Entrá en Configuración con tu token y volvé.</p>
+    <div class="row"><a class="btn go" href="config.html">Ir a Configuración</a></div>
   </section>
 
-  <section class="card setup" id="nofile" hidden aria-labelledby="nfH">
-    <h2 id="nfH">Todavía no hay cartera publicada</h2>
-    <p class="sub" id="nfSub"></p>
-    <div class="row"><label class="btn" for="file2">Abrir un archivo…</label><input type="file" id="file2" accept=".json,.enc,application/json" hidden></div>
+  <section class="card setup" id="repoSetup" hidden aria-labelledby="rpH">
+    <h2 id="rpH">Preparar tu lugar privado (una sola vez)</h2>
+    <p class="sub">Tu cartera se guarda en un repo <b>privado</b> de tu cuenta, <code id="rpName"></code>. Solo vos (y quien vos invites) lo puede leer. Ni el panel ni su dueño lo ven.</p>
+    <div class="row"><button class="btn go" id="rpGo" type="button">Crear el repo privado</button></div>
+    <div id="rpManual" hidden>
+      <ol>
+        <li>Abrí <a id="rpNew" target="_blank" rel="noopener">crear el repo en GitHub</a> (ya viene con el nombre y marcado como <b>Private</b>) y tocá <b>Create repository</b>.</li>
+        <li id="rpTok"></li>
+        <li>Volvé acá y tocá <b>Ya está</b>.</li>
+      </ol>
+      <div class="row" style="margin-top:10px"><button class="btn primary" id="rpRetry" type="button">Ya está</button></div>
+    </div>
+    <div id="rpMsg" role="status"></div>
   </section>
 
   <div id="app" hidden style="display:flex;flex-direction:column;gap:20px">
@@ -235,7 +238,7 @@ table.pv input{width:110px;min-height:36px;padding:0 8px;border-radius:8px;borde
     </section>
     <section class="card" id="alertsCard" aria-labelledby="alH" hidden>
       <h2 id="alH">Para mirar</h2>
-      <p class="sub">Lo que el motor marcaría si fuera su propia cartera.</p>
+      <p class="sub">Lo que cambió desde la última vez que la abriste y lo que el motor marcaría si fuera su propia cartera.</p>
       <ul class="notes" id="alerts"></ul>
     </section>
     <section class="card" aria-labelledby="hlH">
@@ -247,37 +250,25 @@ table.pv input{width:110px;min-height:36px;padding:0 8px;border-radius:8px;borde
   </div>
   <section class="card setup" id="sync" hidden aria-labelledby="syH">
     <h2 id="syH">Cargar mi cartera</h2>
-    <p class="sub">Sin claves de IOL. Entrá a invertironline.com → <b>Mi portafolio</b>, seleccioná la tabla, copiala (Ctrl+C) y pegala acá. También podés escribirla: un activo por línea, símbolo y cantidad (y si querés, el precio de compra).</p>
-    <div class="f"><label for="syText">Tu cartera</label>
-      <textarea id="syText" rows="7" spellcheck="false" placeholder="KO 13&#10;SPY 189 18500&#10;AL30 3281" style="width:100%;font-family:var(--mono);font-size:14px;background:var(--bg);color:var(--ink);border:1px solid var(--line2);border-radius:10px;padding:10px"></textarea></div>
-    <div id="syPrev"></div>
-    <div class="f" id="syPhraseF"><label for="syPhrase">Una frase tuya para ver la cartera</label><input type="password" id="syPhrase" autocomplete="new-password" spellcheck="false"><span class="help" id="syHelp">Inventá una (12 caracteres o más). El repo es público: la cartera se guarda cifrada y sin esta frase nadie la puede ver. Queda recordada en este navegador.</span></div>
-    <div class="row"><button class="btn go" id="syGo" type="button" disabled><svg class="i" aria-hidden="true"><use href="#i-save"/></svg>Guardar y analizar</button>
-      <button class="btn" id="kyRedo" type="button" hidden title="Si no llegaste a cargar la llave privada como secret">Rehacer la llave del motor</button></div>
-    <p class="help mute" style="font-size:12.5px">Los precios salen solos de BYMA y se actualizan cada hora; las cantidades quedan como las cargaste hasta que las vuelvas a pegar. Para que el motor pueda analizarla usa una llave que guarda el dueño del repo: técnicamente él podría ver qué tenés.</p>
-    <div id="syMsg" role="status"></div>
-  </section>
-
-  <section class="card setup" id="keySetup" hidden aria-labelledby="kyH">
-    <h2 id="kyH">Preparar la llave del motor (una sola vez)</h2>
-    <p class="sub">Para que cada uno pueda cargar su cartera, el motor necesita un par de llaves. Se crean acá en tu navegador: la pública se guarda en el repo y la privada la cargás vos como secret.</p>
-    <div class="row"><button class="btn go" id="kyGo" type="button"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Crear las llaves</button></div>
-    <div id="kyOut" hidden style="display:flex;flex-direction:column;gap:10px">
-      <ol>
-        <li>Copiá la llave privada de abajo.</li>
-        <li>En GitHub: <a id="kyLink" target="_blank" rel="noopener">Settings → Secrets → Actions</a> → <b>New repository secret</b>, nombre <code>CARTERA_PRIVADA</code>, y pegala.</li>
-        <li>Cerrá esta página: la llave privada no se guarda en ningún otro lado.</li>
-      </ol>
-      <textarea id="kyPriv" readonly rows="8" style="width:100%;font-family:var(--mono);font-size:12px;background:var(--bg);color:var(--ink);border:1px solid var(--line2);border-radius:10px;padding:10px"></textarea>
-      <div class="row"><button class="btn" id="kyCopy" type="button">Copiar la llave privada</button></div>
-      <label class="check"><input type="checkbox" id="kyDone">Ya la pegué en GitHub como <code>CARTERA_PRIVADA</code></label>
+    <p class="sub">Importá tu archivo de cartera (.json). Si usás InvertirOnline, pedíselo a Claude y te lo arma con el conector. Para otro broker, completá la plantilla.</p>
+    <div class="row">
+      <label class="btn go" for="syFile"><svg class="i" aria-hidden="true"><use href="#i-save"/></svg>Importar archivo</label><input type="file" id="syFile" accept=".json,application/json" hidden>
+      <a class="btn" href="docs/cartera-plantilla.json" download="mi-cartera.json">Descargar plantilla</a>
+      <a href="https://github.com/mathia533/TraderPanel/blob/main/docs/cartera-formato.md" target="_blank" rel="noopener" style="font-size:14px">Cómo se completa</a>
     </div>
-    <div id="kyMsg" role="status"></div>
+    <details style="margin-top:4px"><summary class="mute" style="cursor:pointer;font-size:14px">O pegala o escribila (un activo por línea: símbolo y cantidad)</summary>
+      <textarea id="syText" rows="6" spellcheck="false" placeholder="KO 13&#10;SPY 189&#10;AL30 3281" style="margin-top:8px;width:100%;font-family:var(--mono);font-size:14px;background:var(--bg);color:var(--ink);border:1px solid var(--line2);border-radius:10px;padding:10px"></textarea></details>
+    <div id="syPrev"></div>
+    <div class="row"><button class="btn primary" id="syGo" type="button" disabled>Guardar y analizar</button></div>
+    <p class="help mute" style="font-size:12.5px">Se guarda en tu repo privado <code class="rpName2"></code>. Los precios salen de BYMA cada vez que abrís la página; las cantidades quedan como las cargaste hasta que importes de nuevo.</p>
+    <div id="syMsg" role="status"></div>
   </section>
 
 </main>
 
-<script>
+<script type="module">
+import {FORMAT, LIVE_KINDS, HIST_PATH, PER_100, TYPE_ES, parseText, fromGeneric, toGeneric, buildReport, barsFromData912, changesSince} from './lib/cartera.mjs';
+
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[c]);
 const nf = (v, d = 2) => v == null || !isFinite(v) ? '—' : Number(v).toLocaleString('es-AR', {minimumFractionDigits: d, maximumFractionDigits: d});
@@ -286,7 +277,9 @@ const px = v => v == null ? '—' : nf(v, Math.abs(v) >= 1000 ? 0 : 2);
 const pct = (v, sign = true) => v == null ? '—' : `${sign && v > 0 ? '+' : ''}${nf(v, 2)} %`;
 const cls = v => v == null ? '' : v > 0 ? 'up' : v < 0 ? 'dn' : '';
 const store = {get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
-               set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }, del(k) { try { localStorage.removeItem(k); } catch {} }};
+               set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }};
+const smsg = (id, c, html) => { $(id).innerHTML = html ? `<div class="msg ${c}" style="margin-top:8px">${html}</div>` : ''; };
+const when = iso => new Date(iso).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'});
 
 function applyTheme(t) {
   document.documentElement.dataset.theme = t;
@@ -295,47 +288,68 @@ function applyTheme(t) {
 applyTheme(store.get('tp_theme', 'dark'));
 $('theme').onclick = () => { const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; store.set('tp_theme', t); applyTheme(t); };
 
-const GH = (() => {
-  const h = location.hostname, seg = location.pathname.split('/').filter(Boolean)[0];
-  return h.endsWith('.github.io') && seg ? {owner: h.split('.')[0], repo: seg} : {owner: 'mathia533', repo: 'TraderPanel'};
-})();
-const RAW = `https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/main/`;
 const getJSON = async u => { const r = await fetch(u, {cache: 'no-store'}); if (!r.ok) throw new Error(r.status); return r.json(); };
-async function repoJSON(path) {
-  try { return await getJSON(path + '?t=' + Date.now()); } catch { return getJSON(RAW + path).catch(() => null); }
+
+/* ---------- GitHub: mismo token que Configuración. La cartera vive en un repo PRIVADO del usuario ---------- */
+const API = 'https://api.github.com', TK = 'tp_gh_token', REPO = 'traderpanel-cartera', FILE = 'cartera.json';
+const token = (() => { try { return sessionStorage.getItem(TK) || localStorage.getItem(TK) || ''; } catch { return ''; } })();
+let ME = null, SCOPES = null, SHA = null;
+async function gh(path, opts = {}) {
+  const r = await fetch(API + path, {...opts, cache: 'no-store',
+    headers: {Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', Authorization: `Bearer ${token}`, ...(opts.body ? {'Content-Type': 'application/json'} : {})}});
+  const body = await r.json().catch(() => ({}));
+  if (!r.ok) { const e = new Error(body.message || `HTTP ${r.status}`); e.status = r.status; throw e; }
+  if (path === '/user') SCOPES = r.headers.get('x-oauth-scopes');  // solo los tokens clásicos lo mandan
+  return body;
+}
+const b64 = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g, '')), c => c.charCodeAt(0)));
+const enc64 = s => { let bin = ''; for (const b of new TextEncoder().encode(s)) bin += String.fromCharCode(b); return btoa(bin); };
+
+// null = no hay repo (o el token no lo ve) ; {repo, file} si está
+async function readMine() {
+  let repo;
+  try { repo = await gh(`/repos/${ME}/${REPO}`); } catch (e) { if (e.status === 404 || e.status === 403) return null; throw e; }
+  let file = null; SHA = null;
+  try { const r = await gh(`/repos/${ME}/${REPO}/contents/${FILE}`); SHA = r.sha; file = JSON.parse(b64(r.content)); }
+  catch (e) { if (e.status !== 404) throw e; }
+  return {repo, file};
 }
 
-/* ---------- descifrado (mismo formato que engine/cartera.py) ---------- */
-const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
-async function decrypt(blob, pass) {
-  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey']);
-  const key = await crypto.subtle.deriveKey({name: 'PBKDF2', hash: 'SHA-256', salt: b64(blob.salt), iterations: blob.iter || 250000},
-    base, {name: 'AES-GCM', length: 256}, false, ['decrypt']);
-  const pt = await crypto.subtle.decrypt({name: 'AES-GCM', iv: b64(blob.iv)}, key, b64(blob.data));
-  return JSON.parse(new TextDecoder().decode(pt));
+/* ---------- precios y velas (data912, BYMA) ---------- */
+let LIVE = null;
+async function liveMap() {
+  if (LIVE) return LIVE;
+  const m = {};
+  await Promise.all(Object.entries(LIVE_KINDS).map(async ([k, type]) => {
+    try { for (const r of await getJSON('https://data912.com/live/' + k)) if (r.symbol && !m[r.symbol] && +r.c) m[r.symbol] = {type, c: +r.c, pct: r.pct_change != null ? +r.pct_change : null}; } catch {}
+  }));
+  return (LIVE = m);
+}
+async function gates() {
+  const out = {};
+  try {
+    const j = await getJSON('data/signals.json?t=' + Date.now());
+    for (const [k, m] of Object.entries(j.markets || {})) if (m?.gate) out[k] = {gate: m.gate, why: m.why || ''};
+  } catch {}
+  return out;
+}
+async function analyze(src) {
+  const {rows, cash} = fromGeneric(src);
+  const [live, g] = await Promise.all([liveMap(), gates()]);
+  const bars = {};
+  await Promise.all(rows.map(async r => {
+    const p = HIST_PATH[live[r.symbol]?.type || r.type];
+    if (!p) return;
+    try { bars[r.symbol] = barsFromData912(await getJSON(`https://data912.com/historical/${p}/${encodeURIComponent(r.symbol)}`)); } catch {}
+  }));
+  return buildReport(rows, cash, {live, bars, gates: g});
 }
 
-let BLOB = null, REP = null, FILTER = 'all', WHO = null, OWNER = GH.owner, USERS = {};
-const kKey = () => 'tp_cartera_k_' + WHO;
+/* ---------- mostrar ---------- */
+let REP = null, SRC = null, FILTER = 'all', CHANGES = [];
 const VER = {favor: ['✓', 'A FAVOR'], ojo: ['!', 'OJO'], contra: ['✕', 'EN CONTRA'], na: ['–', 'NO APLICA'], nodata: ['–', 'SIN DATOS']};
-const GATE = {allowed: 'a favor', neutral: 'neutral', restrictive: 'defensivo'};
 const MKN = {adr: 'EE. UU.', byma: 'BYMA', cripto: 'Cripto'};
 const COLORS = ['#3B82F6', '#22C55E', '#F59E0B', '#A855F7', '#EC4899', '#14B8A6', '#94A3B8'];
-
-async function tryOpen(pass, remember) {
-  $('unMsg').innerHTML = '';
-  if (!crypto?.subtle) { $('unMsg').innerHTML = '<div class="msg bad" style="margin-top:8px">Este navegador no puede descifrar acá. Abrí el panel desde https://mathia533.github.io/TraderPanel/.</div>'; return false; }
-  try {
-    REP = await decrypt(BLOB, pass);
-  } catch {
-    $('unMsg').innerHTML = '<div class="msg bad" style="margin-top:8px">Esa frase no abre el archivo. Revisá mayúsculas y espacios: tiene que ser igual al secret CARTERA_CLAVE.</div>';
-    store.del(kKey());
-    return false;
-  }
-  if (remember) store.set(kKey(), pass);
-  show();
-  return true;
-}
 
 function spark(vals, up) {
   if (!vals || vals.length < 2) return '';
@@ -345,15 +359,16 @@ function spark(vals, up) {
 }
 
 function show() {
-  $('unlock').hidden = true; $('nofile').hidden = true; $('app').hidden = false; $('lock').hidden = false; showSync();
-  const r = REP, t = r.totals || {}, ars = (t.by_currency || {})['$'] || 0, usd = (t.by_currency || {})['US$'];
-  const when = r.generated_at ? new Date(r.generated_at).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'}) : '—';
-  $('sumSub').textContent = `${USERS[WHO]?.name || WHO || 'Cartera'} · ${r.holdings.length} activos · actualizado ${when}${r.synced_at ? ' · cantidades cargadas el ' + new Date(r.synced_at).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'}) : r.source === 'conector' ? ' · tomado del conector de IOL' : ''}`;
+  $('app').hidden = false;
+  const r = REP, t = r.totals || {}, ars = (t.by_currency || {})['$'] || 0;
+  const loaded = SRC?.actualizado ? ' · cantidades cargadas el ' + when(SRC.actualizado) : '';
+  const from = SRC?.broker ? ` · ${esc(SRC.broker)}${SRC.fecha ? ' al ' + esc(SRC.fecha) : ''}` : '';
+  $('sumSub').innerHTML = `${esc(ME)} · ${r.holdings.length} activos · precios de ${esc(when(r.generated_at))}${from}${loaded}`;
   const cashArs = (r.cash || []).filter(c => c.currency === '$').reduce((a, c) => a + c.amount, 0);
   const cashUsd = (r.cash || []).filter(c => c.currency === 'US$').reduce((a, c) => a + c.amount, 0);
-  const gainTxt = t.gain != null ? `<b class="${cls(t.gain)}">${money(t.gain)}</b><small>contra lo que pagaste (según IOL)</small>` : '<b>—</b><small>IOL no mandó el precio de compra</small>';
+  const gainTxt = t.gain != null ? `<b class="${cls(t.gain)}">${money(t.gain)}</b><small>contra el precio de compra que cargaste</small>` : '<b>—</b><small>el archivo no trae precios de compra</small>';
   $('kpis').innerHTML = [
-    `<div class="k"><span>Valor en pesos</span><b>${money(ars)}</b>${usd ? `<small>y US$ ${nf(usd, 2)} en dólares</small>` : '<small>al último precio</small>'}</div>`,
+    `<div class="k"><span>Valor en pesos</span><b>${money(ars)}</b><small>al último precio de BYMA</small></div>`,
     `<div class="k"><span>Ganancia</span>${gainTxt}</div>`,
     `<div class="k"><span>Si todo toca su stop</span><b class="dn">${money(t.at_risk ? -t.at_risk : 0)}</b><small>${t.at_risk_pct != null ? nf(t.at_risk_pct, 1) + ' % de la cartera (solo acciones y CEDEARs)' : ''}</small></div>`,
     `<div class="k"><span>Efectivo disponible</span><b>${money(cashArs)}</b><small>${cashUsd ? 'y US$ ' + nf(cashUsd, 2) : 'en pesos'}</small></div>`,
@@ -361,10 +376,11 @@ function show() {
   const types = Object.entries(t.by_type || {}).sort((a, b) => b[1] - a[1]), tot = types.reduce((a, x) => a + x[1], 0) || 1;
   $('mix').innerHTML = types.length ? `<div class="mixbar" role="img" aria-label="Distribución por tipo">${types.map(([, v], i) => `<i style="width:${v / tot * 100}%;background:${COLORS[i % COLORS.length]}"></i>`).join('')}</div>
     <div class="legend">${types.map(([k, v], i) => `<span><i style="background:${COLORS[i % COLORS.length]}"></i>${esc(k)} ${nf(v / tot * 100, 0)} %</span>`).join('')}</div>` : '';
-  const al = [...(r.alerts || [])];
+  const al = CHANGES.map(c => `${c.symbol} pasó de ${VER[c.from][1].toLowerCase()} a ${VER[c.to][1].toLowerCase()} desde la última vez que la abriste.`);
+  al.push(...(r.alerts || []));
   const c = r.counts || {};
   if (c.contra) al.push(`${c.contra} ${c.contra > 1 ? 'activos están' : 'activo está'} con la tendencia en contra (✕).`);
-  for (const [k, g] of Object.entries(r.regime || {})) if (g.gate === 'restrictive' && r.holdings.some(h => h.ref?.kind === k)) al.push(`Mercado ${MKN[k] || k} en modo defensivo: ${g.why}.`);
+  for (const [k, g] of Object.entries(r.regime || {})) if (g.gate === 'restrictive' && r.holdings.some(h => h.ref?.kind === k)) al.push(`Mercado ${MKN[k] || k} en modo defensivo${g.why ? ': ' + g.why : ''}.`);
   $('alertsCard').hidden = !al.length;
   $('alerts').innerHTML = al.map(x => `<li>${esc(x)}</li>`).join('');
   const opts = [['all', 'Todos'], ['favor', '✓ A favor'], ['ojo', '! Ojo'], ['contra', '✕ En contra'], ['na', '– Renta fija y fondos']].filter(([k]) => k === 'all' || r.holdings.some(h => h.analysis.verdict === k || (k === 'na' && h.analysis.verdict === 'nodata')));
@@ -378,138 +394,47 @@ function list() {
     .sort((a, b) => (order[a.analysis.verdict] - order[b.analysis.verdict]) || ((b.weight || 0) - (a.weight || 0)));
   $('list').innerHTML = rows.map(h => {
     const a = h.analysis, [sym, lbl] = VER[a.verdict] || VER.na, cur = h.currency;
-    const und = h.ref?.underlying ? `Analizado sobre ${esc(h.ref.symbol)} en EE. UU. (US$ ${px(a.price)}).` : '';
-    const lv = a.stop ? `<div class="lv"><span>Stop de protección <b>${money(a.stop_local ?? a.stop, cur)}</b> (−${nf(a.stop_pct, 1)} %)</span>
+    const lv = a.stop ? `<div class="lv"><span>Stop de protección <b>${money(a.stop, cur)}</b> (−${nf(a.stop_pct, 1)} %)</span>
         ${a.at_risk ? `<span>Perderías <b>${money(a.at_risk, cur)}</b></span>` : ''}
         ${a.rsi != null ? `<span>RSI <b>${nf(a.rsi, 0)}</b></span>` : ''}
-        <span>Puntaje <b>${a.score}</b>/100</span>
         ${a.setups?.length ? `<span>Setups: <b>${esc(a.setups.join(', '))}</b></span>` : ''}</div>` : '';
     const tm = a.tm ? `<div><b>Time Machine</b> (10 ruedas, objetivo a 2 veces lo arriesgado): ${esc(a.tm.verdict)}</div>` : '';
     const notes = (a.notes || []).map(n => `<div class="mute">• ${esc(n)}</div>`).join('');
     return `<article class="h">
-      <div class="nm"><span class="v ${a.verdict}">${sym} ${lbl}</span><b>${esc(h.symbol)}</b><small>${esc(h.desc)} · ${esc(h.type_es)}</small></div>
+      <div class="nm"><span class="v ${a.verdict}">${sym} ${lbl}</span><b>${esc(h.symbol)}</b><small>${h.desc ? esc(h.desc) + ' · ' : ''}${esc(h.type_es)}</small></div>
       <div class="fig"><span>Cantidad</span><b>${nf(h.qty, h.qty % 1 ? 2 : 0)}</b><span>Precio</span><b>${px(h.price)}</b><span>Valor</span><b>${money(h.value, cur)}</b>
         <span>Peso</span><b>${h.weight != null ? nf(h.weight, 1) + ' %' : '—'}</b><span>Hoy</span><b class="${cls(h.day_pct)}">${pct(h.day_pct)}</b>
         ${h.gain_pct != null ? `<span>Ganancia</span><b class="${cls(h.gain_pct)}">${pct(h.gain_pct)}</b>` : ''}</div>
       <div>${spark(a.spark, a.verdict === 'favor')}</div>
-      <div class="rd"><div>${esc(a.why)} ${und}</div>${lv}${tm}${notes}</div>
+      <div class="rd"><div>${esc(a.why)}</div>${lv}${tm}${notes}</div>
     </article>`;
   }).join('') || '<p class="mute">No hay activos con ese filtro.</p>';
 }
-
 $('filters').addEventListener('click', e => { const b = e.target.closest('button[data-f]'); if (!b) return; FILTER = b.dataset.f; for (const x of $('filters').children) x.setAttribute('aria-pressed', x === b); list(); });
-$('open').onclick = () => tryOpen($('pass').value, $('remember').checked);
-$('pass').addEventListener('keydown', e => { if (e.key === 'Enter') $('open').click(); });
-$('lock').onclick = () => { store.del(kKey()); REP = null; $('app').hidden = true; $('lock').hidden = true; $('pass').value = ''; if (BLOB) $('unlock').hidden = false; else $('nofile').hidden = false; };
 
-async function fromFile(f) {
-  try {
-    const j = JSON.parse(await f.text());
-    if (j.data && j.salt) { BLOB = j; $('nofile').hidden = true; $('unlock').hidden = false; $('unSub').textContent = `Archivo ${f.name}: escribí la frase con la que se cifró.`; }
-    else if (j.holdings) { REP = j; show(); }
-    else throw new Error();
-  } catch { $('loadMsg').innerHTML = '<div class="msg bad">Ese archivo no es una cartera de TraderPanel.</div>'; }
+async function open(src) {
+  SRC = src;
+  smsg('loadMsg', 'info', 'Analizando con los precios de hoy…');
+  REP = await analyze(src);
+  const vk = 'tp_cartera_v_' + ME;  // veredictos de la última vez, solo en este navegador
+  CHANGES = changesSince(store.get(vk, null), REP);
+  store.set(vk, Object.fromEntries(REP.holdings.map(h => [h.symbol, h.analysis.verdict])));
+  smsg('loadMsg', '', '');
+  show();
 }
-for (const id of ['file', 'file2']) $(id).addEventListener('change', e => e.target.files[0] && fromFile(e.target.files[0]));
 
-async function load(login) {
-  WHO = login; store.set('tp_cartera_u', login);
-  REP = null; BLOB = null; FILTER = 'all';
-  for (const id of ['app', 'unlock', 'nofile', 'lock', 'sync', 'keySetup']) $(id).hidden = true;
-  $('pass').value = ''; $('unMsg').innerHTML = ''; $('loadMsg').innerHTML = '';
-  const name = USERS[login]?.name || login, own = login === OWNER;
-  BLOB = (login === ME && await freshBlob(login)) || await repoJSON(`data/cartera/${login}.enc`);
-  if (!BLOB?.data && own) BLOB = await repoJSON('data/cartera.enc');
-  showSync();
-  if (!BLOB?.data) {
-    $('nfH').textContent = `Todavía no hay cartera publicada de ${name}`;
-    $('nfSub').innerHTML = ME === login ? (PUB ? 'Cargala acá abajo: copiás la tabla de IOL y la pegás.' : (own ? 'Primero preparamos la llave del motor, acá abajo.' : 'El dueño del repo todavía no preparó la llave del motor. Avisale.'))
-      : ME ? `Solo ${esc(name)} puede cargar su cartera, entrando con su usuario de GitHub.` : `Si sos ${esc(name)}, <a href="config.html">entrá con tu cuenta de GitHub</a> y volvé acá para cargar tu cartera.`;
-    $('nofile').hidden = false; return;
-  }
-  $('unSub').innerHTML = `Escribí la frase de ${esc(name)}: la que usó al cargar su cartera${own ? ' (o la del secret <code>CARTERA_CLAVE</code>)' : ''}.`;
-  if (BLOB.updated) $('unSub').innerHTML += ` Última actualización: ${esc(new Date(BLOB.updated).toLocaleString('es-AR', {dateStyle: 'medium', timeStyle: 'short'}))}`;
-  $('unlock').hidden = false;
-  const k = store.get(kKey(), null);
-  if (k) { $('remember').checked = true; await tryOpen(k, true); }
-}
-$('who').addEventListener('change', e => load(e.target.value));
-
-/* ---------- GitHub (mismo token que Configuración y Mis operaciones) ---------- */
-const API = 'https://api.github.com', TK = 'tp_gh_token';
-const token = (() => { try { return sessionStorage.getItem(TK) || localStorage.getItem(TK) || ''; } catch { return ''; } })();
-let ME = null, PUB = null;
-async function gh(path, opts = {}) {
-  const r = await fetch(API + path, {...opts, cache: 'no-store',
-    headers: {Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', Authorization: `Bearer ${token}`, ...(opts.body ? {'Content-Type': 'application/json'} : {})}});
-  const body = await r.json().catch(() => ({}));
-  if (!r.ok) { const e = new Error(body.message || `HTTP ${r.status}`); e.status = r.status; throw e; }
-  return body;
-}
-const enc64 = buf => { let bin = ''; for (const b of new Uint8Array(buf)) bin += String.fromCharCode(b); return btoa(bin); };
-const txt64 = s => enc64(new TextEncoder().encode(s));
-async function putFile(path, text, message) {
-  let sha;
-  try { sha = (await gh(`/repos/${GH.owner}/${GH.repo}/contents/${path}`)).sha; } catch (e) { if (e.status !== 404) throw e; }
-  return gh(`/repos/${GH.owner}/${GH.repo}/contents/${path}`, {method: 'PUT', body: JSON.stringify({message, content: txt64(text), ...(sha ? {sha} : {})})});
-}
-async function freshBlob(login) {
-  if (!token) return null;
-  try { const r = await gh(`/repos/${GH.owner}/${GH.repo}/contents/data/cartera/${login}.enc`); return JSON.parse(atob(r.content.replace(/\s/g, ''))); } catch { return null; }
-}
-const smsg = (id, cls, html) => { $(id).innerHTML = html ? `<div class="msg ${cls}" style="margin-top:8px">${html}</div>` : ''; };
-
-/* ---------- Cargar la cartera: pegada de IOL o escrita a mano ---------- */
-const LIVE_KINDS = {arg_cedears: 'CEDEAR', arg_stocks: 'Acción', arg_bonds: 'Bono', arg_corp: 'Obligación negociable', arg_notes: 'Letra'};
-const PER100 = new Set(['Bono', 'Obligación negociable', 'Letra']);
-let LIVE = null;
-async function liveMap() {
-  if (LIVE) return LIVE;
-  const m = {};
-  await Promise.all(Object.entries(LIVE_KINDS).map(async ([k, t]) => {
-    try { for (const r of await (await fetch('https://data912.com/live/' + k)).json()) if (r.symbol && !m[r.symbol] && +r.c) m[r.symbol] = {t, c: +r.c}; } catch {}
-  }));
-  return (LIVE = Object.keys(m).length ? m : null) || {};
-}
-// "1.234,56" → 1234.56 ; "4897.78" → 4897.78 ; "3.281" → 3281
-function num(t) {
-  t = t.replace(/[$\s]|US\$/g, '');
-  if (!/^-?[\d.,]+$/.test(t)) return NaN;
-  if (t.includes(',')) return +t.replace(/\./g, '').replace(',', '.');
-  if (/^\d{1,3}(\.\d{3})+$/.test(t)) return +t.replace(/\./g, '');
-  return +t;
-}
-const SKIP = new Set(['ARS', 'USD', 'US', 'BCBA', 'NYSE', 'CEDEAR', 'CEDEARS', 'T0', 'T1', 'T2', 'ON', 'FCI', 'TOTAL', 'PPC']);
-function parseText(text, live) {
-  const rows = [], seen = new Set();
-  for (const line of text.split(/\r?\n/)) {
-    const toks = line.trim().split(/[\t ;|]+/).filter(Boolean);
-    let sym = null, nums = [];
-    for (const tk of toks) {
-      const up = tk.toUpperCase();
-      if (!sym && /^[A-Z][A-Z0-9.]{1,9}$/i.test(tk) && !SKIP.has(up) && (live[up] || /^[A-Z][A-Z0-9]{1,7}$/.test(tk))) { sym = up; continue; }
-      if (sym) { const n = num(tk); if (isFinite(n)) nums.push(n); }
-    }
-    if (!sym || !nums.length || nums[0] <= 0 || seen.has(sym)) continue;
-    seen.add(sym);
-    rows.push({symbol: sym, qty: nums[0], ppc: nums.length === 2 ? nums[1] : null});
-  }
-  return rows;
-}
-let ROWS = [];
-async function preview() {
-  const text = $('syText').value;
-  if (!text.trim()) { ROWS = []; $('syPrev').innerHTML = ''; $('syGo').disabled = true; return; }
+/* ---------- cargar: archivo genérico (principal) o texto pegado ---------- */
+let ROWS = [], CASH = [], META = {};
+async function render() {
   const live = await liveMap();
-  ROWS = parseText(text, live);
   if (!ROWS.length) { $('syPrev').innerHTML = '<p class="mute" style="font-size:13.5px">No reconozco ningún activo todavía. Usá una línea por activo: símbolo y cantidad.</p>'; $('syGo').disabled = true; return; }
   let tot = 0;
   const tr = ROWS.map((r, i) => {
-    const l = live[r.symbol], val = l ? r.qty * l.c / (PER100.has(l.t) ? 100 : 1) : null; if (val) tot += val;
-    return `<tr><td><b>${esc(r.symbol)}</b><br><small class="mute">${l ? esc(l.t) : 'sin precio en BYMA'}</small></td>
+    const l = live[r.symbol], val = l ? r.qty * l.c / (PER_100.has(l.type) ? 100 : 1) : r.value || null; if (val) tot += val;
+    return `<tr><td><b>${esc(r.symbol)}</b><br><small class="mute">${l ? esc(TYPE_ES[l.type]) : (r.type && TYPE_ES[r.type] ? TYPE_ES[r.type] + ' · ' : '') + 'sin precio en BYMA'}</small></td>
       <td><input class="num" type="number" step="any" min="0" data-i="${i}" data-k="qty" value="${r.qty}" aria-label="Cantidad de ${esc(r.symbol)}"></td>
       <td><input class="num" type="number" step="any" min="0" data-i="${i}" data-k="ppc" value="${r.ppc ?? ''}" placeholder="opcional" aria-label="Precio de compra de ${esc(r.symbol)}"></td>
-      <td class="num" style="text-align:right">${l ? px(l.c) : (`<input class="num" type="number" step="any" min="0" data-i="${i}" data-k="value" value="${r.value ?? ''}" placeholder="valor total" aria-label="Valor total de ${esc(r.symbol)}">`)}</td>
+      <td class="num" style="text-align:right">${l ? px(l.c) : `<input class="num" type="number" step="any" min="0" data-i="${i}" data-k="value" value="${r.value ?? ''}" placeholder="valor total" aria-label="Valor total de ${esc(r.symbol)}">`}</td>
       <td class="num" style="text-align:right">${val ? money(val) : '—'}</td>
       <td><button class="btn icon" type="button" data-del="${i}" aria-label="Quitar ${esc(r.symbol)}" style="min-height:32px;width:32px">✕</button></td></tr>`;
   }).join('');
@@ -517,108 +442,95 @@ async function preview() {
     <div style="overflow-x:auto"><table class="pv"><thead><tr><th>Activo</th><th>Cantidad</th><th>Precio de compra</th><th>Precio hoy</th><th>Valor</th><th></th></tr></thead><tbody>${tr}</tbody></table></div>`;
   $('syGo').disabled = false;
 }
-let pvT;
-$('syText').addEventListener('input', () => { clearTimeout(pvT); pvT = setTimeout(preview, 300); });
-$('syPrev').addEventListener('change', e => { const x = e.target.closest('input[data-i]'); if (x) ROWS[+x.dataset.i][x.dataset.k] = x.value === '' ? null : +x.value; });
-$('syPrev').addEventListener('click', e => {
-  const d = e.target.closest('[data-del]'); if (!d) return;
-  const sym = ROWS[+d.dataset.del].symbol;
-  $('syText').value = $('syText').value.split(/\r?\n/).filter(l => !new RegExp('(^|[\\s\\t;|])' + sym.replace('.', '\\.') + '([\\s\\t;|]|$)', 'i').test(l)).join('\n');
-  preview();
+$('syFile').addEventListener('change', async e => {
+  const f = e.target.files[0]; e.target.value = ''; if (!f) return;
+  let j; try { j = JSON.parse(await f.text()); } catch { return smsg('syMsg', 'bad', `${esc(f.name)} no es un JSON válido.`); }
+  if (j?.formato !== FORMAT) return smsg('syMsg', 'bad', 'Ese archivo no tiene el formato de cartera. Usá la plantilla (Descargar plantilla).');
+  const g = fromGeneric(j);
+  ROWS = g.rows; CASH = g.cash; META = {...(g.broker ? {broker: g.broker} : {}), ...(g.fecha ? {fecha: g.fecha} : {})};
+  smsg('syMsg', '', '');
+  await render();
+  if (ROWS.length) smsg('syMsg', 'info', `Importado ${esc(f.name)}${g.broker ? ' (' + esc(g.broker) + (g.fecha ? ', ' + esc(g.fecha) : '') + ')' : ''}. Revisá y tocá Guardar y analizar.`);
 });
+let pvT;
+$('syText').addEventListener('input', () => { clearTimeout(pvT); pvT = setTimeout(async () => {
+  const text = $('syText').value;
+  if (!text.trim()) { ROWS = []; $('syPrev').innerHTML = ''; $('syGo').disabled = true; return; }
+  ROWS = parseText(text, await liveMap()); CASH = []; META = {};
+  render();
+}, 300); });
+$('syPrev').addEventListener('change', e => { const x = e.target.closest('input[data-i]'); if (x) ROWS[+x.dataset.i][x.dataset.k] = x.value === '' ? null : +x.value; });
+$('syPrev').addEventListener('click', e => { const d = e.target.closest('[data-del]'); if (!d) return; ROWS.splice(+d.dataset.del, 1); render(); });
 
-async function sealUpload(login, src, phrase) {
-  const salt = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12)), iter = 250000;
-  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(phrase), 'PBKDF2', false, ['deriveBits']);
-  const raw = await crypto.subtle.deriveBits({name: 'PBKDF2', hash: 'SHA-256', salt, iterations: iter}, base, 256);
-  const k = await crypto.subtle.importKey('raw', raw, 'AES-GCM', false, ['encrypt']);
-  const data = await crypto.subtle.encrypt({name: 'AES-GCM', iv}, k, new TextEncoder().encode(JSON.stringify(src)));
-  const pub = await crypto.subtle.importKey('jwk', PUB, {name: 'RSA-OAEP', hash: 'SHA-256'}, false, ['encrypt']);
-  const wrapped = await crypto.subtle.encrypt({name: 'RSA-OAEP'}, pub, raw);
-  return {v: 1, login, alg: 'AES-256-GCM', kdf: 'PBKDF2-SHA256', iter, salt: enc64(salt), iv: enc64(iv), data: enc64(data), key: enc64(wrapped), updated: src.synced_at};
-}
 $('syGo').onclick = async () => {
-  const phrase = $('syPhrase').value;
   const rows = ROWS.filter(r => r.qty > 0);
   if (!rows.length) return smsg('syMsg', 'bad', 'No hay activos para guardar.');
-  if (phrase.length < 12) { $('syPhraseF').hidden = false; return smsg('syMsg', 'bad', 'Inventá una frase de 12 caracteres o más: con ella se cifra tu cartera.'); }
-  if (BLOB?.data) { try { await decrypt(BLOB, phrase); } catch {
-    if (!$('syGo').dataset.confirm) { $('syGo').dataset.confirm = '1'; return smsg('syMsg', 'info', 'Esa frase no es la de tu cartera actual. Si seguís, la anterior se reemplaza y desde ahora se abre con esta. Tocá de nuevo para confirmar.'); } } }
   $('syGo').disabled = true;
   try {
-    const src = {source: 'manual', synced_at: new Date().toISOString(), holdings: rows.map(r => ({symbol: r.symbol, qty: r.qty, ...(r.ppc ? {ppc: r.ppc} : {}), ...(r.value ? {value: r.value} : {})}))};
-    const before = BLOB?.updated || '';
+    const st = await readMine();
+    if (!st) { showSetup(); throw new Error('No encuentro tu repo privado. Preparalo arriba y volvé a tocar Guardar.'); }
+    if (!st.repo.private) throw new Error(`El repo ${esc(ME)}/${REPO} es público: no guardo la cartera ahí. Hacelo privado en GitHub (Settings → Change visibility) y probá de nuevo.`);
+    const src = {...toGeneric(rows, CASH, META), actualizado: new Date().toISOString()};
     try {
-      await putFile(`carteras/${ME}.json`, JSON.stringify(await sealUpload(ME, src, phrase)) + '\n', `Cartera de ${ME} actualizada (cifrada)`);
+      await gh(`/repos/${ME}/${REPO}/contents/${FILE}`, {method: 'PUT', body: JSON.stringify({message: 'Cartera actualizada', content: enc64(JSON.stringify(src, null, 2) + '\n'), ...(SHA ? {sha: SHA} : {})})});
     } catch (e) {
-      console.warn('[cartera] subir a GitHub:', e.status || e.message);
-      throw new Error(e.status === 401 ? 'Tu sesión de GitHub venció: entrá de nuevo en Configuración y volvé.' : e.status === 403 || e.status === 404 ? 'GitHub no dejó guardar: tu token necesita permiso de escritura (Contents) en este repo.' : 'No se pudo guardar en GitHub. Probá de nuevo.');
+      console.warn('[cartera] guardar:', e.status || e.message);
+      throw new Error(e.status === 401 ? 'Tu sesión de GitHub venció: entrá de nuevo en Configuración y volvé.'
+        : e.status === 403 || e.status === 404 ? `GitHub no dejó guardar: tu token necesita permiso de escritura en <code>${esc(ME)}/${REPO}</code>.` : 'No se pudo guardar en GitHub. Probá de nuevo.');
     }
-    store.set(kKey(), phrase);  // la frase queda en este navegador para no pedirla cada vez
-    smsg('syMsg', 'ok', 'Guardada y cifrada. El motor la está analizando: en 1 o 2 minutos aparece acá arriba sola.');
-    for (let i = 0; i < 30; i++) {
-      await new Promise(r => setTimeout(r, 15000));
-      const b = await freshBlob(ME);
-      if (b?.data && b.updated !== before) { BLOB = b; await tryOpen(phrase, true); smsg('syMsg', 'ok', 'Listo, tu cartera está analizada.'); $('syText').value = ''; preview(); return; }
-    }
-    smsg('syMsg', 'info', 'El motor todavía no terminó. Recargá la página en unos minutos. Si sigue sin aparecer, puede faltar el secret CARTERA_PRIVADA.');
+    $('syText').value = ''; ROWS = []; CASH = []; META = {}; $('syPrev').innerHTML = '';
+    await open(src);
+    $('syH').textContent = 'Actualizar mi cartera';
+    smsg('syMsg', 'ok', 'Guardada en tu repo privado y analizada.');
   } catch (e) {
-    smsg('syMsg', 'bad', esc(e.message));
-  } finally { $('syGo').disabled = !ROWS.length; delete $('syGo').dataset.confirm; }
+    smsg('syMsg', 'bad', e.message);
+  } finally { $('syGo').disabled = !ROWS.length; }
 };
 
-/* ---------- Llaves del motor (solo el dueño, una vez) ---------- */
-$('kyGo').onclick = async () => {
-  $('kyGo').disabled = true;
-  try {
-    const kp = await crypto.subtle.generateKey({name: 'RSA-OAEP', modulusLength: 3072, publicExponent: new Uint8Array([1, 0, 1]), hash: 'SHA-256'}, true, ['encrypt', 'decrypt']);
-    const jwk = await crypto.subtle.exportKey('jwk', kp.publicKey);
-    const pk = enc64(await crypto.subtle.exportKey('pkcs8', kp.privateKey));
-    $('kyPriv').value = `-----BEGIN PRIVATE KEY-----\n${pk.match(/.{1,64}/g).join('\n')}\n-----END PRIVATE KEY-----\n`;
-    await putFile('engine/cartera_pub.json', JSON.stringify({kty: jwk.kty, n: jwk.n, e: jwk.e, alg: 'RSA-OAEP-256', ext: true}) + '\n', 'Llave pública para las carteras de IOL');
-    PUB = {kty: jwk.kty, n: jwk.n, e: jwk.e, alg: 'RSA-OAEP-256', ext: true};
-    $('kyLink').href = `https://github.com/${GH.owner}/${GH.repo}/settings/secrets/actions/new`;
-    $('kyOut').hidden = false; $('kyGo').hidden = true;
-    KEYPENDING = true;
-    smsg('kyMsg', 'ok', 'La llave pública quedó en el repo. Ahora copiá la privada, cargala como secret y marcá la casilla.');
-    showSync(); $('keySetup').hidden = false;
-  } catch (e) { smsg('kyMsg', 'bad', esc(e.message)); $('kyGo').disabled = false; }
-};
-let KEYPENDING = false;
-window.addEventListener('beforeunload', e => { if (KEYPENDING) { e.preventDefault(); e.returnValue = ''; } });
-$('kyDone').onchange = () => { KEYPENDING = !$('kyDone').checked; showSync(); if (!KEYPENDING) { $('keySetup').hidden = true; smsg('syMsg', 'ok', 'Listo, la llave quedó configurada. Ya podés cargar tu cartera.'); } };
-$('kyRedo').onclick = () => {
-  if (!$('kyRedo').dataset.confirm) { $('kyRedo').dataset.confirm = '1'; smsg('syMsg', 'info', 'Se crean llaves nuevas y la vieja deja de servir: quien ya haya traído su cartera tiene que traerla de nuevo. Tocá otra vez para seguir.'); return; }
-  delete $('kyRedo').dataset.confirm; smsg('syMsg', '', '');
-  $('kyOut').hidden = true; $('kyGo').hidden = false; $('kyGo').disabled = false; $('kyDone').checked = false; smsg('kyMsg', '', '');
-  $('keySetup').hidden = false; $('sync').hidden = true; $('keySetup').scrollIntoView({behavior: 'smooth'});
-};
-$('kyCopy').onclick = async () => { try { await navigator.clipboard.writeText($('kyPriv').value); $('kyCopy').textContent = 'Copiada'; } catch { $('kyPriv').select(); } };
-
-function showSync() {
-  const saved = store.get(kKey(), null);
-  if (saved && !$('syPhrase').value) $('syPhrase').value = saved;
-  $('syPhraseF').hidden = !!saved;
-  const mine = ME && WHO === ME;
-  $('keySetup').hidden = !(mine && ME === OWNER && (!PUB || KEYPENDING));
-  $('sync').hidden = !(mine && PUB && !KEYPENDING);
-  $('kyRedo').hidden = !(mine && ME === OWNER);
-  if (!$('sync').hidden && BLOB?.data) { $('syH').textContent = 'Actualizar mi cartera'; $('syHelp').textContent = 'La misma frase con la que abrís tu cartera.'; }
+/* ---------- preparar el repo privado ---------- */
+function showSetup() {
+  $('repoSetup').hidden = false;
+  $('rpName').textContent = `${ME}/${REPO}`;
+  $('rpNew').href = `https://github.com/new?name=${REPO}&visibility=private&description=${encodeURIComponent('Mi cartera para TraderPanel (privado)')}`;
+  $('rpTok').innerHTML = SCOPES != null
+    ? 'Tu token es clásico: para leer repos privados necesita el permiso <b>repo</b>. <a href="https://github.com/settings/tokens" target="_blank" rel="noopener">Editalo en GitHub</a>, marcá <b>repo</b> y guardalo (el mismo token sigue andando en el panel).'
+    : `Tu token es Fine-grained: <a href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener">editalo en GitHub</a>, en <b>Repository access</b> sumá <code>${esc(REPO)}</code> y dale <b>Contents: Read and write</b>.`;
 }
+$('rpGo').onclick = async () => {
+  $('rpGo').disabled = true; smsg('rpMsg', '', '');
+  try {
+    await gh('/user/repos', {method: 'POST', body: JSON.stringify({name: REPO, private: true, auto_init: true, description: 'Mi cartera para TraderPanel (privado)'})});
+    $('repoSetup').hidden = true; $('sync').hidden = false;
+    smsg('syMsg', 'ok', `Listo: creé <code>${esc(ME)}/${REPO}</code>, privado. Ahora importá tu cartera.`);
+  } catch (e) {
+    console.warn('[cartera] crear repo:', e.status || e.message);
+    if (e.status === 422) return start();  // ya existía
+    $('rpManual').hidden = false; $('rpGo').hidden = true;
+    smsg('rpMsg', 'info', 'Tu token no puede crear repos (es lo normal). Hacelo a mano, son dos pasos:');
+  } finally { $('rpGo').disabled = false; }
+};
+$('rpRetry').onclick = () => start();
 
-(async () => {
-  [USERS, PUB] = await Promise.all([repoJSON('users/users.json').then(j => j?.users || {}), repoJSON('engine/cartera_pub.json').then(j => j?.n ? j : null)]);
-  if (token) { try { ME = (await gh('/user')).login; } catch {} }
-  const logins = Object.keys(USERS).length ? Object.keys(USERS) : [OWNER];
-  if (!logins.includes(OWNER)) logins.unshift(OWNER);
-  if (ME && !logins.includes(ME)) logins.push(ME);
-  $('who').innerHTML = logins.map(l => `<option value="${esc(l)}">${esc(USERS[l]?.name || l)}${l === ME ? ' (vos)' : ''}</option>`).join('');
-  $('whoRow').hidden = logins.length < 2;
-  const want = new URLSearchParams(location.search).get('u') || store.get('tp_cartera_u', ME || OWNER);
-  const first = logins.includes(want) ? want : OWNER;
-  $('who').value = first;
-  await load(first);
-})();
+async function start() {
+  for (const id of ['needLogin', 'repoSetup', 'sync', 'app']) $(id).hidden = true;
+  smsg('loadMsg', '', '');
+  for (const el of document.querySelectorAll('.rpName2')) el.textContent = `${ME || 'tu-usuario'}/${REPO}`;
+  if (!token) { $('needLogin').hidden = false; return; }
+  if (!ME) {
+    try { ME = (await gh('/user')).login; }
+    catch (e) { $('lgSub').textContent = e.status === 401 ? 'Tu sesión de GitHub venció. Entrá de nuevo en Configuración y volvé.' : 'No pude hablar con GitHub. Revisá la conexión y recargá.'; $('needLogin').hidden = false; return; }
+    for (const el of document.querySelectorAll('.rpName2')) el.textContent = `${ME}/${REPO}`;
+  }
+  let st;
+  try { st = await readMine(); } catch (e) { return smsg('loadMsg', 'bad', 'No pude leer tu cartera de GitHub. Recargá en un rato.'); }
+  if (!st) return showSetup();
+  if (!st.repo.private) { smsg('loadMsg', 'bad', `<code>${esc(ME)}/${REPO}</code> es público: cualquiera vería tu cartera. Hacelo privado en GitHub (Settings → Change visibility) y recargá.`); return; }
+  $('sync').hidden = false;
+  if (!st.file) return;
+  $('syH').textContent = 'Actualizar mi cartera';
+  try { await open(st.file); } catch (e) { console.warn('[cartera] abrir:', e.message); smsg('loadMsg', 'bad', 'Tu archivo de cartera no se pudo leer: ' + esc(e.message) + ' Importalo de nuevo.'); }
+}
+start();
 </script>
 </body>
 </html>
