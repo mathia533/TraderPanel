@@ -57,19 +57,19 @@ def market_gate_from_regime(regime: dict | None, btc_bars: list[dict]) -> tuple[
 def plan_trade(entry: float, stop: float | None, risk_cfg: dict) -> dict:
     """Valida stop y objetivo como trader-exit. Devuelve {ok, ...} o {ok: False, why}."""
     if stop is None or not math.isfinite(stop):
-        return {"ok": False, "why": "sin stop definido"}
+        return {"ok": False, "why": "no hay un precio de stop definido"}
     if stop >= entry:
-        return {"ok": False, "why": "el stop queda en o sobre la entrada"}
+        return {"ok": False, "why": "el stop queda por encima del precio de compra"}
     risk = entry - stop
     stop_pct = risk / entry * 100
     if stop_pct > risk_cfg["max_stop_pct"]:
-        return {"ok": False, "why": f"stop demasiado lejos ({stop_pct:.1f} % > {risk_cfg['max_stop_pct']} %)"}
+        return {"ok": False, "why": f"el stop queda demasiado lejos: se perdería {stop_pct:.1f} % y el máximo es {risk_cfg['max_stop_pct']} %"}
     if stop_pct < 0.3:
-        return {"ok": False, "why": "stop demasiado ajustado para el spread"}
+        return {"ok": False, "why": "el stop queda tan cerca que cualquier oscilación chica lo tocaría"}
     r_mult = risk_cfg["target_r"]
     target = entry + r_mult * risk
     if r_mult < risk_cfg["min_reward_risk"]:
-        return {"ok": False, "why": f"R:R {r_mult:.1f} menor al mínimo {risk_cfg['min_reward_risk']}"}
+        return {"ok": False, "why": f"la ganancia posible ({r_mult:.1f} veces lo arriesgado) no llega al mínimo de {risk_cfg['min_reward_risk']}"}
     return {"ok": True, "entry": entry, "stop": stop, "target": target, "rr": r_mult,
             "risk_per_unit": risk, "stop_pct": round(stop_pct, 2)}
 
