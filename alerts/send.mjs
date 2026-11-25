@@ -32,6 +32,8 @@ const DATA = resolve(opt('--data-dir', join(ROOT, 'data')));
 const CONFIG = resolve(opt('--config', join(ROOT, 'alerts', 'telegram.json')));
 const USERS = resolve(opt('--users', join(ROOT, 'users', 'users.json')));
 const TRADES = resolve(opt('--trades-dir', join(ROOT, 'trades')));
+// Tarjetas (PNG) que dibuja engine/report.py antes de enviar: se mandan como foto con el texto de pie
+const CARDS = opt('--cards-dir', process.env.CARDS_DIR || '');
 const ENGINE_CFG = resolve(opt('--engine-config', join(ROOT, 'engine', 'config.json')));
 const TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
 const DEFAULT_CHAT = (process.env.TELEGRAM_CHAT_ID || '').trim();
@@ -105,6 +107,30 @@ export async function tg(chat, text) {
     return {ok: false, fatal: [400, 401, 403, 404].includes(status) && /chat|token|bot|unauthorized|not found|forbidden/i.test(j.description || '')};
   }
   return {ok: false};
+}
+
+export async function tgPhoto(chat, file, caption) {
+  const buf = await readFile(file);
+  for (let i = 1; i <= 3; i++) {
+    let status = 0, j = {};
+    try {
+      const fd = new FormData();
+      fd.append('chat_id', chat); fd.append('caption', caption); fd.append('parse_mode', 'HTML');
+      fd.append('photo', new Blob([buf], {type: 'image/png'}), basename(file));
+      const r = await fetch(`${API}/bot${TOKEN}/sendPhoto`, {method: 'POST', body: fd, signal: AbortSignal.timeout(30000)});
+      status = r.status; j = await r.json().catch(() => ({}));
+      if (r.ok && j.ok) return {ok: true};
+    } catch (e) { j = {description: e.message}; }
+    if ((status === 429 || status >= 500 || status === 0) && i < 3) { await sleep(((j.parameters?.retry_after) || 2 * i) * 1000); continue; }
+    console.error(`Telegram (foto) respondió ${status}: ${j.description || 'sin detalle'}`);
+    return {ok: false, status};
+  }
+  return {ok: false};
+}
+async function cardFor(e) {
+  if (!CARDS || e.info !== 'report') return null;
+  const f = join(resolve(CARDS), String(e.id).replace(/:/g, '-') + '.png');
+  try { await readFile(f); return f; } catch { return null; }
 }
 
 /* ---------- Mensajes ---------- */
@@ -293,7 +319,9 @@ async function main() {
       n++;
       const text = textFor(e, u, cfg, {open: openFor(u)});
       if (DRY) { console.log(`\n--- ${u.login} · ${e.id} ---\n${text}`); mark(u, e, 'dry'); continue; }
-      const r = await tg(chat, text);
+      const card = await cardFor(e);
+      let r = card ? await tgPhoto(chat, card, text) : await tg(chat, text);
+      if (card && !r.ok && r.status !== 403) r = await tg(chat, text); // sin foto, por lo menos el texto
       if (r.ok) { mark(u, e, 'enviado'); sent++; }
       else { failed++; if (r.fatal) fatalChats.add(chat); }
       await sleep(1100); // Telegram admite ~1 mensaje por segundo al mismo chat

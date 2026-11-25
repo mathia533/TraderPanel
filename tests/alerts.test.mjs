@@ -81,3 +81,30 @@ test('envía a cada usuario con su tamaño y no repite', async () => {
   assert.match(got[0].text, /VENDIÓ YPF[\s\S]*\+US\$ 99,00 con 33 acciones/);
   srv.close();
 });
+
+test('el informe del cierre sale como foto con el texto de pie (y como texto si no hay tarjeta)', async () => {
+  const hits = [];
+  const srv = createServer((req, res) => { let b = Buffer.alloc(0); req.on('data', c => b = Buffer.concat([b, c])); req.on('end', () => {
+    hits.push({path: req.url, type: req.headers['content-type'] || '', body: b.toString('latin1')}); res.setHeader('content-type', 'application/json'); res.end('{"ok":true}'); }); });
+  await new Promise(r => srv.listen(0, r));
+  const dir = await mkdtemp(join(tmpdir(), 'tp-card-'));
+  for (const d of ['data', 'users', 'trades', 'alerts', 'cards']) await mkdir(join(dir, d));
+  const now = new Date().toISOString();
+  await writeFile(join(dir, 'alerts/telegram.json'), JSON.stringify({panel_url: ''}));
+  await writeFile(join(dir, 'users/users.json'), JSON.stringify({users: {yo: {name: 'Yo', risk: risk(10000), telegram: tgPrefs()}}}));
+  await writeFile(join(dir, 'data/telegram_sent.json'), JSON.stringify({sent: {}, recent: [], users: {yo: now}}));
+  await writeFile(join(dir, 'data/events.json'), JSON.stringify({events: [
+    {id: 'report:2026-11-25', type: 'info', info: 'report', kind: 'adr', label: 'Cierre', ts: now, text: '🌙 <b>INFORME DEL CIERRE</b>'},
+    {id: 'report:2026-11-24', type: 'info', info: 'report', kind: 'adr', label: 'Cierre', ts: now, text: '🌙 <b>INFORME</b> sin tarjeta'}]}));
+  await writeFile(join(dir, 'cards/report-2026-11-25.png'), Buffer.from([0x89, 0x50, 0x4e, 0x47]));
+  await new Promise((ok, ko) => execFile('node', [SEND, '--data-dir', join(dir, 'data'), '--config', join(dir, 'alerts/telegram.json'),
+    '--users', join(dir, 'users/users.json'), '--trades-dir', join(dir, 'trades'), '--cards-dir', join(dir, 'cards')],
+    {env: {...process.env, TELEGRAM_BOT_TOKEN: 'x', TELEGRAM_CHAT_ID: '-100111', TELEGRAM_API: `http://127.0.0.1:${srv.address().port}`}},
+    (err, out, errOut) => err ? ko(new Error(errOut || err.message)) : ok(out)));
+  srv.close();
+  const photo = hits.find(h => h.path.endsWith('/sendPhoto')), msg = hits.find(h => h.path.endsWith('/sendMessage'));
+  assert.ok(photo && photo.type.startsWith('multipart/form-data'));
+  assert.match(photo.body, /name="caption"/);
+  assert.match(photo.body, /report-2026-11-25\.png/);
+  assert.ok(msg && msg.body.includes('sin tarjeta'));
+});

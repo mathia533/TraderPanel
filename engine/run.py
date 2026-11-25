@@ -21,7 +21,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import config_check, dtskills, patterns, pipeline, planner, review, skills, sources, tmextra
+from . import config_check, dtskills, patterns, pipeline, planner, report, review, skills, sources, tmextra
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -448,9 +448,11 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None, intraday_fetch=Non
                                        "text_override": f"{icon} <b>PATRÓN · {esc(label)}</b> ({MK_NAME.get(kind, kind)})\n"
                                                         f"{pt['name']} {verb}.\n<i>{esc(pt['why'])}</i>"
                                                         + ("\nMercado defensivo: el motor no abre compras nuevas." if gate == "restrictive" and pt["bias"] == "alcista" else "")})
+            prev_c = closed[1]["close"] if last is closed[0] else closed[0]["close"]
+            day_ch = round((last["close"] / prev_c - 1) * 100, 2) if prev_c else None
             assets[key] = {
                 "kind": kind, "id": ident, "label": label, "date": closed[0]["date"], "live_date": live["date"] if live else None,
-                "last": rnd(last["close"]), "source": src, "degraded": degraded,
+                "last": rnd(last["close"]), "day_ch": day_ch, "source": src, "degraded": degraded,
                 "score": round(score), "signal": lab, "stage4": stage4,
                 "sma50": rnd(s50, c[0]), "sma200": rnd(s200, c[0]),
                 "vcp": {k: vcp.get(k) for k in ("rating", "score", "state", "pattern", "pivot", "stop", "distance_pct",
@@ -482,6 +484,20 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None, intraday_fetch=Non
         congress = pipeline.run_congress(cfg, DATA, now, errors, new_events, offline_index=extras.get("congress_index"),
                                          offline_texts=extras.get("congress_texts"))
     weekly = pipeline.run_weekly(cfg, state, now, new_events)
+
+    # ---- informe post-cierre (una vez por día hábil, en la primera corrida después de las 16 de NY)
+    try:
+        local = dtskills.mod("entry").to_eastern(dtskills.naive_utc(now))
+        if (cfg.get("report") or {}).get("enabled", True) and local.weekday() < 5 and local.hour >= 16:
+            day = local.date().isoformat()
+            todays = [e for e in events_log.get("events", []) if str(e.get("ts", ""))[:10] >= day] + new_events
+            pats = [{"label": a["label"], **p} for a in assets.values() for p in a.get("patterns") or []]
+            sm = report.summarize(assets, regime_out, list(state["positions"].values()), todays, pats,
+                                  load_json(DATA / "sectors.json", None), day)
+            new_events.append({"type": "info", "info": "report", "kind": "adr", "id": "informe", "label": "Cierre",
+                               "why": "Informe del cierre", "id_ev": f"report:{day}", "text_override": report.text(sm), "report": sm})
+    except Exception as exc:  # noqa: BLE001
+        errors["report"] = str(exc)[:200]
 
     events, fresh = finish_events(state, events_log, new_events, now)
 
