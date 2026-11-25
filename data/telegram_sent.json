@@ -2,6 +2,7 @@
  "sent": {},
  "recent": [],
  "last_run": "2026-11-25T00:42:46.038Z",
- "telegram": false,
- "last_error": null
+ "telegram": true,
+ "last_error": null,
+ "last_test": "2026-11-25T00:43:53.242Z"
 }
