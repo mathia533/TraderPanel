@@ -7,6 +7,7 @@ Panel web de una sola página con el dólar en Argentina, acciones (ADRs y BYMA)
 - **Dólar**: blue, MEP, CCL y oficial con la brecha contra el oficial y la tendencia de los últimos 30 días.
 - **Watchlist** con pestañas para ADRs (USD), BYMA (ARS), cripto y dólares. Podés agregar y quitar activos, y las listas quedan guardadas en el navegador.
 - **Motor de señales con skills de trading** (ver abajo): cada hora, un GitHub Action analiza la watchlist con las skills de [tradermonty/claude-trading-skills](https://github.com/tradermonty/claude-trading-skills) y las reglas de riesgo de [day-trader-skill](https://github.com/jakeschincariol/day-trader-skill), y el panel muestra entradas, salidas, posiciones abiertas y setups preparados.
+- **Ficha del activo**: tocando cualquier activo (watchlist, señales, pipeline u operaciones) se abre su gráfico de velas diarias de 3 o 6 meses con las medias de 20 y 50, volumen y las líneas de entrada, stop, objetivo o gatillo del motor y de las compras registradas por los usuarios. Debajo muestra qué ve el motor, las operaciones de cada uno, las noticias y el pipeline. Las velas las publica el motor en `data/candles.json`; el link `#ficha=adr:YPF` abre la ficha directo.
 - **Señal técnica local** por activo (sólo para lo que el motor no cubre) (compra, venta o neutral, con un puntaje de 0 a 100) calculada sobre cierres diarios:
   - precio contra la media de 20 ruedas (±15)
   - media de 20 contra media de 50 (±15)
@@ -49,6 +50,7 @@ GitHub Action
        └─ data/signals.json  → lo lee el panel (pestaña Pipeline)
           data/events.json   → avisos de entrada/salida/stop/objetivo/cierre 15:55 y noticias, una sola vez
           data/state.json    → posiciones abiertas y avisos emitidos
+          data/candles.json  → velas diarias de la watchlist para la ficha del activo
           data/us_market.json, news_state.json, analyst.json, congress.json, indices.json
 ```
 

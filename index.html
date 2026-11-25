@@ -274,6 +274,54 @@ footer a{color:inherit}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @media (prefers-reduced-motion:no-preference){.flash{animation:fl .9s ease}@keyframes fl{from{background:rgba(34,197,94,.18)}to{background:transparent}}}
+/* Ficha del activo */
+button.nm{all:unset;cursor:pointer;display:block;border-radius:6px}
+button.nm:hover .t{text-decoration:underline;text-underline-offset:3px}
+button.nm:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+button.tk{all:unset;cursor:pointer;font-weight:600;font-size:16px;border-radius:4px}
+button.tk:hover{text-decoration:underline;text-underline-offset:3px}
+button.tk:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+dialog.ficha{width:min(1040px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:0;border:1px solid var(--line2);border-radius:16px;background:var(--card);color:var(--ink);overflow:auto}
+dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
+.fh{display:flex;flex-wrap:wrap;align-items:flex-start;gap:12px 20px;padding:18px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--card);z-index:1}
+.fh h2{font-size:24px;font-weight:700;letter-spacing:-.01em;line-height:1.15}
+.fh .px{display:flex;flex-direction:column;align-items:flex-end;gap:2px;margin-left:auto}
+.fh .px .big{font-size:26px;font-weight:600;line-height:1.1}
+.fh .cl{flex:none}
+.fbody{padding:16px 20px 20px;display:flex;flex-direction:column;gap:16px}
+.ftool{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.fleg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--ink2)}
+.fleg span{display:inline-flex;align-items:center;gap:6px}
+.fleg i{display:inline-block;width:14px;height:0;border-top:2px solid currentColor}
+.fleg i.d{border-top-style:dashed}
+.fread{font-family:var(--mono);font-size:12px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:4px 14px;min-height:18px}
+.fread b{font-weight:500;color:var(--ink)}
+.fchart{position:relative;background:var(--inset);border:1px solid var(--line);border-radius:12px;padding:8px 4px 4px}
+.fchart svg{display:block;width:100%;height:auto;touch-action:pan-y}
+.fchart .gl{stroke:var(--line);stroke-width:1}
+.fchart .ax{fill:var(--mute);font:11px var(--mono)}
+.fchart .cu{stroke:var(--up);fill:var(--up)}
+.fchart .cd{stroke:var(--dn);fill:var(--dn)}
+.fchart .vu{fill:var(--up);opacity:.35}.fchart .vd{fill:var(--dn);opacity:.35}
+.fchart .close{fill:none;stroke:var(--ink2);stroke-width:1.75}
+.fchart .s20{fill:none;stroke:var(--info);stroke-width:1.5}
+.fchart .s50{fill:none;stroke:var(--warn);stroke-width:1.5}
+.fchart .lv{stroke-width:1.5;stroke-dasharray:6 4}
+.fchart .lv.ent,.fchart .lv.usr{stroke:var(--ink2)}.fchart .lv.stp{stroke:var(--dn)}.fchart .lv.tgt{stroke:var(--up)}.fchart .lv.trg{stroke:var(--info)}.fchart .lv.piv{stroke:var(--mute)}
+.fchart .lt{font:600 11px var(--mono)}
+.fchart .lt.ent,.fchart .lt.usr{fill:var(--ink2)}.fchart .lt.stp{fill:var(--dn)}.fchart .lt.tgt{fill:var(--up)}.fchart .lt.trg{fill:var(--info)}.fchart .lt.piv{fill:var(--mute)}
+.fchart .xh{stroke:var(--mute);stroke-width:1;stroke-dasharray:3 3}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.fgrid .kbox h3{font-size:13px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.05em}
+.fkv{display:grid;grid-template-columns:max-content 1fr;gap:4px 12px;font-size:14px;margin:0}
+.fkv dt{color:var(--mute)}.fkv dd{margin:0;color:var(--ink2)}
+.fnote{font-size:12px;color:var(--mute)}
+@media (max-width:760px){
+  dialog.ficha{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;border-radius:0;border:0}
+  .fh{padding:12px 64px 12px 16px}.fh h2{font-size:20px}.fh .px .big{font-size:20px}
+  .fh .cl{position:absolute;top:8px;right:8px}
+  .fbody{padding:12px 16px 24px}
+}
 </style>
 </head>
 <body>
@@ -395,6 +443,28 @@ footer a{color:inherit}
   <a href="#pipeline"><svg class="i" aria-hidden="true"><use href="#i-logo"/></svg>Pipeline</a>
   <a href="#operaciones"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg>Operaciones</a>
 </nav>
+
+<dialog class="ficha" id="ficha" aria-labelledby="fTitle">
+  <div class="fh">
+    <div><p class="lbl" id="fMk"></p><h2 id="fTitle">—</h2><p class="mute" id="fSub" style="font-size:13px"></p></div>
+    <div class="px"><span class="big num" id="fPx">—</span><span id="fCh"></span></div>
+    <span id="fSig"></span>
+    <button class="btn icon cl" type="button" id="fClose" aria-label="Cerrar la ficha"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="fbody">
+    <div class="ftool">
+      <div class="seg" role="group" aria-label="Período" id="fRange">
+        <button type="button" data-n="63" aria-pressed="true">3 meses</button>
+        <button type="button" data-n="126" aria-pressed="false">6 meses</button>
+      </div>
+      <div class="fleg" id="fLeg"></div>
+    </div>
+    <div class="fread" id="fRead" aria-live="polite"></div>
+    <div class="fchart" id="fChart"><p class="empty">Cargando velas…</p></div>
+    <div class="fgrid" id="fInfo"></div>
+    <p class="fnote" id="fSrc"></p>
+  </div>
+</dialog>
 
 <script>
 {
@@ -674,7 +744,7 @@ function renderIndices() {
     if (x.id === '^MERV' && ccl) sub = `En dólares CCL ≈ <span class="num">${fmt(l.last / ccl, 0)}</span>`;
     if (l.stale) sub += ' · <span class="dn">sin actualizar</span>';
     const val = l.unit === '%' ? fmt(l.last, 2) + ' %' : l.unit === 'US$' ? usd(l.last) : fmt(l.last, 2);
-    html += `<tr><td><span class="t">${esc(l.name)}</span><small>${sub}</small></td><td><span class="num" style="font-weight:500">${val}</span><span class="ch-s">${pctHtml(ch)}</span></td><td class="hide-s">${pctHtml(ch)}</td><td class="hide-s">${spark(s ? s.c.slice(-30) : null, 88, 28)}</td><td>${sig}</td><td></td></tr>`;
+    html += `<tr><td><button class="nm" type="button" data-open="${esc('indice:' + x.id)}" aria-label="Ver la ficha de ${esc(l.name)}"><span class="t">${esc(l.name)}</span><small>${sub}</small></button></td><td><span class="num" style="font-weight:500">${val}</span><span class="ch-s">${pctHtml(ch)}</span></td><td class="hide-s">${pctHtml(ch)}</td><td class="hide-s">${spark(s ? s.c.slice(-30) : null, 88, 28)}</td><td>${sig}</td><td></td></tr>`;
   }
   body.innerHTML = html;
   $('wlSum').textContent = `${IDX.items.length} índices · ${ups} suben · ${dns} bajan`;
@@ -703,7 +773,7 @@ function renderTable() {
       const cls = a.label === 'COMPRA' ? 'buy' : a.label === 'VENTA' ? 'sell' : 'flat';
       return `<span class="sig ${cls}" title="${esc(a.tip || 'Puntaje técnico ' + a.score + '/100 (cálculo local)')}">${a.label}<span class="num">${a.score}</span></span>`;
     })();
-    return `<tr><td>${name}</td><td><span class="num" style="font-weight:500">${TABS[tab].fmt(l.last)}</span><span class="ch-s">${pctHtml(ch)}</span></td><td class="hide-s">${pctHtml(ch)}</td><td class="hide-s">${spark(s ? s.c.slice(-30) : null, 88, 28)}</td><td>${sig}</td><td>${tab === 'dolar' ? '' : actions(id)}</td></tr>`;
+    return `<tr><td><button class="nm" type="button" data-open="${esc(tab + ':' + id)}" aria-label="Ver la ficha de ${esc(tab === 'cripto' ? l.sym : tab === 'dolar' ? l.name : id)}">${name}</button></td><td><span class="num" style="font-weight:500">${TABS[tab].fmt(l.last)}</span><span class="ch-s">${pctHtml(ch)}</span></td><td class="hide-s">${pctHtml(ch)}</td><td class="hide-s">${spark(s ? s.c.slice(-30) : null, 88, 28)}</td><td>${sig}</td><td>${tab === 'dolar' ? '' : actions(id)}</td></tr>`;
   }).join('');
   $('wlSum').textContent = `${ids.length} activos · ${ups} suben · ${dns} bajan`;
 }
@@ -767,12 +837,12 @@ function renderEngine() {
   const list = items.filter(i => filter === 'all' ? ['in', 'out', 'upd'].includes(i.f) : i.f === filter).sort((a, b) => b.t - a.t || b.score - a.score);
   const card = i => {
     if (i.f === 'pos') return `<article class="ev">
-      <div class="h"><span class="tag pos">ABIERTA</span><span class="tk">${esc(i.label)}</span><span class="mute" style="font-size:13px">${MKN[i.kind]}</span><span class="setup">${SETUP[i.setup]}</span><span style="flex:1"></span><span class="num ${i.r_now >= 0 ? 'up' : 'dn'}">${i.r_now >= 0 ? '+' : '−'}${fmt(Math.abs(i.r_now), 1)}R</span></div>
+      <div class="h"><span class="tag pos">ABIERTA</span><button class="tk" type="button" data-open="${esc(keyFromLabel(i.kind, i.label))}">${esc(i.label)}</button><span class="mute" style="font-size:13px">${MKN[i.kind]}</span><span class="setup">${SETUP[i.setup]}</span><span style="flex:1"></span><span class="num ${i.r_now >= 0 ? 'up' : 'dn'}">${i.r_now >= 0 ? '+' : '−'}${fmt(Math.abs(i.r_now), 1)}R</span></div>
       <p class="why">${esc(i.why)}</p>
       <div class="lv"><div><span>Entrada</span><b>${px(i.entry)}</b></div><div><span>Último</span><b>${px(i.last)}</b></div><div><span>Stop</span><b class="dn">${px(i.stop)}</b></div><div><span>Objetivo</span><b class="up">${px(i.target)}</b></div></div>
       <p class="tg mute">Tamaño sugerido ${fmt(i.units, i.units % 1 ? 4 : 0)} (${money(i.kind, i.notional)}), riesgo ${money(i.kind, i.max_loss)} · ${i.sessions || 0} ruedas</p></article>`;
     if (i.f === 'watch') return `<article class="ev">
-      <div class="h"><span class="tag watch">${i.blocked ? 'BLOQUEADA' : 'PREPARADA'}</span><span class="tk">${esc(i.label)}</span><span class="mute" style="font-size:13px">${MKN[i.kind]}</span><span class="setup">${SETUP[i.setup]}</span><span style="flex:1"></span><span class="num mute">${fmt(i.score, 0)}/100</span></div>
+      <div class="h"><span class="tag watch">${i.blocked ? 'BLOQUEADA' : 'PREPARADA'}</span><button class="tk" type="button" data-open="${esc(i.kind + ':' + i.id)}">${esc(i.label)}</button><span class="mute" style="font-size:13px">${MKN[i.kind]}</span><span class="setup">${SETUP[i.setup]}</span><span style="flex:1"></span><span class="num mute">${fmt(i.score, 0)}/100</span></div>
       <p class="why">${esc(i.why)}</p>
       <div class="lv"><div><span>Gatillo</span><b>${px(i.trigger)}</b></div><div><span>Stop</span><b class="dn">${px(i.stop)}</b></div><div><span>Riesgo</span><b>${i.trigger && i.stop ? fmt((1 - i.stop / i.trigger) * 100, 1) + ' %' : '—'}</b></div><div><span>Puntaje</span><b>${fmt(i.score, 0)}</b></div></div></article>`;
     const tag = i.f === 'in' ? '<span class="tag in">ENTRADA</span>' : i.f === 'out' ? '<span class="tag out">SALIDA</span>' : '<span class="tag upd">AJUSTE</span>';
@@ -782,7 +852,7 @@ function renderEngine() {
       ? `<div><span>Salida</span><b>${px(i.price)}</b></div><div><span>Entrada</span><b>${px(i.entry)}</b></div><div><span>Resultado</span><b class="${i.pnl_pct >= 0 ? 'up' : 'dn'}">${i.pnl_pct >= 0 ? '+' : '−'}${fmt(Math.abs(i.pnl_pct), 1)} %</b></div><div><span>R</span><b>${i.r >= 0 ? '+' : '−'}${fmt(Math.abs(i.r), 1)}</b></div>`
       : `<div><span>Precio</span><b>${px(i.price)}</b></div><div><span>Stop nuevo</span><b class="dn">${px(i.stop)}</b></div><div></div><div></div>`;
     return `<article class="ev">
-      <div class="h">${tag}<span class="tk">${esc(i.label)}</span><span class="mute" style="font-size:13px">${MKN[i.kind]}</span><span class="setup">${SETUP[i.setup] || ''}</span><span style="flex:1"></span><span class="num mute" style="font-size:12px">${when(i.ts)}</span></div>
+      <div class="h">${tag}<button class="tk" type="button" data-open="${esc(keyFromLabel(i.kind, i.label))}">${esc(i.label)}</button><span class="mute" style="font-size:13px">${MKN[i.kind]}</span><span class="setup">${SETUP[i.setup] || ''}</span><span style="flex:1"></span><span class="num mute" style="font-size:12px">${when(i.ts)}</span></div>
       <p class="why">${esc(i.why)}</p><div class="lv">${lv}</div>${tgLine(i)}</article>`;
   };
   const EMPTY = {all: 'Sin entradas ni salidas en los últimos 7 días. El motor revisa la watchlist cada hora con el mercado abierto.', in: 'No hubo entradas en los últimos 7 días.', out: 'No hubo salidas en los últimos 7 días.', pos: 'No hay posiciones abiertas.', watch: 'No hay setups cerca de dispararse.'};
@@ -830,7 +900,7 @@ function candHtml() {
   $('plNc').textContent = as.length;
   const VER = {PASS: 'PASS · se abrió', BLOCK: 'BLOCK', WATCH: 'PREPARADA'};
   const cards = as.map(a => `<article class="pcard">
-      <div class="h"><span class="verdict ${esc(a.pipeline.verdict)}">${VER[a.pipeline.verdict] || esc(a.pipeline.verdict)}</span><span class="tk">${esc(a.label)}</span><span class="mute" style="font-size:13px">${MKN[a.kind]}</span><span class="setup">${SETUP[a.pipeline.setup] || ''}</span><span style="flex:1"></span><span class="num mute">${money(a.kind, a.last)}</span></div>
+      <div class="h"><span class="verdict ${esc(a.pipeline.verdict)}">${VER[a.pipeline.verdict] || esc(a.pipeline.verdict)}</span><button class="tk" type="button" data-open="${esc(a.kind + ':' + a.id)}">${esc(a.label)}</button><span class="mute" style="font-size:13px">${MKN[a.kind]}</span><span class="setup">${SETUP[a.pipeline.setup] || ''}</span><span style="flex:1"></span><span class="num mute">${money(a.kind, a.last)}</span></div>
       ${stepsHtml(a.pipeline.stages)}</article>`).join('');
   const scan = Object.values(ENG.assets || {}).filter(a => a.scanner?.tags?.length && !a.pipeline?.setup);
   const scanHtml = scan.length ? `<div><p class="legend" style="margin-bottom:6px">Escáner diario (trader-scanner): otros setups</p><div class="tbl"><table class="ptbl"><thead><tr><th scope="col">Activo</th><th scope="col">Setups</th><th scope="col">RSI</th></tr></thead><tbody>${scan.map(a => `<tr><td><span class="t">${esc(a.label)}</span><small>${MKN[a.kind]}</small></td><td style="text-align:left">${esc(a.scanner.labels.join(', '))}</td><td class="num">${fmt(a.scanner.rsi, 1)}</td></tr>`).join('')}</tbody></table></div></div>` : '';
@@ -1008,12 +1078,12 @@ function renderOps() {
   $('opOpen').innerHTML = open.length ? open.map(t => {
     const c = opCur(t.kind), stop = t.stop_history?.length ? t.stop_history.at(-1).stop : t.stop, now = opNow(t);
     const ch = now ? (now / t.entry - 1) * 100 : null, u = me && me !== t.who ? sizeFor(r?.[t.kind], t.entry, t.stop) : null;
-    return `<li><div class="l1"><span class="tag in">COMPRA</span><b>${esc(t.asset)}</b><span class="mute">${name(t.who)}</span><span style="flex:1"></span>${ch != null ? `<span class="num ${ch >= 0 ? 'up' : 'dn'}">${ch >= 0 ? '+' : '−'}${Math.abs(ch).toFixed(1).replace('.', ',')} %</span>` : ''}</div>
+    return `<li><div class="l1"><span class="tag in">COMPRA</span><button class="tk" type="button" style="font-size:15px" data-open="${esc(t.kind + ':' + t.asset)}">${esc(t.asset)}</button><span class="mute">${name(t.who)}</span><span style="flex:1"></span>${ch != null ? `<span class="num ${ch >= 0 ? 'up' : 'dn'}">${ch >= 0 ? '+' : '−'}${Math.abs(ch).toFixed(1).replace('.', ',')} %</span>` : ''}</div>
       <div class="l2 num">${c} ${px(t.entry)} · stop ${px(stop)}${t.target ? ` · obj. ${px(t.target)}` : ''} · ${new Date(t.opened_at).toLocaleDateString('es-AR', {timeZone: TZ, day: '2-digit', month: '2-digit'})}${u ? ` · a vos: ${u.toLocaleString('es-AR', {maximumFractionDigits: 6})}` : ''}</div>${t.note ? `<div class="l2">${esc(t.note)}</div>` : ''}</li>`;
   }).join('') : '<li class="mute">Nadie tiene operaciones abiertas.</li>';
   $('opClosed').innerHTML = closed.length ? closed.map(t => {
     const pnl = (t.exit / t.entry - 1) * 100;
-    return `<li><div class="l1"><span class="tag out">VENTA</span><b>${esc(t.asset)}</b><span class="mute">${name(t.who)}</span><span style="flex:1"></span><span class="num ${pnl >= 0 ? 'up' : 'dn'}">${pnl >= 0 ? '+' : '−'}${Math.abs(pnl).toFixed(1).replace('.', ',')} %</span></div>
+    return `<li><div class="l1"><span class="tag out">VENTA</span><button class="tk" type="button" style="font-size:15px" data-open="${esc(t.kind + ':' + t.asset)}">${esc(t.asset)}</button><span class="mute">${name(t.who)}</span><span style="flex:1"></span><span class="num ${pnl >= 0 ? 'up' : 'dn'}">${pnl >= 0 ? '+' : '−'}${Math.abs(pnl).toFixed(1).replace('.', ',')} %</span></div>
       <div class="l2 num">${opCur(t.kind)} ${px(t.entry)} → ${px(t.exit)} · ${new Date(t.closed_at).toLocaleDateString('es-AR', {timeZone: TZ, day: '2-digit', month: '2-digit'})}</div></li>`;
   }).join('') : '<li class="mute">Todavía no hay operaciones cerradas.</li>';
 }
@@ -1029,6 +1099,207 @@ async function loadOps() {
   renderOps();
 }
 $('opMe').addEventListener('change', () => { store.set('tp_me', $('opMe').value); renderOps(); });
+
+/* ---------- Ficha del activo: velas, niveles del motor y de los usuarios ---------- */
+// Velas: data/candles.json (las escribe el motor con Yahoo). Si el activo no está en la
+// watchlist del motor: data912 para BYMA (OHLC) o los cierres que ya tiene el panel.
+let CANDLES = null, candAt = 0, fState = null;
+const fCache = {};
+async function loadCandles() {
+  if (CANDLES && Date.now() - candAt < 10 * 60e3) return CANDLES;
+  const j = await repoJSON('data/candles.json');
+  if (j?.items) { CANDLES = j; candAt = Date.now(); }
+  return CANDLES;
+}
+const SRCN = {yahoo: 'Yahoo Finance', data912: 'data912', coingecko: 'CoinGecko', offline: 'archivo local'};
+async function fichaBars(kind, id) {
+  const k = `${kind}:${id}`;
+  const c = kind === 'dolar' || kind === 'indice' ? null : (await loadCandles())?.items?.[k];
+  if (c?.bars?.length) return {bars: c.bars, ohlc: c.ohlc, src: `${SRCN[c.src] || c.src}, vía el motor de señales (${when(CANDLES.generated_at)})`};
+  if (fCache[k]) return fCache[k];
+  if (kind === 'byma') {
+    try {
+      const j = await getJSON(`https://data912.com/historical/stocks/${encodeURIComponent(id)}`);
+      if (Array.isArray(j) && j.length) return fCache[k] = {bars: j.slice(-200).map(r => [r.date, +r.o, +r.h, +r.l, +r.c, +r.v || 0]), ohlc: true, src: 'data912 (velas diarias)'};
+    } catch {}
+  }
+  if (!H[k]) { try { H[k] = await hist(kind, id); } catch {} }
+  const s = series(kind, id);
+  if (s?.c?.length) return fCache[k] = {bars: s.d.map((d, i) => [d, s.c[i], s.c[i], s.c[i], s.c[i], 0]), ohlc: false, src: 'cierres diarios (sin apertura, máximo ni mínimo)'};
+  return null;
+}
+// Actualiza la última vela con el precio en vivo si es de hoy
+function withLive(kind, id, bars) {
+  const l = live[kind]?.[id]?.last; if (!(l > 0) || !bars.length) return bars;
+  const b = bars.at(-1).slice();
+  if (b[0] !== today()) return bars;
+  b[4] = l; b[2] = Math.max(b[2], l); b[3] = Math.min(b[3], l);
+  return bars.slice(0, -1).concat([b]);
+}
+const lastStop = t => t.stop_history?.length ? t.stop_history.at(-1).stop : t.stop;
+function fichaLevels(kind, id) {
+  const a = engAsset(kind, id), L = [];
+  const pos = a?.position;
+  if (pos) L.push({v: pos.entry, t: 'Entrada', c: 'ent'}, {v: pos.stop, t: 'Stop', c: 'stp'}, {v: pos.target, t: 'Objetivo', c: 'tgt'});
+  else {
+    const tk = a?.pipeline?.stages?.find(s => s.key === 'ticket')?.ticket;
+    const w = (ENG?.watch || []).find(x => x.kind === kind && x.id === id);
+    if (tk) L.push({v: tk.entry, t: 'Plan', c: 'ent'}, {v: tk.stop, t: 'Stop', c: 'stp'}, {v: tk.target, t: 'Objetivo', c: 'tgt'});
+    else if (w) L.push({v: w.trigger, t: 'Gatillo', c: 'trg'}, {v: w.stop, t: 'Stop', c: 'stp'});
+    else if (a?.vcp?.pivot) L.push({v: a.vcp.pivot, t: 'Pivote VCP', c: 'piv'});
+  }
+  for (const [who, list] of Object.entries(opTrades)) for (const t of list) {
+    if (t.exit != null || t.kind !== kind || t.asset !== id) continue;
+    const n = opUsers[who]?.name || who;
+    L.push({v: t.entry, t: `Compra ${n}`, c: 'usr'}, {v: lastStop(t), t: `Stop ${n}`, c: 'stp'});
+    if (t.target) L.push({v: t.target, t: `Obj. ${n}`, c: 'tgt'});
+  }
+  return L.filter(l => l.v > 0);
+}
+function smaArr(c, k) { const o = []; let s = 0; for (let i = 0; i < c.length; i++) { s += c[i]; if (i >= k) s -= c[i - k]; o.push(i >= k - 1 ? s / k : null); } return o; }
+const fDate = d => { const [y, m, dd] = d.split('-'); return `${dd}/${m}`; };
+const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+function chartSvg(st) {
+  const all = st.bars, n = Math.min(st.n, all.length), off = all.length - n, vis = all.slice(off);
+  const closes = all.map(b => b[4]), s20 = smaArr(closes, 20).slice(off), s50 = smaArr(closes, 50).slice(off);
+  const W = st.w || 760, HC = W < 520 ? 220 : 300, HV = st.ohlc && vis.some(b => b[5] > 0) ? (W < 520 ? 44 : 60) : 0, PL = 6, PR = 64, PT = 10, GAP = HV ? 10 : 0, PB = 22, H = PT + HC + GAP + HV + PB;
+  let lo = Math.min(...vis.map(b => b[3])), hi = Math.max(...vis.map(b => b[2]));
+  const span = hi - lo || hi * 0.02 || 1;
+  // Niveles cercanos al rango visible entran en la escala; los lejanos se marcan en el borde
+  const lvls = st.levels.map(l => ({...l, near: l.v >= lo - span * 0.6 && l.v <= hi + span * 0.6}));
+  for (const l of lvls) if (l.near) { lo = Math.min(lo, l.v); hi = Math.max(hi, l.v); }
+  const pad = (hi - lo || 1) * 0.04; lo -= pad; hi += pad;
+  const cw = (W - PL - PR) / n, bw = Math.max(1, Math.min(10, cw * 0.62));
+  const x = i => PL + cw * (i + 0.5), y = v => PT + (hi - v) / (hi - lo) * HC;
+  const vmax = Math.max(1, ...vis.map(b => b[5])), yv = v => PT + HC + GAP + HV - v / vmax * HV;
+  // Etiquetas de los niveles en el eje (valor con su color), sin pisarse; la grilla cede su lugar
+  let lv = '', used = [];
+  for (const l of lvls.filter(l => l.near).sort((a, b) => b.v - a.v)) {
+    const yy = y(l.v); lv += `<line class="lv ${l.c}" x1="${PL}" x2="${W - PR}" y1="${yy.toFixed(1)}" y2="${yy.toFixed(1)}"><title>${esc(l.t)} ${px(l.v)}</title></line>`;
+    let ty = yy + 4; while (used.some(u => Math.abs(u - ty) < 13)) ty += 13; used.push(ty);
+    lv += `<text class="lt ${l.c}" x="${W - PR + 6}" y="${ty.toFixed(1)}">${px(l.v)}</text>`;
+  }
+  let g = '';
+  for (let k = 0; k <= 4; k++) {
+    const v = lo + (hi - lo) * k / 4, yy = y(v).toFixed(1);
+    g += `<line class="gl" x1="${PL}" x2="${W - PR}" y1="${yy}" y2="${yy}"/>`;
+    if (!used.some(u => Math.abs(u - (+yy + 4)) < 13)) g += `<text class="ax" x="${W - PR + 6}" y="${(+yy + 4).toFixed(1)}">${px(v)}</text>`;
+  }
+  let mo = null;
+  vis.forEach((b, i) => { const m = b[0].slice(5, 7); if (m !== mo) { if (mo !== null) g += `<text class="ax" x="${x(i).toFixed(1)}" y="${H - 6}" text-anchor="middle">${MES[+m - 1]}</text>`; mo = m; } });
+  let body = '';
+  if (st.ohlc) {
+    vis.forEach((b, i) => {
+      const [, o, h, l, c, v] = b, cls = c >= o ? 'cu' : 'cd', xx = x(i).toFixed(1);
+      const y1 = y(Math.max(o, c)), y2 = y(Math.min(o, c));
+      body += `<line class="${cls}" x1="${xx}" x2="${xx}" y1="${y(h).toFixed(1)}" y2="${y(l).toFixed(1)}" stroke-width="1"/><rect class="${cls}" x="${(x(i) - bw / 2).toFixed(1)}" y="${y1.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(1, y2 - y1).toFixed(1)}"/>`;
+      if (HV && v > 0) body += `<rect class="${c >= o ? 'vu' : 'vd'}" x="${(x(i) - bw / 2).toFixed(1)}" y="${yv(v).toFixed(1)}" width="${bw.toFixed(1)}" height="${(PT + HC + GAP + HV - yv(v)).toFixed(1)}"/>`;
+    });
+  } else body = `<polyline class="close" points="${vis.map((b, i) => `${x(i).toFixed(1)},${y(b[4]).toFixed(1)}`).join(' ')}"/>`;
+  const line = (arr, cls) => { const p = arr.map((v, i) => v == null ? null : `${x(i).toFixed(1)},${y(v).toFixed(1)}`).filter(Boolean); return p.length > 1 ? `<polyline class="${cls}" points="${p.join(' ')}"/>` : ''; };
+  const ma = st.ma ? line(s20, 's20') + line(s50, 's50') : '';
+  const last = vis.at(-1), first = vis[0], chg = (last[4] / first[4] - 1) * 100;
+  const label = `Velas diarias de ${n} ruedas: de ${px(first[4])} a ${px(last[4])} (${chg >= 0 ? '+' : '−'}${fmt(Math.abs(chg), 1)} %). ${lvls.length ? 'Niveles: ' + lvls.map(l => `${l.t} ${px(l.v)}`).join(', ') + '.' : ''}`;
+  st.geo = {x0: PL, cw, n, off, W, H, top: PT, bot: PT + HC + GAP + HV};
+  st.far = new Set(st.levels.filter((l, i) => !lvls[i].near));
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)}">${g}${HV ? `<line class="gl" x1="${PL}" x2="${W - PR}" y1="${PT + HC + GAP / 2}" y2="${PT + HC + GAP / 2}"/>` : ''}${ma}${body}${lv}<line class="xh" id="fXh" x1="-10" x2="-10" y1="${PT}" y2="${PT + HC + GAP + HV}"/></svg>`;
+}
+function fRead(i) {
+  const st = fState; if (!st?.geo) return;
+  const all = st.bars, idx = st.geo.off + i, b = all[idx]; if (!b) return;
+  const prev = all[idx - 1], ch = prev ? (b[4] / prev[4] - 1) * 100 : null;
+  const v = b[5] ? `<span>Vol <b>${b[5] >= 1e6 ? fmt(b[5] / 1e6, 1) + ' M' : b[5] >= 1e3 ? fmt(b[5] / 1e3, 0) + ' k' : fmt(b[5], 0)}</b></span>` : '';
+  $('fRead').innerHTML = `<span><b>${fDate(b[0])}/${b[0].slice(2, 4)}</b></span>${st.ohlc ? `<span>A <b>${px(b[1])}</b></span><span>M <b>${px(b[2])}</b></span><span>m <b>${px(b[3])}</b></span>` : ''}<span>C <b>${px(b[4])}</b></span>${ch != null ? `<span>${pctHtml(ch)}</span>` : ''}${v}`;
+  const xh = document.getElementById('fXh'); if (xh) { const xx = st.geo.x0 + st.geo.cw * (i + 0.5); xh.setAttribute('x1', xx); xh.setAttribute('x2', xx); }
+}
+function drawChart() {
+  const st = fState, box = $('fChart');
+  for (const b of $('fRange').querySelectorAll('button')) b.setAttribute('aria-pressed', +b.dataset.n === st.n);
+  if (!st.bars?.length) { box.innerHTML = `<p class="empty">No hay velas para este activo todavía.</p>`; $('fRead').innerHTML = ''; return; }
+  st.w = Math.round(Math.max(340, Math.min(960, box.clientWidth - 8)));
+  box.innerHTML = chartSvg(st);
+  fRead(Math.min(st.n, st.bars.length) - 1);
+  const svg = box.querySelector('svg');
+  const pick = e => { const r = svg.getBoundingClientRect(), xs = (e.clientX - r.left) / r.width * st.geo.W; const i = Math.floor((xs - st.geo.x0) / st.geo.cw); if (i >= 0 && i < st.geo.n) fRead(i); };
+  svg.addEventListener('pointermove', pick); svg.addEventListener('pointerdown', pick);
+  svg.addEventListener('pointerleave', () => fRead(st.geo.n - 1));
+  const leg = [st.ohlc ? '' : '<span><i></i>Cierre</span>', st.ma ? '<span style="color:var(--info)"><i></i>Media 20</span><span style="color:var(--warn)"><i></i>Media 50</span>' : ''];
+  const seen = new Set();
+  for (const l of st.levels) { const k = l.c + l.t; if (seen.has(k)) continue; seen.add(k); const col = {ent: 'var(--ink2)', usr: 'var(--ink2)', stp: 'var(--dn)', tgt: 'var(--up)', trg: 'var(--info)', piv: 'var(--mute)'}[l.c]; leg.push(`<span style="color:${col}"><i class="d"></i>${esc(l.t)} <b class="num">${px(l.v)}</b>${st.far?.has(l) ? ' (fuera del gráfico)' : ''}</span>`); }
+  $('fLeg').innerHTML = leg.join('');
+}
+function fichaInfo(kind, id) {
+  const a = engAsset(kind, id), out = [];
+  if (a) {
+    const rows = [['Señal', `${esc(a.signal)} · ${fmt(a.score, 0)}/100`]];
+    if (a.vcp?.rating) rows.push(['VCP', `${esc(a.vcp.rating)}${a.vcp.state ? ' · ' + esc(a.vcp.state) : ''}${a.vcp.pivot ? ' · pivote ' + px(a.vcp.pivot) : ''}`]);
+    if (a.burst?.state) rows.push(['Momentum Burst', `${esc(a.burst.rating || '')} · ${esc(a.burst.state.replace(/_/g, ' ').toLowerCase())}`]);
+    if (a.sma50) rows.push(['Medias', `50: ${px(a.sma50)}${a.sma200 ? ' · 200: ' + px(a.sma200) : ''}${a.stage4 ? ' · <span class="dn">tendencia bajista</span>' : ''}`]);
+    if (a.scanner?.labels?.length) rows.push(['Escáner', esc(a.scanner.labels.join(', '))]);
+    const pos = a.position;
+    if (pos) rows.push(['Posición', `abierta en ${px(pos.entry)} · ${pos.r_now >= 0 ? '+' : '−'}${fmt(Math.abs(pos.r_now || 0), 1)}R`]);
+    out.push(`<div class="kbox"><h3>Qué ve el motor</h3><dl class="fkv">${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl><p class="fnote">Analizado ${when(ENG.generated_at)}</p></div>`);
+  } else if (kind !== 'dolar') {
+    const l = analyze(kind, id);
+    out.push(`<div class="kbox"><h3>Señal técnica</h3><p style="font-size:14px;color:var(--ink2)">${l ? `${l.label} · ${l.score}/100 (cálculo local: medias de 20 y 50, RSI y momentum).` : 'Sin datos suficientes.'} Este activo no está en la watchlist del motor.</p></div>`);
+  }
+  const ops = Object.entries(opTrades).flatMap(([w, list]) => list.filter(t => t.kind === kind && t.asset === id).map(t => ({...t, who: w})))
+    .sort((x, y) => (y.opened_at || '').localeCompare(x.opened_at || '')).slice(0, 6);
+  if (ops.length) out.push(`<div class="kbox"><h3>Operaciones de los usuarios</h3><ul class="tglist oplist">${ops.map(t => {
+    const n = esc(opUsers[t.who]?.name || t.who);
+    if (t.exit != null) { const p = (t.exit / t.entry - 1) * 100; return `<li><div class="l1"><span class="tag out">VENTA</span><span class="mute">${n}</span><span style="flex:1"></span><span class="num ${p >= 0 ? 'up' : 'dn'}">${p >= 0 ? '+' : '−'}${fmt(Math.abs(p), 1)} %</span></div><div class="l2 num">${px(t.entry)} → ${px(t.exit)}</div></li>`; }
+    return `<li><div class="l1"><span class="tag in">COMPRA</span><span class="mute">${n}</span></div><div class="l2 num">${px(t.entry)} · stop ${px(lastStop(t))}${t.target ? ' · obj. ' + px(t.target) : ''}</div>${t.note ? `<div class="l2">${esc(t.note)}</div>` : ''}</li>`;
+  }).join('')}</ul></div>`);
+  const lbl = a?.label || id;
+  const news = (ENG?.news || []).filter(x => String(x.ticker).toUpperCase() === String(lbl).toUpperCase()).slice(0, 5);
+  if (news.length) out.push(`<div class="kbox"><h3>Noticias</h3><ul class="nlist">${news.map(i => `<li><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(i.title)}</a><span class="m"><span>${i.time ? when(i.time) : ''}</span><span>${esc(i.source)}</span></span></li>`).join('')}</ul></div>`);
+  if (a?.pipeline?.stages?.length) out.push(`<div class="pcard" style="grid-column:1/-1"><div class="h"><span class="verdict ${esc(a.pipeline.verdict)}">${esc(a.pipeline.verdict)}</span><span class="tk" style="font-weight:600">Pipeline de las skills</span><span class="setup">${SETUP[a.pipeline.setup] || ''}</span></div>${stepsHtml(a.pipeline.stages)}</div>`);
+  return out.join('');
+}
+// Clave del activo a partir de un evento del motor (que trae kind y label)
+function keyFromLabel(kind, label) {
+  for (const [k, a] of Object.entries(ENG?.assets || {})) if (a.kind === kind && a.label === label) return k;
+  return `${kind}:${label}`;
+}
+async function openFicha(key, push = true) {
+  const i = key.indexOf(':'); if (i < 0) return;
+  const kind = key.slice(0, i), id = key.slice(i + 1);
+  if (!['adr', 'byma', 'cripto', 'dolar', 'indice'].includes(kind)) return;
+  const a = engAsset(kind, id), l = live[kind]?.[id];
+  const label = kind === 'cripto' ? (l?.sym || a?.label || id) : kind === 'dolar' ? (l?.name || id) : kind === 'indice' ? (l?.name || id) : id;
+  $('fMk').textContent = {adr: 'ADR · Nueva York · US$', byma: 'BYMA · pesos', cripto: 'Cripto · US$', dolar: 'Dólar · pesos por dólar', indice: 'Índice'}[kind];
+  $('fTitle').textContent = label;
+  $('fSub').textContent = kind === 'cripto' ? (l?.name || id) : kind === 'indice' ? (l?.desc || '') : kind === 'dolar' ? (l?.sub || '') : (l?.bid ? `Punta ${px(l.bid)} / ${px(l.ask)}` : '');
+  const last = l?.last ?? a?.last;
+  $('fPx').textContent = last == null ? '—' : (kind === 'byma' || kind === 'dolar' ? pesos(last) : kind === 'indice' ? fmt(last, 2) : usd(last));
+  $('fCh').innerHTML = pctHtml(dayChange(kind, id));
+  const sg = a ? {label: a.signal, score: a.score} : analyze(kind, id);
+  $('fSig').innerHTML = sg ? `<span class="sig ${sg.label === 'COMPRA' ? 'buy' : sg.label === 'VENTA' ? 'sell' : 'flat'}">${esc(sg.label)}<span class="num">${sg.score}</span></span>` : '';
+  $('fInfo').innerHTML = fichaInfo(kind, id);
+  $('fChart').innerHTML = '<p class="empty">Cargando velas…</p>'; $('fRead').innerHTML = ''; $('fLeg').innerHTML = ''; $('fSrc').textContent = '';
+  const dlg = $('ficha');
+  if (!dlg.open) dlg.showModal();
+  if (push) history.replaceState(null, '', '#ficha=' + encodeURIComponent(key));
+  fState = {key, kind, id, n: store.get('tp_frange', 63), bars: null, ohlc: true, ma: kind !== 'dolar', levels: fichaLevels(kind, id)};
+  const r = await fichaBars(kind, id);
+  if (fState?.key !== key) return;
+  fState.bars = r ? withLive(kind, id, r.bars) : [];
+  fState.ohlc = !!r?.ohlc;
+  $('fSrc').textContent = r ? `Velas: ${r.src}. Datos con demora; no es asesoramiento financiero.` : '';
+  drawChart();
+}
+function closeFicha() { if ($('ficha').open) $('ficha').close(); }
+$('ficha').addEventListener('close', () => { fState = null; if (location.hash.startsWith('#ficha=')) history.replaceState(null, '', location.pathname + location.search); });
+$('ficha').addEventListener('click', e => { if (e.target === $('ficha')) closeFicha(); });
+$('fClose').addEventListener('click', closeFicha);
+let fRz = 0; window.addEventListener('resize', () => { clearTimeout(fRz); fRz = setTimeout(() => { if (fState?.bars?.length) drawChart(); }, 150); });
+$('fRange').addEventListener('click', e => { const b = e.target.closest('[data-n]'); if (!b || !fState) return; fState.n = +b.dataset.n; store.set('tp_frange', fState.n); if (fState.bars) drawChart(); });
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-open]'); if (!b) return;
+  e.preventDefault(); openFicha(b.dataset.open);
+});
+const hashFicha = () => { const m = location.hash.match(/^#ficha=(.+)$/); if (m) openFicha(decodeURIComponent(m[1]), false); };
+window.addEventListener('hashchange', hashFicha);
 
 // Tema
 function applyTheme(t) {
@@ -1062,7 +1333,7 @@ for (const kind of ['dolar', 'adr', 'byma', 'cripto']) {
 }
 render();
 $('refresh').addEventListener('click', all);
-all();
+all().then(hashFicha);
 renderTelegram(); loadTelegram(); loadOps(); if (plTab === 'sec') loadSec();
 setInterval(() => { if (!document.hidden) { loadTelegram(); loadOps(); } }, 5 * 60000);
 setInterval(() => { if (!document.hidden) all(); }, 60000);

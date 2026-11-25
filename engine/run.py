@@ -87,6 +87,37 @@ def get_bars(kind: str, ident: str, offline: Path | None):
     return sources.fetch_history(kind, ident)
 
 
+CANDLES_KEEP = 180   # 6 meses visibles + 50 ruedas para la media de 50
+
+
+def candles_payload(fetched: dict, now) -> dict:
+    """Velas diarias de la watchlist para la ficha del activo en el panel (data/candles.json).
+    Cada vela es [fecha, apertura, máximo, mínimo, cierre, volumen], de la más vieja a la más nueva,
+    e incluye la vela en curso si el mercado está abierto."""
+    items = {}
+    for key, (bars, src) in fetched.items():
+        rows = []
+        for b in reversed(bars[:CANDLES_KEEP]):
+            try:
+                c = float(b["close"])
+            except (KeyError, TypeError, ValueError):
+                continue
+            ref = c
+            rows.append([str(b["date"])[:10], rnd(b.get("open", c), ref), rnd(b.get("high", c), ref),
+                         rnd(b.get("low", c), ref), rnd(c, ref), int(float(b.get("volume") or 0))])
+        if rows:
+            flat = all(r[2] == r[3] for r in rows[-20:])
+            items[key] = {"src": src, "ohlc": not flat, "bars": rows}
+    return {"generated_at": now.isoformat(), "items": items}
+
+
+def save_compact(p: Path, obj):
+    p.parent.mkdir(parents=True, exist_ok=True)
+    tmp = p.with_suffix(".tmp")
+    tmp.write_text(json.dumps(obj, separators=(",", ":"), ensure_ascii=False, default=_num))
+    tmp.replace(p)
+
+
 def synthetic_index(series: list[list[dict]]) -> list[dict]:
     """Índice igual ponderado (base 100) con las fechas que comparten los activos."""
     series = [b for b in series if len(b) >= 200]
@@ -171,6 +202,12 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None, intraday_fetch=Non
                 errors[f"{kind}:{ident}"] = str(exc)[:200]
             if not offline:
                 time.sleep(0.3)  # no saturar Yahoo
+
+    # Velas para la ficha del activo del panel (no cambia el análisis)
+    try:
+        save_compact(DATA / "candles.json", candles_payload(fetched, now))
+    except Exception as exc:
+        errors["candles"] = str(exc)[:200]
 
     # Índices de referencia y filtro de mercado
     bench, bench_src = {}, {}
