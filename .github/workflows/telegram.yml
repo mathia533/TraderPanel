@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       prueba:
-        description: "Mandar solo un mensaje de prueba al canal"
+        description: "Solo mandar un mensaje de prueba (sin revisar señales)"
         type: boolean
         default: false
 
@@ -47,7 +47,8 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: node alerts/send.mjs
+        # A mano, si no hay nada nuevo, manda igual un resumen para que se vea en el canal
+        run: node alerts/send.mjs ${{ github.event_name == 'workflow_dispatch' && '--report' || '' }}
 
       - name: Guardar registro de enviados
         if: always()

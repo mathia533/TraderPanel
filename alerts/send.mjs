@@ -7,6 +7,7 @@
 //   node alerts/send.mjs --dry-run      muestra qué mandaría, sin enviar ni guardar
 //   node alerts/send.mjs --test         manda un mensaje de prueba y termina
 //   node alerts/send.mjs --send-backlog en la primera corrida manda también lo que ya había
+//   node alerts/send.mjs --report       si no hay alertas nuevas, manda un resumen al canal igual
 // Variables: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID (secrets del repo). Opción: --data-dir <carpeta>.
 
 import {readFile, writeFile, mkdir} from 'node:fs/promises';
@@ -19,6 +20,7 @@ const opt = (name, def) => { const i = args.indexOf(name); return i >= 0 ? args[
 const DRY = args.includes('--dry-run');
 const TEST = args.includes('--test');
 const BACKLOG = args.includes('--send-backlog');
+const REPORT = args.includes('--report'); // corrida manual: avisar aunque no haya nada nuevo
 const DATA = resolve(opt('--data-dir', join(ROOT, 'data')));
 const CONFIG = resolve(opt('--config', join(ROOT, 'alerts', 'telegram.json')));
 const TOKEN = (process.env.TELEGRAM_BOT_TOKEN || '').trim();
@@ -133,6 +135,17 @@ async function main() {
     if (r.ok) { mark(e, 'enviado'); sent++; }
     else { failed++; if (r.fatal) fatal = true; }
     await sleep(1100); // Telegram admite ~1 mensaje por segundo al mismo chat
+  }
+
+  // Corrida manual sin novedades: un resumen corto para que se note que funcionó
+  if (REPORT && ready && !sent && !failed && !fatal && !DRY) {
+    const sig = await readJSON(join(DATA, 'signals.json'), null);
+    const nPos = Array.isArray(sig?.positions) ? sig.positions.length : null;
+    const lines = [`ℹ️ <b>Revisión manual</b>: no hay señales nuevas para avisar.`,
+      `El motor tiene ${events.length} ${events.length === 1 ? 'evento' : 'eventos'} registrados${evData ? '' : ' (todavía no corrió)'}` + (nPos != null ? ` y ${nPos} ${nPos === 1 ? 'posición abierta' : 'posiciones abiertas'}.` : '.')];
+    if (sig?.generated_at) lines.push(`Última corrida del motor: ${new Date(sig.generated_at).toLocaleString('es-AR', {timeZone: 'America/Argentina/Buenos_Aires', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'})}`);
+    const r = await tg(lines.join('\n') + footer(cfg));
+    if (!r.ok) failed++;
   }
 
   // Registro acotado: ids que siguen en events.json o de los últimos 30 días
