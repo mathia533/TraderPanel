@@ -86,35 +86,35 @@ def stage(key, name, status, text, **extra):
 def news_stage(news_by_ticker: dict, ticker: str | None) -> dict:
     items = news_by_ticker.get(ticker or "", []) if ticker else []
     if not ticker:
-        return stage("news", "Noticias", "na", "Sin fuente de noticias para este activo")
+        return stage("news", "Noticias", "na", "No hay fuente de noticias para este activo")
     if not items:
-        return stage("news", "Noticias", "ok", f"Sin titulares de {ticker} en las últimas horas")
+        return stage("news", "Noticias", "ok", f"No hubo noticias de {ticker} en las últimas horas: nada en contra")
     earn = [i for i in items if "earnings" in i.get("tags", [])]
     top = items[0]
     tags = sorted({dtskills.TAG_ES.get(t, t) for i in items[:5] for t in i.get("tags", [])})
-    txt = f"{len(items)} titulares de {ticker}" + (f" ({', '.join(tags)})" if tags else "") + f". Último: «{top['title']}»"
+    txt = f"{len(items)} noticias recientes de {ticker}" + (f" (temas: {', '.join(tags)})" if tags else "") + f". La última: «{top['title']}»"
     return stage("news", "Noticias", "warn" if earn else "ok",
-                 txt + (". Hay balance cerca: una operación de varios días queda expuesta." if earn else ""),
+                 txt + (". Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta." if earn else ""),
                  items=[{"title": i["title"], "link": i["link"], "time": i["time"], "tags": i.get("tags", [])} for i in items[:4]])
 
 
 def scanner_stage(sc: dict) -> dict:
     if not sc["tags"]:
-        return stage("scanner", "Escáner", "na", f"Sin setups del escáner diario (RSI {dtskills.fmt_num(sc['rsi'] or 0, 1)})")
+        return stage("scanner", "Escáner", "na", f"Hoy no aparece ninguna señal técnica (RSI {dtskills.fmt_num(sc['rsi'] or 0, 1)})")
     return stage("scanner", "Escáner", "ok", ", ".join(sc["labels"]).capitalize() + f" · RSI {dtskills.fmt_num(sc['rsi'] or 0, 1)}")
 
 
 def tm_stage(tm: dict | None, block_list: list[str]) -> dict:
     if not tm:
-        return stage("timemachine", "Time Machine", "na", "Sin simulación")
+        return stage("timemachine", "Time Machine", "na", "No se simuló")
     if not tm.get("ok"):
         return stage("timemachine", "Time Machine", "na", tm.get("error") or "No se pudo simular")
     h = tm.get("history") or {}
     hist = ""
     if h.get("fired"):
-        hist = (f" Historia: {h['fired']} veces {h.get('label', '')}, {h.get('target', 0)} al objetivo, "
-                f"{h.get('stop', 0)} al stop, {h.get('neither', 0)} sin definir"
-                + (f" (promedio {dtskills.fmt_num(h['avg_R'])}R)" if h.get("avg_R") is not None else "") + ".")
+        hist = (f" En el pasado esta señal ({h.get('label', '')}) apareció {h['fired']} veces en este activo: "
+                f"{h.get('target', 0)} llegaron al objetivo, {h.get('stop', 0)} al stop y {h.get('neither', 0)} a ninguno"
+                + (f" (resultado medio {dtskills.fmt_num(h['avg_R'])} veces lo arriesgado)" if h.get("avg_R") is not None else "") + ".")
     st = "block" if dtskills.tm_blocks(tm, block_list) else "warn" if tm["lean"] in ("stop", "stop_strong") else "ok"
     return stage("timemachine", "Time Machine", st, tm["verdict"] + hist, data=tm)
 
@@ -149,15 +149,15 @@ def evaluate_swing(*, cfg, ctx, kind, ident, label, closed, cand, vcp, gate, gat
         return {"verdict": "BLOCK", "reasons": [plan["why"]], "stages": stages, "plan": None}
     c = CUR[kind]
     stages.append(stage("plan", "Plan", "ok",
-                        f"Entrada {c} {fmt(plan['entry'])}, stop {c} {fmt(plan['stop'], plan['entry'])} "
-                        f"(−{dtskills.fmt_num(plan['stop_pct'], 1)} %), objetivo {c} {fmt(plan['target'], plan['entry'])} "
-                        f"({dtskills.fmt_num(plan['rr'], 1)}R)"))
+                        f"Compra a {c} {fmt(plan['entry'])}. Vende con pérdida si baja a {c} {fmt(plan['stop'], plan['entry'])} "
+                        f"(stop, −{dtskills.fmt_num(plan['stop_pct'], 1)} %) o con ganancia si sube a {c} {fmt(plan['target'], plan['entry'])} "
+                        f"(objetivo, gana {dtskills.fmt_num(plan['rr'], 1)} veces lo que arriesga)", plan={k: plan[k] for k in ("entry", "stop", "target")}))
 
     horizon = pcfg["horizon"].get(cand["setup"], 10)
     tm = dtskills.swing_timemachine(closed, plan["entry"], plan["stop"], plan["target"], horizon=horizon)
     stages.append(tm_stage(tm, pcfg["timemachine_block"]))
     if dtskills.tm_blocks(tm, pcfg["timemachine_block"]):
-        extra_block.append("Time Machine: " + dtskills.LEAN_ES[tm["lean"]].lower())
+        extra_block.append("la simulación (Time Machine) da " + dtskills.LEAN_ES[tm["lean"]].lower())
 
     open_notional = [(p["label"], p.get("notional") or 0) for p in state["positions"].values() if p.get("kind") == kind]
     today = dtskills.ny_date(now)
@@ -168,14 +168,14 @@ def evaluate_swing(*, cfg, ctx, kind, ident, label, closed, cand, vcp, gate, gat
                                  entries_today=entries_today, now=now)
     if sz.get("units"):
         stages.append(stage("budget", "Tamaño", "ok",
-                            f"{dtskills.fmt_num(sz['units'], 6)} {label} ({c} {fmt(sz['notional'])}), riesgo {c} {fmt(sz['max_loss'])}; "
-                            f"lo limita {sz['bound_by']}"))
+                            f"Comprar {dtskills.fmt_num(sz['units'], 6)} {label} ({c} {fmt(sz['notional'])}). Si toca el stop se pierden como mucho {c} {fmt(sz['max_loss'])}; "
+                            f"la cantidad la limita {sz['bound_by']}"))
     else:
         stages.append(stage("budget", "Tamaño", "block", "; ".join(sz["reasons"])))
 
     # filtros previos a la orden (pre-trade gate)
     if gate == "restrictive":
-        extra_block.append("mercado en modo defensivo (" + gate_why + ")")
+        extra_block.append("el mercado está flojo y el motor no compra (" + gate_why + ")")
     if len(state["positions"]) >= risk["max_open_positions"]:
         extra_block.append(f"ya hay {risk['max_open_positions']} posiciones abiertas")
     br = ctx["breakers"].get(kind)
@@ -185,7 +185,7 @@ def evaluate_swing(*, cfg, ctx, kind, ident, label, closed, cand, vcp, gate, gat
     reasons = list(sz.get("reasons") or []) + extra_block
     verdict = "PASS" if sz["verdict"] == "PASS" and not extra_block else "BLOCK"
     stages.append(stage("risk", "Riesgo", "ok" if verdict == "PASS" else "block",
-                        "PASS: dentro de todos los límites" if verdict == "PASS" else "BLOCK: " + "; ".join(reasons),
+                        "Aprobado: respeta todos los límites de riesgo" if verdict == "PASS" else "Frenado: " + "; ".join(reasons),
                         verdict=verdict, reasons=reasons))
     if sz.get("ticket"):
         stages.append(stage("ticket", "Ticket", "ok" if verdict == "PASS" else "na",
@@ -217,8 +217,8 @@ def watch_pipeline(*, cfg, kind, label, closed, trigger, stop, setup, news_by_ti
         stages.append(stage("plan", "Plan", "block", plan["why"]))
         return stages
     c = CUR[kind]
-    stages.append(stage("plan", "Plan", "ok", f"Si dispara: entrada {c} {fmt(plan['entry'])}, stop {c} {fmt(plan['stop'], plan['entry'])}, "
-                                              f"objetivo {c} {fmt(plan['target'], plan['entry'])}"))
+    stages.append(stage("plan", "Plan", "ok", f"Si el precio llega a {c} {fmt(plan['entry'])}, compra. Después vende con pérdida si baja a {c} {fmt(plan['stop'], plan['entry'])} (stop) "
+                                              f"o con ganancia si sube a {c} {fmt(plan['target'], plan['entry'])} (objetivo)", plan={k: plan[k] for k in ("entry", "stop", "target")}))
     tm = dtskills.swing_timemachine(closed, plan["entry"], plan["stop"], plan["target"],
                                     horizon=section(cfg, "pipeline")["horizon"].get(setup, 10), replays=5000)
     stages.append(tm_stage(tm, section(cfg, "pipeline")["timemachine_block"]))
@@ -295,9 +295,9 @@ def run_intraday(cfg: dict, ctx: dict, state: dict, now: datetime, adr_gate: tup
             if age is not None and age > icfg["max_trigger_age_min"]:
                 extra.append(f"la ruptura fue hace {age} minutos (máximo {icfg['max_trigger_age_min']})")
             if dtskills.tm_blocks(tm, pcfg["timemachine_block"]):
-                extra.append("Time Machine: " + dtskills.LEAN_ES[tm["lean"]].lower())
+                extra.append("la simulación (Time Machine) da " + dtskills.LEAN_ES[tm["lean"]].lower())
             if icfg["market_gate"] and adr_gate[0] == "restrictive":
-                extra.append("mercado en modo defensivo (" + adr_gate[1] + ")")
+                extra.append("el mercado está flojo y el motor no compra (" + adr_gate[1] + ")")
             if len(state["positions"]) >= risk["max_open_positions"]:
                 extra.append(f"ya hay {risk['max_open_positions']} posiciones abiertas")
             br = ctx["breakers"].get("adr")

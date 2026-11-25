@@ -149,7 +149,7 @@ text.ent{fill:var(--ink2)}text.stp{fill:var(--dn)}text.tgt{fill:var(--up)}
 <main class="wrap">
   <div class="lead">
     <h1>Simulador de operaciones</h1>
-    <p>La Time Machine de day-trader-skill: antes de arriesgar un peso, repite la operación miles de veces armando cada rueda con una vela real del último año del propio activo, y además prueba la misma regla en cada vez que el patrón apareció. Es el mismo cálculo que usa el motor de señales, con la misma semilla, así que da los mismos números.</p>
+    <p>Antes de arriesgar un peso, probá tu operación miles de veces. Elegís a cuánto comprar, dónde cortar la pérdida (stop) y dónde tomar la ganancia (objetivo). El simulador arma miles de futuros posibles con movimientos reales del último año de ese activo y cuenta cuántas veces llega primero a cada lado. También muestra qué pasó de verdad las veces anteriores que apareció la misma señal. Es el mismo cálculo que usa el motor (la "Time Machine"), así que da los mismos números.</p>
   </div>
 
   <section class="card" aria-labelledby="planH">
@@ -161,32 +161,32 @@ text.ent{fill:var(--ink2)}text.stp{fill:var(--dn)}text.tgt{fill:var(--up)}
       <div class="f"><label id="sideL">Dirección</label>
         <div class="seg" role="group" aria-labelledby="sideL" id="side">
           <button type="button" data-side="buy" aria-pressed="true">Compra</button>
-          <button type="button" data-side="sell" aria-pressed="false">Corto</button>
+          <button type="button" data-side="sell" aria-pressed="false" title="Apostar a que baja">Venta en corto</button>
         </div></div>
-      <div class="f" id="fE"><label for="entry">Entrada</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="entry"></div>
-      <div class="f" id="fS"><label for="stop">Stop</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="stop"></div>
-      <div class="f" id="fT"><label for="target">Objetivo</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="target"></div>
-      <div class="f"><label for="horizon">Horizonte</label>
-        <select id="horizon"><option value="5">5 ruedas</option><option value="10" selected>10 ruedas</option><option value="20">20 ruedas</option><option value="40">40 ruedas</option></select></div>
+      <div class="f" id="fE"><label for="entry">Precio de compra</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="entry"></div>
+      <div class="f" id="fS"><label for="stop">Stop (corta la pérdida)</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="stop"></div>
+      <div class="f" id="fT"><label for="target">Objetivo (toma la ganancia)</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="target"></div>
+      <div class="f"><label for="horizon">Cuántos días mirar</label>
+        <select id="horizon"><option value="5">5 días de mercado</option><option value="10" selected>10 días de mercado</option><option value="20">20 días de mercado</option><option value="40">40 días de mercado</option></select></div>
     </div>
     <div class="row" style="margin-top:14px" id="presets">
       <span class="src">Atajos:</span>
       <button class="btn sm" type="button" data-p="engine" id="pEngine" hidden>Plan del motor</button>
-      <button class="btn sm" type="button" data-p="atr">Stop a 2 ATR, objetivo 2R</button>
-      <button class="btn sm" type="button" data-p="r1">Objetivo 1R</button>
-      <button class="btn sm" type="button" data-p="r3">Objetivo 3R</button>
+      <button class="btn sm" type="button" data-p="atr" title="Stop a dos veces el movimiento diario típico (2 ATR) y objetivo que gana el doble de lo arriesgado">Stop según la volatilidad, gana el doble</button>
+      <button class="btn sm" type="button" data-p="r1" title="Objetivo 1R">Gana lo mismo que arriesga</button>
+      <button class="btn sm" type="button" data-p="r3" title="Objetivo 3R">Gana el triple</button>
     </div>
     <p class="calc" id="calc" aria-live="polite"></p>
     <details class="adv">
       <summary>Más opciones</summary>
       <div class="rules">
-        <div class="f"><label for="tag">Historia: ruedas en que apareció</label>
-          <select id="tag"><option value="breakout_20d">Ruptura del máximo de 20 días</option><option value="reclaim_ma20">Recuperó la media de 20</option><option value="bull_flag">Bandera alcista</option><option value="oversold_bounce">Rebote de sobreventa</option><option value="oversold">Sobreventa (RSI &lt; 30)</option><option value="any">Cualquier rueda (sin filtro)</option></select>
-          <span class="help">La regla se prueba en esas ruedas del último año, con lo que pasó de verdad.</span></div>
-        <div class="f"><label for="reps">Repeticiones</label>
+        <div class="f"><label for="tag">Para comparar con el pasado, usar los días en que</label>
+          <select id="tag"><option value="breakout_20d">superó su máximo de 20 días</option><option value="reclaim_ma20">volvió arriba de su promedio de 20 días</option><option value="bull_flag">hizo una pausa después de subir fuerte</option><option value="oversold_bounce">empezó a rebotar tras caer fuerte</option><option value="oversold">había caído mucho (RSI menor a 30)</option><option value="any">cualquier día (sin filtro)</option></select>
+          <span class="help">Se prueba la misma operación en esos días del último año, con lo que pasó de verdad.</span></div>
+        <div class="f"><label for="reps">Cantidad de simulaciones</label>
           <select id="reps"><option value="2000">2.000</option><option value="10000" selected>10.000 (como el motor)</option><option value="50000">50.000</option></select></div>
-        <div class="f"><label for="seed">Semilla</label><input class="num" type="number" inputmode="numeric" step="1" min="0" id="seed" value="19"><span class="help">19 es la de la skill. Otra semilla muestra cuánto varía.</span></div>
-        <div class="f"><label for="riskAmt">Lo que arriesgás (opcional)</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="riskAmt" placeholder="Ej.: 50"><span class="help">Pasa el R promedio a plata: ganancia o pérdida esperada por operación.</span></div>
+        <div class="f"><label for="seed">Semilla (número de sorteo)</label><input class="num" type="number" inputmode="numeric" step="1" min="0" id="seed" value="19"><span class="help">Con el mismo número salen siempre los mismos resultados. 19 es el que usa el motor; cambialo para ver cuánto varía.</span></div>
+        <div class="f"><label for="riskAmt">Lo que arriesgás (opcional)</label><input class="num" type="number" inputmode="decimal" step="any" min="0" id="riskAmt" placeholder="Ej.: 50"><span class="help">Cuánta plata perdés si toca el stop. Con eso el resultado medio se muestra en pesos o dólares.</span></div>
       </div>
     </details>
     <div class="row" style="margin-top:16px">
@@ -204,8 +204,8 @@ text.ent{fill:var(--ink2)}text.stp{fill:var(--dn)}text.tgt{fill:var(--up)}
     <div class="tmbar" id="bar" role="img"></div>
     <div class="stats" id="stats"></div>
     <div class="charts">
-      <div class="chart"><h3>Abanico de precios</h3><div id="fan"></div>
-        <div class="leg"><span><i style="background:var(--ink2)"></i>últimas ruedas reales</span><span><i style="background:var(--info)"></i>mediana</span><span><i style="background:var(--band2);height:8px"></i>25 a 75 %</span><span><i style="background:var(--band1);height:8px"></i>5 a 95 %</span></div></div>
+      <div class="chart"><h3>Hacia dónde puede ir el precio</h3><div id="fan"></div>
+        <div class="leg"><span><i style="background:var(--ink2)"></i>últimas ruedas reales</span><span><i style="background:var(--info)"></i>caso del medio</span><span><i style="background:var(--band2);height:8px"></i>la mitad de los casos</span><span><i style="background:var(--band1);height:8px"></i>9 de cada 10 casos</span></div></div>
       <div class="chart"><h3>Dónde termina el precio</h3><div id="hgram"></div>
         <div class="leg"><span><i style="background:var(--dn)"></i>debajo del stop</span><span><i style="background:var(--up)"></i>arriba del objetivo</span></div></div>
     </div>
@@ -311,7 +311,7 @@ function check() {
     return;
   }
   const risk = Math.abs(p.e - p.s), rr = Math.abs(p.t - p.e) / risk, k = $('asset').value.split(':')[0];
-  $('calc').innerHTML = `Riesgo <b>${CUR[k]} ${px(risk)}</b> por unidad (${nf(risk / p.e * 100, 2)} %) · objetivo a <b>${nf(rr, 2)}R</b> (${nf(Math.abs(p.t - p.e) / p.e * 100, 2)} %) · para empatar tiene que llegar primero al objetivo en el <b>${nf(100 / (1 + rr), 0)} %</b> de las veces que toca un lado.`;
+  $('calc').innerHTML = `Arriesgás <b>${CUR[k]} ${px(risk)}</b> por unidad (${nf(risk / p.e * 100, 2)} %) para ganar <b>${nf(rr, 2)} veces</b> eso (${nf(Math.abs(p.t - p.e) / p.e * 100, 2)} %). Para no perder plata a la larga, alcanza con que llegue primero al objetivo <b>${nf(100 / (1 + rr), 0)} de cada 100</b> veces que toca uno de los dos.`;
 }
 
 function loadAsset(fromHash) {
@@ -395,16 +395,16 @@ function run() {
   $('vtxt').textContent = r.verdict;
   const t = m.p_target * 100, s = m.p_stop * 100, n = Math.max(0, 100 - t - s);
   $('bar').innerHTML = `<i class="t" style="width:${t}%"></i><i class="s" style="width:${s}%"></i><i class="n" style="width:${n}%"></i>`;
-  $('bar').setAttribute('aria-label', `Objetivo primero ${nf(t, 1)} %, stop primero ${nf(s, 1)} %, ninguno ${nf(n, 1)} %`);
+  $('bar').setAttribute('aria-label', `Llega primero al objetivo ${nf(t, 1)} %, al stop ${nf(s, 1)} %, a ninguno ${nf(n, 1)} %`);
   const amt = num('riskAmt');
-  const money = amt > 0 ? `<small>${m.avg_R >= 0 ? '+' : '−'}${CUR[kind]} ${nf(Math.abs(m.avg_R * amt), 2)} por operación</small>` : '<small>por operación, en unidades de riesgo</small>';
+  const money = amt > 0 ? `<small>${m.avg_R >= 0 ? '+' : '−'}${CUR[kind]} ${nf(Math.abs(m.avg_R * amt), 2)} por operación</small>` : '<small>por operación, en veces lo arriesgado</small>';
   $('stats').innerHTML = [
-    ['Objetivo primero', `<b class="up">${pct(m.p_target)}</b>`],
-    ['Stop primero', `<b class="dn">${pct(m.p_stop)}</b>`],
-    ['Ninguno en el plazo', `<b>${pct(m.p_neither)}</b><small>decide el precio final</small>`],
-    ['Termina en verde', `<b>${pct(m.p_green)}</b>`],
-    ['R promedio', `<b class="${m.avg_R >= 0 ? 'up' : 'dn'}">${sgnR(m.avg_R)}</b>${money}`],
-    ['Precio final', `<b>${px(m.median_close)}</b><small>mediana · 90 % entre ${px(m.p5_close)} y ${px(m.p95_close)}</small>`],
+    ['Llega primero al objetivo', `<b class="up">${pct(m.p_target)}</b><small>ganancia</small>`],
+    ['Llega primero al stop', `<b class="dn">${pct(m.p_stop)}</b><small>pérdida</small>`],
+    ['No toca ninguno', `<b>${pct(m.p_neither)}</b><small>cuenta dónde termina el precio</small>`],
+    ['Termina ganando', `<b>${pct(m.p_green)}</b><small>arriba del precio de compra</small>`],
+    ['Resultado medio (R)', `<b class="${m.avg_R >= 0 ? 'up' : 'dn'}">${sgnR(m.avg_R)}</b>${money}`],
+    ['Precio al final', `<b>${px(m.median_close)}</b><small>caso del medio · 9 de cada 10 entre ${px(m.p5_close)} y ${px(m.p95_close)}</small>`],
   ].map(([k, v]) => `<div><span>${k}</span>${v}</div>`).join('');
   $('fan').innerHTML = fanSvg(c.bars.slice(-(horizon + 6)).map(b => b[4]), m, p);
   $('hgram').innerHTML = histSvg(m, p);
@@ -416,7 +416,7 @@ function run() {
     <div style="overflow-x:auto"><table class="hist"><thead><tr><th>Entrada</th><th class="num">Precio</th><th>Resultado</th><th>Cierre</th><th class="num">R</th></tr></thead><tbody>${h.trades.slice(-12).reverse().map(x =>
       `<tr><td class="mono">${esc(x.date)}</td><td class="num">${px(x.entry)}</td><td class="${x.outcome === 'target' ? 'up' : x.outcome === 'stop' ? 'dn' : ''}">${{target: 'Objetivo', stop: 'Stop', neither: 'Ninguno'}[x.outcome]}</td><td class="mono">${esc(x.exit_date)}</td><td class="num ${x.R >= 0 ? 'up' : 'dn'}">${sgnR(x.R)}</td></tr>`).join('')}</tbody></table></div>
     ${h.trades.length > 12 ? `<p class="src" style="margin-top:6px">Las 12 más recientes de ${h.trades.length}.</p>` : ''}` : '';
-  $('note').textContent = r.note + ' Un hueco que salta el stop cuenta como −1R; en la realidad puede salir peor. No es asesoramiento financiero.';
+  $('note').textContent = r.note + ' Si el precio abre de golpe más allá del stop, acá se cuenta como perder lo previsto (−1R); en la realidad puede salir peor. No es asesoramiento financiero.';
   $('out').hidden = false;
 }
 

@@ -404,6 +404,36 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
   .fh .cl{position:absolute;top:8px;right:8px}
   .fbody{padding:12px 16px 24px}
 }
+/* ayuda */
+.hint{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;min-width:20px;border-radius:50%;border:1px solid var(--line2);background:transparent;color:var(--mute);font:600 12px/1 var(--sans);cursor:pointer;padding:0;vertical-align:middle;margin-left:6px;position:relative}
+.hint::after{content:'';position:absolute;inset:-12px}
+.hint:hover{color:var(--ink);border-color:var(--mute)}
+#tip{position:absolute;z-index:60;background:var(--card);color:var(--ink);border:1px solid var(--line2);border-radius:12px;padding:12px 14px;box-shadow:0 12px 32px rgba(2,6,23,.45);font-size:14px;line-height:1.5}
+#tip p{margin:6px 0 8px;color:var(--ink2)}
+.link{background:none;border:0;padding:0;color:var(--info);font:inherit;font-size:13px;cursor:pointer;text-decoration:underline}
+dialog.guide{width:min(760px,calc(100vw - 24px));max-height:calc(100dvh - 32px);padding:0;border:1px solid var(--line2);border-radius:16px;background:var(--card);color:var(--ink);overflow:auto}
+dialog.guide::backdrop{background:rgba(2,6,23,.72)}
+.guide .gh{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--card)}
+.guide .gh h2{margin:0;font-size:18px}
+.guide .gb{padding:4px 20px 20px;font-size:15px;color:var(--ink2)}
+.guide h3{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);margin:22px 0 8px}
+.gdl{margin:0;display:grid;grid-template-columns:minmax(140px,190px) 1fr;gap:8px 16px}
+.gdl dt{color:var(--ink);font-weight:600}.gdl dd{margin:0}
+.glegend{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.glegend li{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center}
+.glegend li>span:first-child{justify-self:start}
+.chipx{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--neutral-bg);color:var(--neutral-fg)}
+.chipx.ok{background:var(--upbg);color:var(--up)}.chipx.warn{background:var(--warnbg);color:var(--warn)}.chipx.block{background:var(--dnbg);color:var(--dnfg)}
+.plleg{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:10px 14px;border:1px dashed var(--line2);border-radius:12px;font-size:13px;color:var(--mute)}
+.plleg b{color:var(--ink2);font-weight:600}
+.pcard .say{margin:0;font-size:14px;color:var(--ink)}
+.pcard .say.block{color:var(--dnfg)}
+.flow li .ic{font-weight:700}
+.fan-w{display:flex;flex-direction:column;gap:4px;flex:1 1 240px;max-width:360px}
+.fan-w .fan{flex:none}
+.fan-w figcaption{font-size:12px;color:var(--mute)}
+.ttl{display:inline-flex;align-items:center}
+@media (max-width:760px){.gdl{grid-template-columns:1fr;gap:2px}.gdl dd{margin-bottom:8px}.glegend li{grid-template-columns:1fr;gap:4px}}
 </style>
 </head>
 <body>
@@ -431,9 +461,10 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
     <nav class="nav" aria-label="Secciones">
       <a href="#panel" aria-current="page">Panel</a>
       <a href="#senales">Señales</a>
-      <a href="#watchlist">Watchlist</a>
+      <a href="#watchlist">Mis activos</a>
       <a href="#operaciones">Operaciones</a>
       <a href="#mapa">Mapa</a>
+      <a href="#pipeline">Análisis</a>
       <a href="#resultados">Resultados</a>
     </nav>
     <div class="status">
@@ -442,6 +473,7 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
       <a class="pill warn" id="tgPill" href="config.html#s-misavisos" title="Tus avisos se configuran al entrar con tu cuenta" style="text-decoration:none"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg><span id="tgPillTxt">Telegram: sin conectar</span></a>
       <span class="stamp" id="stamp" aria-live="polite">Cargando cotizaciones…</span>
       <button class="btn qbtn" id="qOpen" type="button" aria-label="Buscar un activo o una sección (tecla /)" aria-keyshortcuts="/ Control+K"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><span class="ql">Buscar</span><kbd>/</kbd></button>
+      <button class="btn" id="guideOpen" type="button" title="Qué significa cada cosa del panel"><svg class="i" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5M12 17.5h.01"/></svg><span class="ql">Cómo leer</span></button>
       <button class="btn" id="install" type="button" hidden title="Instalar TraderPanel como app"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>Instalar</button>
       <a class="btn icon" href="config.html" aria-label="Configurar el motor y las alertas" title="Configurar el motor y las alertas"><svg class="i" aria-hidden="true"><use href="#i-gear"/></svg></a>
       <button class="btn icon" id="theme" type="button" aria-label="Cambiar a modo claro"><svg class="i" aria-hidden="true"><use href="#i-sun"/></svg></button>
@@ -456,7 +488,7 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
   <div class="cols">
     <section class="card colmain" id="watchlist" aria-labelledby="wlTitle">
       <div class="sh">
-        <div><h2 id="wlTitle">Watchlist</h2><p id="wlSub"></p></div>
+        <div><h2 id="wlTitle" class="ttl">Mis activos<button type="button" class="hint" data-help="watchlist" aria-label="Qué significa: Mis activos">?</button></h2><p id="wlSub"></p></div>
         <div class="seg" role="tablist" aria-label="Mercado" id="tabs">
           <button type="button" role="tab" data-tab="adr">ADRs (USD)</button>
           <button type="button" role="tab" data-tab="byma">BYMA (ARS)</button>
@@ -468,12 +500,12 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
       <p class="summary" id="wlSum"></p>
       <div class="tbl">
         <table>
-          <thead><tr><th scope="col">Activo</th><th scope="col">Último</th><th scope="col" class="hide-s">Día</th><th scope="col" class="hide-s">30 ruedas</th><th scope="col">Señal</th><th scope="col"><span class="sr">Acciones</span></th></tr></thead>
+          <thead><tr><th scope="col">Activo</th><th scope="col">Último</th><th scope="col" class="hide-s">Día</th><th scope="col" class="hide-s">Último mes y medio</th><th scope="col">Tendencia</th><th scope="col"><span class="sr">Acciones</span></th></tr></thead>
           <tbody id="rows"></tbody>
         </table>
       </div>
       <form class="add" id="addForm">
-        <div class="field"><label for="addIn" id="addLbl">Agregar a la watchlist</label><input type="text" id="addIn" autocomplete="off" autocapitalize="characters"></div>
+        <div class="field"><label for="addIn" id="addLbl">Agregar un activo a la lista</label><input type="text" id="addIn" autocomplete="off" autocapitalize="characters"></div>
         <button class="btn go" type="submit">Agregar</button>
       </form>
     </section>
@@ -481,24 +513,24 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
     <aside class="colside">
       <section class="card" id="senales" aria-labelledby="sgTitle">
         <div class="sh">
-          <div><h2 id="sgTitle">Señales activas</h2><p id="sgSub">Técnicas, sobre cierres diarios de tu watchlist</p></div>
+          <div><h2 id="sgTitle" class="ttl">Señales de compra y venta<button type="button" class="hint" data-help="senales" aria-label="Qué significa: Señales de compra y venta">?</button></h2><p id="sgSub">Calculadas con los cierres diarios de tus activos</p></div>
         </div>
         <div class="gates" id="gates" hidden></div>
         <p class="engine" id="engStamp" hidden></p>
         <div class="filters" id="sgFilters" role="group" aria-label="Filtrar señales">
           <button type="button" data-f="all" aria-pressed="true">Todas <span class="num" id="nAll">0</span></button>
-          <button type="button" data-f="in" aria-pressed="false">Entradas <span class="num" id="nIn">0</span></button>
-          <button type="button" data-f="out" aria-pressed="false">Salidas <span class="num" id="nOut">0</span></button>
-          <button type="button" data-f="pos" aria-pressed="false" hidden>Abiertas <span class="num" id="nPos">0</span></button>
-          <button type="button" data-f="watch" aria-pressed="false" hidden>Preparadas <span class="num" id="nWatch">0</span></button>
+          <button type="button" data-f="in" aria-pressed="false">Compras <span class="num" id="nIn">0</span></button>
+          <button type="button" data-f="out" aria-pressed="false">Ventas <span class="num" id="nOut">0</span></button>
+          <button type="button" data-f="pos" aria-pressed="false" hidden>En curso <span class="num" id="nPos">0</span></button>
+          <button type="button" data-f="watch" aria-pressed="false" hidden>En espera <span class="num" id="nWatch">0</span></button>
         </div>
         <div class="feed" id="feed" aria-live="polite"><p class="empty">Calculando señales…</p></div>
       </section>
 
       <section class="card tgcard" id="operaciones" aria-labelledby="opTitle">
-        <div class="h"><h2 id="opTitle">Operaciones de los usuarios</h2><a class="btn" href="operaciones.html" style="text-decoration:none;color:inherit;min-height:36px">Registrar</a></div>
-        <p class="tgsum">Lo que compra y vende cada uno. Los que lo siguen reciben el aviso por Telegram con su propio tamaño.</p>
-        <div class="field" id="opMeWrap" hidden><label for="opMe" class="legend">Calcular cantidades para</label><select id="opMe"></select></div>
+        <div class="h"><h2 id="opTitle" class="ttl">Operaciones del grupo<button type="button" class="hint" data-help="operaciones" aria-label="Qué significa: Operaciones del grupo">?</button></h2><a class="btn" href="operaciones.html" style="text-decoration:none;color:inherit;min-height:36px">Registrar</a></div>
+        <p class="tgsum">Lo que compra y vende de verdad cada uno. Quien lo sigue recibe el aviso por Telegram con la cantidad calculada para su presupuesto.</p>
+        <div class="field" id="opMeWrap" hidden><label for="opMe" class="legend">Calcular cuánto comprar si fuera</label><select id="opMe"></select></div>
         <div><p class="legend" style="margin-bottom:6px">Abiertas</p><ul class="tglist oplist" id="opOpen"><li class="mute">Cargando…</li></ul></div>
         <div><p class="legend" style="margin-bottom:6px">Últimas cerradas</p><ul class="tglist oplist" id="opClosed"><li class="mute">—</li></ul></div>
       </section>
@@ -507,7 +539,7 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
 
   <section class="card" id="mapa" aria-labelledby="mpTitle">
     <div class="sh">
-      <div><h2 id="mpTitle">Mapa del mercado</h2><p id="mpSub">Acciones argentinas por sector · tamaño según el monto operado, color según la variación del día</p></div>
+      <div><h2 id="mpTitle" class="ttl">Mapa del mercado<button type="button" class="hint" data-help="mapa" aria-label="Qué significa: Mapa del mercado">?</button></h2><p id="mpSub">Acciones argentinas agrupadas por sector. Más grande: más plata operada. Verde sube, rojo baja.</p></div>
       <div class="seg" role="tablist" aria-label="Mercado del mapa" id="mpTabs">
         <button type="button" role="tab" data-mp="byma">BYMA (ARS)</button>
         <button type="button" role="tab" data-mp="adr">ADRs (USD)</button>
@@ -522,33 +554,33 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
       </div>
       <div class="tmap" id="tmap" role="list" aria-label="Mapa de calor por sector"><p class="empty">Cargando el mapa…</p></div>
       <p class="rvnote" id="mpNote"></p>
-      <div class="rvt" id="secRank"><h3>Ranking de sectores locales · BYMA</h3><p class="empty">Cargando…</p></div>
+      <div class="rvt" id="secRank"><h3>Sectores argentinos, del que más sube al que más baja</h3><p class="empty">Cargando…</p></div>
     </div>
   </section>
 
   <section class="card" id="pipeline" aria-labelledby="plTitle">
     <div class="sh">
-      <div><h2 id="plTitle">Pipeline de las skills</h2><p id="plSub">Escáner, noticias, entrada, plan, Time Machine, tamaño y riesgo (day-trader-skill + tradermonty)</p></div>
+      <div><h2 id="plTitle" class="ttl">Análisis paso a paso<button type="button" class="hint" data-help="pipeline" aria-label="Qué significa: Análisis paso a paso">?</button></h2><p id="plSub">Antes de sugerir una compra, el motor pasa cada activo por varios controles. Cada tarjeta muestra qué dijo cada uno.</p></div>
       <div class="seg" role="tablist" aria-label="Vista del pipeline" id="plTabs">
-        <button type="button" role="tab" data-pl="cand">Candidatas <span class="n" id="plNc">0</span></button>
-        <button type="button" role="tab" data-pl="pat">Patrones <span class="n" id="plNp">0</span></button>
-        <button type="button" role="tab" data-pl="intra">Intradía ADRs</button>
-        <button type="button" role="tab" data-pl="usa">Mercado EE. UU.</button>
+        <button type="button" role="tab" data-pl="cand">Posibles compras <span class="n" id="plNc">0</span></button>
+        <button type="button" role="tab" data-pl="pat">Figuras del gráfico <span class="n" id="plNp">0</span></button>
+        <button type="button" role="tab" data-pl="intra">ADRs en el día</button>
+        <button type="button" role="tab" data-pl="usa">Clima en EE. UU.</button>
         <button type="button" role="tab" data-pl="news">Noticias <span class="n" id="plNn">0</span></button>
         <button type="button" role="tab" data-pl="sec">Balances y Congreso</button>
       </div>
     </div>
-    <div class="pbody" id="plBody" aria-live="polite"><p class="empty">Cargando el pipeline…</p></div>
+    <div class="pbody" id="plBody" aria-live="polite"><p class="empty">Cargando el análisis…</p></div>
   </section>
 
   <section class="card" id="resultados" aria-labelledby="rvTitle">
     <div class="sh">
-      <div><h2 id="rvTitle">Revisión de resultados</h2><p id="rvSub">Cómo les fue a las operaciones ya cerradas, neto de costos</p></div>
+      <div><h2 id="rvTitle" class="ttl">Revisión de resultados<button type="button" class="hint" data-help="resultados" aria-label="Qué significa: Revisión de resultados">?</button></h2><p id="rvSub">Cómo les fue a las operaciones ya cerradas, neto de costos</p></div>
       <div class="rvctl">
         <select id="rvWho" aria-label="De quién" hidden></select>
         <div class="seg" role="tablist" aria-label="Qué operaciones" id="rvTabs">
-          <button type="button" role="tab" data-rv="eng">Señales del motor</button>
-          <button type="button" role="tab" data-rv="users">Operaciones de los usuarios</button>
+          <button type="button" role="tab" data-rv="eng">Del motor</button>
+          <button type="button" role="tab" data-rv="users">Del grupo</button>
         </div>
       </div>
     </div>
@@ -564,8 +596,8 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
 <nav class="bnav" aria-label="Secciones">
   <a href="#panel" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-grid"/></svg>Panel</a>
   <a href="#senales"><svg class="i" aria-hidden="true"><use href="#i-pulse"/></svg>Señales</a>
-  <a href="#watchlist"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg>Watchlist</a>
-  <a href="#pipeline"><svg class="i" aria-hidden="true"><use href="#i-logo"/></svg>Pipeline</a>
+  <a href="#watchlist"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg>Mis activos</a>
+  <a href="#pipeline"><svg class="i" aria-hidden="true"><use href="#i-logo"/></svg>Análisis</a>
   <a href="#operaciones"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg>Operaciones</a>
 </nav>
 
@@ -598,6 +630,12 @@ dialog.ficha::backdrop{background:rgba(2,6,23,.72)}
     <p class="fnote" id="fSrc"></p>
   </div>
 </dialog>
+
+<dialog class="guide" id="guide" aria-labelledby="gTitle">
+  <div class="gh"><h2 id="gTitle">Cómo leer el panel</h2><button class="btn icon" type="button" id="gClose" aria-label="Cerrar la guía"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="gb" id="gBody"></div>
+</dialog>
+<div id="tip" role="dialog" aria-live="polite" hidden></div>
 
 <script>
 {
@@ -732,11 +770,96 @@ async function loadEngine() {
     if (j && j.assets) ENG = j;
   } catch { /* sin motor: el panel usa el cálculo local */ }
 }
-const SETUP = {vcp: 'VCP · Minervini', burst: 'Momentum Burst · Stockbee', orb: 'Rango de apertura 15′ · intradía'};
-const GATE = {allowed: 'favorable', neutral: 'neutral', restrictive: 'defensivo'};
+const SETUP = {vcp: 'Compresión antes de subir (VCP)', burst: 'Arranque fuerte (Momentum Burst)', orb: 'Ruptura de los primeros 15 minutos'};
+const setupChip = k => SETUP[k] ? `<span class="setup">${SETUP[k]}</span>${hint('setup_' + k)}` : '';
+const GATE = {allowed: 'a favor', neutral: 'neutral', restrictive: 'flojo, no compra'};
+const rrTxt = v => v == null ? '—' : fmt(v, 1) + ' a 1';
+/* ---------- Ayuda: qué significa cada cosa, en palabras simples ---------- */
+const HELP = {
+  panel: ['Qué es este panel', 'Muestra precios de acciones, ADRs, cripto y dólar, y lo que hace un "motor": un programa que revisa tus activos cada hora con el mercado abierto y avisa cuándo conviene comprar o vender. El motor no compra de verdad: propone, lleva la cuenta y manda avisos por Telegram.'],
+  senales: ['Señales de compra y venta', 'Lo que hizo el motor en los últimos 7 días. COMPRA: encontró una oportunidad y la abrió. VENTA: la cerró, con ganancia o con pérdida. EN CURSO: compras que siguen abiertas. EN ESPERA: activos que todavía no compró porque espera que el precio llegue a cierto valor.'],
+  gates: ['Clima de cada mercado', 'Antes de comprar, el motor mira si el mercado en general acompaña. Verde: a favor. Gris: neutral. Rojo: el mercado está flojo y el motor no abre compras nuevas ahí hasta que mejore. Pasá el mouse (o mantené apretado) sobre cada etiqueta para ver el motivo.'],
+  watchlist: ['Mis activos', 'Lo que seguís. "Último" es el precio más reciente, "Día" cuánto cambió hoy y la línea chica muestra el último mes y medio de mercado. "Tendencia" resume si viene subiendo (alcista), bajando (bajista) o de costado (neutral), con un puntaje de 0 a 100: más alto, más fuerza para arriba.'],
+  pipeline: ['Análisis paso a paso', 'Antes de sugerir una compra, el motor pasa cada activo por varios controles en orden: señal técnica, noticias, precios, simulación, cuánto comprar y riesgo. Cada tarjeta muestra qué dijo cada control. Con que uno diga que no, no compra.'],
+  colores: ['Qué indica cada color', 'Verde (✓): ese control no encontró problemas. Ámbar (!): hay algo para mirar, pero no frena. Rojo (✕): ese control dice que no; si se llega al precio de compra, no compra. Gris (–): no hay dato o ese control no aplica hoy. Un mismo paso puede cambiar de color de un día para otro porque se recalcula con los precios y noticias nuevos.'],
+  estados: ['Qué significa cada estado', 'EN ESPERA: todavía no compró. Espera que el precio suba hasta el valor de compra; cuando llega, vuelve a revisar todo. COMPRADA: pasó todos los controles y el motor abrió la compra. FRENADA: llegó el momento de comprar, pero algún control dijo que no.'],
+  mapa: ['Mapa del mercado', 'Cada cuadrado es una acción. Más grande, más plata se operó hoy. Verde: sube; rojo: baja; más intenso, más fuerte el movimiento. Con el botón ▶ repasás cómo se movió en las últimas ruedas.'],
+  resultados: ['Revisión de resultados', 'Cómo terminaron las operaciones ya cerradas, descontando comisiones. Sirve para ver si el método gana plata con el tiempo, no para juzgar una sola operación.'],
+  operaciones: ['Operaciones del grupo', 'Compras y ventas reales que registra cada usuario a mano. Quien sigue a otro recibe el aviso por Telegram con la cantidad calculada según su propio presupuesto.'],
+  scanner: ['Señal técnica', 'Busca en el gráfico situaciones que suelen anticipar una suba: que el precio supere su máximo de las últimas semanas, que rebote después de caer mucho, etc. Gris quiere decir que hoy no encontró ninguna; no es malo, solo no suma.'],
+  news: ['Noticias', 'Lee los titulares de las últimas horas. Verde: no hay nada en contra. Ámbar: la empresa presenta su balance pronto, y esos días el precio puede saltar fuerte para cualquier lado.'],
+  entry: ['Motivo de compra', 'Por qué el activo aparece como posible compra: qué figura o movimiento detectó el motor.'],
+  plan: ['Precios', 'A qué precio compraría, dónde vendería si sale mal (stop) y dónde vendería con ganancia (objetivo). Se definen antes de comprar para no decidir con nervios.'],
+  timemachine: ['Simulación (Time Machine)', 'Repite miles de veces los próximos días usando cómo se movió el precio el último año, y cuenta cuántas veces llega primero al objetivo y cuántas al stop. También mira qué pasó las veces anteriores que apareció esta misma señal. No es una predicción: es una forma de ver si las chances acompañan.'],
+  budget: ['Cuánto comprar', 'Calcula la cantidad para que, si toca el stop, la pérdida no pase del máximo que fijaste en la configuración.'],
+  risk: ['Control de riesgo', 'Revisa los límites generales: cuántas operaciones hay abiertas, si hubo muchas pérdidas seguidas, el horario y el clima del mercado. Si alguno no se cumple, frena la compra.'],
+  ticket: ['Orden sugerida', 'La orden lista para cargar en tu broker si querés copiarla. El panel no la envía a ningún lado.'],
+  stop: ['Stop', 'El precio al que se vende para cortar la pérdida si la operación sale mal. Se fija antes de comprar.'],
+  objetivo: ['Objetivo', 'El precio al que se vende para tomar la ganancia.'],
+  r: ['R (veces lo arriesgado)', 'Una forma de medir resultados sin importar el monto. 1R es lo que se pierde si toca el stop. +2R quiere decir que se ganó el doble de lo arriesgado; −1R, que se perdió lo previsto.'],
+  rr: ['Gana / arriesga', 'Cuánto se puede ganar por cada peso que se arriesga. "2 a 1" quiere decir que si sale bien se gana el doble de lo que se pierde si sale mal.'],
+  rsi: ['RSI', 'Un indicador de 0 a 100 que mide si el precio subió o bajó muy rápido. Menos de 30: cayó de más y suele rebotar. Más de 70: subió de más y suele corregir. Entre 30 y 70 es normal.'],
+  gatillo: ['Precio de compra', 'El valor que tiene que alcanzar el precio para que el motor compre. Mientras no llegue, la tarjeta queda EN ESPERA.'],
+  rueda: ['Rueda', 'Un día de mercado abierto. "5 ruedas" son 5 días hábiles.'],
+  setup_vcp: ['Compresión antes de subir (VCP)', 'El precio viene subiendo y después se mueve cada vez menos, como un resorte que se comprime. Si rompe para arriba, suele seguir subiendo. Es el método de Mark Minervini.'],
+  setup_burst: ['Arranque fuerte (Momentum Burst)', 'Un salto grande en un día con mucho volumen, después de estar quieto. Busca subirse a los primeros días de ese impulso. Es el método de Stockbee.'],
+  setup_orb: ['Ruptura de los primeros 15 minutos', 'Solo para ADRs en el día: si el precio supera el máximo de los primeros 15 minutos de Nueva York, compra, y cierra todo antes de las 15:55.'],
+  adr: ['ADR', 'Acciones de empresas argentinas que cotizan en Nueva York, en dólares.'],
+  byma: ['BYMA', 'La bolsa de Buenos Aires. Precios en pesos.'],
+};
+const hint = k => HELP[k] ? `<button type="button" class="hint" data-help="${k}" aria-label="Qué significa: ${esc(HELP[k][0])}">?</button>` : '';
+function showTip(btn) {
+  const tip = $('tip'), [t, d] = HELP[btn.dataset.help] || [];
+  if (!t) return;
+  if (!tip.hidden && tip.dataset.k === btn.dataset.help) { tip.hidden = true; return; }
+  tip.dataset.k = btn.dataset.help;
+  tip.innerHTML = `<b>${esc(t)}</b><p>${esc(d)}</p><button type="button" class="link" data-guide>Ver la guía completa</button>`;
+  tip.hidden = false;
+  const r = btn.getBoundingClientRect(), w = Math.min(340, innerWidth - 24);
+  tip.style.width = w + 'px';
+  tip.style.left = Math.max(12, Math.min(innerWidth - w - 12, r.left + r.width / 2 - w / 2)) + scrollX + 'px';
+  const below = r.bottom + 8 + tip.offsetHeight < innerHeight;
+  tip.style.top = (below ? r.bottom + 8 : r.top - 8 - tip.offsetHeight) + scrollY + 'px';
+}
+document.addEventListener('click', e => {
+  const h = e.target.closest('.hint');
+  if (h) { e.preventDefault(); e.stopPropagation(); showTip(h); return; }
+  if (e.target.closest('[data-guide]')) { $('tip').hidden = true; openGuide(); return; }
+  if (!e.target.closest('#tip')) $('tip').hidden = true;
+}, true);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') $('tip').hidden = true; });
+function openGuide() {
+  const sec = (title, keys) => `<h3>${title}</h3><dl class="gdl">${keys.map(k => `<dt>${esc(HELP[k][0])}</dt><dd>${esc(HELP[k][1])}</dd>`).join('')}</dl>`;
+  $('gBody').innerHTML = `<p>${esc(HELP.panel[1])}</p>
+    <h3>Colores</h3><ul class="glegend">
+      <li><span class="chipx ok">✓ Verde</span>A favor. Ese control no encontró problemas.</li>
+      <li><span class="chipx warn">! Ámbar</span>Ojo. Hay algo para mirar, pero no frena la compra.</li>
+      <li><span class="chipx block">✕ Rojo</span>En contra. Ese control dice que no; si se llega al precio, no compra.</li>
+      <li><span class="chipx">– Gris</span>Sin dato o no aplica hoy. No suma ni resta.</li></ul>
+    <p class="mute">Los colores se recalculan en cada revisión con los precios y las noticias nuevas, por eso un mismo paso puede estar verde un día y rojo otro. En precios y variaciones, verde siempre es suba y rojo baja.</p>
+    <h3>Estados de una posible compra</h3><ul class="glegend">
+      <li><span class="verdict WATCH">EN ESPERA</span>Todavía no compró. Espera que el precio llegue al valor de compra y ahí vuelve a revisar todo.</li>
+      <li><span class="verdict PASS">COMPRADA</span>Pasó todos los controles y el motor abrió la compra.</li>
+      <li><span class="verdict BLOCK">FRENADA</span>Llegó el momento de comprar, pero algún control dijo que no.</li></ul>
+    <h3>Avisos</h3><ul class="glegend">
+      <li><span class="tag in">COMPRA</span>El motor abrió una compra.</li>
+      <li><span class="tag out">VENTA</span>El motor cerró una operación, con ganancia o con pérdida.</li>
+      <li><span class="tag upd">STOP AJUSTADO</span>Subió el precio de corte para proteger la ganancia.</li>
+      <li><span class="tag pos">EN CURSO</span>Compra abierta que todavía no se vendió.</li></ul>
+    ${sec('Secciones', ['senales', 'watchlist', 'pipeline', 'mapa', 'operaciones', 'resultados'])}
+    ${sec('Los pasos del análisis', ['scanner', 'news', 'entry', 'plan', 'timemachine', 'budget', 'risk', 'ticket'])}
+    ${sec('Palabras', ['stop', 'objetivo', 'gatillo', 'rr', 'r', 'rsi', 'rueda', 'adr', 'byma', 'gates'])}
+    ${sec('Tipos de oportunidad', ['setup_vcp', 'setup_burst', 'setup_orb'])}
+    <p class="mute">Datos con demora. Las señales salen de reglas automáticas: no son asesoramiento financiero.</p>`;
+  $('guide').showModal();
+}
+$('guideOpen').addEventListener('click', openGuide);
+$('gClose').addEventListener('click', () => $('guide').close());
+$('guide').addEventListener('click', e => { if (e.target === $('guide')) $('guide').close(); });
+
 function engAsset(kind, id) { return ENG?.assets?.[`${kind}:${id}`] || null; }
 function engTip(a) {
-  const t = [`Puntaje ${a.score}/100 (motor de skills)`];
+  const t = [`Puntaje ${a.score}/100 (más alto, más fuerza para arriba)`];
   if (a.vcp?.rating) t.push(`VCP: ${a.vcp.rating} · ${a.vcp.state || ''}${a.vcp.pivot ? ' · pivote ' + px(a.vcp.pivot) : ''}`);
   if (a.burst?.state) t.push(`Momentum Burst: ${a.burst.rating} · ${a.burst.state.replace(/_/g, ' ').toLowerCase()}`);
   if (a.stage4) t.push('Tendencia bajista (debajo de las medias de 50 y 200)');
@@ -937,9 +1060,9 @@ function renderSignals() {
   const list = evs.filter(e => filter === 'all' || e.type === filter);
   const MK = {adr: 'ADR', byma: 'BYMA', cripto: 'Cripto'};
   $('feed').innerHTML = list.length ? list.map(e => `<article class="ev">
-      <div class="h"><span class="tag ${e.type}">${e.type === 'in' ? 'ENTRADA' : 'SALIDA'}</span><span class="tk">${esc(e.label)}</span><span class="mute" style="font-size:13px">${MK[e.kind]}</span><span style="flex:1"></span><span class="num mute" style="font-size:12px">${hhmm(e.t)}</span></div>
+      <div class="h"><span class="tag ${e.type}">${e.type === 'in' ? 'COMPRA' : 'VENTA'}</span><span class="tk">${esc(e.label)}</span><span class="mute" style="font-size:13px">${MK[e.kind]}</span><span style="flex:1"></span><span class="num mute" style="font-size:12px">${hhmm(e.t)}</span></div>
       <p class="why">${esc(e.why)}</p>
-      <div class="lv"><div><span>Precio ${e.kind === 'byma' ? '$' : 'US$'}</span><b>${px(e.price)}</b></div><div><span>Stop</span><b class="dn">${e.stop ? px(e.stop) : '—'}</b></div><div><span>Objetivo</span><b class="up">${e.target ? px(e.target) : '—'}</b></div><div><span>R:R</span><b>${e.rr ? fmt(e.rr, 1) : '—'}</b></div></div>
+      <div class="lv"><div><span>Precio ${e.kind === 'byma' ? '$' : 'US$'}</span><b>${px(e.price)}</b></div><div><span>Stop</span><b class="dn">${e.stop ? px(e.stop) : '—'}</b></div><div><span>Objetivo</span><b class="up">${e.target ? px(e.target) : '—'}</b></div><div><span>Gana / arriesga</span><b>${rrTxt(e.rr)}</b></div></div>
       <p class="tg" style="color:var(--warn)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>${follow.has(e.kind + ':' + e.id) ? 'Seguido · se enviará al conectar Telegram' : 'Telegram sin conectar'}</p>
     </article>`).join('')
     : `<p class="empty">${evs.length ? 'No hay señales de este tipo hoy.' : 'Sin señales nuevas hoy. Se revisan en cada actualización.'}</p>`;
@@ -961,44 +1084,62 @@ function renderEngine() {
   $('nAll').textContent = evs.length; $('nIn').textContent = n('in'); $('nOut').textContent = n('out');
   $('nPos').textContent = n('pos'); $('nWatch').textContent = n('watch');
   for (const b of $('sgFilters').querySelectorAll('[data-f=pos],[data-f=watch]')) b.hidden = false;
-  $('sgSub').textContent = 'Motor de skills: VCP, Momentum Burst, rango de apertura intradía y régimen de mercado, con Time Machine y riesgo PASS/BLOCK';
+  $('sgSub').textContent = 'Lo que el motor compró, vendió o está esperando comprar. Revisa cada hora con el mercado abierto.';
   const mk = ENG.markets || {};
   $('gates').hidden = false;
-  $('gates').innerHTML = Object.entries(mk).map(([k, m]) => `<span class="gate ${esc(m.gate)}" title="${esc(m.why)}">${MKN[k]}: ${GATE[m.gate] || esc(m.gate)}${m.regime?.score != null ? ' · ' + fmt(m.regime.score, 0) : ''}</span>`).join('');
+  $('gates').innerHTML = '<span class="mute" style="font-size:12px">Clima:</span>' + Object.entries(mk).map(([k, m]) => `<span class="gate ${esc(m.gate)}" title="${esc(m.why)}">${MKN[k]}: ${GATE[m.gate] || esc(m.gate)}</span>`).join('') + hint('gates');
   const age = (Date.now() - new Date(ENG.generated_at).getTime()) / 36e5;
   $('engStamp').hidden = false;
-  $('engStamp').innerHTML = `Analizado ${when(ENG.generated_at)}${age > 26 ? ' · <span style="color:var(--warn)">desactualizado</span>' : ''} · ${Object.keys(ENG.assets).length} activos`;
+  $('engStamp').innerHTML = `Última revisión ${when(ENG.generated_at)}${age > 26 ? ' · <span style="color:var(--warn)">hace más de un día</span>' : ''} · ${Object.keys(ENG.assets).length} activos`;
   const list = items.filter(i => filter === 'all' ? ['in', 'out', 'upd'].includes(i.f) : i.f === filter).sort((a, b) => b.t - a.t || b.score - a.score);
   const card = i => {
     if (i.f === 'pos') return `<article class="ev">
-      <div class="h"><span class="tag pos">ABIERTA</span><button class="tk" type="button" data-open="${esc(keyFromLabel(i.kind, i.label))}">${esc(i.label)}</button><span class="mute" style="font-size:13px">${MKN[i.kind]}</span><span class="setup">${SETUP[i.setup]}</span><span style="flex:1"></span><span class="num ${i.r_now >= 0 ? 'up' : 'dn'}">${i.r_now >= 0 ? '+' : '−'}${fmt(Math.abs(i.r_now), 1)}R</span></div>
+      <div class="h"><span class="tag pos">EN CURSO</span><button class="tk" type="button" data-open="${esc(keyFromLabel(i.kind, i.label))}">${esc(i.label)}</button><span class="mute" style="font-size:13px">${MKN[i.kind]}</span>${setupChip(i.setup)}<span style="flex:1"></span><span class="num ${i.r_now >= 0 ? 'up' : 'dn'}" title="Va ${i.r_now >= 0 ? 'ganando' : 'perdiendo'} ${fmt(Math.abs(i.r_now), 1)} veces lo arriesgado">${i.r_now >= 0 ? '+' : '−'}${fmt(Math.abs(i.r_now), 1)}R</span></div>
       <p class="why">${esc(i.why)}</p>
       <div class="lv"><div><span>Entrada</span><b>${px(i.entry)}</b></div><div><span>Último</span><b>${px(i.last)}</b></div><div><span>Stop</span><b class="dn">${px(i.stop)}</b></div><div><span>Objetivo</span><b class="up">${px(i.target)}</b></div></div>
-      <p class="tg mute">Tamaño sugerido ${fmt(i.units, i.units % 1 ? 4 : 0)} (${money(i.kind, i.notional)}), riesgo ${money(i.kind, i.max_loss)} · ${i.sessions || 0} ruedas</p></article>`;
+      <p class="tg mute">Cantidad sugerida ${fmt(i.units, i.units % 1 ? 4 : 0)} (${money(i.kind, i.notional)}). Si toca el stop se pierden como mucho ${money(i.kind, i.max_loss)}. Abierta hace ${i.sessions || 0} ruedas.</p></article>`;
     if (i.f === 'watch') return `<article class="ev">
-      <div class="h"><span class="tag watch">${i.blocked ? 'BLOQUEADA' : 'PREPARADA'}</span><button class="tk" type="button" data-open="${esc(i.kind + ':' + i.id)}">${esc(i.label)}</button><span class="mute" style="font-size:13px">${MKN[i.kind]}</span><span class="setup">${SETUP[i.setup]}</span><span style="flex:1"></span><span class="num mute">${fmt(i.score, 0)}/100</span></div>
-      <p class="why">${esc(i.why)}</p>
-      <div class="lv"><div><span>Gatillo</span><b>${px(i.trigger)}</b></div><div><span>Stop</span><b class="dn">${px(i.stop)}</b></div><div><span>Riesgo</span><b>${i.trigger && i.stop ? fmt((1 - i.stop / i.trigger) * 100, 1) + ' %' : '—'}</b></div><div><span>Puntaje</span><b>${fmt(i.score, 0)}</b></div></div></article>`;
-    const tag = i.f === 'in' ? '<span class="tag in">ENTRADA</span>' : i.f === 'out' ? '<span class="tag out">SALIDA</span>' : '<span class="tag upd">AJUSTE</span>';
+      <div class="h"><span class="tag watch">${i.blocked ? 'FRENADA' : 'EN ESPERA'}</span><button class="tk" type="button" data-open="${esc(i.kind + ':' + i.id)}">${esc(i.label)}</button><span class="mute" style="font-size:13px">${MKN[i.kind]}</span>${setupChip(i.setup)}<span style="flex:1"></span><span class="num mute" title="Puntaje de 0 a 100: más alto, más fuerza para arriba">${fmt(i.score, 0)}/100</span></div>
+      <p class="why">${i.blocked ? 'Llegó al precio de compra pero algún control la frenó.' : 'Todavía no compró: espera que el precio llegue al valor de compra.'} ${esc(plainWhy(i.why))}</p>
+      <div class="lv"><div><span>Compra si llega a</span><b>${px(i.trigger)}</b></div><div><span>Stop</span><b class="dn">${px(i.stop)}</b></div><div><span>Pérdida si toca el stop</span><b>${i.trigger && i.stop ? fmt((1 - i.stop / i.trigger) * 100, 1) + ' %' : '—'}</b></div><div><span>Puntaje</span><b>${fmt(i.score, 0)}/100</b></div></div></article>`;
+    const tag = i.f === 'in' ? '<span class="tag in">COMPRA</span>' : i.f === 'out' ? '<span class="tag out">VENTA</span>' : '<span class="tag upd">STOP AJUSTADO</span>';
     const lv = i.f === 'in'
-      ? `<div><span>Precio ${i.kind === 'byma' ? '$' : 'US$'}</span><b>${px(i.price)}</b></div><div><span>Stop</span><b class="dn">${px(i.stop)}</b></div><div><span>Objetivo</span><b class="up">${px(i.target)}</b></div><div><span>R:R</span><b>${fmt(i.rr, 1)}</b></div>`
+      ? `<div><span>Compró a ${i.kind === 'byma' ? '$' : 'US$'}</span><b>${px(i.price)}</b></div><div><span>Stop</span><b class="dn">${px(i.stop)}</b></div><div><span>Objetivo</span><b class="up">${px(i.target)}</b></div><div><span>Gana / arriesga</span><b>${rrTxt(i.rr)}</b></div>`
       : i.f === 'out'
-      ? `<div><span>Salida</span><b>${px(i.price)}</b></div><div><span>Entrada</span><b>${px(i.entry)}</b></div><div><span>Resultado</span><b class="${i.pnl_pct >= 0 ? 'up' : 'dn'}">${i.pnl_pct >= 0 ? '+' : '−'}${fmt(Math.abs(i.pnl_pct), 1)} %</b></div><div><span>R</span><b>${i.r >= 0 ? '+' : '−'}${fmt(Math.abs(i.r), 1)}</b></div>`
+      ? `<div><span>Vendió a</span><b>${px(i.price)}</b></div><div><span>Había comprado a</span><b>${px(i.entry)}</b></div><div><span>Resultado</span><b class="${i.pnl_pct >= 0 ? 'up' : 'dn'}">${i.pnl_pct >= 0 ? '+' : '−'}${fmt(Math.abs(i.pnl_pct), 1)} %</b></div><div><span>Veces lo arriesgado</span><b>${i.r >= 0 ? '+' : '−'}${fmt(Math.abs(i.r), 1)}</b></div>`
       : `<div><span>Precio</span><b>${px(i.price)}</b></div><div><span>Stop nuevo</span><b class="dn">${px(i.stop)}</b></div><div></div><div></div>`;
     return `<article class="ev">
-      <div class="h">${tag}<button class="tk" type="button" data-open="${esc(keyFromLabel(i.kind, i.label))}">${esc(i.label)}</button><span class="mute" style="font-size:13px">${MKN[i.kind]}</span><span class="setup">${SETUP[i.setup] || ''}</span><span style="flex:1"></span><span class="num mute" style="font-size:12px">${when(i.ts)}</span></div>
+      <div class="h">${tag}<button class="tk" type="button" data-open="${esc(keyFromLabel(i.kind, i.label))}">${esc(i.label)}</button><span class="mute" style="font-size:13px">${MKN[i.kind]}</span>${setupChip(i.setup)}<span style="flex:1"></span><span class="num mute" style="font-size:12px">${when(i.ts)}</span></div>
       <p class="why">${esc(i.why)}</p><div class="lv">${lv}</div>${tgLine(i)}</article>`;
   };
-  const EMPTY = {all: 'Sin entradas ni salidas en los últimos 7 días. El motor revisa la watchlist cada hora con el mercado abierto.', in: 'No hubo entradas en los últimos 7 días.', out: 'No hubo salidas en los últimos 7 días.', pos: 'No hay posiciones abiertas.', watch: 'No hay setups cerca de dispararse.'};
+  const EMPTY = {all: 'No hubo compras ni ventas en los últimos 7 días. El motor revisa tus activos cada hora con el mercado abierto.', in: 'No hubo compras en los últimos 7 días.', out: 'No hubo ventas en los últimos 7 días.', pos: 'No hay compras abiertas.', watch: 'Ningún activo está cerca de su precio de compra.'};
   $('feed').innerHTML = list.length ? list.map(card).join('') : `<p class="empty">${EMPTY[filter]}</p>`;
 }
 
-/* ---------- Pipeline de las skills ---------- */
+/* ---------- Análisis paso a paso (pipeline de las skills) ---------- */
 let plTab = store.get('tp_pl', 'cand');
 let SEC = null, CONG = null;
-const LEAN = {target_strong: 'Fuerte al objetivo', target: 'Inclina al objetivo', even: 'Parejo', stop: 'Inclina al stop', stop_strong: 'Fuerte al stop', none: 'Sin definición'};
+const LEAN = {target_strong: 'Muy a favor', target: 'A favor', even: 'Parejo', stop: 'En contra', stop_strong: 'Muy en contra', none: 'Sin definición'};
 const TAGES = {earnings: 'balance', analyst: 'analistas', legal: 'legal', deal: 'operación', capital: 'dividendos/recompra', people: 'directivos', risk: 'riesgo', halt: 'suspensión', regulatory: 'regulatorio', macro: 'macro'};
 const pctS = v => v == null ? '—' : fmt(v * 100, 1) + ' %';
+const STEP = {scanner: 'Señal técnica', news: 'Noticias', entry: 'Motivo de compra', plan: 'Precios', timemachine: 'Simulación', budget: 'Cuánto comprar', risk: 'Control de riesgo', ticket: 'Orden sugerida'};
+const STS = {ok: ['✓', 'a favor'], warn: ['!', 'ojo'], block: ['✕', 'en contra'], na: ['–', 'sin dato']};
+const SCANP = {breakout_20d: 'superó su precio más alto de los últimos 20 días', bull_flag: 'después de subir fuerte hace una pausa que suele seguir para arriba (bandera alcista)', reclaim_ma20: 'volvió a pasar arriba de su promedio de los últimos 20 días', oversold: 'cayó mucho en pocos días', oversold_bounce: 'empieza a rebotar después de una caída fuerte'};
+const rsiTxt = v => v == null ? '' : `RSI ${fmt(v, 1)}: ${v < 30 ? 'muy bajo, cayó de más y suele rebotar' : v > 70 ? 'muy alto, subió de más y suele corregir' : 'en zona normal'}.`;
+// Textos de corridas viejas del motor, pasados al lenguaje nuevo (las corridas nuevas ya salen así)
+const OLDTXT = [
+  [/^Si dispara: entrada (.+?), stop (.+?), objetivo (.+)$/, 'Si el precio llega a $1, compra. Después vende con pérdida si baja a $2 (stop) o con ganancia si sube a $3 (objetivo)'],
+  [/^Entrada (.+?), stop (.+?) \(−(.+?)\), objetivo (.+?) \((.+?)R\)$/, 'Compra a $1. Vende con pérdida si baja a $2 (stop, −$3) o con ganancia si sube a $4 (objetivo, gana $5 veces lo que arriesga)'],
+  [/^Sin titulares de (\S+) en las últimas horas$/, 'No hubo noticias de $1 en las últimas horas: nada en contra'],
+  [/^(\d+) titulares de/, '$1 noticias recientes de'], [/\. Último: «/, '. La última: «'],
+  [/Hay balance cerca: una operación de varios días queda expuesta\./, 'Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.'],
+  [/^Sin fuente de noticias para este activo$/, 'No hay fuente de noticias para este activo'],
+  [/^PASS: dentro de todos los límites$/, 'Aprobado: respeta todos los límites de riesgo'], [/^BLOCK: /, 'Frenado: '],
+  [/mercado en modo defensivo/g, 'el mercado está flojo y el motor no compra'], [/Time Machine: /g, 'la simulación (Time Machine) da '],
+  [/\(watch only\): revisar gráfico\./, 'en observación: mirar el gráfico.'],
+];
+const plainOld = t => OLDTXT.reduce((s, [re, to]) => s.replace(re, to), String(t ?? ''));
+const plainWhy = plainOld;
 function fanSvg(tm, plan) {
   const f = tm?.mc?.fan; if (!f || f.length < 2) return '';
   const lv = plan ? [plan.stop, plan.target, plan.entry].filter(v => v != null) : [];
@@ -1007,68 +1148,106 @@ function fanSvg(tm, plan) {
   const band = f.map((b, i) => `${x(i)},${y(b[2])}`).join(' ') + ' ' + f.map((b, i) => `${x(i)},${y(b[0])}`).reverse().join(' ');
   const med = f.map((b, i) => `${x(i)},${y(b[1])}`).join(' ');
   const line = (v, c) => v == null ? '' : `<line class="lvl ${c}" x1="${pad}" x2="${W - pad}" y1="${y(v)}" y2="${y(v)}"/>`;
-  return `<svg class="fan" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Abanico de precios simulados: banda 5 a 95 % y mediana"><polygon class="band" points="${band}"/><polyline class="med" points="${med}"/>${plan ? line(plan.stop, 'stp') + line(plan.target, 'tgt') + line(plan.entry, 'ent') : ''}</svg>`;
+  return `<figure class="fan-w" style="margin:0"><svg class="fan" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Rango donde terminó el precio en 9 de cada 10 simulaciones, y el valor del medio"><polygon class="band" points="${band}"/><polyline class="med" points="${med}"/>${plan ? line(plan.stop, 'stp') + line(plan.target, 'tgt') + line(plan.entry, 'ent') : ''}</svg><figcaption>Zona sombreada: dónde terminó el precio en 9 de cada 10 simulaciones. Línea: el caso del medio.</figcaption></figure>`;
 }
 function tmBlock(tm, plan) {
   if (!tm?.ok) return '';
   const m = tm.mc, t = m.p_target * 100, s = m.p_stop * 100, n = Math.max(0, 100 - t - s);
   return `<div class="tmrow"><div style="flex:1 1 240px;display:flex;flex-direction:column;gap:6px">
-      <div class="tmbar" role="img" aria-label="Objetivo primero ${fmt(t, 1)} %, stop primero ${fmt(s, 1)} %, ninguno ${fmt(n, 1)} %"><i class="t" style="width:${t}%"></i><i class="s" style="width:${s}%"></i><i class="n" style="width:${n}%"></i></div>
-      <div class="tmleg"><span><b class="up">${fmt(t, 1)} %</b> objetivo</span><span><b class="dn">${fmt(s, 1)} %</b> stop</span><span><b>${fmt(n, 1)} %</b> ninguno (${esc(m.until || '')})</span><span>promedio <b>${m.avg_R >= 0 ? '+' : '−'}${fmt(Math.abs(m.avg_R), 2)}R</b></span><span>${fmt(m.replays, 0)} repeticiones · ${esc(tm.kind)}</span></div>
+      <div class="tmbar" role="img" aria-label="Llegó primero al objetivo ${fmt(t, 1)} %, al stop ${fmt(s, 1)} %, a ninguno ${fmt(n, 1)} %"><i class="t" style="width:${t}%"></i><i class="s" style="width:${s}%"></i><i class="n" style="width:${n}%"></i></div>
+      <div class="tmleg"><span><b class="up">${fmt(t, 1)} %</b> llegó al objetivo (ganancia)</span><span><b class="dn">${fmt(s, 1)} %</b> llegó al stop (pérdida)</span><span><b>${fmt(n, 1)} %</b> a ninguno en ${esc(m.until || '')}</span><span>resultado medio <b>${m.avg_R >= 0 ? '+' : '−'}${fmt(Math.abs(m.avg_R), 2)}</b> veces lo arriesgado</span><span>${fmt(m.replays, 0)} simulaciones</span></div>
     </div>${fanSvg(tm, plan)}</div>`;
 }
-function stepsHtml(stages) {
-  const flow = stages.map((s, i) => `${i ? '<li class="arr" aria-hidden="true">→</li>' : ''}<li class="${esc(s.status)}">${esc(s.name)}</li>`).join('');
+// El texto de cada paso, en palabras simples
+function stepText(s, a) {
+  if (s.key === 'scanner' && a?.scanner) {
+    const tags = a.scanner.tags || [];
+    return (tags.length ? 'Sí: ' + tags.map(t => SCANP[t] || t).join(' y ') + '. ' : 'Hoy no aparece ninguna señal técnica. No es malo: solo no suma. ') + rsiTxt(a.scanner.rsi);
+  }
+  if (s.key === 'timemachine' && s.data?.ok) {
+    const tm = s.data, m = tm.mc, pt = m.p_target, ps = m.p_stop, pn = Math.max(0, 1 - pt - ps), r = m.r_at_target || 1;
+    const n100 = v => fmt(v * 100, 0);
+    let txt = `${LEAN[tm.lean] || ''}${tm.lean === 'stop_strong' ? ', frena la compra' : ''}. Se simuló ${fmt(m.replays, 0)} veces cómo podría moverse el precio en ${esc(m.until || 'los próximos días')}: llegó primero al objetivo ${n100(pt)} de cada 100 veces y al stop ${n100(ps)} de cada 100${pn > 0.005 ? `; las otras ${n100(pn)} no tocó ninguno` : ''}.`;
+    if (Math.abs(r - 1) > 0.005 && pt + ps > 0) txt += ` Como la ganancia es ${fmt(r, r % 1 ? 1 : 0)} veces lo que se arriesga, alcanza con acertar ${n100(1 / (1 + r))} de cada 100 (de las que tocan uno) para empatar, y acertó ${n100(pt / (pt + ps))}.`;
+    const h = tm.history;
+    if (h?.fired) txt += ` Antes, esta misma señal (${h.label}) apareció ${h.fired} veces en este activo: ${h.target} llegaron al objetivo, ${h.stop} al stop y ${h.neither} a ninguno.`;
+    return txt;
+  }
+  return plainOld(s.text);
+}
+function stepsHtml(stages, a) {
+  const flow = stages.map((s, i) => { const [ic, w] = STS[s.status] || STS.na, nm = STEP[s.key] || s.name; return `${i ? '<li class="arr" aria-hidden="true">→</li>' : ''}<li class="${esc(s.status)}" title="${esc(nm)}: ${w}"><span class="ic" aria-hidden="true">${ic}</span>${esc(nm)}<span class="sr">: ${w}</span></li>`; }).join('');
   const dl = stages.map(s => {
     let extra = '';
     if (s.key === 'news' && s.items?.length) extra = '<br>' + s.items.slice(0, 2).map(n => `<a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a>`).join('<br>');
-    if (s.key === 'timemachine' && s.data) extra = tmBlock(s.data, stages.find(x => x.key === 'ticket')?.ticket);
-    return `<dt>${esc(s.name)}</dt><dd class="${esc(s.status)}">${esc(s.text)}${extra}</dd>`;
+    if (s.key === 'timemachine' && s.data) extra = tmBlock(s.data, s.plan || stages.find(x => x.key === 'plan')?.plan || stages.find(x => x.key === 'ticket')?.ticket);
+    return `<dt>${esc(STEP[s.key] || s.name)}${hint(s.key)}</dt><dd class="${esc(s.status)}">${esc(stepText(s, a))}${extra}</dd>`;
   }).join('');
-  return `<ul class="flow" aria-label="Etapas">${flow}</ul><dl class="steps">${dl}</dl>`;
+  return `<ul class="flow" aria-label="Pasos del análisis">${flow}</ul><dl class="steps">${dl}</dl>`;
 }
+const VER = {PASS: 'COMPRADA', BLOCK: 'FRENADA', WATCH: 'EN ESPERA'};
+// Una oración arriba de cada tarjeta: qué está pasando y qué falta
+function verdictSay(a) {
+  const p = a.pipeline, st = p.stages || [], c = a.kind === 'byma' ? '$' : 'US$';
+  const plan = st.find(s => s.key === 'plan'), red = st.filter(s => s.status === 'block');
+  const entry = plan?.plan?.entry ?? (String(plan?.text || '').match(/(?:entrada|llega a|Compra a) (?:US)?\$ ([\d.]+(?:,\d+)?)/)?.[1]);
+  const ent = entry == null ? '' : typeof entry === 'number' ? `${c} ${px(entry)}` : `${c} ${entry}`;
+  if (p.verdict === 'PASS') return ['', 'Pasó todos los controles y el motor abrió la compra.'];
+  if (p.verdict === 'BLOCK') {
+    const r = st.find(s => s.key === 'risk' && s.status === 'block') || red[0];
+    return ['block', 'No compró. ' + (r ? plainOld(r.text).replace(/^Frenado: /, 'Motivo: ') : 'Algún control dijo que no.')];
+  }
+  let t = `Todavía no compró. Espera que el precio supere ${ent || 'su valor de compra'} (último precio: ${money(a.kind, a.last)}).`;
+  if (red.length) t += ` Aunque llegue, hoy no compraría: ${red.map(s => (STEP[s.key] || s.name).toLowerCase()).join(' y ')} en rojo.`;
+  else t += ' Si llega, vuelve a revisar todo antes de comprar.';
+  return [red.length ? 'block' : '', t];
+}
+const plLegend = () => `<div class="plleg"><b>Cómo leer cada tarjeta</b>
+  <span><span class="verdict WATCH">EN ESPERA</span> todavía no compró</span><span><span class="verdict PASS">COMPRADA</span> compró</span><span><span class="verdict BLOCK">FRENADA</span> un control dijo que no</span>${hint('estados')}
+  <span style="flex-basis:100%;height:0"></span>
+  <span class="chipx ok">✓ a favor</span><span class="chipx warn">! ojo</span><span class="chipx block">✕ en contra</span><span class="chipx">– sin dato</span>${hint('colores')}</div>`;
 function candHtml() {
   const as = Object.values(ENG.assets || {}).filter(a => a.pipeline?.setup);
   const ord = {PASS: 0, BLOCK: 1, WATCH: 2};
   as.sort((a, b) => (ord[a.pipeline.verdict] ?? 3) - (ord[b.pipeline.verdict] ?? 3) || b.score - a.score);
   $('plNc').textContent = as.length;
-  const VER = {PASS: 'PASS · se abrió', BLOCK: 'BLOCK', WATCH: 'PREPARADA'};
-  const cards = as.map(a => `<article class="pcard">
-      <div class="h"><span class="verdict ${esc(a.pipeline.verdict)}">${VER[a.pipeline.verdict] || esc(a.pipeline.verdict)}</span><button class="tk" type="button" data-open="${esc(a.kind + ':' + a.id)}">${esc(a.label)}</button><span class="mute" style="font-size:13px">${MKN[a.kind]}</span><span class="setup">${SETUP[a.pipeline.setup] || ''}</span><span style="flex:1"></span><span class="num mute">${money(a.kind, a.last)}</span></div>
-      ${stepsHtml(a.pipeline.stages)}</article>`).join('');
+  const cards = as.map(a => { const [cls, say] = verdictSay(a); return `<article class="pcard">
+      <div class="h"><span class="verdict ${esc(a.pipeline.verdict)}">${VER[a.pipeline.verdict] || esc(a.pipeline.verdict)}</span><button class="tk" type="button" data-open="${esc(a.kind + ':' + a.id)}">${esc(a.label)}</button><span class="mute" style="font-size:13px">${MKN[a.kind]}</span>${setupChip(a.pipeline.setup)}<span style="flex:1"></span><span class="num mute" title="Precio actual">${money(a.kind, a.last)}</span></div>
+      <p class="say ${cls}">${esc(say)}</p>
+      ${stepsHtml(a.pipeline.stages, a)}</article>`; }).join('');
   const scan = Object.values(ENG.assets || {}).filter(a => a.scanner?.tags?.length && !a.pipeline?.setup);
-  const scanHtml = scan.length ? `<div><p class="legend" style="margin-bottom:6px">Escáner diario (trader-scanner): otros setups</p><div class="tbl"><table class="ptbl"><thead><tr><th scope="col">Activo</th><th scope="col">Setups</th><th scope="col">RSI</th></tr></thead><tbody>${scan.map(a => `<tr><td><span class="t">${esc(a.label)}</span><small>${MKN[a.kind]}</small></td><td style="text-align:left">${esc(a.scanner.labels.join(', '))}</td><td class="num">${fmt(a.scanner.rsi, 1)}</td></tr>`).join('')}</tbody></table></div></div>` : '';
-  return (cards || `<p class="empty">Ningún activo tiene hoy un setup de entrada (VCP o Momentum Burst) ni está preparado. El motor revisa cada hora.</p>`) + scanHtml;
+  const scanHtml = scan.length ? `<div><p class="legend" style="margin-bottom:6px">Otras señales técnicas de hoy (todavía sin plan de compra)</p><div class="tbl"><table class="ptbl"><thead><tr><th scope="col">Activo</th><th scope="col">Qué detectó</th><th scope="col">RSI${hint('rsi')}</th></tr></thead><tbody>${scan.map(a => `<tr><td><span class="t">${esc(a.label)}</span><small>${MKN[a.kind]}</small></td><td style="text-align:left">${esc(a.scanner.tags.map(t => SCANP[t] || t).join('; '))}</td><td class="num">${fmt(a.scanner.rsi, 1)}</td></tr>`).join('')}</tbody></table></div></div>` : '';
+  return plLegend() + (cards || `<p class="empty">Hoy ningún activo está cerca de una compra. El motor vuelve a revisar cada hora.</p>`) + scanHtml;
 }
 
-const PAT_ST = {'ruptura': 'RUPTURA', 'formándose': 'FORMÁNDOSE'};
+const PAT_ST = {'ruptura': 'YA ROMPIÓ', 'formándose': 'EN FORMACIÓN'};
 function patCard(p, withName = true) {
   const c = p.kind === 'byma' ? '$' : 'US$', bull = p.bias === 'alcista';
-  return `<article class="pcard"><div class="h"><span class="verdict ${p.state === 'ruptura' ? (bull ? 'PASS' : 'BLOCK') : 'WATCH'}">${PAT_ST[p.state] || esc(p.state)}</span>${withName ? `<button class="tk" type="button" data-open="${esc(p.kind + ':' + p.id)}">${esc(p.label)}</button><span class="mute" style="font-size:13px">${MKN[p.kind]}</span>` : ''}<span class="setup">${esc(p.name)}</span><span class="bias ${esc(p.bias)}">${bull ? 'Alcista' : 'Bajista'}</span></div>
-    <div class="pkv"><span>${bull ? 'Entrada si cierra arriba de' : 'Aviso si cierra abajo de'} <b>${c} ${px(p.trigger)}</b></span>${bull ? `<span>Stop <b class="dn">${px(p.stop)}</b></span><span>Objetivo <b class="up">${px(p.target)}</b></span>${p.rr != null ? `<span>R:R <b>${fmt(p.rr, 1)}</b></span>` : ''}` : `<span>Proyección <b class="dn">${px(p.target)}</b></span>`}</div>
+  return `<article class="pcard"><div class="h"><span class="verdict ${p.state === 'ruptura' ? (bull ? 'PASS' : 'BLOCK') : 'WATCH'}">${PAT_ST[p.state] || esc(p.state)}</span>${withName ? `<button class="tk" type="button" data-open="${esc(p.kind + ':' + p.id)}">${esc(p.label)}</button><span class="mute" style="font-size:13px">${MKN[p.kind]}</span>` : ''}<span class="setup">${esc(p.name)}</span><span class="bias ${esc(p.bias)}">${bull ? 'Anticipa suba' : 'Anticipa baja'}</span></div>
+    <div class="pkv"><span>${bull ? 'Compra si cierra arriba de' : 'Aviso si cierra abajo de'} <b>${c} ${px(p.trigger)}</b></span>${bull ? `<span>Stop <b class="dn">${px(p.stop)}</b></span><span>Objetivo <b class="up">${px(p.target)}</b></span>${p.rr != null ? `<span>Gana / arriesga <b>${rrTxt(p.rr)}</b></span>` : ''}` : `<span>Podría bajar hasta <b class="dn">${px(p.target)}</b></span>`}</div>
     <p class="mute" style="font-size:13px">${esc(p.why)}</p></article>`;
 }
 function patHtml() {
   const ps = ENG.patterns || [];
-  if (!ps.length) return '<p class="empty">Ningún activo de la watchlist del motor tiene hoy un doble piso, hombro-cabeza-hombro o triángulo cerca de definirse. Se revisa en cada corrida.</p>';
-  return ps.map(p => patCard(p)).join('') + '<p class="rvnote">Detección geométrica sobre velas diarias de las últimas 90 ruedas: es una ayuda para mirar, no una orden. El objetivo es la altura del patrón proyectada desde el gatillo.</p>';
+  if (!ps.length) return '<p class="empty">Hoy ningún activo dibuja una figura clara (doble piso, hombro-cabeza-hombro o triángulo) cerca de definirse. Se revisa en cada corrida.</p>';
+  return ps.map(p => patCard(p)).join('') + '<p class="rvnote">Figuras que se buscan solas en el gráfico diario de los últimos 90 días. Son una ayuda para mirar, no una orden. El objetivo sale de proyectar la altura de la figura desde el punto de ruptura.</p>';
 }
 function intraHtml() {
   const it = ENG.intraday;
-  if (!it || !it.symbols) return `<p class="empty">El intradía corre con la rueda de NY abierta (9:30 a 16:00), cada 15 minutos. Todavía no hay corrida.</p>`;
+  if (!it || !it.symbols) return `<p class="empty">Esto corre cada 15 minutos con la bolsa de Nueva York abierta (9:30 a 16:00 de allá). Todavía no hubo ninguna revisión.</p>`;
   const rows = Object.entries(it.symbols).map(([sym, r]) => {
-    if (r.status === 'open') { const p = r.position; return `<tr><td><span class="t">${esc(sym)}</span></td><td style="text-align:left"><span class="verdict PASS">ABIERTA</span></td><td colspan="4" style="text-align:left">Entrada ${px(p.entry)} · stop ${px(p.stop)} · objetivo ${px(p.target)} · cierre ${esc(p.flat_by)} NY${p.timemachine ? '<br><span class="mute">' + esc(p.timemachine.verdict) + '</span>' : ''}</td></tr>`; }
+    if (r.status === 'open') { const p = r.position; return `<tr><td><span class="t">${esc(sym)}</span></td><td style="text-align:left"><span class="verdict PASS">COMPRADA</span></td><td colspan="4" style="text-align:left">Compró a ${px(p.entry)} · stop ${px(p.stop)} · objetivo ${px(p.target)} · vende sí o sí a las ${esc(p.flat_by)} de NY${p.timemachine ? '<br><span class="mute">' + esc(p.timemachine.verdict) + '</span>' : ''}</td></tr>`; }
     const orr = r.opening_range, tm = r.timemachine, rk = r.risk;
     const plan = r.plan ? `${px(r.plan.entry)} / <span class="dn">${px(r.plan.stop)}</span> / <span class="up">${px(r.plan.target)}</span>` : '—';
     return `<tr><td><span class="t">${esc(sym)}</span><small>${r.last ? 'último ' + px(r.last.close) : ''}</small></td>
       <td style="text-align:left">${esc(r.status_es || r.status)}<small>${esc(r.phase || '')}</small></td>
       <td>${orr ? px(orr.low) + '–' + px(orr.high) : '—'}</td>
       <td>${plan}</td>
-      <td style="text-align:left">${tm?.ok ? `<b>${esc(LEAN[tm.lean] || tm.lean)}</b><small>obj ${pctS(tm.mc.p_target)} · stop ${pctS(tm.mc.p_stop)} · hist ${tm.history.target}/${tm.history.fired}</small>` : '—'}</td>
-      <td style="text-align:left">${rk ? `<span class="verdict ${rk.verdict}">${rk.verdict}</span>${rk.reasons?.length ? '<small>' + esc(rk.reasons.join('; ')) + '</small>' : ''}` : '—'}</td></tr>`;
+      <td style="text-align:left">${tm?.ok ? `<b>${esc(LEAN[tm.lean] || tm.lean)}</b><small>objetivo ${pctS(tm.mc.p_target)} · stop ${pctS(tm.mc.p_stop)} · antes ganó ${tm.history.target} de ${tm.history.fired}</small>` : '—'}</td>
+      <td style="text-align:left">${rk ? `<span class="verdict ${rk.verdict}">${rk.verdict === 'PASS' ? 'APROBADO' : 'FRENADO'}</span>${rk.reasons?.length ? '<small>' + esc(plainOld(rk.reasons.join('; '))) + '</small>' : ''}` : '—'}</td></tr>`;
   }).join('');
-  return `<p class="pnote">Ruptura del rango de los primeros 15 minutos (trader-entry), stop en el medio del rango y objetivo a ${fmt(1, 0)}R (trader-exit), Time Machine con 60 días de velas de 5 minutos, tamaño y riesgo. Cierre obligatorio 15:55 NY. Última revisión ${esc(it.date || '')} ${esc(it.time_ny || '')} NY.</p>
-    <div class="tbl"><table class="ptbl intra"><thead><tr><th scope="col">ADR</th><th scope="col" style="text-align:left">Estado</th><th scope="col">Rango 15′</th><th scope="col">Entrada / stop / obj.</th><th scope="col" style="text-align:left">Time Machine</th><th scope="col" style="text-align:left">Riesgo</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  return `<p class="pnote">Compra y venta en el mismo día, solo en ADRs. El motor marca el precio más alto y más bajo de los primeros 15 minutos de Nueva York. Si después el precio supera ese máximo, compra; el stop va a mitad de ese rango y el objetivo gana lo mismo que se arriesga. Antes de comprar simula con los últimos 60 días y revisa el riesgo. Siempre vende antes de las 15:55 de Nueva York. Última revisión ${esc(it.date || '')} ${esc(it.time_ny || '')} (hora de Nueva York).</p>
+    <div class="tbl"><table class="ptbl intra"><thead><tr><th scope="col">ADR</th><th scope="col" style="text-align:left">Estado</th><th scope="col">Rango de los primeros 15 min</th><th scope="col">Compra / stop / objetivo</th><th scope="col" style="text-align:left">Simulación</th><th scope="col" style="text-align:left">Control de riesgo</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 function usaHtml() {
   const u = ENG.us_market, br = Object.entries(ENG.markets || {}).filter(([, m]) => m.breaker), w = ENG.weekly;
@@ -1077,30 +1256,30 @@ function usaHtml() {
   if (u) {
     const e = u.exposure || {};
     h += `<div class="kgrid">
-      ${box('Techo de exposición', e.ceiling_pct != null ? fmt(e.ceiling_pct, 0) + ' %' : '—', esc(e.recommendation_es || 'sin dato') + (e.participation ? ' · participación ' + esc(e.participation.toLowerCase()) : '') + ' · exposure-coach', e.ceiling_pct)}
-      ${box('Tendencia por sectores', u.uptrend ? fmt(u.uptrend.score, 0) : '—', esc(u.uptrend ? (u.uptrend.zone + ' · ' + u.uptrend.guidance) : 'sin dato') + ' · uptrend-analyzer', u.uptrend?.score)}
-      ${box('Amplitud', u.breadth ? fmt(u.breadth.score, 0) : '—', esc(u.breadth ? (u.breadth.zone + ' · ' + (u.breadth.guidance || '')) : 'sin dato hoy') + ' · market-breadth-analyzer', u.breadth?.score)}
-      ${box('Ciclo sectorial', esc(u.sector?.phase_es || '—'), u.sector ? 'Lideran ' + esc(u.sector.leaders.join(', ')) + '. Atrás: ' + esc(u.sector.laggards.join(', ')) + ' · sector-analyst' : 'sin dato', null)}
-    </div><p class="pnote">Con techo bajo o «priorizar liquidez», el motor no abre compras en ADRs (ni swing ni intradía). Datos de ${esc(u.date)}${u.stale ? ' (último disponible)' : ''}.</p>`;
-  } else h += '<p class="empty">Sin dato del mercado de EE. UU. todavía (corre una vez por día).</p>';
-  if (br.length) h += `<div class="kgrid">${br.map(([k, m]) => box('Cortacircuitos ' + MKN[k], m.breaker.recommendation === 'TRADING_ALLOWED' ? 'Operar' : m.breaker.recommendation === 'COOLDOWN' ? 'Pausa' : 'Frenado', m.breaker.rules.length ? esc(m.breaker.rules.map(r => r.detail).join(' ')) : 'Sin pérdidas que frenen entradas · drawdown-circuit-breaker', null)).join('')}</div>`;
-  if (w) h += `<div class="kbox"><span class="lbl">Semana desde el ${esc(w.week_start)} · trade-performance-coach</span><p>${w.trades ? `${w.trades} cerradas: ${w.wins} ganadas y ${w.losses} perdidas, resultado ${w.total_r >= 0 ? '+' : '−'}${fmt(Math.abs(w.total_r), 2)}R.` : 'Sin operaciones cerradas esta semana.'} Proceso: ${esc(w.verdict_es || '—')}.</p>${(w.rules || []).map(r => `<p class="mute">• ${esc(r)}</p>`).join('')}</div>`;
+      ${box('Cuánto invertir como máximo', e.ceiling_pct != null ? fmt(e.ceiling_pct, 0) + ' %' : '—', 'Del capital para ADRs. ' + esc(e.recommendation_es ? e.recommendation_es[0].toUpperCase() + e.recommendation_es.slice(1) : 'Sin dato') + (e.participation ? ' · ' + ({NARROW: 'suben pocas acciones', BROAD: 'suben muchas acciones', MODERATE: 'suben bastantes acciones'}[e.participation] || esc(e.participation.toLowerCase())) : ''), e.ceiling_pct)}
+      ${box('Sectores en suba', u.uptrend ? fmt(u.uptrend.score, 0) + '/100' : '—', esc(u.uptrend ? (u.uptrend.zone + ' · ' + u.uptrend.guidance) : 'sin dato'), u.uptrend?.score)}
+      ${box('Cuántas acciones acompañan', u.breadth ? fmt(u.breadth.score, 0) + '/100' : '—', esc(u.breadth ? (u.breadth.zone + ' · ' + (u.breadth.guidance || '')) : 'sin dato hoy'), u.breadth?.score)}
+      ${box('Momento de los sectores', esc(u.sector?.phase_es || '—'), u.sector ? 'Van adelante: ' + esc(u.sector.leaders.join(', ')) + '. Van atrás: ' + esc(u.sector.laggards.join(', ')) : 'sin dato', null)}
+    </div><p class="pnote">Cómo viene la bolsa de Estados Unidos, que arrastra a los ADRs. Si el máximo a invertir es bajo o la recomendación es «priorizar liquidez», el motor no compra ADRs. Puntajes de 0 a 100: más alto, mejor clima. Datos del ${esc(u.date)}${u.stale ? ' (el último disponible)' : ''}.</p>`;
+  } else h += '<p class="empty">Todavía no hay datos del mercado de Estados Unidos (se calcula una vez por día).</p>';
+  if (br.length) h += `<div class="kgrid">${br.map(([k, m]) => box('Freno por pérdidas · ' + MKN[k], m.breaker.recommendation === 'TRADING_ALLOWED' ? 'Puede comprar' : m.breaker.recommendation === 'COOLDOWN' ? 'En pausa' : 'Frenado', m.breaker.rules.length ? esc(m.breaker.rules.map(r => r.detail).join(' ')) : 'No hubo pérdidas recientes que obliguen a parar.', null)).join('')}</div>`;
+  if (w) h += `<div class="kbox"><span class="lbl">Balance de la semana desde el ${esc(w.week_start)}</span><p>${w.trades ? `${w.trades} operaciones cerradas: ${w.wins} ganadas y ${w.losses} perdidas. Resultado ${w.total_r >= 0 ? '+' : '−'}${fmt(Math.abs(w.total_r), 2)} veces lo arriesgado.` : 'No se cerró ninguna operación esta semana.'} Cómo se siguieron las reglas: ${esc(w.verdict_es || '—')}.</p>${(w.rules || []).map(r => `<p class="mute">• ${esc(r)}</p>`).join('')}</div>`;
   return h;
 }
 function newsHtml() {
   const n = ENG.news || [];
   $('plNn').textContent = n.length;
-  if (!n.length) return '<p class="empty">Sin titulares en las últimas horas para la watchlist (Yahoo Finance; hechos relevantes de la SEC si se cargó SEC_USER_AGENT).</p>';
+  if (!n.length) return '<p class="empty">No hubo noticias de tus activos en las últimas horas.</p>';
   return `<ul class="nlist">${n.slice(0, 40).map(i => `<li><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(i.title)}</a><span class="m"><b>${esc(i.ticker)}</b><span>${i.time ? when(i.time) : ''}</span><span>${esc(i.source)}${i.form ? ' · ' + esc(i.form) : ''}</span>${(i.tags || []).map(t => `<span class="chip${['earnings', 'deal', 'halt', 'risk'].includes(t) ? ' hot' : ''}">${esc(TAGES[t] || t)}</span>`).join('')}</span></li>`).join('')}</ul>`;
 }
 function secHtml() {
   let h = '';
   const cos = Object.values(SEC?.companies || {});
   if (SEC?.note && !cos.length) h += `<p class="empty">${esc(SEC.note)}</p>`;
-  else if (cos.length) h += `<div><p class="legend" style="margin-bottom:6px">Balances en la SEC (trader-analyst)</p><div class="tbl"><table class="ptbl"><thead><tr><th scope="col">ADR</th><th scope="col" style="text-align:left">Último reporte</th><th scope="col">Ingresos interanual</th><th scope="col">EPS</th></tr></thead><tbody>${cos.map(c => { const r = c.filings?.report, q = c.rows?.[0]; return `<tr><td><span class="t">${esc(c.ticker)}</span><small>${esc(c.name || '')}</small></td><td style="text-align:left">${r ? `<a href="${esc(r.url)}" target="_blank" rel="noopener" style="color:var(--info)">${esc(r.form)} al ${esc(r.period)}</a><small>presentado ${esc(r.filed)}</small>` : '—'}${!c.ok && c.error ? `<small>${esc(c.error)}</small>` : ''}</td><td>${q?.revenue_yoy != null ? pctHtml(q.revenue_yoy) : '—'}</td><td class="num">${q?.eps_diluted != null ? fmt(q.eps_diluted, 2) : '—'}</td></tr>`; }).join('')}</tbody></table></div></div>`;
-  else h += '<p class="empty">Los balances se leen una vez por día desde la SEC.</p>';
+  else if (cos.length) h += `<div><p class="legend" style="margin-bottom:6px">Últimos balances presentados en Estados Unidos (SEC)</p><div class="tbl"><table class="ptbl"><thead><tr><th scope="col">ADR</th><th scope="col" style="text-align:left">Último reporte</th><th scope="col">Ventas contra hace un año</th><th scope="col">Ganancia por acción</th></tr></thead><tbody>${cos.map(c => { const r = c.filings?.report, q = c.rows?.[0]; return `<tr><td><span class="t">${esc(c.ticker)}</span><small>${esc(c.name || '')}</small></td><td style="text-align:left">${r ? `<a href="${esc(r.url)}" target="_blank" rel="noopener" style="color:var(--info)">${esc(r.form)} al ${esc(r.period)}</a><small>presentado ${esc(r.filed)}</small>` : '—'}${!c.ok && c.error ? `<small>${esc(c.error)}</small>` : ''}</td><td>${q?.revenue_yoy != null ? pctHtml(q.revenue_yoy) : '—'}</td><td class="num">${q?.eps_diluted != null ? fmt(q.eps_diluted, 2) : '—'}</td></tr>`; }).join('')}</tbody></table></div></div>`;
+  else h += '<p class="empty">Los balances se leen una vez por día.</p>';
   const rows = CONG?.rows || [];
-  h += rows.length ? `<div><p class="legend" style="margin-bottom:6px">Operaciones de congresistas de EE. UU. (trader-pelosi). En amarillo, tickers de tu watchlist.</p><div class="tbl"><table class="ptbl"><thead><tr><th scope="col">Ticker</th><th scope="col" style="text-align:left">Quién</th><th scope="col" style="text-align:left">Operación</th><th scope="col">Fecha</th></tr></thead><tbody>${rows.slice(0, 40).map(r => `<tr class="${r.watch ? 'watch' : ''}"><td><span class="t">${esc(r.ticker)}</span></td><td style="text-align:left">${esc(r.member)}<small>${esc(r.district || '')}</small></td><td style="text-align:left">${esc({purchase: 'compra', sale: 'venta', 'partial sale': 'venta parcial', exchange: 'canje'}[r.type] || r.type)} · ${esc(r.amount || '')}${r.late ? '<small>informada tarde</small>' : ''}</td><td>${esc(r.date || '')}<small>informó ${esc(r.filed)}</small></td></tr>`).join('')}</tbody></table></div><p class="pnote">Divulgación pública (STOCK Act), hasta 45 días después de operar. Montos en rangos. No es información privilegiada.</p></div>` : '<p class="empty">Sin operaciones de congresistas leídas todavía (se revisa una vez por día).</p>';
+  h += rows.length ? `<div><p class="legend" style="margin-bottom:6px">Compras y ventas de legisladores de Estados Unidos. En amarillo, las de tus activos.</p><div class="tbl"><table class="ptbl"><thead><tr><th scope="col">Ticker</th><th scope="col" style="text-align:left">Quién</th><th scope="col" style="text-align:left">Operación</th><th scope="col">Fecha</th></tr></thead><tbody>${rows.slice(0, 40).map(r => `<tr class="${r.watch ? 'watch' : ''}"><td><span class="t">${esc(r.ticker)}</span></td><td style="text-align:left">${esc(r.member)}<small>${esc(r.district || '')}</small></td><td style="text-align:left">${esc({purchase: 'compra', sale: 'venta', 'partial sale': 'venta parcial', exchange: 'canje'}[r.type] || r.type)} · ${esc(r.amount || '')}${r.late ? '<small>informada tarde</small>' : ''}</td><td>${esc(r.date || '')}<small>informó ${esc(r.filed)}</small></td></tr>`).join('')}</tbody></table></div><p class="pnote">Por ley tienen que publicarlas, con hasta 45 días de demora y montos aproximados. Es información pública, no privilegiada.</p></div>` : '<p class="empty">Todavía no hay operaciones de legisladores (se revisa una vez por día).</p>';
   return h;
 }
 async function loadSec() {
@@ -1252,9 +1431,9 @@ $('opMe').addEventListener('change', () => { store.set('tp_me', $('opMe').value)
 /* ---------- Revisión de resultados (motor: signals.review · usuarios: trades/) ---------- */
 const MKNAME = {adr: 'ADRs', byma: 'BYMA', cripto: 'cripto'};
 const RV_COSTS = {adr: 0.3, byma: 1.2, cripto: 0.4}; // mismos valores por defecto que engine/review.py
-const RV_GATE = {allowed: 'favorable', neutral: 'neutral', restrictive: 'defensivo'};
-const RV_SETUP = {vcp: 'VCP', burst: 'Momentum Burst', orb: 'Rango de apertura'};
-const RV_REASON = {target: 'Objetivo', stop: 'Stop', manual: 'Manual', trend: 'Tendencia', time: 'Tiempo', flat: 'Cierre del día'};
+const RV_GATE = {allowed: 'mercado a favor', neutral: 'mercado neutral', restrictive: 'mercado flojo'};
+const RV_SETUP = {vcp: 'Compresión (VCP)', burst: 'Arranque fuerte', orb: 'Primeros 15 minutos'};
+const RV_REASON = {target: 'Llegó al objetivo', stop: 'Tocó el stop', manual: 'A mano', trend: 'Cambió la tendencia', time: 'Pasó el tiempo', flat: 'Cierre del día'};
 let rvTab = store.get('tp_rv', 'eng');
 function rvStats(rows) {
   const n = rows.length; if (!n) return {n: 0};
@@ -1278,7 +1457,7 @@ const rvR = (v, d = 2) => v == null ? '—' : `${v > 0 ? '+' : v < 0 ? '−' : '
 const rvCls = v => v > 0 ? 'up' : v < 0 ? 'dn' : '';
 function rvKpis(a) {
   const t = (lbl, val, sub, cls = '') => `<div><span class="lbl">${lbl}</span><b class="${cls}">${val}</b>${sub ? `<small>${sub}</small>` : ''}</div>`;
-  return `<div class="rvk">${t('Operaciones', a.n)}${t('Ganadoras', fmt(a.win_rate, 0) + ' %')}${t('Promedio neto', rvR(a.avg_r_net), `bruto ${rvR(a.avg_r)}`, rvCls(a.avg_r_net))}${t('Resultado neto', rvR(a.total_r_net, 1), a.avg_pnl_net != null ? `${fmt(a.avg_pnl_net, 1)} % por operación` : '', rvCls(a.total_r_net))}${t('Factor de beneficio', a.profit_factor == null ? '—' : fmt(a.profit_factor, 2), 'ganado ÷ perdido')}${t('Caída máxima', a.max_dd_r ? '−' + fmt(a.max_dd_r, 1) + 'R' : '0R', 'desde el mejor punto')}</div>`;
+  return `<div class="rvk">${t('Operaciones', a.n)}${t('Ganadoras', fmt(a.win_rate, 0) + ' %')}${t('Promedio por operación', rvR(a.avg_r_net), `antes de comisiones ${rvR(a.avg_r)}`, rvCls(a.avg_r_net))}${t('Resultado total', rvR(a.total_r_net, 1), a.avg_pnl_net != null ? `${fmt(a.avg_pnl_net, 1)} % por operación` : '', rvCls(a.total_r_net))}${t('Ganado por cada peso perdido', a.profit_factor == null ? '—' : fmt(a.profit_factor, 2), 'más de 1: gana plata')}${t('Peor racha', a.max_dd_r ? '−' + fmt(a.max_dd_r, 1) + 'R' : '0R', 'cuánto llegó a bajar desde el mejor momento')}</div>`;
 }
 function rvCurve(pts) {
   if (pts.length < 2) return '';
@@ -1286,14 +1465,14 @@ function rvCurve(pts) {
   const x = i => i / (eqs.length - 1) * W, y = v => H - (v - lo) / span * H;
   const line = eqs.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
   const last = pts.at(-1);
-  return `<div class="rvcurve"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span class="lbl">Curva de resultados (R acumulados, neto)</span><span class="num ${rvCls(last.eq)}">${rvR(last.eq, 1)}</span></div>
+  return `<div class="rvcurve"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span class="lbl">Resultado acumulado, operación por operación</span><span class="num ${rvCls(last.eq)}">${rvR(last.eq, 1)}</span></div>
     <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Resultado acumulado: de 0 a ${rvR(last.eq, 1)} en ${pts.length} operaciones">
       <polygon class="ar" points="0,${y(0).toFixed(1)} ${line} ${W},${y(0).toFixed(1)}"/><line class="z" x1="0" x2="${W}" y1="${y(0).toFixed(1)}" y2="${y(0).toFixed(1)}"/><polyline class="ln" points="${line}"/></svg>
     <div class="ax"><span>${esc(pts[0].t || '')}</span><span>${esc(last.t || '')}</span></div></div>`;
 }
 function rvTable(title, groups) {
   if (!groups.length) return '';
-  return `<div class="rvt"><h3>${title}</h3><table><thead><tr><th scope="col"></th><th scope="col">Op.</th><th scope="col">Gan.</th><th scope="col">Prom. neto</th><th scope="col">Total</th></tr></thead><tbody>${groups.map(g =>
+  return `<div class="rvt"><h3>${title}</h3><table><thead><tr><th scope="col"></th><th scope="col">Operaciones</th><th scope="col">Ganadoras</th><th scope="col">Promedio</th><th scope="col">Total</th></tr></thead><tbody>${groups.map(g =>
     `<tr><td>${esc(g.name)}</td><td class="num">${g.n}</td><td class="num">${fmt(g.win_rate, 0)} %</td><td class="num ${rvCls(g.avg_r_net)}">${rvR(g.avg_r_net)}</td><td class="num ${rvCls(g.total_r_net)}">${rvR(g.total_r_net, 1)}</td></tr>`).join('')}</tbody></table></div>`;
 }
 function renderReview() {
@@ -1306,20 +1485,20 @@ function renderReview() {
     sel.value = logins.includes(keep) ? keep : '';
   }
   const costs = {...RV_COSTS, ...(ENG?.review?.costs || {})};
-  const cnote = `<p class="rvnote">R = resultado dividido el riesgo inicial (entrada − stop). Neto descuenta un costo ida y vuelta de ${['adr', 'byma', 'cripto'].map(k => `${fmt(costs[k], 1)} % en ${MKNAME[k] || k}`).join(', ')} (se cambia en <code>engine/config.json</code> → <code>costs</code>). Resultados pasados no garantizan los futuros.</p>`;
+  const cnote = `<p class="rvnote">Los resultados se miden en «R», veces lo arriesgado: +2R es ganar el doble de lo que se podía perder y −1R es perder lo previsto al tocar el stop. Ya descuentan comisiones de compra y venta: ${['adr', 'byma', 'cripto'].map(k => `${fmt(costs[k], 1)} % en ${MKNAME[k] || k}`).join(', ')}. Que haya ganado antes no asegura que gane después.</p>`;
   if (rvTab === 'eng') {
     const rv = ENG?.review;
-    $('rvSub').textContent = 'Señales del motor ya cerradas, por régimen de mercado al entrar';
+    $('rvSub').textContent = 'Cómo terminaron las compras del motor que ya se vendieron, descontando comisiones';
     if (!rv) { $('rvBody').innerHTML = '<p class="empty">La revisión aparece cuando corre el motor con esta versión.</p>'; return; }
-    if (!rv.all?.n) { $('rvBody').innerHTML = '<p class="empty">El motor todavía no cerró ninguna operación. Cuando cierre la primera, acá vas a ver el porcentaje de ganadoras, el R promedio neto de costos y la curva.</p>' + cnote; return; }
-    $('rvBody').innerHTML = rvKpis(rv.all) + rvCurve(rv.curve || []) + `<div class="rvgrid">${rvTable('Por régimen al entrar', rv.by_gate || [])}${rvTable('Por setup', (rv.by_setup || []).map(g => ({...g, name: RV_SETUP[g.key] || g.name})))}${rvTable('Por mercado', (rv.by_kind || []).map(g => ({...g, name: MKNAME[g.key] || g.name})))}</div>` + cnote;
+    if (!rv.all?.n) { $('rvBody').innerHTML = '<p class="empty">El motor todavía no vendió ninguna compra. Cuando venda la primera, acá vas a ver cuántas ganaron, cuánto ganó o perdió en promedio y la evolución.</p>' + cnote; return; }
+    $('rvBody').innerHTML = rvKpis(rv.all) + rvCurve(rv.curve || []) + `<div class="rvgrid">${rvTable('Según el clima al comprar', (rv.by_gate || []).map(g => ({...g, name: RV_GATE[g.key] || g.name})))}${rvTable('Por tipo de oportunidad', (rv.by_setup || []).map(g => ({...g, name: RV_SETUP[g.key] || g.name})))}${rvTable('Por mercado', (rv.by_kind || []).map(g => ({...g, name: MKNAME[g.key] || g.name})))}</div>` + cnote;
     return;
   }
   const who = sel.hidden ? '' : sel.value, rows = rvUserRows(who), all = rvStats(rows);
-  $('rvSub').textContent = who ? `Operaciones cerradas de ${opUsers[who]?.name || who}` : 'Operaciones cerradas registradas en Mis operaciones';
+  $('rvSub').textContent = who ? `Operaciones cerradas de ${opUsers[who]?.name || who}` : 'Operaciones reales del grupo que ya se vendieron';
   if (!all.n) { $('rvBody').innerHTML = `<p class="empty">${who ? 'Todavía no cerró' : 'Todavía nadie cerró'} ninguna operación. Se registran en <a href="operaciones.html">Mis operaciones</a>.</p>` + cnote; return; }
   let eq = 0; const pts = rows.map(x => ({t: (x.closed_at || '').slice(0, 10), eq: (eq += x.r_net)}));
-  $('rvBody').innerHTML = rvKpis(all) + rvCurve(pts) + `<div class="rvgrid">${!who && logins.length > 1 ? rvTable('Por usuario', rvGroup(rows, 'who', Object.fromEntries(logins.map(l => [l, opUsers[l]?.name || l])))) : ''}${rvTable('Por mercado', rvGroup(rows, 'kind', MKNAME))}${rvTable('Por motivo de salida', rvGroup(rows, 'reason', RV_REASON))}</div>` + cnote;
+  $('rvBody').innerHTML = rvKpis(all) + rvCurve(pts) + `<div class="rvgrid">${!who && logins.length > 1 ? rvTable('Por usuario', rvGroup(rows, 'who', Object.fromEntries(logins.map(l => [l, opUsers[l]?.name || l])))) : ''}${rvTable('Por mercado', rvGroup(rows, 'kind', MKNAME))}${rvTable('Por qué se vendió', rvGroup(rows, 'reason', RV_REASON))}</div>` + cnote;
 }
 $('rvTabs').addEventListener('click', e => { const b = e.target.closest('[data-rv]'); if (!b) return; rvTab = b.dataset.rv; store.set('tp_rv', rvTab); renderReview(); });
 $('rvWho').addEventListener('change', renderReview);
@@ -1427,16 +1606,16 @@ function renderSecRank() {
   const box = $('secRank'); if (!box) return;
   const live = secToday(), file = Object.fromEntries((SECR?.ranking || []).map(r => [r.key, r]));
   const keys = Object.keys(SECT || {}).filter(k => live[k] || file[k]);
-  if (!keys.length) { box.innerHTML = '<h3>Ranking de sectores locales · BYMA</h3><p class="empty">Todavía no hay datos de sectores.</p>'; return; }
+  if (!keys.length) { box.innerHTML = '<h3>Sectores argentinos, del que más sube al que más baja</h3><p class="empty">Todavía no hay datos de sectores.</p>'; return; }
   const total = keys.reduce((a, k) => a + ((live[k] || file[k]).vol || 0), 0) || 1;
   const rows = keys.map(k => ({key: k, name: SECT[k]?.name || k, ...(file[k] || {}), ...(live[k] || {}), live: !!live[k]})).sort((a, b) => b.ch - a.ch);
   const pc = v => v == null ? '<span class="mute">—</span>' : `<span class="${v >= 0 ? 'up' : 'dn'}">${v >= 0 ? '+' : '−'}${fmt(Math.abs(v), v != null && Math.abs(v) >= 10 ? 1 : 2)} %</span>`;
   const bars = sp => { if (!sp?.length) return ''; const mx = Math.max(...sp.map(Math.abs), 0.5);
     return `<svg width="${sp.length * 6}" height="24" viewBox="0 0 ${sp.length * 6} 24" aria-hidden="true" style="vertical-align:middle"><line x1="0" x2="${sp.length * 6}" y1="12" y2="12" stroke="var(--line2)"/>${sp.map((v, i) => { const hh = Math.max(1, Math.abs(v) / mx * 11); return `<rect x="${i * 6}" y="${v >= 0 ? 12 - hh : 12}" width="4" height="${hh.toFixed(1)}" rx="1" fill="var(${v >= 0 ? '--up' : '--dn'})"/>`; }).join('')}</svg>`; };
   const asOf = SECR?.date ? ` · ${SECR.days} ${SECR.days === 1 ? 'rueda registrada' : 'ruedas registradas'}` : '';
-  box.innerHTML = `<h3>Ranking de sectores locales · BYMA${asOf}</h3><div class="tbl"><table class="srk"><thead><tr><th scope="col">Sector</th><th scope="col">Hoy</th><th scope="col">5 ruedas</th><th scope="col" class="h5">20 ruedas</th><th scope="col" class="hide-s">Suben / bajan</th><th scope="col" class="hide-s">Monto</th><th scope="col" class="h5">Últimas 20</th></tr></thead><tbody>${rows.map((r, i) =>
+  box.innerHTML = `<h3>Sectores argentinos, del que más sube al que más baja${asOf}</h3><div class="tbl"><table class="srk"><thead><tr><th scope="col">Sector</th><th scope="col">Hoy</th><th scope="col">5 ruedas</th><th scope="col" class="h5">20 ruedas</th><th scope="col" class="hide-s">Suben / bajan</th><th scope="col" class="hide-s">Monto</th><th scope="col" class="h5">Últimas 20</th></tr></thead><tbody>${rows.map((r, i) =>
     `<tr><td><b>${i + 1}. ${esc(r.name)}</b><div class="who">${r.best ? (r.n > 1 ? `▲ ${esc(r.best[0])} ${pc(r.best[1])} · ▼ ${esc(r.worst[0])} ${pc(r.worst[1])}` : esc(r.best[0])) : ''}</div></td><td class="num">${pc(r.ch)}</td><td class="num">${pc(r.ch5)}</td><td class="num h5">${pc(r.ch20)}</td><td class="brd hide-s">${r.up ?? '—'} / ${r.down ?? '—'} de ${r.n ?? '—'}</td><td class="num hide-s">${fmt(100 * (r.vol || 0) / total, 0)} %</td><td class="h5">${bars(r.spark)}</td></tr>`).join('')}</tbody></table></div>
-    <p class="rvnote" style="padding:10px 14px">Variación ponderada por monto operado. "Hoy" es en vivo (data912); 5 y 20 ruedas salen del registro diario que guarda el motor en <code>data/sectors.json</code>.</p>`;
+    <p class="rvnote" style="padding:10px 14px">Cada sector suma sus acciones dando más peso a las que más se operan. "Hoy" es en vivo; "5 ruedas" y "20 ruedas" son la última semana y el último mes de mercado.</p>`;
 }
 $('mpTabs').addEventListener('click', e => { const b = e.target.closest('[data-mp]'); if (!b) return; mpTab = b.dataset.mp; store.set('tp_mp', mpTab); mpStop(); renderMap(); });
 $('mpDay').addEventListener('input', () => { mpStop(); renderMap(); });
@@ -1598,30 +1777,30 @@ function drawChart() {
 function fichaInfo(kind, id) {
   const a = engAsset(kind, id), out = [];
   if (a) {
-    const rows = [['Señal', `${esc(a.signal)} · ${fmt(a.score, 0)}/100`]];
+    const rows = [['Tendencia', `${esc({COMPRA: 'alcista', VENTA: 'bajista', NEUTRAL: 'neutral'}[a.signal] || a.signal)} · puntaje ${fmt(a.score, 0)}/100`]];
     if (a.vcp?.rating) rows.push(['VCP', `${esc(a.vcp.rating)}${a.vcp.state ? ' · ' + esc(a.vcp.state) : ''}${a.vcp.pivot ? ' · pivote ' + px(a.vcp.pivot) : ''}`]);
     if (a.burst?.state) rows.push(['Momentum Burst', `${esc(a.burst.rating || '')} · ${esc(a.burst.state.replace(/_/g, ' ').toLowerCase())}`]);
-    if (a.sma50) rows.push(['Medias', `50: ${px(a.sma50)}${a.sma200 ? ' · 200: ' + px(a.sma200) : ''}${a.stage4 ? ' · <span class="dn">tendencia bajista</span>' : ''}`]);
-    if (a.scanner?.labels?.length) rows.push(['Escáner', esc(a.scanner.labels.join(', '))]);
+    if (a.sma50) rows.push(['Promedios', `50 días: ${px(a.sma50)}${a.sma200 ? ' · 200 días: ' + px(a.sma200) : ''}${a.stage4 ? ' · <span class="dn">tendencia bajista</span>' : ''}`]);
+    if (a.scanner?.tags?.length) rows.push(['Señal técnica', esc(a.scanner.tags.map(t => SCANP[t] || t).join('; '))]);
     const pos = a.position;
-    if (pos) rows.push(['Posición', `abierta en ${px(pos.entry)} · ${pos.r_now >= 0 ? '+' : '−'}${fmt(Math.abs(pos.r_now || 0), 1)}R`]);
-    if (a.patterns?.length) rows.push(['Patrones', a.patterns.map(p => `${esc(p.name)} · ${esc(p.state)} · gatillo ${px(p.trigger)}`).join('<br>')]);
-    out.push(`<div class="kbox"><h3>Qué ve el motor</h3><dl class="fkv">${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl><p class="fnote">Analizado ${when(ENG.generated_at)}</p></div>`);
+    if (pos) rows.push(['Compra en curso', `comprada a ${px(pos.entry)} · va ${pos.r_now >= 0 ? '+' : '−'}${fmt(Math.abs(pos.r_now || 0), 1)} veces lo arriesgado`]);
+    if (a.patterns?.length) rows.push(['Figuras', a.patterns.map(p => `${esc(p.name)} · ${esc(p.state)} · se confirma en ${px(p.trigger)}`).join('<br>')]);
+    out.push(`<div class="kbox"><h3>Qué ve el motor</h3><dl class="fkv">${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl><p class="fnote">Última revisión ${when(ENG.generated_at)}</p></div>`);
   } else if (kind !== 'dolar') {
     const l = analyze(kind, id);
-    out.push(`<div class="kbox"><h3>Señal técnica</h3><p style="font-size:14px;color:var(--ink2)">${l ? `${l.label} · ${l.score}/100 (cálculo local: medias de 20 y 50, RSI y momentum).` : 'Sin datos suficientes.'} Este activo no está en la watchlist del motor.</p></div>`);
+    out.push(`<div class="kbox"><h3>Señal técnica</h3><p style="font-size:14px;color:var(--ink2)">${l ? `${l.label} · ${l.score}/100 (cálculo propio del panel con promedios de 20 y 50 días, RSI y velocidad de la suba).` : 'No hay datos suficientes.'} El motor no sigue este activo, así que no hay análisis paso a paso.</p></div>`);
   }
   const ops = Object.entries(opTrades).flatMap(([w, list]) => list.filter(t => t.kind === kind && t.asset === id).map(t => ({...t, who: w})))
     .sort((x, y) => (y.opened_at || '').localeCompare(x.opened_at || '')).slice(0, 6);
-  if (ops.length) out.push(`<div class="kbox"><h3>Operaciones de los usuarios</h3><ul class="tglist oplist">${ops.map(t => {
+  if (ops.length) out.push(`<div class="kbox"><h3>Operaciones del grupo</h3><ul class="tglist oplist">${ops.map(t => {
     const n = esc(opUsers[t.who]?.name || t.who);
     if (t.exit != null) { const p = (t.exit / t.entry - 1) * 100; return `<li><div class="l1"><span class="tag out">VENTA</span><span class="mute">${n}</span><span style="flex:1"></span><span class="num ${p >= 0 ? 'up' : 'dn'}">${p >= 0 ? '+' : '−'}${fmt(Math.abs(p), 1)} %</span></div><div class="l2 num">${px(t.entry)} → ${px(t.exit)}</div></li>`; }
-    return `<li><div class="l1"><span class="tag in">COMPRA</span><span class="mute">${n}</span></div><div class="l2 num">${px(t.entry)} · stop ${px(lastStop(t))}${t.target ? ' · obj. ' + px(t.target) : ''}</div>${t.note ? `<div class="l2">${esc(t.note)}</div>` : ''}</li>`;
+    return `<li><div class="l1"><span class="tag in">COMPRA</span><span class="mute">${n}</span></div><div class="l2 num">${px(t.entry)} · stop ${px(lastStop(t))}${t.target ? ' · objetivo ' + px(t.target) : ''}</div>${t.note ? `<div class="l2">${esc(t.note)}</div>` : ''}</li>`;
   }).join('')}</ul></div>`);
   const lbl = a?.label || id;
   const news = (ENG?.news || []).filter(x => String(x.ticker).toUpperCase() === String(lbl).toUpperCase()).slice(0, 5);
   if (news.length) out.push(`<div class="kbox"><h3>Noticias</h3><ul class="nlist">${news.map(i => `<li><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(i.title)}</a><span class="m"><span>${i.time ? when(i.time) : ''}</span><span>${esc(i.source)}</span></span></li>`).join('')}</ul></div>`);
-  if (a?.pipeline?.stages?.length) out.push(`<div class="pcard" style="grid-column:1/-1"><div class="h"><span class="verdict ${esc(a.pipeline.verdict)}">${esc(a.pipeline.verdict)}</span><span class="tk" style="font-weight:600">Pipeline de las skills</span><span class="setup">${SETUP[a.pipeline.setup] || ''}</span></div>${stepsHtml(a.pipeline.stages)}</div>`);
+  if (a?.pipeline?.stages?.length) { const [cls, say] = verdictSay(a); out.push(`<div class="pcard" style="grid-column:1/-1"><div class="h"><span class="verdict ${esc(a.pipeline.verdict)}">${VER[a.pipeline.verdict] || esc(a.pipeline.verdict)}</span><span class="tk" style="font-weight:600">Análisis paso a paso</span>${setupChip(a.pipeline.setup)}</div><p class="say ${cls}">${esc(say)}</p>${stepsHtml(a.pipeline.stages, a)}</div>`); }
   return out.join('');
 }
 // Clave del activo a partir de un evento del motor (que trae kind y label)

@@ -120,38 +120,40 @@ def lean_code(mc: dict) -> str:
 
 
 LEAN_ES = {
-    "target_strong": "Fuerte hacia el objetivo",
-    "target": "Se inclina al objetivo",
+    "target_strong": "Muy a favor",
+    "target": "A favor",
     "even": "Parejo",
-    "stop": "Se inclina al stop",
-    "stop_strong": "Fuerte hacia el stop",
+    "stop": "En contra",
+    "stop_strong": "Muy en contra",
     "none": "Sin definición",
 }
 
 
 def verdict_es(mc: dict, horizon_txt: str) -> str:
-    """El veredicto de trader-timemachine, en castellano y con sus mismos umbrales."""
+    """El veredicto de trader-timemachine en lenguaje llano, con sus mismos umbrales."""
     tm = mod("tm")
     code = lean_code(mc)
     pt, ps = mc["p_target"], mc["p_stop"]
     if code == "none":
-        return f"Ninguna repetición tocó el objetivo ni el stop en {horizon_txt}: decide el precio al final."
+        return (f"En ninguna simulación el precio llegó al objetivo ni al stop {horizon_txt}: "
+                "el resultado depende de dónde termine.")
     _, share, even = tm.lean(mc)
     r = mc.get("r_at_target") or 1.0
     head = LEAN_ES[code]
     if code == "even" and abs(r - 1) < 0.005:
         head = "Casi una moneda al aire"
-    odds = f"objetivo primero {pt * 100:.1f} % y stop primero {ps * 100:.1f} %".replace(".", ",")
+    odds = (f"el precio llegó primero al objetivo en el {pt * 100:.1f} % de las simulaciones "
+            f"y al stop en el {ps * 100:.1f} %").replace(".", ",")
     if abs(r - 1) < 0.005:
         txt = f"{head}: {odds}."
     else:
-        txt = (f"{head}: a {fmt_num(r)}R el objetivo tiene que llegar primero en el {even * 100:.0f} % de las "
-               f"repeticiones que tocan un lado, y llegó en el {share * 100:.0f} % ({odds}).")
+        txt = (f"{head}: {odds}. Como la ganancia es {fmt_num(r)} veces lo que se arriesga, alcanza con ganar "
+               f"{even * 100:.0f} de cada 100 para empatar, y ganó {share * 100:.0f} de cada 100 "
+               "(contando solo las que tocaron uno de los dos).")
     pn = mc.get("p_neither", 0)
     if pn > tm.MANY_NEITHER:
-        txt += (
-                f" El {pn * 100:.0f} % no toca ninguno en {horizon_txt}: ahí decide el precio final "
-                f"(promedio de todas {fmt_num(mc.get('avg_R', 0))}R).")
+        txt += (f" El {pn * 100:.0f} % no tocó ninguno {horizon_txt}: ahí cuenta dónde termina el precio "
+                f"(resultado medio de todas: {fmt_num(mc.get('avg_R', 0))} veces lo arriesgado).")
     return txt
 
 
@@ -217,7 +219,7 @@ def swing_timemachine(closed: list[dict], entry: float, stop: float, target: flo
                           lookback, history_tag)
     code = lean_code(mc)
     return {"ok": True, "kind": "diario", "mc": _mc_slim(mc), "lean": code,
-            "verdict": verdict_es(mc, f"{horizon} ruedas"), "history": hist,
+            "verdict": verdict_es(mc, f"en {horizon} ruedas"), "history": hist,
             "note": (f"Simulación con las {len(ratios)} velas diarias de este activo. No es una predicción: "
                      "balances, noticias y feriados pueden hacer lo que el último año no hizo.")}
 
@@ -422,7 +424,7 @@ def intraday_orb(sym: str, chart_text: str, now: datetime, icfg: dict) -> dict:
         h = doc["history"]
         out["timemachine"] = {
             "ok": True, "kind": "intradía", "mc": _mc_slim(doc["mc"]), "lean": lean_code(doc["mc"]),
-            "verdict": verdict_es(doc["mc"], "las " + p["flat_by"]),
+            "verdict": verdict_es(doc["mc"], "antes de las " + p["flat_by"]),
             "history": {"label": "la misma ruptura en las sesiones reales", "fired": h.get("triggered", 0),
                         "sessions": h.get("sessions"), "target": h.get("target", 0), "stop": h.get("stop", 0),
                         "neither": h.get("close", 0), "avg_R": h.get("avg_R")},

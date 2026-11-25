@@ -39,7 +39,7 @@ def test_reel_trade_matches_day_trader_skill():
     assert r["plan"]["entry"] == 364.18 and r["plan"]["stop"] == 358.32 and r["plan"]["target"] == 370.04
     tm = r["timemachine"]
     assert tm["ok"] and tm["mc"]["replays"] == 10000 and tm["mc"]["pool_sessions"] == 59
-    assert tm["history"]["fired"] > 0 and "objetivo primero" in tm["verdict"]
+    assert tm["history"]["fired"] > 0 and "llegó primero al objetivo" in tm["verdict"]
 
 
 def test_budget_and_risk_like_the_reel():
@@ -151,7 +151,7 @@ def test_full_run_writes_pipeline_news_congress_and_filings(tmp_path, monkeypatc
     a = sig["assets"]["adr:TSLA"]
     keys = [s["key"] for s in a["pipeline"]["stages"]]
     assert keys[:2] == ["scanner", "news"]
-    assert a["pipeline"]["stages"][1]["status"] in ("ok", "warn") and "titulares" in a["pipeline"]["stages"][1]["text"]
+    assert a["pipeline"]["stages"][1]["status"] in ("ok", "warn") and "noticias recientes" in a["pipeline"]["stages"][1]["text"]
     assert sig["news"] and sig["intraday"]["symbols"]["TSLA"]["status"] in ("triggered", "open")
     infos = [e for e in fresh if e["type"] == "info"]
     assert any(e["info"] == "earnings" and e["label"] == "AAPL" for e in infos)
