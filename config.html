@@ -117,6 +117,13 @@ dialog::backdrop{background:rgba(2,6,23,.7)}
 .msg.ok{background:var(--upbg);color:var(--up)}
 .msg.bad{background:var(--dnbg);color:var(--dnfg)}
 .msg.info{background:var(--infobg);color:var(--info)}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+.ptbl{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
+.ptbl th{text-align:left;font-size:12.5px;color:var(--mute);font-weight:500;padding:10px 12px;border-bottom:1px solid var(--line)}
+.ptbl td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.ptbl tr:last-child td{border-bottom:0}
+.ptbl tr.sel td{background:var(--hover)}
+.ptbl .mute{font-size:12px}
 .tgbox{margin-top:20px;border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--inset);display:flex;flex-direction:column;gap:12px}
 .tglist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14px}
 .tglist li{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -186,7 +193,7 @@ dialog::backdrop{background:rgba(2,6,23,.7)}
   <div id="app" hidden>
     <div id="appMsg" role="status" style="margin-bottom:16px"></div>
     <nav class="secnav" aria-label="Secciones" style="margin-bottom:20px">
-      <a href="#s-perfil">Mi perfil</a><a href="#s-misavisos">Mis avisos</a><a href="#s-reglas">Común: reglas</a><a href="#s-watch">Común: watchlist</a><a href="#s-setups">Común: setups</a><a href="#s-mercados">Común: mercados</a><a href="#s-tg">Común: Telegram</a>
+      <a href="#s-todos">Perfiles de todos</a><a href="#s-perfil">Perfil</a><a href="#s-misavisos">Mis avisos</a><a href="#s-reglas">Común: reglas</a><a href="#s-watch">Común: watchlist</a><a href="#s-setups">Común: setups</a><a href="#s-mercados">Común: mercados</a><a href="#s-tg">Común: Telegram</a>
     </nav>
     <div style="display:flex;flex-direction:column;gap:20px" id="form"></div>
   </div>
@@ -362,8 +369,8 @@ function validateMe(c, login) {
 }
 
 /* ---------- Estado ---------- */
-const S = { orig: {}, draft: {}, sha: {}, branch: 'main', canRun: true, login: '' };
-const errors = () => [...validateEngine(S.draft.engine), ...validateTg(S.draft.tg), ...validateMe(S.draft.users, S.login)];
+const S = { orig: {}, draft: {}, sha: {}, branch: 'main', canRun: true, login: '', profile: '' };
+const errors = () => [...validateEngine(S.draft.engine), ...validateTg(S.draft.tg), ...validateMe(S.draft.users, S.profile)];
 
 /* ---------- Etiquetas legibles para el resumen de cambios ---------- */
 const LABEL = {
@@ -439,15 +446,25 @@ function chipsField(file, path, label, help, norm) {
 }
 
 function buildProfile() {
-  const L = S.login, P = `users.${L}`;
-  const others = Object.keys(get(S.draft.users, 'users') || {}).filter(x => x !== L);
+  const L = S.profile, P = `users.${L}`, mine = L === S.login;
+  const all = get(S.draft.users, 'users') || {}, others = Object.keys(all).filter(x => x !== L);
+  const nm = l => esc(all[l]?.name || l);
+  const money = (m, v) => isNum(v) ? `${MK[m].cur} ${v.toLocaleString('es-AR', { maximumFractionDigits: 0 })}` : '—';
+  const table = `<div class="tblwrap"><table class="ptbl"><thead><tr><th>Usuario</th>${MARKETS.map(m => `<th>${MK[m].name}</th>`).join('')}<th>Tope</th><th>Sigue a</th><th></th></tr></thead><tbody>${Object.keys(all).map(l => {
+    const u = all[l] || {};
+    return `<tr${l === L ? ' class="sel"' : ''}><td><b>${nm(l)}</b>${l === S.login ? ' <span class="mute">(vos)</span>' : ''}</td>${MARKETS.map(m => { const r = get(u, `risk.${m}`) || {};
+      return `<td class="num">${money(m, r.budget)}<br><span class="mute">riesgo ${isNum(r.max_loss_pct) ? r.max_loss_pct.toLocaleString('es-AR') : '—'} % · pos. ${isNum(r.max_position_pct) ? r.max_position_pct : '—'} %</span></td>`; }).join('')}
+      <td class="num">${u.max_open_positions ?? '—'}</td><td>${(get(u, 'telegram.follow') || []).map(nm).join(', ') || '<span class="mute">nadie</span>'}</td>
+      <td>${l === L ? '<span class="mute">viendo</span>' : `<button class="btn" type="button" data-profile="${esc(l)}">${l === S.login ? 'Ver el mío' : 'Ver y editar'}</button>`}</td></tr>`; }).join('')}</tbody></table></div>`;
   const cards = MARKETS.map(m => `<div class="mk"><h3>${MK[m].name} <small>montos en ${MK[m].cur}</small></h3>
     ${numField('users', `${P}.risk.${m}.budget`, `Tu presupuesto (${MK[m].cur})`, { min: 1, calc: 'u:' + m })}
     ${numField('users', `${P}.risk.${m}.max_loss_pct`, 'Pérdida máx. por operación (%)', { min: 0.05, max: 10, step: 0.05, help: 'Si toca el stop perdés este % del presupuesto. Con esto se calcula tu cantidad.' })}
     ${numField('users', `${P}.risk.${m}.max_position_pct`, 'Posición máx. (% del presupuesto)', { min: 1, max: 100, step: 1 })}
   </div>`).join('');
   return `
-  <section class="card" id="s-perfil"><h2>Mi perfil · ${esc(L)}</h2><p class="sub">Con estos números cada alerta te dice cuántas acciones comprar a vos, aunque la operación la haya hecho otro.</p>
+  <section class="card" id="s-todos"><h2>Perfiles de todos</h2><p class="sub">Así configuró cada uno su presupuesto y su riesgo. Cualquiera puede abrir el perfil de otro para ayudarlo; el cambio queda firmado con su usuario en el commit.</p>${table}</section>
+  ${mine ? '' : `<div class="msg info">Estás viendo el perfil de <b>${nm(L)}</b>. Si lo cambiás y guardás, el commit queda a tu nombre (${esc(S.login)}). <button class="btn" type="button" data-profile="${esc(S.login)}" style="min-height:36px;margin-left:8px">Volver al mío</button></div>`}
+  <section class="card" id="s-perfil"><h2>${mine ? 'Mi perfil' : 'Perfil de ' + nm(L)} · ${esc(L)}</h2><p class="sub">Con estos números cada alerta ${mine ? 'te dice cuántas acciones comprar a vos' : `le dice a ${nm(L)} cuántas acciones comprar`}, aunque la operación la haya hecho otro.</p>
     <div class="rules" style="margin-bottom:16px">
       ${textField('users', `${P}.name`, 'Tu nombre', 'Así te ven los demás en las alertas y en el panel.')}
       ${numField('users', `${P}.max_open_positions`, 'Tope de operaciones abiertas', { min: 1, max: 50, step: 1, help: 'Si ya seguís más que esto abiertas, la alerta de entrada te avisa.' })}
@@ -595,7 +612,7 @@ function refresh() {
   }
   for (const c of document.querySelectorAll('[data-calc]')) {
     const u = c.dataset.calc.startsWith('u:'), m = c.dataset.calc.replace('u:', '');
-    const r = (u ? get(S.draft.users, `users.${S.login}.risk.${m}`) : get(S.draft.engine, `risk.${m}`)) || {};
+    const r = (u ? get(S.draft.users, `users.${S.profile}.risk.${m}`) : get(S.draft.engine, `risk.${m}`)) || {};
     c.textContent = isNum(r.budget) && isNum(r.max_loss_pct) && isNum(r.max_position_pct)
       ? `Arriesga hasta ${MK[m].cur} ${(r.budget * r.max_loss_pct / 100).toLocaleString('es-AR', { maximumFractionDigits: 2 })} por operación, con posiciones de hasta ${MK[m].cur} ${(r.budget * r.max_position_pct / 100).toLocaleString('es-AR', { maximumFractionDigits: 0 })}.` : '';
   }
@@ -606,7 +623,24 @@ function refresh() {
   $('review').disabled = !D.length || E.length > 0;
 }
 
+/* ---------- Ver o editar el perfil de otro usuario ---------- */
+function switchProfile(l) {
+  if (l === S.profile || !get(S.draft.users, `users.${l}`)) return;
+  const pending = diffs().filter(d => d.key.startsWith('users:'));
+  if (pending.length && !confirm('Tenés cambios sin guardar en este perfil. ¿Descartarlos y cambiar de perfil?')) return;
+  if (pending.length) S.draft.users = clone(S.orig.users);
+  S.profile = l;
+  buildForm(); fillForm(); wireTg();
+  $('s-todos').scrollIntoView({ block: 'start' });
+}
+
 /* ---------- Telegram (estado, prueba y campanita) ---------- */
+function wireTg() {
+  $('tgRuns').href = `https://github.com/${REPO.owner}/${REPO.name}/actions/workflows/telegram.yml`;
+  $('tgTest').onclick = tgTest;
+  $('useBell').hidden = S.profile !== S.login || !bellList().length; $('useBell').onclick = useBell;
+  loadTgStatus();
+}
 async function repoFile(path) {
   const r = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${path}?ref=${encodeURIComponent(S.branch)}`);
   return JSON.parse(b64dec(r.content));
@@ -618,9 +652,9 @@ async function loadTgStatus() {
   const [cls, txt] = !reg ? ['warn', 'Sin datos'] : !on ? ['warn', 'Sin configurar'] : fresh ? ['ok', 'Conectado'] : ['warn', 'Sin corridas recientes'];
   $('tgState').className = 'pill ' + cls; $('tgState').textContent = txt;
   const when = s => new Date(s).toLocaleString('es-AR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
-  const chat = get(S.draft.users, `users.${S.login}.telegram.chat`);
+  const chat = get(S.draft.users, `users.${S.profile}.telegram.chat`);
   $('tgSum').textContent = !reg ? 'Todavía no corrió el envío.' : `Última revisión ${when(reg.last_run)}.` + (!chat ? ' No pusiste chat: no te llega nada.' : '') + (reg.last_error ? ` ${reg.last_error}.` : '');
-  const mine = (reg?.recent || []).filter(x => x.status === 'enviado' && (x.to ? x.to === S.login : S.login === REPO.owner)).slice(0, 6);
+  const mine = (reg?.recent || []).filter(x => x.status === 'enviado' && (x.to ? x.to === S.profile : S.profile === REPO.owner)).slice(0, 6);
   const TAG = { entry: ['in', 'ENTRADA'], exit: ['out', 'SALIDA'], update: ['', 'AJUSTE'] };
   $('tgList').innerHTML = mine.length ? mine.map(x => { const [c, t] = TAG[x.type] || ['', esc(x.type)];
     return `<li><span class="tag ${c}">${t}</span><b>${esc(x.label)}</b>${x.who ? `<span class="mute">de ${esc(get(S.orig.users, `users.${x.who}.name`) || x.who)}</span>` : '<span class="mute">motor</span>'}<span style="flex:1"></span><span class="mute num" style="font-size:12px">${when(x.at)}</span></li>`; }).join('')
@@ -641,7 +675,7 @@ async function useBell() {
   let labels = {};
   try { const sig = await repoFile('data/signals.json'); labels = Object.fromEntries(Object.entries(sig.assets || {}).map(([k, a]) => [k, a.label])); } catch {}
   const add = bellList().map(k => { const [kind, id] = k.split(':'); return kind === 'cripto' ? (labels[k] ? `cripto:${labels[k]}` : null) : `${kind}:${id.toUpperCase()}`; }).filter(x => x && ONLY.test(x));
-  const box = document.querySelector(`.chips[data-path="users.${S.login}.telegram.only"]`);
+  const box = document.querySelector(`.chips[data-path="users.${S.profile}.telegram.only"]`);
   if (add.length && box) addChips(box, add.join(' '));
 }
 
@@ -679,7 +713,7 @@ async function login(t, remember) {
   const [user, repo] = await Promise.all([gh('/user'), gh(`/repos/${REPO.owner}/${REPO.name}`)]);
   if (!repo.permissions || !repo.permissions.push) { const e = new Error(`Tu cuenta (${user.login}) no tiene permiso de escritura en ${REPO.owner}/${REPO.name}.`); e.status = 403; throw e; }
   S.branch = repo.default_branch || 'main';
-  S.login = user.login;
+  S.login = user.login; S.profile = user.login;
   await loadFiles();
   const created = ensureProfile(user);
   tok.save(t, remember);
@@ -688,10 +722,11 @@ async function login(t, remember) {
   $('loginCard').hidden = true; $('app').hidden = $('bar').hidden = false;
   if (!$('form').children.length) buildForm();
   fillForm();
-  $('tgRuns').href = `https://github.com/${REPO.owner}/${REPO.name}/actions/workflows/telegram.yml`;
-  $('tgTest').onclick = tgTest;
-  $('useBell').hidden = !bellList().length; $('useBell').onclick = useBell;
-  loadTgStatus();
+  if (!$('form').dataset.wired) {
+    $('form').dataset.wired = '1';
+    $('form').addEventListener('click', ev => { const b = ev.target.closest('button[data-profile]'); if (b) switchProfile(b.dataset.profile); });
+  }
+  wireTg();
   if (created) msg('appMsg', 'info', `Todavía no tenías perfil, así que armé uno con valores de ejemplo. Poné <b>tu</b> presupuesto, elegí a quién seguir y tocá <b>Revisar y guardar</b>.`);
 }
 function loginError(e) {
@@ -729,10 +764,10 @@ async function saveProfile() {
     } catch (e) { if (e.status !== 404) throw e; }
     if (!cur._nota) cur = { _nota: 'Perfil de cada usuario (clave = login de GitHub). Lo edita cada uno desde config.html. El repo es público: no pongas datos sensibles.', ...cur };
     cur.users ||= {};
-    cur.users[S.login] = clone(S.draft.users.users[S.login]);
+    cur.users[S.profile] = clone(S.draft.users.users[S.profile]);
     try {
       const r = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${FILES.users}`, {
-        method: 'PUT', body: JSON.stringify({ message: $('cmsg').value.trim() || `Perfil de ${S.login}`, content: b64enc(fmt(cur) + '\n'), ...(sha ? { sha } : {}), branch: S.branch })
+        method: 'PUT', body: JSON.stringify({ message: $('cmsg').value.trim() || `Perfil de ${S.profile}`, content: b64enc(fmt(cur) + '\n'), ...(sha ? { sha } : {}), branch: S.branch })
       });
       S.sha.users = r.content.sha; S.orig.users = clone(cur); S.draft.users = clone(cur);
       return r.commit.html_url;
@@ -751,7 +786,7 @@ $('review').onclick = () => {
   };
   $('diff').innerHTML = D.map(d => `<li><span class="p">${esc(labelOf(d.key))}</span><span class="v">${val(d)}</span></li>`).join('');
   const files = [...new Set(D.map(d => d.key.split(':')[0]))];
-  $('cmsg').value = files.length === 1 && files[0] === 'users' ? `Perfil de ${S.login} desde el panel` : files.length === 1 && files[0] === 'tg' ? 'Alertas Telegram: ajustes desde el panel' : 'Config del motor: ajustes desde el panel';
+  $('cmsg').value = files.length === 1 && files[0] === 'users' ? (S.profile === S.login ? `Perfil de ${S.login} desde el panel` : `Perfil de ${S.profile} editado por ${S.login}`) : files.length === 1 && files[0] === 'tg' ? 'Alertas Telegram: ajustes desde el panel' : 'Config del motor: ajustes desde el panel';
   $('runWrap').hidden = !S.canRun;
   msg('dlgMsg'); $('save').disabled = false;
   $('dlg').showModal();
@@ -783,6 +818,7 @@ $('save').onclick = async () => {
     } else ran = changed.some(f => f !== 'users') ? ' El motor los toma en la próxima corrida programada.' : ' Tus avisos ya usan estos valores.';
     $('dlg').close();
     msg('appMsg', 'ok', `Guardado. ${commits.map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener">Ver commit${commits.length > 1 ? ' ' + (i + 1) : ''}</a>`).join(' · ')}.${ran}`);
+    if (changed.includes('users')) { buildForm(); wireTg(); }
     fillForm();
   } catch (e) {
     if (commits.length) { msg('appMsg', 'info', 'Se guardó una parte de los cambios.'); }
