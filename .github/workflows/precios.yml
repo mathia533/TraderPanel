@@ -1,0 +1,64 @@
+name: Alertas de precio
+
+# Revisa las alertas de precio personales (avisos/<login>.json, se cargan en alertas.html)
+# y le manda a cada uno un mensaje a su Telegram cuando se cumple la suya.
+# Cada 10 minutos con BYMA y Wall Street abiertos (lun a vie, 13 a 21 UTC = 10 a 18 en Buenos Aires)
+# y una vez por hora el resto del tiempo (cripto y dólar). También corre apenas alguien guarda una alerta.
+# El horario de GitHub puede atrasarse unos minutos.
+on:
+  schedule:
+    - cron: "*/10 13-21 * * 1-5"
+    - cron: "35 * * * *"
+  push:
+    branches: [main]
+    paths: ["avisos/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: alertas-precio
+  cancel-in-progress: false
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: ¿Hay alertas?
+        id: hay
+        run: |
+          if ls avisos/*.json >/dev/null 2>&1; then echo "si=1" >> "$GITHUB_OUTPUT"; else echo "Nadie cargó alertas de precio todavía."; fi
+
+      - uses: actions/setup-node@v4
+        if: steps.hay.outputs.si
+        with:
+          node-version: 20
+
+      - name: Revisar precios y avisar
+        if: steps.hay.outputs.si
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node alerts/prices.mjs
+
+      # Solo hay commit cuando salta una alerta o aparece una nueva (el archivo no guarda la hora de cada revisión)
+      - name: Guardar estado
+        if: always() && steps.hay.outputs.si
+        run: |
+          [ -f data/avisos_estado.json ] || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/avisos_estado.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Estado de alertas de precio [skip ci]"
+          for i in 1 2 3 4; do
+            git pull --rebase --autostash origin "${{ github.event.repository.default_branch }}" && git push && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
