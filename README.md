@@ -43,7 +43,7 @@ GitHub Action (cada hora con mercado abierto, cada 4 h el fin de semana)
 
 **Salidas.** Stop o objetivo tocados (también con la vela en curso), cierre debajo de la media de 50 ruedas para VCP, y salida por tiempo a las 5 ruedas para Momentum Burst.
 
-**Configuración.** Watchlist, presupuesto por mercado, pérdida máxima por operación y límites en `engine/config.json`. Para correrlo a mano: `pip install -r engine/requirements.txt && python -m engine.run`. Pruebas: `python -m pytest tests`.
+**Configuración.** Watchlist, presupuesto por mercado, pérdida máxima por operación y límites en `engine/config.json`. Se puede editar desde el panel (ver *Configurar desde el panel*). Para correrlo a mano: `pip install -r engine/requirements.txt && python -m engine.run`. Pruebas: `python -m pytest tests`.
 
 **Skills vendorizadas.** `vendor/tradermonty/` tiene los scripts originales (licencia MIT) sin modificar. Para actualizarlos: `scripts/sync_vendor.sh`.
 
@@ -78,3 +78,17 @@ Editá `alerts/telegram.json`:
 - `max_age_hours`: eventos más viejos que esto no se mandan (evita avalanchas después de una caída).
 
 Para probar localmente sin enviar: `node alerts/send.mjs --dry-run`.
+
+## Configurar desde el panel
+
+El ícono de engranaje del panel abre `config.html`: un formulario para cambiar el presupuesto por mercado, la pérdida máxima, las reglas de operación, la watchlist del motor, los setups y qué avisos manda Telegram. Al guardar, la página hace un commit en `engine/config.json` y/o `alerts/telegram.json` con la API de GitHub, y el motor usa los valores nuevos en la próxima corrida (o enseguida, si marcás *Correr el motor apenas se guarde*).
+
+**Cómo se entra.** GitHub Pages es estático, así que no hay servidor que guarde una contraseña. Se entra con un token *fine-grained* de GitHub:
+
+1. [Crear token](https://github.com/settings/personal-access-tokens/new): *Repository access → Only select repositories →* este repo.
+2. *Permissions → Repository*: **Contents: Read and write**. Opcional, **Actions: Read and write** para disparar el motor al guardar.
+3. Vencimiento de 90 días y pegarlo en la página.
+
+El token queda solo en tu navegador (en la sesión, o en `localStorage` si marcás *Recordarme*) y la página solo puede conectarse a `api.github.com` (tiene una Content-Security-Policy que bloquea cualquier otro destino). Sólo quien tiene permiso de escritura en el repo puede guardar. Para revocarlo: *GitHub → Settings → Developer settings → Fine-grained tokens*.
+
+**Validación.** El formulario no deja guardar valores fuera de rango (pérdida máxima entre 0,05 % y 10 %, objetivo mayor o igual al R:R mínimo, tickers con formato válido, etc.). Las mismas reglas están en `engine/config_check.py`: el motor las vuelve a chequear al arrancar y falla con un mensaje claro si alguien edita el JSON a mano con un valor imposible. Para chequear a mano: `python -m engine.config_check`.

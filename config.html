@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Esta página maneja un token de GitHub: solo puede hablar con api.github.com y no carga scripts externos. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://api.github.com; img-src data: https://avatars.githubusercontent.com; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>TraderPanel · Configuración</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2322C55E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='3 17 9 11 13 15 21 7'/%3E%3Cpolyline points='15 7 21 7 21 13'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#020617;--bg2:#050B1F;--card:#0E1223;--inset:#020617;--hover:#111833;
+  --line:#1E293B;--line2:#334155;--ink:#F8FAFC;--ink2:#CBD5E1;--mute:#94A3B8;
+  --up:#4ADE80;--upbg:#052E1A;--dn:#F87171;--dnbg:#3B0D0D;--dnfg:#FCA5A5;
+  --warn:#FCD34D;--warnbg:#3B2A06;--info:#93C5FD;--infobg:#0C1A33;
+  --accent:#22C55E;--on-accent:#052E1A;--primary:#1D4ED8;--primary-line:#3B82F6;--focus:#60A5FA;
+  --sans:'Fira Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'Fira Code',ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+:root[data-theme=light]{
+  --bg:#F1F5F9;--bg2:#FFFFFF;--card:#FFFFFF;--inset:#F1F5F9;--hover:#F8FAFC;
+  --line:#E2E8F0;--line2:#CBD5E1;--ink:#0F172A;--ink2:#334155;--mute:#475569;
+  --up:#15803D;--upbg:#DCFCE7;--dn:#B91C1C;--dnbg:#FEE2E2;--dnfg:#991B1B;
+  --warn:#92400E;--warnbg:#FEF3C7;--info:#1D4ED8;--infobg:#DBEAFE;
+  --accent:#15803D;--on-accent:#FFFFFF;--primary:#1D4ED8;--primary-line:#1D4ED8;--focus:#2563EB;
+  color-scheme:light;
+}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--sans);overflow-x:clip}
+h1,h2,h3,p{margin:0}
+a{color:var(--info)}
+[hidden]{display:none!important}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.55}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.mute{color:var(--mute)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+code{font-family:var(--mono);font-size:12.5px;background:var(--line);border-radius:4px;padding:1px 5px}
+.btn{min-height:44px;padding:0 16px;border-radius:10px;border:1px solid var(--line2);background:var(--card);display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:500;text-decoration:none;color:var(--ink)}
+.btn:hover:not(:disabled){border-color:var(--mute)}
+.btn.go{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+.btn.primary{background:var(--primary);border-color:var(--primary-line);color:#fff;font-weight:600}
+.btn.icon{width:44px;padding:0}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:999px;font-size:13px;font-weight:500}
+.pill.ok{background:var(--upbg);color:var(--up)}
+.pill.warn{background:var(--warnbg);color:var(--warn)}
+svg.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.top{background:var(--bg2);border-bottom:1px solid var(--line)}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:16px}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--ink);text-decoration:none}
+.brand svg{width:28px;height:28px;stroke:var(--accent)}
+.top .right{margin-left:auto;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.who{display:flex;align-items:center;gap:8px;font-size:14px}
+.who img{width:28px;height:28px;border-radius:50%}
+main.wrap{padding-block:24px 120px;display:flex;flex-direction:column;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card>h2{font-size:18px;font-weight:600;margin-bottom:4px}
+.card>.sub{color:var(--mute);font-size:14px;margin-bottom:16px}
+.lead h1{font-size:24px;font-weight:700;letter-spacing:-.01em}
+.lead p{color:var(--ink2);margin-top:6px;max-width:72ch}
+
+.login{max-width:640px;display:flex;flex-direction:column;gap:14px}
+.login ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;color:var(--ink2)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.check{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink2);min-height:32px}
+.check input{width:18px;height:18px;accent-color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.mk{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--inset)}
+.mk h3{font-size:16px;font-weight:600;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.mk h3 small{font-weight:400;color:var(--mute);font-size:13px}
+.f{display:flex;flex-direction:column;gap:6px}
+.f label,.f .lbl{font-size:13px;color:var(--ink2);font-weight:500}
+.f .help{font-size:12.5px;color:var(--mute)}
+.f input[type=text],.f input[type=number],.f input[type=url],.f input[type=password]{min-height:44px;padding:0 12px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);color:var(--ink);font-size:16px;width:100%}
+.f input.num{font-family:var(--mono)}
+.f.bad input{border-color:var(--dn)}
+.f .err{font-size:12.5px;color:var(--dn)}
+.f.chg label::after{content:" · modificado";color:var(--warn);font-weight:400}
+.calc{font-size:12.5px;color:var(--mute)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:8px;border:1px solid var(--line2);border-radius:10px;background:var(--bg);min-height:48px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:2px;padding:2px 2px 2px 10px;border-radius:8px;background:var(--line);font-family:var(--mono);font-size:13px}
+.chip.new{background:var(--upbg);color:var(--up)}
+.chip button{border:0;background:transparent;width:28px;height:28px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;color:var(--mute)}
+.chip button:hover{background:var(--line2);color:var(--ink)}
+.chips input{border:0;background:transparent;flex:1 1 120px;min-height:32px;font-family:var(--mono);font-size:14px;padding:0 6px;color:var(--ink)}
+.chips input:focus{outline:none}
+.chips:focus-within{outline:2px solid var(--focus);outline-offset:1px}
+.opts{display:flex;flex-wrap:wrap;gap:4px 16px}
+
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--bg2);border-top:1px solid var(--line);z-index:5}
+.bar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:12px}
+.bar .state{font-size:14px;color:var(--ink2);margin-right:auto}
+.bar .state b{color:var(--warn)}
+.bar .state.bad b{color:var(--dn)}
+
+dialog{border:1px solid var(--line2);border-radius:14px;background:var(--card);color:var(--ink);padding:0;width:min(680px,calc(100vw - 32px));max-height:calc(100vh - 32px)}
+dialog::backdrop{background:rgba(2,6,23,.7)}
+.dlg{padding:20px;display:flex;flex-direction:column;gap:14px}
+.dlg h2{font-size:18px}
+.diff{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:10px;max-height:46vh;overflow:auto}
+.diff li{padding:10px 12px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:2px}
+.diff li:last-child{border-bottom:0}
+.diff .p{font-size:13px;color:var(--ink2)}
+.diff .v{font-family:var(--mono);font-size:13px;overflow-wrap:anywhere}
+.diff del{color:var(--dnfg);text-decoration:line-through}
+.diff ins{color:var(--up);text-decoration:none}
+.msg{padding:12px 14px;border-radius:10px;font-size:14px}
+.msg.ok{background:var(--upbg);color:var(--up)}
+.msg.bad{background:var(--dnbg);color:var(--dnfg)}
+.msg.info{background:var(--infobg);color:var(--info)}
+.secnav{display:flex;flex-wrap:wrap;gap:6px}
+.secnav a{padding:8px 12px;border-radius:8px;border:1px solid var(--line2);color:var(--ink2);text-decoration:none;font-size:14px}
+.secnav a:hover{background:var(--hover)}
+@media (max-width:560px){.bar .state{width:100%}.bar .btn{flex:1}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 21 2M16 7l3 3M18 5l2 2"/></symbol>
+  <symbol id="i-save" viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./"><svg class="i" aria-hidden="true"><use href="#i-logo"/></svg>TraderPanel</a>
+    <span class="mute">Configuración</span>
+    <div class="right">
+      <div class="who" id="who" hidden></div>
+      <button class="btn" id="logout" type="button" hidden>Salir</button>
+      <button class="btn icon" id="theme" type="button" aria-label="Cambiar tema"></button>
+      <a class="btn" href="./"><svg class="i" aria-hidden="true"><use href="#i-back"/></svg>Volver al panel</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="lead">
+    <h1>Configuración del motor y las alertas</h1>
+    <p>Los cambios se guardan como un commit en <code id="repoName">engine/config.json</code> y <code>alerts/telegram.json</code>. La próxima corrida del motor de señales ya usa los valores nuevos.</p>
+  </div>
+
+  <!-- Entrar -->
+  <section class="card login" id="loginCard" aria-labelledby="loginH">
+    <h2 id="loginH">Entrar con tu cuenta de GitHub</h2>
+    <p class="mute">Solo quien tiene permiso de escritura en el repositorio puede guardar cambios. Para entrar usás un token de acceso de GitHub limitado a este repo. El token queda únicamente en este navegador y viaja solo a api.github.com.</p>
+    <ol>
+      <li>Abrí <a id="patLink" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">crear token en GitHub</a> (tipo <b>Fine-grained</b>).</li>
+      <li>En <b>Repository access</b> elegí <b>Only select repositories</b> y marcá <span id="repoName2">TraderPanel</span>.</li>
+      <li>En <b>Permissions → Repository</b>: <b>Contents: Read and write</b>. Opcional: <b>Actions: Read and write</b> para poder correr el motor apenas guardás.</li>
+      <li>Ponele vencimiento (90 días está bien), generalo y pegalo acá.</li>
+    </ol>
+    <div class="f">
+      <label for="token">Token</label>
+      <input type="password" id="token" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+    </div>
+    <label class="check"><input type="checkbox" id="remember"> Recordarme en este navegador (si no, se borra al cerrar la pestaña)</label>
+    <div class="row"><button class="btn go" id="loginBtn" type="button"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>Entrar</button></div>
+    <div id="loginMsg" role="status"></div>
+  </section>
+
+  <div id="app" hidden>
+    <div id="appMsg" role="status" style="margin-bottom:16px"></div>
+    <nav class="secnav" aria-label="Secciones" style="margin-bottom:20px">
+      <a href="#s-mercados">Presupuesto por mercado</a><a href="#s-reglas">Reglas de operación</a><a href="#s-watch">Watchlist</a><a href="#s-setups">Setups</a><a href="#s-tg">Alertas Telegram</a>
+    </nav>
+    <div style="display:flex;flex-direction:column;gap:20px" id="form"></div>
+  </div>
+</main>
+
+<div class="bar" id="bar" hidden>
+  <div class="wrap">
+    <span class="state" id="barState">Sin cambios</span>
+    <button class="btn" id="discard" type="button" disabled>Descartar</button>
+    <button class="btn go" id="review" type="button" disabled><svg class="i" aria-hidden="true"><use href="#i-save"/></svg>Revisar y guardar</button>
+  </div>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlgH">
+  <div class="dlg">
+    <h2 id="dlgH">Revisá los cambios</h2>
+    <ul class="diff" id="diff"></ul>
+    <div class="f">
+      <label for="cmsg">Mensaje del commit</label>
+      <input type="text" id="cmsg" maxlength="120">
+    </div>
+    <label class="check" id="runWrap"><input type="checkbox" id="runNow"> Correr el motor de señales apenas se guarde (el token necesita <b>Actions: Read and write</b>)</label>
+    <div id="dlgMsg" role="status"></div>
+    <div class="row" style="justify-content:flex-end">
+      <button class="btn" id="dlgCancel" type="button">Seguir editando</button>
+      <button class="btn go" id="save" type="button"><svg class="i" aria-hidden="true"><use href="#i-save"/></svg>Guardar en GitHub</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+'use strict';
+/* ---------- Repo ---------- */
+// En GitHub Pages (usuario.github.io/Repo/) se deduce solo; si no, usa el repo original.
+const REPO = (() => {
+  const h = location.hostname, seg = location.pathname.split('/').filter(Boolean)[0];
+  if (h.endsWith('.github.io') && seg) return { owner: h.split('.')[0], name: seg };
+  return { owner: 'mathia533', name: 'TraderPanel' };
+})();
+const FILES = { engine: 'engine/config.json', tg: 'alerts/telegram.json' };
+const WORKFLOW = 'signals.yml';
+const API = 'https://api.github.com';
+const TK = 'tp_gh_token';
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const clone = o => JSON.parse(JSON.stringify(o));
+const get = (o, path) => path.split('.').reduce((a, k) => (a == null ? undefined : a[k]), o);
+function set(o, path, v) { const ks = path.split('.'); let a = o; for (const k of ks.slice(0, -1)) { if (typeof a[k] !== 'object' || a[k] === null) a[k] = {}; a = a[k]; } a[ks.at(-1)] = v; }
+const msg = (el, kind, html) => { $(el).innerHTML = html ? `<div class="msg ${kind}">${html}</div>` : ''; };
+
+/* ---------- Tema (mismo que el panel) ---------- */
+function applyTheme(t) {
+  document.documentElement.dataset.theme = t;
+  $('theme').innerHTML = `<svg class="i" aria-hidden="true"><use href="#i-${t === 'dark' ? 'sun' : 'moon'}"/></svg>`;
+  $('theme').setAttribute('aria-label', t === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+}
+try { applyTheme(JSON.parse(localStorage.getItem('tp_theme')) || 'dark'); } catch { applyTheme('dark'); }
+$('theme').onclick = () => { const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; try { localStorage.setItem('tp_theme', JSON.stringify(t)); } catch {} applyTheme(t); };
+
+/* ---------- Token (solo en este navegador) ---------- */
+const tok = {
+  get() { try { return sessionStorage.getItem(TK) || localStorage.getItem(TK) || ''; } catch { return ''; } },
+  save(t, remember) { try { (remember ? localStorage : sessionStorage).setItem(TK, t); } catch {} },
+  clear() { try { sessionStorage.removeItem(TK); localStorage.removeItem(TK); } catch {} }
+};
+let token = '';
+
+async function gh(path, opts = {}) {
+  const r = await fetch(API + path, {
+    ...opts,
+    headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', Authorization: `Bearer ${token}`, ...(opts.body ? { 'Content-Type': 'application/json' } : {}) },
+    cache: 'no-store'
+  });
+  if (r.status === 204) return null;
+  const body = await r.json().catch(() => ({}));
+  if (!r.ok) { const e = new Error(body.message || `HTTP ${r.status}`); e.status = r.status; throw e; }
+  return body;
+}
+const b64dec = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g, '')), c => c.charCodeAt(0)));
+const b64enc = s => { let bin = ''; for (const b of new TextEncoder().encode(s)) bin += String.fromCharCode(b); return btoa(bin); };
+
+/* ---------- Formato del JSON: igual que el archivo original (listas cortas en una línea) ---------- */
+function fmt(v, ind = '') {
+  const prim = x => x === null || typeof x !== 'object';
+  if (prim(v)) return JSON.stringify(v);
+  const inline = Array.isArray(v) ? v.every(prim) : Object.values(v).every(prim);
+  if (inline) {
+    const s = Array.isArray(v) ? `[${v.map(x => JSON.stringify(x)).join(', ')}]`
+      : `{${Object.entries(v).map(([k, x]) => `${JSON.stringify(k)}: ${JSON.stringify(x)}`).join(', ')}}`;
+    if (s.length + ind.length < 140 || Array.isArray(v)) return s;
+  }
+  const n = ind + '  ';
+  if (Array.isArray(v)) return `[\n${v.map(x => n + fmt(x, n)).join(',\n')}\n${ind}]`;
+  return `{\n${Object.entries(v).map(([k, x]) => `${n}${JSON.stringify(k)}: ${fmt(x, n)}`).join(',\n')}\n${ind}}`;
+}
+
+/* ---------- Validación (las mismas reglas que engine/config_check.py) ---------- */
+const MARKETS = ['adr', 'byma', 'cripto'];
+const MK = { adr: { name: 'ADRs', cur: 'US$' }, byma: { name: 'BYMA', cur: '$' }, cripto: { name: 'Cripto', cur: 'US$' } };
+const VCP = ['Textbook VCP', 'Strong VCP', 'Good VCP', 'Developing VCP', 'Weak VCP'];
+const BURST = ['ACTIONABLE_DAY1', 'MANUAL_REVIEW', 'MANUAL_REVIEW_ONLY', 'WATCH_ONLY'];
+const TICKER = { adr: /^[A-Z][A-Z0-9.\-]{0,9}$/, byma: /^[A-Z][A-Z0-9.\-]{0,9}$/, cripto: /^[a-z0-9][a-z0-9\-]{0,49}$/ };
+const BENCH = /^[\^A-Za-z0-9.\-=]{1,20}$/, ONLY = /^(adr|byma|cripto):[A-Za-z0-9.\-^]{1,50}$/;
+const MAX_WL = 60;
+const RISK_MK = [['budget', 1, 1e12], ['max_loss_pct', 0.05, 10], ['max_position_pct', 1, 100]];
+const RISK_G = [['min_reward_risk', 0.5, 10], ['target_r', 0.5, 20], ['max_stop_pct', 0.5, 50], ['max_open_positions', 1, 50, true], ['burst_max_sessions', 1, 60, true], ['breakeven_after_r', 0.1, 10]];
+const FILT = [['min_price', 0, 1e9], ['min_volume', 0, 1e13]];
+const isNum = v => typeof v === 'number' && Number.isFinite(v);
+
+function validateEngine(c) {
+  const E = []; const e = (p, m) => E.push({ p: 'engine:' + p, m });
+  const num = (p, v, lo, hi, int) => {
+    if (!isNum(v)) e(p, 'Tiene que ser un número.');
+    else if (int && !Number.isInteger(v)) e(p, 'Tiene que ser un número entero.');
+    else if (v < lo || v > hi) e(p, `Tiene que estar entre ${lo.toLocaleString('es-AR')} y ${hi.toLocaleString('es-AR')}.`);
+  };
+  for (const m of MARKETS) {
+    const ids = get(c, `watchlist.${m}`);
+    if (!Array.isArray(ids)) { e(`watchlist.${m}`, 'Tiene que ser una lista.'); continue; }
+    if (ids.length > MAX_WL) e(`watchlist.${m}`, `Máximo ${MAX_WL} activos.`);
+    const bad = ids.filter(x => typeof x !== 'string' || !TICKER[m].test(x));
+    if (bad.length) e(`watchlist.${m}`, `No válidos: ${bad.join(', ')}.`);
+    if (new Set(ids).size !== ids.length) e(`watchlist.${m}`, 'Hay activos repetidos.');
+    const b = get(c, `benchmarks.${m}`);
+    if (typeof b !== 'string' || !BENCH.test(b)) e(`benchmarks.${m}`, 'Símbolo de Yahoo inválido (ej. SPY, ^MERV, BTC-USD).');
+    for (const [k, lo, hi] of FILT) num(`filters.${m}.${k}`, get(c, `filters.${m}.${k}`), lo, hi);
+    for (const [k, lo, hi] of RISK_MK) num(`risk.${m}.${k}`, get(c, `risk.${m}.${k}`), lo, hi);
+    const lp = get(c, `risk.${m}.max_loss_pct`), pp = get(c, `risk.${m}.max_position_pct`);
+    if (isNum(lp) && isNum(pp) && lp > pp) e(`risk.${m}.max_loss_pct`, 'No puede superar el tamaño máximo de posición.');
+  }
+  for (const [k, lo, hi, int] of RISK_G) num(`risk.${k}`, get(c, `risk.${k}`), lo, hi, int);
+  const tr = get(c, 'risk.target_r'), mr = get(c, 'risk.min_reward_risk');
+  if (isNum(tr) && isNum(mr) && tr < mr) e('risk.target_r', 'Es menor que el R:R mínimo: el motor no abriría ninguna operación.');
+  const sub = (p, allowed, need) => { const v = get(c, p); if (!Array.isArray(v) || v.some(x => !allowed.includes(x))) e(p, 'Valores no válidos.'); else if (need && !v.length) e(p, 'Elegí al menos uno.'); };
+  sub('setups.vcp_min_rating', VCP, true); sub('setups.vcp_watch_rating', VCP); sub('setups.burst_entry_states', BURST); sub('setups.burst_watch_states', BURST);
+  return E;
+}
+function validateTg(c) {
+  const E = []; const e = (p, m) => E.push({ p: 'tg:' + p, m });
+  const only = c.only || [];
+  if (!Array.isArray(only) || only.some(x => !ONLY.test(x))) e('only', 'Formato mercado:ACTIVO, por ejemplo adr:YPF o cripto:BTC.');
+  const h = c.max_age_hours;
+  if (!isNum(h) || !Number.isInteger(h) || h < 1 || h > 720) e('max_age_hours', 'Entero entre 1 y 720.');
+  if (c.panel_url && !/^https:\/\//.test(c.panel_url)) e('panel_url', 'Tiene que empezar con https://');
+  for (const k of ['entry', 'exit', 'update']) if (typeof get(c, `types.${k}`) !== 'boolean') e(`types.${k}`, 'Valor no válido.');
+  for (const k of MARKETS) if (typeof get(c, `kinds.${k}`) !== 'boolean') e(`kinds.${k}`, 'Valor no válido.');
+  return E;
+}
+
+/* ---------- Estado ---------- */
+const S = { orig: {}, draft: {}, sha: {}, branch: 'main', canRun: true };
+const errors = () => [...validateEngine(S.draft.engine), ...validateTg(S.draft.tg)];
+
+/* ---------- Etiquetas legibles para el resumen de cambios ---------- */
+const LABEL = {
+  budget: 'Presupuesto', max_loss_pct: 'Pérdida máx. por operación (%)', max_position_pct: 'Posición máx. (% del presupuesto)', fractional: 'Permite fracciones',
+  min_price: 'Precio mínimo', min_volume: 'Volumen mínimo', min_reward_risk: 'R:R mínimo', target_r: 'Objetivo (R)', max_stop_pct: 'Stop máx. (%)',
+  max_open_positions: 'Posiciones abiertas máx.', burst_max_sessions: 'Momentum Burst: ruedas máx.', breakeven_after_r: 'Stop a la entrada después de (R)',
+  vcp_min_rating: 'VCP: calificación para entrar', vcp_watch_rating: 'VCP: calificación para "preparado"', burst_entry_states: 'Momentum Burst: estados para entrar',
+  burst_watch_states: 'Momentum Burst: estados para "preparado"', only: 'Solo estos activos', max_age_hours: 'Antigüedad máx. del aviso (h)', panel_url: 'Link al panel',
+  entry: 'Avisar entradas', exit: 'Avisar salidas', update: 'Avisar ajustes de stop'
+};
+function labelOf(key) {
+  const [file, path] = key.split(':'); const ks = path.split('.');
+  const mk = ks.find(k => MK[k]);
+  let base = LABEL[ks.at(-1)] || ks.at(-1);
+  if (ks[0] === 'watchlist') base = 'Watchlist';
+  if (ks[0] === 'benchmarks') base = 'Índice de referencia';
+  if (ks[0] === 'kinds') return `Telegram · avisar ${MK[ks[1]].name}`;
+  return (file === 'tg' ? 'Telegram · ' : '') + base + (mk ? ` · ${MK[mk].name}` : '');
+}
+function leaves(o, pre = '', out = {}) {
+  if (o && typeof o === 'object' && !Array.isArray(o)) { for (const [k, v] of Object.entries(o)) leaves(v, pre ? `${pre}.${k}` : k, out); }
+  else out[pre] = o;
+  return out;
+}
+function diffs() {
+  const out = [];
+  for (const f of ['engine', 'tg']) {
+    const a = leaves(S.orig[f]), b = leaves(S.draft[f]);
+    for (const k of new Set([...Object.keys(a), ...Object.keys(b)])) if (JSON.stringify(a[k]) !== JSON.stringify(b[k])) out.push({ key: `${f}:${k}`, from: a[k], to: b[k] });
+  }
+  return out;
+}
+const show = v => {
+  if (Array.isArray(v)) return v.length ? v.join(', ') : '(vacío)';
+  if (typeof v === 'boolean') return v ? 'sí' : 'no';
+  if (v === undefined) return '(no estaba)';
+  return isNum(v) ? v.toLocaleString('es-AR') : String(v);
+};
+
+/* ---------- Formulario ---------- */
+function numField(file, path, label, opts = {}) {
+  const id = `${file}-${path}`.replace(/\./g, '-');
+  return `<div class="f" data-key="${file}:${path}"><label for="${id}">${esc(label)}</label>
+    <input class="num" type="number" inputmode="decimal" id="${id}" data-file="${file}" data-path="${path}" data-kind="num" step="${opts.step || 'any'}" ${opts.min != null ? `min="${opts.min}"` : ''} ${opts.max != null ? `max="${opts.max}"` : ''}>
+    ${opts.help ? `<span class="help">${esc(opts.help)}</span>` : ''}<span class="err" aria-live="polite"></span>${opts.calc ? `<span class="calc" data-calc="${opts.calc}"></span>` : ''}</div>`;
+}
+function textField(file, path, label, help, type = 'text') {
+  const id = `${file}-${path}`.replace(/\./g, '-');
+  return `<div class="f" data-key="${file}:${path}"><label for="${id}">${esc(label)}</label>
+    <input type="${type}" id="${id}" data-file="${file}" data-path="${path}" data-kind="text" spellcheck="false" autocomplete="off">
+    ${help ? `<span class="help">${esc(help)}</span>` : ''}<span class="err" aria-live="polite"></span></div>`;
+}
+function checkField(file, path, label) {
+  return `<label class="check"><input type="checkbox" data-file="${file}" data-path="${path}" data-kind="bool"> ${esc(label)}</label>`;
+}
+function setField(file, path, label, options, help) {
+  return `<div class="f" data-key="${file}:${path}"><span class="lbl">${esc(label)}</span><div class="opts">${options.map(o =>
+    `<label class="check"><input type="checkbox" data-file="${file}" data-path="${path}" data-kind="set" value="${esc(o)}"> ${esc(o)}</label>`).join('')}</div>
+    ${help ? `<span class="help">${esc(help)}</span>` : ''}<span class="err" aria-live="polite"></span></div>`;
+}
+function chipsField(file, path, label, help, norm) {
+  const id = `${file}-${path}`.replace(/\./g, '-');
+  return `<div class="f" data-key="${file}:${path}"><label for="${id}">${esc(label)}</label>
+    <div class="chips" data-file="${file}" data-path="${path}" data-norm="${norm}"><input id="${id}" type="text" spellcheck="false" autocomplete="off" placeholder="Agregar y Enter"></div>
+    ${help ? `<span class="help">${esc(help)}</span>` : ''}<span class="err" aria-live="polite"></span></div>`;
+}
+
+function buildForm() {
+  const mkCards = MARKETS.map(m => `<div class="mk"><h3>${MK[m].name} <small>montos en ${MK[m].cur}</small></h3>
+    ${numField('engine', `risk.${m}.budget`, `Presupuesto (${MK[m].cur})`, { min: 1, calc: m })}
+    ${numField('engine', `risk.${m}.max_loss_pct`, 'Pérdida máx. por operación (%)', { min: 0.05, max: 10, step: 0.05, help: 'Con esto se calcula el tamaño: si toca el stop perdés este % del presupuesto.' })}
+    ${numField('engine', `risk.${m}.max_position_pct`, 'Posición máx. (% del presupuesto)', { min: 1, max: 100, step: 1 })}
+    ${m === 'cripto' ? checkField('engine', `risk.${m}.fractional`, 'Permite comprar fracciones') : ''}
+    ${numField('engine', `filters.${m}.min_price`, `Precio mínimo (${MK[m].cur})`, { min: 0, help: 'Debajo de esto el activo no se analiza.' })}
+    ${numField('engine', `filters.${m}.min_volume`, 'Volumen diario mínimo', { min: 0, step: 1 })}
+    ${textField('engine', `benchmarks.${m}`, 'Índice de referencia (Yahoo)', m === 'byma' ? 'Si Yahoo no lo trae, el motor usa un índice propio de la watchlist.' : '')}
+  </div>`).join('');
+
+  $('form').innerHTML = `
+  <section class="card" id="s-mercados"><h2>Presupuesto y riesgo por mercado</h2><p class="sub">Cuánta plata destinás a cada mercado y cuánto estás dispuesto a perder por operación.</p>
+    <div class="grid">${mkCards}</div></section>
+
+  <section class="card" id="s-reglas"><h2>Reglas de operación</h2><p class="sub">Valen para todos los mercados. R es la distancia entre la entrada y el stop.</p>
+    <div class="rules">
+      ${numField('engine', 'risk.target_r', 'Objetivo (R)', { min: 0.5, max: 20, step: 0.1, help: 'El objetivo de ganancia se pone a esta cantidad de R.' })}
+      ${numField('engine', 'risk.min_reward_risk', 'R:R mínimo', { min: 0.5, max: 10, step: 0.1, help: 'Operaciones con menos relación ganancia/riesgo se descartan.' })}
+      ${numField('engine', 'risk.max_stop_pct', 'Stop máximo (%)', { min: 0.5, max: 50, step: 0.5, help: 'Si el stop queda más lejos que esto, no se entra.' })}
+      ${numField('engine', 'risk.max_open_positions', 'Posiciones abiertas máx.', { min: 1, max: 50, step: 1 })}
+      ${numField('engine', 'risk.breakeven_after_r', 'Stop a la entrada después de (R)', { min: 0.1, max: 10, step: 0.1, help: 'Al ganar esta cantidad de R, el stop sube al precio de entrada.' })}
+      ${numField('engine', 'risk.burst_max_sessions', 'Momentum Burst: ruedas máx.', { min: 1, max: 60, step: 1, help: 'Salida por tiempo si no llegó al objetivo.' })}
+    </div></section>
+
+  <section class="card" id="s-watch"><h2>Watchlist del motor</h2><p class="sub">Los activos que analiza el motor cada hora (máximo ${MAX_WL} por mercado). Es independiente de la lista que armás en el panel.</p>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      ${chipsField('engine', 'watchlist.adr', 'ADRs (ticker de NYSE/Nasdaq)', 'Ej.: YPF, GGAL, MELI.', 'upper')}
+      ${chipsField('engine', 'watchlist.byma', 'BYMA (ticker local)', 'Ej.: GGAL, YPFD, PAMP. Se buscan como TICKER.BA en Yahoo.', 'upper')}
+      ${chipsField('engine', 'watchlist.cripto', 'Cripto (id de CoinGecko)', 'Ej.: bitcoin, ethereum, solana. Es el id que aparece en la URL de coingecko.com.', 'lower')}
+    </div></section>
+
+  <section class="card" id="s-setups"><h2>Setups que disparan señales</h2><p class="sub">Qué calificaciones de las skills cuentan como entrada y cuáles como "preparado" (aviso de que está cerca).</p>
+    <div class="rules">
+      ${setField('engine', 'setups.vcp_min_rating', 'VCP: para entrar', VCP, 'Además tiene que romper el pivote con volumen.')}
+      ${setField('engine', 'setups.vcp_watch_rating', 'VCP: para "preparado"', VCP)}
+      ${setField('engine', 'setups.burst_entry_states', 'Momentum Burst: para entrar', BURST, 'ACTIONABLE_DAY1 es la ruptura del día con volumen.')}
+      ${setField('engine', 'setups.burst_watch_states', 'Momentum Burst: para "preparado"', BURST)}
+    </div></section>
+
+  <section class="card" id="s-tg"><h2>Alertas por Telegram</h2><p class="sub">Qué avisos manda el bot al canal.</p>
+    <div class="rules">
+      <div class="f"><span class="lbl">Tipos de aviso</span>${checkField('tg', 'types.entry', 'Entradas')}${checkField('tg', 'types.exit', 'Salidas (stop u objetivo tocado)')}${checkField('tg', 'types.update', 'Ajustes de stop')}</div>
+      <div class="f"><span class="lbl">Mercados</span>${MARKETS.map(m => checkField('tg', `kinds.${m}`, MK[m].name)).join('')}</div>
+      ${numField('tg', 'max_age_hours', 'No mandar avisos más viejos que (horas)', { min: 1, max: 720, step: 1 })}
+      ${textField('tg', 'panel_url', 'Link al panel en los mensajes', '', 'url')}
+    </div>
+    <div style="margin-top:16px">${chipsField('tg', 'only', 'Solo estos activos (vacío = todos)', 'Formato mercado:ACTIVO, por ejemplo adr:YPF o cripto:BTC.', 'only')}</div>
+  </section>`;
+
+  for (const el of document.querySelectorAll('#form input[data-path]')) el.addEventListener(el.type === 'checkbox' ? 'change' : 'input', onInput);
+  for (const box of document.querySelectorAll('#form .chips')) {
+    const inp = box.querySelector('input');
+    box.addEventListener('click', ev => { const b = ev.target.closest('button[data-rm]'); if (b) { const l = get(S.draft[box.dataset.file], box.dataset.path).slice(); l.splice(+b.dataset.rm, 1); set(S.draft[box.dataset.file], box.dataset.path, l); renderChips(box); refresh(); inp.focus(); } else if (ev.target === box) inp.focus(); });
+    inp.addEventListener('keydown', ev => {
+      if (ev.key === 'Enter' || ev.key === ',' || ev.key === ' ') { ev.preventDefault(); addChips(box, inp.value); inp.value = ''; }
+      else if (ev.key === 'Backspace' && !inp.value) { const l = get(S.draft[box.dataset.file], box.dataset.path).slice(); if (l.length) { l.pop(); set(S.draft[box.dataset.file], box.dataset.path, l); renderChips(box); refresh(); } }
+    });
+    inp.addEventListener('blur', () => { if (inp.value.trim()) { addChips(box, inp.value); inp.value = ''; } });
+    inp.addEventListener('paste', ev => { ev.preventDefault(); addChips(box, (ev.clipboardData || window.clipboardData).getData('text')); });
+  }
+}
+function normChip(kind, s) {
+  s = s.trim();
+  if (kind === 'upper') return s.toUpperCase();
+  if (kind === 'lower') return s.toLowerCase();
+  const i = s.indexOf(':'); return i > 0 ? s.slice(0, i).toLowerCase() + ':' + s.slice(i + 1).toUpperCase() : s;
+}
+function addChips(box, text) {
+  const add = text.split(/[\s,;]+/).map(x => normChip(box.dataset.norm, x)).filter(Boolean);
+  if (!add.length) return;
+  const l = (get(S.draft[box.dataset.file], box.dataset.path) || []).slice();
+  for (const x of add) if (!l.includes(x)) l.push(x);
+  set(S.draft[box.dataset.file], box.dataset.path, l); renderChips(box); refresh();
+}
+function renderChips(box) {
+  const l = get(S.draft[box.dataset.file], box.dataset.path) || [], o = get(S.orig[box.dataset.file], box.dataset.path) || [];
+  for (const c of box.querySelectorAll('.chip')) c.remove();
+  const inp = box.querySelector('input');
+  l.forEach((x, i) => inp.insertAdjacentHTML('beforebegin', `<span class="chip${o.includes(x) ? '' : ' new'}">${esc(x)}<button type="button" data-rm="${i}" aria-label="Quitar ${esc(x)}"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button></span>`));
+}
+function onInput(ev) {
+  const el = ev.target, d = S.draft[el.dataset.file], p = el.dataset.path;
+  if (el.dataset.kind === 'num') set(d, p, el.value === '' ? null : Number(el.value));
+  else if (el.dataset.kind === 'text') set(d, p, el.value.trim());
+  else if (el.dataset.kind === 'bool') set(d, p, el.checked);
+  else if (el.dataset.kind === 'set') {
+    const order = [...document.querySelectorAll(`#form input[data-kind=set][data-path="${p}"]`)];
+    set(d, p, order.filter(x => x.checked).map(x => x.value));
+  }
+  refresh();
+}
+function fillForm() {
+  for (const el of document.querySelectorAll('#form input[data-path]')) {
+    const v = get(S.draft[el.dataset.file], el.dataset.path);
+    if (el.dataset.kind === 'num' || el.dataset.kind === 'text') el.value = v ?? '';
+    else if (el.dataset.kind === 'bool') el.checked = !!v;
+    else if (el.dataset.kind === 'set') el.checked = Array.isArray(v) && v.includes(el.value);
+  }
+  for (const box of document.querySelectorAll('#form .chips')) renderChips(box);
+  refresh();
+}
+function refresh() {
+  const E = errors(), D = diffs();
+  for (const f of document.querySelectorAll('#form .f[data-key]')) {
+    const k = f.dataset.key, mine = E.filter(x => x.p === k);
+    f.classList.toggle('bad', mine.length > 0);
+    f.querySelector('.err').textContent = mine.map(x => x.m).join(' ');
+    f.classList.toggle('chg', D.some(x => x.key === k || x.key.startsWith(k + '.')));
+  }
+  for (const c of document.querySelectorAll('[data-calc]')) {
+    const m = c.dataset.calc, r = get(S.draft.engine, `risk.${m}`) || {};
+    c.textContent = isNum(r.budget) && isNum(r.max_loss_pct) && isNum(r.max_position_pct)
+      ? `Arriesga hasta ${MK[m].cur} ${(r.budget * r.max_loss_pct / 100).toLocaleString('es-AR', { maximumFractionDigits: 2 })} por operación, con posiciones de hasta ${MK[m].cur} ${(r.budget * r.max_position_pct / 100).toLocaleString('es-AR', { maximumFractionDigits: 0 })}.` : '';
+  }
+  const st = $('barState');
+  st.classList.toggle('bad', E.length > 0);
+  st.innerHTML = E.length ? `<b>${E.length} ${E.length === 1 ? 'valor a corregir' : 'valores a corregir'}</b>` : D.length ? `<b>${D.length} ${D.length === 1 ? 'cambio' : 'cambios'}</b> sin guardar` : 'Sin cambios';
+  $('discard').disabled = !D.length;
+  $('review').disabled = !D.length || E.length > 0;
+}
+
+/* ---------- Carga desde GitHub ---------- */
+async function loadFiles() {
+  for (const [f, path] of Object.entries(FILES)) {
+    const r = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${path}?ref=${encodeURIComponent(S.branch)}`);
+    S.sha[f] = r.sha;
+    S.orig[f] = JSON.parse(b64dec(r.content));
+  }
+  S.draft = clone(S.orig);
+}
+
+async function login(t, remember) {
+  token = t;
+  const [user, repo] = await Promise.all([gh('/user'), gh(`/repos/${REPO.owner}/${REPO.name}`)]);
+  if (!repo.permissions || !repo.permissions.push) { const e = new Error(`Tu cuenta (${user.login}) no tiene permiso de escritura en ${REPO.owner}/${REPO.name}.`); e.status = 403; throw e; }
+  S.branch = repo.default_branch || 'main';
+  await loadFiles();
+  tok.save(t, remember);
+  $('who').innerHTML = `${user.avatar_url ? `<img src="${esc(user.avatar_url)}&s=56" alt="">` : ''}<span class="pill ok">${esc(user.login)}</span>`;
+  $('who').hidden = $('logout').hidden = false;
+  $('loginCard').hidden = true; $('app').hidden = $('bar').hidden = false;
+  if (!$('form').children.length) buildForm();
+  fillForm();
+}
+function loginError(e) {
+  token = '';
+  if (e.status === 401) return 'El token no es válido o venció. Generá uno nuevo.';
+  if (e.status === 404) return `El token no tiene acceso a ${esc(REPO.owner)}/${esc(REPO.name)}. Revisá que lo hayas limitado a ese repositorio con permiso Contents.`;
+  if (e.status === 403) return esc(e.message);
+  return `No pude conectar con GitHub: ${esc(e.message)}`;
+}
+$('loginBtn').onclick = async () => {
+  const t = $('token').value.trim();
+  if (!t) { msg('loginMsg', 'bad', 'Pegá el token primero.'); return; }
+  if (!/^(github_pat_|ghp_|gho_)[A-Za-z0-9_]+$/.test(t)) { msg('loginMsg', 'bad', 'Eso no parece un token de GitHub (empieza con github_pat_).'); return; }
+  $('loginBtn').disabled = true; msg('loginMsg', 'info', 'Verificando…');
+  try { await login(t, $('remember').checked); $('token').value = ''; msg('loginMsg'); }
+  catch (e) { msg('loginMsg', 'bad', loginError(e)); }
+  finally { $('loginBtn').disabled = false; }
+};
+$('token').addEventListener('keydown', e => { if (e.key === 'Enter') $('loginBtn').click(); });
+$('logout').onclick = () => {
+  if (diffs().length && !confirm('Tenés cambios sin guardar. ¿Salir igual?')) return;
+  tok.clear(); token = ''; location.reload();
+};
+$('discard').onclick = () => { S.draft = clone(S.orig); fillForm(); msg('appMsg'); };
+window.addEventListener('beforeunload', e => { if (S.orig.engine && diffs().length) e.preventDefault(); });
+
+/* ---------- Guardar ---------- */
+$('review').onclick = () => {
+  const D = diffs();
+  const val = d => {
+    if (Array.isArray(d.from) && Array.isArray(d.to)) {
+      const add = d.to.filter(x => !d.from.includes(x)), rm = d.from.filter(x => !d.to.includes(x));
+      if (add.length || rm.length) return [rm.length ? `<del>quita ${esc(rm.join(', '))}</del>` : '', add.length ? `<ins>agrega ${esc(add.join(', '))}</ins>` : ''].filter(Boolean).join(' · ');
+    }
+    return `<del>${esc(show(d.from))}</del> → <ins>${esc(show(d.to))}</ins>`;
+  };
+  $('diff').innerHTML = D.map(d => `<li><span class="p">${esc(labelOf(d.key))}</span><span class="v">${val(d)}</span></li>`).join('');
+  const files = [...new Set(D.map(d => d.key.split(':')[0]))];
+  $('cmsg').value = files.length === 1 && files[0] === 'tg' ? 'Alertas Telegram: ajustes desde el panel' : 'Config del motor: ajustes desde el panel';
+  $('runWrap').hidden = !S.canRun;
+  msg('dlgMsg'); $('save').disabled = false;
+  $('dlg').showModal();
+};
+$('dlgCancel').onclick = () => $('dlg').close();
+$('save').onclick = async () => {
+  if (errors().length) return;
+  $('save').disabled = true; msg('dlgMsg', 'info', 'Guardando…');
+  const D = diffs(), changed = Object.keys(FILES).filter(f => D.some(d => d.key.startsWith(f + ':')));
+  const commits = [];
+  try {
+    for (const f of changed) {
+      const path = FILES[f];
+      // Si alguien cambió el archivo en GitHub mientras editabas, no lo piso.
+      const cur = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${path}?ref=${encodeURIComponent(S.branch)}`);
+      if (cur.sha !== S.sha[f]) { const e = new Error('stale'); e.stale = path; throw e; }
+      const r = await gh(`/repos/${REPO.owner}/${REPO.name}/contents/${path}`, {
+        method: 'PUT',
+        body: JSON.stringify({ message: $('cmsg').value.trim() || 'Config desde el panel', content: b64enc(fmt(S.draft[f]) + '\n'), sha: S.sha[f], branch: S.branch })
+      });
+      S.sha[f] = r.content.sha; S.orig[f] = clone(S.draft[f]);
+      commits.push(r.commit.html_url);
+    }
+    let ran = '';
+    if ($('runNow').checked && !$('runWrap').hidden) {
+      try { await gh(`/repos/${REPO.owner}/${REPO.name}/actions/workflows/${WORKFLOW}/dispatches`, { method: 'POST', body: JSON.stringify({ ref: S.branch }) }); ran = ` El motor ya está corriendo: <a href="https://github.com/${esc(REPO.owner)}/${esc(REPO.name)}/actions/workflows/${WORKFLOW}" target="_blank" rel="noopener">ver en Actions</a>.`; }
+      catch (e) { S.canRun = false; ran = ' No pude correr el motor (el token no tiene permiso de Actions); toma los valores en la próxima corrida programada.'; }
+    } else ran = ' El motor los toma en la próxima corrida programada.';
+    $('dlg').close();
+    msg('appMsg', 'ok', `Guardado. ${commits.map((u, i) => `<a href="${esc(u)}" target="_blank" rel="noopener">Ver commit${commits.length > 1 ? ' ' + (i + 1) : ''}</a>`).join(' · ')}.${ran}`);
+    fillForm();
+  } catch (e) {
+    if (commits.length) { msg('appMsg', 'info', 'Se guardó una parte de los cambios.'); }
+    if (e.stale) msg('dlgMsg', 'bad', `${esc(e.stale)} cambió en GitHub mientras editabas. Copiá tus cambios, recargá la página y volvé a aplicarlos.`);
+    else if (e.status === 403) msg('dlgMsg', 'bad', 'El token no tiene permiso para escribir. Necesita <b>Contents: Read and write</b> en este repositorio.');
+    else if (e.status === 409) msg('dlgMsg', 'bad', 'GitHub rechazó el cambio por un conflicto. Recargá la página y probá de nuevo.');
+    else if (e.status === 401) msg('dlgMsg', 'bad', 'El token venció. Salí y entrá con uno nuevo.');
+    else msg('dlgMsg', 'bad', `No se pudo guardar: ${esc(e.message)}`);
+    $('save').disabled = false;
+  }
+};
+
+/* ---------- Inicio ---------- */
+$('repoName').textContent = 'engine/config.json';
+$('repoName2').textContent = `${REPO.owner}/${REPO.name}`;
+$('patLink').href = `https://github.com/settings/personal-access-tokens/new?name=${encodeURIComponent('TraderPanel config')}&description=${encodeURIComponent('Editar la config del motor desde el panel')}&target_name=${encodeURIComponent(REPO.owner)}&expires_in=90&contents=write&actions=write`;
+(async () => {
+  const t = tok.get();
+  if (!t) return;
+  msg('loginMsg', 'info', 'Entrando con el token guardado…');
+  try { await login(t, !!(() => { try { return localStorage.getItem(TK); } catch { return null; } })()); msg('loginMsg'); }
+  catch (e) { if (e.status === 401) tok.clear(); msg('loginMsg', 'bad', loginError(e)); }
+})();
+</script>
+</body>
+</html>
