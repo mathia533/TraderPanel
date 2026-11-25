@@ -27,5 +27,59 @@
     "vcp_watch_rating": ["Textbook VCP", "Strong VCP", "Good VCP", "Developing VCP"],
     "burst_entry_states": ["ACTIONABLE_DAY1"],
     "burst_watch_states": ["MANUAL_REVIEW", "WATCH_ONLY", "MANUAL_REVIEW_ONLY"]
-  }
+  },
+  "_nota_pipeline": "pipeline: reglas de day-trader-skill (Time Machine, pérdida diaria, operaciones por día). intraday: ruptura del rango de apertura en ADRs cada 15 minutos. us_market: exposure-coach de tradermonty frena compras en ADRs. circuit_breaker: pausa tras pérdidas. news/analyst/congress: noticias, balances (SEC) y operaciones de congresistas de EE. UU.",
+  "pipeline": {
+    "timemachine_block": ["stop_strong"],
+    "horizon": {"vcp": 20, "burst": 5},
+    "max_daily_loss_pct": 3,
+    "max_trades_per_day": 3,
+    "cash_buffer_pct": 0
+  },
+  "intraday": {
+    "enabled": true,
+    "symbols": [],
+    "or_minutes": 15,
+    "target_r": 1,
+    "flat_by": "15:55",
+    "no_entries_before": "09:45",
+    "no_entries_after": "15:30",
+    "max_trigger_age_min": 30,
+    "market_gate": true,
+    "replays": 10000
+  },
+  "us_market": {"enabled": true},
+  "circuit_breaker": {
+    "max_daily_loss_pct": 2,
+    "losing_streak_n": 3,
+    "cooldown_hours": 24,
+    "weekly_drawdown_pct": 5,
+    "monthly_drawdown_pct": 8
+  },
+  "news": {
+    "enabled": true,
+    "hours": 36,
+    "cripto": true,
+    "adr_map": {
+      "GGAL": "GGAL",
+      "YPFD": "YPF",
+      "PAMP": "PAM",
+      "BMA": "BMA",
+      "CEPU": "CEPU",
+      "TGSU2": "TGS",
+      "SUPV": "SUPV",
+      "BBAR": "BBAR",
+      "LOMA": "LOMA",
+      "TECO2": "TEO",
+      "EDN": "EDN",
+      "CRES": "CRESY",
+      "IRSA": "IRS"
+    }
+  },
+  "analyst": {"enabled": true},
+  "congress": {
+    "enabled": true,
+    "extra_tickers": []
+  },
+  "weekly": {"enabled": true}
 }

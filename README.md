@@ -25,20 +25,38 @@ Los datos tienen demora y las señales son indicadores técnicos simples, no ase
 ## Motor de señales
 
 ```
-GitHub Action (cada hora con mercado abierto, cada 4 h el fin de semana)
-  └─ python -m engine.run
+GitHub Action
+  ├─ cada hora con mercado abierto (cada 4 h el fin de semana): python -m engine.run
+  └─ cada 15 minutos con Wall Street abierto:                   python -m engine.run --intradia
        ├─ engine/sources.py    velas diarias OHLCV (Yahoo; respaldo data912 / CoinGecko)
-       ├─ engine/skills.py     skills de tradermonty, código original en vendor/
-       │    ├─ vcp-screener                     Trend Template + VCP de Minervini, pivote, volumen, fuerza relativa
-       │    ├─ stockbee-momentum-burst-screener ruptura del 4 % con volumen y base previa
-       │    └─ crypto-regime-analyzer           régimen del mercado cripto 0-100 (filtro de entradas cripto)
-       ├─ engine/planner.py    reglas de day-trader-skill: stop antes de entrar, objetivo 2R,
-       │                       tamaño por pérdida máxima, tope de posiciones, stop a la entrada tras 1R
-       └─ data/signals.json  → lo lee el panel
-          data/events.json   → avisos de entrada/salida, cada uno una sola vez, con el texto para Telegram
+       ├─ engine/skills.py     skills de tradermonty (vendor/tradermonty/)
+       │    ├─ vcp-screener, stockbee-momentum-burst-screener, crypto-regime-analyzer
+       ├─ engine/tmextra.py    más skills de tradermonty
+       │    ├─ market-breadth-analyzer, uptrend-analyzer, sector-analyst → exposure-coach
+       │    │                     techo de exposición en EE. UU. (frena compras de ADRs si es bajo)
+       │    ├─ breakout-trade-planner   valida la ruptura VCP antes de entrar
+       │    ├─ drawdown-circuit-breaker frena entradas tras pérdidas seguidas o del día
+       │    └─ trade-performance-coach  resumen semanal del proceso (viernes al cierre)
+       ├─ engine/dtskills.py   day-trader-skill (vendor/day-trader-skill/)
+       │    ├─ trader-scanner        setups del día (escáner)
+       │    ├─ trader-news           titulares de Yahoo y hechos relevantes de la SEC
+       │    ├─ trader-entry/exit     ruptura del rango de 15′ (intradía ADRs), stop y objetivo
+       │    ├─ trader-timemachine    10.000 repeticiones con historia real: ¿llega antes al stop o al objetivo?
+       │    ├─ trader-budget/risk    tamaño y control PASS/BLOCK (pérdida del día, operaciones por día, tope)
+       │    ├─ trader-analyst        balances de la SEC (necesita el secret SEC_USER_AGENT)
+       │    └─ trader-pelosi         operaciones declaradas por congresistas de EE. UU.
+       ├─ engine/pipeline.py   une todo: escáner → noticias → entrada → plan → Time Machine → tamaño → riesgo → ticket
+       └─ data/signals.json  → lo lee el panel (pestaña Pipeline)
+          data/events.json   → avisos de entrada/salida/stop/objetivo/cierre 15:55 y noticias, una sola vez
           data/state.json    → posiciones abiertas y avisos emitidos
-          data/indices.json  → pestaña Índices (S&P 500, Nasdaq, Dow, Russell, VIX, ARGT y más), de engine/indices.py
+          data/us_market.json, news_state.json, analyst.json, congress.json, indices.json
 ```
+
+**Broker.** El último paso arma el ticket (compra, stop y objetivo) pero **no se envía a ningún broker**. `trader-broker` está en vendor/ sin usar. Conectar Alpaca en modo paper sería un cambio aparte y sólo con claves cargadas por vos.
+
+**Secret opcional `SEC_USER_AGENT`.** La SEC pide identificarse: cargalo en *Settings → Secrets and variables → Actions* con el formato `Nombre mail@ejemplo.com`. Sin él no se leen balances ni hechos relevantes de la SEC; el resto funciona igual.
+
+**Intradía.** Sólo ADRs/acciones de EE. UU. listados en `intraday.symbols` de `engine/config.json` (vacío = ninguno). Entrada por ruptura del rango de los primeros 15 minutos entre 9:45 y 15:30, objetivo 1R y cierre obligatorio a las 15:55 de Nueva York. BYMA y cripto siguen en velas diarias, con el mismo Time Machine, tamaño (cripto en lotes) y control de riesgo.
 
 **Entradas.** VCP con calificación *Good* o mejor que rompe el pivote con volumen, o Momentum Burst *ACTIONABLE_DAY1*. Se calculan sólo con velas cerradas. No se abre nada si el stop queda a más del 12 %, si ya hay 8 posiciones abiertas o si el mercado de referencia está en modo defensivo (SPY para ADRs, Merval para BYMA o un índice propio de la watchlist si Yahoo no lo da, régimen cripto para cripto).
 
@@ -46,7 +64,7 @@ GitHub Action (cada hora con mercado abierto, cada 4 h el fin de semana)
 
 **Configuración.** Watchlist, presupuesto por mercado, pérdida máxima por operación y límites en `engine/config.json`. Se puede editar desde el panel (ver *Configurar desde el panel*). Para correrlo a mano: `pip install -r engine/requirements.txt && python -m engine.run`. Pruebas: `python -m pytest tests`.
 
-**Skills vendorizadas.** `vendor/tradermonty/` tiene los scripts originales (licencia MIT) sin modificar. Para actualizarlos: `scripts/sync_vendor.sh`.
+**Skills vendorizadas.** `vendor/tradermonty/` y `vendor/day-trader-skill/` tienen los scripts originales (licencia MIT) sin modificar. Para actualizarlos: `scripts/sync_vendor.sh`.
 
 Las señales son resultados de reglas técnicas sobre datos con demora. No son asesoramiento financiero ni órdenes: nada en este repo opera por vos.
 

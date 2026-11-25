@@ -187,6 +187,61 @@ fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
 .tgcard code{font-family:var(--mono);font-size:12px;background:var(--line);border-radius:4px;padding:1px 4px}
 .pill.ok{background:var(--upbg);color:var(--up)}
 
+/* Pipeline de las skills */
+#pipeline .sh{border-bottom:1px solid var(--line)}
+.pbody{padding:16px 20px;display:flex;flex-direction:column;gap:16px}
+.pcard{border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:12px;background:var(--bg2)}
+.pcard .h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pcard .tk{font-weight:600;font-size:16px}
+.verdict{padding:3px 10px;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:.05em}
+.verdict.PASS{background:var(--upbg);color:var(--up)}
+.verdict.BLOCK{background:var(--dnbg);color:var(--dnfg)}
+.verdict.WATCH{background:var(--warnbg);color:var(--warn)}
+.flow{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.flow li{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:4px 10px;border-radius:999px;background:var(--neutral-bg);color:var(--neutral-fg)}
+.flow li.ok{background:var(--upbg);color:var(--up)}
+.flow li.warn{background:var(--warnbg);color:var(--warn)}
+.flow li.block{background:var(--dnbg);color:var(--dnfg)}
+.flow li+li::before{content:'';display:none}
+.flow .arr{color:var(--mute);font-size:12px;padding:0;background:none}
+.steps{margin:0;display:grid;grid-template-columns:minmax(110px,max-content) 1fr;gap:6px 14px;font-size:14px}
+.steps dt{color:var(--mute);font-size:12px;text-transform:uppercase;letter-spacing:.04em;padding-top:2px}
+.steps dd{margin:0;color:var(--ink2)}
+.steps dd.block{color:var(--dnfg)}
+.steps dd.warn{color:var(--warn)}
+.steps a{color:var(--info)}
+.tmrow{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.tmbar{display:flex;height:10px;border-radius:5px;overflow:hidden;min-width:180px;flex:none;background:var(--line)}
+.tmbar i{display:block;height:100%}
+.tmbar .t{background:var(--up)}.tmbar .s{background:var(--dn)}.tmbar .n{background:var(--line2)}
+.tmleg{display:flex;gap:12px;font-size:12px;color:var(--mute);flex-wrap:wrap}
+.tmleg b{font-family:var(--mono);font-weight:500;color:var(--ink2)}
+.fan{display:block;flex:1 1 240px;width:100%;max-width:360px;height:64px}
+.fan .band{fill:var(--infobg);stroke:none}
+.fan .med{fill:none;stroke:var(--info);stroke-width:1.5}
+.fan .lvl{stroke-width:1;stroke-dasharray:3 3}
+.fan .stp{stroke:var(--dn)}.fan .tgt{stroke:var(--up)}.fan .ent{stroke:var(--mute)}
+.kgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.kbox{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;background:var(--bg2)}
+.kbox .v{font-family:var(--mono);font-size:24px;font-weight:600}
+.kbox p{font-size:13px;color:var(--ink2)}
+.gauge{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.gauge i{display:block;height:100%;background:var(--accent)}
+.nlist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.nlist li{padding:10px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:4px;font-size:14px}
+.nlist li:first-child{border-top:0}
+.nlist a{color:var(--ink);text-decoration:none}
+.nlist a:hover{text-decoration:underline}
+.nlist .m{font-size:12px;color:var(--mute);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{font-size:11px;padding:1px 8px;border-radius:999px;background:var(--neutral-bg);color:var(--neutral-fg)}
+.chip.hot{background:var(--warnbg);color:var(--warn)}
+.ptbl td,.ptbl th{white-space:normal;vertical-align:top}
+.ptbl td{font-size:13px}
+.ptbl.intra td:last-child{min-width:200px}
+.ptbl tr.watch td{background:var(--warnbg)}
+.pnote{font-size:13px;color:var(--mute)}
+@media (max-width:760px){.steps{grid-template-columns:1fr}.steps dt{padding-top:6px}.pbody{padding:12px}}
+
 footer{color:var(--mute);font-size:13px;border-top:1px solid var(--line);padding-top:16px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
 footer a{color:inherit}
 
@@ -212,8 +267,8 @@ footer a{color:inherit}
   td,th{padding:10px 8px}
   .lv{grid-template-columns:repeat(2,minmax(0,1fr))}
   body{padding-bottom:76px}
-  .bnav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:fixed;inset:auto 0 0 0;z-index:10;background:var(--bg2);border-top:1px solid var(--line);padding:4px 8px max(8px,env(safe-area-inset-bottom))}
-  .bnav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;color:var(--mute);text-decoration:none;font-size:12px;font-weight:500}
+  .bnav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;inset:auto 0 0 0;z-index:10;background:var(--bg2);border-top:1px solid var(--line);padding:4px 2px max(8px,env(safe-area-inset-bottom))}
+  .bnav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:56px;color:var(--mute);text-decoration:none;font-size:11px;font-weight:500;overflow:hidden;white-space:nowrap}
   .bnav a[aria-current=page]{color:var(--ink)}
   .bnav svg.i{width:22px;height:22px}
 }
@@ -313,6 +368,20 @@ footer a{color:inherit}
     </aside>
   </div>
 
+  <section class="card" id="pipeline" aria-labelledby="plTitle">
+    <div class="sh">
+      <div><h2 id="plTitle">Pipeline de las skills</h2><p id="plSub">Escáner, noticias, entrada, plan, Time Machine, tamaño y riesgo (day-trader-skill + tradermonty)</p></div>
+      <div class="seg" role="tablist" aria-label="Vista del pipeline" id="plTabs">
+        <button type="button" role="tab" data-pl="cand">Candidatas <span class="n" id="plNc">0</span></button>
+        <button type="button" role="tab" data-pl="intra">Intradía ADRs</button>
+        <button type="button" role="tab" data-pl="usa">Mercado EE. UU.</button>
+        <button type="button" role="tab" data-pl="news">Noticias <span class="n" id="plNn">0</span></button>
+        <button type="button" role="tab" data-pl="sec">Balances y Congreso</button>
+      </div>
+    </div>
+    <div class="pbody" id="plBody" aria-live="polite"><p class="empty">Cargando el pipeline…</p></div>
+  </section>
+
   <footer>
     <span>Fuentes: <a href="https://dolarapi.com" target="_blank" rel="noopener">DolarAPI</a> · <a href="https://argentinadatos.com" target="_blank" rel="noopener">ArgentinaDatos</a> · <a href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko</a> · <a href="https://data912.com" target="_blank" rel="noopener">data912</a> · <a href="https://finance.yahoo.com" target="_blank" rel="noopener">Yahoo Finance</a> (índices). Se actualiza cada 60 s con la pestaña abierta.</span>
     <span>Datos con demora. Las señales son indicadores técnicos simples, no asesoramiento financiero.</span>
@@ -323,6 +392,7 @@ footer a{color:inherit}
   <a href="#panel" aria-current="page"><svg class="i" aria-hidden="true"><use href="#i-grid"/></svg>Panel</a>
   <a href="#senales"><svg class="i" aria-hidden="true"><use href="#i-pulse"/></svg>Señales</a>
   <a href="#watchlist"><svg class="i" aria-hidden="true"><use href="#i-list"/></svg>Watchlist</a>
+  <a href="#pipeline"><svg class="i" aria-hidden="true"><use href="#i-logo"/></svg>Pipeline</a>
   <a href="#operaciones"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg>Operaciones</a>
 </nav>
 
@@ -459,7 +529,7 @@ async function loadEngine() {
     if (j && j.assets) ENG = j;
   } catch { /* sin motor: el panel usa el cálculo local */ }
 }
-const SETUP = {vcp: 'VCP · Minervini', burst: 'Momentum Burst · Stockbee'};
+const SETUP = {vcp: 'VCP · Minervini', burst: 'Momentum Burst · Stockbee', orb: 'Rango de apertura 15′ · intradía'};
 const GATE = {allowed: 'favorable', neutral: 'neutral', restrictive: 'defensivo'};
 function engAsset(kind, id) { return ENG?.assets?.[`${kind}:${id}`] || null; }
 function engTip(a) {
@@ -687,7 +757,7 @@ function renderEngine() {
   $('nAll').textContent = evs.length; $('nIn').textContent = n('in'); $('nOut').textContent = n('out');
   $('nPos').textContent = n('pos'); $('nWatch').textContent = n('watch');
   for (const b of $('sgFilters').querySelectorAll('[data-f=pos],[data-f=watch]')) b.hidden = false;
-  $('sgSub').textContent = 'Motor de skills: VCP, Momentum Burst y régimen de mercado, con stop y objetivo';
+  $('sgSub').textContent = 'Motor de skills: VCP, Momentum Burst, rango de apertura intradía y régimen de mercado, con Time Machine y riesgo PASS/BLOCK';
   const mk = ENG.markets || {};
   $('gates').hidden = false;
   $('gates').innerHTML = Object.entries(mk).map(([k, m]) => `<span class="gate ${esc(m.gate)}" title="${esc(m.why)}">${MKN[k]}: ${GATE[m.gate] || esc(m.gate)}${m.regime?.score != null ? ' · ' + fmt(m.regime.score, 0) : ''}</span>`).join('');
@@ -719,6 +789,125 @@ function renderEngine() {
   $('feed').innerHTML = list.length ? list.map(card).join('') : `<p class="empty">${EMPTY[filter]}</p>`;
 }
 
+/* ---------- Pipeline de las skills ---------- */
+let plTab = store.get('tp_pl', 'cand');
+let SEC = null, CONG = null;
+const LEAN = {target_strong: 'Fuerte al objetivo', target: 'Inclina al objetivo', even: 'Parejo', stop: 'Inclina al stop', stop_strong: 'Fuerte al stop', none: 'Sin definición'};
+const TAGES = {earnings: 'balance', analyst: 'analistas', legal: 'legal', deal: 'operación', capital: 'dividendos/recompra', people: 'directivos', risk: 'riesgo', halt: 'suspensión', regulatory: 'regulatorio', macro: 'macro'};
+const pctS = v => v == null ? '—' : fmt(v * 100, 1) + ' %';
+function fanSvg(tm, plan) {
+  const f = tm?.mc?.fan; if (!f || f.length < 2) return '';
+  const lv = plan ? [plan.stop, plan.target, plan.entry].filter(v => v != null) : [];
+  const all = f.flat().concat(lv); const lo = Math.min(...all), hi = Math.max(...all), W = 360, H = 64, pad = 4;
+  const x = i => pad + i * (W - 2 * pad) / (f.length - 1), y = v => H - pad - (v - lo) * (H - 2 * pad) / ((hi - lo) || 1);
+  const band = f.map((b, i) => `${x(i)},${y(b[2])}`).join(' ') + ' ' + f.map((b, i) => `${x(i)},${y(b[0])}`).reverse().join(' ');
+  const med = f.map((b, i) => `${x(i)},${y(b[1])}`).join(' ');
+  const line = (v, c) => v == null ? '' : `<line class="lvl ${c}" x1="${pad}" x2="${W - pad}" y1="${y(v)}" y2="${y(v)}"/>`;
+  return `<svg class="fan" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Abanico de precios simulados: banda 5 a 95 % y mediana"><polygon class="band" points="${band}"/><polyline class="med" points="${med}"/>${plan ? line(plan.stop, 'stp') + line(plan.target, 'tgt') + line(plan.entry, 'ent') : ''}</svg>`;
+}
+function tmBlock(tm, plan) {
+  if (!tm?.ok) return '';
+  const m = tm.mc, t = m.p_target * 100, s = m.p_stop * 100, n = Math.max(0, 100 - t - s);
+  return `<div class="tmrow"><div style="flex:1 1 240px;display:flex;flex-direction:column;gap:6px">
+      <div class="tmbar" role="img" aria-label="Objetivo primero ${fmt(t, 1)} %, stop primero ${fmt(s, 1)} %, ninguno ${fmt(n, 1)} %"><i class="t" style="width:${t}%"></i><i class="s" style="width:${s}%"></i><i class="n" style="width:${n}%"></i></div>
+      <div class="tmleg"><span><b class="up">${fmt(t, 1)} %</b> objetivo</span><span><b class="dn">${fmt(s, 1)} %</b> stop</span><span><b>${fmt(n, 1)} %</b> ninguno (${esc(m.until || '')})</span><span>promedio <b>${m.avg_R >= 0 ? '+' : '−'}${fmt(Math.abs(m.avg_R), 2)}R</b></span><span>${fmt(m.replays, 0)} repeticiones · ${esc(tm.kind)}</span></div>
+    </div>${fanSvg(tm, plan)}</div>`;
+}
+function stepsHtml(stages) {
+  const flow = stages.map((s, i) => `${i ? '<li class="arr" aria-hidden="true">→</li>' : ''}<li class="${esc(s.status)}">${esc(s.name)}</li>`).join('');
+  const dl = stages.map(s => {
+    let extra = '';
+    if (s.key === 'news' && s.items?.length) extra = '<br>' + s.items.slice(0, 2).map(n => `<a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.title)}</a>`).join('<br>');
+    if (s.key === 'timemachine' && s.data) extra = tmBlock(s.data, stages.find(x => x.key === 'ticket')?.ticket);
+    return `<dt>${esc(s.name)}</dt><dd class="${esc(s.status)}">${esc(s.text)}${extra}</dd>`;
+  }).join('');
+  return `<ul class="flow" aria-label="Etapas">${flow}</ul><dl class="steps">${dl}</dl>`;
+}
+function candHtml() {
+  const as = Object.values(ENG.assets || {}).filter(a => a.pipeline?.setup);
+  const ord = {PASS: 0, BLOCK: 1, WATCH: 2};
+  as.sort((a, b) => (ord[a.pipeline.verdict] ?? 3) - (ord[b.pipeline.verdict] ?? 3) || b.score - a.score);
+  $('plNc').textContent = as.length;
+  const VER = {PASS: 'PASS · se abrió', BLOCK: 'BLOCK', WATCH: 'PREPARADA'};
+  const cards = as.map(a => `<article class="pcard">
+      <div class="h"><span class="verdict ${esc(a.pipeline.verdict)}">${VER[a.pipeline.verdict] || esc(a.pipeline.verdict)}</span><span class="tk">${esc(a.label)}</span><span class="mute" style="font-size:13px">${MKN[a.kind]}</span><span class="setup">${SETUP[a.pipeline.setup] || ''}</span><span style="flex:1"></span><span class="num mute">${money(a.kind, a.last)}</span></div>
+      ${stepsHtml(a.pipeline.stages)}</article>`).join('');
+  const scan = Object.values(ENG.assets || {}).filter(a => a.scanner?.tags?.length && !a.pipeline?.setup);
+  const scanHtml = scan.length ? `<div><p class="legend" style="margin-bottom:6px">Escáner diario (trader-scanner): otros setups</p><div class="tbl"><table class="ptbl"><thead><tr><th scope="col">Activo</th><th scope="col">Setups</th><th scope="col">RSI</th></tr></thead><tbody>${scan.map(a => `<tr><td><span class="t">${esc(a.label)}</span><small>${MKN[a.kind]}</small></td><td style="text-align:left">${esc(a.scanner.labels.join(', '))}</td><td class="num">${fmt(a.scanner.rsi, 1)}</td></tr>`).join('')}</tbody></table></div></div>` : '';
+  return (cards || `<p class="empty">Ningún activo tiene hoy un setup de entrada (VCP o Momentum Burst) ni está preparado. El motor revisa cada hora.</p>`) + scanHtml;
+}
+function intraHtml() {
+  const it = ENG.intraday;
+  if (!it || !it.symbols) return `<p class="empty">El intradía corre con la rueda de NY abierta (9:30 a 16:00), cada 15 minutos. Todavía no hay corrida.</p>`;
+  const rows = Object.entries(it.symbols).map(([sym, r]) => {
+    if (r.status === 'open') { const p = r.position; return `<tr><td><span class="t">${esc(sym)}</span></td><td style="text-align:left"><span class="verdict PASS">ABIERTA</span></td><td colspan="4" style="text-align:left">Entrada ${px(p.entry)} · stop ${px(p.stop)} · objetivo ${px(p.target)} · cierre ${esc(p.flat_by)} NY${p.timemachine ? '<br><span class="mute">' + esc(p.timemachine.verdict) + '</span>' : ''}</td></tr>`; }
+    const orr = r.opening_range, tm = r.timemachine, rk = r.risk;
+    const plan = r.plan ? `${px(r.plan.entry)} / <span class="dn">${px(r.plan.stop)}</span> / <span class="up">${px(r.plan.target)}</span>` : '—';
+    return `<tr><td><span class="t">${esc(sym)}</span><small>${r.last ? 'último ' + px(r.last.close) : ''}</small></td>
+      <td style="text-align:left">${esc(r.status_es || r.status)}<small>${esc(r.phase || '')}</small></td>
+      <td>${orr ? px(orr.low) + '–' + px(orr.high) : '—'}</td>
+      <td>${plan}</td>
+      <td style="text-align:left">${tm?.ok ? `<b>${esc(LEAN[tm.lean] || tm.lean)}</b><small>obj ${pctS(tm.mc.p_target)} · stop ${pctS(tm.mc.p_stop)} · hist ${tm.history.target}/${tm.history.fired}</small>` : '—'}</td>
+      <td style="text-align:left">${rk ? `<span class="verdict ${rk.verdict}">${rk.verdict}</span>${rk.reasons?.length ? '<small>' + esc(rk.reasons.join('; ')) + '</small>' : ''}` : '—'}</td></tr>`;
+  }).join('');
+  return `<p class="pnote">Ruptura del rango de los primeros 15 minutos (trader-entry), stop en el medio del rango y objetivo a ${fmt(1, 0)}R (trader-exit), Time Machine con 60 días de velas de 5 minutos, tamaño y riesgo. Cierre obligatorio 15:55 NY. Última revisión ${esc(it.date || '')} ${esc(it.time_ny || '')} NY.</p>
+    <div class="tbl"><table class="ptbl intra"><thead><tr><th scope="col">ADR</th><th scope="col" style="text-align:left">Estado</th><th scope="col">Rango 15′</th><th scope="col">Entrada / stop / obj.</th><th scope="col" style="text-align:left">Time Machine</th><th scope="col" style="text-align:left">Riesgo</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+function usaHtml() {
+  const u = ENG.us_market, br = Object.entries(ENG.markets || {}).filter(([, m]) => m.breaker), w = ENG.weekly;
+  const box = (t, v, p, g) => `<div class="kbox"><span class="lbl">${t}</span><span class="v">${v}</span>${g != null ? `<div class="gauge"><i style="width:${Math.max(0, Math.min(100, g))}%"></i></div>` : ''}<p>${p}</p></div>`;
+  let h = '';
+  if (u) {
+    const e = u.exposure || {};
+    h += `<div class="kgrid">
+      ${box('Techo de exposición', e.ceiling_pct != null ? fmt(e.ceiling_pct, 0) + ' %' : '—', esc(e.recommendation_es || 'sin dato') + (e.participation ? ' · participación ' + esc(e.participation.toLowerCase()) : '') + ' · exposure-coach', e.ceiling_pct)}
+      ${box('Tendencia por sectores', u.uptrend ? fmt(u.uptrend.score, 0) : '—', esc(u.uptrend ? (u.uptrend.zone + ' · ' + u.uptrend.guidance) : 'sin dato') + ' · uptrend-analyzer', u.uptrend?.score)}
+      ${box('Amplitud', u.breadth ? fmt(u.breadth.score, 0) : '—', esc(u.breadth ? (u.breadth.zone + ' · ' + (u.breadth.guidance || '')) : 'sin dato hoy') + ' · market-breadth-analyzer', u.breadth?.score)}
+      ${box('Ciclo sectorial', esc(u.sector?.phase_es || '—'), u.sector ? 'Lideran ' + esc(u.sector.leaders.join(', ')) + '. Atrás: ' + esc(u.sector.laggards.join(', ')) + ' · sector-analyst' : 'sin dato', null)}
+    </div><p class="pnote">Con techo bajo o «priorizar liquidez», el motor no abre compras en ADRs (ni swing ni intradía). Datos de ${esc(u.date)}${u.stale ? ' (último disponible)' : ''}.</p>`;
+  } else h += '<p class="empty">Sin dato del mercado de EE. UU. todavía (corre una vez por día).</p>';
+  if (br.length) h += `<div class="kgrid">${br.map(([k, m]) => box('Cortacircuitos ' + MKN[k], m.breaker.recommendation === 'TRADING_ALLOWED' ? 'Operar' : m.breaker.recommendation === 'COOLDOWN' ? 'Pausa' : 'Frenado', m.breaker.rules.length ? esc(m.breaker.rules.map(r => r.detail).join(' ')) : 'Sin pérdidas que frenen entradas · drawdown-circuit-breaker', null)).join('')}</div>`;
+  if (w) h += `<div class="kbox"><span class="lbl">Semana desde el ${esc(w.week_start)} · trade-performance-coach</span><p>${w.trades ? `${w.trades} cerradas: ${w.wins} ganadas y ${w.losses} perdidas, resultado ${w.total_r >= 0 ? '+' : '−'}${fmt(Math.abs(w.total_r), 2)}R.` : 'Sin operaciones cerradas esta semana.'} Proceso: ${esc(w.verdict_es || '—')}.</p>${(w.rules || []).map(r => `<p class="mute">• ${esc(r)}</p>`).join('')}</div>`;
+  return h;
+}
+function newsHtml() {
+  const n = ENG.news || [];
+  $('plNn').textContent = n.length;
+  if (!n.length) return '<p class="empty">Sin titulares en las últimas horas para la watchlist (Yahoo Finance; hechos relevantes de la SEC si se cargó SEC_USER_AGENT).</p>';
+  return `<ul class="nlist">${n.slice(0, 40).map(i => `<li><a href="${esc(i.link)}" target="_blank" rel="noopener">${esc(i.title)}</a><span class="m"><b>${esc(i.ticker)}</b><span>${i.time ? when(i.time) : ''}</span><span>${esc(i.source)}${i.form ? ' · ' + esc(i.form) : ''}</span>${(i.tags || []).map(t => `<span class="chip${['earnings', 'deal', 'halt', 'risk'].includes(t) ? ' hot' : ''}">${esc(TAGES[t] || t)}</span>`).join('')}</span></li>`).join('')}</ul>`;
+}
+function secHtml() {
+  let h = '';
+  const cos = Object.values(SEC?.companies || {});
+  if (SEC?.note && !cos.length) h += `<p class="empty">${esc(SEC.note)}</p>`;
+  else if (cos.length) h += `<div><p class="legend" style="margin-bottom:6px">Balances en la SEC (trader-analyst)</p><div class="tbl"><table class="ptbl"><thead><tr><th scope="col">ADR</th><th scope="col" style="text-align:left">Último reporte</th><th scope="col">Ingresos interanual</th><th scope="col">EPS</th></tr></thead><tbody>${cos.map(c => { const r = c.filings?.report, q = c.rows?.[0]; return `<tr><td><span class="t">${esc(c.ticker)}</span><small>${esc(c.name || '')}</small></td><td style="text-align:left">${r ? `<a href="${esc(r.url)}" target="_blank" rel="noopener" style="color:var(--info)">${esc(r.form)} al ${esc(r.period)}</a><small>presentado ${esc(r.filed)}</small>` : '—'}${!c.ok && c.error ? `<small>${esc(c.error)}</small>` : ''}</td><td>${q?.revenue_yoy != null ? pctHtml(q.revenue_yoy) : '—'}</td><td class="num">${q?.eps_diluted != null ? fmt(q.eps_diluted, 2) : '—'}</td></tr>`; }).join('')}</tbody></table></div></div>`;
+  else h += '<p class="empty">Los balances se leen una vez por día desde la SEC.</p>';
+  const rows = CONG?.rows || [];
+  h += rows.length ? `<div><p class="legend" style="margin-bottom:6px">Operaciones de congresistas de EE. UU. (trader-pelosi). En amarillo, tickers de tu watchlist.</p><div class="tbl"><table class="ptbl"><thead><tr><th scope="col">Ticker</th><th scope="col" style="text-align:left">Quién</th><th scope="col" style="text-align:left">Operación</th><th scope="col">Fecha</th></tr></thead><tbody>${rows.slice(0, 40).map(r => `<tr class="${r.watch ? 'watch' : ''}"><td><span class="t">${esc(r.ticker)}</span></td><td style="text-align:left">${esc(r.member)}<small>${esc(r.district || '')}</small></td><td style="text-align:left">${esc({purchase: 'compra', sale: 'venta', 'partial sale': 'venta parcial', exchange: 'canje'}[r.type] || r.type)} · ${esc(r.amount || '')}${r.late ? '<small>informada tarde</small>' : ''}</td><td>${esc(r.date || '')}<small>informó ${esc(r.filed)}</small></td></tr>`).join('')}</tbody></table></div><p class="pnote">Divulgación pública (STOCK Act), hasta 45 días después de operar. Montos en rangos. No es información privilegiada.</p></div>` : '<p class="empty">Sin operaciones de congresistas leídas todavía (se revisa una vez por día).</p>';
+  return h;
+}
+async function loadSec() {
+  try { const [a, c] = await Promise.all(['analyst', 'congress'].map(f => fetch(`data/${f}.json?t=${Math.floor(Date.now() / 36e5)}`, {cache: 'no-store'}).then(r => r.ok ? r.json() : null).catch(() => null))); SEC = a; CONG = c; } catch {}
+  renderPipeline();
+}
+function renderPipeline() {
+  for (const b of $('plTabs').querySelectorAll('button')) b.setAttribute('aria-selected', b.dataset.pl === plTab);
+  if (!ENG) { $('plBody').innerHTML = '<p class="empty">El pipeline aparece cuando corre el motor de señales.</p>'; return; }
+  const n = ENG.news || []; $('plNn').textContent = n.length;
+  $('plNc').textContent = Object.values(ENG.assets || {}).filter(a => a.pipeline?.setup).length;
+  $('plBody').innerHTML = plTab === 'intra' ? intraHtml() : plTab === 'usa' ? usaHtml() : plTab === 'news' ? newsHtml() : plTab === 'sec' ? secHtml() : candHtml();
+}
+$('plTabs').addEventListener('click', e => {
+  const b = e.target.closest('[data-pl]'); if (!b) return;
+  plTab = b.dataset.pl; store.set('tp_pl', plTab); renderPipeline();
+  if (plTab === 'sec' && !SEC && !CONG) loadSec();
+});
+$('plTabs').addEventListener('keydown', e => {
+  if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+  const bs = [...$('plTabs').querySelectorAll('button')]; const i = bs.findIndex(b => b.dataset.pl === plTab);
+  const nb = bs[(i + (e.key === 'ArrowRight' ? 1 : bs.length - 1)) % bs.length]; nb.focus(); nb.click();
+});
+
 /* ---------- Estado de los mercados ---------- */
 function marketOpen(tz, o, c) {
   const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', {timeZone: tz, weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'}).formatToParts(new Date()).map(x => [x.type, x.value]));
@@ -731,7 +920,7 @@ function renderMarkets() {
   set($('mNYSE'), 'NYSE', marketOpen('America/New_York', 570, 960), '9:30–16:00 (NY)');
 }
 
-function render() { renderKPIs(); renderTable(); renderSignals(); renderOps(); }
+function render() { renderKPIs(); renderTable(); renderSignals(); renderOps(); renderPipeline(); }
 
 /* ---------- Eventos ---------- */
 $('tabs').addEventListener('click', e => {
@@ -874,7 +1063,7 @@ for (const kind of ['dolar', 'adr', 'byma', 'cripto']) {
 render();
 $('refresh').addEventListener('click', all);
 all();
-renderTelegram(); loadTelegram(); loadOps();
+renderTelegram(); loadTelegram(); loadOps(); if (plTab === 'sec') loadSec();
 setInterval(() => { if (!document.hidden) { loadTelegram(); loadOps(); } }, 5 * 60000);
 setInterval(() => { if (!document.hidden) all(); }, 60000);
 setInterval(renderMarkets, 60000);

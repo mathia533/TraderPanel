@@ -172,3 +172,17 @@ def split_partial(kind: str, bars: list[dict], now: datetime | None = None) -> t
     if h >= 24 or now.hour * 60 + now.minute < h * 60 + mi + 15:
         return bars[1:], bars[0]
     return bars, None
+
+
+def fetch_text(url: str, timeout: int = 30, retries: int = 3) -> str:
+    """Texto crudo (el JSON del gráfico de 5 minutos lo leen las herramientas de day-trader-skill)."""
+    last = None
+    for attempt in range(retries):
+        req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return r.read().decode("utf-8")
+        except Exception as exc:
+            last = exc
+            time.sleep(1.5 * (attempt + 1))
+    raise SourceError(f"{url}: {last}")

@@ -40,7 +40,7 @@ const MAX_PER_RUN = 25;
 const LOGIN_RE = /^[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,38}$/;
 
 const MK = {adr: 'ADR', byma: 'BYMA', cripto: 'Cripto'};
-const REASON = {stop: 'tocó el stop', target: 'llegó al objetivo', trend: 'perdió la tendencia', time: 'cierre por tiempo', manual: 'cierre manual'};
+const REASON = {stop: 'tocó el stop', target: 'llegó al objetivo', trend: 'perdió la tendencia', time: 'cierre por tiempo', flat: 'cierre del día 15:55 NY', manual: 'cierre manual'};
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const esc = s => String(s ?? '').replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'}[c]));
 const fmt = (v, d) => (v == null || !isFinite(v)) ? '—' : Number(v).toLocaleString('es-AR', {minimumFractionDigits: d, maximumFractionDigits: d});
@@ -214,7 +214,8 @@ export function wants(u, e) {
   const t = u.telegram || {};
   if (e.src === 'trade') return e.who !== u.login && (t.follow || []).includes(e.who); // seguir a alguien = todos sus movimientos
   if (!t.engine) return false;
-  if (!(t.types || {})[e.type]) return false;
+  const on = (t.types || {})[e.type];
+  if (on === false || (on === undefined && e.type !== 'info')) return false; // 'info' (noticias, balances, resumen) llega salvo que se apague
   if ((t.kinds || {})[e.kind] === false) return false;
   const only = Array.isArray(t.only) && t.only.length ? t.only : null;
   return !only || only.includes(`${e.kind}:${e.label}`);
@@ -222,7 +223,7 @@ export function wants(u, e) {
 
 /* ---------- Principal ---------- */
 async function main() {
-  const cfg = {types: {entry: true, exit: true, update: false}, kinds: {adr: true, byma: true, cripto: true}, max_age_hours: 24, ...(await readJSON(CONFIG, {}))};
+  const cfg = {types: {entry: true, exit: true, update: false, info: true}, kinds: {adr: true, byma: true, cripto: true}, max_age_hours: 24, ...(await readJSON(CONFIG, {}))};
   const users = await loadUsers(cfg);
   const mainUser = users.find(u => u.login === OWNER) || users.find(u => u.telegram?.chat === 'default') || users[0];
 

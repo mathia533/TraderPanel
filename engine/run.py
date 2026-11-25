@@ -21,12 +21,12 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import config_check, planner, skills, sources
+from . import config_check, dtskills, pipeline, planner, skills, sources, tmextra
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 CONFIG = Path(__file__).resolve().parent / "config.json"
-VERSION = "1.0"
+VERSION = "2.0"
 MAX_EVENTS = 200
 MKT_LABEL = {"adr": "ADR", "byma": "BYMA", "cripto": "Cripto"}
 CUR = {"adr": "US$", "byma": "$", "cripto": "US$"}
@@ -107,27 +107,35 @@ def synthetic_index(series: list[list[dict]]) -> list[dict]:
 # ------------------------------------------------------------------ textos
 TAGS = {"4pct_breakout": "ruptura del 4 %", "dollar_breakout": "ruptura en dólares",
         "range_expansion": "expansión de rango", "9m_volume": "volumen de 9 M"}
-SETUP_NAME = {"vcp": "VCP (Minervini)", "burst": "Momentum Burst (Stockbee)"}
+SETUP_NAME = {"vcp": "VCP (Minervini)", "burst": "Momentum Burst (Stockbee)",
+              "orb": "ruptura del rango de apertura 15' (day-trader-skill)"}
 
 
 def tg_entry(ev):
     c = CUR[ev["kind"]]
+    head = f"🟢 <b>ENTRADA · {ev['label']}</b> ({MKT_LABEL[ev['kind']]}{' · intradía' if ev.get('mode') == 'intradia' else ''})"
+    setup = f"Setup: {SETUP_NAME[ev['setup']]}" + (f" · puntaje {ev['score']:.0f}/100" if ev.get("score") is not None else "")
     lines = [
-        f"🟢 <b>ENTRADA · {ev['label']}</b> ({MKT_LABEL[ev['kind']]})",
-        f"Setup: {SETUP_NAME[ev['setup']]} · puntaje {ev['score']:.0f}/100",
+        head,
+        setup,
         f"Precio: {c} {fmt(ev['price'])}",
         f"Stop: {c} {fmt(ev['stop'], ev['price'])} (−{fmt(ev['stop_pct'], 1)} %)",
         f"Objetivo: {c} {fmt(ev['target'], ev['price'])} · R:R {fmt(ev['rr'], 1)}",
     ]
     if ev.get("units"):
         lines.append(f"Tamaño sugerido: {units_txt(ev['units'])} ({c} {fmt(ev['notional'])}, riesgo {c} {fmt(ev['max_loss'])})")
+    if ev.get("flat_by"):
+        lines.append(f"Cierre: a las {ev['flat_by']} de NY si no tocó stop ni objetivo")
+    if ev.get("tm"):
+        lines.append(f"⏳ Time Machine: {ev['tm']['verdict']}")
+    lines.append("✅ Riesgo: PASS (trader-risk)")
     lines.append(f"<i>{ev['why']}</i>")
     return "\n".join(lines)
 
 
 def tg_exit(ev):
     c = CUR[ev["kind"]]
-    icon = {"target": "🎯", "stop": "🔴", "trend": "🟠", "time": "⏱"}.get(ev["reason"], "⚪")
+    icon = {"target": "🎯", "stop": "🔴", "trend": "🟠", "time": "⏱", "flat": "🔔"}.get(ev["reason"], "⚪")
     pnl = ev.get("pnl_pct")
     return "\n".join([
         f"{icon} <b>SALIDA · {ev['label']}</b> ({MKT_LABEL[ev['kind']]})",
@@ -142,8 +150,11 @@ def tg_update(ev):
 
 
 # ------------------------------------------------------------------ motor
-def analyze_all(cfg, offline=None, use_regime=True, now=None):
+def analyze_all(cfg, offline=None, use_regime=True, now=None, intraday_fetch=None, extras=None):
+    """Corrida completa. `intraday_fetch(sym)` y `extras` (carpetas offline de noticias,
+    balances y congresistas) sirven para las pruebas sin red."""
     now = now or datetime.now(timezone.utc)
+    extras = extras or {}
     state = load_json(DATA / "state.json", {"positions": {}, "rung": {}, "closed": []})
     events_log = load_json(DATA / "events.json", {"events": []})
     risk = cfg["risk"]
@@ -193,6 +204,29 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
             regime_out[kind]["regime"] = crypto_regime.get("composite")
             regime_out[kind]["components"] = crypto_regime.get("components")
 
+    # Contexto: salud del mercado de EE. UU. (exposure-coach) y cortacircuitos por pérdidas
+    DATA.mkdir(parents=True, exist_ok=True)
+    ctx = pipeline.market_context(cfg, state, now, offline is not None, DATA)
+    errors.update(ctx["errors"])
+    if "adr" in regime_out:
+        g = pipeline.merge_gate((regime_out["adr"]["gate"], regime_out["adr"]["why"]),
+                                tmextra.exposure_gate(ctx["us_market"]))
+        regime_out["adr"]["gate"], regime_out["adr"]["why"] = g
+        if ctx["us_market"]:
+            regime_out["adr"]["exposure"] = (ctx["us_market"] or {}).get("exposure")
+    for kind, br in ctx["breakers"].items():
+        if kind in regime_out:
+            regime_out[kind]["breaker"] = br
+
+    # Noticias (trader-news) de toda la watchlist, una vez por corrida
+    news_items, news_by_asset = [], {}
+    if offline is None or extras.get("news"):
+        news_items, news_by_asset = pipeline.run_news(cfg, DATA, now, errors, offline=extras.get("news"))
+    if not news_by_asset:
+        _, news_by_asset = pipeline.news_tickers(cfg)
+    news_by_ticker = pipeline.group_news(news_items)
+    n_watch_pipes = 0
+
     for kind, ids in cfg["watchlist"].items():
         flt = cfg["filters"][kind]
         gate = regime_out[kind]["gate"]
@@ -216,6 +250,13 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
                 burst = skills.run_burst(closed, gate, min_price=flt["min_price"], min_volume=flt["min_volume"], symbol=label)
             except Exception as exc:
                 burst = {"ok": False, "error": str(exc)[:200]}
+
+            try:
+                sc = dtskills.scanner_setups(closed)
+            except Exception as exc:
+                sc = {"tags": [], "labels": [], "rsi": None, "error": str(exc)[:200]}
+            news_t = news_by_asset.get(key)
+            pipe = None
 
             c = [b["close"] for b in closed]
             s50, s200 = planner.sma(c, 50), planner.sma(c, 200)
@@ -247,6 +288,7 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
                 if ex:
                     pnl = (ex["price"] / pos["entry"] - 1) * 100
                     r_mult = (ex["price"] - pos["entry"]) / (pos["entry"] - pos["initial_stop"])
+                    pnl_money = round((ex["price"] - pos["entry"]) * (pos.get("units") or 0), 2)
                     ev = {"type": "exit", "reason": ex["reason"], "kind": kind, "id": ident, "label": label,
                           "setup": pos["setup"], "price": rnd(ex["price"]), "entry": pos["entry"],
                           "initial_stop": pos["initial_stop"],
@@ -255,7 +297,7 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
                     ev["id_ev"] = f"{key}:exit:{pos['bar_date']}:{ex['reason']}"
                     new_events.append(ev)
                     state["closed"] = ([{**pos, "exit": ev["price"], "exit_reason": ex["reason"], "pnl_pct": ev["pnl_pct"],
-                                         "r": ev["r"], "closed_at": now.isoformat()}] + state.get("closed", []))[:100]
+                                         "r": ev["r"], "pnl_money": pnl_money, "closed_at": now.isoformat()}] + state.get("closed", []))[:100]
                     del state["positions"][key]
                     state.setdefault("last_exit", {})[key] = closed[0]["date"]
                     pos, exited_now = None, True
@@ -278,36 +320,37 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
             entered_today = False
             if cand and not pos and not exited_now and state.get("last_exit", {}).get(key) != closed[0]["date"] \
                     and state.get("last_entry_bar", {}).get(key) != closed[0]["date"]:
-                plan = planner.plan_trade(cand["entry"], cand["stop"], risk)
-                if not plan["ok"]:
-                    blocked = plan["why"]
-                elif gate == "restrictive":
-                    blocked = "mercado en modo defensivo (" + regime_out[kind]["why"] + ")"
-                elif len(state["positions"]) >= risk["max_open_positions"]:
-                    blocked = f"ya hay {risk['max_open_positions']} posiciones abiertas"
+                # Pipeline de day-trader-skill: plan -> Time Machine -> tamaño -> riesgo (PASS/BLOCK)
+                ev_p = pipeline.evaluate_swing(cfg=cfg, ctx=ctx, kind=kind, ident=ident, label=label, closed=closed,
+                                               cand=cand, vcp=vcp, gate=gate, gate_why=regime_out[kind]["why"],
+                                               state=state, now=now, news_by_ticker=news_by_ticker,
+                                               news_ticker=news_t, sc=sc)
+                pipe = {"setup": cand["setup"], "verdict": ev_p["verdict"], "stages": ev_p["stages"]}
+                if ev_p["verdict"] != "PASS":
+                    blocked = "; ".join(ev_p["reasons"]) or "bloqueada"
                 else:
-                    sz = planner.size_position(plan, risk[kind])
-                    if not sz["ok"]:
-                        blocked = sz["why"]
-                    else:
-                        entered_today = True
-                        pos = {"kind": kind, "id": ident, "label": label, "setup": cand["setup"],
-                               "entry": rnd(plan["entry"]), "stop": rnd(plan["stop"], plan["entry"]),
-                               "initial_stop": rnd(plan["stop"], plan["entry"]),
-                               "target": rnd(plan["target"], plan["entry"]), "rr": plan["rr"],
-                               "stop_pct": plan["stop_pct"], "units": sz["units"], "notional": sz["notional"],
-                               "max_loss": sz["max_loss"], "limited_by": sz["limited_by"],
-                               "score": cand["score"], "why": cand["why"], "bar_date": closed[0]["date"],
-                               "opened_at": now.isoformat(), "last": rnd(last["close"]), "r_now": 0.0, "sessions": 0}
-                        state["positions"][key] = pos
-                        state.setdefault("last_entry_bar", {})[key] = closed[0]["date"]
-                        new_events.append({"type": "entry", "kind": kind, "id": ident, "label": label,
-                                           "setup": cand["setup"], "score": cand["score"], "price": pos["entry"],
-                                           "stop": pos["stop"], "target": pos["target"], "rr": pos["rr"],
-                                           "stop_pct": pos["stop_pct"], "units": pos["units"],
-                                           "notional": pos["notional"], "max_loss": pos["max_loss"],
-                                           "why": cand["why"], "bar_date": closed[0]["date"],
-                                           "id_ev": f"{key}:entry:{closed[0]['date']}:{cand['setup']}"})
+                    plan, sz = ev_p["plan"], ev_p["size"]
+                    tm = ev_p.get("tm") or {}
+                    entered_today = True
+                    pos = {"kind": kind, "id": ident, "label": label, "setup": cand["setup"],
+                           "entry": rnd(plan["entry"]), "stop": rnd(plan["stop"], plan["entry"]),
+                           "initial_stop": rnd(plan["stop"], plan["entry"]),
+                           "target": rnd(plan["target"], plan["entry"]), "rr": plan["rr"],
+                           "stop_pct": plan["stop_pct"], "units": sz["units"], "notional": sz["notional"],
+                           "max_loss": sz["max_loss"], "limited_by": sz["bound_by"],
+                           "score": cand["score"], "why": cand["why"], "bar_date": closed[0]["date"],
+                           "timemachine": {"lean": tm.get("lean"), "verdict": tm.get("verdict")} if tm.get("ok") else None,
+                           "opened_at": now.isoformat(), "last": rnd(last["close"]), "r_now": 0.0, "sessions": 0}
+                    state["positions"][key] = pos
+                    state.setdefault("last_entry_bar", {})[key] = closed[0]["date"]
+                    pipeline.log_entry(state, kind, label, dtskills.ny_date(now), sz["max_loss"], "swing")
+                    new_events.append({"type": "entry", "kind": kind, "id": ident, "label": label,
+                                       "setup": cand["setup"], "score": cand["score"], "price": pos["entry"],
+                                       "stop": pos["stop"], "target": pos["target"], "rr": pos["rr"],
+                                       "stop_pct": pos["stop_pct"], "units": pos["units"],
+                                       "notional": pos["notional"], "max_loss": pos["max_loss"],
+                                       "tm": pos["timemachine"], "why": cand["why"], "bar_date": closed[0]["date"],
+                                       "id_ev": f"{key}:entry:{closed[0]['date']}:{cand['setup']}"})
 
             # ---- preparadas (todavía no dispararon)
             if not pos:
@@ -325,6 +368,20 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
                     watch.append({"kind": kind, "id": ident, "label": label, "setup": cand["setup"], "score": cand["score"],
                                   "trigger": cand["entry"], "stop": cand.get("stop"), "blocked": blocked,
                                   "why": cand["why"] + f". No se abre: {blocked}."})
+                if pipe is None and watch and watch[-1]["kind"] == kind and watch[-1]["id"] == ident and n_watch_pipes < 15:
+                    w = watch[-1]
+                    n_watch_pipes += 1
+                    try:
+                        pipe = {"setup": w["setup"], "verdict": "WATCH",
+                                "stages": pipeline.watch_pipeline(cfg=cfg, kind=kind, label=label, closed=closed,
+                                                                  trigger=w.get("trigger"), stop=w.get("stop"),
+                                                                  setup=w["setup"], news_by_ticker=news_by_ticker,
+                                                                  news_ticker=news_t, sc=sc, vcp=vcp, now=now)}
+                    except Exception as exc:
+                        errors[f"pipeline:{key}"] = str(exc)[:200]
+            if pipe is None:
+                pipe = {"setup": None, "verdict": None,
+                        "stages": [pipeline.scanner_stage(sc), pipeline.news_stage(news_by_ticker, news_t)]}
 
             if pos or entered_today or (vcp.get("ok") and vcp["rating"] in cfg["setups"]["vcp_min_rating"]) \
                     or (burst.get("ok") and burst["state"] in cfg["setups"]["burst_entry_states"]):
@@ -342,19 +399,86 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
                                                  "contractions", "trend_score", "rs_score", "weakest", "error")} if vcp else None,
                 "burst": {k: burst.get(k) for k in ("state", "rating", "score", "trigger", "tags", "day_gain_pct",
                                                      "volume_ratio_20d", "error")} if burst else None,
+                "scanner": {k: sc.get(k) for k in ("tags", "labels", "rsi")},
+                "news_ticker": news_t,
+                "pipeline": pipe,
                 "position": pos,
             }
 
-    # ---- avisos una sola vez (trader-alerts)
+    # ---- intradía: ruptura del rango de apertura en ADRs (mientras opera NY)
+    prev_signals = load_json(DATA / "signals.json", {})
+    intraday = prev_signals.get("intraday")
+    if intraday_fetch is not None or (offline is None and pipeline.ny_session_open(now)) \
+            or any(p.get("mode") == "intradia" for p in state["positions"].values()):
+        if offline is None or intraday_fetch is not None:
+            intraday = pipeline.run_intraday(cfg, ctx, state, now, (regime_out.get("adr", {}).get("gate", "neutral"),
+                                             regime_out.get("adr", {}).get("why", "")), new_events, errors,
+                                             fetch=intraday_fetch)
+
+    # ---- programados: balances (trader-analyst), congresistas (trader-pelosi), resumen semanal
+    analyst = congress = None
+    if offline is None or extras.get("analyst"):
+        analyst = pipeline.run_analyst(cfg, DATA, now, errors, new_events, offline=extras.get("analyst"))
+    if offline is None or extras.get("congress_index"):
+        congress = pipeline.run_congress(cfg, DATA, now, errors, new_events, offline_index=extras.get("congress_index"),
+                                         offline_texts=extras.get("congress_texts"))
+    weekly = pipeline.run_weekly(cfg, state, now, new_events)
+
+    events, fresh = finish_events(state, events_log, new_events, now)
+
+    watch.sort(key=lambda w: -w["score"])
+    signals = {
+        "generated_at": now.isoformat(),
+        "engine": {"version": VERSION, "skills": SKILLS_USED},
+        "risk": {k: risk[k] for k in ("min_reward_risk", "target_r", "max_stop_pct", "max_open_positions")},
+        "markets": regime_out,
+        "us_market": ctx["us_market"],
+        "assets": assets,
+        "positions": list(state["positions"].values()),
+        "watch": watch[:30],
+        "intraday": intraday,
+        "news": news_items[:60],
+        "weekly": weekly,
+        "scheduled": {"analyst": bool(analyst and analyst.get("companies")),
+                      "analyst_note": (analyst or {}).get("note"),
+                      "congress": bool(congress)},
+        "events": events[:50],
+        "closed": state.get("closed", [])[:30],
+        "errors": errors,
+    }
+    return signals, {"events": events}, state, fresh
+
+
+SKILLS_USED = [
+    "tradermonty/vcp-screener", "tradermonty/stockbee-momentum-burst-screener", "tradermonty/crypto-regime-analyzer",
+    "tradermonty/breakout-trade-planner", "tradermonty/market-breadth-analyzer", "tradermonty/uptrend-analyzer",
+    "tradermonty/sector-analyst", "tradermonty/exposure-coach", "tradermonty/drawdown-circuit-breaker",
+    "tradermonty/trade-performance-coach",
+    "day-trader-skill/trader-scanner", "day-trader-skill/trader-news", "day-trader-skill/trader-entry",
+    "day-trader-skill/trader-exit", "day-trader-skill/trader-timemachine", "day-trader-skill/trader-budget",
+    "day-trader-skill/trader-risk", "day-trader-skill/trader-alerts (reglas)", "day-trader-skill/trader-analyst",
+    "day-trader-skill/trader-pelosi",
+]
+
+
+def event_text(ev):
+    if ev.get("text_override"):
+        return ev.pop("text_override")
+    return tg_entry(ev) if ev["type"] == "entry" else tg_exit(ev) if ev["type"] == "exit" else tg_update(ev)
+
+
+def finish_events(state, events_log, new_events, now):
+    """trader-alerts: cada aviso suena una sola vez (id estable)."""
     rung = state.setdefault("rung", {})
     fresh = []
     for ev in new_events:
         if ev["id_ev"] in rung:
+            ev.pop("text_override", None)
             continue
         rung[ev["id_ev"]] = now.isoformat()
         ev["id"] = ev.pop("id_ev")
         ev["ts"] = now.isoformat()
-        ev["text"] = tg_entry(ev) if ev["type"] == "entry" else tg_exit(ev) if ev["type"] == "exit" else tg_update(ev)
+        ev["text"] = event_text(ev)
         fresh.append(ev)
     # limpiar avisos viejos (90 días)
     cutoff = now.timestamp() - 90 * 86400
@@ -363,23 +487,32 @@ def analyze_all(cfg, offline=None, use_regime=True, now=None):
     for ev in fresh:
         ev["asset"] = f"{ev['kind']}:{ev['label']}"
     events = (fresh[::-1] + events_log.get("events", []))[:MAX_EVENTS]
+    return events, fresh
 
-    watch.sort(key=lambda w: -w["score"])
-    signals = {
-        "generated_at": now.isoformat(),
-        "engine": {"version": VERSION, "skills": [
-            "tradermonty/vcp-screener", "tradermonty/stockbee-momentum-burst-screener",
-            "tradermonty/crypto-regime-analyzer",
-            "day-trader-skill: trader-exit, trader-budget, trader-risk, trader-alerts (reglas)"]},
-        "risk": {k: risk[k] for k in ("min_reward_risk", "target_r", "max_stop_pct", "max_open_positions")},
-        "markets": regime_out,
-        "assets": assets,
-        "positions": list(state["positions"].values()),
-        "watch": watch[:30],
-        "events": events[:50],
-        "closed": state.get("closed", [])[:30],
-        "errors": errors,
-    }
+
+def analyze_intraday(cfg, now=None, fetch=None):
+    """Corrida corta cada 15 minutos en la rueda de NY: sólo el ORB de los ADRs y sus alertas."""
+    now = now or datetime.now(timezone.utc)
+    state = load_json(DATA / "state.json", {"positions": {}, "rung": {}, "closed": []})
+    events_log = load_json(DATA / "events.json", {"events": []})
+    signals = load_json(DATA / "signals.json", {})
+    errors, new_events = {}, []
+    ctx = {"us_market": signals.get("us_market"), "breakers": {}, "errors": {}}
+    cbc = pipeline.section(cfg, "circuit_breaker")
+    try:
+        ctx["breakers"]["adr"] = tmextra.circuit_breaker([t for t in state.get("closed", []) if t.get("kind") == "adr"],
+                                                         cfg["risk"]["adr"]["budget"], now, cbc)
+    except Exception as exc:
+        errors["circuit_breaker:adr"] = str(exc)[:200]
+    adr = (signals.get("markets") or {}).get("adr") or {"gate": "neutral", "why": "sin corrida completa todavía"}
+    intraday = pipeline.run_intraday(cfg, ctx, state, now, (adr["gate"], adr["why"]), new_events, errors, fetch=fetch)
+    events, fresh = finish_events(state, events_log, new_events, now)
+    signals["intraday"] = intraday
+    signals["intraday_at"] = now.isoformat()
+    signals["positions"] = list(state["positions"].values())
+    signals["events"] = events[:50]
+    signals["closed"] = state.get("closed", [])[:30]
+    signals.setdefault("errors", {}).update(errors)
     return signals, {"events": events}, state, fresh
 
 
@@ -388,11 +521,28 @@ def main(argv=None):
     ap.add_argument("--offline", help="carpeta con velas guardadas")
     ap.add_argument("--no-crypto-regime", action="store_true")
     ap.add_argument("--config", default=str(CONFIG))
+    ap.add_argument("--intradia", action="store_true",
+                    help="sólo el ORB de los ADRs y sus alertas (corrida cada 15 minutos en la rueda de NY)")
     a = ap.parse_args(argv)
     cfg = json.loads(Path(a.config).read_text())
     problems = config_check.validate_engine(cfg)
     if problems:
         raise SystemExit("config.json inválido:\n  " + "\n  ".join(problems))
+    if a.intradia:
+        now = datetime.now(timezone.utc)
+        has_open = any(p.get("mode") == "intradia" for p in load_json(DATA / "state.json", {}).get("positions", {}).values())
+        if not pipeline.ny_session_open(now) and not has_open:
+            print("NY cerrado y sin posiciones intradía: nada que hacer")
+            return 0
+        signals, events, state, fresh = analyze_intraday(cfg, now)
+        save_json(DATA / "signals.json", signals)
+        save_json(DATA / "events.json", events)
+        save_json(DATA / "state.json", state)
+        syms = (signals.get("intraday") or {}).get("symbols") or {}
+        print(f"intradía: {len(syms)} ADRs revisados · {len(fresh)} avisos nuevos")
+        for ev in fresh:
+            print("  ", ev["id"])
+        return 0
     signals, events, state, fresh = analyze_all(cfg, Path(a.offline) if a.offline else None,
                                                 use_regime=not a.no_crypto_regime)
     save_json(DATA / "signals.json", signals)

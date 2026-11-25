@@ -1,5 +1,5 @@
 {
-  "types": {"entry": true, "exit": true, "update": false},
+  "types": {"entry": true, "exit": true, "update": false, "info": true},
   "kinds": {"adr": true, "byma": true, "cripto": true},
   "only": [],
   "max_age_hours": 24,
