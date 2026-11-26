@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-26T21:38:16.341679+00:00",
+ "generated_at": "2026-11-26T22:38:02.035196+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -983,7 +983,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "6 noticias recientes de MELI (temas: analistas). La última: «MercadoLibre (MELI): Near-Term Margin Compression Masks Strong User and Credit Growth»",
+      "text": "5 noticias recientes de MELI (temas: analistas). La última: «MercadoLibre (MELI): Near-Term Margin Compression Masks Strong User and Credit Growth»",
       "items": [
        {
         "title": "MercadoLibre (MELI): Near-Term Margin Compression Masks Strong User and Credit Growth",
@@ -2201,7 +2201,7 @@
      "dollar_breakout"
     ],
     "day_gain_pct": 5.78,
-    "volume_ratio_20d": 0.63,
+    "volume_ratio_20d": 0.62,
     "error": null
    },
    "scanner": {
@@ -3756,8 +3756,8 @@
    "label": "BTC",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 60807.0,
-   "day_ch": 0.71,
+   "last": 60460.0,
+   "day_ch": 0.13,
    "source": "yahoo",
    "degraded": false,
    "score": 49,
@@ -3818,8 +3818,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "20 noticias recientes de BTC-USD. La última: «Bitcoin, XRP, Ethereum face brutal crash risk as key levels crack»",
+      "text": "20 noticias recientes de BTC-USD. La última: «A 30% Bitcoin crash hasn't shaken this asset manager's $1.6 million call»",
       "items": [
+       {
+        "title": "A 30% Bitcoin crash hasn't shaken this asset manager's $1.6 million call",
+        "link": "https://www.thestreet.com/crypto/markets/a-30-bitcoin-crash-hasnt-shaken-this-asset-managers-1-6-million-call-?.tsrc=rss",
+        "time": "2026-11-26T22:00:00+00:00",
+        "tags": []
+       },
        {
         "title": "Bitcoin, XRP, Ethereum face brutal crash risk as key levels crack",
         "link": "https://www.thestreet.com/crypto/markets/bitcoin-xrp-ethereum-face-brutal-crash-risk-as-key-levels-crack?.tsrc=rss",
@@ -3837,12 +3843,6 @@
         "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/bitcoins-price-every-thanksgiving-since-2013/?.tsrc=rss",
         "time": "2026-11-26T19:44:56+00:00",
         "tags": []
-       },
-       {
-        "title": "Bitcoin Holds Above $60K as Death Cross Clouds Thanksgiving Recovery",
-        "link": "https://decrypt.co/384079/bitcoin-holds-above-60k-as-death-cross-clouds-thanksgiving-recovery?.tsrc=rss",
-        "time": "2026-11-26T18:15:29+00:00",
-        "tags": []
        }
       ]
      }
@@ -3857,8 +3857,8 @@
    "label": "ETH",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1705.0,
-   "day_ch": 0.85,
+   "last": 1693.0,
+   "day_ch": 0.16,
    "source": "yahoo",
    "degraded": false,
    "score": 49,
@@ -3960,8 +3960,8 @@
    "label": "SOL",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 71.6,
-   "day_ch": 1.71,
+   "last": 71.05,
+   "day_ch": 0.93,
    "source": "yahoo",
    "degraded": false,
    "score": 25,
@@ -4058,8 +4058,8 @@
    "label": "BNB",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 556.21,
-   "day_ch": 0.48,
+   "last": 553.77,
+   "day_ch": 0.04,
    "source": "yahoo",
    "degraded": false,
    "score": 52,
@@ -4141,8 +4141,8 @@
    "label": "XRP",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.9525,
-   "day_ch": 1.66,
+   "last": 0.9472,
+   "day_ch": 1.09,
    "source": "yahoo",
    "degraded": false,
    "score": 7,
@@ -4196,8 +4196,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "20 noticias recientes de XRP-USD. La última: «XRP, Cardano or Stellar: Which Could Double First in 2027?»",
+      "text": "20 noticias recientes de XRP-USD. La última: «What Would It Take for XRP to Reach $1,000?»",
       "items": [
+       {
+        "title": "What Would It Take for XRP to Reach $1,000?",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-would-it-take-for-xrp-to-reach-1000/?.tsrc=rss",
+        "time": "2026-11-26T22:17:48+00:00",
+        "tags": []
+       },
        {
         "title": "XRP, Cardano or Stellar: Which Could Double First in 2027?",
         "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/xrp-cardano-or-stellar-which-could-double-first-in-2027/?.tsrc=rss",
@@ -4215,12 +4221,6 @@
         "link": "https://www.thestreet.com/crypto/markets/buyers-finally-return-to-xrp?.tsrc=rss",
         "time": "2026-11-26T20:00:00+00:00",
         "tags": []
-       },
-       {
-        "title": "XRP News: Thanksgiving Rally or December 1 Supply Shock?",
-        "link": "https://cryptonews.com/news/xrp-news-thanksgiving-rally-december-1-unlock/?.tsrc=rss",
-        "time": "2026-11-26T18:34:00+00:00",
-        "tags": []
        }
       ]
      }
@@ -4235,8 +4235,8 @@
    "label": "ADA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.15033,
-   "day_ch": 3.13,
+   "last": 0.14922,
+   "day_ch": 2.37,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4327,8 +4327,8 @@
    "label": "DOGE",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.05689,
-   "day_ch": 1.65,
+   "last": 0.05647,
+   "day_ch": 0.9,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4419,8 +4419,8 @@
    "label": "LINK",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 9.37,
-   "day_ch": 3.54,
+   "last": 9.32,
+   "day_ch": 2.99,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -4513,8 +4513,8 @@
    "label": "AVAX",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 6.65,
-   "day_ch": 0.46,
+   "last": 6.61,
+   "day_ch": -0.28,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -4581,8 +4581,8 @@
    "label": "TRX",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.304466,
-   "day_ch": 0.28,
+   "last": 0.303891,
+   "day_ch": 0.09,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -6852,6 +6852,36 @@
  },
  "news": [
   {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "What Would It Take for XRP to Reach $1,000?",
+   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-would-it-take-for-xrp-to-reach-1000/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T22:17:48+00:00",
+   "tags": [],
+   "new": true,
+   "id": "8c28b7a68cdfce0d",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "A 30% Bitcoin crash hasn't shaken this asset manager's $1.6 million call",
+   "link": "https://www.thestreet.com/crypto/markets/a-30-bitcoin-crash-hasnt-shaken-this-asset-managers-1-6-million-call-?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T22:00:00+00:00",
+   "tags": [],
+   "new": true,
+   "id": "a3de20478e37ec8b",
+   "form": null
+  },
+  {
    "ticker": "ADA-USD",
    "touches": [
     "ADA-USD",
@@ -6863,7 +6893,7 @@
    "kind": "headline",
    "time": "2026-11-26T21:23:07+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "4b380f5844b2ae9f",
    "form": null
   },
@@ -6880,7 +6910,7 @@
    "kind": "headline",
    "time": "2026-11-26T21:00:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "669e9ba0c879e866",
    "form": null
   },
@@ -6895,7 +6925,7 @@
    "kind": "headline",
    "time": "2026-11-26T20:50:17+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "fb5d4d45290b1b58",
    "form": null
   },
@@ -6973,6 +7003,21 @@
    "tags": [],
    "new": false,
    "id": "89e28438ec840e2f",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "Ripple Price Prediction: $0.93 Becomes Key Support on Turkish Bank News",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/ripple-price-prediction-0-93-172455499.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T17:24:55+00:00",
+   "tags": [],
+   "new": true,
+   "id": "421cd487ea52e714",
    "form": null
   },
   {
@@ -7337,21 +7382,6 @@
    "tags": [],
    "new": false,
    "id": "4083bafb798a9bb7",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Billionaire Investor Paul Tudor Jones Just Doubled Down on Bitcoin. What Does He Know That the Market Doesn't?",
-   "link": "https://www.fool.com/investing/2026/11/26/billionaire-investor-paul-tudor-jones-just-doubled-down-on-bitcoin-what-does-he-know-that-you-dont/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T12:20:02+00:00",
-   "tags": [],
-   "new": false,
-   "id": "a356b742bc5b0dc0",
    "form": null
   },
   {
@@ -7771,40 +7801,6 @@
    "tags": [],
    "new": false,
    "id": "2c623d63db2055d4",
-   "form": null
-  },
-  {
-   "ticker": "BBAR",
-   "touches": [
-    "BBAR"
-   ],
-   "title": "What BBVA Banco Frances (BBAR) Said on Its Q3 Earnings Call",
-   "link": "https://www.marketbeat.com/instant-alerts/transcript-what-bbva-banco-frances-bbar-said-on-its-q3-earnings-call-2026-11-25/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T17:12:55+00:00",
-   "tags": [
-    "earnings",
-    "macro"
-   ],
-   "new": false,
-   "id": "d392ebc584f14b28",
-   "form": null
-  },
-  {
-   "ticker": "LINK-USD",
-   "touches": [
-    "LINK-USD",
-    "SOL-USD"
-   ],
-   "title": "Japan's biggest banks pick Solana as Fidelity adds DeFi tokens",
-   "link": "https://finance.yahoo.com/video/japans-biggest-banks-pick-solana-as-fidelity-adds-defi-tokens-222056705.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T17:00:00+00:00",
-   "tags": [],
-   "new": false,
-   "id": "342db3191d1843f7",
    "form": null
   }
  ],
