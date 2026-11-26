@@ -4,6 +4,128 @@
    "type": "info",
    "info": "report",
    "kind": "adr",
+   "id": "report:2026-11-26",
+   "label": "Cierre",
+   "why": "Informe del cierre",
+   "report": {
+    "date": "2026-11-26",
+    "gates": {
+     "adr": "defensivo",
+     "byma": "defensivo",
+     "cripto": "defensivo"
+    },
+    "movers": {
+     "adr": {
+      "up": [
+       [
+        "TEO",
+        5.65
+       ],
+       [
+        "CRESY",
+        4.32
+       ],
+       [
+        "SUPV",
+        3.91
+       ]
+      ],
+      "down": [
+       [
+        "BBAR",
+        -1.97
+       ],
+       [
+        "YPF",
+        -0.82
+       ]
+      ],
+      "breadth": [
+       14,
+       16
+      ]
+     },
+     "byma": {
+      "up": [
+       [
+        "CRES",
+        5.93
+       ],
+       [
+        "YPFD",
+        5.78
+       ],
+       [
+        "TRAN",
+        5.38
+       ]
+      ],
+      "down": [
+       [
+        "TXAR",
+        -0.42
+       ],
+       [
+        "ALUA",
+        -0.18
+       ]
+      ],
+      "breadth": [
+       18,
+       20
+      ]
+     },
+     "cripto": {
+      "up": [
+       [
+        "LINK",
+        3.54
+       ],
+       [
+        "ADA",
+        3.13
+       ],
+       [
+        "SOL",
+        1.71
+       ]
+      ],
+      "down": [],
+      "breadth": [
+       10,
+       10
+      ]
+     }
+    },
+    "entries": [],
+    "exits": [],
+    "positions": [],
+    "patterns": [
+     [
+      "TXAR",
+      "Doble piso",
+      "alcista"
+     ]
+    ],
+    "sectors": {
+     "best": [
+      "Petróleo y gas",
+      5.155
+     ],
+     "worst": [
+      "Materiales",
+      0.723
+     ]
+    }
+   },
+   "ts": "2026-11-26T21:38:16.341679+00:00",
+   "text": "🌙 <b>INFORME DEL CIERRE</b> · 26/11\n<b>ADRs</b> (14/16 suben): ▲ TEO +5,7 %, CRESY +4,3 % · ▼ BBAR −2,0 %, YPF −0,8 %\n<b>BYMA</b> (18/20 suben): ▲ CRES +5,9 %, YPFD +5,8 % · ▼ TXAR −0,4 %, ALUA −0,2 %\n<b>Cripto</b> (10/10 suben): ▲ LINK +3,5 %, ADA +3,1 % · ▼ —\nSectores BYMA: mejor Petróleo y gas +5,2 %, peor Materiales +0,7 %\nMotor hoy: sin entradas ni salidas.\nPosiciones abiertas: 0\nPatrones que rompieron: TXAR (doble piso)\nMercado: ADRs defensivo · BYMA defensivo · Cripto defensivo",
+   "asset": "adr:Cierre"
+  },
+  {
+   "type": "info",
+   "info": "report",
+   "kind": "adr",
    "id": "report:2026-11-25",
    "label": "Cierre",
    "why": "Informe del cierre",

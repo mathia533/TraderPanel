@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-26T20:38:20.295767+00:00",
+ "generated_at": "2026-11-26T21:38:16.341679+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -2073,8 +2073,8 @@
    "label": "GGAL",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 4908.0,
-   "day_ch": 3.21,
+   "last": 4910.0,
+   "day_ch": 3.26,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2089,7 +2089,7 @@
     "pattern": "Damaged",
     "pivot": 8725.0,
     "stop": 7474.5,
-    "distance_pct": -43.75,
+    "distance_pct": -43.72,
     "contractions": 1,
     "trend_score": 0,
     "rs_score": 20,
@@ -2104,14 +2104,14 @@
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 3.21,
-    "volume_ratio_20d": 0.32,
+    "day_gain_pct": 3.26,
+    "volume_ratio_20d": 0.34,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 42.1
+    "rsi": 42.2
    },
    "news_ticker": "GGAL",
    "pipeline": {
@@ -2122,7 +2122,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 42,1)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 42,2)"
      },
      {
       "key": "news",
@@ -2169,8 +2169,8 @@
    "label": "YPFD",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 5950.0,
-   "day_ch": 5.87,
+   "last": 5945.0,
+   "day_ch": 5.78,
    "source": "yahoo",
    "degraded": false,
    "score": 37,
@@ -2185,7 +2185,7 @@
     "pattern": "Damaged",
     "pivot": 9220.0,
     "stop": 7796.25,
-    "distance_pct": -35.47,
+    "distance_pct": -35.52,
     "contractions": 1,
     "trend_score": 28.6,
     "rs_score": 70,
@@ -2200,8 +2200,8 @@
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 5.87,
-    "volume_ratio_20d": 0.59,
+    "day_gain_pct": 5.78,
+    "volume_ratio_20d": 0.63,
     "error": null
    },
    "scanner": {
@@ -2211,7 +2211,7 @@
     "labels": [
      "rebote de sobreventa"
     ],
-    "rsi": 33.6
+    "rsi": 33.4
    },
    "news_ticker": "YPF",
    "pipeline": {
@@ -2222,7 +2222,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Rebote de sobreventa · RSI 33,6"
+      "text": "Rebote de sobreventa · RSI 33,4"
      },
      {
       "key": "news",
@@ -2267,8 +2267,8 @@
    "label": "PAMP",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 4595.0,
-   "day_ch": 3.49,
+   "last": 4585.0,
+   "day_ch": 3.27,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2283,7 +2283,7 @@
     "pattern": "Damaged",
     "pivot": 5665.0,
     "stop": 4811.4,
-    "distance_pct": -18.89,
+    "distance_pct": -19.06,
     "contractions": 3,
     "trend_score": 42.9,
     "rs_score": 80,
@@ -2293,13 +2293,13 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 45,
+    "score": 44,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 3.49,
-    "volume_ratio_20d": 0.25,
+    "day_gain_pct": 3.27,
+    "volume_ratio_20d": 0.26,
     "error": null
    },
    "scanner": {
@@ -2309,7 +2309,7 @@
     "labels": [
      "recuperó la media de 20"
     ],
-    "rsi": 51.1
+    "rsi": 50.7
    },
    "news_ticker": "PAM",
    "pipeline": {
@@ -2320,7 +2320,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Recuperó la media de 20 · RSI 51,1"
+      "text": "Recuperó la media de 20 · RSI 50,7"
      },
      {
       "key": "news",
@@ -2339,14 +2339,14 @@
    "label": "BMA",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 9160.0,
-   "day_ch": 2.18,
+   "last": 9130.0,
+   "day_ch": 1.84,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 10377.0,
+   "sma50": 10376.0,
    "sma200": 11998.0,
    "vcp": {
     "rating": "No VCP",
@@ -2355,7 +2355,7 @@
     "pattern": "Damaged",
     "pivot": 15610.0,
     "stop": 13464.0,
-    "distance_pct": -41.32,
+    "distance_pct": -41.51,
     "contractions": 1,
     "trend_score": 14.3,
     "rs_score": 40,
@@ -2365,19 +2365,19 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 39,
+    "score": 38,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 2.18,
-    "volume_ratio_20d": 0.36,
+    "day_gain_pct": 1.84,
+    "volume_ratio_20d": 0.39,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 38.5
+    "rsi": 37.7
    },
    "news_ticker": "BMA",
    "pipeline": {
@@ -2388,7 +2388,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 38,5)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 37,7)"
      },
      {
       "key": "news",
@@ -2418,15 +2418,15 @@
    "label": "ALUA",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 841.0,
-   "day_ch": -0.36,
+   "last": 842.5,
+   "day_ch": -0.18,
    "source": "yahoo",
    "degraded": false,
    "score": 46,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 826.53,
-   "sma200": 903.09,
+   "sma50": 826.56,
+   "sma200": 903.1,
    "vcp": {
     "rating": "No VCP",
     "score": 45.7,
@@ -2434,7 +2434,7 @@
     "pattern": "VCP-adjacent",
     "pivot": 910.0,
     "stop": 731.12,
-    "distance_pct": -7.58,
+    "distance_pct": -7.42,
     "contractions": 3,
     "trend_score": 42.9,
     "rs_score": 80,
@@ -2447,14 +2447,14 @@
     "score": 0,
     "trigger": "none",
     "tags": [],
-    "day_gain_pct": -0.36,
-    "volume_ratio_20d": 0.46,
+    "day_gain_pct": -0.18,
+    "volume_ratio_20d": 0.49,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 55.6
+    "rsi": 56.0
    },
    "news_ticker": null,
    "pipeline": {
@@ -2465,7 +2465,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 55,6)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 56)"
      },
      {
       "key": "news",
@@ -2484,25 +2484,25 @@
    "label": "TXAR",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 710.0,
-   "day_ch": 0.14,
+   "last": 706.0,
+   "day_ch": -0.42,
    "source": "yahoo",
    "degraded": false,
-   "score": 51,
+   "score": 47,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 697.26,
-   "sma200": 679.43,
+   "sma50": 697.18,
+   "sma200": 679.41,
    "vcp": {
-    "rating": "Weak VCP",
-    "score": 51.0,
+    "rating": "No VCP",
+    "score": 47.4,
     "state": "Pre-breakout",
     "pattern": "VCP-adjacent",
     "pivot": 798.5,
     "stop": 654.88,
-    "distance_pct": -11.08,
+    "distance_pct": -11.58,
     "contractions": 2,
-    "trend_score": 85.8,
+    "trend_score": 71.5,
     "rs_score": 90,
     "weakest": "Volume Pattern",
     "error": null
@@ -2513,18 +2513,14 @@
     "score": 0,
     "trigger": "none",
     "tags": [],
-    "day_gain_pct": 0.14,
-    "volume_ratio_20d": 0.56,
+    "day_gain_pct": -0.42,
+    "volume_ratio_20d": 0.58,
     "error": null
    },
    "scanner": {
-    "tags": [
-     "reclaim_ma20"
-    ],
-    "labels": [
-     "recuperó la media de 20"
-    ],
-    "rsi": 50.7
+    "tags": [],
+    "labels": [],
+    "rsi": 49.8
    },
    "news_ticker": null,
    "pipeline": {
@@ -2534,8 +2530,8 @@
      {
       "key": "scanner",
       "name": "Escáner",
-      "status": "ok",
-      "text": "Recuperó la media de 20 · RSI 50,7"
+      "status": "na",
+      "text": "Hoy no aparece ninguna señal técnica (RSI 49,8)"
      },
      {
       "key": "news",
@@ -2571,7 +2567,7 @@
       ],
       [
        "2026-11-26",
-       710.0
+       706.0
       ]
      ],
      "why": "Dos mínimos en 657,50 y 650,00 con rebote a 705,00. Entrada si cierra arriba de 705,00."
@@ -2608,7 +2604,7 @@
       ],
       [
        "2026-11-26",
-       710.0
+       706.0
       ]
      ],
      "why": "Cabeza en 798,50 entre hombros en 729,00 y 750,00; cuello en 668,25. Si cierra abajo del cuello, aviso de salida para el que está comprado."
@@ -2621,8 +2617,8 @@
    "label": "CEPU",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 1925.0,
-   "day_ch": 4.17,
+   "last": 1923.0,
+   "day_ch": 4.06,
    "source": "yahoo",
    "degraded": false,
    "score": 38,
@@ -2637,7 +2633,7 @@
     "pattern": "Damaged",
     "pivot": 2491.0,
     "stop": 1980.0,
-    "distance_pct": -22.72,
+    "distance_pct": -22.8,
     "contractions": 1,
     "trend_score": 14.3,
     "rs_score": 70,
@@ -2652,8 +2648,8 @@
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 4.17,
-    "volume_ratio_20d": 0.5,
+    "day_gain_pct": 4.06,
+    "volume_ratio_20d": 0.52,
     "error": null
    },
    "scanner": {
@@ -2663,7 +2659,7 @@
     "labels": [
      "ruptura del máximo de 20 días"
     ],
-    "rsi": 58.6
+    "rsi": 58.5
    },
    "news_ticker": "CEPU",
    "pipeline": {
@@ -2674,7 +2670,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Ruptura del máximo de 20 días · RSI 58,6"
+      "text": "Ruptura del máximo de 20 días · RSI 58,5"
      },
      {
       "key": "news",
@@ -2693,8 +2689,8 @@
    "label": "TGSU2",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 7455.0,
-   "day_ch": 4.85,
+   "last": 7480.0,
+   "day_ch": 5.2,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2709,7 +2705,7 @@
     "pattern": "Damaged",
     "pivot": 9880.0,
     "stop": 7929.9,
-    "distance_pct": -24.54,
+    "distance_pct": -24.29,
     "contractions": 2,
     "trend_score": 0,
     "rs_score": 60,
@@ -2719,13 +2715,13 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 33,
+    "score": 31,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 4.85,
-    "volume_ratio_20d": 0.23,
+    "day_gain_pct": 5.2,
+    "volume_ratio_20d": 0.25,
     "error": null
    },
    "scanner": {
@@ -2735,7 +2731,7 @@
     "labels": [
      "recuperó la media de 20"
     ],
-    "rsi": 47.5
+    "rsi": 48.1
    },
    "news_ticker": "TGS",
    "pipeline": {
@@ -2746,7 +2742,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Recuperó la media de 20 · RSI 47,5"
+      "text": "Recuperó la media de 20 · RSI 48,1"
      },
      {
       "key": "news",
@@ -2765,8 +2761,8 @@
    "label": "SUPV",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 1768.0,
-   "day_ch": 2.73,
+   "last": 1769.0,
+   "day_ch": 2.79,
    "source": "yahoo",
    "degraded": false,
    "score": 5,
@@ -2781,7 +2777,7 @@
     "pattern": "Damaged",
     "pivot": 3535.0,
     "stop": 2826.45,
-    "distance_pct": -49.99,
+    "distance_pct": -49.96,
     "contractions": 1,
     "trend_score": 0,
     "rs_score": 20,
@@ -2796,14 +2792,14 @@
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 2.73,
+    "day_gain_pct": 2.79,
     "volume_ratio_20d": 0.22,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 37.0
+    "rsi": 37.1
    },
    "news_ticker": "SUPV",
    "pipeline": {
@@ -2814,7 +2810,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 37)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 37,1)"
      },
      {
       "key": "news",
@@ -2833,8 +2829,8 @@
    "label": "BBAR",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 5405.0,
-   "day_ch": 0.75,
+   "last": 5435.0,
+   "day_ch": 1.3,
    "source": "yahoo",
    "degraded": false,
    "score": 28,
@@ -2849,7 +2845,7 @@
     "pattern": "Damaged",
     "pivot": 7040.0,
     "stop": null,
-    "distance_pct": -23.22,
+    "distance_pct": -22.8,
     "contractions": 0,
     "trend_score": 14.3,
     "rs_score": 20,
@@ -2864,14 +2860,14 @@
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 0.75,
-    "volume_ratio_20d": 0.51,
+    "day_gain_pct": 1.3,
+    "volume_ratio_20d": 0.53,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 33.6
+    "rsi": 34.6
    },
    "news_ticker": "BBAR",
    "pipeline": {
@@ -2882,7 +2878,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 33,6)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 34,6)"
      },
      {
       "key": "news",
@@ -2912,8 +2908,8 @@
    "label": "LOMA",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 3175.0,
-   "day_ch": 4.61,
+   "last": 3168.0,
+   "day_ch": 4.37,
    "source": "yahoo",
    "degraded": false,
    "score": 47,
@@ -2928,7 +2924,7 @@
     "pattern": "VCP-adjacent",
     "pivot": 3890.0,
     "stop": 2838.82,
-    "distance_pct": -18.38,
+    "distance_pct": -18.57,
     "contractions": 1,
     "trend_score": 57.2,
     "rs_score": 80,
@@ -2943,8 +2939,8 @@
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 4.61,
-    "volume_ratio_20d": 0.25,
+    "day_gain_pct": 4.37,
+    "volume_ratio_20d": 0.26,
     "error": null
    },
    "scanner": {
@@ -2954,7 +2950,7 @@
     "labels": [
      "ruptura del máximo de 20 días"
     ],
-    "rsi": 63.4
+    "rsi": 63.0
    },
    "news_ticker": "LOMA",
    "pipeline": {
@@ -2965,7 +2961,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Ruptura del máximo de 20 días · RSI 63,4"
+      "text": "Ruptura del máximo de 20 días · RSI 63"
      },
      {
       "key": "news",
@@ -2984,14 +2980,14 @@
    "label": "COME",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 29.4,
-   "day_ch": 4.26,
+   "last": 29.07,
+   "day_ch": 3.09,
    "source": "yahoo",
    "degraded": false,
    "score": 15,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 35.53,
+   "sma50": 35.52,
    "sma200": 42.35,
    "vcp": {
     "rating": "No VCP",
@@ -3000,7 +2996,7 @@
     "pattern": "Damaged",
     "pivot": 45.39,
     "stop": 38.62,
-    "distance_pct": -35.23,
+    "distance_pct": -35.96,
     "contractions": 3,
     "trend_score": 0,
     "rs_score": 20,
@@ -3015,8 +3011,8 @@
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 4.26,
-    "volume_ratio_20d": 0.58,
+    "day_gain_pct": 3.09,
+    "volume_ratio_20d": 0.6,
     "error": null
    },
    "scanner": {
@@ -3026,7 +3022,7 @@
     "labels": [
      "rebote de sobreventa"
     ],
-    "rsi": 37.2
+    "rsi": 35.1
    },
    "news_ticker": null,
    "pipeline": {
@@ -3037,7 +3033,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Rebote de sobreventa · RSI 37,2"
+      "text": "Rebote de sobreventa · RSI 35,1"
      },
      {
       "key": "news",
@@ -3060,14 +3056,14 @@
    "day_ch": 3.05,
    "source": "yahoo",
    "degraded": false,
-   "score": 53,
+   "score": 52,
    "signal": "NEUTRAL",
    "stage4": false,
    "sma50": 3894.0,
    "sma200": 3849.0,
    "vcp": {
     "rating": "No VCP",
-    "score": 53.2,
+    "score": 51.7,
     "state": "Damaged",
     "pattern": "Damaged",
     "pivot": 4650.0,
@@ -3075,7 +3071,7 @@
     "distance_pct": -18.28,
     "contractions": 2,
     "trend_score": 42.9,
-    "rs_score": 90,
+    "rs_score": 80,
     "weakest": "Pivot Proximity",
     "error": null
    },
@@ -3088,7 +3084,7 @@
      "dollar_breakout"
     ],
     "day_gain_pct": 3.05,
-    "volume_ratio_20d": 0.49,
+    "volume_ratio_20d": 0.54,
     "error": null
    },
    "scanner": {
@@ -3124,8 +3120,8 @@
    "label": "EDN",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 1119.0,
-   "day_ch": 5.17,
+   "last": 1113.0,
+   "day_ch": 4.61,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3140,7 +3136,7 @@
     "pattern": "Damaged",
     "pivot": 2160.0,
     "stop": 1782.0,
-    "distance_pct": -48.19,
+    "distance_pct": -48.47,
     "contractions": 1,
     "trend_score": 0,
     "rs_score": 0,
@@ -3150,13 +3146,13 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 37,
+    "score": 40,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 5.17,
-    "volume_ratio_20d": 0.37,
+    "day_gain_pct": 4.61,
+    "volume_ratio_20d": 0.39,
     "error": null
    },
    "scanner": {
@@ -3166,7 +3162,7 @@
     "labels": [
      "rebote de sobreventa"
     ],
-    "rsi": 32.0
+    "rsi": 31.0
    },
    "news_ticker": "EDN",
    "pipeline": {
@@ -3177,7 +3173,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Rebote de sobreventa · RSI 32"
+      "text": "Rebote de sobreventa · RSI 31"
      },
      {
       "key": "news",
@@ -3196,45 +3192,49 @@
    "label": "CRES",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 1520.0,
-   "day_ch": 3.68,
+   "last": 1553.0,
+   "day_ch": 5.93,
    "source": "yahoo",
    "degraded": false,
-   "score": 32,
+   "score": 28,
    "signal": "NEUTRAL",
    "stage4": false,
    "sma50": 1744.0,
    "sma200": 1744.0,
    "vcp": {
     "rating": "No VCP",
-    "score": 16.0,
+    "score": 21.1,
     "state": "Damaged",
     "pattern": "Damaged",
     "pivot": 1970.0,
     "stop": 1442.43,
-    "distance_pct": -22.84,
+    "distance_pct": -21.17,
     "contractions": 1,
-    "trend_score": 0,
-    "rs_score": 70,
-    "weakest": "Trend Template (Stage 2)",
+    "trend_score": 14.3,
+    "rs_score": 80,
+    "weakest": "Contraction Quality",
     "error": null
    },
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 32,
+    "score": 28,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 3.68,
-    "volume_ratio_20d": 0.41,
+    "day_gain_pct": 5.93,
+    "volume_ratio_20d": 0.43,
     "error": null
    },
    "scanner": {
-    "tags": [],
-    "labels": [],
-    "rsi": 43.8
+    "tags": [
+     "reclaim_ma20"
+    ],
+    "labels": [
+     "recuperó la media de 20"
+    ],
+    "rsi": 47.0
    },
    "news_ticker": "CRESY",
    "pipeline": {
@@ -3244,8 +3244,8 @@
      {
       "key": "scanner",
       "name": "Escáner",
-      "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 43,8)"
+      "status": "ok",
+      "text": "Recuperó la media de 20 · RSI 47"
      },
      {
       "key": "news",
@@ -3264,8 +3264,8 @@
    "label": "TRAN",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 2349.0,
-   "day_ch": 5.24,
+   "last": 2352.0,
+   "day_ch": 5.38,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3280,7 +3280,7 @@
     "pattern": "Damaged",
     "pivot": 3845.0,
     "stop": 2989.8,
-    "distance_pct": -38.91,
+    "distance_pct": -38.83,
     "contractions": 3,
     "trend_score": 14.3,
     "rs_score": 20,
@@ -3290,13 +3290,13 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 31,
+    "score": 37,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 5.24,
-    "volume_ratio_20d": 0.91,
+    "day_gain_pct": 5.38,
+    "volume_ratio_20d": 1.05,
     "error": null
    },
    "scanner": {
@@ -3306,7 +3306,7 @@
     "labels": [
      "ruptura del máximo de 20 días"
     ],
-    "rsi": 58.9
+    "rsi": 59.0
    },
    "news_ticker": null,
    "pipeline": {
@@ -3317,7 +3317,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Ruptura del máximo de 20 días · RSI 58,9"
+      "text": "Ruptura del máximo de 20 días · RSI 59"
      },
      {
       "key": "news",
@@ -3336,45 +3336,45 @@
    "label": "BYMA",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 196.0,
-   "day_ch": 1.42,
+   "last": 195.0,
+   "day_ch": 0.91,
    "source": "yahoo",
    "degraded": false,
-   "score": 22,
+   "score": 20,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 231.87,
-   "sma200": 282.97,
+   "sma50": 231.85,
+   "sma200": 282.96,
    "vcp": {
     "rating": "No VCP",
-    "score": 19.0,
+    "score": 16.0,
     "state": "Invalid",
     "pattern": "Damaged",
     "pivot": 265.0,
     "stop": 183.4,
-    "distance_pct": -26.04,
+    "distance_pct": -26.42,
     "contractions": 2,
     "trend_score": 0,
-    "rs_score": 40,
+    "rs_score": 20,
     "weakest": "Trend Template (Stage 2)",
     "error": null
    },
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 22,
+    "score": 20,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 1.42,
-    "volume_ratio_20d": 0.47,
+    "day_gain_pct": 0.91,
+    "volume_ratio_20d": 0.51,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 38.6
+    "rsi": 37.7
    },
    "news_ticker": null,
    "pipeline": {
@@ -3385,7 +3385,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 38,6)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 37,7)"
      },
      {
       "key": "news",
@@ -3404,11 +3404,11 @@
    "label": "METR",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 1901.0,
-   "day_ch": 3.82,
+   "last": 1909.0,
+   "day_ch": 4.26,
    "source": "yahoo",
    "degraded": false,
-   "score": 34,
+   "score": 37,
    "signal": "NEUTRAL",
    "stage4": false,
    "sma50": 2285.0,
@@ -3420,7 +3420,7 @@
     "pattern": "Damaged",
     "pivot": 2410.0,
     "stop": 1519.65,
-    "distance_pct": -21.12,
+    "distance_pct": -20.79,
     "contractions": 2,
     "trend_score": 14.3,
     "rs_score": 70,
@@ -3430,19 +3430,19 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 34,
+    "score": 37,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 3.82,
-    "volume_ratio_20d": 2.0,
+    "day_gain_pct": 4.26,
+    "volume_ratio_20d": 2.03,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 35.8
+    "rsi": 36.3
    },
    "news_ticker": null,
    "pipeline": {
@@ -3453,7 +3453,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 35,8)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 36,3)"
      },
      {
       "key": "news",
@@ -3472,14 +3472,14 @@
    "label": "VALO",
    "date": "2026-11-26",
    "live_date": null,
-   "last": 501.5,
-   "day_ch": 1.11,
+   "last": 502.0,
+   "day_ch": 1.21,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 528.53,
+   "sma50": 528.54,
    "sma200": 595.39,
    "vcp": {
     "rating": "No VCP",
@@ -3488,7 +3488,7 @@
     "pattern": "Damaged",
     "pivot": 650.0,
     "stop": 544.5,
-    "distance_pct": -22.85,
+    "distance_pct": -22.77,
     "contractions": 2,
     "trend_score": 14.3,
     "rs_score": 80,
@@ -3496,38 +3496,119 @@
     "error": null
    },
    "burst": {
-    "state": "REJECTED",
-    "rating": "Reject",
-    "score": 53,
+    "state": "WATCH_ONLY",
+    "rating": "Watch",
+    "score": 55,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 1.11,
-    "volume_ratio_20d": 0.66,
+    "day_gain_pct": 1.21,
+    "volume_ratio_20d": 0.69,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 39.2
+    "rsi": 39.5
    },
    "news_ticker": null,
    "pipeline": {
-    "setup": null,
-    "verdict": null,
+    "setup": "burst",
+    "verdict": "WATCH",
     "stages": [
      {
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 39,2)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 39,5)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "na",
       "text": "No hay fuente de noticias para este activo"
+     },
+     {
+      "key": "plan",
+      "name": "Plan",
+      "status": "ok",
+      "text": "Si el precio llega a $ 502,00, compra. Después vende con pérdida si baja a $ 490,00 (stop) o con ganancia si sube a $ 526,00 (objetivo)",
+      "plan": {
+       "entry": 502.0,
+       "stop": 490.0,
+       "target": 526.0
+      }
+     },
+     {
+      "key": "timemachine",
+      "name": "Time Machine",
+      "status": "ok",
+      "text": "Parejo: el precio llegó primero al objetivo en el 23,4 % de las simulaciones y al stop en el 52,5 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 31 de cada 100 (contando solo las que tocaron uno de los dos). En el pasado esta señal (ruptura del máximo de 20 días) apareció 33 veces en este activo: 13 llegaron al objetivo, 11 al stop y 9 a ninguno (resultado medio 0,6 veces lo arriesgado).",
+      "data": {
+       "ok": true,
+       "kind": "diario",
+       "mc": {
+        "replays": 5000,
+        "seed": 19,
+        "bars_left": 5,
+        "p_target": 0.2338,
+        "p_stop": 0.5246,
+        "p_neither": 0.2416,
+        "p_green": 0.3922,
+        "median_close": 501.99,
+        "p5_close": 472.39,
+        "p95_close": 540.88,
+        "avg_R": 0.02,
+        "r_at_target": 2.0,
+        "pool_sessions": 250,
+        "until": "5 ruedas",
+        "fan": [
+         [
+          502.0,
+          502.0,
+          502.0
+         ],
+         [
+          488.18,
+          501.6,
+          520.09
+         ],
+         [
+          482.56,
+          501.52,
+          527.1
+         ],
+         [
+          478.56,
+          501.69,
+          534.9
+         ],
+         [
+          474.83,
+          501.9,
+          540.79
+         ],
+         [
+          471.19,
+          501.67,
+          542.26
+         ]
+        ]
+       },
+       "lean": "even",
+       "verdict": "Parejo: el precio llegó primero al objetivo en el 23,4 % de las simulaciones y al stop en el 52,5 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 31 de cada 100 (contando solo las que tocaron uno de los dos).",
+       "history": {
+        "tag": "breakout_20d",
+        "label": "ruptura del máximo de 20 días",
+        "fired": 33,
+        "target": 13,
+        "stop": 11,
+        "neither": 9,
+        "avg_R": 0.6
+       },
+       "note": "Simulación con las 250 velas diarias de este activo. No es una predicción: balances, noticias y feriados pueden hacer lo que el último año no hizo."
+      }
      }
     ]
    },
@@ -3675,8 +3756,8 @@
    "label": "BTC",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 60683.0,
-   "day_ch": 0.5,
+   "last": 60807.0,
+   "day_ch": 0.71,
    "source": "yahoo",
    "degraded": false,
    "score": 49,
@@ -3737,8 +3818,20 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "20 noticias recientes de BTC-USD. La última: «Bitcoin’s Price Every Thanksgiving Since 2013»",
+      "text": "20 noticias recientes de BTC-USD. La última: «Bitcoin, XRP, Ethereum face brutal crash risk as key levels crack»",
       "items": [
+       {
+        "title": "Bitcoin, XRP, Ethereum face brutal crash risk as key levels crack",
+        "link": "https://www.thestreet.com/crypto/markets/bitcoin-xrp-ethereum-face-brutal-crash-risk-as-key-levels-crack?.tsrc=rss",
+        "time": "2026-11-26T21:00:00+00:00",
+        "tags": []
+       },
+       {
+        "title": "Is Bitcoin a Good Investment for Building Wealth After a 50% Drop?",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/is-bitcoin-a-good-investment-for-building-wealth-after-a-50-drop/?.tsrc=rss",
+        "time": "2026-11-26T20:50:17+00:00",
+        "tags": []
+       },
        {
         "title": "Bitcoin’s Price Every Thanksgiving Since 2013",
         "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/bitcoins-price-every-thanksgiving-since-2013/?.tsrc=rss",
@@ -3749,18 +3842,6 @@
         "title": "Bitcoin Holds Above $60K as Death Cross Clouds Thanksgiving Recovery",
         "link": "https://decrypt.co/384079/bitcoin-holds-above-60k-as-death-cross-clouds-thanksgiving-recovery?.tsrc=rss",
         "time": "2026-11-26T18:15:29+00:00",
-        "tags": []
-       },
-       {
-        "title": "Why Strategy Can Rebound to $175 in 2027 Even If Bitcoin Stays Below Peak",
-        "link": "https://247wallst.com/investing/2026/11/26/why-strategy-can-rebound-to-175-in-2027-even-if-bitcoin-stays-below-peak/?.tsrc=rss",
-        "time": "2026-11-26T17:45:54+00:00",
-        "tags": []
-       },
-       {
-        "title": "Galaxy Research Warns Bitcoin Could Fall to $28,200 if June Low Breaks",
-        "link": "https://www.cryptoprowl.com/releases/galaxy-research-warns-bitcoin-could-fall-to-28200-if-june-low-breaks-8091?.tsrc=rss",
-        "time": "2026-11-26T16:37:00+00:00",
         "tags": []
        }
       ]
@@ -3776,8 +3857,8 @@
    "label": "ETH",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1703.0,
-   "day_ch": 0.7,
+   "last": 1705.0,
+   "day_ch": 0.85,
    "source": "yahoo",
    "degraded": false,
    "score": 49,
@@ -3838,8 +3919,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "20 noticias recientes de ETH-USD (temas: analistas). La última: «Bitcoin Tops $60,000 as Risk Assets Rise in Holiday Trading»",
+      "text": "20 noticias recientes de ETH-USD (temas: analistas). La última: «Bitcoin, XRP, Ethereum face brutal crash risk as key levels crack»",
       "items": [
+       {
+        "title": "Bitcoin, XRP, Ethereum face brutal crash risk as key levels crack",
+        "link": "https://www.thestreet.com/crypto/markets/bitcoin-xrp-ethereum-face-brutal-crash-risk-as-key-levels-crack?.tsrc=rss",
+        "time": "2026-11-26T21:00:00+00:00",
+        "tags": []
+       },
        {
         "title": "Bitcoin Tops $60,000 as Risk Assets Rise in Holiday Trading",
         "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-tops-60-000-risk-162823539.html?.tsrc=rss",
@@ -3859,12 +3946,6 @@
         "link": "https://cryptonews.com/news/bitcoin-news-7b-options-expiry-swiss-etf-reserve-bill/?.tsrc=rss",
         "time": "2026-11-26T15:38:32+00:00",
         "tags": []
-       },
-       {
-        "title": "Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base",
-        "link": "https://decrypt.co/384023/polygon-cross-border-payments-stack-coinbase-base?.tsrc=rss",
-        "time": "2026-11-26T14:01:02+00:00",
-        "tags": []
        }
       ]
      }
@@ -3879,8 +3960,8 @@
    "label": "SOL",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 71.37,
-   "day_ch": 1.39,
+   "last": 71.6,
+   "day_ch": 1.71,
    "source": "yahoo",
    "degraded": false,
    "score": 25,
@@ -3938,7 +4019,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "13 noticias recientes de SOL-USD. La última: «Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base»",
+      "text": "11 noticias recientes de SOL-USD. La última: «Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base»",
       "items": [
        {
         "title": "Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base",
@@ -3977,8 +4058,8 @@
    "label": "BNB",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 555.41,
-   "day_ch": 0.33,
+   "last": 556.21,
+   "day_ch": 0.48,
    "source": "yahoo",
    "degraded": false,
    "score": 52,
@@ -4060,8 +4141,8 @@
    "label": "XRP",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.9529,
-   "day_ch": 1.7,
+   "last": 0.9525,
+   "day_ch": 1.66,
    "source": "yahoo",
    "degraded": false,
    "score": 7,
@@ -4115,8 +4196,20 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "20 noticias recientes de XRP-USD. La última: «Buyers finally return to XRP»",
+      "text": "20 noticias recientes de XRP-USD. La última: «XRP, Cardano or Stellar: Which Could Double First in 2027?»",
       "items": [
+       {
+        "title": "XRP, Cardano or Stellar: Which Could Double First in 2027?",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/xrp-cardano-or-stellar-which-could-double-first-in-2027/?.tsrc=rss",
+        "time": "2026-11-26T21:23:07+00:00",
+        "tags": []
+       },
+       {
+        "title": "Bitcoin, XRP, Ethereum face brutal crash risk as key levels crack",
+        "link": "https://www.thestreet.com/crypto/markets/bitcoin-xrp-ethereum-face-brutal-crash-risk-as-key-levels-crack?.tsrc=rss",
+        "time": "2026-11-26T21:00:00+00:00",
+        "tags": []
+       },
        {
         "title": "Buyers finally return to XRP",
         "link": "https://www.thestreet.com/crypto/markets/buyers-finally-return-to-xrp?.tsrc=rss",
@@ -4127,18 +4220,6 @@
         "title": "XRP News: Thanksgiving Rally or December 1 Supply Shock?",
         "link": "https://cryptonews.com/news/xrp-news-thanksgiving-rally-december-1-unlock/?.tsrc=rss",
         "time": "2026-11-26T18:34:00+00:00",
-        "tags": []
-       },
-       {
-        "title": "Bitcoin Holds Above $60K as Death Cross Clouds Thanksgiving Recovery",
-        "link": "https://decrypt.co/384079/bitcoin-holds-above-60k-as-death-cross-clouds-thanksgiving-recovery?.tsrc=rss",
-        "time": "2026-11-26T18:15:29+00:00",
-        "tags": []
-       },
-       {
-        "title": "Bitcoin Tops $60,000 as Risk Assets Rise in Holiday Trading",
-        "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-tops-60-000-risk-162823539.html?.tsrc=rss",
-        "time": "2026-11-26T16:28:23+00:00",
         "tags": []
        }
       ]
@@ -4154,8 +4235,8 @@
    "label": "ADA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.1509,
-   "day_ch": 3.53,
+   "last": 0.15033,
+   "day_ch": 3.13,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4213,8 +4294,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "2 noticias recientes de ADA-USD. La última: «Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1»",
+      "text": "3 noticias recientes de ADA-USD. La última: «XRP, Cardano or Stellar: Which Could Double First in 2027?»",
       "items": [
+       {
+        "title": "XRP, Cardano or Stellar: Which Could Double First in 2027?",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/xrp-cardano-or-stellar-which-could-double-first-in-2027/?.tsrc=rss",
+        "time": "2026-11-26T21:23:07+00:00",
+        "tags": []
+       },
        {
         "title": "Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1",
         "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
@@ -4240,8 +4327,8 @@
    "label": "DOGE",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.05699,
-   "day_ch": 1.83,
+   "last": 0.05689,
+   "day_ch": 1.65,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4332,8 +4419,8 @@
    "label": "LINK",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 9.27,
-   "day_ch": 2.47,
+   "last": 9.37,
+   "day_ch": 3.54,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -4427,7 +4514,7 @@
    "date": "2026-11-25",
    "live_date": "2026-11-26",
    "last": 6.65,
-   "day_ch": 0.4,
+   "day_ch": 0.46,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -4494,8 +4581,8 @@
    "label": "TRX",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.30364,
-   "day_ch": 0.01,
+   "last": 0.304466,
+   "day_ch": 0.28,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -4672,6 +4759,17 @@
    "rating": "Watch",
    "trigger": 8.21,
    "stop": 7.64,
+   "why": "Momentum Burst Watch (watch only): revisar gráfico."
+  },
+  {
+   "kind": "byma",
+   "id": "VALO",
+   "label": "VALO",
+   "setup": "burst",
+   "score": 55,
+   "rating": "Watch",
+   "trigger": 502.0,
+   "stop": 490.0,
    "why": "Momentum Burst Watch (watch only): revisar gráfico."
   }
  ],
@@ -6754,6 +6852,54 @@
  },
  "news": [
   {
+   "ticker": "ADA-USD",
+   "touches": [
+    "ADA-USD",
+    "XRP-USD"
+   ],
+   "title": "XRP, Cardano or Stellar: Which Could Double First in 2027?",
+   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/xrp-cardano-or-stellar-which-could-double-first-in-2027/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T21:23:07+00:00",
+   "tags": [],
+   "new": true,
+   "id": "4b380f5844b2ae9f",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD",
+    "ETH-USD",
+    "XRP-USD"
+   ],
+   "title": "Bitcoin, XRP, Ethereum face brutal crash risk as key levels crack",
+   "link": "https://www.thestreet.com/crypto/markets/bitcoin-xrp-ethereum-face-brutal-crash-risk-as-key-levels-crack?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T21:00:00+00:00",
+   "tags": [],
+   "new": true,
+   "id": "669e9ba0c879e866",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Is Bitcoin a Good Investment for Building Wealth After a 50% Drop?",
+   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/is-bitcoin-a-good-investment-for-building-wealth-after-a-50-drop/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T20:50:17+00:00",
+   "tags": [],
+   "new": true,
+   "id": "fb5d4d45290b1b58",
+   "form": null
+  },
+  {
    "ticker": "XRP-USD",
    "touches": [
     "XRP-USD"
@@ -6764,7 +6910,7 @@
    "kind": "headline",
    "time": "2026-11-26T20:00:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "3748745e4c634630",
    "form": null
   },
@@ -6779,7 +6925,7 @@
    "kind": "headline",
    "time": "2026-11-26T19:44:56+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "7f26924cfd1cf037",
    "form": null
   },
@@ -7224,9 +7370,8 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
+   "ticker": "ETH-USD",
    "touches": [
-    "BTC-USD",
     "ETH-USD"
    ],
    "title": "Crypto Market Faces 3 Critical Risks Heading Into December 2026",
@@ -7237,21 +7382,6 @@
    "tags": [],
    "new": false,
    "id": "2d244d540e347df0",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Can a 17-Year Track Record Protect Bitcoin? Ryan Watkins Weighs In",
-   "link": "https://unchainedcrypto.com/can-a-17-year-track-record-protect-bitcoin-ryan-watkins-weighs-in/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T11:00:45+00:00",
-   "tags": [],
-   "new": false,
-   "id": "7b133ae46840b875",
    "form": null
   },
   {
@@ -7676,38 +7806,6 @@
    "new": false,
    "id": "342db3191d1843f7",
    "form": null
-  },
-  {
-   "ticker": "MELI",
-   "touches": [
-    "MELI"
-   ],
-   "title": "Morgan Stanley Cut Its MercadoLibre Target. It Still Sees 66% Upside",
-   "link": "https://www.tikr.com/blog/morgan-stanley-cut-its-mercadolibre-target-it-still-sees-66-upside?ref=yahoofinance&tlnk=yf-261125-pq77x236&.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T16:50:26+00:00",
-   "tags": [
-    "analyst"
-   ],
-   "new": false,
-   "id": "16222ae30675286e",
-   "form": null
-  },
-  {
-   "ticker": "MELI",
-   "touches": [
-    "MELI"
-   ],
-   "title": "3 High-Growth Stocks That Could Make $10,000 Worth Much More by 2030",
-   "link": "https://247wallst.com/investing/2026/11/25/3-high-growth-stocks-that-could-make-10000-worth-much-more-by-2030/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T16:03:22+00:00",
-   "tags": [],
-   "new": false,
-   "id": "df2e0e7fb82c3d8b",
-   "form": null
   }
  ],
  "weekly": {
@@ -7733,6 +7831,128 @@
   "congress": true
  },
  "events": [
+  {
+   "type": "info",
+   "info": "report",
+   "kind": "adr",
+   "id": "report:2026-11-26",
+   "label": "Cierre",
+   "why": "Informe del cierre",
+   "report": {
+    "date": "2026-11-26",
+    "gates": {
+     "adr": "defensivo",
+     "byma": "defensivo",
+     "cripto": "defensivo"
+    },
+    "movers": {
+     "adr": {
+      "up": [
+       [
+        "TEO",
+        5.65
+       ],
+       [
+        "CRESY",
+        4.32
+       ],
+       [
+        "SUPV",
+        3.91
+       ]
+      ],
+      "down": [
+       [
+        "BBAR",
+        -1.97
+       ],
+       [
+        "YPF",
+        -0.82
+       ]
+      ],
+      "breadth": [
+       14,
+       16
+      ]
+     },
+     "byma": {
+      "up": [
+       [
+        "CRES",
+        5.93
+       ],
+       [
+        "YPFD",
+        5.78
+       ],
+       [
+        "TRAN",
+        5.38
+       ]
+      ],
+      "down": [
+       [
+        "TXAR",
+        -0.42
+       ],
+       [
+        "ALUA",
+        -0.18
+       ]
+      ],
+      "breadth": [
+       18,
+       20
+      ]
+     },
+     "cripto": {
+      "up": [
+       [
+        "LINK",
+        3.54
+       ],
+       [
+        "ADA",
+        3.13
+       ],
+       [
+        "SOL",
+        1.71
+       ]
+      ],
+      "down": [],
+      "breadth": [
+       10,
+       10
+      ]
+     }
+    },
+    "entries": [],
+    "exits": [],
+    "positions": [],
+    "patterns": [
+     [
+      "TXAR",
+      "Doble piso",
+      "alcista"
+     ]
+    ],
+    "sectors": {
+     "best": [
+      "Petróleo y gas",
+      5.155
+     ],
+     "worst": [
+      "Materiales",
+      0.723
+     ]
+    }
+   },
+   "ts": "2026-11-26T21:38:16.341679+00:00",
+   "text": "🌙 <b>INFORME DEL CIERRE</b> · 26/11\n<b>ADRs</b> (14/16 suben): ▲ TEO +5,7 %, CRESY +4,3 % · ▼ BBAR −2,0 %, YPF −0,8 %\n<b>BYMA</b> (18/20 suben): ▲ CRES +5,9 %, YPFD +5,8 % · ▼ TXAR −0,4 %, ALUA −0,2 %\n<b>Cripto</b> (10/10 suben): ▲ LINK +3,5 %, ADA +3,1 % · ▼ —\nSectores BYMA: mejor Petróleo y gas +5,2 %, peor Materiales +0,7 %\nMotor hoy: sin entradas ni salidas.\nPosiciones abiertas: 0\nPatrones que rompieron: TXAR (doble piso)\nMercado: ADRs defensivo · BYMA defensivo · Cripto defensivo",
+   "asset": "adr:Cierre"
+  },
   {
    "type": "info",
    "info": "report",
@@ -7905,7 +8125,7 @@
     ],
     [
      "2026-11-26",
-     710.0
+     706.0
     ]
    ],
    "why": "Dos mínimos en 657,50 y 650,00 con rebote a 705,00. Entrada si cierra arriba de 705,00."
@@ -8053,7 +8273,7 @@
     ],
     [
      "2026-11-26",
-     710.0
+     706.0
     ]
    ],
    "why": "Cabeza en 798,50 entre hombros en 729,00 y 750,00; cuello en 668,25. Si cierra abajo del cuello, aviso de salida para el que está comprado."
