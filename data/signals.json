@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-26T15:38:35.483932+00:00",
+ "generated_at": "2026-11-26T16:38:52.249621+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -2073,8 +2073,8 @@
    "label": "GGAL",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 4820.0,
-   "day_ch": 1.37,
+   "last": 4850.0,
+   "day_ch": 2.0,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2170,8 +2170,8 @@
    "label": "YPFD",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 5820.0,
-   "day_ch": 3.56,
+   "last": 5905.0,
+   "day_ch": 5.07,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -2266,8 +2266,8 @@
    "label": "PAMP",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 4458.0,
-   "day_ch": 0.39,
+   "last": 4568.0,
+   "day_ch": 2.87,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2334,8 +2334,8 @@
    "label": "BMA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 8990.0,
-   "day_ch": 0.28,
+   "last": 9060.0,
+   "day_ch": 1.06,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2413,8 +2413,8 @@
    "label": "ALUA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 849.0,
-   "day_ch": 0.59,
+   "last": 847.0,
+   "day_ch": 0.36,
    "source": "yahoo",
    "degraded": false,
    "score": 66,
@@ -2563,8 +2563,8 @@
    "label": "TXAR",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 702.0,
-   "day_ch": -0.99,
+   "last": 709.0,
+   "day_ch": 0.0,
    "source": "yahoo",
    "degraded": false,
    "score": 51,
@@ -2698,8 +2698,8 @@
    "label": "CEPU",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1870.0,
-   "day_ch": 1.19,
+   "last": 1881.0,
+   "day_ch": 1.79,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2766,8 +2766,8 @@
    "label": "TGSU2",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 7200.0,
-   "day_ch": 1.27,
+   "last": 7170.0,
+   "day_ch": 0.84,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2916,8 +2916,8 @@
    "label": "SUPV",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1754.0,
-   "day_ch": 1.92,
+   "last": 1769.0,
+   "day_ch": 2.79,
    "source": "yahoo",
    "degraded": false,
    "score": 5,
@@ -2989,8 +2989,8 @@
    "label": "BBAR",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 5360.0,
-   "day_ch": -0.09,
+   "last": 5395.0,
+   "day_ch": 0.56,
    "source": "yahoo",
    "degraded": false,
    "score": 13,
@@ -3066,8 +3066,8 @@
    "label": "LOMA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 3058.0,
-   "day_ch": 0.74,
+   "last": 3055.0,
+   "day_ch": 0.66,
    "source": "yahoo",
    "degraded": false,
    "score": 42,
@@ -3138,8 +3138,8 @@
    "label": "COME",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 28.45,
-   "day_ch": 0.89,
+   "last": 28.9,
+   "day_ch": 2.48,
    "source": "yahoo",
    "degraded": false,
    "score": 19,
@@ -3208,8 +3208,8 @@
    "label": "TECO2",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 3680.0,
-   "day_ch": -0.2,
+   "last": 3635.0,
+   "day_ch": -1.42,
    "source": "yahoo",
    "degraded": false,
    "score": 58,
@@ -3362,8 +3362,8 @@
    "label": "EDN",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1088.0,
-   "day_ch": 2.26,
+   "last": 1103.0,
+   "day_ch": 3.67,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3518,8 +3518,8 @@
    "label": "CRES",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1480.0,
-   "day_ch": 0.95,
+   "last": 1517.0,
+   "day_ch": 3.48,
    "source": "yahoo",
    "degraded": false,
    "score": 33,
@@ -3586,8 +3586,8 @@
    "label": "TRAN",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 2290.0,
-   "day_ch": 2.6,
+   "last": 2303.0,
+   "day_ch": 3.18,
    "source": "yahoo",
    "degraded": false,
    "score": 14,
@@ -3656,8 +3656,8 @@
    "label": "BYMA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 195.75,
-   "day_ch": 1.29,
+   "last": 196.0,
+   "day_ch": 1.42,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3726,8 +3726,8 @@
    "label": "METR",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1860.0,
-   "day_ch": 1.58,
+   "last": 1903.0,
+   "day_ch": 3.93,
    "source": "yahoo",
    "degraded": false,
    "score": 16,
@@ -3800,8 +3800,8 @@
    "label": "VALO",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 502.0,
-   "day_ch": 1.21,
+   "last": 500.0,
+   "day_ch": 0.81,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3949,8 +3949,8 @@
    "label": "MIRG",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1705.0,
-   "day_ch": -0.58,
+   "last": 1720.0,
+   "day_ch": 0.29,
    "source": "yahoo",
    "degraded": false,
    "score": 8,
@@ -4082,8 +4082,8 @@
    "label": "BTC",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 60348.0,
-   "day_ch": -0.05,
+   "last": 60372.0,
+   "day_ch": -0.01,
    "source": "yahoo",
    "degraded": false,
    "score": 49,
@@ -4143,33 +4143,35 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "warn",
-      "text": "20 noticias recientes de BTC-USD (temas: macro). La última: «What TeraWulf (WULF) Long Term Data Center Contracts Mean For Shareholders». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "status": "ok",
+      "text": "20 noticias recientes de BTC-USD (temas: directivos, macro). La última: «TeraWulf (WULF) CEO Sets 1 GW Muskie Leasing Terms To Avoid Dilution»",
       "items": [
        {
-        "title": "What TeraWulf (WULF) Long Term Data Center Contracts Mean For Shareholders",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/terawulf-wulf-long-term-data-150921107.html?.tsrc=rss",
-        "time": "2026-11-26T15:09:21+00:00",
+        "title": "TeraWulf (WULF) CEO Sets 1 GW Muskie Leasing Terms To Avoid Dilution",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/terawulf-wulf-ceo-sets-1-161553042.html?.tsrc=rss",
+        "time": "2026-11-26T16:15:53+00:00",
+        "tags": [
+         "people"
+        ]
+       },
+       {
+        "title": "BTC News Today: US Bitcoin Strategic Reserve Bill Moves Closer as BTC Reclaims $60K",
+        "link": "https://www.coinspeaker.com/btc-news-today-us-bitcoin-strategic-reserve-bill-moves-closer-as-btc-reclaims-60k/?.tsrc=rss",
+        "time": "2026-11-26T16:09:25+00:00",
         "tags": []
        },
        {
-        "title": "Core Scientific (CORZ) Quit Bitcoin for AI. Was It Worth It?",
-        "link": "https://finance.yahoo.com/technology/ai/articles/core-scientific-corz-quit-bitcoin-144324574.html?.tsrc=rss",
-        "time": "2026-11-26T14:43:24+00:00",
-        "tags": []
-       },
-       {
-        "title": "Why Is Bitcoin Dropping So Much? 5 Reasons Behind Its Worst Month Since 2022",
-        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/why-is-bitcoin-dropping-so-much-5-reasons-behind-its-worst-month-since-2022/?.tsrc=rss",
-        "time": "2026-11-26T14:43:12+00:00",
+        "title": "Before the bell: gold, oil, and Bitcoin skip the Thanksgiving break",
+        "link": "https://www.thestreet.com/crypto/markets/before-the-bell-gold-oil-and-bitcoin-skip-the-thanksgiving-break-?.tsrc=rss",
+        "time": "2026-11-26T15:50:00+00:00",
         "tags": [
          "macro"
         ]
        },
        {
-        "title": "5 Best Small Cap AI Stocks to Buy for 2027",
-        "link": "https://finance.yahoo.com/technology/ai/articles/5-best-small-cap-ai-144008304.html?.tsrc=rss",
-        "time": "2026-11-26T14:40:08+00:00",
+        "title": "Bitcoin News: Swiss ETF Debut Meets $7B Options Expiry and US Strategic Reserve Push",
+        "link": "https://cryptonews.com/news/bitcoin-news-7b-options-expiry-swiss-etf-reserve-bill/?.tsrc=rss",
+        "time": "2026-11-26T15:38:32+00:00",
         "tags": []
        }
       ]
@@ -4185,8 +4187,8 @@
    "label": "ETH",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1684.0,
-   "day_ch": -0.38,
+   "last": 1685.0,
+   "day_ch": -0.33,
    "source": "yahoo",
    "degraded": false,
    "score": 49,
@@ -4247,8 +4249,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "18 noticias recientes de ETH-USD. La última: «Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base»",
+      "text": "19 noticias recientes de ETH-USD. La última: «Bitcoin News: Swiss ETF Debut Meets $7B Options Expiry and US Strategic Reserve Push»",
       "items": [
+       {
+        "title": "Bitcoin News: Swiss ETF Debut Meets $7B Options Expiry and US Strategic Reserve Push",
+        "link": "https://cryptonews.com/news/bitcoin-news-7b-options-expiry-swiss-etf-reserve-bill/?.tsrc=rss",
+        "time": "2026-11-26T15:38:32+00:00",
+        "tags": []
+       },
        {
         "title": "Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base",
         "link": "https://decrypt.co/384023/polygon-cross-border-payments-stack-coinbase-base?.tsrc=rss",
@@ -4266,12 +4274,6 @@
         "link": "https://www.fool.com/investing/2026/11/26/can-shiba-inu-reach-usd1-in-2027-answer-shock-you/?.tsrc=rss",
         "time": "2026-11-26T10:27:02+00:00",
         "tags": []
-       },
-       {
-        "title": "Why Is Crypto Up Today? BTC Back Above $60K – is the Bull Market Back?",
-        "link": "https://cryptonews.com/news/why-is-crypto-up-today-btc-back-above-60k-bull-market-back/?.tsrc=rss",
-        "time": "2026-11-26T10:11:22+00:00",
-        "tags": []
        }
       ]
      }
@@ -4286,8 +4288,8 @@
    "label": "SOL",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 70.56,
-   "day_ch": 0.24,
+   "last": 70.6,
+   "day_ch": 0.29,
    "source": "yahoo",
    "degraded": false,
    "score": 25,
@@ -4384,8 +4386,8 @@
    "label": "BNB",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 548.4,
-   "day_ch": -0.93,
+   "last": 549.75,
+   "day_ch": -0.69,
    "source": "yahoo",
    "degraded": false,
    "score": 52,
@@ -4467,8 +4469,8 @@
    "label": "XRP",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.9424,
-   "day_ch": 0.58,
+   "last": 0.947,
+   "day_ch": 1.07,
    "source": "yahoo",
    "degraded": false,
    "score": 7,
@@ -4561,8 +4563,8 @@
    "label": "ADA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.14741,
-   "day_ch": 1.13,
+   "last": 0.1477,
+   "day_ch": 1.33,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4647,8 +4649,8 @@
    "label": "DOGE",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.0563,
-   "day_ch": 0.59,
+   "last": 0.05641,
+   "day_ch": 0.79,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4739,8 +4741,8 @@
    "label": "LINK",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 9.12,
-   "day_ch": 0.83,
+   "last": 9.15,
+   "day_ch": 1.1,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -4833,8 +4835,8 @@
    "label": "AVAX",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 6.54,
-   "day_ch": -1.31,
+   "last": 6.57,
+   "day_ch": -0.81,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -4901,8 +4903,8 @@
    "label": "TRX",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.301819,
-   "day_ch": -0.59,
+   "last": 0.302166,
+   "day_ch": -0.48,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -7220,13 +7222,93 @@
    "touches": [
     "BTC-USD"
    ],
+   "title": "TeraWulf (WULF) CEO Sets 1 GW Muskie Leasing Terms To Avoid Dilution",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/terawulf-wulf-ceo-sets-1-161553042.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T16:15:53+00:00",
+   "tags": [
+    "people"
+   ],
+   "new": true,
+   "id": "98192584d330be3f",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "BTC News Today: US Bitcoin Strategic Reserve Bill Moves Closer as BTC Reclaims $60K",
+   "link": "https://www.coinspeaker.com/btc-news-today-us-bitcoin-strategic-reserve-bill-moves-closer-as-btc-reclaims-60k/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T16:09:25+00:00",
+   "tags": [],
+   "new": true,
+   "id": "94d69fc3f9f5b955",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Before the bell: gold, oil, and Bitcoin skip the Thanksgiving break",
+   "link": "https://www.thestreet.com/crypto/markets/before-the-bell-gold-oil-and-bitcoin-skip-the-thanksgiving-break-?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T15:50:00+00:00",
+   "tags": [
+    "macro"
+   ],
+   "new": true,
+   "id": "b4c9ea8d90847029",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD",
+    "ETH-USD"
+   ],
+   "title": "Bitcoin News: Swiss ETF Debut Meets $7B Options Expiry and US Strategic Reserve Push",
+   "link": "https://cryptonews.com/news/bitcoin-news-7b-options-expiry-swiss-etf-reserve-bill/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T15:38:32+00:00",
+   "tags": [],
+   "new": true,
+   "id": "186109079fa1bf45",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Could CleanSpark Actually Climb 286%? Or Is Canaccord Genuity Totally Wrong?",
+   "link": "https://www.tikr.com/blog/could-cleanspark-actually-climb-286-or-is-canaccord-genuity-totally-wrong?ref=yahoofinance&tlnk=yf-261126-9p928vf7&.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T15:18:12+00:00",
+   "tags": [],
+   "new": true,
+   "id": "ab0ea2c3bbf9804a",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
    "title": "What TeraWulf (WULF) Long Term Data Center Contracts Mean For Shareholders",
    "link": "https://finance.yahoo.com/markets/stocks/articles/terawulf-wulf-long-term-data-150921107.html?.tsrc=rss",
    "source": "Yahoo Finance",
    "kind": "headline",
    "time": "2026-11-26T15:09:21+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "cf2d97b7b4867e82",
    "form": null
   },
@@ -7243,7 +7325,7 @@
    "tags": [
     "earnings"
    ],
-   "new": true,
+   "new": false,
    "id": "7405d7307e054421",
    "form": null
   },
@@ -7258,7 +7340,7 @@
    "kind": "headline",
    "time": "2026-11-26T14:52:16+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "de37f0e0e79d5bac",
    "form": null
   },
@@ -7273,7 +7355,7 @@
    "kind": "headline",
    "time": "2026-11-26T14:43:24+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "0660c943b1bef127",
    "form": null
   },
@@ -7290,7 +7372,7 @@
    "tags": [
     "macro"
    ],
-   "new": true,
+   "new": false,
    "id": "496f79b6556dea65",
    "form": null
   },
@@ -7305,7 +7387,7 @@
    "kind": "headline",
    "time": "2026-11-26T14:40:08+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "09263ef30ff192e4",
    "form": null
   },
@@ -7320,7 +7402,7 @@
    "kind": "headline",
    "time": "2026-11-26T14:37:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "2910fbeda35eb4d4",
    "form": null
   },
@@ -7386,7 +7468,7 @@
    "tags": [
     "earnings"
    ],
-   "new": true,
+   "new": false,
    "id": "43e27e4e731a0a76",
    "form": null
   },
@@ -7578,21 +7660,6 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Strategic Bitcoin Reserve Bill Reaches the House Calendar, Awaiting a Floor Vote",
-   "link": "https://unchainedcrypto.com/strategic-bitcoin-reserve-bill-reaches-the-house-calendar-awaiting-a-floor-vote/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T09:45:46+00:00",
-   "tags": [],
-   "new": false,
-   "id": "27650a88e6fba4dc",
-   "form": null
-  },
-  {
    "ticker": "SOL-USD",
    "touches": [
     "SOL-USD"
@@ -7608,25 +7675,9 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Ex-Chelsea Co-Owner Boehly Calls High Yields Manageable: Is Distressed Credit Next?",
-   "link": "https://beincrypto.com/todd-boehly-treasury-yield-distressed-credit/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T09:22:39+00:00",
-   "tags": [],
-   "new": false,
-   "id": "4beaf51fa89ab87a",
-   "form": null
-  },
-  {
    "ticker": "ADA-USD",
    "touches": [
     "ADA-USD",
-    "BTC-USD",
     "DOGE-USD",
     "SOL-USD",
     "XRP-USD"
@@ -7684,38 +7735,6 @@
    "tags": [],
    "new": false,
    "id": "de1b2e71c9e711c3",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "K33 AB (ARCNF) (Q3 2026) Earnings Call Highlights: 35% Revenue Growth and 40% Trading Volume ...",
-   "link": "https://finance.yahoo.com/markets/crypto/articles/k33-ab-arcnf-q3-2026-082042686.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T08:20:42+00:00",
-   "tags": [
-    "earnings"
-   ],
-   "new": false,
-   "id": "2a3bed132a5c56d9",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Bitcoin recovers to $60.9k, but rates, regulatory fears persist",
-   "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-recovers-60-5k-rates-070224193.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T07:02:24+00:00",
-   "tags": [],
-   "new": false,
-   "id": "9dddabf3bac57e3a",
    "form": null
   },
   {
@@ -8155,21 +8174,6 @@
    "tags": [],
    "new": false,
    "id": "d3f9512fa6faeb78",
-   "form": null
-  },
-  {
-   "ticker": "XRP-USD",
-   "touches": [
-    "XRP-USD"
-   ],
-   "title": "XRP Just Dropped Below $1. Here's the Contrarian Case for Buying XRP Right Now.",
-   "link": "https://www.fool.com/investing/2026/11/25/xrp-just-dropped-below-1-heres-the-contrarian-case-for-buying-xrp-right-now/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T14:17:01+00:00",
-   "tags": [],
-   "new": false,
-   "id": "347c23a0ab1f494b",
    "form": null
   }
  ],
