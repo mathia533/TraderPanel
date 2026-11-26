@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-26T16:38:52.249621+00:00",
+ "generated_at": "2026-11-26T17:37:58.649317+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -983,8 +983,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "5 noticias recientes de MELI (temas: analistas). La última: «Michael Burry Just Flipped Bullish and Went on a Shopping Spree for Stocks»",
+      "text": "6 noticias recientes de MELI (temas: analistas). La última: «MercadoLibre (MELI): Near-Term Margin Compression Masks Strong User and Credit Growth»",
       "items": [
+       {
+        "title": "MercadoLibre (MELI): Near-Term Margin Compression Masks Strong User and Credit Growth",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/mercadolibre-meli-near-term-margin-165411501.html?.tsrc=rss",
+        "time": "2026-11-26T16:54:11+00:00",
+        "tags": []
+       },
        {
         "title": "Michael Burry Just Flipped Bullish and Went on a Shopping Spree for Stocks",
         "link": "https://247wallst.com/investing/2026/11/26/michael-burry-just-flipped-bullish-and-went-on-a-shopping-spree-for-stocks/?.tsrc=rss",
@@ -1004,12 +1010,6 @@
         "tags": [
          "analyst"
         ]
-       },
-       {
-        "title": "3 High-Growth Stocks That Could Make $10,000 Worth Much More by 2030",
-        "link": "https://247wallst.com/investing/2026/11/25/3-high-growth-stocks-that-could-make-10000-worth-much-more-by-2030/?.tsrc=rss",
-        "time": "2026-11-25T16:03:22+00:00",
-        "tags": []
        }
       ]
      },
@@ -2073,8 +2073,8 @@
    "label": "GGAL",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 4850.0,
-   "day_ch": 2.0,
+   "last": 4885.0,
+   "day_ch": 2.73,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2170,8 +2170,8 @@
    "label": "YPFD",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 5905.0,
-   "day_ch": 5.07,
+   "last": 5935.0,
+   "day_ch": 5.6,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -2266,8 +2266,8 @@
    "label": "PAMP",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 4568.0,
-   "day_ch": 2.87,
+   "last": 4508.0,
+   "day_ch": 1.52,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2334,8 +2334,8 @@
    "label": "BMA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 9060.0,
-   "day_ch": 1.06,
+   "last": 9035.0,
+   "day_ch": 0.78,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2413,8 +2413,8 @@
    "label": "ALUA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 847.0,
-   "day_ch": 0.36,
+   "last": 845.5,
+   "day_ch": 0.18,
    "source": "yahoo",
    "degraded": false,
    "score": 66,
@@ -2563,8 +2563,8 @@
    "label": "TXAR",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 709.0,
-   "day_ch": 0.0,
+   "last": 707.0,
+   "day_ch": -0.28,
    "source": "yahoo",
    "degraded": false,
    "score": 51,
@@ -2698,8 +2698,8 @@
    "label": "CEPU",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1881.0,
-   "day_ch": 1.79,
+   "last": 1892.0,
+   "day_ch": 2.38,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2766,8 +2766,8 @@
    "label": "TGSU2",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 7170.0,
-   "day_ch": 0.84,
+   "last": 7175.0,
+   "day_ch": 0.91,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2916,8 +2916,8 @@
    "label": "SUPV",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1769.0,
-   "day_ch": 2.79,
+   "last": 1772.0,
+   "day_ch": 2.96,
    "source": "yahoo",
    "degraded": false,
    "score": 5,
@@ -2989,8 +2989,8 @@
    "label": "BBAR",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 5395.0,
-   "day_ch": 0.56,
+   "last": 5355.0,
+   "day_ch": -0.19,
    "source": "yahoo",
    "degraded": false,
    "score": 13,
@@ -3066,8 +3066,8 @@
    "label": "LOMA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 3055.0,
-   "day_ch": 0.66,
+   "last": 3060.0,
+   "day_ch": 0.82,
    "source": "yahoo",
    "degraded": false,
    "score": 42,
@@ -3138,8 +3138,8 @@
    "label": "COME",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 28.9,
-   "day_ch": 2.48,
+   "last": 28.85,
+   "day_ch": 2.3,
    "source": "yahoo",
    "degraded": false,
    "score": 19,
@@ -3208,8 +3208,8 @@
    "label": "TECO2",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 3635.0,
-   "day_ch": -1.42,
+   "last": 3628.0,
+   "day_ch": -1.63,
    "source": "yahoo",
    "degraded": false,
    "score": 58,
@@ -3518,8 +3518,8 @@
    "label": "CRES",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1517.0,
-   "day_ch": 3.48,
+   "last": 1540.0,
+   "day_ch": 5.05,
    "source": "yahoo",
    "degraded": false,
    "score": 33,
@@ -3586,8 +3586,8 @@
    "label": "TRAN",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 2303.0,
-   "day_ch": 3.18,
+   "last": 2280.0,
+   "day_ch": 2.15,
    "source": "yahoo",
    "degraded": false,
    "score": 14,
@@ -3656,8 +3656,8 @@
    "label": "BYMA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 196.0,
-   "day_ch": 1.42,
+   "last": 196.5,
+   "day_ch": 1.68,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3726,8 +3726,8 @@
    "label": "METR",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1903.0,
-   "day_ch": 3.93,
+   "last": 1927.0,
+   "day_ch": 5.24,
    "source": "yahoo",
    "degraded": false,
    "score": 16,
@@ -3800,8 +3800,8 @@
    "label": "VALO",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 500.0,
-   "day_ch": 0.81,
+   "last": 500.5,
+   "day_ch": 0.91,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -4082,8 +4082,8 @@
    "label": "BTC",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 60372.0,
-   "day_ch": -0.01,
+   "last": 60382.0,
+   "day_ch": 0.01,
    "source": "yahoo",
    "degraded": false,
    "score": 49,
@@ -4144,8 +4144,20 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "20 noticias recientes de BTC-USD (temas: directivos, macro). La última: «TeraWulf (WULF) CEO Sets 1 GW Muskie Leasing Terms To Avoid Dilution»",
+      "text": "20 noticias recientes de BTC-USD (temas: directivos, macro). La última: «Galaxy Research Warns Bitcoin Could Fall to $28,200 if June Low Breaks»",
       "items": [
+       {
+        "title": "Galaxy Research Warns Bitcoin Could Fall to $28,200 if June Low Breaks",
+        "link": "https://www.cryptoprowl.com/releases/galaxy-research-warns-bitcoin-could-fall-to-28200-if-june-low-breaks-8091?.tsrc=rss",
+        "time": "2026-11-26T16:37:00+00:00",
+        "tags": []
+       },
+       {
+        "title": "Bitcoin Tops $60,000 as Risk Assets Rise in Holiday Trading",
+        "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-tops-60-000-risk-162823539.html?.tsrc=rss",
+        "time": "2026-11-26T16:28:23+00:00",
+        "tags": []
+       },
        {
         "title": "TeraWulf (WULF) CEO Sets 1 GW Muskie Leasing Terms To Avoid Dilution",
         "link": "https://finance.yahoo.com/markets/stocks/articles/terawulf-wulf-ceo-sets-1-161553042.html?.tsrc=rss",
@@ -4158,20 +4170,6 @@
         "title": "BTC News Today: US Bitcoin Strategic Reserve Bill Moves Closer as BTC Reclaims $60K",
         "link": "https://www.coinspeaker.com/btc-news-today-us-bitcoin-strategic-reserve-bill-moves-closer-as-btc-reclaims-60k/?.tsrc=rss",
         "time": "2026-11-26T16:09:25+00:00",
-        "tags": []
-       },
-       {
-        "title": "Before the bell: gold, oil, and Bitcoin skip the Thanksgiving break",
-        "link": "https://www.thestreet.com/crypto/markets/before-the-bell-gold-oil-and-bitcoin-skip-the-thanksgiving-break-?.tsrc=rss",
-        "time": "2026-11-26T15:50:00+00:00",
-        "tags": [
-         "macro"
-        ]
-       },
-       {
-        "title": "Bitcoin News: Swiss ETF Debut Meets $7B Options Expiry and US Strategic Reserve Push",
-        "link": "https://cryptonews.com/news/bitcoin-news-7b-options-expiry-swiss-etf-reserve-bill/?.tsrc=rss",
-        "time": "2026-11-26T15:38:32+00:00",
         "tags": []
        }
       ]
@@ -4187,8 +4185,8 @@
    "label": "ETH",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1685.0,
-   "day_ch": -0.33,
+   "last": 1690.0,
+   "day_ch": -0.06,
    "source": "yahoo",
    "degraded": false,
    "score": 49,
@@ -4249,8 +4247,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "19 noticias recientes de ETH-USD. La última: «Bitcoin News: Swiss ETF Debut Meets $7B Options Expiry and US Strategic Reserve Push»",
+      "text": "20 noticias recientes de ETH-USD. La última: «Bitcoin Tops $60,000 as Risk Assets Rise in Holiday Trading»",
       "items": [
+       {
+        "title": "Bitcoin Tops $60,000 as Risk Assets Rise in Holiday Trading",
+        "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-tops-60-000-risk-162823539.html?.tsrc=rss",
+        "time": "2026-11-26T16:28:23+00:00",
+        "tags": []
+       },
        {
         "title": "Bitcoin News: Swiss ETF Debut Meets $7B Options Expiry and US Strategic Reserve Push",
         "link": "https://cryptonews.com/news/bitcoin-news-7b-options-expiry-swiss-etf-reserve-bill/?.tsrc=rss",
@@ -4268,12 +4272,6 @@
         "link": "https://beincrypto.com/crypto-market-outlook-december-2026-three-risks/?.tsrc=rss",
         "time": "2026-11-26T11:26:32+00:00",
         "tags": []
-       },
-       {
-        "title": "Can Shiba Inu Reach $1 in 2027? The Answer Might Shock You.",
-        "link": "https://www.fool.com/investing/2026/11/26/can-shiba-inu-reach-usd1-in-2027-answer-shock-you/?.tsrc=rss",
-        "time": "2026-11-26T10:27:02+00:00",
-        "tags": []
        }
       ]
      }
@@ -4288,8 +4286,8 @@
    "label": "SOL",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 70.6,
-   "day_ch": 0.29,
+   "last": 70.83,
+   "day_ch": 0.62,
    "source": "yahoo",
    "degraded": false,
    "score": 25,
@@ -4386,8 +4384,8 @@
    "label": "BNB",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 549.75,
-   "day_ch": -0.69,
+   "last": 550.86,
+   "day_ch": -0.49,
    "source": "yahoo",
    "degraded": false,
    "score": 52,
@@ -4469,8 +4467,8 @@
    "label": "XRP",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.947,
-   "day_ch": 1.07,
+   "last": 0.9481,
+   "day_ch": 1.19,
    "source": "yahoo",
    "degraded": false,
    "score": 7,
@@ -4524,8 +4522,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "17 noticias recientes de XRP-USD. La última: «What XRP Did After Its First ETF and What Chainlink Could Do After Fidelity’s»",
+      "text": "18 noticias recientes de XRP-USD. La última: «Bitcoin Tops $60,000 as Risk Assets Rise in Holiday Trading»",
       "items": [
+       {
+        "title": "Bitcoin Tops $60,000 as Risk Assets Rise in Holiday Trading",
+        "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-tops-60-000-risk-162823539.html?.tsrc=rss",
+        "time": "2026-11-26T16:28:23+00:00",
+        "tags": []
+       },
        {
         "title": "What XRP Did After Its First ETF and What Chainlink Could Do After Fidelity’s",
         "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-xrp-did-after-its-first-etf-and-what-chainlink-could-do-after-fidelitys/?.tsrc=rss",
@@ -4543,12 +4547,6 @@
         "link": "https://cryptonews.com/news/why-is-crypto-up-today-btc-back-above-60k-bull-market-back/?.tsrc=rss",
         "time": "2026-11-26T10:11:22+00:00",
         "tags": []
-       },
-       {
-        "title": "Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1",
-        "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
-        "time": "2026-11-26T09:15:57+00:00",
-        "tags": []
        }
       ]
      }
@@ -4563,8 +4561,8 @@
    "label": "ADA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.1477,
-   "day_ch": 1.33,
+   "last": 0.14901,
+   "day_ch": 2.23,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4649,8 +4647,8 @@
    "label": "DOGE",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.05641,
-   "day_ch": 0.79,
+   "last": 0.05665,
+   "day_ch": 1.22,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4741,8 +4739,8 @@
    "label": "LINK",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 9.15,
-   "day_ch": 1.1,
+   "last": 9.19,
+   "day_ch": 1.53,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -4796,8 +4794,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "6 noticias recientes de LINK-USD. La última: «What XRP Did After Its First ETF and What Chainlink Could Do After Fidelity’s»",
+      "text": "7 noticias recientes de LINK-USD. La última: «Fidelity Files For Spot Chainlink ETF On Nasdaq»",
       "items": [
+       {
+        "title": "Fidelity Files For Spot Chainlink ETF On Nasdaq",
+        "link": "https://www.cryptoprowl.com/releases/fidelity-files-for-spot-chainlink-etf-on-nasdaq-8090?.tsrc=rss",
+        "time": "2026-11-26T16:25:00+00:00",
+        "tags": []
+       },
        {
         "title": "What XRP Did After Its First ETF and What Chainlink Could Do After Fidelity’s",
         "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-xrp-did-after-its-first-etf-and-what-chainlink-could-do-after-fidelitys/?.tsrc=rss",
@@ -4815,12 +4819,6 @@
         "link": "https://beincrypto.com/fidelity-chainlink-etf-filing-outflows/?.tsrc=rss",
         "time": "2026-11-26T05:00:43+00:00",
         "tags": []
-       },
-       {
-        "title": "Fidelity Files for a Spot Chainlink ETF",
-        "link": "https://www.bankless.com/read/news/fidelity-files-for-a-spot-chainlink-etf?.tsrc=rss",
-        "time": "2026-11-25T20:09:12+00:00",
-        "tags": []
        }
       ]
      }
@@ -4835,8 +4833,8 @@
    "label": "AVAX",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 6.57,
-   "day_ch": -0.81,
+   "last": 6.6,
+   "day_ch": -0.36,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -4903,8 +4901,8 @@
    "label": "TRX",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.302166,
-   "day_ch": -0.48,
+   "last": 0.302626,
+   "day_ch": -0.33,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -7218,6 +7216,68 @@
  },
  "news": [
   {
+   "ticker": "MELI",
+   "touches": [
+    "MELI"
+   ],
+   "title": "MercadoLibre (MELI): Near-Term Margin Compression Masks Strong User and Credit Growth",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/mercadolibre-meli-near-term-margin-165411501.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T16:54:11+00:00",
+   "tags": [],
+   "new": true,
+   "id": "84de0125fbffba5d",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Galaxy Research Warns Bitcoin Could Fall to $28,200 if June Low Breaks",
+   "link": "https://www.cryptoprowl.com/releases/galaxy-research-warns-bitcoin-could-fall-to-28200-if-june-low-breaks-8091?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T16:37:00+00:00",
+   "tags": [],
+   "new": true,
+   "id": "464687eef1571783",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD",
+    "ETH-USD",
+    "XRP-USD"
+   ],
+   "title": "Bitcoin Tops $60,000 as Risk Assets Rise in Holiday Trading",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-tops-60-000-risk-162823539.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T16:28:23+00:00",
+   "tags": [],
+   "new": true,
+   "id": "f6dbcfe8045f44ce",
+   "form": null
+  },
+  {
+   "ticker": "LINK-USD",
+   "touches": [
+    "LINK-USD"
+   ],
+   "title": "Fidelity Files For Spot Chainlink ETF On Nasdaq",
+   "link": "https://www.cryptoprowl.com/releases/fidelity-files-for-spot-chainlink-etf-on-nasdaq-8090?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T16:25:00+00:00",
+   "tags": [],
+   "new": true,
+   "id": "e7b7cff067c184a1",
+   "form": null
+  },
+  {
    "ticker": "BTC-USD",
    "touches": [
     "BTC-USD"
@@ -7230,7 +7290,7 @@
    "tags": [
     "people"
    ],
-   "new": true,
+   "new": false,
    "id": "98192584d330be3f",
    "form": null
   },
@@ -7245,7 +7305,7 @@
    "kind": "headline",
    "time": "2026-11-26T16:09:25+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "94d69fc3f9f5b955",
    "form": null
   },
@@ -7262,7 +7322,7 @@
    "tags": [
     "macro"
    ],
-   "new": true,
+   "new": false,
    "id": "b4c9ea8d90847029",
    "form": null
   },
@@ -7278,7 +7338,7 @@
    "kind": "headline",
    "time": "2026-11-26T15:38:32+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "186109079fa1bf45",
    "form": null
   },
@@ -7293,7 +7353,7 @@
    "kind": "headline",
    "time": "2026-11-26T15:18:12+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "ab0ea2c3bbf9804a",
    "form": null
   },
@@ -7357,23 +7417,6 @@
    "tags": [],
    "new": false,
    "id": "0660c943b1bef127",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Why Is Bitcoin Dropping So Much? 5 Reasons Behind Its Worst Month Since 2022",
-   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/why-is-bitcoin-dropping-so-much-5-reasons-behind-its-worst-month-since-2022/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T14:43:12+00:00",
-   "tags": [
-    "macro"
-   ],
-   "new": false,
-   "id": "496f79b6556dea65",
    "form": null
   },
   {
@@ -7642,21 +7685,6 @@
    "tags": [],
    "new": false,
    "id": "c65e4192afdfa836",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Wells Fargo Is Now the Largest Institutional Holder of Spot Bitcoin ETFs. If Banks Are Buying Bitcoin, Should You?",
-   "link": "https://www.fool.com/investing/2026/11/26/wells-fargo-is-now-the-largest-institutional-holder-of-spot-bitcoin-etfs-if-banks-are-buying-bitcoin-should-you/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T09:50:02+00:00",
-   "tags": [],
-   "new": false,
-   "id": "46977a02ef8526b7",
    "form": null
   },
   {
@@ -8142,38 +8170,6 @@
    "tags": [],
    "new": false,
    "id": "e0fc4a715a25b398",
-   "form": null
-  },
-  {
-   "ticker": "GLOB",
-   "touches": [
-    "GLOB"
-   ],
-   "title": "HCA Healthcare, GoodRx downgraded: Wall Street's top analyst calls",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/hca-healthcare-goodrx-downgraded-wall-144025827.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T14:40:25+00:00",
-   "tags": [
-    "analyst"
-   ],
-   "new": false,
-   "id": "400965cc2607e470",
-   "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD"
-   ],
-   "title": "Bit Digital halves Galaxy borrowings with $50 million repayment",
-   "link": "https://www.proactiveinvestors.com/companies/news/1102445/bit-digital-halves-galaxy-borrowings-with-50-million-repayment-1102445.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T14:30:00+00:00",
-   "tags": [],
-   "new": false,
-   "id": "d3f9512fa6faeb78",
    "form": null
   }
  ],
