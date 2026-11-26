@@ -15,9 +15,47 @@
   "leolopezdie-bit|byma:TXAR:pattern:double_bottom:2026-09-04": {
    "at": "2026-11-25T21:40:22.388Z",
    "status": "sin_telegram"
+  },
+  "mathia533|report:2026-11-26": {
+   "at": "2026-11-26T21:39:23.987Z",
+   "status": "enviado"
+  },
+  "leolopezdie-bit|report:2026-11-26": {
+   "at": "2026-11-26T21:39:25.088Z",
+   "status": "sin_telegram"
   }
  },
  "recent": [
+  {
+   "id": "report:2026-11-26",
+   "to": "leolopezdie-bit",
+   "src": "engine",
+   "who": null,
+   "ts": "2026-11-26T21:38:16.341679+00:00",
+   "kind": "adr",
+   "label": "Cierre",
+   "type": "info",
+   "reason": null,
+   "setup": null,
+   "price": null,
+   "status": "sin_telegram",
+   "at": "2026-11-26T21:39:25.088Z"
+  },
+  {
+   "id": "report:2026-11-26",
+   "to": "mathia533",
+   "src": "engine",
+   "who": null,
+   "ts": "2026-11-26T21:38:16.341679+00:00",
+   "kind": "adr",
+   "label": "Cierre",
+   "type": "info",
+   "reason": null,
+   "setup": null,
+   "price": null,
+   "status": "enviado",
+   "at": "2026-11-26T21:39:23.987Z"
+  },
   {
    "id": "byma:TXAR:pattern:double_bottom:2026-09-04",
    "to": "leolopezdie-bit",
@@ -79,7 +117,7 @@
    "at": "2026-11-25T21:40:19.904Z"
   }
  ],
- "last_run": "2026-11-26T20:55:09.811Z",
+ "last_run": "2026-11-26T21:39:22.027Z",
  "telegram": true,
  "last_error": null,
  "last_test": "2026-11-25T15:28:03.993Z",
