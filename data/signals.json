@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-25T22:37:32.290149+00:00",
+ "generated_at": "2026-11-26T13:39:18.945277+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -34,10 +34,10 @@
  "markets": {
   "adr": {
    "gate": "restrictive",
-   "why": "exposure-coach: techo 1 %, priorizar liquidez",
+   "why": "exposure-coach: techo 2 %, priorizar liquidez",
    "benchmark": "SPY",
    "exposure": {
-    "ceiling_pct": 1,
+    "ceiling_pct": 2,
     "recommendation": "CASH_PRIORITY",
     "recommendation_es": "priorizar liquidez",
     "bias": "NEUTRAL",
@@ -139,8 +139,8 @@
   }
  },
  "us_market": {
-  "date": "2026-11-25",
-  "generated_at": "2026-11-25T04:43:37.384332+00:00",
+  "date": "2026-11-26",
+  "generated_at": "2026-11-26T13:39:18.945277+00:00",
   "errors": {},
   "breadth": {
    "score": 32.8,
@@ -149,9 +149,9 @@
    "as_of": null
   },
   "uptrend": {
-   "score": 19.7,
-   "zone": "Bear",
-   "guidance": "Capital Preservation (0-30%)",
+   "score": 21.0,
+   "zone": "Cautious",
+   "guidance": "Defensive (30-60%)",
    "warnings": [
     "SECTOR DIVERGENCE WARNING"
    ]
@@ -159,7 +159,7 @@
   "sector": {
    "phase": "recession",
    "phase_es": "recesión",
-   "confidence": "moderate",
+   "confidence": "high",
    "leaders": [
     "Healthcare",
     "Consumer Defensive",
@@ -173,22 +173,27 @@
    "rows": [
     {
      "sector": "Healthcare",
-     "pct": 29.9,
+     "pct": 27.8,
      "trend": "Down"
     },
     {
      "sector": "Consumer Defensive",
-     "pct": 22.9,
+     "pct": 23.5,
      "trend": "Down"
     },
     {
      "sector": "Communication Services",
-     "pct": 21.0,
+     "pct": 21.4,
      "trend": "Down"
     },
     {
      "sector": "Technology",
-     "pct": 15.1,
+     "pct": 18.2,
+     "trend": "Down"
+    },
+    {
+     "sector": "Real Estate",
+     "pct": 15.5,
      "trend": "Down"
     },
     {
@@ -197,39 +202,34 @@
      "trend": "Down"
     },
     {
-     "sector": "Real Estate",
-     "pct": 10.2,
+     "sector": "Industrials",
+     "pct": 9.8,
      "trend": "Down"
     },
     {
      "sector": "Financial",
-     "pct": 8.0,
-     "trend": "Down"
-    },
-    {
-     "sector": "Industrials",
-     "pct": 8.0,
+     "pct": 7.8,
      "trend": "Down"
     },
     {
      "sector": "Basic Materials",
-     "pct": 1.5,
+     "pct": 4.6,
      "trend": "Down"
     },
     {
      "sector": "Utilities",
-     "pct": 1.3,
-     "trend": "Down"
+     "pct": 2.7,
+     "trend": "Up"
     },
     {
      "sector": "Energy",
-     "pct": 0.0,
+     "pct": 0.7,
      "trend": "Down"
     }
    ]
   },
   "exposure": {
-   "ceiling_pct": 1,
+   "ceiling_pct": 2,
    "recommendation": "CASH_PRIORITY",
    "recommendation_es": "priorizar liquidez",
    "bias": "NEUTRAL",
@@ -307,7 +307,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "3 noticias recientes de YPF (temas: balance, operación corporativa). La última: «Down 34.6% in 4 Weeks, Here's Why YPF Sociedad Anonima (YPF) Looks Ripe for a Turnaround». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "text": "2 noticias recientes de YPF (temas: balance, operación corporativa). La última: «Down 34.6% in 4 Weeks, Here's Why YPF Sociedad Anonima (YPF) Looks Ripe for a Turnaround». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "Down 34.6% in 4 Weeks, Here's Why YPF Sociedad Anonima (YPF) Looks Ripe for a Turnaround",
@@ -323,14 +323,6 @@
         "time": "2026-11-25T10:55:00+00:00",
         "tags": [
          "deal"
-        ]
-       },
-       {
-        "title": "Zacks.com featured highlights include ZIM Integrated Shipping, YPF Sociedad Anonima, Chord Energy, Occidental Petroleum and Chatham Lodging Trust",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/zacks-com-featured-highlights-zim-145100858.html?.tsrc=rss",
-        "time": "2026-11-24T14:51:00+00:00",
-        "tags": [
-         "earnings"
         ]
        }
       ]
@@ -405,8 +397,17 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "1 noticias recientes de GGAL (temas: balance, macro). La última: «Grupo Financiero Galicia Q3 Earnings Call Highlights». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "text": "2 noticias recientes de GGAL (temas: balance, macro). La última: «Galicia (GGAL) Q3 2026 Earnings Call Transcript». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
+       {
+        "title": "Galicia (GGAL) Q3 2026 Earnings Call Transcript",
+        "link": "https://www.fool.com/earnings/call-transcripts/2026/11/26/galicia-ggal-q3-2026-earnings-call-transcript/?.tsrc=rss",
+        "time": "2026-11-26T06:28:08+00:00",
+        "tags": [
+         "earnings",
+         "macro"
+        ]
+       },
        {
         "title": "Grupo Financiero Galicia Q3 Earnings Call Highlights",
         "link": "https://www.marketbeat.com/instant-alerts/transcript-grupo-financiero-galicia-q3-earnings-call-highlights-2026-11-25/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
@@ -453,12 +454,13 @@
     "error": null
    },
    "burst": {
-    "state": "WATCH_ONLY",
-    "rating": "Watch",
-    "score": 62,
-    "trigger": "dollar_breakout",
+    "state": "MANUAL_REVIEW_ONLY",
+    "rating": "B",
+    "score": 70,
+    "trigger": "range_expansion",
     "tags": [
-     "dollar_breakout"
+     "dollar_breakout",
+     "range_expansion"
     ],
     "day_gain_pct": 1.9,
     "volume_ratio_20d": 1.05,
@@ -611,7 +613,7 @@
      "range_expansion"
     ],
     "day_gain_pct": 0.52,
-    "volume_ratio_20d": 1.56,
+    "volume_ratio_20d": 1.57,
     "error": null
    },
    "scanner": {
@@ -637,8 +639,19 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "ok",
-      "text": "No hubo noticias de BMA en las últimas horas: nada en contra"
+      "status": "warn",
+      "text": "1 noticias recientes de BMA (temas: balance, macro). La última: «Banco Macro Announces Results for the Third Quarter of 2026». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "items": [
+       {
+        "title": "Banco Macro Announces Results for the Third Quarter of 2026",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/banco-macro-announces-results-third-230000473.html?.tsrc=rss",
+        "time": "2026-11-25T23:00:00+00:00",
+        "tags": [
+         "earnings",
+         "macro"
+        ]
+       }
+      ]
      },
      {
       "key": "plan",
@@ -953,9 +966,15 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "warn",
-      "text": "8 noticias recientes de MELI (temas: analistas). La última: «Morgan Stanley Cut Its MercadoLibre Target. It Still Sees 66% Upside». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "status": "ok",
+      "text": "4 noticias recientes de MELI (temas: analistas). La última: «This Week In E-Commerce - Holiday Shopping Trends: Blending Online and In-Store Buys»",
       "items": [
+       {
+        "title": "This Week In E-Commerce - Holiday Shopping Trends: Blending Online and In-Store Buys",
+        "link": "https://finance.yahoo.com/media-advertising/articles/week-e-commerce-holiday-shopping-123719566.html?.tsrc=rss",
+        "time": "2026-11-26T12:37:19+00:00",
+        "tags": []
+       },
        {
         "title": "Morgan Stanley Cut Its MercadoLibre Target. It Still Sees 66% Upside",
         "link": "https://www.tikr.com/blog/morgan-stanley-cut-its-mercadolibre-target-it-still-sees-66-upside?ref=yahoofinance&tlnk=yf-261125-pq77x236&.tsrc=rss",
@@ -974,12 +993,6 @@
         "title": "Michael Burry Sells Remaining Nasdaq-100 Puts, Eyes Fresh Nvidia Short Near $200: ‘I Am Long Undervalued Common Stocks’",
         "link": "https://stocktwits.com/news-articles/markets/equity/michael-burry-sells-remaining-nasdaq-100-puts-eyes-fresh-nvidia-short-near-200/cNbHOX0R9lu?.tsrc=rss",
         "time": "2026-11-25T10:09:40+00:00",
-        "tags": []
-       },
-       {
-        "title": "Coupang (CPNG) Stock Is Up 7.8% Today Without Company News",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/coupang-cpng-stock-7-8-210109517.html?.tsrc=rss",
-        "time": "2026-11-24T21:01:09+00:00",
         "tags": []
        }
       ]
@@ -1286,17 +1299,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "1 noticias recientes de CEPU (temas: operación corporativa). La última: «Texas Pacific Land's $3B EagleRock Deal Expands Permian Footprint»",
-      "items": [
-       {
-        "title": "Texas Pacific Land's $3B EagleRock Deal Expands Permian Footprint",
-        "link": "https://finance.yahoo.com/energy/articles/texas-pacific-lands-3b-eaglerock-162700553.html?.tsrc=rss",
-        "time": "2026-11-24T16:27:00+00:00",
-        "tags": [
-         "deal"
-        ]
-       }
-      ]
+      "text": "No hubo noticias de CEPU en las últimas horas: nada en contra"
      }
     ]
    },
@@ -1366,15 +1369,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "1 noticias recientes de SUPV. La última: «Implied Volatility Surging for Grupo Supervielle Stock Options»",
-      "items": [
-       {
-        "title": "Implied Volatility Surging for Grupo Supervielle Stock Options",
-        "link": "https://finance.yahoo.com/markets/options/articles/implied-volatility-surging-grupo-supervielle-143900543.html?.tsrc=rss",
-        "time": "2026-11-24T14:39:00+00:00",
-        "tags": []
-       }
-      ]
+      "text": "No hubo noticias de SUPV en las últimas horas: nada en contra"
      }
     ]
    },
@@ -1512,7 +1507,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "2 noticias recientes de BBAR (temas: balance, macro). La última: «What BBVA Banco Frances (BBAR) Said on Its Q3 Earnings Call». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "text": "1 noticias recientes de BBAR (temas: balance, macro). La última: «What BBVA Banco Frances (BBAR) Said on Its Q3 Earnings Call». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "What BBVA Banco Frances (BBAR) Said on Its Q3 Earnings Call",
@@ -1521,14 +1516,6 @@
         "tags": [
          "earnings",
          "macro"
-        ]
-       },
-       {
-        "title": "BBVA Argentina Announces Third Quarter 2026 Financial Results",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/bbva-argentina-announces-third-quarter-213900404.html?.tsrc=rss",
-        "time": "2026-11-24T21:39:00+00:00",
-        "tags": [
-         "earnings"
         ]
        }
       ]
@@ -1626,13 +1613,13 @@
         "seed": 19,
         "bars_left": 5,
         "p_target": 0.0316,
-        "p_stop": 0.2628,
-        "p_neither": 0.7056,
-        "p_green": 0.429,
+        "p_stop": 0.263,
+        "p_neither": 0.7054,
+        "p_green": 0.4288,
         "median_close": 8.14,
         "p5_close": 7.41,
         "p95_close": 9.01,
-        "avg_R": -0.077,
+        "avg_R": -0.078,
         "r_at_target": 2.0,
         "pool_sessions": 250,
         "until": "5 ruedas",
@@ -2040,8 +2027,8 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "warn",
-      "text": "4 noticias recientes de GLOB (temas: analistas, balance, dividendos/recompra). La última: «Globant announces Converge 2026: an edition about reinvention in the AI-Native Era, with Glob.AI at the center». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "status": "ok",
+      "text": "2 noticias recientes de GLOB (temas: analistas). La última: «Globant announces Converge 2026: an edition about reinvention in the AI-Native Era, with Glob.AI at the center»",
       "items": [
        {
         "title": "Globant announces Converge 2026: an edition about reinvention in the AI-Native Era, with Glob.AI at the center",
@@ -2056,21 +2043,6 @@
         "tags": [
          "analyst"
         ]
-       },
-       {
-        "title": "Globant Stock Has The Bull Case Changed After Lower Earnings Guidance",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/globant-stock-bull-case-changed-011109844.html?.tsrc=rss",
-        "time": "2026-11-25T01:11:09+00:00",
-        "tags": [
-         "earnings",
-         "capital"
-        ]
-       },
-       {
-        "title": "Globant (GLOB) Stock Is Up 12.4% Today Without Company News",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/globant-glob-stock-12-4-160104786.html?.tsrc=rss",
-        "time": "2026-11-24T16:01:04+00:00",
-        "tags": []
        }
       ]
      }
@@ -2141,8 +2113,17 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "1 noticias recientes de GGAL (temas: balance, macro). La última: «Grupo Financiero Galicia Q3 Earnings Call Highlights». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "text": "2 noticias recientes de GGAL (temas: balance, macro). La última: «Galicia (GGAL) Q3 2026 Earnings Call Transcript». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
+       {
+        "title": "Galicia (GGAL) Q3 2026 Earnings Call Transcript",
+        "link": "https://www.fool.com/earnings/call-transcripts/2026/11/26/galicia-ggal-q3-2026-earnings-call-transcript/?.tsrc=rss",
+        "time": "2026-11-26T06:28:08+00:00",
+        "tags": [
+         "earnings",
+         "macro"
+        ]
+       },
        {
         "title": "Grupo Financiero Galicia Q3 Earnings Call Highlights",
         "link": "https://www.marketbeat.com/instant-alerts/transcript-grupo-financiero-galicia-q3-earnings-call-highlights-2026-11-25/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
@@ -2222,7 +2203,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "3 noticias recientes de YPF (temas: balance, operación corporativa). La última: «Down 34.6% in 4 Weeks, Here's Why YPF Sociedad Anonima (YPF) Looks Ripe for a Turnaround». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "text": "2 noticias recientes de YPF (temas: balance, operación corporativa). La última: «Down 34.6% in 4 Weeks, Here's Why YPF Sociedad Anonima (YPF) Looks Ripe for a Turnaround». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "Down 34.6% in 4 Weeks, Here's Why YPF Sociedad Anonima (YPF) Looks Ripe for a Turnaround",
@@ -2238,14 +2219,6 @@
         "time": "2026-11-25T10:55:00+00:00",
         "tags": [
          "deal"
-        ]
-       },
-       {
-        "title": "Zacks.com featured highlights include ZIM Integrated Shipping, YPF Sociedad Anonima, Chord Energy, Occidental Petroleum and Chatham Lodging Trust",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/zacks-com-featured-highlights-zim-145100858.html?.tsrc=rss",
-        "time": "2026-11-24T14:51:00+00:00",
-        "tags": [
-         "earnings"
         ]
        }
       ]
@@ -2383,8 +2356,19 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "ok",
-      "text": "No hubo noticias de BMA en las últimas horas: nada en contra"
+      "status": "warn",
+      "text": "1 noticias recientes de BMA (temas: balance, macro). La última: «Banco Macro Announces Results for the Third Quarter of 2026». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "items": [
+       {
+        "title": "Banco Macro Announces Results for the Third Quarter of 2026",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/banco-macro-announces-results-third-230000473.html?.tsrc=rss",
+        "time": "2026-11-25T23:00:00+00:00",
+        "tags": [
+         "earnings",
+         "macro"
+        ]
+       }
+      ]
      }
     ]
    },
@@ -2737,17 +2721,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "1 noticias recientes de CEPU (temas: operación corporativa). La última: «Texas Pacific Land's $3B EagleRock Deal Expands Permian Footprint»",
-      "items": [
-       {
-        "title": "Texas Pacific Land's $3B EagleRock Deal Expands Permian Footprint",
-        "link": "https://finance.yahoo.com/energy/articles/texas-pacific-lands-3b-eaglerock-162700553.html?.tsrc=rss",
-        "time": "2026-11-24T16:27:00+00:00",
-        "tags": [
-         "deal"
-        ]
-       }
-      ]
+      "text": "No hubo noticias de CEPU en las últimas horas: nada en contra"
      }
     ]
    },
@@ -2943,7 +2917,7 @@
      "dollar_breakout"
     ],
     "day_gain_pct": 4.24,
-    "volume_ratio_20d": 1.65,
+    "volume_ratio_20d": 1.64,
     "error": null
    },
    "scanner": {
@@ -2970,15 +2944,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "1 noticias recientes de SUPV. La última: «Implied Volatility Surging for Grupo Supervielle Stock Options»",
-      "items": [
-       {
-        "title": "Implied Volatility Surging for Grupo Supervielle Stock Options",
-        "link": "https://finance.yahoo.com/markets/options/articles/implied-volatility-surging-grupo-supervielle-143900543.html?.tsrc=rss",
-        "time": "2026-11-24T14:39:00+00:00",
-        "tags": []
-       }
-      ]
+      "text": "No hubo noticias de SUPV en las últimas horas: nada en contra"
      }
     ]
    },
@@ -3044,7 +3010,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "2 noticias recientes de BBAR (temas: balance, macro). La última: «What BBVA Banco Frances (BBAR) Said on Its Q3 Earnings Call». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "text": "1 noticias recientes de BBAR (temas: balance, macro). La última: «What BBVA Banco Frances (BBAR) Said on Its Q3 Earnings Call». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "What BBVA Banco Frances (BBAR) Said on Its Q3 Earnings Call",
@@ -3053,14 +3019,6 @@
         "tags": [
          "earnings",
          "macro"
-        ]
-       },
-       {
-        "title": "BBVA Argentina Announces Third Quarter 2026 Financial Results",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/bbva-argentina-announces-third-quarter-213900404.html?.tsrc=rss",
-        "time": "2026-11-24T21:39:00+00:00",
-        "tags": [
-         "earnings"
         ]
        }
       ]
@@ -4090,51 +4048,54 @@
    "kind": "cripto",
    "id": "bitcoin",
    "label": "BTC",
-   "date": "2026-11-24",
-   "live_date": "2026-11-25",
-   "last": 60147.0,
-   "day_ch": 0.67,
+   "date": "2026-11-25",
+   "live_date": "2026-11-26",
+   "last": 60767.0,
+   "day_ch": 0.64,
    "source": "yahoo",
    "degraded": false,
-   "score": 26,
+   "score": 49,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 75638.0,
-   "sma200": 72130.0,
+   "sma50": 75134.0,
+   "sma200": 72028.0,
    "vcp": {
     "rating": "No VCP",
-    "score": 25.6,
+    "score": 18.1,
     "state": "Damaged",
     "pattern": "Damaged",
-    "pivot": 84840.05,
+    "pivot": 87363.76,
     "stop": 54598.07,
-    "distance_pct": -29.58,
-    "contractions": 2,
+    "distance_pct": -30.89,
+    "contractions": 1,
     "trend_score": 14.3,
     "rs_score": 60,
-    "weakest": "Pivot Proximity",
+    "weakest": "Contraction Quality",
     "error": null
    },
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 0,
-    "trigger": "9m_volume",
+    "score": 49,
+    "trigger": "dollar_breakout",
     "tags": [
+     "dollar_breakout",
      "9m_volume"
     ],
-    "day_gain_pct": -2.39,
-    "volume_ratio_20d": 0.94,
+    "day_gain_pct": 1.06,
+    "volume_ratio_20d": 1.18,
     "error": null
    },
    "scanner": {
     "tags": [
-     "oversold"
+     "oversold",
+     "oversold_bounce"
     ],
     "labels": [
-     "sobreventa (RSI < 30)"
+     "sobreventa (RSI < 30)",
+     "rebote de sobreventa"
     ],
-    "rsi": 24.9
+    "rsi": 27.5
    },
    "news_ticker": "BTC-USD",
    "pipeline": {
@@ -4145,38 +4106,36 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Sobreventa (rsi < 30) · RSI 24,9"
+      "text": "Sobreventa (rsi < 30), rebote de sobreventa · RSI 27,5"
      },
      {
       "key": "news",
       "name": "Noticias",
-      "status": "ok",
-      "text": "19 noticias recientes de BTC-USD (temas: legal). La última: «Nvidia settles 8-year-old investor suit for $290M»",
+      "status": "warn",
+      "text": "20 noticias recientes de BTC-USD. La última: «Galaxy Research Withdraws Call That Bitcoin's Bear Market Is Over». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
-        "title": "Nvidia settles 8-year-old investor suit for $290M",
-        "link": "https://www.thestreet.com/crypto/artificial-intelligence/nvidia-settles-8-year-old-investor-suit-for-290m?.tsrc=rss",
-        "time": "2026-11-25T22:30:00+00:00",
-        "tags": [
-         "legal"
-        ]
-       },
-       {
-        "title": "How Much of Your Portfolio Should Be in Bitcoin After a 50% Drop?",
-        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/25/how-much-of-your-portfolio-should-be-in-bitcoin-after-a-50-drop/?.tsrc=rss",
-        "time": "2026-11-25T22:14:48+00:00",
+        "title": "Galaxy Research Withdraws Call That Bitcoin's Bear Market Is Over",
+        "link": "https://decrypt.co/384030/galaxy-research-withdraws-call-that-bitcoins-bear-market-is-over?.tsrc=rss",
+        "time": "2026-11-26T12:26:08+00:00",
         "tags": []
        },
        {
-        "title": "Why Has Strategy Stock Trailed Dropbox?",
-        "link": "https://www.trefis.com/stock/mstr/articles/628944/why-has-strategy-stock-trailed-dropbox/2026-11-25?.tsrc=rss",
-        "time": "2026-11-25T22:10:42+00:00",
+        "title": "Billionaire Investor Paul Tudor Jones Just Doubled Down on Bitcoin. What Does He Know That the Market Doesn't?",
+        "link": "https://www.fool.com/investing/2026/11/26/billionaire-investor-paul-tudor-jones-just-doubled-down-on-bitcoin-what-does-he-know-that-you-dont/?.tsrc=rss",
+        "time": "2026-11-26T12:20:02+00:00",
         "tags": []
        },
        {
-        "title": "Analyst explains why Bitcoin’s next move depends on Nasdaq",
-        "link": "https://www.thestreet.com/crypto/markets/analyst-explains-why-bitcoins-next-move-depends-on-nasdaq?.tsrc=rss",
-        "time": "2026-11-25T22:00:00+00:00",
+        "title": "Crypto Market Faces 3 Critical Risks Heading Into December 2026",
+        "link": "https://beincrypto.com/crypto-market-outlook-december-2026-three-risks/?.tsrc=rss",
+        "time": "2026-11-26T11:26:32+00:00",
+        "tags": []
+       },
+       {
+        "title": "Can a 17-Year Track Record Protect Bitcoin? Ryan Watkins Weighs In",
+        "link": "https://unchainedcrypto.com/can-a-17-year-track-record-protect-bitcoin-ryan-watkins-weighs-in/?.tsrc=rss",
+        "time": "2026-11-26T11:00:45+00:00",
         "tags": []
        }
       ]
@@ -4190,17 +4149,17 @@
    "kind": "cripto",
    "id": "ethereum",
    "label": "ETH",
-   "date": "2026-11-24",
-   "live_date": "2026-11-25",
-   "last": 1685.0,
-   "day_ch": 0.44,
+   "date": "2026-11-25",
+   "live_date": "2026-11-26",
+   "last": 1701.0,
+   "day_ch": 0.6,
    "source": "yahoo",
    "degraded": false,
-   "score": 14,
+   "score": 49,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 2205.0,
-   "sma200": 2116.0,
+   "sma50": 2185.0,
+   "sma200": 2113.0,
    "vcp": {
     "rating": "No VCP",
     "score": 13.6,
@@ -4208,7 +4167,7 @@
     "pattern": "Damaged",
     "pivot": 2805.5,
     "stop": 2297.34,
-    "distance_pct": -40.2,
+    "distance_pct": -39.73,
     "contractions": 1,
     "trend_score": 14.3,
     "rs_score": 40,
@@ -4218,23 +4177,26 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 0,
-    "trigger": "9m_volume",
+    "score": 49,
+    "trigger": "dollar_breakout",
     "tags": [
+     "dollar_breakout",
      "9m_volume"
     ],
-    "day_gain_pct": -1.82,
-    "volume_ratio_20d": 0.85,
+    "day_gain_pct": 0.78,
+    "volume_ratio_20d": 1.04,
     "error": null
    },
    "scanner": {
     "tags": [
-     "oversold"
+     "oversold",
+     "oversold_bounce"
     ],
     "labels": [
-     "sobreventa (RSI < 30)"
+     "sobreventa (RSI < 30)",
+     "rebote de sobreventa"
     ],
-    "rsi": 28.1
+    "rsi": 29.6
    },
    "news_ticker": "ETH-USD",
    "pipeline": {
@@ -4245,36 +4207,36 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Sobreventa (rsi < 30) · RSI 28,1"
+      "text": "Sobreventa (rsi < 30), rebote de sobreventa · RSI 29,6"
      },
      {
       "key": "news",
       "name": "Noticias",
-      "status": "warn",
-      "text": "20 noticias recientes de ETH-USD. La última: «Analyst explains why Bitcoin’s next move depends on Nasdaq». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "status": "ok",
+      "text": "19 noticias recientes de ETH-USD. La última: «Crypto Market Faces 3 Critical Risks Heading Into December 2026»",
       "items": [
        {
-        "title": "Analyst explains why Bitcoin’s next move depends on Nasdaq",
-        "link": "https://www.thestreet.com/crypto/markets/analyst-explains-why-bitcoins-next-move-depends-on-nasdaq?.tsrc=rss",
-        "time": "2026-11-25T22:00:00+00:00",
+        "title": "Crypto Market Faces 3 Critical Risks Heading Into December 2026",
+        "link": "https://beincrypto.com/crypto-market-outlook-december-2026-three-risks/?.tsrc=rss",
+        "time": "2026-11-26T11:26:32+00:00",
         "tags": []
        },
        {
-        "title": "Fidelity Files for a Spot Chainlink ETF",
-        "link": "https://www.bankless.com/read/news/fidelity-files-for-a-spot-chainlink-etf?.tsrc=rss",
-        "time": "2026-11-25T20:09:12+00:00",
+        "title": "Can Shiba Inu Reach $1 in 2027? The Answer Might Shock You.",
+        "link": "https://www.fool.com/investing/2026/11/26/can-shiba-inu-reach-usd1-in-2027-answer-shock-you/?.tsrc=rss",
+        "time": "2026-11-26T10:27:02+00:00",
         "tags": []
        },
        {
-        "title": "Franklin Templeton Adds Hyperliquid's HYPE to Its Crypto Index ETF",
-        "link": "https://www.cryptoprowl.com/releases/franklin-templeton-adds-hyperliquids-hype-to-its-crypto-index-etf-8076?.tsrc=rss",
-        "time": "2026-11-25T18:15:00+00:00",
+        "title": "Why Is Crypto Up Today? BTC Back Above $60K – is the Bull Market Back?",
+        "link": "https://cryptonews.com/news/why-is-crypto-up-today-btc-back-above-60k-bull-market-back/?.tsrc=rss",
+        "time": "2026-11-26T10:11:22+00:00",
         "tags": []
        },
        {
-        "title": "Can XRP Reach Standard Chartered’s $12.60 Target by 2028?",
-        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/25/can-xrp-reach-standard-chartereds-12-60-target-by-2028/?.tsrc=rss",
-        "time": "2026-11-25T17:59:06+00:00",
+        "title": "Ethereum Price Reclaims $1,700: Network Activity Defies 39% Crash, $80M Shorts Liquidated",
+        "link": "https://99bitcoins.com/news/altcoins/ethereum-price-39-percent-crash-vitalik-eth-selloff/?.tsrc=rss",
+        "time": "2026-11-26T08:47:31+00:00",
         "tags": []
        }
       ]
@@ -4288,17 +4250,17 @@
    "kind": "cripto",
    "id": "solana",
    "label": "SOL",
-   "date": "2026-11-24",
-   "live_date": "2026-11-25",
-   "last": 70.46,
-   "day_ch": 1.18,
+   "date": "2026-11-25",
+   "live_date": "2026-11-26",
+   "last": 70.82,
+   "day_ch": 0.61,
    "source": "yahoo",
    "degraded": false,
    "score": 25,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 93.19,
-   "sma200": 88.13,
+   "sma50": 92.18,
+   "sma200": 88.01,
    "vcp": {
     "rating": "No VCP",
     "score": 24.6,
@@ -4306,7 +4268,7 @@
     "pattern": "Damaged",
     "pivot": 107.12,
     "stop": 95.27,
-    "distance_pct": -34.99,
+    "distance_pct": -34.29,
     "contractions": 2,
     "trend_score": 14.3,
     "rs_score": 50,
@@ -4321,18 +4283,18 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": -3.26,
-    "volume_ratio_20d": 0.85,
+    "day_gain_pct": 1.09,
+    "volume_ratio_20d": 1.06,
     "error": null
    },
    "scanner": {
     "tags": [
-     "oversold"
+     "oversold_bounce"
     ],
     "labels": [
-     "sobreventa (RSI < 30)"
+     "rebote de sobreventa"
     ],
-    "rsi": 29.2
+    "rsi": 31.1
    },
    "news_ticker": "SOL-USD",
    "pipeline": {
@@ -4343,36 +4305,36 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Sobreventa (rsi < 30) · RSI 29,2"
+      "text": "Rebote de sobreventa · RSI 31,1"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "16 noticias recientes de SOL-USD. La última: «Fidelity Files for a Spot Chainlink ETF»",
+      "text": "12 noticias recientes de SOL-USD. La última: «Why Is Crypto Up Today? BTC Back Above $60K – is the Bull Market Back?»",
       "items": [
        {
-        "title": "Fidelity Files for a Spot Chainlink ETF",
-        "link": "https://www.bankless.com/read/news/fidelity-files-for-a-spot-chainlink-etf?.tsrc=rss",
-        "time": "2026-11-25T20:09:12+00:00",
+        "title": "Why Is Crypto Up Today? BTC Back Above $60K – is the Bull Market Back?",
+        "link": "https://cryptonews.com/news/why-is-crypto-up-today-btc-back-above-60k-bull-market-back/?.tsrc=rss",
+        "time": "2026-11-26T10:11:22+00:00",
         "tags": []
        },
        {
-        "title": "Japan's largest financial institutions tap Solana for stablecoin payments and tokenization",
-        "link": "https://finance.yahoo.com/video/japans-largest-financial-institutions-tap-solana-for-stablecoin-payments-and-tokenization-222052454.html?.tsrc=rss",
-        "time": "2026-11-25T18:30:00+00:00",
+        "title": "Fidelity Files for a Spot Chainlink ETF, Following Grayscale and Bitwise",
+        "link": "https://unchainedcrypto.com/fidelity-files-for-a-spot-chainlink-etf-following-grayscale-and-bitwise/?.tsrc=rss",
+        "time": "2026-11-26T10:00:19+00:00",
         "tags": []
        },
        {
-        "title": "Franklin Templeton Adds Hyperliquid's HYPE to Its Crypto Index ETF",
-        "link": "https://www.cryptoprowl.com/releases/franklin-templeton-adds-hyperliquids-hype-to-its-crypto-index-etf-8076?.tsrc=rss",
-        "time": "2026-11-25T18:15:00+00:00",
+        "title": "Pump.fun Introduces New Fee to Combat Token Launch Manipulation and Boost PUMP Buybacks",
+        "link": "https://www.ccn.com/news/crypto/pump-fun-block0-fee-memecoin-manipulation-pump-buybacks/?.tsrc=rss",
+        "time": "2026-11-26T09:32:15+00:00",
         "tags": []
        },
        {
-        "title": "Japan's biggest banks pick Solana as Fidelity adds DeFi tokens",
-        "link": "https://finance.yahoo.com/video/japans-biggest-banks-pick-solana-as-fidelity-adds-defi-tokens-222056705.html?.tsrc=rss",
-        "time": "2026-11-25T17:00:00+00:00",
+        "title": "Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1",
+        "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
+        "time": "2026-11-26T09:15:57+00:00",
         "tags": []
        }
       ]
@@ -4386,17 +4348,17 @@
    "kind": "cripto",
    "id": "binancecoin",
    "label": "BNB",
-   "date": "2026-11-24",
-   "live_date": "2026-11-25",
-   "last": 551.8,
-   "day_ch": 0.74,
+   "date": "2026-11-25",
+   "live_date": "2026-11-26",
+   "last": 552.13,
+   "day_ch": -0.26,
    "source": "yahoo",
    "degraded": false,
-   "score": 32,
+   "score": 52,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 686.64,
-   "sma200": 655.22,
+   "sma50": 682.12,
+   "sma200": 654.74,
    "vcp": {
     "rating": "No VCP",
     "score": 32.1,
@@ -4404,7 +4366,7 @@
     "pattern": "Damaged",
     "pivot": 760.69,
     "stop": 501.38,
-    "distance_pct": -27.99,
+    "distance_pct": -27.23,
     "contractions": 4,
     "trend_score": 14.3,
     "rs_score": 60,
@@ -4414,23 +4376,26 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 0,
-    "trigger": "9m_volume",
+    "score": 52,
+    "trigger": "dollar_breakout",
     "tags": [
+     "dollar_breakout",
      "9m_volume"
     ],
-    "day_gain_pct": -1.46,
-    "volume_ratio_20d": 0.66,
+    "day_gain_pct": 1.06,
+    "volume_ratio_20d": 0.55,
     "error": null
    },
    "scanner": {
     "tags": [
-     "oversold"
+     "oversold",
+     "oversold_bounce"
     ],
     "labels": [
-     "sobreventa (RSI < 30)"
+     "sobreventa (RSI < 30)",
+     "rebote de sobreventa"
     ],
-    "rsi": 26.4
+    "rsi": 28.9
    },
    "news_ticker": "BNB-USD",
    "pipeline": {
@@ -4441,23 +4406,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Sobreventa (rsi < 30) · RSI 26,4"
+      "text": "Sobreventa (rsi < 30), rebote de sobreventa · RSI 28,9"
      },
      {
       "key": "news",
       "name": "Noticias",
-      "status": "warn",
-      "text": "1 noticias recientes de BNB-USD (temas: balance). La última: «Bitcoin now counts as collateral: From the CFTC to the ECB». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
-      "items": [
-       {
-        "title": "Bitcoin now counts as collateral: From the CFTC to the ECB",
-        "link": "https://finance.yahoo.com/video/bitcoin-now-counts-as-collateral-from-the-cftc-to-the-ecb-173702372.html?.tsrc=rss",
-        "time": "2026-11-24T17:37:02+00:00",
-        "tags": [
-         "earnings"
-        ]
-       }
-      ]
+      "status": "ok",
+      "text": "No hubo noticias de BNB-USD en las últimas horas: nada en contra"
      }
     ]
    },
@@ -4468,25 +4423,25 @@
    "kind": "cripto",
    "id": "ripple",
    "label": "XRP",
-   "date": "2026-11-24",
-   "live_date": "2026-11-25",
-   "last": 0.9379,
-   "day_ch": 1.46,
+   "date": "2026-11-25",
+   "live_date": "2026-11-26",
+   "last": 0.9497,
+   "day_ch": 1.36,
    "source": "yahoo",
    "degraded": false,
-   "score": 5,
+   "score": 7,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 1.20102,
-   "sma200": 1.234183,
+   "sma50": 1.189813,
+   "sma200": 1.231767,
    "vcp": {
     "rating": "No VCP",
-    "score": 5.0,
+    "score": 7.0,
     "state": "Invalid",
     "pattern": "Damaged",
     "pivot": 1.62,
     "stop": 1.31,
-    "distance_pct": -42.94,
+    "distance_pct": -42.16,
     "contractions": 1,
     "trend_score": 0,
     "rs_score": 20,
@@ -4501,14 +4456,14 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": -1.62,
-    "volume_ratio_20d": 0.8,
+    "day_gain_pct": 1.36,
+    "volume_ratio_20d": 0.89,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 30.3
+    "rsi": 32.7
    },
    "news_ticker": "XRP-USD",
    "pipeline": {
@@ -4519,38 +4474,36 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 30,3)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 32,7)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "20 noticias recientes de XRP-USD (temas: directivos, operación corporativa). La última: «Ripple veteran weighs whether Wall Street can secretly buy billions in XRP»",
+      "text": "16 noticias recientes de XRP-USD. La última: «XRP Price Prediction: Two SEC Filings Value Ripple at $90 and $300»",
       "items": [
        {
-        "title": "Ripple veteran weighs whether Wall Street can secretly buy billions in XRP",
-        "link": "https://www.thestreet.com/crypto/markets/ripple-veteran-weighs-whether-wall-street-can-secretly-buy-billions-in-xrp?.tsrc=rss",
-        "time": "2026-11-25T18:59:24+00:00",
+        "title": "XRP Price Prediction: Two SEC Filings Value Ripple at $90 and $300",
+        "link": "https://99bitcoins.com/news/altcoins/xrp-price-prediction-two-sec-filings-value-ripple-at-90-and-300/?.tsrc=rss",
+        "time": "2026-11-26T11:28:52+00:00",
         "tags": []
        },
        {
-        "title": "Franklin Templeton Adds Hyperliquid's HYPE to Its Crypto Index ETF",
-        "link": "https://www.cryptoprowl.com/releases/franklin-templeton-adds-hyperliquids-hype-to-its-crypto-index-etf-8076?.tsrc=rss",
-        "time": "2026-11-25T18:15:00+00:00",
+        "title": "Why Is Crypto Up Today? BTC Back Above $60K – is the Bull Market Back?",
+        "link": "https://cryptonews.com/news/why-is-crypto-up-today-btc-back-above-60k-bull-market-back/?.tsrc=rss",
+        "time": "2026-11-26T10:11:22+00:00",
         "tags": []
        },
        {
-        "title": "Fintech CEO sells Sunset Islands mansion for $35M to mystery buyer",
-        "link": "https://finance.yahoo.com/real-estate/articles/fintech-ceo-sells-sunset-islands-180000299.html?.tsrc=rss",
-        "time": "2026-11-25T18:00:00+00:00",
-        "tags": [
-         "people"
-        ]
+        "title": "Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1",
+        "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
+        "time": "2026-11-26T09:15:57+00:00",
+        "tags": []
        },
        {
-        "title": "Can XRP Reach Standard Chartered’s $12.60 Target by 2028?",
-        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/25/can-xrp-reach-standard-chartereds-12-60-target-by-2028/?.tsrc=rss",
-        "time": "2026-11-25T17:59:06+00:00",
+        "title": "How Low Can Bitcoin, Ethereum and XRP Fall? 4 Price Levels to Watch",
+        "link": "https://beincrypto.com/critical-price-levels-for-bitcoin-ethereum-xrp/?.tsrc=rss",
+        "time": "2026-11-26T01:37:34+00:00",
         "tags": []
        }
       ]
@@ -4564,25 +4517,25 @@
    "kind": "cripto",
    "id": "cardano",
    "label": "ADA",
-   "date": "2026-11-24",
-   "live_date": "2026-11-25",
-   "last": 0.14548,
-   "day_ch": 0.78,
+   "date": "2026-11-25",
+   "live_date": "2026-11-26",
+   "last": 0.14873,
+   "day_ch": 2.04,
    "source": "yahoo",
    "degraded": false,
-   "score": 12,
+   "score": 20,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 0.195711,
-   "sma200": 0.19917,
+   "sma50": 0.193276,
+   "sma200": 0.198545,
    "vcp": {
     "rating": "No VCP",
-    "score": 12.5,
-    "state": "Damaged",
+    "score": 20.0,
+    "state": "Invalid",
     "pattern": "Damaged",
-    "pivot": 0.23005899786949158,
+    "pivot": 0.15580600500106812,
     "stop": null,
-    "distance_pct": -37.25,
+    "distance_pct": -6.45,
     "contractions": 0,
     "trend_score": 0,
     "rs_score": 20,
@@ -4597,18 +4550,18 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": -2.65,
-    "volume_ratio_20d": 0.84,
+    "day_gain_pct": 0.98,
+    "volume_ratio_20d": 0.93,
     "error": null
    },
    "scanner": {
     "tags": [
-     "oversold"
+     "oversold_bounce"
     ],
     "labels": [
-     "sobreventa (RSI < 30)"
+     "rebote de sobreventa"
     ],
-    "rsi": 29.3
+    "rsi": 31.0
    },
    "news_ticker": "ADA-USD",
    "pipeline": {
@@ -4619,24 +4572,24 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Sobreventa (rsi < 30) · RSI 29,3"
+      "text": "Rebote de sobreventa · RSI 31"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "2 noticias recientes de ADA-USD. La última: «Franklin Templeton Adds Hyperliquid's HYPE to Its Crypto Index ETF»",
+      "text": "2 noticias recientes de ADA-USD. La última: «Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1»",
       "items": [
+       {
+        "title": "Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1",
+        "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
+        "time": "2026-11-26T09:15:57+00:00",
+        "tags": []
+       },
        {
         "title": "Franklin Templeton Adds Hyperliquid's HYPE to Its Crypto Index ETF",
         "link": "https://www.cryptoprowl.com/releases/franklin-templeton-adds-hyperliquids-hype-to-its-crypto-index-etf-8076?.tsrc=rss",
         "time": "2026-11-25T18:15:00+00:00",
-        "tags": []
-       },
-       {
-        "title": "Tom Lee Says Ethereum Is as Scarce as Bitcoin: Do the Supply Numbers Agree?",
-        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/24/tom-lee-says-ethereum-is-as-scarce-as-bitcoin-do-the-supply-numbers-agree/?.tsrc=rss",
-        "time": "2026-11-24T22:13:09+00:00",
         "tags": []
        }
       ]
@@ -4650,25 +4603,25 @@
    "kind": "cripto",
    "id": "dogecoin",
    "label": "DOGE",
-   "date": "2026-11-24",
-   "live_date": "2026-11-25",
-   "last": 0.05583,
-   "day_ch": 1.05,
+   "date": "2026-11-25",
+   "live_date": "2026-11-26",
+   "last": 0.05673,
+   "day_ch": 1.36,
    "source": "yahoo",
    "degraded": false,
-   "score": 18,
+   "score": 20,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 0.073239,
-   "sma200": 0.081845,
+   "sma50": 0.072483,
+   "sma200": 0.081581,
    "vcp": {
     "rating": "No VCP",
-    "score": 17.8,
+    "score": 20.0,
     "state": "Invalid",
     "pattern": "Damaged",
     "pivot": 0.0600849986076355,
     "stop": null,
-    "distance_pct": -8.05,
+    "distance_pct": -6.85,
     "contractions": 0,
     "trend_score": 0,
     "rs_score": 20,
@@ -4683,18 +4636,18 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": -1.87,
-    "volume_ratio_20d": 0.83,
+    "day_gain_pct": 1.3,
+    "volume_ratio_20d": 0.81,
     "error": null
    },
    "scanner": {
     "tags": [
-     "oversold"
+     "oversold_bounce"
     ],
     "labels": [
-     "sobreventa (RSI < 30)"
+     "rebote de sobreventa"
     ],
-    "rsi": 28.0
+    "rsi": 30.4
    },
    "news_ticker": "DOGE-USD",
    "pipeline": {
@@ -4705,24 +4658,30 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Sobreventa (rsi < 30) · RSI 28"
+      "text": "Rebote de sobreventa · RSI 30,4"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "2 noticias recientes de DOGE-USD. La última: «Franklin Templeton Adds Hyperliquid's HYPE to Its Crypto Index ETF»",
+      "text": "3 noticias recientes de DOGE-USD. La última: «Can Shiba Inu Reach $1 in 2027? The Answer Might Shock You.»",
       "items": [
+       {
+        "title": "Can Shiba Inu Reach $1 in 2027? The Answer Might Shock You.",
+        "link": "https://www.fool.com/investing/2026/11/26/can-shiba-inu-reach-usd1-in-2027-answer-shock-you/?.tsrc=rss",
+        "time": "2026-11-26T10:27:02+00:00",
+        "tags": []
+       },
+       {
+        "title": "Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1",
+        "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
+        "time": "2026-11-26T09:15:57+00:00",
+        "tags": []
+       },
        {
         "title": "Franklin Templeton Adds Hyperliquid's HYPE to Its Crypto Index ETF",
         "link": "https://www.cryptoprowl.com/releases/franklin-templeton-adds-hyperliquids-hype-to-its-crypto-index-etf-8076?.tsrc=rss",
         "time": "2026-11-25T18:15:00+00:00",
-        "tags": []
-       },
-       {
-        "title": "The “Dogecoin Millionaire” Shares Brutal Advices For Crypto Investors",
-        "link": "https://beincrypto.com/dogecoin-millionaire-advice-crypto-market/?.tsrc=rss",
-        "time": "2026-11-24T12:32:03+00:00",
         "tags": []
        }
       ]
@@ -4736,16 +4695,16 @@
    "kind": "cripto",
    "id": "chainlink",
    "label": "LINK",
-   "date": "2026-11-24",
-   "live_date": "2026-11-25",
-   "last": 9.04,
-   "day_ch": 2.31,
+   "date": "2026-11-25",
+   "live_date": "2026-11-26",
+   "last": 9.23,
+   "day_ch": 1.98,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 11.1,
+   "sma50": 11.0,
    "sma200": 10.07,
    "vcp": {
     "rating": "No VCP",
@@ -4754,7 +4713,7 @@
     "pattern": "Damaged",
     "pivot": 15.74,
     "stop": 12.01,
-    "distance_pct": -43.85,
+    "distance_pct": -42.52,
     "contractions": 1,
     "trend_score": 42.9,
     "rs_score": 70,
@@ -4769,14 +4728,14 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": -1.79,
-    "volume_ratio_20d": 1.12,
+    "day_gain_pct": 2.37,
+    "volume_ratio_20d": 1.11,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 35.0
+    "rsi": 38.7
    },
    "news_ticker": "LINK-USD",
    "pipeline": {
@@ -4787,14 +4746,26 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 35)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 38,7)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "4 noticias recientes de LINK-USD. La última: «Fidelity Files for a Spot Chainlink ETF»",
+      "text": "5 noticias recientes de LINK-USD. La última: «Fidelity Files for a Spot Chainlink ETF, Following Grayscale and Bitwise»",
       "items": [
+       {
+        "title": "Fidelity Files for a Spot Chainlink ETF, Following Grayscale and Bitwise",
+        "link": "https://unchainedcrypto.com/fidelity-files-for-a-spot-chainlink-etf-following-grayscale-and-bitwise/?.tsrc=rss",
+        "time": "2026-11-26T10:00:19+00:00",
+        "tags": []
+       },
+       {
+        "title": "Fidelity Wants a Chainlink ETF. Who Is Actually Buying One?",
+        "link": "https://beincrypto.com/fidelity-chainlink-etf-filing-outflows/?.tsrc=rss",
+        "time": "2026-11-26T05:00:43+00:00",
+        "tags": []
+       },
        {
         "title": "Fidelity Files for a Spot Chainlink ETF",
         "link": "https://www.bankless.com/read/news/fidelity-files-for-a-spot-chainlink-etf?.tsrc=rss",
@@ -4805,18 +4776,6 @@
         "title": "Japan's biggest banks pick Solana as Fidelity adds DeFi tokens",
         "link": "https://finance.yahoo.com/video/japans-biggest-banks-pick-solana-as-fidelity-adds-defi-tokens-222056705.html?.tsrc=rss",
         "time": "2026-11-25T17:00:00+00:00",
-        "tags": []
-       },
-       {
-        "title": "Fidelity adds DeFi staples to its crypto trading platform",
-        "link": "https://finance.yahoo.com/video/fidelity-adds-defi-staples-crypto-160000496.html?.tsrc=rss",
-        "time": "2026-11-25T16:00:00+00:00",
-        "tags": []
-       },
-       {
-        "title": "Fidelity Adds Aave, Chainlink and Uniswap to Its Crypto Trading Platform",
-        "link": "https://www.cryptoprowl.com/releases/fidelity-adds-aave-chainlink-and-uniswap-to-its-crypto-trading-platform-8054?.tsrc=rss",
-        "time": "2026-11-24T16:11:00+00:00",
         "tags": []
        }
       ]
@@ -4830,29 +4789,29 @@
    "kind": "cripto",
    "id": "avalanche-2",
    "label": "AVAX",
-   "date": "2026-11-24",
-   "live_date": "2026-11-25",
-   "last": 6.6,
-   "day_ch": 0.53,
+   "date": "2026-11-25",
+   "live_date": "2026-11-26",
+   "last": 6.62,
+   "day_ch": 0.01,
    "source": "yahoo",
    "degraded": false,
-   "score": 16,
+   "score": 24,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 8.73,
-   "sma200": 7.96,
+   "sma50": 8.63,
+   "sma200": 7.95,
    "vcp": {
     "rating": "No VCP",
-    "score": 15.5,
+    "score": 24.3,
     "state": "Damaged",
     "pattern": "Damaged",
-    "pivot": 8.728001594543457,
+    "pivot": 7.203714847564697,
     "stop": null,
-    "distance_pct": -24.79,
+    "distance_pct": -8.05,
     "contractions": 0,
-    "trend_score": 0,
+    "trend_score": 14.3,
     "rs_score": 40,
-    "weakest": "Trend Template (Stage 2)",
+    "weakest": "Contraction Quality",
     "error": null
    },
    "burst": {
@@ -4863,14 +4822,14 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": -3.14,
-    "volume_ratio_20d": 0.78,
+    "day_gain_pct": 0.9,
+    "volume_ratio_20d": 0.88,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 31.9
+    "rsi": 33.2
    },
    "news_ticker": "AVAX-USD",
    "pipeline": {
@@ -4881,7 +4840,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 31,9)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 33,2)"
      },
      {
       "key": "news",
@@ -4898,17 +4857,17 @@
    "kind": "cripto",
    "id": "tron",
    "label": "TRX",
-   "date": "2026-11-24",
-   "live_date": "2026-11-25",
-   "last": 0.302581,
-   "day_ch": -1.71,
+   "date": "2026-11-25",
+   "live_date": "2026-11-26",
+   "last": 0.303653,
+   "day_ch": 0.01,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 0.321915,
-   "sma200": 0.331306,
+   "sma50": 0.321279,
+   "sma200": 0.331073,
    "vcp": {
     "rating": "No VCP",
     "score": 39.1,
@@ -4916,7 +4875,7 @@
     "pattern": "Damaged",
     "pivot": 0.34,
     "stop": 0.33,
-    "distance_pct": -9.46,
+    "distance_pct": -10.7,
     "contractions": 3,
     "trend_score": 28.6,
     "rs_score": 80,
@@ -4931,14 +4890,14 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": -0.55,
-    "volume_ratio_20d": 1.07,
+    "day_gain_pct": -1.37,
+    "volume_ratio_20d": 0.9,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 42.9
+    "rsi": 38.8
    },
    "news_ticker": "TRX-USD",
    "pipeline": {
@@ -4949,7 +4908,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 42,9)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 38,8)"
      },
      {
       "key": "news",
@@ -4960,7 +4919,37 @@
     ]
    },
    "position": null,
-   "patterns": []
+   "patterns": [
+    {
+     "type": "double_bottom",
+     "name": "Doble piso",
+     "bias": "alcista",
+     "state": "formándose",
+     "trigger": 0.3277,
+     "stop": 0.2954,
+     "target": 0.357,
+     "rr": 0.91,
+     "points": [
+      [
+       "2026-10-31",
+       0.3017
+      ],
+      [
+       "2026-10-31",
+       0.3277
+      ],
+      [
+       "2026-11-21",
+       0.2984
+      ],
+      [
+       "2026-11-25",
+       0.3036
+      ]
+     ],
+     "why": "Dos mínimos en 0,3017 y 0,2984 con rebote a 0,3277. Entrada si cierra arriba de 0,3277."
+    }
+   ]
   }
  },
  "positions": [],
@@ -4974,6 +4963,17 @@
    "rating": "B",
    "trigger": 50.16,
    "stop": 48.24,
+   "why": "Momentum Burst B (manual review only): revisar gráfico."
+  },
+  {
+   "kind": "adr",
+   "id": "PAM",
+   "label": "PAM",
+   "setup": "burst",
+   "score": 70,
+   "rating": "B",
+   "trigger": 62.32,
+   "stop": 60.19,
    "why": "Momentum Burst B (manual review only): revisar gráfico."
   },
   {
@@ -5018,17 +5018,6 @@
    "rating": "Watch",
    "trigger": 7110.0,
    "stop": 6700.0,
-   "why": "Momentum Burst Watch (watch only): revisar gráfico."
-  },
-  {
-   "kind": "adr",
-   "id": "PAM",
-   "label": "PAM",
-   "setup": "burst",
-   "score": 62,
-   "rating": "Watch",
-   "trigger": 62.32,
-   "stop": 60.19,
    "why": "Momentum Burst Watch (watch only): revisar gráfico."
   },
   {
@@ -7177,20 +7166,18 @@
  },
  "news": [
   {
-   "ticker": "BTC-USD",
+   "ticker": "MELI",
    "touches": [
-    "BTC-USD"
+    "MELI"
    ],
-   "title": "Nvidia settles 8-year-old investor suit for $290M",
-   "link": "https://www.thestreet.com/crypto/artificial-intelligence/nvidia-settles-8-year-old-investor-suit-for-290m?.tsrc=rss",
+   "title": "This Week In E-Commerce - Holiday Shopping Trends: Blending Online and In-Store Buys",
+   "link": "https://finance.yahoo.com/media-advertising/articles/week-e-commerce-holiday-shopping-123719566.html?.tsrc=rss",
    "source": "Yahoo Finance",
    "kind": "headline",
-   "time": "2026-11-25T22:30:00+00:00",
-   "tags": [
-    "legal"
-   ],
+   "time": "2026-11-26T12:37:19+00:00",
+   "tags": [],
    "new": true,
-   "id": "8b2d39d51bb84cf3",
+   "id": "b0e87f5470de3241",
    "form": null
   },
   {
@@ -7198,14 +7185,14 @@
    "touches": [
     "BTC-USD"
    ],
-   "title": "How Much of Your Portfolio Should Be in Bitcoin After a 50% Drop?",
-   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/25/how-much-of-your-portfolio-should-be-in-bitcoin-after-a-50-drop/?.tsrc=rss",
+   "title": "Galaxy Research Withdraws Call That Bitcoin's Bear Market Is Over",
+   "link": "https://decrypt.co/384030/galaxy-research-withdraws-call-that-bitcoins-bear-market-is-over?.tsrc=rss",
    "source": "Yahoo Finance",
    "kind": "headline",
-   "time": "2026-11-25T22:14:48+00:00",
+   "time": "2026-11-26T12:26:08+00:00",
    "tags": [],
    "new": true,
-   "id": "a4fd21f4233d0c9d",
+   "id": "4083bafb798a9bb7",
    "form": null
   },
   {
@@ -7213,14 +7200,29 @@
    "touches": [
     "BTC-USD"
    ],
-   "title": "Why Has Strategy Stock Trailed Dropbox?",
-   "link": "https://www.trefis.com/stock/mstr/articles/628944/why-has-strategy-stock-trailed-dropbox/2026-11-25?.tsrc=rss",
+   "title": "Billionaire Investor Paul Tudor Jones Just Doubled Down on Bitcoin. What Does He Know That the Market Doesn't?",
+   "link": "https://www.fool.com/investing/2026/11/26/billionaire-investor-paul-tudor-jones-just-doubled-down-on-bitcoin-what-does-he-know-that-you-dont/?.tsrc=rss",
    "source": "Yahoo Finance",
    "kind": "headline",
-   "time": "2026-11-25T22:10:42+00:00",
+   "time": "2026-11-26T12:20:02+00:00",
    "tags": [],
    "new": true,
-   "id": "576a50b7c3871c6f",
+   "id": "a356b742bc5b0dc0",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "XRP Price Prediction: Two SEC Filings Value Ripple at $90 and $300",
+   "link": "https://99bitcoins.com/news/altcoins/xrp-price-prediction-two-sec-filings-value-ripple-at-90-and-300/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T11:28:52+00:00",
+   "tags": [],
+   "new": true,
+   "id": "75c3314e698c253e",
    "form": null
   },
   {
@@ -7229,59 +7231,476 @@
     "BTC-USD",
     "ETH-USD"
    ],
+   "title": "Crypto Market Faces 3 Critical Risks Heading Into December 2026",
+   "link": "https://beincrypto.com/crypto-market-outlook-december-2026-three-risks/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T11:26:32+00:00",
+   "tags": [],
+   "new": true,
+   "id": "2d244d540e347df0",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Can a 17-Year Track Record Protect Bitcoin? Ryan Watkins Weighs In",
+   "link": "https://unchainedcrypto.com/can-a-17-year-track-record-protect-bitcoin-ryan-watkins-weighs-in/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T11:00:45+00:00",
+   "tags": [],
+   "new": true,
+   "id": "7b133ae46840b875",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "He Claimed Social Security at 62 to Pour Every $2,100 Check Into Bitcoin, Betting Growth Would Beat Waiting. Bitcoin’s November Plunge Wipes Out About a Quarter of His $50,400, and His Check Stays $900 a Month Smaller for Life",
+   "link": "https://247wallst.com/personal-finance/social-security/2026/11/26/he-claimed-social-security-at-62-to-pour-every-2100-check-into-bitcoin-betting-growth-would-beat-waiting-bitcoins-november-plunge-wipes-out-about-a-quarter-of-his-50400-and-his-check-stays-9/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T10:34:28+00:00",
+   "tags": [],
+   "new": true,
+   "id": "64913fe25da0261b",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Galaxy Withdraws Bitcoin Bottom Call, Warns BTC Could Fall to $28,200",
+   "link": "https://www.ccn.com/news/crypto/galaxy-bitcoin-bear-market-bottom-28200-price-target/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T10:32:15+00:00",
+   "tags": [],
+   "new": true,
+   "id": "40f86e69dbf8ba3a",
+   "form": null
+  },
+  {
+   "ticker": "DOGE-USD",
+   "touches": [
+    "DOGE-USD",
+    "ETH-USD"
+   ],
+   "title": "Can Shiba Inu Reach $1 in 2027? The Answer Might Shock You.",
+   "link": "https://www.fool.com/investing/2026/11/26/can-shiba-inu-reach-usd1-in-2027-answer-shock-you/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T10:27:02+00:00",
+   "tags": [],
+   "new": true,
+   "id": "8afc4a389ae84c4e",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD",
+    "ETH-USD",
+    "SOL-USD",
+    "XRP-USD"
+   ],
+   "title": "Why Is Crypto Up Today? BTC Back Above $60K – is the Bull Market Back?",
+   "link": "https://cryptonews.com/news/why-is-crypto-up-today-btc-back-above-60k-bull-market-back/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T10:11:22+00:00",
+   "tags": [],
+   "new": true,
+   "id": "964c465c4cfab5ad",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD",
+    "LINK-USD",
+    "SOL-USD"
+   ],
+   "title": "Fidelity Files for a Spot Chainlink ETF, Following Grayscale and Bitwise",
+   "link": "https://unchainedcrypto.com/fidelity-files-for-a-spot-chainlink-etf-following-grayscale-and-bitwise/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T10:00:19+00:00",
+   "tags": [],
+   "new": true,
+   "id": "c65e4192afdfa836",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Wells Fargo Is Now the Largest Institutional Holder of Spot Bitcoin ETFs. If Banks Are Buying Bitcoin, Should You?",
+   "link": "https://www.fool.com/investing/2026/11/26/wells-fargo-is-now-the-largest-institutional-holder-of-spot-bitcoin-etfs-if-banks-are-buying-bitcoin-should-you/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T09:50:02+00:00",
+   "tags": [],
+   "new": true,
+   "id": "46977a02ef8526b7",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Strategic Bitcoin Reserve Bill Reaches the House Calendar, Awaiting a Floor Vote",
+   "link": "https://unchainedcrypto.com/strategic-bitcoin-reserve-bill-reaches-the-house-calendar-awaiting-a-floor-vote/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T09:45:46+00:00",
+   "tags": [],
+   "new": true,
+   "id": "27650a88e6fba4dc",
+   "form": null
+  },
+  {
+   "ticker": "SOL-USD",
+   "touches": [
+    "SOL-USD"
+   ],
+   "title": "Pump.fun Introduces New Fee to Combat Token Launch Manipulation and Boost PUMP Buybacks",
+   "link": "https://www.ccn.com/news/crypto/pump-fun-block0-fee-memecoin-manipulation-pump-buybacks/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T09:32:15+00:00",
+   "tags": [],
+   "new": true,
+   "id": "9962d171025cd6a4",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Ex-Chelsea Co-Owner Boehly Calls High Yields Manageable: Is Distressed Credit Next?",
+   "link": "https://beincrypto.com/todd-boehly-treasury-yield-distressed-credit/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T09:22:39+00:00",
+   "tags": [],
+   "new": true,
+   "id": "4beaf51fa89ab87a",
+   "form": null
+  },
+  {
+   "ticker": "ADA-USD",
+   "touches": [
+    "ADA-USD",
+    "BTC-USD",
+    "DOGE-USD",
+    "SOL-USD",
+    "XRP-USD"
+   ],
+   "title": "Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1",
+   "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T09:15:57+00:00",
+   "tags": [],
+   "new": true,
+   "id": "c9b7c6656b2ad334",
+   "form": null
+  },
+  {
+   "ticker": "SOL-USD",
+   "touches": [
+    "SOL-USD"
+   ],
+   "title": "Solana’s Next Big Move: The Future of Finance",
+   "link": "https://finance.yahoo.com/video/solana-next-big-move-future-090000892.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T09:00:00+00:00",
+   "tags": [],
+   "new": true,
+   "id": "8414a8897993f6e5",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD"
+   ],
+   "title": "Ethereum Price Reclaims $1,700: Network Activity Defies 39% Crash, $80M Shorts Liquidated",
+   "link": "https://99bitcoins.com/news/altcoins/ethereum-price-39-percent-crash-vitalik-eth-selloff/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T08:47:31+00:00",
+   "tags": [],
+   "new": true,
+   "id": "37f9f0e0bfa48013",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD"
+   ],
+   "title": "Why Is an Ethereum ICO Whale Selling Now, After a Decade?",
+   "link": "https://beincrypto.com/ethereum-whale-2014-ico-sells-eth/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T08:38:26+00:00",
+   "tags": [],
+   "new": true,
+   "id": "de1b2e71c9e711c3",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "K33 AB (ARCNF) (Q3 2026) Earnings Call Highlights: 35% Revenue Growth and 40% Trading Volume ...",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/k33-ab-arcnf-q3-2026-082042686.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T08:20:42+00:00",
+   "tags": [
+    "earnings"
+   ],
+   "new": true,
+   "id": "2a3bed132a5c56d9",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Bitcoin recovers to $60.9k, but rates, regulatory fears persist",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-recovers-60-5k-rates-070224193.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T07:02:24+00:00",
+   "tags": [],
+   "new": true,
+   "id": "9dddabf3bac57e3a",
+   "form": null
+  },
+  {
+   "ticker": "GGAL",
+   "touches": [
+    "GGAL"
+   ],
+   "title": "Galicia (GGAL) Q3 2026 Earnings Call Transcript",
+   "link": "https://www.fool.com/earnings/call-transcripts/2026/11/26/galicia-ggal-q3-2026-earnings-call-transcript/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T06:28:08+00:00",
+   "tags": [
+    "earnings",
+    "macro"
+   ],
+   "new": true,
+   "id": "5e77591842a48f8d",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Bitcoin technical outlook: bear trend with oversold signals near $61,000",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-technical-outlook-bear-trend-054532169.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T05:45:32+00:00",
+   "tags": [],
+   "new": true,
+   "id": "4196a281771620f9",
+   "form": null
+  },
+  {
+   "ticker": "LINK-USD",
+   "touches": [
+    "LINK-USD"
+   ],
+   "title": "Fidelity Wants a Chainlink ETF. Who Is Actually Buying One?",
+   "link": "https://beincrypto.com/fidelity-chainlink-etf-filing-outflows/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T05:00:43+00:00",
+   "tags": [],
+   "new": true,
+   "id": "f2b36aaf1ae2feb0",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "LIVE – Crypto News Today: Is Bitcoin Bottoming Out? BTC Bounces Back After PCE Shock",
+   "link": "https://cryptonews.com/news/bitcoin-crypto-news-btc-bottom-pce-rebound/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T04:57:44+00:00",
+   "tags": [
+    "macro"
+   ],
+   "new": true,
+   "id": "f20f78e6d6c39dcc",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Bitcoin Reclaims $60,000: Michaël Van De Poppe Eyes ‘Great First Quarter Of 2027’, While Cathie Wood Trims Crypto Exposure",
+   "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/bitcoin-reclaims-60-000-michael-van-de-poppe-eyes-great-first-quarter-of-2027-while-cathie-wood-trims-crypto-exposure/cNbxBZpR9Za?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T04:36:04+00:00",
+   "tags": [],
+   "new": true,
+   "id": "bbde90429d75c20f",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD",
+    "ETH-USD",
+    "XRP-USD"
+   ],
+   "title": "How Low Can Bitcoin, Ethereum and XRP Fall? 4 Price Levels to Watch",
+   "link": "https://beincrypto.com/critical-price-levels-for-bitcoin-ethereum-xrp/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T01:37:34+00:00",
+   "tags": [],
+   "new": true,
+   "id": "58efda3e35b673c4",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "One Big Difference Between Bitcoin and Pearl: There’s ‘No True Fair Launch Anymore’",
+   "link": "https://unchainedcrypto.com/one-big-difference-between-bitcoin-and-pearl-theres-no-true-fair-launch-anymore/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T01:00:45+00:00",
+   "tags": [],
+   "new": true,
+   "id": "bab8d66fbf3d8b67",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Why CleanSpark Stock Was a Winner on Wednesday",
+   "link": "https://www.fool.com/investing/2026/11/25/why-cleanspark-stock-was-a-winner-on-wednesday/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T00:30:39+00:00",
+   "tags": [
+    "earnings"
+   ],
+   "new": true,
+   "id": "8a4046dc15a8d015",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "Is XRP a Good Investment for Building Wealth by 2035?",
+   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/25/is-xrp-a-good-investment-for-building-wealth-by-2035/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T23:42:50+00:00",
+   "tags": [],
+   "new": true,
+   "id": "843c9bb95a459c92",
+   "form": null
+  },
+  {
+   "ticker": "BMA",
+   "touches": [
+    "BMA"
+   ],
+   "title": "Banco Macro Announces Results for the Third Quarter of 2026",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/banco-macro-announces-results-third-230000473.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T23:00:00+00:00",
+   "tags": [
+    "earnings",
+    "macro"
+   ],
+   "new": true,
+   "id": "6f2c75e7e07fabe9",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD"
+   ],
+   "title": "Shiba Inu Developer Teases a Major Privacy Boost for Its Blockchain",
+   "link": "https://beincrypto.com/shiba-inu-shibarium-privacy-upgrade/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T22:30:54+00:00",
+   "tags": [
+    "analyst"
+   ],
+   "new": true,
+   "id": "ab3ef895bfd19b9c",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD",
+    "SOL-USD"
+   ],
+   "title": "Crypto Market Today, Nov. 25: Bitcoin, Ethereum, and Solana as Short Liquidations Fuel Fragile Rebound",
+   "link": "https://www.fool.com/coverage/stock-market-today/2026/11/25/crypto-market-today-nov-25-bitcoin-ethereum-and-solana-as-short-liquidations-fuel-fragile-rebound/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-25T22:26:19+00:00",
+   "tags": [],
+   "new": true,
+   "id": "93699f9d69e1a38e",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD"
+   ],
    "title": "Analyst explains why Bitcoin’s next move depends on Nasdaq",
    "link": "https://www.thestreet.com/crypto/markets/analyst-explains-why-bitcoins-next-move-depends-on-nasdaq?.tsrc=rss",
    "source": "Yahoo Finance",
    "kind": "headline",
    "time": "2026-11-25T22:00:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "84ad9ec7e3a419df",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Sector Update: Financial Stocks Advance Late Afternoon",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/sector-financial-stocks-advance-afternoon-210138295.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T21:01:38+00:00",
-   "tags": [],
-   "new": false,
-   "id": "afc2e673a1c9eeb6",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "With bitcoin crashing, is Strategy (MSTR) in trouble?",
-   "link": "https://blockspace.media/short/with-bitcoin-crashing-is-strategy-mstr-in-trouble/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T20:28:09+00:00",
-   "tags": [],
-   "new": false,
-   "id": "e6f621b40757a313",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "IREN stock price is down 80% over six months. Here’s why",
-   "link": "https://blockspace.media/short/iren-stock-price-is-down-80-over-six-months-heres-why/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T20:18:57+00:00",
-   "tags": [],
-   "new": false,
-   "id": "e475591baf50b6bf",
    "form": null
   },
   {
@@ -7302,48 +7721,18 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
+   "ticker": "XRP-USD",
    "touches": [
-    "BTC-USD"
+    "XRP-USD"
    ],
-   "title": "Mysterious traders made $340,000 betting on Huang’s Nvidia return",
-   "link": "https://www.thestreet.com/crypto/markets/mysterious-traders-made-340000-betting-on-huangs-nvidia-return?.tsrc=rss",
+   "title": "XRP Price Prediction: XRP Nears Big Liquidation Cluster as Bulls Defend $0.90",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/xrp-price-prediction-xrp-nears-193823768.html?.tsrc=rss",
    "source": "Yahoo Finance",
    "kind": "headline",
-   "time": "2026-11-25T20:00:00+00:00",
+   "time": "2026-11-25T19:38:23+00:00",
    "tags": [],
-   "new": false,
-   "id": "100a0ee55acc40f6",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "SpaceX Slashes GPU Pricing? Plus, IREN’s Selloff and CoreWeave’s Distressed Bonds",
-   "link": "https://blockspace.media/podcast/spacex-slashes-gpu-pricing-plus-irens-selloff-and-coreweaves-distressed-bonds/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T19:57:56+00:00",
-   "tags": [],
-   "new": false,
-   "id": "8df3bf526a961d31",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Kraken's new credit cards offer up to 4% bitcoin rewards",
-   "link": "https://finance.yahoo.com/video/krakens-new-credit-cards-offer-up-to-4-bitcoin-rewards-222047369.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T19:21:00+00:00",
-   "tags": [],
-   "new": false,
-   "id": "cd8e3caff69ba8c3",
+   "new": true,
+   "id": "8773c946f37ccea9",
    "form": null
   },
   {
@@ -7380,36 +7769,6 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Sector Update: Financial Stocks Rise in Afternoon Trading",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/sector-financial-stocks-rise-afternoon-185859010.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T18:58:59+00:00",
-   "tags": [],
-   "new": false,
-   "id": "3290ab1b310aa76d",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Is the Anthropic IPO to Blame for Bitcoin's Recent Downturn? The Answer Might Surprise You.",
-   "link": "https://www.fool.com/investing/2026/11/25/is-the-anthropic-ipo-to-blame-for-bitcoins-recent-downturn-the-answer-might-surprise-you/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T18:57:01+00:00",
-   "tags": [],
-   "new": false,
-   "id": "ecc5ee29accfb731",
-   "form": null
-  },
-  {
    "ticker": "SOL-USD",
    "touches": [
     "SOL-USD"
@@ -7428,7 +7787,6 @@
    "ticker": "ADA-USD",
    "touches": [
     "ADA-USD",
-    "BTC-USD",
     "DOGE-USD",
     "ETH-USD",
     "SOL-USD",
@@ -7442,21 +7800,6 @@
    "tags": [],
    "new": false,
    "id": "d1f93f7e006573e8",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Michael Saylor reveals a Bitcoin plan that could shock investors",
-   "link": "https://www.thestreet.com/crypto/markets/michael-saylor-reveals-a-bitcoin-plan-that-could-shock-investors?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T18:00:00+00:00",
-   "tags": [],
-   "new": false,
-   "id": "8181858fbf25bb10",
    "form": null
   },
   {
@@ -7477,9 +7820,8 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
+   "ticker": "ETH-USD",
    "touches": [
-    "BTC-USD",
     "ETH-USD",
     "XRP-USD"
    ],
@@ -7491,72 +7833,6 @@
    "tags": [],
    "new": false,
    "id": "2c623d63db2055d4",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Why America’s Goldilocks Economy is Bad News for Bitcoin and Gold",
-   "link": "https://beincrypto.com/gold-silver-bitcoin-slide-us-inflation-pce-index/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T17:58:32+00:00",
-   "tags": [
-    "macro"
-   ],
-   "new": false,
-   "id": "070ec640b5bc4a88",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Bitcoin Has Fallen 8 Weeks Straight: Trading the Markets",
-   "link": "https://finance.yahoo.com/video/trading-markets-november-25-2026-175415676.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T17:54:15+00:00",
-   "tags": [],
-   "new": false,
-   "id": "9d7ccfe425ff367c",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Bitcoin Falls Toward $57,000 as Hotter Inflation and Tariff Worries Sink Stocks",
-   "link": "https://www.cryptoprowl.com/releases/bitcoin-falls-toward-57000-as-hotter-inflation-and-tariff-worries-sink-stocks-8075?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T17:54:00+00:00",
-   "tags": [
-    "macro"
-   ],
-   "new": false,
-   "id": "01e4ba9f1d29021d",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Bitcoin Falls Toward 2-Year Low. Rising Inflation and Higher Interest Rates Are Its Threats.",
-   "link": "https://finance.yahoo.com/m/97d03772-405d-3c1c-8799-6a8d3e16a343/bitcoin-falls-toward-2-year.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T17:44:00+00:00",
-   "tags": [
-    "macro"
-   ],
-   "new": false,
-   "id": "76c53767cf45e702",
    "form": null
   },
   {
@@ -7846,292 +8122,6 @@
    "new": false,
    "id": "e91867a175377c73",
    "form": null
-  },
-  {
-   "ticker": "MELI",
-   "touches": [
-    "MELI"
-   ],
-   "title": "Michael Burry Sells Remaining Nasdaq-100 Puts, Eyes Fresh Nvidia Short Near $200: ‘I Am Long Undervalued Common Stocks’",
-   "link": "https://stocktwits.com/news-articles/markets/equity/michael-burry-sells-remaining-nasdaq-100-puts-eyes-fresh-nvidia-short-near-200/cNbHOX0R9lu?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T10:09:40+00:00",
-   "tags": [],
-   "new": false,
-   "id": "7f345f4d14425e23",
-   "form": null
-  },
-  {
-   "ticker": "XRP-USD",
-   "touches": [
-    "XRP-USD"
-   ],
-   "title": "Ripple Lands Major Turkish Bank Deal – So Why is XRP/Lira Trading Down 70%?",
-   "link": "https://www.coinspeaker.com/ripple-news-yapi-kredi-picks-ripple-custody-in-turkiye/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T10:08:41+00:00",
-   "tags": [
-    "deal"
-   ],
-   "new": false,
-   "id": "04e99a715fa01a3f",
-   "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD"
-   ],
-   "title": "Peter Brandt Warns Ethereum Could Crash Below $500 if One Key Level Breaks",
-   "link": "https://beincrypto.com/peter-brandt-ethereum-below-500/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T09:27:36+00:00",
-   "tags": [],
-   "new": false,
-   "id": "e06c3fc367be1203",
-   "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD",
-    "SOL-USD"
-   ],
-   "title": "BTC News: ARK Sells $6.8M Bitcoin ETF as $4.9B Outflows Deepen Market Fear",
-   "link": "https://99bitcoins.com/news/bitcoin-btc/btc-news-ark-sells-6-8m-bitcoin-etf-as-4-9b-outflows-deepen-market-fear/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T09:05:13+00:00",
-   "tags": [],
-   "new": false,
-   "id": "14a58b6726759a3f",
-   "form": null
-  },
-  {
-   "ticker": "SOL-USD",
-   "touches": [
-    "SOL-USD"
-   ],
-   "title": "Solana’s Tokenized Stock Market Surpasses $600M as Equities Gain Traction as DeFi Collateral",
-   "link": "https://www.ccn.com/news/crypto/solana-tokenized-stocks-defi-collateral-growth/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T09:02:16+00:00",
-   "tags": [],
-   "new": false,
-   "id": "02d9bef1c9aabff5",
-   "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD"
-   ],
-   "title": "Ethereum Could Crash Below $500, Peter Brandt Warns – Why Another Analyst Still Sees A Bounce Toward $2,000",
-   "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/ethereum-price-prediction-peter-brandt-500-poppe-2000/cNbHbBDR9l7?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T03:14:03+00:00",
-   "tags": [],
-   "new": false,
-   "id": "d8cf40debce52c7f",
-   "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD"
-   ],
-   "title": "Ethereum treasury firm sells $43 million in Ether to repay debt",
-   "link": "https://www.thestreet.com/crypto/markets/ethereum-treasury-firm-sells-43-million-in-ether-to-repay-debt?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T02:00:00+00:00",
-   "tags": [],
-   "new": false,
-   "id": "6c33ae8c1e40d9e0",
-   "form": null
-  },
-  {
-   "ticker": "GLOB",
-   "touches": [
-    "GLOB"
-   ],
-   "title": "Globant Stock Has The Bull Case Changed After Lower Earnings Guidance",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/globant-stock-bull-case-changed-011109844.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T01:11:09+00:00",
-   "tags": [
-    "earnings",
-    "capital"
-   ],
-   "new": false,
-   "id": "84bfe12dbbf61cba",
-   "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD"
-   ],
-   "title": "Jim Cramer and Tom Lee are Buying More AI Stocks. Are They Right?",
-   "link": "https://beincrypto.com/jim-cramer-tom-lee-ai-stock-call/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T00:53:43+00:00",
-   "tags": [],
-   "new": false,
-   "id": "67c6d8b54963577d",
-   "form": null
-  },
-  {
-   "ticker": "SOL-USD",
-   "touches": [
-    "SOL-USD"
-   ],
-   "title": "Why Bitcoin's Dominance Over Crypto Could Finally Be Breaking: Helius CEO",
-   "link": "https://www.coinage.media/2026/why-bitcoins-dominance-over-crypto-could-finally-be-breaking-helius-ceo?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T23:56:00+00:00",
-   "tags": [
-    "people"
-   ],
-   "new": false,
-   "id": "5f20712316d492b1",
-   "form": null
-  },
-  {
-   "ticker": "XRP-USD",
-   "touches": [
-    "XRP-USD"
-   ],
-   "title": "What Would It Take for XRP to Reach $100?",
-   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/24/what-would-it-take-for-xrp-to-reach-100/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T23:52:57+00:00",
-   "tags": [],
-   "new": false,
-   "id": "57bfa7efc8026197",
-   "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD"
-   ],
-   "title": "Stock Market Today, Nov. 24: Bitmine Shares Sink 8.6% as Confidence Wanes",
-   "link": "https://www.fool.com/coverage/stock-market-today/2026/11/24/stock-market-today-nov-24-bitmine-shares-sink-8-6-as-confidence-wanes/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T22:56:12+00:00",
-   "tags": [],
-   "new": false,
-   "id": "25d3f9ed51004e4c",
-   "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD",
-    "SOL-USD"
-   ],
-   "title": "Crypto Market Today, Nov. 24: Bitcoin Falls Below $60,000 as ETF Outflows Hit a Record $4.7 Billion",
-   "link": "https://www.fool.com/coverage/stock-market-today/2026/11/24/crypto-market-today-nov-24-bitcoin-falls-below-usd60-000-as-etf-outflows-hit-a-record-usd4-7-billion/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T22:46:40+00:00",
-   "tags": [],
-   "new": false,
-   "id": "74e0cc493ba4195e",
-   "form": null
-  },
-  {
-   "ticker": "ADA-USD",
-   "touches": [
-    "ADA-USD",
-    "ETH-USD",
-    "SOL-USD",
-    "XRP-USD"
-   ],
-   "title": "Tom Lee Says Ethereum Is as Scarce as Bitcoin: Do the Supply Numbers Agree?",
-   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/24/tom-lee-says-ethereum-is-as-scarce-as-bitcoin-do-the-supply-numbers-agree/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T22:13:09+00:00",
-   "tags": [],
-   "new": false,
-   "id": "099a400ad4b11a1f",
-   "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD"
-   ],
-   "title": "Michael Saylor gets the regulator's nod he wanted, just not at full price",
-   "link": "https://www.thestreet.com/crypto/policy/michael-saylor-gets-the-regulators-nod-he-wanted-just-not-at-full-price?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T22:10:18+00:00",
-   "tags": [],
-   "new": false,
-   "id": "0dc5e8bd466c8b89",
-   "form": null
-  },
-  {
-   "ticker": "BBAR",
-   "touches": [
-    "BBAR"
-   ],
-   "title": "BBVA Argentina Announces Third Quarter 2026 Financial Results",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/bbva-argentina-announces-third-quarter-213900404.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T21:39:00+00:00",
-   "tags": [
-    "earnings"
-   ],
-   "new": false,
-   "id": "5dcb9e2f5058ba7b",
-   "form": null
-  },
-  {
-   "ticker": "MELI",
-   "touches": [
-    "MELI"
-   ],
-   "title": "Coupang (CPNG) Stock Is Up 7.8% Today Without Company News",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/coupang-cpng-stock-7-8-210109517.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T21:01:09+00:00",
-   "tags": [],
-   "new": false,
-   "id": "f13af6d60791594b",
-   "form": null
-  },
-  {
-   "ticker": "SOL-USD",
-   "touches": [
-    "SOL-USD"
-   ],
-   "title": "Ansem Blames Bullpen Breach for $2.57M Wallet Drain",
-   "link": "https://www.bankless.com/read/news/ansem-blames-bullpen-breach-for-2-57m-wallet-drain?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-24T20:46:09+00:00",
-   "tags": [
-    "risk"
-   ],
-   "new": false,
-   "id": "84b7c7bc62468c80",
-   "form": null
   }
  ],
  "weekly": {
@@ -8366,6 +8356,39 @@
     ]
    ],
    "why": "Dos mínimos en 1.630 y 1.590 con rebote a 1.895. Entrada si cierra arriba de 1.895."
+  },
+  {
+   "key": "cripto:tron",
+   "kind": "cripto",
+   "id": "tron",
+   "label": "TRX",
+   "type": "double_bottom",
+   "name": "Doble piso",
+   "bias": "alcista",
+   "state": "formándose",
+   "trigger": 0.3277,
+   "stop": 0.2954,
+   "target": 0.357,
+   "rr": 0.91,
+   "points": [
+    [
+     "2026-10-31",
+     0.3017
+    ],
+    [
+     "2026-10-31",
+     0.3277
+    ],
+    [
+     "2026-11-21",
+     0.2984
+    ],
+    [
+     "2026-11-25",
+     0.3036
+    ]
+   ],
+   "why": "Dos mínimos en 0,3017 y 0,2984 con rebote a 0,3277. Entrada si cierra arriba de 0,3277."
   },
   {
    "key": "byma:MIRG",
