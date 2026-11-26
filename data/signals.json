@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-26T13:39:18.945277+00:00",
+ "generated_at": "2026-11-26T14:39:18.468614+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -2056,9 +2056,9 @@
    "id": "GGAL",
    "label": "GGAL",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 4755.0,
-   "day_ch": 3.15,
+   "live_date": "2026-11-26",
+   "last": 4800.0,
+   "day_ch": 0.95,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2145,9 +2145,9 @@
    "id": "YPFD",
    "label": "YPFD",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 5620.0,
-   "day_ch": -2.01,
+   "live_date": "2026-11-26",
+   "last": 5780.0,
+   "day_ch": 2.85,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -2233,9 +2233,9 @@
    "id": "PAMP",
    "label": "PAMP",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 4440.0,
-   "day_ch": 0.97,
+   "live_date": "2026-11-26",
+   "last": 4420.0,
+   "day_ch": -0.45,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2301,9 +2301,9 @@
    "id": "BMA",
    "label": "BMA",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 8965.0,
-   "day_ch": -1.16,
+   "live_date": "2026-11-26",
+   "last": 9020.0,
+   "day_ch": 0.61,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2380,9 +2380,9 @@
    "id": "ALUA",
    "label": "ALUA",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 844.0,
-   "day_ch": 1.08,
+   "live_date": "2026-11-26",
+   "last": 851.5,
+   "day_ch": 0.89,
    "source": "yahoo",
    "degraded": false,
    "score": 66,
@@ -2530,9 +2530,9 @@
    "id": "TXAR",
    "label": "TXAR",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 709.0,
-   "day_ch": 1.29,
+   "live_date": "2026-11-26",
+   "last": 702.5,
+   "day_ch": -0.92,
    "source": "yahoo",
    "degraded": false,
    "score": 51,
@@ -2665,9 +2665,9 @@
    "id": "CEPU",
    "label": "CEPU",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 1848.0,
-   "day_ch": 0.87,
+   "live_date": "2026-11-26",
+   "last": 1865.0,
+   "day_ch": 0.92,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2733,9 +2733,9 @@
    "id": "TGSU2",
    "label": "TGSU2",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 7110.0,
-   "day_ch": 0.71,
+   "live_date": "2026-11-26",
+   "last": 7180.0,
+   "day_ch": 0.98,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2883,9 +2883,9 @@
    "id": "SUPV",
    "label": "SUPV",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 1721.0,
-   "day_ch": 4.24,
+   "live_date": "2026-11-26",
+   "last": 1760.0,
+   "day_ch": 2.27,
    "source": "yahoo",
    "degraded": false,
    "score": 5,
@@ -2956,9 +2956,9 @@
    "id": "BBAR",
    "label": "BBAR",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 5365.0,
-   "day_ch": -2.19,
+   "live_date": "2026-11-26",
+   "last": 5440.0,
+   "day_ch": 1.4,
    "source": "yahoo",
    "degraded": false,
    "score": 13,
@@ -3033,9 +3033,9 @@
    "id": "LOMA",
    "label": "LOMA",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 3035.0,
-   "day_ch": 3.76,
+   "live_date": "2026-11-26",
+   "last": 3020.0,
+   "day_ch": -0.49,
    "source": "yahoo",
    "degraded": false,
    "score": 42,
@@ -3105,9 +3105,9 @@
    "id": "COME",
    "label": "COME",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 28.2,
-   "day_ch": -0.32,
+   "live_date": "2026-11-26",
+   "last": 28.71,
+   "day_ch": 1.81,
    "source": "yahoo",
    "degraded": false,
    "score": 19,
@@ -3175,9 +3175,9 @@
    "id": "TECO2",
    "label": "TECO2",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 3688.0,
-   "day_ch": 5.06,
+   "live_date": "2026-11-26",
+   "last": 3750.0,
+   "day_ch": 1.69,
    "source": "yahoo",
    "degraded": false,
    "score": 58,
@@ -3329,9 +3329,9 @@
    "id": "EDN",
    "label": "EDN",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 1064.0,
-   "day_ch": 1.33,
+   "live_date": "2026-11-26",
+   "last": 1090.0,
+   "day_ch": 2.44,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3485,9 +3485,9 @@
    "id": "CRES",
    "label": "CRES",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 1466.0,
-   "day_ch": 2.52,
+   "live_date": "2026-11-26",
+   "last": 1484.0,
+   "day_ch": 1.23,
    "source": "yahoo",
    "degraded": false,
    "score": 33,
@@ -3553,9 +3553,9 @@
    "id": "TRAN",
    "label": "TRAN",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 2232.0,
-   "day_ch": 7.05,
+   "live_date": "2026-11-26",
+   "last": 2262.0,
+   "day_ch": 1.34,
    "source": "yahoo",
    "degraded": false,
    "score": 14,
@@ -3623,9 +3623,9 @@
    "id": "BYMA",
    "label": "BYMA",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 193.25,
-   "day_ch": 1.71,
+   "live_date": "2026-11-26",
+   "last": 195.5,
+   "day_ch": 1.16,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3693,9 +3693,9 @@
    "id": "METR",
    "label": "METR",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 1831.0,
-   "day_ch": 4.99,
+   "live_date": "2026-11-26",
+   "last": 1885.0,
+   "day_ch": 2.95,
    "source": "yahoo",
    "degraded": false,
    "score": 16,
@@ -3767,9 +3767,9 @@
    "id": "VALO",
    "label": "VALO",
    "date": "2026-11-25",
-   "live_date": null,
+   "live_date": "2026-11-26",
    "last": 496.0,
-   "day_ch": -5.16,
+   "day_ch": 0.0,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -4050,8 +4050,8 @@
    "label": "BTC",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 60767.0,
-   "day_ch": 0.64,
+   "last": 60691.0,
+   "day_ch": 0.52,
    "source": "yahoo",
    "degraded": false,
    "score": 49,
@@ -4112,8 +4112,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "20 noticias recientes de BTC-USD. La última: «Galaxy Research Withdraws Call That Bitcoin's Bear Market Is Over». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "text": "20 noticias recientes de BTC-USD. La última: «Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
+       {
+        "title": "Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base",
+        "link": "https://decrypt.co/384023/polygon-cross-border-payments-stack-coinbase-base?.tsrc=rss",
+        "time": "2026-11-26T14:01:02+00:00",
+        "tags": []
+       },
        {
         "title": "Galaxy Research Withdraws Call That Bitcoin's Bear Market Is Over",
         "link": "https://decrypt.co/384030/galaxy-research-withdraws-call-that-bitcoins-bear-market-is-over?.tsrc=rss",
@@ -4131,12 +4137,6 @@
         "link": "https://beincrypto.com/crypto-market-outlook-december-2026-three-risks/?.tsrc=rss",
         "time": "2026-11-26T11:26:32+00:00",
         "tags": []
-       },
-       {
-        "title": "Can a 17-Year Track Record Protect Bitcoin? Ryan Watkins Weighs In",
-        "link": "https://unchainedcrypto.com/can-a-17-year-track-record-protect-bitcoin-ryan-watkins-weighs-in/?.tsrc=rss",
-        "time": "2026-11-26T11:00:45+00:00",
-        "tags": []
        }
       ]
      }
@@ -4151,8 +4151,8 @@
    "label": "ETH",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 1701.0,
-   "day_ch": 0.6,
+   "last": 1698.0,
+   "day_ch": 0.42,
    "source": "yahoo",
    "degraded": false,
    "score": 49,
@@ -4213,8 +4213,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "19 noticias recientes de ETH-USD. La última: «Crypto Market Faces 3 Critical Risks Heading Into December 2026»",
+      "text": "19 noticias recientes de ETH-USD. La última: «Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base»",
       "items": [
+       {
+        "title": "Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base",
+        "link": "https://decrypt.co/384023/polygon-cross-border-payments-stack-coinbase-base?.tsrc=rss",
+        "time": "2026-11-26T14:01:02+00:00",
+        "tags": []
+       },
        {
         "title": "Crypto Market Faces 3 Critical Risks Heading Into December 2026",
         "link": "https://beincrypto.com/crypto-market-outlook-december-2026-three-risks/?.tsrc=rss",
@@ -4232,12 +4238,6 @@
         "link": "https://cryptonews.com/news/why-is-crypto-up-today-btc-back-above-60k-bull-market-back/?.tsrc=rss",
         "time": "2026-11-26T10:11:22+00:00",
         "tags": []
-       },
-       {
-        "title": "Ethereum Price Reclaims $1,700: Network Activity Defies 39% Crash, $80M Shorts Liquidated",
-        "link": "https://99bitcoins.com/news/altcoins/ethereum-price-39-percent-crash-vitalik-eth-selloff/?.tsrc=rss",
-        "time": "2026-11-26T08:47:31+00:00",
-        "tags": []
        }
       ]
      }
@@ -4252,8 +4252,8 @@
    "label": "SOL",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 70.82,
-   "day_ch": 0.61,
+   "last": 71.2,
+   "day_ch": 1.15,
    "source": "yahoo",
    "degraded": false,
    "score": 25,
@@ -4311,8 +4311,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "12 noticias recientes de SOL-USD. La última: «Why Is Crypto Up Today? BTC Back Above $60K – is the Bull Market Back?»",
+      "text": "13 noticias recientes de SOL-USD. La última: «Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base»",
       "items": [
+       {
+        "title": "Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base",
+        "link": "https://decrypt.co/384023/polygon-cross-border-payments-stack-coinbase-base?.tsrc=rss",
+        "time": "2026-11-26T14:01:02+00:00",
+        "tags": []
+       },
        {
         "title": "Why Is Crypto Up Today? BTC Back Above $60K – is the Bull Market Back?",
         "link": "https://cryptonews.com/news/why-is-crypto-up-today-btc-back-above-60k-bull-market-back/?.tsrc=rss",
@@ -4330,12 +4336,6 @@
         "link": "https://www.ccn.com/news/crypto/pump-fun-block0-fee-memecoin-manipulation-pump-buybacks/?.tsrc=rss",
         "time": "2026-11-26T09:32:15+00:00",
         "tags": []
-       },
-       {
-        "title": "Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1",
-        "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
-        "time": "2026-11-26T09:15:57+00:00",
-        "tags": []
        }
       ]
      }
@@ -4350,8 +4350,8 @@
    "label": "BNB",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 552.13,
-   "day_ch": -0.26,
+   "last": 551.76,
+   "day_ch": -0.33,
    "source": "yahoo",
    "degraded": false,
    "score": 52,
@@ -4412,7 +4412,15 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de BNB-USD en las últimas horas: nada en contra"
+      "text": "1 noticias recientes de BNB-USD. La última: «Cournot Raises $5M to Build AI-Native Oracle for Verifiable Intelligence»",
+      "items": [
+       {
+        "title": "Cournot Raises $5M to Build AI-Native Oracle for Verifiable Intelligence",
+        "link": "https://decrypt.co/384036/cournot-raises-5m-to-build-ai-native-oracle-for-verifiable-intelligence?.tsrc=rss",
+        "time": "2026-11-26T14:26:22+00:00",
+        "tags": []
+       }
+      ]
      }
     ]
    },
@@ -4425,8 +4433,8 @@
    "label": "XRP",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.9497,
-   "day_ch": 1.36,
+   "last": 0.9508,
+   "day_ch": 1.48,
    "source": "yahoo",
    "degraded": false,
    "score": 7,
@@ -4480,8 +4488,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "16 noticias recientes de XRP-USD. La última: «XRP Price Prediction: Two SEC Filings Value Ripple at $90 and $300»",
+      "text": "17 noticias recientes de XRP-USD. La última: «What XRP Did After Its First ETF and What Chainlink Could Do After Fidelity’s»",
       "items": [
+       {
+        "title": "What XRP Did After Its First ETF and What Chainlink Could Do After Fidelity’s",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-xrp-did-after-its-first-etf-and-what-chainlink-could-do-after-fidelitys/?.tsrc=rss",
+        "time": "2026-11-26T14:02:56+00:00",
+        "tags": []
+       },
        {
         "title": "XRP Price Prediction: Two SEC Filings Value Ripple at $90 and $300",
         "link": "https://99bitcoins.com/news/altcoins/xrp-price-prediction-two-sec-filings-value-ripple-at-90-and-300/?.tsrc=rss",
@@ -4499,12 +4513,6 @@
         "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
         "time": "2026-11-26T09:15:57+00:00",
         "tags": []
-       },
-       {
-        "title": "How Low Can Bitcoin, Ethereum and XRP Fall? 4 Price Levels to Watch",
-        "link": "https://beincrypto.com/critical-price-levels-for-bitcoin-ethereum-xrp/?.tsrc=rss",
-        "time": "2026-11-26T01:37:34+00:00",
-        "tags": []
        }
       ]
      }
@@ -4519,8 +4527,8 @@
    "label": "ADA",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.14873,
-   "day_ch": 2.04,
+   "last": 0.14914,
+   "day_ch": 2.32,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4605,8 +4613,8 @@
    "label": "DOGE",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.05673,
-   "day_ch": 1.36,
+   "last": 0.05703,
+   "day_ch": 1.9,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4697,8 +4705,8 @@
    "label": "LINK",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 9.23,
-   "day_ch": 1.98,
+   "last": 9.24,
+   "day_ch": 2.12,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -4752,8 +4760,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "5 noticias recientes de LINK-USD. La última: «Fidelity Files for a Spot Chainlink ETF, Following Grayscale and Bitwise»",
+      "text": "6 noticias recientes de LINK-USD. La última: «What XRP Did After Its First ETF and What Chainlink Could Do After Fidelity’s»",
       "items": [
+       {
+        "title": "What XRP Did After Its First ETF and What Chainlink Could Do After Fidelity’s",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-xrp-did-after-its-first-etf-and-what-chainlink-could-do-after-fidelitys/?.tsrc=rss",
+        "time": "2026-11-26T14:02:56+00:00",
+        "tags": []
+       },
        {
         "title": "Fidelity Files for a Spot Chainlink ETF, Following Grayscale and Bitwise",
         "link": "https://unchainedcrypto.com/fidelity-files-for-a-spot-chainlink-etf-following-grayscale-and-bitwise/?.tsrc=rss",
@@ -4771,12 +4785,6 @@
         "link": "https://www.bankless.com/read/news/fidelity-files-for-a-spot-chainlink-etf?.tsrc=rss",
         "time": "2026-11-25T20:09:12+00:00",
         "tags": []
-       },
-       {
-        "title": "Japan's biggest banks pick Solana as Fidelity adds DeFi tokens",
-        "link": "https://finance.yahoo.com/video/japans-biggest-banks-pick-solana-as-fidelity-adds-defi-tokens-222056705.html?.tsrc=rss",
-        "time": "2026-11-25T17:00:00+00:00",
-        "tags": []
        }
       ]
      }
@@ -4791,8 +4799,8 @@
    "label": "AVAX",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 6.62,
-   "day_ch": 0.01,
+   "last": 6.6,
+   "day_ch": -0.3,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -4859,8 +4867,8 @@
    "label": "TRX",
    "date": "2026-11-25",
    "live_date": "2026-11-26",
-   "last": 0.303653,
-   "day_ch": 0.01,
+   "last": 0.303301,
+   "day_ch": -0.1,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -4914,7 +4922,15 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de TRX-USD en las últimas horas: nada en contra"
+      "text": "1 noticias recientes de TRX-USD. La última: «Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base»",
+      "items": [
+       {
+        "title": "Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base",
+        "link": "https://decrypt.co/384023/polygon-cross-border-payments-stack-coinbase-base?.tsrc=rss",
+        "time": "2026-11-26T14:01:02+00:00",
+        "tags": []
+       }
+      ]
      }
     ]
    },
@@ -7166,6 +7182,55 @@
  },
  "news": [
   {
+   "ticker": "BNB-USD",
+   "touches": [
+    "BNB-USD"
+   ],
+   "title": "Cournot Raises $5M to Build AI-Native Oracle for Verifiable Intelligence",
+   "link": "https://decrypt.co/384036/cournot-raises-5m-to-build-ai-native-oracle-for-verifiable-intelligence?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T14:26:22+00:00",
+   "tags": [],
+   "new": true,
+   "id": "7151dfa7792d257f",
+   "form": null
+  },
+  {
+   "ticker": "LINK-USD",
+   "touches": [
+    "LINK-USD",
+    "XRP-USD"
+   ],
+   "title": "What XRP Did After Its First ETF and What Chainlink Could Do After Fidelity’s",
+   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-xrp-did-after-its-first-etf-and-what-chainlink-could-do-after-fidelitys/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T14:02:56+00:00",
+   "tags": [],
+   "new": true,
+   "id": "7be389f02d6af43a",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD",
+    "ETH-USD",
+    "SOL-USD",
+    "TRX-USD"
+   ],
+   "title": "Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base",
+   "link": "https://decrypt.co/384023/polygon-cross-border-payments-stack-coinbase-base?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T14:01:02+00:00",
+   "tags": [],
+   "new": true,
+   "id": "c097f22c92aa90f2",
+   "form": null
+  },
+  {
    "ticker": "MELI",
    "touches": [
     "MELI"
@@ -7176,7 +7241,7 @@
    "kind": "headline",
    "time": "2026-11-26T12:37:19+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "b0e87f5470de3241",
    "form": null
   },
@@ -7191,7 +7256,7 @@
    "kind": "headline",
    "time": "2026-11-26T12:26:08+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "4083bafb798a9bb7",
    "form": null
   },
@@ -7206,7 +7271,7 @@
    "kind": "headline",
    "time": "2026-11-26T12:20:02+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "a356b742bc5b0dc0",
    "form": null
   },
@@ -7221,7 +7286,7 @@
    "kind": "headline",
    "time": "2026-11-26T11:28:52+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "75c3314e698c253e",
    "form": null
   },
@@ -7237,7 +7302,7 @@
    "kind": "headline",
    "time": "2026-11-26T11:26:32+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "2d244d540e347df0",
    "form": null
   },
@@ -7252,7 +7317,7 @@
    "kind": "headline",
    "time": "2026-11-26T11:00:45+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "7b133ae46840b875",
    "form": null
   },
@@ -7267,7 +7332,7 @@
    "kind": "headline",
    "time": "2026-11-26T10:34:28+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "64913fe25da0261b",
    "form": null
   },
@@ -7282,7 +7347,7 @@
    "kind": "headline",
    "time": "2026-11-26T10:32:15+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "40f86e69dbf8ba3a",
    "form": null
   },
@@ -7298,7 +7363,7 @@
    "kind": "headline",
    "time": "2026-11-26T10:27:02+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "8afc4a389ae84c4e",
    "form": null
   },
@@ -7316,7 +7381,7 @@
    "kind": "headline",
    "time": "2026-11-26T10:11:22+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "964c465c4cfab5ad",
    "form": null
   },
@@ -7333,7 +7398,7 @@
    "kind": "headline",
    "time": "2026-11-26T10:00:19+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "c65e4192afdfa836",
    "form": null
   },
@@ -7348,7 +7413,7 @@
    "kind": "headline",
    "time": "2026-11-26T09:50:02+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "46977a02ef8526b7",
    "form": null
   },
@@ -7363,7 +7428,7 @@
    "kind": "headline",
    "time": "2026-11-26T09:45:46+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "27650a88e6fba4dc",
    "form": null
   },
@@ -7378,7 +7443,7 @@
    "kind": "headline",
    "time": "2026-11-26T09:32:15+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "9962d171025cd6a4",
    "form": null
   },
@@ -7393,7 +7458,7 @@
    "kind": "headline",
    "time": "2026-11-26T09:22:39+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "4beaf51fa89ab87a",
    "form": null
   },
@@ -7412,7 +7477,7 @@
    "kind": "headline",
    "time": "2026-11-26T09:15:57+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "c9b7c6656b2ad334",
    "form": null
   },
@@ -7427,7 +7492,7 @@
    "kind": "headline",
    "time": "2026-11-26T09:00:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "8414a8897993f6e5",
    "form": null
   },
@@ -7442,7 +7507,7 @@
    "kind": "headline",
    "time": "2026-11-26T08:47:31+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "37f9f0e0bfa48013",
    "form": null
   },
@@ -7457,7 +7522,7 @@
    "kind": "headline",
    "time": "2026-11-26T08:38:26+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "de1b2e71c9e711c3",
    "form": null
   },
@@ -7474,7 +7539,7 @@
    "tags": [
     "earnings"
    ],
-   "new": true,
+   "new": false,
    "id": "2a3bed132a5c56d9",
    "form": null
   },
@@ -7489,7 +7554,7 @@
    "kind": "headline",
    "time": "2026-11-26T07:02:24+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "9dddabf3bac57e3a",
    "form": null
   },
@@ -7507,7 +7572,7 @@
     "earnings",
     "macro"
    ],
-   "new": true,
+   "new": false,
    "id": "5e77591842a48f8d",
    "form": null
   },
@@ -7522,7 +7587,7 @@
    "kind": "headline",
    "time": "2026-11-26T05:45:32+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "4196a281771620f9",
    "form": null
   },
@@ -7537,7 +7602,7 @@
    "kind": "headline",
    "time": "2026-11-26T05:00:43+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "f2b36aaf1ae2feb0",
    "form": null
   },
@@ -7554,7 +7619,7 @@
    "tags": [
     "macro"
    ],
-   "new": true,
+   "new": false,
    "id": "f20f78e6d6c39dcc",
    "form": null
   },
@@ -7569,7 +7634,7 @@
    "kind": "headline",
    "time": "2026-11-26T04:36:04+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "bbde90429d75c20f",
    "form": null
   },
@@ -7586,7 +7651,7 @@
    "kind": "headline",
    "time": "2026-11-26T01:37:34+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "58efda3e35b673c4",
    "form": null
   },
@@ -7601,25 +7666,8 @@
    "kind": "headline",
    "time": "2026-11-26T01:00:45+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "bab8d66fbf3d8b67",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Why CleanSpark Stock Was a Winner on Wednesday",
-   "link": "https://www.fool.com/investing/2026/11/25/why-cleanspark-stock-was-a-winner-on-wednesday/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T00:30:39+00:00",
-   "tags": [
-    "earnings"
-   ],
-   "new": true,
-   "id": "8a4046dc15a8d015",
    "form": null
   },
   {
@@ -7633,7 +7681,7 @@
    "kind": "headline",
    "time": "2026-11-25T23:42:50+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "843c9bb95a459c92",
    "form": null
   },
@@ -7651,7 +7699,7 @@
     "earnings",
     "macro"
    ],
-   "new": true,
+   "new": false,
    "id": "6f2c75e7e07fabe9",
    "form": null
   },
@@ -7668,7 +7716,7 @@
    "tags": [
     "analyst"
    ],
-   "new": true,
+   "new": false,
    "id": "ab3ef895bfd19b9c",
    "form": null
   },
@@ -7684,7 +7732,7 @@
    "kind": "headline",
    "time": "2026-11-25T22:26:19+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "93699f9d69e1a38e",
    "form": null
   },
@@ -7731,7 +7779,7 @@
    "kind": "headline",
    "time": "2026-11-25T19:38:23+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "8773c946f37ccea9",
    "form": null
   },
@@ -8089,38 +8137,6 @@
    "tags": [],
    "new": false,
    "id": "14786402771bba70",
-   "form": null
-  },
-  {
-   "ticker": "XRP-USD",
-   "touches": [
-    "XRP-USD"
-   ],
-   "title": "Ripple's David Schwartz Questions Secret XRP Buying as EGRAG Reveals $8.20 Sell Plan",
-   "link": "https://www.ccn.com/news/crypto/xrp-egrag-reveals-sell-plan-schwartz-questions-secret-xrp-buying/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T11:07:15+00:00",
-   "tags": [],
-   "new": false,
-   "id": "19e3bfc7c42151ae",
-   "form": null
-  },
-  {
-   "ticker": "YPF",
-   "touches": [
-    "YPF"
-   ],
-   "title": "Equinor Inks 18-Year Gas Supply Agreement With German Energy Firm VNG",
-   "link": "https://finance.yahoo.com/energy/articles/equinor-inks-18-gas-supply-105500783.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-25T10:55:00+00:00",
-   "tags": [
-    "deal"
-   ],
-   "new": false,
-   "id": "e91867a175377c73",
    "form": null
   }
  ],
