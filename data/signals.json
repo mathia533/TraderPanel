@@ -4694,14 +4694,14 @@
  "intraday": {
   "enabled": true,
   "date": "2026-11-27",
-  "time_ny": "12:55",
+  "time_ny": "13:17",
   "symbols": {
    "YPF": {
     "symbol": "YPF",
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 34.0,
      "low": 32.6,
@@ -4713,9 +4713,9 @@
     },
     "level": 34.0,
     "last": {
-     "bar_start": "12:50",
-     "close": 31.92,
-     "vs_level_pct": -6.1
+     "bar_start": "12:55",
+     "close": 31.85,
+     "vs_level_pct": -6.32
     },
     "trigger": null,
     "reason": "no close above the range high $34.00 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4725,7 +4725,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 29.29,
      "low": 28.28,
@@ -4737,9 +4737,9 @@
     },
     "level": 29.29,
     "last": {
-     "bar_start": "12:50",
-     "close": 27.97,
-     "vs_level_pct": -4.51
+     "bar_start": "12:55",
+     "close": 28.08,
+     "vs_level_pct": -4.13
     },
     "trigger": null,
     "reason": "no close above the range high $29.29 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4749,7 +4749,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 65.55,
      "low": 64.07,
@@ -4761,9 +4761,9 @@
     },
     "level": 65.55,
     "last": {
-     "bar_start": "12:50",
-     "close": 63.26,
-     "vs_level_pct": -3.49
+     "bar_start": "12:55",
+     "close": 63.4,
+     "vs_level_pct": -3.28
     },
     "trigger": null,
     "reason": "no close above the range high $65.55 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4773,7 +4773,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 54.06,
      "low": 52.05,
@@ -4785,9 +4785,9 @@
     },
     "level": 54.06,
     "last": {
-     "bar_start": "12:50",
-     "close": 52.37,
-     "vs_level_pct": -3.14
+     "bar_start": "12:55",
+     "close": 52.53,
+     "vs_level_pct": -2.83
     },
     "trigger": null,
     "reason": "no close above the range high $54.06 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4797,7 +4797,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 53.88,
      "low": 52.16,
@@ -4805,13 +4805,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 56310
+     "avg_volume": 56303
     },
     "level": 53.88,
     "last": {
-     "bar_start": "12:50",
-     "close": 51.72,
-     "vs_level_pct": -4.02
+     "bar_start": "12:55",
+     "close": 51.75,
+     "vs_level_pct": -3.95
     },
     "trigger": null,
     "reason": "no close above the range high $53.88 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4821,7 +4821,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 1551.02,
      "low": 1524.28,
@@ -4833,9 +4833,9 @@
     },
     "level": 1551.02,
     "last": {
-     "bar_start": "12:50",
-     "close": 1532.84,
-     "vs_level_pct": -1.17
+     "bar_start": "12:55",
+     "close": 1533.91,
+     "vs_level_pct": -1.1
     },
     "trigger": null,
     "reason": "no close above the range high $1551.02 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4845,7 +4845,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 21.4,
      "low": 20.44,
@@ -4853,13 +4853,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 25695
+     "avg_volume": 25700
     },
     "level": 21.4,
     "last": {
-     "bar_start": "12:50",
-     "close": 20.34,
-     "vs_level_pct": -4.95
+     "bar_start": "12:55",
+     "close": 20.37,
+     "vs_level_pct": -4.81
     },
     "trigger": null,
     "reason": "no close above the range high $21.40 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4869,7 +4869,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 11.35,
      "low": 10.94,
@@ -4877,13 +4877,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 33125
+     "avg_volume": 60898
     },
     "level": 11.35,
     "last": {
-     "bar_start": "12:45",
-     "close": 10.98,
-     "vs_level_pct": -3.26
+     "bar_start": "12:55",
+     "close": 10.95,
+     "vs_level_pct": -3.52
     },
     "trigger": null,
     "reason": "no close above the range high $11.35 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4893,7 +4893,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 5.24,
      "low": 5.09,
@@ -4901,11 +4901,11 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 51004
+     "avg_volume": 95593
     },
     "level": 5.24,
     "last": {
-     "bar_start": "12:50",
+     "bar_start": "12:55",
      "close": 5.02,
      "vs_level_pct": -4.2
     },
@@ -4917,7 +4917,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 8.94,
      "low": 8.64,
@@ -4925,13 +4925,13 @@
      "bars": 2,
      "of": 3,
      "complete": true,
-     "avg_volume": 32370
+     "avg_volume": 32372
     },
     "level": 8.94,
     "last": {
-     "bar_start": "12:50",
-     "close": 8.75,
-     "vs_level_pct": -2.13
+     "bar_start": "12:55",
+     "close": 8.77,
+     "vs_level_pct": -1.9
     },
     "trigger": null,
     "reason": "no close above the range high $8.94 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4941,7 +4941,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 9.74,
      "low": 9.26,
@@ -4953,7 +4953,7 @@
     },
     "level": 9.74,
     "last": {
-     "bar_start": "12:50",
+     "bar_start": "12:55",
      "close": 9.23,
      "vs_level_pct": -5.24
     },
@@ -4965,7 +4965,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 8.92,
      "low": 8.57,
@@ -4973,13 +4973,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 3130
+     "avg_volume": 3137
     },
     "level": 8.92,
     "last": {
-     "bar_start": "12:50",
-     "close": 8.61,
-     "vs_level_pct": -3.48
+     "bar_start": "12:55",
+     "close": 8.63,
+     "vs_level_pct": -3.25
     },
     "trigger": null,
     "reason": "no close above the range high $8.92 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4989,7 +4989,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 12.94,
      "low": 12.5,
@@ -5001,9 +5001,9 @@
     },
     "level": 12.94,
     "last": {
-     "bar_start": "12:50",
-     "close": 12.35,
-     "vs_level_pct": -4.52
+     "bar_start": "12:55",
+     "close": 12.42,
+     "vs_level_pct": -3.98
     },
     "trigger": null,
     "reason": "no close above the range high $12.94 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -5013,7 +5013,7 @@
     "date": "2026-11-27",
     "status": "expired",
     "status_es": "venció",
-    "phase": "pasó el horario de entradas",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 10.75,
      "low": 10.55,
@@ -5021,13 +5021,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 58824
+     "avg_volume": 29489
     },
     "level": 10.75,
     "last": {
-     "bar_start": "12:50",
-     "close": 10.45,
-     "vs_level_pct": -2.79
+     "bar_start": "12:55",
+     "close": 10.48,
+     "vs_level_pct": -2.51
     },
     "trigger": null,
     "reason": "no close above the range high $10.75 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -5037,7 +5037,7 @@
     "date": "2026-11-27",
     "status": "triggered",
     "status_es": "disparó",
-    "phase": "rueda abierta",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 11.61,
      "low": 11.45,
@@ -5049,9 +5049,9 @@
     },
     "level": 11.61,
     "last": {
-     "bar_start": "12:50",
-     "close": 11.49,
-     "vs_level_pct": -1.03
+     "bar_start": "12:55",
+     "close": 11.45,
+     "vs_level_pct": -1.38
     },
     "trigger": {
      "time": "9:55 AM",
@@ -5081,8 +5081,8 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 180 minutos (máximo 30)",
+      "horario: el mercado de NY está cerrado",
+      "la ruptura fue hace 202 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 2 %, priorizar liquidez)"
      ],
      "units": 214.0,
@@ -5107,7 +5107,7 @@
     "date": "2026-11-27",
     "status": "triggered",
     "status_es": "disparó",
-    "phase": "rueda abierta",
+    "phase": "rueda cerrada",
     "opening_range": {
      "high": 50.94,
      "low": 50.15,
@@ -5115,13 +5115,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 14669
+     "avg_volume": 14736
     },
     "level": 50.94,
     "last": {
-     "bar_start": "12:50",
-     "close": 51.31,
-     "vs_level_pct": 0.73
+     "bar_start": "12:55",
+     "close": 51.4,
+     "vs_level_pct": 0.9
     },
     "trigger": {
      "time": "10:10 AM",
@@ -5131,7 +5131,7 @@
      "price": 51.12,
      "close": 51.12009811401367,
      "volume": 28385,
-     "volume_x": 1.94,
+     "volume_x": 1.93,
      "pct_over": 0.35
     },
     "reason": "the 10:05 bar closed above the range high",
@@ -5151,8 +5151,8 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 165 minutos (máximo 30)",
+      "horario: el mercado de NY está cerrado",
+      "la ruptura fue hace 187 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 2 %, priorizar liquidez)"
      ],
      "units": 48.0,
@@ -6608,5 +6608,5 @@
  "errors": {
   "news": "no SEC CIK for ADA-USD; no SEC CIK for AVAX-USD; SEC 8-K for BBAR: HTTP 400 for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000913059&type=8-K&dateb=&owner=include&count=8&output=atom"
  },
- "intraday_at": "2026-11-27T17:55:14.008830+00:00"
+ "intraday_at": "2026-11-27T18:17:28.146950+00:00"
 }
