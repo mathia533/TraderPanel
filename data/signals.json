@@ -4682,319 +4682,391 @@
  "intraday": {
   "enabled": true,
   "date": "2026-11-27",
-  "time_ny": "09:39",
+  "time_ny": "09:54",
   "symbols": {
    "YPF": {
     "symbol": "YPF",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
      "high": 34.0,
-     "low": 33.15,
+     "low": 32.6,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 269373
+     "complete": true,
+     "avg_volume": 111793
     },
-    "level": null,
-    "last": null,
+    "level": 34.0,
+    "last": {
+     "bar_start": "09:45",
+     "close": 32.67,
+     "vs_level_pct": -3.89
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $32.67 (9:45 bar), $1.32 under the range high $34.00 (-3.89%)"
    },
    "GGAL": {
     "symbol": "GGAL",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
      "high": 29.29,
      "low": 28.28,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 268509
+     "complete": true,
+     "avg_volume": 144578
     },
-    "level": null,
-    "last": null,
+    "level": 29.29,
+    "last": {
+     "bar_start": "09:45",
+     "close": 28.67,
+     "vs_level_pct": -2.12
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $28.67 (9:45 bar), $0.62 under the range high $29.29 (-2.12%)"
    },
    "PAM": {
     "symbol": "PAM",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
      "high": 65.55,
-     "low": 64.52,
+     "low": 64.35,
      "minutes": 15,
-     "bars": 1,
+     "bars": 2,
      "of": 3,
-     "complete": false,
-     "avg_volume": 3371
+     "complete": true,
+     "avg_volume": 13666
     },
-    "level": null,
-    "last": null,
+    "level": 65.55,
+    "last": {
+     "bar_start": "09:45",
+     "close": 64.05,
+     "vs_level_pct": -2.29
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $64.05 (9:45 bar), $1.50 under the range high $65.55 (-2.29%)"
    },
    "BMA": {
     "symbol": "BMA",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
      "high": 54.06,
-     "low": 53.0,
+     "low": 52.05,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 2294
+     "complete": true,
+     "avg_volume": 15869
     },
-    "level": null,
-    "last": null,
+    "level": 54.06,
+    "last": {
+     "bar_start": "09:45",
+     "close": 52.85,
+     "vs_level_pct": -2.24
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $52.85 (9:45 bar), $1.21 under the range high $54.06 (-2.24%)"
    },
    "VIST": {
     "symbol": "VIST",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
      "high": 53.88,
-     "low": 53.01,
+     "low": 52.17,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 93994
+     "complete": true,
+     "avg_volume": 55360
     },
-    "level": null,
-    "last": null,
+    "level": 53.88,
+    "last": {
+     "bar_start": "09:45",
+     "close": 52.53,
+     "vs_level_pct": -2.51
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $52.53 (9:45 bar), $1.35 under the range high $53.88 (-2.51%)"
    },
    "MELI": {
     "symbol": "MELI",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
      "high": 1551.02,
-     "low": 1525.46,
+     "low": 1524.28,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 66036
+     "complete": true,
+     "avg_volume": 33005
     },
-    "level": null,
-    "last": null,
+    "level": 1551.02,
+    "last": {
+     "bar_start": "09:45",
+     "close": 1523.66,
+     "vs_level_pct": -1.76
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $1523.66 (9:45 bar), $27.36 under the range high $1551.02 (-1.76%)"
    },
    "TGS": {
     "symbol": "TGS",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
-     "high": 21.28,
-     "low": 21.0,
+     "high": 21.4,
+     "low": 20.44,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 57186
+     "complete": true,
+     "avg_volume": 24323
     },
-    "level": null,
-    "last": null,
+    "level": 21.4,
+    "last": {
+     "bar_start": "09:45",
+     "close": 20.54,
+     "vs_level_pct": -4.02
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $20.54 (9:45 bar), $0.86 under the range high $21.40 (-4.02%)"
    },
    "CEPU": {
     "symbol": "CEPU",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
      "high": 11.35,
-     "low": 11.19,
+     "low": 10.94,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 2226
+     "complete": true,
+     "avg_volume": 33063
     },
-    "level": null,
-    "last": null,
+    "level": 11.35,
+    "last": {
+     "bar_start": "09:45",
+     "close": 11.01,
+     "vs_level_pct": -3.04
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $11.01 (9:45 bar), $0.35 under the range high $11.35 (-3.04%)"
    },
    "SUPV": {
     "symbol": "SUPV",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
      "high": 5.24,
-     "low": 5.17,
+     "low": 5.09,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 96549
+     "complete": true,
+     "avg_volume": 51373
     },
-    "level": null,
-    "last": null,
+    "level": 5.24,
+    "last": {
+     "bar_start": "09:45",
+     "close": 5.1,
+     "vs_level_pct": -2.61
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $5.10 (9:45 bar), $0.14 under the range high $5.24 (-2.61%)"
    },
    "LOMA": {
     "symbol": "LOMA",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
-     "high": 8.91,
-     "low": 8.85,
+     "high": 8.93,
+     "low": 8.64,
      "minutes": 15,
-     "bars": 1,
+     "bars": 2,
      "of": 3,
-     "complete": false,
-     "avg_volume": 0
+     "complete": true,
+     "avg_volume": 30398
     },
-    "level": null,
-    "last": null,
+    "level": 8.93,
+    "last": {
+     "bar_start": "09:45",
+     "close": 8.6,
+     "vs_level_pct": -3.7
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $8.60 (9:45 bar), $0.33 under the range high $8.93 (-3.70%)"
    },
    "BBAR": {
     "symbol": "BBAR",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
      "high": 9.74,
-     "low": 9.4,
+     "low": 9.26,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 24581
+     "complete": true,
+     "avg_volume": 43553
     },
-    "level": null,
-    "last": null,
+    "level": 9.74,
+    "last": {
+     "bar_start": "09:45",
+     "close": 9.31,
+     "vs_level_pct": -4.41
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $9.31 (9:45 bar), $0.43 under the range high $9.74 (-4.41%)"
    },
    "CRESY": {
     "symbol": "CRESY",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
      "high": 8.92,
      "low": 8.57,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 545
+     "complete": true,
+     "avg_volume": 3130
     },
-    "level": null,
-    "last": null,
+    "level": 8.92,
+    "last": {
+     "bar_start": "09:45",
+     "close": 8.78,
+     "vs_level_pct": -1.57
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $8.78 (9:45 bar), $0.14 under the range high $8.92 (-1.57%)"
    },
    "EDN": {
     "symbol": "EDN",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
-     "high": 12.67,
-     "low": 12.62,
+     "high": 12.94,
+     "low": 12.5,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 4769
+     "complete": true,
+     "avg_volume": 10033
     },
-    "level": null,
-    "last": null,
+    "level": 12.94,
+    "last": {
+     "bar_start": "09:45",
+     "close": 12.7,
+     "vs_level_pct": -1.82
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $12.70 (9:45 bar), $0.24 under the range high $12.94 (-1.82%)"
    },
    "TEO": {
     "symbol": "TEO",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
-     "high": 10.64,
+     "high": 10.75,
      "low": 10.55,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 0
+     "complete": true,
+     "avg_volume": 27709
     },
-    "level": null,
-    "last": null,
+    "level": 10.75,
+    "last": {
+     "bar_start": "09:45",
+     "close": 10.61,
+     "vs_level_pct": -1.3
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $10.61 (9:45 bar), $0.14 under the range high $10.75 (-1.30%)"
    },
    "IRS": {
     "symbol": "IRS",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
-    "opening_range": null,
-    "level": null,
-    "last": null,
+    "phase": "rueda abierta",
+    "opening_range": {
+     "high": 11.61,
+     "low": 11.45,
+     "minutes": 15,
+     "bars": 3,
+     "of": 3,
+     "complete": true,
+     "avg_volume": 12964
+    },
+    "level": 11.61,
+    "last": {
+     "bar_start": "09:45",
+     "close": 11.49,
+     "vs_level_pct": -1.03
+    },
     "trigger": null,
-    "reason": "0 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $11.49 (9:45 bar), $0.12 under the range high $11.61 (-1.03%)"
    },
    "GLOB": {
     "symbol": "GLOB",
     "date": "2026-11-27",
     "status": "waiting",
     "status_es": "esperando",
-    "phase": "armando el rango",
+    "phase": "rueda abierta",
     "opening_range": {
-     "high": 50.92,
-     "low": 50.17,
+     "high": 50.94,
+     "low": 50.15,
      "minutes": 15,
-     "bars": 1,
+     "bars": 3,
      "of": 3,
-     "complete": false,
-     "avg_volume": 10008
+     "complete": true,
+     "avg_volume": 13747
     },
-    "level": null,
-    "last": null,
+    "level": 50.94,
+    "last": {
+     "bar_start": "09:45",
+     "close": 50.6,
+     "vs_level_pct": -0.67
+    },
     "trigger": null,
-    "reason": "1 of 3 range bars closed; the range is set at 9:45"
+    "reason": "last close $50.60 (9:45 bar), $0.34 under the range high $50.94 (-0.67%)"
    }
   }
  },
@@ -6383,5 +6455,6 @@
  },
  "errors": {
   "news": "no SEC CIK for ADA-USD; no SEC CIK for AVAX-USD; SEC 8-K for BBAR: HTTP 400 for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000913059&type=8-K&dateb=&owner=include&count=8&output=atom"
- }
+ },
+ "intraday_at": "2026-11-27T14:54:49.336443+00:00"
 }
