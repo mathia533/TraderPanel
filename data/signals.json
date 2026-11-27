@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-27T21:37:49.229773+00:00",
+ "generated_at": "2026-11-27T22:37:44.927581+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -446,7 +446,7 @@
     "trigger": "none",
     "tags": [],
     "day_gain_pct": 1.43,
-    "volume_ratio_20d": 0.62,
+    "volume_ratio_20d": 0.63,
     "error": null
    },
    "scanner": {
@@ -586,7 +586,7 @@
     "trigger": "none",
     "tags": [],
     "day_gain_pct": 3.17,
-    "volume_ratio_20d": 0.7,
+    "volume_ratio_20d": 0.71,
     "error": null
    },
    "scanner": {
@@ -762,7 +762,7 @@
     "trigger": "none",
     "tags": [],
     "day_gain_pct": 2.66,
-    "volume_ratio_20d": 1.37,
+    "volume_ratio_20d": 1.38,
     "error": null
    },
    "scanner": {
@@ -830,7 +830,7 @@
      "4pct_breakout"
     ],
     "day_gain_pct": 5.09,
-    "volume_ratio_20d": 1.12,
+    "volume_ratio_20d": 1.13,
     "error": null
    },
    "scanner": {
@@ -1007,7 +1007,7 @@
     "trigger": "none",
     "tags": [],
     "day_gain_pct": 5.02,
-    "volume_ratio_20d": 0.94,
+    "volume_ratio_20d": 0.95,
     "error": null
    },
    "scanner": {
@@ -1225,7 +1225,7 @@
      "4pct_breakout"
     ],
     "day_gain_pct": 4.75,
-    "volume_ratio_20d": 0.91,
+    "volume_ratio_20d": 0.93,
     "error": null
    },
    "scanner": {
@@ -1363,7 +1363,7 @@
     "trigger": "none",
     "tags": [],
     "day_gain_pct": 1.94,
-    "volume_ratio_20d": 1.07,
+    "volume_ratio_20d": 1.08,
     "error": null
    },
    "scanner": {
@@ -1433,7 +1433,7 @@
     "trigger": "none",
     "tags": [],
     "day_gain_pct": 3.53,
-    "volume_ratio_20d": 0.61,
+    "volume_ratio_20d": 0.62,
     "error": null
    },
    "scanner": {
@@ -3228,8 +3228,8 @@
    "label": "BTC",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 59791.0,
-   "day_ch": -1.16,
+   "last": 59662.0,
+   "day_ch": -1.38,
    "source": "yahoo",
    "degraded": false,
    "score": 38,
@@ -3332,8 +3332,8 @@
    "label": "ETH",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 1665.0,
-   "day_ch": -1.34,
+   "last": 1656.0,
+   "day_ch": -1.88,
    "source": "yahoo",
    "degraded": false,
    "score": 14,
@@ -3391,7 +3391,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "13 noticias recientes de ETH-USD (temas: analistas, macro). La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
+      "text": "11 noticias recientes de ETH-USD (temas: analistas, macro). La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
       "items": [
        {
         "title": "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
@@ -3434,8 +3434,8 @@
    "label": "SOL",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 71.93,
-   "day_ch": 1.41,
+   "last": 71.44,
+   "day_ch": 0.72,
    "source": "yahoo",
    "degraded": false,
    "score": 23,
@@ -3489,7 +3489,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "6 noticias recientes de SOL-USD. La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
+      "text": "4 noticias recientes de SOL-USD. La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
       "items": [
        {
         "title": "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
@@ -3528,8 +3528,8 @@
    "label": "BNB",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 553.23,
-   "day_ch": 0.01,
+   "last": 552.03,
+   "day_ch": -0.2,
    "source": "yahoo",
    "degraded": false,
    "score": 32,
@@ -3608,8 +3608,8 @@
    "label": "XRP",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.9491,
-   "day_ch": 0.66,
+   "last": 0.9424,
+   "day_ch": -0.05,
    "source": "yahoo",
    "degraded": false,
    "score": 7,
@@ -3663,8 +3663,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "17 noticias recientes de XRP-USD (temas: balance, directivos, operación corporativa). La última: «What Will 50,000 XRP Be Worth by 2028?». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "text": "17 noticias recientes de XRP-USD (temas: balance, directivos, operación corporativa). La última: «Is 10,000 XRP Enough to Retire On by 2035?». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
+       {
+        "title": "Is 10,000 XRP Enough to Retire On by 2035?",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/27/is-10000-xrp-enough-to-retire-on-by-2035/?.tsrc=rss",
+        "time": "2026-11-27T22:22:41+00:00",
+        "tags": []
+       },
        {
         "title": "What Will 50,000 XRP Be Worth by 2028?",
         "link": "https://247wallst.com/investing/cryptocurrency/2026/11/27/what-will-50000-xrp-be-worth-by-2028/?.tsrc=rss",
@@ -3686,14 +3692,6 @@
         "tags": [
          "people"
         ]
-       },
-       {
-        "title": "XRP to $600 by 2035? Ripple Lands Custody Deal With Turkish Banking Giant",
-        "link": "https://www.ccn.com/news/crypto/xrp-600-2035-ripple-lands-custody-deal-turkish-banking-giant/?.tsrc=rss",
-        "time": "2026-11-27T15:07:15+00:00",
-        "tags": [
-         "deal"
-        ]
        }
       ]
      }
@@ -3708,8 +3706,8 @@
    "label": "ADA",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.14905,
-   "day_ch": 0.44,
+   "last": 0.14764,
+   "day_ch": -0.51,
    "source": "yahoo",
    "degraded": false,
    "score": 22,
@@ -3784,8 +3782,8 @@
    "label": "DOGE",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.05763,
-   "day_ch": 2.21,
+   "last": 0.05727,
+   "day_ch": 1.57,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -3839,15 +3837,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "1 noticias recientes de DOGE-USD. La última: «Can Shiba Inu Reach $1 in 2027? The Answer Might Shock You.»",
-      "items": [
-       {
-        "title": "Can Shiba Inu Reach $1 in 2027? The Answer Might Shock You.",
-        "link": "https://www.fool.com/investing/2026/11/26/can-shiba-inu-reach-usd1-in-2027-answer-shock-you/?.tsrc=rss",
-        "time": "2026-11-26T10:27:02+00:00",
-        "tags": []
-       }
-      ]
+      "text": "No hubo noticias de DOGE-USD en las últimas horas: nada en contra"
      }
     ]
    },
@@ -3860,8 +3850,8 @@
    "label": "LINK",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 9.35,
-   "day_ch": 0.91,
+   "last": 9.29,
+   "day_ch": 0.21,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -3915,7 +3905,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "3 noticias recientes de LINK-USD. La última: «Fidelity Files For Spot Chainlink ETF On Nasdaq»",
+      "text": "2 noticias recientes de LINK-USD. La última: «Fidelity Files For Spot Chainlink ETF On Nasdaq»",
       "items": [
        {
         "title": "Fidelity Files For Spot Chainlink ETF On Nasdaq",
@@ -3927,12 +3917,6 @@
         "title": "What XRP Did After Its First ETF and What Chainlink Could Do After Fidelity’s",
         "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-xrp-did-after-its-first-etf-and-what-chainlink-could-do-after-fidelitys/?.tsrc=rss",
         "time": "2026-11-26T14:02:56+00:00",
-        "tags": []
-       },
-       {
-        "title": "Fidelity Files for a Spot Chainlink ETF, Following Grayscale and Bitwise",
-        "link": "https://unchainedcrypto.com/fidelity-files-for-a-spot-chainlink-etf-following-grayscale-and-bitwise/?.tsrc=rss",
-        "time": "2026-11-26T10:00:19+00:00",
         "tags": []
        }
       ]
@@ -3948,8 +3932,8 @@
    "label": "AVAX",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 6.63,
-   "day_ch": 0.68,
+   "last": 6.58,
+   "day_ch": -0.03,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -4016,8 +4000,8 @@
    "label": "TRX",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.300479,
-   "day_ch": -1.05,
+   "last": 0.300674,
+   "day_ch": -0.99,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -4643,6 +4627,21 @@
   }
  },
  "news": [
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "Is 10,000 XRP Enough to Retire On by 2035?",
+   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/27/is-10000-xrp-enough-to-retire-on-by-2035/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T22:22:41+00:00",
+   "tags": [],
+   "new": true,
+   "id": "a41067d38bbee79c",
+   "form": null
+  },
   {
    "ticker": "BTC-USD",
    "touches": [
@@ -5570,22 +5569,6 @@
    "tags": [],
    "new": false,
    "id": "2d244d540e347df0",
-   "form": null
-  },
-  {
-   "ticker": "DOGE-USD",
-   "touches": [
-    "DOGE-USD",
-    "ETH-USD"
-   ],
-   "title": "Can Shiba Inu Reach $1 in 2027? The Answer Might Shock You.",
-   "link": "https://www.fool.com/investing/2026/11/26/can-shiba-inu-reach-usd1-in-2027-answer-shock-you/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T10:27:02+00:00",
-   "tags": [],
-   "new": false,
-   "id": "8afc4a389ae84c4e",
    "form": null
   }
  ],
