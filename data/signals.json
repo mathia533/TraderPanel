@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-27T16:38:54.881166+00:00",
+ "generated_at": "2026-11-27T17:37:53.691592+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -250,8 +250,8 @@
    "label": "YPF",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 32.78,
-   "day_ch": 4.21,
+   "last": 32.52,
+   "day_ch": 3.4,
    "source": "yahoo",
    "degraded": false,
    "score": 19,
@@ -338,8 +338,8 @@
    "label": "GGAL",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 28.32,
-   "day_ch": 6.23,
+   "last": 28.24,
+   "day_ch": 5.91,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -429,8 +429,8 @@
    "label": "PAM",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 63.52,
-   "day_ch": 1.93,
+   "last": 63.28,
+   "day_ch": 1.54,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -579,8 +579,8 @@
    "label": "BMA",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 52.97,
-   "day_ch": 5.2,
+   "last": 52.55,
+   "day_ch": 4.37,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -741,8 +741,8 @@
    "label": "VIST",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 52.26,
-   "day_ch": 4.19,
+   "last": 52.24,
+   "day_ch": 4.15,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -907,8 +907,8 @@
    "label": "MELI",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 1540.0,
-   "day_ch": 4.95,
+   "last": 1542.0,
+   "day_ch": 5.07,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1083,8 +1083,8 @@
    "label": "TGS",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 20.35,
-   "day_ch": 2.31,
+   "last": 20.52,
+   "day_ch": 3.16,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1236,8 +1236,8 @@
    "label": "CEPU",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 11.1,
-   "day_ch": 6.53,
+   "last": 10.98,
+   "day_ch": 5.33,
    "source": "yahoo",
    "degraded": false,
    "score": 10,
@@ -1306,8 +1306,8 @@
    "label": "SUPV",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 5.02,
-   "day_ch": 5.02,
+   "last": 5.05,
+   "day_ch": 5.54,
    "source": "yahoo",
    "degraded": false,
    "score": 2,
@@ -1386,8 +1386,8 @@
    "label": "LOMA",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 8.83,
-   "day_ch": 3.27,
+   "last": 8.77,
+   "day_ch": 2.57,
    "source": "yahoo",
    "degraded": false,
    "score": 8,
@@ -1452,8 +1452,8 @@
    "label": "BBAR",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 9.28,
-   "day_ch": 3.46,
+   "last": 9.29,
+   "day_ch": 3.57,
    "source": "yahoo",
    "degraded": false,
    "score": 6,
@@ -1524,8 +1524,8 @@
    "label": "CRESY",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 8.77,
-   "day_ch": 6.82,
+   "last": 8.6,
+   "day_ch": 4.75,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1674,8 +1674,8 @@
    "label": "EDN",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 12.52,
-   "day_ch": 4.68,
+   "last": 12.42,
+   "day_ch": 3.85,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1748,8 +1748,8 @@
    "label": "TEO",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 10.49,
-   "day_ch": 1.94,
+   "last": 10.43,
+   "day_ch": 1.36,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1898,8 +1898,8 @@
    "label": "IRS",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 11.55,
-   "day_ch": 4.62,
+   "last": 11.54,
+   "day_ch": 4.53,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -1964,8 +1964,8 @@
    "label": "GLOB",
    "date": "2026-11-25",
    "live_date": "2026-11-27",
-   "last": 51.47,
-   "day_ch": 2.55,
+   "last": 51.67,
+   "day_ch": 2.95,
    "source": "yahoo",
    "degraded": false,
    "score": 42,
@@ -2034,8 +2034,8 @@
    "label": "GGAL",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 4990.0,
-   "day_ch": 1.63,
+   "last": 4965.0,
+   "day_ch": 1.12,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2121,8 +2121,8 @@
    "label": "YPFD",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 5800.0,
-   "day_ch": -2.44,
+   "last": 5750.0,
+   "day_ch": -3.28,
    "source": "yahoo",
    "degraded": false,
    "score": 37,
@@ -2211,8 +2211,8 @@
    "label": "PAMP",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 4490.0,
-   "day_ch": -2.07,
+   "last": 4480.0,
+   "day_ch": -2.29,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2283,8 +2283,8 @@
    "label": "BMA",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 9330.0,
-   "day_ch": 2.19,
+   "last": 9290.0,
+   "day_ch": 1.75,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2359,8 +2359,8 @@
    "label": "ALUA",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 849.5,
-   "day_ch": 0.83,
+   "last": 853.5,
+   "day_ch": 1.31,
    "source": "yahoo",
    "degraded": false,
    "score": 46,
@@ -2425,8 +2425,8 @@
    "label": "TXAR",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 722.0,
-   "day_ch": 2.27,
+   "last": 719.0,
+   "day_ch": 1.84,
    "source": "yahoo",
    "degraded": false,
    "score": 47,
@@ -2558,8 +2558,8 @@
    "label": "CEPU",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 1969.0,
-   "day_ch": 2.39,
+   "last": 1935.0,
+   "day_ch": 0.62,
    "source": "yahoo",
    "degraded": false,
    "score": 37,
@@ -2702,8 +2702,8 @@
    "label": "SUPV",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 1803.0,
-   "day_ch": 1.92,
+   "last": 1790.0,
+   "day_ch": 1.19,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2780,8 +2780,8 @@
    "label": "BBAR",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 5515.0,
-   "day_ch": 1.47,
+   "last": 5445.0,
+   "day_ch": 0.18,
    "source": "yahoo",
    "degraded": false,
    "score": 28,
@@ -2848,8 +2848,8 @@
    "label": "LOMA",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 3060.0,
-   "day_ch": -3.39,
+   "last": 3098.0,
+   "day_ch": -2.21,
    "source": "yahoo",
    "degraded": false,
    "score": 47,
@@ -2920,8 +2920,8 @@
    "label": "COME",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 30.16,
-   "day_ch": 3.75,
+   "last": 29.98,
+   "day_ch": 3.13,
    "source": "yahoo",
    "degraded": false,
    "score": 15,
@@ -2992,8 +2992,8 @@
    "label": "TECO2",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 3712.0,
-   "day_ch": -2.3,
+   "last": 3685.0,
+   "day_ch": -3.03,
    "source": "yahoo",
    "degraded": false,
    "score": 53,
@@ -3060,8 +3060,8 @@
    "label": "EDN",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 1104.0,
-   "day_ch": -0.81,
+   "last": 1102.0,
+   "day_ch": -0.99,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3132,8 +3132,8 @@
    "label": "CRES",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 1555.0,
-   "day_ch": 0.13,
+   "last": 1540.0,
+   "day_ch": -0.84,
    "source": "yahoo",
    "degraded": false,
    "score": 28,
@@ -3204,8 +3204,8 @@
    "label": "TRAN",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 2380.0,
-   "day_ch": 1.19,
+   "last": 2384.0,
+   "day_ch": 1.36,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3276,8 +3276,8 @@
    "label": "BYMA",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 200.0,
-   "day_ch": 2.56,
+   "last": 197.5,
+   "day_ch": 1.28,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -3344,8 +3344,8 @@
    "label": "METR",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 1989.0,
-   "day_ch": 4.19,
+   "last": 1982.0,
+   "day_ch": 3.82,
    "source": "yahoo",
    "degraded": false,
    "score": 37,
@@ -3412,8 +3412,8 @@
    "label": "VALO",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 498.75,
-   "day_ch": -0.65,
+   "last": 500.0,
+   "day_ch": -0.4,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3561,8 +3561,8 @@
    "label": "MIRG",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 1780.0,
-   "day_ch": 2.89,
+   "last": 1750.0,
+   "day_ch": 1.16,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3696,8 +3696,8 @@
    "label": "BTC",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 60304.0,
-   "day_ch": -0.31,
+   "last": 59625.0,
+   "day_ch": -1.44,
    "source": "yahoo",
    "degraded": false,
    "score": 38,
@@ -3757,34 +3757,34 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "warn",
-      "text": "20 noticias recientes de BTC-USD (temas: directivos). La última: «Why the Strategic Bitcoin Reserve bill might not pass the House floor». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "status": "ok",
+      "text": "20 noticias recientes de BTC-USD (temas: directivos). La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
       "items": [
        {
-        "title": "Why the Strategic Bitcoin Reserve bill might not pass the House floor",
-        "link": "https://finance.yahoo.com/video/why-the-strategic-bitcoin-reserve-bill-might-not-pass-the-house-floor-161350411.html?.tsrc=rss",
-        "time": "2026-11-27T16:13:50+00:00",
+        "title": "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
+        "link": "https://finance.yahoo.com/video/franklin-templeton-just-updated-crypto-173000925.html?.tsrc=rss",
+        "time": "2026-11-27T17:30:00+00:00",
         "tags": []
        },
        {
-        "title": "Another $453 million exits bitcoin ETFs as November outflows stack up",
-        "link": "https://finance.yahoo.com/video/another-453-million-exits-bitcoin-161000343.html?.tsrc=rss",
-        "time": "2026-11-27T16:10:00+00:00",
+        "title": "Is Cipher Digital (CIFR) Undervalued After Its Texas Policy Scare?",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/cipher-digital-cifr-undervalued-texas-171259989.html?.tsrc=rss",
+        "time": "2026-11-27T17:12:59+00:00",
         "tags": []
        },
        {
-        "title": "Before the bell: Wall Street goes Black Friday shopping. Is Bitcoin on the list?",
-        "link": "https://www.thestreet.com/crypto/markets/before-the-bell-wall-street-goes-black-friday-shopping-is-bitcoin-on-the-list?.tsrc=rss",
-        "time": "2026-11-27T16:00:00+00:00",
-        "tags": []
-       },
-       {
-        "title": "Coinbase CEO Says Bitcoin Investors Would Return After IPO Frenzy Fades",
-        "link": "https://www.cryptoprowl.com/releases/coinbase-ceo-says-bitcoin-investors-would-return-after-ipo-frenzy-fades-8101?.tsrc=rss",
-        "time": "2026-11-27T15:57:00+00:00",
+        "title": "How Much Will 1 Bitcoin Be Worth in 2035?",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/27/how-much-will-1-bitcoin-be-worth-in-2035/?.tsrc=rss",
+        "time": "2026-11-27T17:12:22+00:00",
         "tags": [
          "people"
         ]
+       },
+       {
+        "title": "Gold Suffers Worst 60-Day Loss Since the 1980s. Bitcoin’s Collapse Exposes an Even Bigger Problem.",
+        "link": "https://247wallst.com/investing/2026/11/27/gold-suffers-worst-60-day-loss-since-the-1980s-bitcoins-collapse-exposes-an-even-bigger-problem/?.tsrc=rss",
+        "time": "2026-11-27T17:05:25+00:00",
+        "tags": []
        }
       ]
      }
@@ -3799,8 +3799,8 @@
    "label": "ETH",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 1680.0,
-   "day_ch": -0.45,
+   "last": 1664.0,
+   "day_ch": -1.39,
    "source": "yahoo",
    "degraded": false,
    "score": 14,
@@ -3858,8 +3858,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "14 noticias recientes de ETH-USD (temas: analistas, macro). La última: «Bitcoin Reserve bill advances; ETF outflows top $5.3B»",
+      "text": "15 noticias recientes de ETH-USD (temas: analistas, macro). La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
       "items": [
+       {
+        "title": "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
+        "link": "https://finance.yahoo.com/video/franklin-templeton-just-updated-crypto-173000925.html?.tsrc=rss",
+        "time": "2026-11-27T17:30:00+00:00",
+        "tags": []
+       },
        {
         "title": "Bitcoin Reserve bill advances; ETF outflows top $5.3B",
         "link": "https://finance.yahoo.com/video/bitcoin-reserve-bill-advances-etf-outflows-top-53b-151524584.html?.tsrc=rss",
@@ -3881,12 +3887,6 @@
         "tags": [
          "macro"
         ]
-       },
-       {
-        "title": "USDT Supply Shrinks With Its Steepest Drop Since Bitcoin’s 2022 Bear Market",
-        "link": "https://www.ccn.com/news/crypto/usdt-supply-contraction-bitcoin-bear-market/?.tsrc=rss",
-        "time": "2026-11-27T11:37:13+00:00",
-        "tags": []
        }
       ]
      }
@@ -3901,8 +3901,8 @@
    "label": "SOL",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 72.24,
-   "day_ch": 1.84,
+   "last": 71.7,
+   "day_ch": 1.08,
    "source": "yahoo",
    "degraded": false,
    "score": 23,
@@ -3956,8 +3956,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "7 noticias recientes de SOL-USD. La última: «Korea pulls the plug on crypto barons' grip over exchanges»",
+      "text": "8 noticias recientes de SOL-USD. La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
       "items": [
+       {
+        "title": "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
+        "link": "https://finance.yahoo.com/video/franklin-templeton-just-updated-crypto-173000925.html?.tsrc=rss",
+        "time": "2026-11-27T17:30:00+00:00",
+        "tags": []
+       },
        {
         "title": "Korea pulls the plug on crypto barons' grip over exchanges",
         "link": "http://www.intellinews.com/korea-pulls-the-plug-on-crypto-barons-grip-over-exchanges-488533/?.tsrc=rss",
@@ -3975,12 +3981,6 @@
         "link": "https://cryptonews.com/news/why-is-crypto-up-today-btc-back-above-60k-bull-market-back/?.tsrc=rss",
         "time": "2026-11-26T10:11:22+00:00",
         "tags": []
-       },
-       {
-        "title": "Fidelity Files for a Spot Chainlink ETF, Following Grayscale and Bitwise",
-        "link": "https://unchainedcrypto.com/fidelity-files-for-a-spot-chainlink-etf-following-grayscale-and-bitwise/?.tsrc=rss",
-        "time": "2026-11-26T10:00:19+00:00",
-        "tags": []
        }
       ]
      }
@@ -3995,8 +3995,8 @@
    "label": "BNB",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 555.41,
-   "day_ch": 0.41,
+   "last": 549.74,
+   "day_ch": -0.62,
    "source": "yahoo",
    "degraded": false,
    "score": 32,
@@ -4075,8 +4075,8 @@
    "label": "XRP",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.9488,
-   "day_ch": 0.62,
+   "last": 0.945,
+   "day_ch": 0.22,
    "source": "yahoo",
    "degraded": false,
    "score": 7,
@@ -4130,8 +4130,22 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "15 noticias recientes de XRP-USD (temas: operación corporativa). La última: «XRP to $600 by 2035? Ripple Lands Custody Deal With Turkish Banking Giant»",
+      "text": "17 noticias recientes de XRP-USD (temas: directivos, operación corporativa). La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
       "items": [
+       {
+        "title": "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
+        "link": "https://finance.yahoo.com/video/franklin-templeton-just-updated-crypto-173000925.html?.tsrc=rss",
+        "time": "2026-11-27T17:30:00+00:00",
+        "tags": []
+       },
+       {
+        "title": "How Much Will 1 Bitcoin Be Worth in 2035?",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/27/how-much-will-1-bitcoin-be-worth-in-2035/?.tsrc=rss",
+        "time": "2026-11-27T17:12:22+00:00",
+        "tags": [
+         "people"
+        ]
+       },
        {
         "title": "XRP to $600 by 2035? Ripple Lands Custody Deal With Turkish Banking Giant",
         "link": "https://www.ccn.com/news/crypto/xrp-600-2035-ripple-lands-custody-deal-turkish-banking-giant/?.tsrc=rss",
@@ -4144,18 +4158,6 @@
         "title": "RippleX Product Head Wants XRP to Be a ‘First Class’ AI Payment Option as Bull Eyes $10 by Year-End",
         "link": "https://www.ccn.com/news/crypto/ripplex-product-head-wants-xrp-to-be-a-first-class-ai-payment-option-as-bull-eyes-10-by-year-end/?.tsrc=rss",
         "time": "2026-11-27T11:48:41+00:00",
-        "tags": []
-       },
-       {
-        "title": "Ripple News: XRP Price Tries to Reclaim $1 Again – But Will The Breakout Survive the Weekend?",
-        "link": "https://www.coinspeaker.com/ripple-news-xrp-tries-to-reclaim-1-again/?.tsrc=rss",
-        "time": "2026-11-27T11:11:26+00:00",
-        "tags": []
-       },
-       {
-        "title": "What Would It Take for XRP to Reach $1,000?",
-        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-would-it-take-for-xrp-to-reach-1000/?.tsrc=rss",
-        "time": "2026-11-26T22:17:48+00:00",
         "tags": []
        }
       ]
@@ -4171,8 +4173,8 @@
    "label": "ADA",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.1491,
-   "day_ch": 0.48,
+   "last": 0.14861,
+   "day_ch": 0.15,
    "source": "yahoo",
    "degraded": false,
    "score": 22,
@@ -4253,8 +4255,8 @@
    "label": "DOGE",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.05764,
-   "day_ch": 2.23,
+   "last": 0.05748,
+   "day_ch": 1.94,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4335,8 +4337,8 @@
    "label": "LINK",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 9.32,
-   "day_ch": 0.59,
+   "last": 9.31,
+   "day_ch": 0.42,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -4390,7 +4392,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "4 noticias recientes de LINK-USD. La última: «Fidelity Files For Spot Chainlink ETF On Nasdaq»",
+      "text": "3 noticias recientes de LINK-USD. La última: «Fidelity Files For Spot Chainlink ETF On Nasdaq»",
       "items": [
        {
         "title": "Fidelity Files For Spot Chainlink ETF On Nasdaq",
@@ -4409,12 +4411,6 @@
         "link": "https://unchainedcrypto.com/fidelity-files-for-a-spot-chainlink-etf-following-grayscale-and-bitwise/?.tsrc=rss",
         "time": "2026-11-26T10:00:19+00:00",
         "tags": []
-       },
-       {
-        "title": "Fidelity Wants a Chainlink ETF. Who Is Actually Buying One?",
-        "link": "https://beincrypto.com/fidelity-chainlink-etf-filing-outflows/?.tsrc=rss",
-        "time": "2026-11-26T05:00:43+00:00",
-        "tags": []
        }
       ]
      }
@@ -4429,8 +4425,8 @@
    "label": "AVAX",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 6.64,
-   "day_ch": 0.85,
+   "last": 6.6,
+   "day_ch": 0.23,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -4497,8 +4493,8 @@
    "label": "TRX",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.301123,
-   "day_ch": -0.84,
+   "last": 0.300321,
+   "day_ch": -1.1,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -4698,14 +4694,14 @@
  "intraday": {
   "enabled": true,
   "date": "2026-11-27",
-  "time_ny": "12:25",
+  "time_ny": "12:37",
   "symbols": {
    "YPF": {
     "symbol": "YPF",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 34.0,
      "low": 32.6,
@@ -4717,19 +4713,19 @@
     },
     "level": 34.0,
     "last": {
-     "bar_start": "12:20",
-     "close": 32.35,
-     "vs_level_pct": -4.85
+     "bar_start": "12:30",
+     "close": 32.44,
+     "vs_level_pct": -4.59
     },
     "trigger": null,
-    "reason": "last close $32.35 (12:20 bar), $1.65 under the range high $34.00 (-4.85%)"
+    "reason": "no close above the range high $34.00 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "GGAL": {
     "symbol": "GGAL",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 29.29,
      "low": 28.28,
@@ -4741,19 +4737,19 @@
     },
     "level": 29.29,
     "last": {
-     "bar_start": "12:15",
-     "close": 28.08,
-     "vs_level_pct": -4.13
+     "bar_start": "12:30",
+     "close": 28.24,
+     "vs_level_pct": -3.6
     },
     "trigger": null,
-    "reason": "last close $28.08 (12:15 bar), $1.21 under the range high $29.29 (-4.13%)"
+    "reason": "no close above the range high $29.29 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "PAM": {
     "symbol": "PAM",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 65.55,
      "low": 64.07,
@@ -4765,19 +4761,19 @@
     },
     "level": 65.55,
     "last": {
-     "bar_start": "12:15",
-     "close": 63.26,
-     "vs_level_pct": -3.49
+     "bar_start": "12:30",
+     "close": 63.24,
+     "vs_level_pct": -3.52
     },
     "trigger": null,
-    "reason": "last close $63.26 (12:15 bar), $2.29 under the range high $65.55 (-3.49%)"
+    "reason": "no close above the range high $65.55 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "BMA": {
     "symbol": "BMA",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 54.06,
      "low": 52.05,
@@ -4789,19 +4785,19 @@
     },
     "level": 54.06,
     "last": {
-     "bar_start": "12:15",
-     "close": 52.43,
-     "vs_level_pct": -3.02
+     "bar_start": "12:30",
+     "close": 52.68,
+     "vs_level_pct": -2.56
     },
     "trigger": null,
-    "reason": "last close $52.43 (12:15 bar), $1.63 under the range high $54.06 (-3.02%)"
+    "reason": "no close above the range high $54.06 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "VIST": {
     "symbol": "VIST",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 53.88,
      "low": 52.16,
@@ -4813,19 +4809,19 @@
     },
     "level": 53.88,
     "last": {
-     "bar_start": "12:20",
-     "close": 51.97,
-     "vs_level_pct": -3.54
+     "bar_start": "12:30",
+     "close": 52.14,
+     "vs_level_pct": -3.23
     },
     "trigger": null,
-    "reason": "last close $51.97 (12:20 bar), $1.91 under the range high $53.88 (-3.54%)"
+    "reason": "no close above the range high $53.88 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "MELI": {
     "symbol": "MELI",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 1551.02,
      "low": 1524.28,
@@ -4837,19 +4833,19 @@
     },
     "level": 1551.02,
     "last": {
-     "bar_start": "12:20",
-     "close": 1541.01,
-     "vs_level_pct": -0.65
+     "bar_start": "12:30",
+     "close": 1539.53,
+     "vs_level_pct": -0.74
     },
     "trigger": null,
-    "reason": "last close $1541.01 (12:20 bar), $10.01 under the range high $1551.02 (-0.65%)"
+    "reason": "no close above the range high $1551.02 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "TGS": {
     "symbol": "TGS",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 21.4,
      "low": 20.44,
@@ -4861,19 +4857,19 @@
     },
     "level": 21.4,
     "last": {
-     "bar_start": "12:20",
-     "close": 20.31,
-     "vs_level_pct": -5.12
+     "bar_start": "12:30",
+     "close": 20.49,
+     "vs_level_pct": -4.25
     },
     "trigger": null,
-    "reason": "last close $20.31 (12:20 bar), $1.09 under the range high $21.40 (-5.12%)"
+    "reason": "no close above the range high $21.40 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "CEPU": {
     "symbol": "CEPU",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 11.35,
      "low": 10.94,
@@ -4885,19 +4881,19 @@
     },
     "level": 11.35,
     "last": {
-     "bar_start": "12:20",
-     "close": 10.93,
-     "vs_level_pct": -3.7
+     "bar_start": "12:30",
+     "close": 11.0,
+     "vs_level_pct": -3.08
     },
     "trigger": null,
-    "reason": "last close $10.93 (12:20 bar), $0.42 under the range high $11.35 (-3.70%)"
+    "reason": "no close above the range high $11.35 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "SUPV": {
     "symbol": "SUPV",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 5.24,
      "low": 5.09,
@@ -4909,19 +4905,19 @@
     },
     "level": 5.24,
     "last": {
-     "bar_start": "12:20",
-     "close": 4.99,
-     "vs_level_pct": -4.77
+     "bar_start": "12:30",
+     "close": 5.03,
+     "vs_level_pct": -4.01
     },
     "trigger": null,
-    "reason": "last close $4.99 (12:20 bar), $0.25 under the range high $5.24 (-4.77%)"
+    "reason": "no close above the range high $5.24 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "LOMA": {
     "symbol": "LOMA",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 8.94,
      "low": 8.64,
@@ -4933,19 +4929,19 @@
     },
     "level": 8.94,
     "last": {
-     "bar_start": "12:15",
-     "close": 8.78,
-     "vs_level_pct": -1.79
+     "bar_start": "12:30",
+     "close": 8.79,
+     "vs_level_pct": -1.68
     },
     "trigger": null,
-    "reason": "last close $8.78 (12:15 bar), $0.16 under the range high $8.94 (-1.79%)"
+    "reason": "no close above the range high $8.94 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "BBAR": {
     "symbol": "BBAR",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 9.74,
      "low": 9.26,
@@ -4957,19 +4953,19 @@
     },
     "level": 9.74,
     "last": {
-     "bar_start": "12:20",
-     "close": 9.18,
-     "vs_level_pct": -5.8
+     "bar_start": "12:30",
+     "close": 9.27,
+     "vs_level_pct": -4.77
     },
     "trigger": null,
-    "reason": "last close $9.18 (12:20 bar), $0.56 under the range high $9.74 (-5.80%)"
+    "reason": "no close above the range high $9.74 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "CRESY": {
     "symbol": "CRESY",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 8.92,
      "low": 8.57,
@@ -4981,19 +4977,19 @@
     },
     "level": 8.92,
     "last": {
-     "bar_start": "12:15",
-     "close": 8.65,
-     "vs_level_pct": -2.97
+     "bar_start": "12:30",
+     "close": 8.62,
+     "vs_level_pct": -3.36
     },
     "trigger": null,
-    "reason": "last close $8.65 (12:15 bar), $0.27 under the range high $8.92 (-2.97%)"
+    "reason": "no close above the range high $8.92 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "EDN": {
     "symbol": "EDN",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 12.94,
      "low": 12.5,
@@ -5005,19 +5001,19 @@
     },
     "level": 12.94,
     "last": {
-     "bar_start": "12:15",
-     "close": 12.46,
-     "vs_level_pct": -3.67
+     "bar_start": "12:30",
+     "close": 12.42,
+     "vs_level_pct": -3.98
     },
     "trigger": null,
-    "reason": "last close $12.46 (12:15 bar), $0.48 under the range high $12.94 (-3.67%)"
+    "reason": "no close above the range high $12.94 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "TEO": {
     "symbol": "TEO",
     "date": "2026-11-27",
-    "status": "waiting",
-    "status_es": "esperando",
-    "phase": "rueda abierta",
+    "status": "expired",
+    "status_es": "venció",
+    "phase": "pasó el horario de entradas",
     "opening_range": {
      "high": 10.75,
      "low": 10.55,
@@ -5029,12 +5025,12 @@
     },
     "level": 10.75,
     "last": {
-     "bar_start": "12:15",
-     "close": 10.38,
-     "vs_level_pct": -3.44
+     "bar_start": "12:30",
+     "close": 10.43,
+     "vs_level_pct": -2.98
     },
     "trigger": null,
-    "reason": "last close $10.38 (12:15 bar), $0.37 under the range high $10.75 (-3.44%)"
+    "reason": "no close above the range high $10.75 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
    },
    "IRS": {
     "symbol": "IRS",
@@ -5053,9 +5049,9 @@
     },
     "level": 11.61,
     "last": {
-     "bar_start": "12:15",
-     "close": 11.45,
-     "vs_level_pct": -1.38
+     "bar_start": "12:30",
+     "close": 11.52,
+     "vs_level_pct": -0.78
     },
     "trigger": {
      "time": "9:55 AM",
@@ -5085,7 +5081,8 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 150 minutos (máximo 30)",
+      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
+      "la ruptura fue hace 162 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 2 %, priorizar liquidez)"
      ],
      "units": 214.0,
@@ -5122,9 +5119,9 @@
     },
     "level": 50.94,
     "last": {
-     "bar_start": "12:20",
-     "close": 51.9,
-     "vs_level_pct": 1.88
+     "bar_start": "12:30",
+     "close": 51.78,
+     "vs_level_pct": 1.65
     },
     "trigger": {
      "time": "10:10 AM",
@@ -5154,7 +5151,8 @@
     "risk": {
      "verdict": "BLOCK",
      "reasons": [
-      "la ruptura fue hace 135 minutos (máximo 30)",
+      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
+      "la ruptura fue hace 147 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 2 %, priorizar liquidez)"
      ],
      "units": 48.0,
@@ -5180,6 +5178,102 @@
   {
    "ticker": "BTC-USD",
    "touches": [
+    "BTC-USD",
+    "ETH-USD",
+    "SOL-USD",
+    "XRP-USD"
+   ],
+   "title": "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
+   "link": "https://finance.yahoo.com/video/franklin-templeton-just-updated-crypto-173000925.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T17:30:00+00:00",
+   "tags": [],
+   "new": true,
+   "id": "5a9cba564185e418",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Is Cipher Digital (CIFR) Undervalued After Its Texas Policy Scare?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/cipher-digital-cifr-undervalued-texas-171259989.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T17:12:59+00:00",
+   "tags": [],
+   "new": true,
+   "id": "231d08a1d7ac5d93",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD",
+    "XRP-USD"
+   ],
+   "title": "How Much Will 1 Bitcoin Be Worth in 2035?",
+   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/27/how-much-will-1-bitcoin-be-worth-in-2035/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T17:12:22+00:00",
+   "tags": [
+    "people"
+   ],
+   "new": true,
+   "id": "b5f9a6f554a28e7f",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Gold Suffers Worst 60-Day Loss Since the 1980s. Bitcoin’s Collapse Exposes an Even Bigger Problem.",
+   "link": "https://247wallst.com/investing/2026/11/27/gold-suffers-worst-60-day-loss-since-the-1980s-bitcoins-collapse-exposes-an-even-bigger-problem/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T17:05:25+00:00",
+   "tags": [],
+   "new": true,
+   "id": "7be3868649b34a96",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Billionaire Paul Tudor Jones’ Firm Nearly Doubled Its Bitcoin ETF Shares to 1.36 Million",
+   "link": "https://247wallst.com/investing/2026/11/27/billionaire-paul-tudor-jones-firm-nearly-doubled-its-bitcoin-etf-shares-to-1-36-million/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T17:02:38+00:00",
+   "tags": [],
+   "new": true,
+   "id": "4ce745e494b04c60",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Bitwise’s Matt Hougan Bets Gen Z Will Lift Bitcoin to $1.6M as Galaxy Warns of a $28K Slide",
+   "link": "https://www.ccn.com/news/crypto/bitwises-matt-hougan-bets-gen-z-will-lift-bitcoin-to-1-6m-as-galaxy-warns-of-a-28k-slide/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T16:17:15+00:00",
+   "tags": [],
+   "new": true,
+   "id": "0a0d3f60ad9e58db",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
     "BTC-USD"
    ],
    "title": "Why the Strategic Bitcoin Reserve bill might not pass the House floor",
@@ -5188,7 +5282,7 @@
    "kind": "headline",
    "time": "2026-11-27T16:13:50+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "73a463eb4000d0ed",
    "form": null
   },
@@ -5203,7 +5297,7 @@
    "kind": "headline",
    "time": "2026-11-27T16:10:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "925e171acb1645b8",
    "form": null
   },
@@ -5218,7 +5312,7 @@
    "kind": "headline",
    "time": "2026-11-27T16:00:00+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "22ec576b7ad66305",
    "form": null
   },
@@ -5235,7 +5329,7 @@
    "tags": [
     "people"
    ],
-   "new": true,
+   "new": false,
    "id": "433cab8f1e1dfdfa",
    "form": null
   },
@@ -5250,23 +5344,8 @@
    "kind": "headline",
    "time": "2026-11-27T15:45:16+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "69b25e3fdf16589c",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "BC-Most Active Stocks",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/bc-most-active-stocks-153017329.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-27T15:30:17+00:00",
-   "tags": [],
-   "new": true,
-   "id": "c985b68e4f028f8c",
    "form": null
   },
   {
@@ -5569,9 +5648,8 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
+   "ticker": "ETH-USD",
    "touches": [
-    "BTC-USD",
     "ETH-USD",
     "TRX-USD"
    ],
@@ -5583,23 +5661,6 @@
    "tags": [],
    "new": false,
    "id": "bf809558cd5adbf8",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Cipher Shifts Toward HPC Leasing: Can It Achieve Stable Earnings?",
-   "link": "https://finance.yahoo.com/technology/ai/articles/cipher-shifts-toward-hpc-leasing-111700716.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-27T11:17:00+00:00",
-   "tags": [
-    "earnings"
-   ],
-   "new": false,
-   "id": "da4b29894655f793",
    "form": null
   },
   {
@@ -5615,51 +5676,6 @@
    "tags": [],
    "new": false,
    "id": "cca767ecc3a96e32",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "BTC News: $7B Bitcoin Options Expiry Aftermath – What Happens Next?",
-   "link": "https://99bitcoins.com/news/bitcoin-btc/btc-news-7b-bitcoin-options-expiry-aftermath-what-happens-next/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-27T10:59:01+00:00",
-   "tags": [],
-   "new": false,
-   "id": "0ebd9bac59ac80af",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "One asset is 51% off this Black Friday",
-   "link": "https://www.thestreet.com/crypto/markets/one-asset-is-51-off-this-black-friday?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-27T10:49:44+00:00",
-   "tags": [],
-   "new": false,
-   "id": "c28df6a020841f61",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Bitcoin News Today: BTC Rebounds 8% – Is The Worst Over for Bitcoin Holders?",
-   "link": "https://www.coinspeaker.com/bitcoin-news-today-thanksgiving-holiday-pattern/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-27T10:44:10+00:00",
-   "tags": [],
-   "new": false,
-   "id": "b641acc4defc5d5a",
    "form": null
   },
   {
@@ -6100,24 +6116,6 @@
    "tags": [],
    "new": false,
    "id": "9962d171025cd6a4",
-   "form": null
-  },
-  {
-   "ticker": "ADA-USD",
-   "touches": [
-    "ADA-USD",
-    "DOGE-USD",
-    "SOL-USD",
-    "XRP-USD"
-   ],
-   "title": "Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1",
-   "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T09:15:57+00:00",
-   "tags": [],
-   "new": false,
-   "id": "c9b7c6656b2ad334",
    "form": null
   }
  ],
@@ -6609,6 +6607,5 @@
  },
  "errors": {
   "news": "no SEC CIK for ADA-USD; no SEC CIK for AVAX-USD; SEC 8-K for BBAR: HTTP 400 for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000913059&type=8-K&dateb=&owner=include&count=8&output=atom"
- },
- "intraday_at": "2026-11-27T17:25:35.631944+00:00"
+ }
 }
