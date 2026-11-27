@@ -4694,7 +4694,7 @@
  "intraday": {
   "enabled": true,
   "date": "2026-11-27",
-  "time_ny": "12:37",
+  "time_ny": "12:55",
   "symbols": {
    "YPF": {
     "symbol": "YPF",
@@ -4713,9 +4713,9 @@
     },
     "level": 34.0,
     "last": {
-     "bar_start": "12:30",
-     "close": 32.44,
-     "vs_level_pct": -4.59
+     "bar_start": "12:50",
+     "close": 31.92,
+     "vs_level_pct": -6.1
     },
     "trigger": null,
     "reason": "no close above the range high $34.00 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4737,9 +4737,9 @@
     },
     "level": 29.29,
     "last": {
-     "bar_start": "12:30",
-     "close": 28.24,
-     "vs_level_pct": -3.6
+     "bar_start": "12:50",
+     "close": 27.97,
+     "vs_level_pct": -4.51
     },
     "trigger": null,
     "reason": "no close above the range high $29.29 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4761,9 +4761,9 @@
     },
     "level": 65.55,
     "last": {
-     "bar_start": "12:30",
-     "close": 63.24,
-     "vs_level_pct": -3.52
+     "bar_start": "12:50",
+     "close": 63.26,
+     "vs_level_pct": -3.49
     },
     "trigger": null,
     "reason": "no close above the range high $65.55 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4785,9 +4785,9 @@
     },
     "level": 54.06,
     "last": {
-     "bar_start": "12:30",
-     "close": 52.68,
-     "vs_level_pct": -2.56
+     "bar_start": "12:50",
+     "close": 52.37,
+     "vs_level_pct": -3.14
     },
     "trigger": null,
     "reason": "no close above the range high $54.06 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4805,13 +4805,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 56303
+     "avg_volume": 56310
     },
     "level": 53.88,
     "last": {
-     "bar_start": "12:30",
-     "close": 52.14,
-     "vs_level_pct": -3.23
+     "bar_start": "12:50",
+     "close": 51.72,
+     "vs_level_pct": -4.02
     },
     "trigger": null,
     "reason": "no close above the range high $53.88 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4833,9 +4833,9 @@
     },
     "level": 1551.02,
     "last": {
-     "bar_start": "12:30",
-     "close": 1539.53,
-     "vs_level_pct": -0.74
+     "bar_start": "12:50",
+     "close": 1532.84,
+     "vs_level_pct": -1.17
     },
     "trigger": null,
     "reason": "no close above the range high $1551.02 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4853,13 +4853,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 25700
+     "avg_volume": 25695
     },
     "level": 21.4,
     "last": {
-     "bar_start": "12:30",
-     "close": 20.49,
-     "vs_level_pct": -4.25
+     "bar_start": "12:50",
+     "close": 20.34,
+     "vs_level_pct": -4.95
     },
     "trigger": null,
     "reason": "no close above the range high $21.40 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4877,13 +4877,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 60898
+     "avg_volume": 33125
     },
     "level": 11.35,
     "last": {
-     "bar_start": "12:30",
-     "close": 11.0,
-     "vs_level_pct": -3.08
+     "bar_start": "12:45",
+     "close": 10.98,
+     "vs_level_pct": -3.26
     },
     "trigger": null,
     "reason": "no close above the range high $11.35 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4901,13 +4901,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 95593
+     "avg_volume": 51004
     },
     "level": 5.24,
     "last": {
-     "bar_start": "12:30",
-     "close": 5.03,
-     "vs_level_pct": -4.01
+     "bar_start": "12:50",
+     "close": 5.02,
+     "vs_level_pct": -4.2
     },
     "trigger": null,
     "reason": "no close above the range high $5.24 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4925,13 +4925,13 @@
      "bars": 2,
      "of": 3,
      "complete": true,
-     "avg_volume": 32372
+     "avg_volume": 32370
     },
     "level": 8.94,
     "last": {
-     "bar_start": "12:30",
-     "close": 8.79,
-     "vs_level_pct": -1.68
+     "bar_start": "12:50",
+     "close": 8.75,
+     "vs_level_pct": -2.13
     },
     "trigger": null,
     "reason": "no close above the range high $8.94 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4953,9 +4953,9 @@
     },
     "level": 9.74,
     "last": {
-     "bar_start": "12:30",
-     "close": 9.27,
-     "vs_level_pct": -4.77
+     "bar_start": "12:50",
+     "close": 9.23,
+     "vs_level_pct": -5.24
     },
     "trigger": null,
     "reason": "no close above the range high $9.74 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -4973,13 +4973,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 3137
+     "avg_volume": 3130
     },
     "level": 8.92,
     "last": {
-     "bar_start": "12:30",
-     "close": 8.62,
-     "vs_level_pct": -3.36
+     "bar_start": "12:50",
+     "close": 8.61,
+     "vs_level_pct": -3.48
     },
     "trigger": null,
     "reason": "no close above the range high $8.92 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -5001,9 +5001,9 @@
     },
     "level": 12.94,
     "last": {
-     "bar_start": "12:30",
-     "close": 12.42,
-     "vs_level_pct": -3.98
+     "bar_start": "12:50",
+     "close": 12.35,
+     "vs_level_pct": -4.52
     },
     "trigger": null,
     "reason": "no close above the range high $12.94 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -5021,13 +5021,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 29489
+     "avg_volume": 58824
     },
     "level": 10.75,
     "last": {
-     "bar_start": "12:30",
-     "close": 10.43,
-     "vs_level_pct": -2.98
+     "bar_start": "12:50",
+     "close": 10.45,
+     "vs_level_pct": -2.79
     },
     "trigger": null,
     "reason": "no close above the range high $10.75 by 12:30, the last time for a new entry (1:00 p.m. early close today)"
@@ -5049,9 +5049,9 @@
     },
     "level": 11.61,
     "last": {
-     "bar_start": "12:30",
-     "close": 11.52,
-     "vs_level_pct": -0.78
+     "bar_start": "12:50",
+     "close": 11.49,
+     "vs_level_pct": -1.03
     },
     "trigger": {
      "time": "9:55 AM",
@@ -5082,7 +5082,7 @@
      "verdict": "BLOCK",
      "reasons": [
       "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 162 minutos (máximo 30)",
+      "la ruptura fue hace 180 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 2 %, priorizar liquidez)"
      ],
      "units": 214.0,
@@ -5115,13 +5115,13 @@
      "bars": 3,
      "of": 3,
      "complete": true,
-     "avg_volume": 14736
+     "avg_volume": 14669
     },
     "level": 50.94,
     "last": {
-     "bar_start": "12:30",
-     "close": 51.78,
-     "vs_level_pct": 1.65
+     "bar_start": "12:50",
+     "close": 51.31,
+     "vs_level_pct": 0.73
     },
     "trigger": {
      "time": "10:10 AM",
@@ -5131,7 +5131,7 @@
      "price": 51.12,
      "close": 51.12009811401367,
      "volume": 28385,
-     "volume_x": 1.93,
+     "volume_x": 1.94,
      "pct_over": 0.35
     },
     "reason": "the 10:05 bar closed above the range high",
@@ -5152,7 +5152,7 @@
      "verdict": "BLOCK",
      "reasons": [
       "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 147 minutos (máximo 30)",
+      "la ruptura fue hace 165 minutos (máximo 30)",
       "el mercado está flojo y el motor no compra (exposure-coach: techo 2 %, priorizar liquidez)"
      ],
      "units": 48.0,
@@ -6607,5 +6607,6 @@
  },
  "errors": {
   "news": "no SEC CIK for ADA-USD; no SEC CIK for AVAX-USD; SEC 8-K for BBAR: HTTP 400 for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000913059&type=8-K&dateb=&owner=include&count=8&output=atom"
- }
+ },
+ "intraday_at": "2026-11-27T17:55:14.008830+00:00"
 }
