@@ -4,6 +4,163 @@
    "type": "info",
    "info": "report",
    "kind": "adr",
+   "id": "report:2026-11-27",
+   "label": "Cierre",
+   "why": "Informe del cierre",
+   "report": {
+    "date": "2026-11-27",
+    "gates": {
+     "adr": "defensivo",
+     "byma": "defensivo",
+     "cripto": "defensivo"
+    },
+    "movers": {
+     "adr": {
+      "up": [
+       [
+        "GGAL",
+        5.33
+       ],
+       [
+        "CEPU",
+        5.09
+       ],
+       [
+        "SUPV",
+        5.02
+       ]
+      ],
+      "down": [],
+      "breadth": [
+       16,
+       16
+      ]
+     },
+     "byma": {
+      "up": [
+       [
+        "TRAN",
+        4.85
+       ],
+       [
+        "COME",
+        4.71
+       ],
+       [
+        "GGAL",
+        1.48
+       ]
+      ],
+      "down": [
+       [
+        "TECO2",
+        -3.36
+       ],
+       [
+        "LOMA",
+        -3.08
+       ],
+       [
+        "CEPU",
+        -2.44
+       ]
+      ],
+      "breadth": [
+       9,
+       20
+      ]
+     },
+     "cripto": {
+      "up": [
+       [
+        "DOGE",
+        2.21
+       ],
+       [
+        "SOL",
+        1.41
+       ],
+       [
+        "LINK",
+        0.91
+       ]
+      ],
+      "down": [
+       [
+        "ETH",
+        -1.34
+       ],
+       [
+        "BTC",
+        -1.16
+       ],
+       [
+        "TRX",
+        -1.05
+       ]
+      ],
+      "breadth": [
+       7,
+       10
+      ]
+     }
+    },
+    "entries": [],
+    "exits": [],
+    "positions": [],
+    "patterns": [
+     [
+      "CEPU",
+      "Doble piso",
+      "alcista"
+     ],
+     [
+      "TXAR",
+      "Doble piso",
+      "alcista"
+     ]
+    ],
+    "sectors": {
+     "best": [
+      "Consumo y agro",
+      3.547
+     ],
+     "worst": [
+      "Telecomunicaciones",
+      -1.77
+     ]
+    }
+   },
+   "ts": "2026-11-27T21:37:49.229773+00:00",
+   "text": "🌙 <b>INFORME DEL CIERRE</b> · 27/11\n<b>ADRs</b> (16/16 suben): ▲ GGAL +5,3 %, CEPU +5,1 % · ▼ —\n<b>BYMA</b> (9/20 suben): ▲ TRAN +4,8 %, COME +4,7 % · ▼ TECO2 −3,4 %, LOMA −3,1 %\n<b>Cripto</b> (7/10 suben): ▲ DOGE +2,2 %, SOL +1,4 % · ▼ ETH −1,3 %, BTC −1,2 %\nSectores BYMA: mejor Consumo y agro +3,5 %, peor Telecomunicaciones −1,8 %\nMotor hoy: sin entradas ni salidas.\nPosiciones abiertas: 0\nPatrones que rompieron: CEPU (doble piso), TXAR (doble piso)\nMercado: ADRs defensivo · BYMA defensivo · Cripto defensivo",
+   "asset": "adr:Cierre"
+  },
+  {
+   "type": "info",
+   "info": "weekly",
+   "kind": "adr",
+   "id": "weekly:2026-11-23",
+   "label": "Semana",
+   "why": "Resumen semanal",
+   "ts": "2026-11-27T21:37:49.229773+00:00",
+   "text": "🗓 <b>RESUMEN SEMANAL</b> (desde el 2026-11-23)\nSin operaciones cerradas esta semana.\nProceso: proceso en orden\n• Mantener las reglas actuales y seguir registrando cada resultado.",
+   "asset": "adr:Semana"
+  },
+  {
+   "type": "info",
+   "info": "pattern",
+   "kind": "adr",
+   "id": "adr:CEPU:pattern:double_bottom:2026-11-05",
+   "label": "CEPU",
+   "why": "Dos mínimos en 9,61 y 9,70 con rebote a 10,92. Entrada si cierra arriba de 10,92.",
+   "ts": "2026-11-27T21:37:49.229773+00:00",
+   "text": "📐 <b>PATRÓN · CEPU</b> (ADR)\nDoble piso rompió el gatillo 10,92. Stop 9,51 · objetivo 12,23 · R:R 0,9.\n<i>Dos mínimos en 9,61 y 9,70 con rebote a 10,92. Entrada si cierra arriba de 10,92.</i>\nMercado defensivo: el motor no abre compras nuevas.",
+   "asset": "adr:CEPU"
+  },
+  {
+   "type": "info",
+   "info": "report",
+   "kind": "adr",
    "id": "report:2026-11-26",
    "label": "Cierre",
    "why": "Informe del cierre",
