@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-27T13:38:33.485311+00:00",
+ "generated_at": "2026-11-27T14:39:07.422068+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -249,9 +249,9 @@
    "id": "YPF",
    "label": "YPF",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 31.45,
-   "day_ch": -0.82,
+   "live_date": "2026-11-27",
+   "last": 33.08,
+   "day_ch": 5.18,
    "source": "yahoo",
    "degraded": false,
    "score": 19,
@@ -306,8 +306,18 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "ok",
-      "text": "No hubo noticias de YPF en las últimas horas: nada en contra"
+      "status": "warn",
+      "text": "1 noticias recientes de YPF (temas: balance). La última: «Down 36.3% in 4 Weeks, Here's Why YPF Sociedad Anonima (YPF) Looks Ripe for a Turnaround». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "items": [
+       {
+        "title": "Down 36.3% in 4 Weeks, Here's Why YPF Sociedad Anonima (YPF) Looks Ripe for a Turnaround",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/down-36-3-4-weeks-133501297.html?.tsrc=rss",
+        "time": "2026-11-26T13:35:01+00:00",
+        "tags": [
+         "earnings"
+        ]
+       }
+      ]
      }
     ]
    },
@@ -319,9 +329,9 @@
    "id": "GGAL",
    "label": "GGAL",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 26.66,
-   "day_ch": 3.9,
+   "live_date": "2026-11-27",
+   "last": 28.85,
+   "day_ch": 8.21,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -378,8 +388,27 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "ok",
-      "text": "No hubo noticias de GGAL en las últimas horas: nada en contra"
+      "status": "warn",
+      "text": "2 noticias recientes de GGAL (temas: balance, macro). La última: «What Grupo Financiero Galicia Investors Missed Before The Fall». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "items": [
+       {
+        "title": "What Grupo Financiero Galicia Investors Missed Before The Fall",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/grupo-financiero-galicia-investors-missed-150915994.html?.tsrc=rss",
+        "time": "2026-11-26T15:09:15+00:00",
+        "tags": [
+         "earnings"
+        ]
+       },
+       {
+        "title": "Galicia (GGAL) Q3 2026 Earnings Call Transcript",
+        "link": "https://www.fool.com/earnings/call-transcripts/2026/11/26/galicia-ggal-q3-2026-earnings-call-transcript/?.tsrc=rss",
+        "time": "2026-11-26T06:28:08+00:00",
+        "tags": [
+         "earnings",
+         "macro"
+        ]
+       }
+      ]
      }
     ]
    },
@@ -391,9 +420,9 @@
    "id": "PAM",
    "label": "PAM",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 62.32,
-   "day_ch": 1.9,
+   "live_date": "2026-11-27",
+   "last": 64.35,
+   "day_ch": 3.26,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -541,9 +570,9 @@
    "id": "BMA",
    "label": "BMA",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 50.35,
-   "day_ch": 0.52,
+   "live_date": "2026-11-27",
+   "last": 53.17,
+   "day_ch": 5.61,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -602,7 +631,15 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de BMA en las últimas horas: nada en contra"
+      "text": "1 noticias recientes de BMA. La última: «Wall Street Bulls Look Optimistic About Banco Macro (BMA): Should You Buy?»",
+      "items": [
+       {
+        "title": "Wall Street Bulls Look Optimistic About Banco Macro (BMA): Should You Buy?",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/wall-street-bulls-look-optimistic-133003767.html?.tsrc=rss",
+        "time": "2026-11-27T13:30:03+00:00",
+        "tags": []
+       }
+      ]
      },
      {
       "key": "plan",
@@ -695,9 +732,9 @@
    "id": "VIST",
    "label": "VIST",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 50.16,
-   "day_ch": 1.11,
+   "live_date": "2026-11-27",
+   "last": 52.96,
+   "day_ch": 5.58,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -757,8 +794,18 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "ok",
-      "text": "No hubo noticias de VIST en las últimas horas: nada en contra"
+      "status": "warn",
+      "text": "1 noticias recientes de VIST (temas: balance). La última: «Zacks.com featured highlights include Vista Energy, Remitly Global, Riley Exploration Permian and Forum Energy Technologies». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "items": [
+       {
+        "title": "Zacks.com featured highlights include Vista Energy, Remitly Global, Riley Exploration Permian and Forum Energy Technologies",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/zacks-com-featured-highlights-vista-072900310.html?.tsrc=rss",
+        "time": "2026-11-27T07:29:00+00:00",
+        "tags": [
+         "earnings"
+        ]
+       }
+      ]
      },
      {
       "key": "plan",
@@ -851,9 +898,9 @@
    "id": "MELI",
    "label": "MELI",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 1467.0,
-   "day_ch": 1.17,
+   "live_date": "2026-11-27",
+   "last": 1535.0,
+   "day_ch": 4.61,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -908,7 +955,33 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de MELI en las últimas horas: nada en contra"
+      "text": "6 noticias recientes de MELI. La última: «10 Best Strong Buy Stocks to Buy and Hold For the Next 5 Years»",
+      "items": [
+       {
+        "title": "10 Best Strong Buy Stocks to Buy and Hold For the Next 5 Years",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/10-best-strong-buy-stocks-142359236.html?.tsrc=rss",
+        "time": "2026-11-27T14:23:59+00:00",
+        "tags": []
+       },
+       {
+        "title": "Inter (INTR) Stock Jumps 14.5% Premarket: Latin American Stocks Rally",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/inter-intr-stock-jumps-14-131533340.html?.tsrc=rss",
+        "time": "2026-11-27T13:15:33+00:00",
+        "tags": []
+       },
+       {
+        "title": "Why Is MercadoLibre (MELI) Stock Up in Premarket Trading Today? Market Rally",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/why-mercadolibre-meli-stock-premarket-121533990.html?.tsrc=rss",
+        "time": "2026-11-27T12:15:33+00:00",
+        "tags": []
+       },
+       {
+        "title": "MercadoLibre (MELI): Near-Term Margin Compression Masks Strong User and Credit Growth",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/mercadolibre-meli-near-term-margin-165411501.html?.tsrc=rss",
+        "time": "2026-11-26T16:54:11+00:00",
+        "tags": []
+       }
+      ]
      },
      {
       "key": "plan",
@@ -1001,9 +1074,9 @@
    "id": "TGS",
    "label": "TGS",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 19.89,
-   "day_ch": 2.26,
+   "live_date": "2026-11-27",
+   "last": 20.81,
+   "day_ch": 4.64,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1154,9 +1227,9 @@
    "id": "CEPU",
    "label": "CEPU",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 10.42,
-   "day_ch": 1.46,
+   "live_date": "2026-11-27",
+   "last": 11.0,
+   "day_ch": 5.57,
    "source": "yahoo",
    "degraded": false,
    "score": 10,
@@ -1224,9 +1297,9 @@
    "id": "SUPV",
    "label": "SUPV",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 4.78,
-   "day_ch": 3.91,
+   "live_date": "2026-11-27",
+   "last": 5.18,
+   "day_ch": 8.26,
    "source": "yahoo",
    "degraded": false,
    "score": 2,
@@ -1282,7 +1355,17 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de SUPV en las últimas horas: nada en contra"
+      "text": "1 noticias recientes de SUPV (temas: directivos). La última: «Grupo Supervielle Targets 20% Real Return on Equity by 2031 With Lending, Cost-Cut Push»",
+      "items": [
+       {
+        "title": "Grupo Supervielle Targets 20% Real Return on Equity by 2031 With Lending, Cost-Cut Push",
+        "link": "https://www.marketbeat.com/instant-alerts/event-grupo-supervielle-targets-20-real-return-on-equity-by-2031-with-lending-cost-cut-push-2026-11-26/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+        "time": "2026-11-27T02:12:08+00:00",
+        "tags": [
+         "people"
+        ]
+       }
+      ]
      }
     ]
    },
@@ -1294,9 +1377,9 @@
    "id": "LOMA",
    "label": "LOMA",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 8.55,
-   "day_ch": 3.89,
+   "live_date": "2026-11-27",
+   "last": 8.86,
+   "day_ch": 3.68,
    "source": "yahoo",
    "degraded": false,
    "score": 8,
@@ -1360,9 +1443,9 @@
    "id": "BBAR",
    "label": "BBAR",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 8.97,
-   "day_ch": -1.97,
+   "live_date": "2026-11-27",
+   "last": 9.43,
+   "day_ch": 5.07,
    "source": "yahoo",
    "degraded": false,
    "score": 6,
@@ -1432,9 +1515,9 @@
    "id": "CRESY",
    "label": "CRESY",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 8.21,
-   "day_ch": 4.32,
+   "live_date": "2026-11-27",
+   "last": 8.72,
+   "day_ch": 6.21,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1582,9 +1665,9 @@
    "id": "EDN",
    "label": "EDN",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 11.96,
-   "day_ch": 3.1,
+   "live_date": "2026-11-27",
+   "last": 12.67,
+   "day_ch": 5.94,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1656,9 +1739,9 @@
    "id": "TEO",
    "label": "TEO",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 10.29,
-   "day_ch": 5.65,
+   "live_date": "2026-11-27",
+   "last": 10.67,
+   "day_ch": 3.69,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1806,9 +1889,9 @@
    "id": "IRS",
    "label": "IRS",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 11.04,
-   "day_ch": 1.85,
+   "live_date": "2026-11-27",
+   "last": 11.5,
+   "day_ch": 4.17,
    "source": "yahoo",
    "degraded": false,
    "score": 12,
@@ -1872,9 +1955,9 @@
    "id": "GLOB",
    "label": "GLOB",
    "date": "2026-11-25",
-   "live_date": null,
-   "last": 50.19,
-   "day_ch": 0.28,
+   "live_date": "2026-11-27",
+   "last": 50.62,
+   "day_ch": 0.86,
    "source": "yahoo",
    "degraded": false,
    "score": 42,
@@ -1942,9 +2025,9 @@
    "id": "GGAL",
    "label": "GGAL",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 4910.0,
-   "day_ch": 3.26,
+   "live_date": "2026-11-27",
+   "last": 5060.0,
+   "day_ch": 3.05,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -1997,8 +2080,27 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "ok",
-      "text": "No hubo noticias de GGAL en las últimas horas: nada en contra"
+      "status": "warn",
+      "text": "2 noticias recientes de GGAL (temas: balance, macro). La última: «What Grupo Financiero Galicia Investors Missed Before The Fall». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "items": [
+       {
+        "title": "What Grupo Financiero Galicia Investors Missed Before The Fall",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/grupo-financiero-galicia-investors-missed-150915994.html?.tsrc=rss",
+        "time": "2026-11-26T15:09:15+00:00",
+        "tags": [
+         "earnings"
+        ]
+       },
+       {
+        "title": "Galicia (GGAL) Q3 2026 Earnings Call Transcript",
+        "link": "https://www.fool.com/earnings/call-transcripts/2026/11/26/galicia-ggal-q3-2026-earnings-call-transcript/?.tsrc=rss",
+        "time": "2026-11-26T06:28:08+00:00",
+        "tags": [
+         "earnings",
+         "macro"
+        ]
+       }
+      ]
      }
     ]
    },
@@ -2010,9 +2112,9 @@
    "id": "YPFD",
    "label": "YPFD",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 5945.0,
-   "day_ch": 5.78,
+   "live_date": "2026-11-27",
+   "last": 5995.0,
+   "day_ch": 0.84,
    "source": "yahoo",
    "degraded": false,
    "score": 37,
@@ -2069,8 +2171,18 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "ok",
-      "text": "No hubo noticias de YPF en las últimas horas: nada en contra"
+      "status": "warn",
+      "text": "1 noticias recientes de YPF (temas: balance). La última: «Down 36.3% in 4 Weeks, Here's Why YPF Sociedad Anonima (YPF) Looks Ripe for a Turnaround». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "items": [
+       {
+        "title": "Down 36.3% in 4 Weeks, Here's Why YPF Sociedad Anonima (YPF) Looks Ripe for a Turnaround",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/down-36-3-4-weeks-133501297.html?.tsrc=rss",
+        "time": "2026-11-26T13:35:01+00:00",
+        "tags": [
+         "earnings"
+        ]
+       }
+      ]
      }
     ]
    },
@@ -2082,9 +2194,9 @@
    "id": "PAMP",
    "label": "PAMP",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 4585.0,
-   "day_ch": 3.27,
+   "live_date": "2026-11-27",
+   "last": 4630.0,
+   "day_ch": 0.98,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2154,9 +2266,9 @@
    "id": "BMA",
    "label": "BMA",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 9130.0,
-   "day_ch": 1.84,
+   "live_date": "2026-11-27",
+   "last": 9440.0,
+   "day_ch": 3.4,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2210,7 +2322,15 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de BMA en las últimas horas: nada en contra"
+      "text": "1 noticias recientes de BMA. La última: «Wall Street Bulls Look Optimistic About Banco Macro (BMA): Should You Buy?»",
+      "items": [
+       {
+        "title": "Wall Street Bulls Look Optimistic About Banco Macro (BMA): Should You Buy?",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/wall-street-bulls-look-optimistic-133003767.html?.tsrc=rss",
+        "time": "2026-11-27T13:30:03+00:00",
+        "tags": []
+       }
+      ]
      }
     ]
    },
@@ -2222,9 +2342,9 @@
    "id": "ALUA",
    "label": "ALUA",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 842.5,
-   "day_ch": -0.18,
+   "live_date": "2026-11-27",
+   "last": 847.5,
+   "day_ch": 0.59,
    "source": "yahoo",
    "degraded": false,
    "score": 46,
@@ -2288,9 +2408,9 @@
    "id": "TXAR",
    "label": "TXAR",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 706.0,
-   "day_ch": -0.42,
+   "live_date": "2026-11-27",
+   "last": 714.5,
+   "day_ch": 1.2,
    "source": "yahoo",
    "degraded": false,
    "score": 47,
@@ -2421,9 +2541,9 @@
    "id": "CEPU",
    "label": "CEPU",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 1923.0,
-   "day_ch": 4.06,
+   "live_date": "2026-11-27",
+   "last": 1974.0,
+   "day_ch": 2.65,
    "source": "yahoo",
    "degraded": false,
    "score": 37,
@@ -2493,9 +2613,9 @@
    "id": "TGSU2",
    "label": "TGSU2",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 7480.0,
-   "day_ch": 5.2,
+   "live_date": "2026-11-27",
+   "last": 7540.0,
+   "day_ch": 0.8,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2565,9 +2685,9 @@
    "id": "SUPV",
    "label": "SUPV",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 1769.0,
-   "day_ch": 2.79,
+   "live_date": "2026-11-27",
+   "last": 1861.0,
+   "day_ch": 5.2,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2621,7 +2741,17 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de SUPV en las últimas horas: nada en contra"
+      "text": "1 noticias recientes de SUPV (temas: directivos). La última: «Grupo Supervielle Targets 20% Real Return on Equity by 2031 With Lending, Cost-Cut Push»",
+      "items": [
+       {
+        "title": "Grupo Supervielle Targets 20% Real Return on Equity by 2031 With Lending, Cost-Cut Push",
+        "link": "https://www.marketbeat.com/instant-alerts/event-grupo-supervielle-targets-20-real-return-on-equity-by-2031-with-lending-cost-cut-push-2026-11-26/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+        "time": "2026-11-27T02:12:08+00:00",
+        "tags": [
+         "people"
+        ]
+       }
+      ]
      }
     ]
    },
@@ -2633,9 +2763,9 @@
    "id": "BBAR",
    "label": "BBAR",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 5435.0,
-   "day_ch": 1.3,
+   "live_date": "2026-11-27",
+   "last": 5710.0,
+   "day_ch": 5.06,
    "source": "yahoo",
    "degraded": false,
    "score": 28,
@@ -2701,9 +2831,9 @@
    "id": "LOMA",
    "label": "LOMA",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 3168.0,
-   "day_ch": 4.37,
+   "live_date": "2026-11-27",
+   "last": 3175.0,
+   "day_ch": 0.24,
    "source": "yahoo",
    "degraded": false,
    "score": 47,
@@ -2773,9 +2903,9 @@
    "id": "COME",
    "label": "COME",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 29.07,
-   "day_ch": 3.09,
+   "live_date": "2026-11-27",
+   "last": 29.9,
+   "day_ch": 2.86,
    "source": "yahoo",
    "degraded": false,
    "score": 15,
@@ -2845,19 +2975,19 @@
    "id": "TECO2",
    "label": "TECO2",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 3800.0,
-   "day_ch": 3.05,
+   "live_date": "2026-11-27",
+   "last": 3728.0,
+   "day_ch": -1.91,
    "source": "yahoo",
    "degraded": false,
-   "score": 52,
+   "score": 53,
    "signal": "NEUTRAL",
    "stage4": false,
    "sma50": 3894.0,
    "sma200": 3849.0,
    "vcp": {
     "rating": "No VCP",
-    "score": 51.7,
+    "score": 53.2,
     "state": "Damaged",
     "pattern": "Damaged",
     "pivot": 4650.0,
@@ -2865,7 +2995,7 @@
     "distance_pct": -18.28,
     "contractions": 2,
     "trend_score": 42.9,
-    "rs_score": 80,
+    "rs_score": 90,
     "weakest": "Pivot Proximity",
     "error": null
    },
@@ -2913,9 +3043,9 @@
    "id": "EDN",
    "label": "EDN",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 1113.0,
-   "day_ch": 4.61,
+   "live_date": "2026-11-27",
+   "last": 1137.0,
+   "day_ch": 2.16,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -2985,9 +3115,9 @@
    "id": "CRES",
    "label": "CRES",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 1553.0,
-   "day_ch": 5.93,
+   "live_date": "2026-11-27",
+   "last": 1569.0,
+   "day_ch": 1.03,
    "source": "yahoo",
    "degraded": false,
    "score": 28,
@@ -3057,9 +3187,9 @@
    "id": "TRAN",
    "label": "TRAN",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 2352.0,
-   "day_ch": 5.38,
+   "live_date": "2026-11-27",
+   "last": 2408.0,
+   "day_ch": 2.38,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3129,9 +3259,9 @@
    "id": "BYMA",
    "label": "BYMA",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 195.0,
-   "day_ch": 0.91,
+   "live_date": "2026-11-27",
+   "last": 200.25,
+   "day_ch": 2.69,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -3197,9 +3327,9 @@
    "id": "METR",
    "label": "METR",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 1909.0,
-   "day_ch": 4.26,
+   "live_date": "2026-11-27",
+   "last": 1960.0,
+   "day_ch": 2.67,
    "source": "yahoo",
    "degraded": false,
    "score": 37,
@@ -3265,9 +3395,9 @@
    "id": "VALO",
    "label": "VALO",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 502.0,
-   "day_ch": 1.21,
+   "live_date": "2026-11-27",
+   "last": 507.5,
+   "day_ch": 1.1,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3414,9 +3544,9 @@
    "id": "MIRG",
    "label": "MIRG",
    "date": "2026-11-26",
-   "live_date": null,
-   "last": 1730.0,
-   "day_ch": 0.87,
+   "live_date": "2026-11-27",
+   "last": 1750.0,
+   "day_ch": 1.16,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -3550,8 +3680,8 @@
    "label": "BTC",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 61407.0,
-   "day_ch": 1.51,
+   "last": 60254.0,
+   "day_ch": -0.4,
    "source": "yahoo",
    "degraded": false,
    "score": 38,
@@ -3611,8 +3741,40 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "ok",
-      "text": "No hubo noticias de BTC-USD en las últimas horas: nada en contra"
+      "status": "warn",
+      "text": "19 noticias recientes de BTC-USD (temas: macro). La última: «Analyst Warns of $38,000 Bitcoin Crash as Trump Proposes Tariffs on 14 Trading Partners». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "items": [
+       {
+        "title": "Analyst Warns of $38,000 Bitcoin Crash as Trump Proposes Tariffs on 14 Trading Partners",
+        "link": "https://www.ccn.com/news/crypto/bitcoin-38k-analyst-downside-trump-14-trading-partners/?.tsrc=rss",
+        "time": "2026-11-27T14:07:16+00:00",
+        "tags": [
+         "macro"
+        ]
+       },
+       {
+        "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Friday Amid Technology Stock Rebound",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-140653942.html?.tsrc=rss",
+        "time": "2026-11-27T14:06:53+00:00",
+        "tags": [
+         "macro"
+        ]
+       },
+       {
+        "title": "Strategy Just Bought Bitcoin for the 4th Straight Week. So Why Aren't Crypto Investors Bullish on MSTR Stock?",
+        "link": "https://www.fool.com/investing/2026/11/27/strategy-just-bought-bitcoin-for-the-4th-straight-week-so-why-aren-t-crypto-investors-bullish-on-mstr-stock/?.tsrc=rss",
+        "time": "2026-11-27T14:03:12+00:00",
+        "tags": []
+       },
+       {
+        "title": "Stock Market Today: Dow Futures Jump 650 Points As Nvidia Rebounds; Anthropic, SpaceX, Tesla Rally (Live Coverage)",
+        "link": "https://finance.yahoo.com/m/86a4597f-ee47-3048-ae92-1a56fa4711e5/stock-market-today%3A-dow.html?.tsrc=rss",
+        "time": "2026-11-27T14:00:02+00:00",
+        "tags": [
+         "macro"
+        ]
+       }
+      ]
      }
     ]
    },
@@ -3625,8 +3787,8 @@
    "label": "ETH",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 1719.0,
-   "day_ch": 1.86,
+   "last": 1689.0,
+   "day_ch": 0.09,
    "source": "yahoo",
    "degraded": false,
    "score": 14,
@@ -3684,7 +3846,35 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de ETH-USD en las últimas horas: nada en contra"
+      "text": "12 noticias recientes de ETH-USD (temas: analistas, macro). La última: «Exchange-Traded Funds, Equity Futures Higher Pre-Bell Friday Amid Technology Stock Rebound»",
+      "items": [
+       {
+        "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Friday Amid Technology Stock Rebound",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-140653942.html?.tsrc=rss",
+        "time": "2026-11-27T14:06:53+00:00",
+        "tags": [
+         "macro"
+        ]
+       },
+       {
+        "title": "USDT Supply Shrinks With Its Steepest Drop Since Bitcoin’s 2022 Bear Market",
+        "link": "https://www.ccn.com/news/crypto/usdt-supply-contraction-bitcoin-bear-market/?.tsrc=rss",
+        "time": "2026-11-27T11:37:13+00:00",
+        "tags": []
+       },
+       {
+        "title": "Bitcoin, XRP, Ethereum face brutal crash risk as key levels crack",
+        "link": "https://www.thestreet.com/crypto/markets/bitcoin-xrp-ethereum-face-brutal-crash-risk-as-key-levels-crack?.tsrc=rss",
+        "time": "2026-11-26T21:00:00+00:00",
+        "tags": []
+       },
+       {
+        "title": "Bitcoin Tops $60,000 as Risk Assets Rise in Holiday Trading",
+        "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-tops-60-000-risk-162823539.html?.tsrc=rss",
+        "time": "2026-11-26T16:28:23+00:00",
+        "tags": []
+       }
+      ]
      }
     ]
    },
@@ -3697,8 +3887,8 @@
    "label": "SOL",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 73.33,
-   "day_ch": 3.38,
+   "last": 71.82,
+   "day_ch": 1.25,
    "source": "yahoo",
    "degraded": false,
    "score": 23,
@@ -3752,7 +3942,33 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de SOL-USD en las últimas horas: nada en contra"
+      "text": "7 noticias recientes de SOL-USD. La última: «Korea pulls the plug on crypto barons' grip over exchanges»",
+      "items": [
+       {
+        "title": "Korea pulls the plug on crypto barons' grip over exchanges",
+        "link": "http://www.intellinews.com/korea-pulls-the-plug-on-crypto-barons-grip-over-exchanges-488533/?.tsrc=rss",
+        "time": "2026-11-27T00:06:26+00:00",
+        "tags": []
+       },
+       {
+        "title": "Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base",
+        "link": "https://decrypt.co/384023/polygon-cross-border-payments-stack-coinbase-base?.tsrc=rss",
+        "time": "2026-11-26T14:01:02+00:00",
+        "tags": []
+       },
+       {
+        "title": "Why Is Crypto Up Today? BTC Back Above $60K – is the Bull Market Back?",
+        "link": "https://cryptonews.com/news/why-is-crypto-up-today-btc-back-above-60k-bull-market-back/?.tsrc=rss",
+        "time": "2026-11-26T10:11:22+00:00",
+        "tags": []
+       },
+       {
+        "title": "Fidelity Files for a Spot Chainlink ETF, Following Grayscale and Bitwise",
+        "link": "https://unchainedcrypto.com/fidelity-files-for-a-spot-chainlink-etf-following-grayscale-and-bitwise/?.tsrc=rss",
+        "time": "2026-11-26T10:00:19+00:00",
+        "tags": []
+       }
+      ]
      }
     ]
    },
@@ -3765,8 +3981,8 @@
    "label": "BNB",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 563.01,
-   "day_ch": 1.78,
+   "last": 553.15,
+   "day_ch": -0.0,
    "source": "yahoo",
    "degraded": false,
    "score": 32,
@@ -3824,7 +4040,15 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de BNB-USD en las últimas horas: nada en contra"
+      "text": "1 noticias recientes de BNB-USD. La última: «Cournot Raises $5M to Build AI-Native Oracle for Verifiable Intelligence»",
+      "items": [
+       {
+        "title": "Cournot Raises $5M to Build AI-Native Oracle for Verifiable Intelligence",
+        "link": "https://decrypt.co/384036/cournot-raises-5m-to-build-ai-native-oracle-for-verifiable-intelligence?.tsrc=rss",
+        "time": "2026-11-26T14:26:22+00:00",
+        "tags": []
+       }
+      ]
      }
     ]
    },
@@ -3837,8 +4061,8 @@
    "label": "XRP",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.9699,
-   "day_ch": 2.86,
+   "last": 0.9496,
+   "day_ch": 0.71,
    "source": "yahoo",
    "degraded": false,
    "score": 7,
@@ -3892,7 +4116,33 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de XRP-USD en las últimas horas: nada en contra"
+      "text": "13 noticias recientes de XRP-USD. La última: «RippleX Product Head Wants XRP to Be a ‘First Class’ AI Payment Option as Bull Eyes $10 by Year-End»",
+      "items": [
+       {
+        "title": "RippleX Product Head Wants XRP to Be a ‘First Class’ AI Payment Option as Bull Eyes $10 by Year-End",
+        "link": "https://www.ccn.com/news/crypto/ripplex-product-head-wants-xrp-to-be-a-first-class-ai-payment-option-as-bull-eyes-10-by-year-end/?.tsrc=rss",
+        "time": "2026-11-27T11:48:41+00:00",
+        "tags": []
+       },
+       {
+        "title": "What Would It Take for XRP to Reach $1,000?",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-would-it-take-for-xrp-to-reach-1000/?.tsrc=rss",
+        "time": "2026-11-26T22:17:48+00:00",
+        "tags": []
+       },
+       {
+        "title": "XRP, Cardano or Stellar: Which Could Double First in 2027?",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/xrp-cardano-or-stellar-which-could-double-first-in-2027/?.tsrc=rss",
+        "time": "2026-11-26T21:23:07+00:00",
+        "tags": []
+       },
+       {
+        "title": "Bitcoin, XRP, Ethereum face brutal crash risk as key levels crack",
+        "link": "https://www.thestreet.com/crypto/markets/bitcoin-xrp-ethereum-face-brutal-crash-risk-as-key-levels-crack?.tsrc=rss",
+        "time": "2026-11-26T21:00:00+00:00",
+        "tags": []
+       }
+      ]
      }
     ]
    },
@@ -3905,8 +4155,8 @@
    "label": "ADA",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.15258,
-   "day_ch": 2.82,
+   "last": 0.14892,
+   "day_ch": 0.36,
    "source": "yahoo",
    "degraded": false,
    "score": 22,
@@ -3960,7 +4210,21 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de ADA-USD en las últimas horas: nada en contra"
+      "text": "2 noticias recientes de ADA-USD. La última: «XRP, Cardano or Stellar: Which Could Double First in 2027?»",
+      "items": [
+       {
+        "title": "XRP, Cardano or Stellar: Which Could Double First in 2027?",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/xrp-cardano-or-stellar-which-could-double-first-in-2027/?.tsrc=rss",
+        "time": "2026-11-26T21:23:07+00:00",
+        "tags": []
+       },
+       {
+        "title": "Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1",
+        "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
+        "time": "2026-11-26T09:15:57+00:00",
+        "tags": []
+       }
+      ]
      }
     ]
    },
@@ -3973,8 +4237,8 @@
    "label": "DOGE",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.05869,
-   "day_ch": 4.09,
+   "last": 0.0575,
+   "day_ch": 1.98,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4028,7 +4292,21 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de DOGE-USD en las últimas horas: nada en contra"
+      "text": "2 noticias recientes de DOGE-USD. La última: «Can Shiba Inu Reach $1 in 2027? The Answer Might Shock You.»",
+      "items": [
+       {
+        "title": "Can Shiba Inu Reach $1 in 2027? The Answer Might Shock You.",
+        "link": "https://www.fool.com/investing/2026/11/26/can-shiba-inu-reach-usd1-in-2027-answer-shock-you/?.tsrc=rss",
+        "time": "2026-11-26T10:27:02+00:00",
+        "tags": []
+       },
+       {
+        "title": "Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1",
+        "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
+        "time": "2026-11-26T09:15:57+00:00",
+        "tags": []
+       }
+      ]
      }
     ]
    },
@@ -4041,8 +4319,8 @@
    "label": "LINK",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 9.49,
-   "day_ch": 2.39,
+   "last": 9.29,
+   "day_ch": 0.26,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -4096,7 +4374,33 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de LINK-USD en las últimas horas: nada en contra"
+      "text": "4 noticias recientes de LINK-USD. La última: «Fidelity Files For Spot Chainlink ETF On Nasdaq»",
+      "items": [
+       {
+        "title": "Fidelity Files For Spot Chainlink ETF On Nasdaq",
+        "link": "https://www.cryptoprowl.com/releases/fidelity-files-for-spot-chainlink-etf-on-nasdaq-8090?.tsrc=rss",
+        "time": "2026-11-26T16:25:00+00:00",
+        "tags": []
+       },
+       {
+        "title": "What XRP Did After Its First ETF and What Chainlink Could Do After Fidelity’s",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-xrp-did-after-its-first-etf-and-what-chainlink-could-do-after-fidelitys/?.tsrc=rss",
+        "time": "2026-11-26T14:02:56+00:00",
+        "tags": []
+       },
+       {
+        "title": "Fidelity Files for a Spot Chainlink ETF, Following Grayscale and Bitwise",
+        "link": "https://unchainedcrypto.com/fidelity-files-for-a-spot-chainlink-etf-following-grayscale-and-bitwise/?.tsrc=rss",
+        "time": "2026-11-26T10:00:19+00:00",
+        "tags": []
+       },
+       {
+        "title": "Fidelity Wants a Chainlink ETF. Who Is Actually Buying One?",
+        "link": "https://beincrypto.com/fidelity-chainlink-etf-filing-outflows/?.tsrc=rss",
+        "time": "2026-11-26T05:00:43+00:00",
+        "tags": []
+       }
+      ]
      }
     ]
    },
@@ -4109,8 +4413,8 @@
    "label": "AVAX",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 6.79,
-   "day_ch": 3.08,
+   "last": 6.64,
+   "day_ch": 0.87,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -4177,8 +4481,8 @@
    "label": "TRX",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.304332,
-   "day_ch": 0.22,
+   "last": 0.304359,
+   "day_ch": 0.23,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -4232,7 +4536,21 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de TRX-USD en las últimas horas: nada en contra"
+      "text": "2 noticias recientes de TRX-USD. La última: «USDT Supply Shrinks With Its Steepest Drop Since Bitcoin’s 2022 Bear Market»",
+      "items": [
+       {
+        "title": "USDT Supply Shrinks With Its Steepest Drop Since Bitcoin’s 2022 Bear Market",
+        "link": "https://www.ccn.com/news/crypto/usdt-supply-contraction-bitcoin-bear-market/?.tsrc=rss",
+        "time": "2026-11-27T11:37:13+00:00",
+        "tags": []
+       },
+       {
+        "title": "Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base",
+        "link": "https://decrypt.co/384023/polygon-cross-border-payments-stack-coinbase-base?.tsrc=rss",
+        "time": "2026-11-26T14:01:02+00:00",
+        "tags": []
+       }
+      ]
      }
     ]
    },
@@ -4363,2082 +4681,1220 @@
  ],
  "intraday": {
   "enabled": true,
-  "date": "2026-11-25",
-  "time_ny": "15:55",
+  "date": "2026-11-27",
+  "time_ny": "09:39",
   "symbols": {
    "YPF": {
     "symbol": "YPF",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 31.29,
-     "low": 30.83,
+     "high": 34.0,
+     "low": 33.15,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 27790
+     "complete": false,
+     "avg_volume": 269373
     },
-    "level": 31.29,
-    "last": {
-     "bar_start": "15:50",
-     "close": 31.42,
-     "vs_level_pct": 0.42
-    },
-    "trigger": {
-     "time": "10:00 AM",
-     "close_time": "10:00",
-     "bar_start": "09:55",
-     "bar_index": 5,
-     "price": 31.4,
-     "close": 31.395000457763672,
-     "volume": 9070,
-     "volume_x": 0.33,
-     "pct_over": 0.34
-    },
-    "reason": "the 9:55 bar closed above the range high",
-    "plan": {
-     "entry": 31.4,
-     "stop": 31.06,
-     "target": 31.74,
-     "risk": 0.34,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": true,
-     "kind": "intradía",
-     "mc": {
-      "replays": 10000,
-      "seed": 19,
-      "bars_left": 71,
-      "p_target": 0.353,
-      "p_stop": 0.6163,
-      "p_neither": 0.0307,
-      "p_green": 0.3671,
-      "median_close": 31.19,
-      "p5_close": 30.2,
-      "p95_close": 32.17,
-      "avg_R": -0.264,
-      "r_at_target": 1.0,
-      "pool_sessions": 56,
-      "until": "15:55",
-      "fan": [
-       [
-        31.4,
-        31.4,
-        31.4
-       ],
-       [
-        31.02,
-        31.35,
-        31.65
-       ],
-       [
-        30.93,
-        31.31,
-        31.73
-       ],
-       [
-        30.83,
-        31.3,
-        31.75
-       ],
-       [
-        30.75,
-        31.29,
-        31.84
-       ],
-       [
-        30.71,
-        31.31,
-        31.88
-       ],
-       [
-        30.66,
-        31.29,
-        31.92
-       ],
-       [
-        30.61,
-        31.28,
-        31.95
-       ],
-       [
-        30.57,
-        31.26,
-        31.98
-       ],
-       [
-        30.54,
-        31.25,
-        31.99
-       ],
-       [
-        30.52,
-        31.24,
-        32.03
-       ],
-       [
-        30.47,
-        31.23,
-        32.04
-       ],
-       [
-        30.42,
-        31.21,
-        32.04
-       ],
-       [
-        30.42,
-        31.2,
-        32.06
-       ],
-       [
-        30.39,
-        31.2,
-        32.08
-       ],
-       [
-        30.38,
-        31.2,
-        32.08
-       ],
-       [
-        30.37,
-        31.2,
-        32.08
-       ],
-       [
-        30.37,
-        31.22,
-        32.11
-       ],
-       [
-        30.32,
-        31.21,
-        32.12
-       ],
-       [
-        30.3,
-        31.2,
-        32.13
-       ],
-       [
-        30.31,
-        31.21,
-        32.14
-       ],
-       [
-        30.29,
-        31.2,
-        32.13
-       ],
-       [
-        30.25,
-        31.19,
-        32.13
-       ],
-       [
-        30.22,
-        31.17,
-        32.13
-       ],
-       [
-        30.22,
-        31.18,
-        32.15
-       ]
-      ]
-     },
-     "lean": "stop",
-     "verdict": "En contra: el precio llegó primero al objetivo en el 35,3 % de las simulaciones y al stop en el 61,6 %.",
-     "history": {
-      "label": "la misma ruptura en las sesiones reales",
-      "fired": 27,
-      "sessions": 56,
-      "target": 12,
-      "stop": 9,
-      "neither": 6,
-      "avg_R": 0.13
-     },
-     "note": "A simulation built from YPF's own last 56 full sessions. It is not a prediction: earnings, news and halts can do things those sessions never did. Same seed, same numbers."
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 355 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 79.0,
-     "notional": 2480.6,
-     "max_loss": 26.86,
-     "ticket": {
-      "symbol": "YPF",
-      "side": "compra",
-      "units": 79.0,
-      "type": "bracket",
-      "entry": 31.4,
-      "stop": 31.06,
-      "target": 31.74,
-      "flat_by": "15:55",
-      "text": "Comprar 79 YPF a mercado, stop 31,06, objetivo 31,74 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "GGAL": {
     "symbol": "GGAL",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 25.33,
-     "low": 24.95,
+     "high": 29.29,
+     "low": 28.28,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 26616
+     "complete": false,
+     "avg_volume": 268509
     },
-    "level": 25.33,
-    "last": {
-     "bar_start": "15:50",
-     "close": 26.71,
-     "vs_level_pct": 5.45
-    },
-    "trigger": {
-     "time": "11:50 AM",
-     "close_time": "11:50",
-     "bar_start": "11:45",
-     "bar_index": 27,
-     "price": 25.35,
-     "close": 25.354999542236328,
-     "volume": 30701,
-     "volume_x": 1.15,
-     "pct_over": 0.1
-    },
-    "reason": "the 11:45 bar closed above the range high",
-    "plan": {
-     "entry": 25.35,
-     "stop": 25.14,
-     "target": 25.56,
-     "risk": 0.21,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": true,
-     "kind": "intradía",
-     "mc": {
-      "replays": 10000,
-      "seed": 19,
-      "bars_left": 49,
-      "p_target": 0.4891,
-      "p_stop": 0.5036,
-      "p_neither": 0.0073,
-      "p_green": 0.4918,
-      "median_close": 25.39,
-      "p5_close": 24.67,
-      "p95_close": 26.13,
-      "avg_R": -0.015,
-      "r_at_target": 1.0,
-      "pool_sessions": 41,
-      "until": "15:55",
-      "fan": [
-       [
-        25.35,
-        25.35,
-        25.35
-       ],
-       [
-        25.16,
-        25.34,
-        25.51
-       ],
-       [
-        25.1,
-        25.33,
-        25.58
-       ],
-       [
-        25.06,
-        25.33,
-        25.64
-       ],
-       [
-        25.02,
-        25.34,
-        25.7
-       ],
-       [
-        25.0,
-        25.33,
-        25.76
-       ],
-       [
-        24.98,
-        25.34,
-        25.79
-       ],
-       [
-        24.95,
-        25.35,
-        25.81
-       ],
-       [
-        24.94,
-        25.36,
-        25.84
-       ],
-       [
-        24.92,
-        25.36,
-        25.89
-       ],
-       [
-        24.9,
-        25.36,
-        25.9
-       ],
-       [
-        24.88,
-        25.37,
-        25.93
-       ],
-       [
-        24.86,
-        25.38,
-        25.95
-       ],
-       [
-        24.85,
-        25.39,
-        25.98
-       ],
-       [
-        24.83,
-        25.39,
-        25.98
-       ],
-       [
-        24.78,
-        25.38,
-        26.0
-       ],
-       [
-        24.75,
-        25.36,
-        26.0
-       ],
-       [
-        24.73,
-        25.37,
-        26.02
-       ],
-       [
-        24.74,
-        25.38,
-        26.05
-       ],
-       [
-        24.73,
-        25.38,
-        26.06
-       ],
-       [
-        24.72,
-        25.39,
-        26.08
-       ],
-       [
-        24.73,
-        25.41,
-        26.13
-       ],
-       [
-        24.71,
-        25.42,
-        26.14
-       ],
-       [
-        24.72,
-        25.41,
-        26.17
-       ],
-       [
-        24.7,
-        25.41,
-        26.16
-       ],
-       [
-        24.66,
-        25.39,
-        26.16
-       ]
-      ]
-     },
-     "lean": "even",
-     "verdict": "Casi una moneda al aire: el precio llegó primero al objetivo en el 48,9 % de las simulaciones y al stop en el 50,4 %.",
-     "history": {
-      "label": "la misma ruptura en las sesiones reales",
-      "fired": 24,
-      "sessions": 41,
-      "target": 7,
-      "stop": 12,
-      "neither": 5,
-      "avg_R": -0.279
-     },
-     "note": "A simulation built from GGAL's own last 41 full sessions. It is not a prediction: earnings, news and halts can do things those sessions never did. Same seed, same numbers."
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 245 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 98.0,
-     "notional": 2484.3,
-     "max_loss": 20.58,
-     "ticket": {
-      "symbol": "GGAL",
-      "side": "compra",
-      "units": 98.0,
-      "type": "bracket",
-      "entry": 25.35,
-      "stop": 25.14,
-      "target": 25.56,
-      "flat_by": "15:55",
-      "text": "Comprar 98 GGAL a mercado, stop 25,14, objetivo 25,56 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "PAM": {
     "symbol": "PAM",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 61.06,
-     "low": 60.19,
+     "high": 65.55,
+     "low": 64.52,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 4413
+     "complete": false,
+     "avg_volume": 3371
     },
-    "level": 61.06,
-    "last": {
-     "bar_start": "15:45",
-     "close": 62.09,
-     "vs_level_pct": 1.69
-    },
-    "trigger": {
-     "time": "9:50 AM",
-     "close_time": "09:50",
-     "bar_start": "09:45",
-     "bar_index": 3,
-     "price": 61.1,
-     "close": 61.099998474121094,
-     "volume": 17981,
-     "volume_x": 4.07,
-     "pct_over": 0.07
-    },
-    "reason": "the 9:45 bar closed above the range high",
-    "plan": {
-     "entry": 61.1,
-     "stop": 60.62,
-     "target": 61.58,
-     "risk": 0.48,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": false,
-     "error": "only 5 full session(s) of PAM before 2026-11-25 in the data; the time machine needs at least 20"
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 365 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 40.0,
-     "notional": 2444.0,
-     "max_loss": 19.2,
-     "ticket": {
-      "symbol": "PAM",
-      "side": "compra",
-      "units": 40.0,
-      "type": "bracket",
-      "entry": 61.1,
-      "stop": 60.62,
-      "target": 61.58,
-      "flat_by": "15:55",
-      "text": "Comprar 40 PAM a mercado, stop 60,62, objetivo 61,58 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "BMA": {
     "symbol": "BMA",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 49.16,
-     "low": 48.02,
+     "high": 54.06,
+     "low": 53.0,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 4427
+     "complete": false,
+     "avg_volume": 2294
     },
-    "level": 49.16,
-    "last": {
-     "bar_start": "15:50",
-     "close": 50.3,
-     "vs_level_pct": 2.32
-    },
-    "trigger": {
-     "time": "12:20 PM",
-     "close_time": "12:20",
-     "bar_start": "12:15",
-     "bar_index": 33,
-     "price": 49.19,
-     "close": 49.19499969482422,
-     "volume": 11740,
-     "volume_x": 2.65,
-     "pct_over": 0.07
-    },
-    "reason": "the 12:15 bar closed above the range high",
-    "plan": {
-     "entry": 49.19,
-     "stop": 48.59,
-     "target": 49.79,
-     "risk": 0.6,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": false,
-     "error": "only 8 full session(s) of BMA before 2026-11-25 in the data; the time machine needs at least 20"
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 215 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 50.0,
-     "notional": 2459.5,
-     "max_loss": 30.0,
-     "ticket": {
-      "symbol": "BMA",
-      "side": "compra",
-      "units": 50.0,
-      "type": "bracket",
-      "entry": 49.19,
-      "stop": 48.59,
-      "target": 49.79,
-      "flat_by": "15:55",
-      "text": "Comprar 50 BMA a mercado, stop 48,59, objetivo 49,79 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "VIST": {
     "symbol": "VIST",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 49.15,
-     "low": 48.24,
+     "high": 53.88,
+     "low": 53.01,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 46504
+     "complete": false,
+     "avg_volume": 93994
     },
-    "level": 49.15,
-    "last": {
-     "bar_start": "15:50",
-     "close": 50.21,
-     "vs_level_pct": 2.16
-    },
-    "trigger": {
-     "time": "9:50 AM",
-     "close_time": "09:50",
-     "bar_start": "09:45",
-     "bar_index": 3,
-     "price": 49.25,
-     "close": 49.249900817871094,
-     "volume": 198803,
-     "volume_x": 4.27,
-     "pct_over": 0.2
-    },
-    "reason": "the 9:45 bar closed above the range high",
-    "plan": {
-     "entry": 49.25,
-     "stop": 48.69,
-     "target": 49.81,
-     "risk": 0.56,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": true,
-     "kind": "intradía",
-     "mc": {
-      "replays": 10000,
-      "seed": 19,
-      "bars_left": 73,
-      "p_target": 0.4507,
-      "p_stop": 0.5324,
-      "p_neither": 0.0169,
-      "p_green": 0.4579,
-      "median_close": 48.93,
-      "p5_close": 47.21,
-      "p95_close": 50.65,
-      "avg_R": -0.083,
-      "r_at_target": 1.0,
-      "pool_sessions": 56,
-      "until": "15:55",
-      "fan": [
-       [
-        49.25,
-        49.25,
-        49.25
-       ],
-       [
-        48.61,
-        49.25,
-        49.91
-       ],
-       [
-        48.35,
-        49.21,
-        50.02
-       ],
-       [
-        48.23,
-        49.15,
-        50.11
-       ],
-       [
-        48.12,
-        49.12,
-        50.19
-       ],
-       [
-        48.06,
-        49.15,
-        50.28
-       ],
-       [
-        48.01,
-        49.15,
-        50.39
-       ],
-       [
-        47.93,
-        49.12,
-        50.4
-       ],
-       [
-        47.88,
-        49.12,
-        50.45
-       ],
-       [
-        47.82,
-        49.1,
-        50.47
-       ],
-       [
-        47.75,
-        49.11,
-        50.49
-       ],
-       [
-        47.68,
-        49.1,
-        50.53
-       ],
-       [
-        47.58,
-        49.08,
-        50.52
-       ],
-       [
-        47.57,
-        49.07,
-        50.52
-       ],
-       [
-        47.55,
-        49.08,
-        50.53
-       ],
-       [
-        47.54,
-        49.07,
-        50.61
-       ],
-       [
-        47.48,
-        49.07,
-        50.6
-       ],
-       [
-        47.47,
-        49.06,
-        50.65
-       ],
-       [
-        47.42,
-        49.02,
-        50.63
-       ],
-       [
-        47.36,
-        48.98,
-        50.59
-       ],
-       [
-        47.37,
-        48.99,
-        50.61
-       ],
-       [
-        47.34,
-        48.99,
-        50.7
-       ],
-       [
-        47.34,
-        49.0,
-        50.7
-       ],
-       [
-        47.27,
-        48.95,
-        50.66
-       ],
-       [
-        47.24,
-        48.96,
-        50.66
-       ],
-       [
-        47.22,
-        48.95,
-        50.67
-       ]
-      ]
-     },
-     "lean": "even",
-     "verdict": "Casi una moneda al aire: el precio llegó primero al objetivo en el 45,1 % de las simulaciones y al stop en el 53,2 %.",
-     "history": {
-      "label": "la misma ruptura en las sesiones reales",
-      "fired": 31,
-      "sessions": 56,
-      "target": 11,
-      "stop": 12,
-      "neither": 8,
-      "avg_R": -0.005
-     },
-     "note": "A simulation built from VIST's own last 56 full sessions. It is not a prediction: earnings, news and halts can do things those sessions never did. Same seed, same numbers."
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 365 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 50.0,
-     "notional": 2462.5,
-     "max_loss": 28.0,
-     "ticket": {
-      "symbol": "VIST",
-      "side": "compra",
-      "units": 50.0,
-      "type": "bracket",
-      "entry": 49.25,
-      "stop": 48.69,
-      "target": 49.81,
-      "flat_by": "15:55",
-      "text": "Comprar 50 VIST a mercado, stop 48,69, objetivo 49,81 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "MELI": {
     "symbol": "MELI",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 1432.13,
-     "low": 1407.26,
+     "high": 1551.02,
+     "low": 1525.46,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 16940
+     "complete": false,
+     "avg_volume": 66036
     },
-    "level": 1432.13,
-    "last": {
-     "bar_start": "15:50",
-     "close": 1466.23,
-     "vs_level_pct": 2.38
-    },
-    "trigger": {
-     "time": "12:00 PM",
-     "close_time": "12:00",
-     "bar_start": "11:55",
-     "bar_index": 29,
-     "price": 1434.01,
-     "close": 1434.010009765625,
-     "volume": 3894,
-     "volume_x": 0.23,
-     "pct_over": 0.13
-    },
-    "reason": "the 11:55 bar closed above the range high",
-    "plan": {
-     "entry": 1434.01,
-     "stop": 1419.69,
-     "target": 1448.33,
-     "risk": 14.32,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": true,
-     "kind": "intradía",
-     "mc": {
-      "replays": 10000,
-      "seed": 19,
-      "bars_left": 47,
-      "p_target": 0.3311,
-      "p_stop": 0.3766,
-      "p_neither": 0.2923,
-      "p_green": 0.4767,
-      "median_close": 1432.83,
-      "p5_close": 1406.98,
-      "p95_close": 1458.34,
-      "avg_R": -0.046,
-      "r_at_target": 1.0,
-      "pool_sessions": 59,
-      "until": "15:55",
-      "fan": [
-       [
-        1434.01,
-        1434.01,
-        1434.01
-       ],
-       [
-        1427.66,
-        1434.33,
-        1439.95
-       ],
-       [
-        1425.4,
-        1434.13,
-        1442.6
-       ],
-       [
-        1423.9,
-        1434.12,
-        1444.75
-       ],
-       [
-        1423.1,
-        1434.24,
-        1445.31
-       ],
-       [
-        1421.22,
-        1434.22,
-        1446.92
-       ],
-       [
-        1420.26,
-        1433.9,
-        1447.9
-       ],
-       [
-        1419.32,
-        1433.49,
-        1447.99
-       ],
-       [
-        1417.34,
-        1433.2,
-        1448.35
-       ],
-       [
-        1416.83,
-        1433.74,
-        1448.64
-       ],
-       [
-        1416.18,
-        1433.29,
-        1449.33
-       ],
-       [
-        1415.74,
-        1432.86,
-        1450.03
-       ],
-       [
-        1414.54,
-        1432.96,
-        1450.87
-       ],
-       [
-        1413.45,
-        1432.54,
-        1450.84
-       ],
-       [
-        1412.42,
-        1432.4,
-        1451.54
-       ],
-       [
-        1412.03,
-        1432.58,
-        1452.63
-       ],
-       [
-        1411.23,
-        1432.49,
-        1453.2
-       ],
-       [
-        1411.08,
-        1432.5,
-        1453.43
-       ],
-       [
-        1409.8,
-        1432.15,
-        1454.18
-       ],
-       [
-        1409.07,
-        1431.91,
-        1454.44
-       ],
-       [
-        1408.88,
-        1432.36,
-        1454.78
-       ],
-       [
-        1408.82,
-        1432.23,
-        1455.26
-       ],
-       [
-        1407.68,
-        1432.0,
-        1456.07
-       ],
-       [
-        1406.6,
-        1432.56,
-        1457.44
-       ],
-       [
-        1406.58,
-        1432.49,
-        1457.67
-       ]
-      ]
-     },
-     "lean": "even",
-     "verdict": "Casi una moneda al aire: el precio llegó primero al objetivo en el 33,1 % de las simulaciones y al stop en el 37,7 %.",
-     "history": {
-      "label": "la misma ruptura en las sesiones reales",
-      "fired": 34,
-      "sessions": 59,
-      "target": 7,
-      "stop": 16,
-      "neither": 11,
-      "avg_R": -0.219
-     },
-     "note": "A simulation built from MELI's own last 59 full sessions. It is not a prediction: earnings, news and halts can do things those sessions never did. Same seed, same numbers."
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 235 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 1.0,
-     "notional": 1434.01,
-     "max_loss": 14.32,
-     "ticket": {
-      "symbol": "MELI",
-      "side": "compra",
-      "units": 1.0,
-      "type": "bracket",
-      "entry": 1434.01,
-      "stop": 1419.69,
-      "target": 1448.33,
-      "flat_by": "15:55",
-      "text": "Comprar 1 MELI a mercado, stop 1419,69, objetivo 1448,33 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "TGS": {
     "symbol": "TGS",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 19.42,
-     "low": 19.17,
+     "high": 21.28,
+     "low": 21.0,
      "minutes": 15,
-     "bars": 2,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 1875
+     "complete": false,
+     "avg_volume": 57186
     },
-    "level": 19.42,
-    "last": {
-     "bar_start": "15:45",
-     "close": 19.92,
-     "vs_level_pct": 2.57
-    },
-    "trigger": {
-     "time": "12:10 PM",
-     "close_time": "12:10",
-     "bar_start": "12:05",
-     "bar_index": 31,
-     "price": 19.49,
-     "close": 19.489999771118164,
-     "volume": 9009,
-     "volume_x": 4.8,
-     "pct_over": 0.36
-    },
-    "reason": "the 12:05 bar closed above the range high",
-    "plan": {
-     "entry": 19.49,
-     "stop": 19.29,
-     "target": 19.69,
-     "risk": 0.2,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": false,
-     "error": "only 4 full session(s) of TGS before 2026-11-25 in the data; the time machine needs at least 20"
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 225 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 128.0,
-     "notional": 2494.72,
-     "max_loss": 25.6,
-     "ticket": {
-      "symbol": "TGS",
-      "side": "compra",
-      "units": 128.0,
-      "type": "bracket",
-      "entry": 19.49,
-      "stop": 19.29,
-      "target": 19.69,
-      "flat_by": "15:55",
-      "text": "Comprar 128 TGS a mercado, stop 19,29, objetivo 19,69 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "CEPU": {
     "symbol": "CEPU",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 10.31,
-     "low": 9.96,
+     "high": 11.35,
+     "low": 11.19,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 5384
+     "complete": false,
+     "avg_volume": 2226
     },
-    "level": 10.31,
-    "last": {
-     "bar_start": "15:45",
-     "close": 10.4,
-     "vs_level_pct": 0.87
-    },
-    "trigger": {
-     "time": "1:20 PM",
-     "close_time": "13:20",
-     "bar_start": "13:15",
-     "bar_index": 45,
-     "price": 10.32,
-     "close": 10.324999809265137,
-     "volume": 1089,
-     "volume_x": 0.2,
-     "pct_over": 0.15
-    },
-    "reason": "the 13:15 bar closed above the range high",
-    "plan": {
-     "entry": 10.32,
-     "stop": 10.13,
-     "target": 10.51,
-     "risk": 0.19,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": false,
-     "error": "only 7 full session(s) of CEPU before 2026-11-25 in the data; the time machine needs at least 20"
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 155 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 242.0,
-     "notional": 2497.44,
-     "max_loss": 45.98,
-     "ticket": {
-      "symbol": "CEPU",
-      "side": "compra",
-      "units": 242.0,
-      "type": "bracket",
-      "entry": 10.32,
-      "stop": 10.13,
-      "target": 10.51,
-      "flat_by": "15:55",
-      "text": "Comprar 242 CEPU a mercado, stop 10,13, objetivo 10,51 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "SUPV": {
     "symbol": "SUPV",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 4.51,
-     "low": 4.38,
+     "high": 5.24,
+     "low": 5.17,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 14243
+     "complete": false,
+     "avg_volume": 96549
     },
-    "level": 4.51,
-    "last": {
-     "bar_start": "15:50",
-     "close": 4.8,
-     "vs_level_pct": 6.43
-    },
-    "trigger": {
-     "time": "12:35 PM",
-     "close_time": "12:35",
-     "bar_start": "12:30",
-     "bar_index": 36,
-     "price": 4.52,
-     "close": 4.519999980926514,
-     "volume": 7884,
-     "volume_x": 0.55,
-     "pct_over": 0.22
-    },
-    "reason": "the 12:30 bar closed above the range high",
-    "plan": {
-     "entry": 4.52,
-     "stop": 4.44,
-     "target": 4.6,
-     "risk": 0.08,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": false,
-     "error": "only 17 full session(s) of SUPV before 2026-11-25 in the data; the time machine needs at least 20"
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 200 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 553.0,
-     "notional": 2499.56,
-     "max_loss": 44.24,
-     "ticket": {
-      "symbol": "SUPV",
-      "side": "compra",
-      "units": 553.0,
-      "type": "bracket",
-      "entry": 4.52,
-      "stop": 4.44,
-      "target": 4.6,
-      "flat_by": "15:55",
-      "text": "Comprar 553 SUPV a mercado, stop 4,44, objetivo 4,6 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "LOMA": {
     "symbol": "LOMA",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 8.17,
-     "low": 8.1,
+     "high": 8.91,
+     "low": 8.85,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 1345
+     "complete": false,
+     "avg_volume": 0
     },
-    "level": 8.17,
-    "last": {
-     "bar_start": "15:50",
-     "close": 8.56,
-     "vs_level_pct": 4.74
-    },
-    "trigger": {
-     "time": "12:05 PM",
-     "close_time": "12:05",
-     "bar_start": "12:00",
-     "bar_index": 30,
-     "price": 8.2,
-     "close": 8.199999809265137,
-     "volume": 5659,
-     "volume_x": 4.21,
-     "pct_over": 0.33
-    },
-    "reason": "the 12:00 bar closed above the range high",
-    "plan": {
-     "entry": 8.2,
-     "stop": 8.13,
-     "target": 8.27,
-     "risk": 0.07,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": false,
-     "error": "only 10 full session(s) of LOMA before 2026-11-25 in the data; the time machine needs at least 20"
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 230 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 304.0,
-     "notional": 2492.8,
-     "max_loss": 21.28,
-     "ticket": {
-      "symbol": "LOMA",
-      "side": "compra",
-      "units": 304.0,
-      "type": "bracket",
-      "entry": 8.2,
-      "stop": 8.13,
-      "target": 8.27,
-      "flat_by": "15:55",
-      "text": "Comprar 304 LOMA a mercado, stop 8,13, objetivo 8,27 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "BBAR": {
     "symbol": "BBAR",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 8.77,
-     "low": 8.22,
+     "high": 9.74,
+     "low": 9.4,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 56169
+     "complete": false,
+     "avg_volume": 24581
     },
-    "level": 8.77,
-    "last": {
-     "bar_start": "15:45",
-     "close": 8.97,
-     "vs_level_pct": 2.28
-    },
-    "trigger": {
-     "time": "1:50 PM",
-     "close_time": "13:50",
-     "bar_start": "13:45",
-     "bar_index": 51,
-     "price": 8.81,
-     "close": 8.8100004196167,
-     "volume": 4272,
-     "volume_x": 0.08,
-     "pct_over": 0.51
-    },
-    "reason": "the 13:45 bar closed above the range high",
-    "plan": {
-     "entry": 8.81,
-     "stop": 8.49,
-     "target": 9.13,
-     "risk": 0.32,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": true,
-     "kind": "intradía",
-     "mc": {
-      "replays": 10000,
-      "seed": 19,
-      "bars_left": 25,
-      "p_target": 0.0036,
-      "p_stop": 0.0048,
-      "p_neither": 0.9916,
-      "p_green": 0.4415,
-      "median_close": 8.79,
-      "p5_close": 8.62,
-      "p95_close": 8.98,
-      "avg_R": -0.047,
-      "r_at_target": 1.0,
-      "pool_sessions": 24,
-      "until": "15:55",
-      "fan": [
-       [
-        8.81,
-        8.81,
-        8.81
-       ],
-       [
-        8.77,
-        8.81,
-        8.86
-       ],
-       [
-        8.75,
-        8.81,
-        8.87
-       ],
-       [
-        8.75,
-        8.81,
-        8.88
-       ],
-       [
-        8.73,
-        8.81,
-        8.89
-       ],
-       [
-        8.72,
-        8.81,
-        8.9
-       ],
-       [
-        8.71,
-        8.81,
-        8.9
-       ],
-       [
-        8.7,
-        8.8,
-        8.9
-       ],
-       [
-        8.69,
-        8.8,
-        8.9
-       ],
-       [
-        8.69,
-        8.8,
-        8.91
-       ],
-       [
-        8.68,
-        8.8,
-        8.91
-       ],
-       [
-        8.67,
-        8.79,
-        8.91
-       ],
-       [
-        8.67,
-        8.8,
-        8.92
-       ],
-       [
-        8.66,
-        8.8,
-        8.92
-       ],
-       [
-        8.66,
-        8.8,
-        8.93
-       ],
-       [
-        8.66,
-        8.8,
-        8.93
-       ],
-       [
-        8.66,
-        8.8,
-        8.95
-       ],
-       [
-        8.66,
-        8.81,
-        8.95
-       ],
-       [
-        8.65,
-        8.81,
-        8.96
-       ],
-       [
-        8.65,
-        8.81,
-        8.96
-       ],
-       [
-        8.64,
-        8.8,
-        8.96
-       ],
-       [
-        8.63,
-        8.8,
-        8.97
-       ],
-       [
-        8.62,
-        8.8,
-        8.97
-       ],
-       [
-        8.61,
-        8.8,
-        8.97
-       ],
-       [
-        8.61,
-        8.8,
-        8.97
-       ],
-       [
-        8.61,
-        8.79,
-        8.97
-       ]
-      ]
-     },
-     "lean": "stop",
-     "verdict": "En contra: el precio llegó primero al objetivo en el 0,4 % de las simulaciones y al stop en el 0,5 %. El 99 % no tocó ninguno antes de las 15:55: ahí cuenta dónde termina el precio (resultado medio de todas: -0,05 veces lo arriesgado).",
-     "history": {
-      "label": "la misma ruptura en las sesiones reales",
-      "fired": 14,
-      "sessions": 24,
-      "target": 5,
-      "stop": 9,
-      "neither": 0,
-      "avg_R": -0.286
-     },
-     "note": "A simulation built from BBAR's own last 24 full sessions. It is not a prediction: earnings, news and halts can do things those sessions never did. Same seed, same numbers."
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 125 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 283.0,
-     "notional": 2493.23,
-     "max_loss": 90.56,
-     "ticket": {
-      "symbol": "BBAR",
-      "side": "compra",
-      "units": 283.0,
-      "type": "bracket",
-      "entry": 8.81,
-      "stop": 8.49,
-      "target": 9.13,
-      "flat_by": "15:55",
-      "text": "Comprar 283 BBAR a mercado, stop 8,49, objetivo 9,13 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "CRESY": {
     "symbol": "CRESY",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 7.81,
-     "low": 7.64,
+     "high": 8.92,
+     "low": 8.57,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 1684
+     "complete": false,
+     "avg_volume": 545
     },
-    "level": 7.81,
-    "last": {
-     "bar_start": "15:45",
-     "close": 8.22,
-     "vs_level_pct": 5.21
-    },
-    "trigger": {
-     "time": "10:00 AM",
-     "close_time": "10:00",
-     "bar_start": "09:55",
-     "bar_index": 5,
-     "price": 7.9,
-     "close": 7.900000095367432,
-     "volume": 6386,
-     "volume_x": 3.79,
-     "pct_over": 1.12
-    },
-    "reason": "the 9:55 bar closed above the range high",
-    "plan": {
-     "entry": 7.9,
-     "stop": 7.72,
-     "target": 8.08,
-     "risk": 0.18,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": false,
-     "error": "only 0 full session(s) of CRESY before 2026-11-25 in the data; the time machine needs at least 20"
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 355 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 316.0,
-     "notional": 2496.4,
-     "max_loss": 56.88,
-     "ticket": {
-      "symbol": "CRESY",
-      "side": "compra",
-      "units": 316.0,
-      "type": "bracket",
-      "entry": 7.9,
-      "stop": 7.72,
-      "target": 8.08,
-      "flat_by": "15:55",
-      "text": "Comprar 316 CRESY a mercado, stop 7,72, objetivo 8,08 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "EDN": {
     "symbol": "EDN",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 11.36,
-     "low": 10.91,
+     "high": 12.67,
+     "low": 12.62,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 3161
+     "complete": false,
+     "avg_volume": 4769
     },
-    "level": 11.36,
-    "last": {
-     "bar_start": "15:50",
-     "close": 11.85,
-     "vs_level_pct": 4.29
-    },
-    "trigger": {
-     "time": "12:00 PM",
-     "close_time": "12:00",
-     "bar_start": "11:55",
-     "bar_index": 29,
-     "price": 11.39,
-     "close": 11.390000343322754,
-     "volume": 2521,
-     "volume_x": 0.8,
-     "pct_over": 0.26
-    },
-    "reason": "the 11:55 bar closed above the range high",
-    "plan": {
-     "entry": 11.39,
-     "stop": 11.13,
-     "target": 11.65,
-     "risk": 0.26,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": false,
-     "error": "only 0 full session(s) of EDN before 2026-11-25 in the data; the time machine needs at least 20"
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 235 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 219.0,
-     "notional": 2494.41,
-     "max_loss": 56.94,
-     "ticket": {
-      "symbol": "EDN",
-      "side": "compra",
-      "units": 219.0,
-      "type": "bracket",
-      "entry": 11.39,
-      "stop": 11.13,
-      "target": 11.65,
-      "flat_by": "15:55",
-      "text": "Comprar 219 EDN a mercado, stop 11,13, objetivo 11,65 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "TEO": {
     "symbol": "TEO",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 9.93,
-     "low": 9.54,
+     "high": 10.64,
+     "low": 10.55,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 14390
+     "complete": false,
+     "avg_volume": 0
     },
-    "level": 9.93,
-    "last": {
-     "bar_start": "15:45",
-     "close": 10.3,
-     "vs_level_pct": 3.73
-    },
-    "trigger": {
-     "time": "12:05 PM",
-     "close_time": "12:05",
-     "bar_start": "12:00",
-     "bar_index": 30,
-     "price": 9.98,
-     "close": 9.979999542236328,
-     "volume": 2256,
-     "volume_x": 0.16,
-     "pct_over": 0.5
-    },
-    "reason": "the 12:00 bar closed above the range high",
-    "plan": {
-     "entry": 9.98,
-     "stop": 9.73,
-     "target": 10.23,
-     "risk": 0.25,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": false,
-     "error": "only 1 full session(s) of TEO before 2026-11-25 in the data; the time machine needs at least 20"
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 230 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 250.0,
-     "notional": 2495.0,
-     "max_loss": 62.5,
-     "ticket": {
-      "symbol": "TEO",
-      "side": "compra",
-      "units": 250.0,
-      "type": "bracket",
-      "entry": 9.98,
-      "stop": 9.73,
-      "target": 10.23,
-      "flat_by": "15:55",
-      "text": "Comprar 250 TEO a mercado, stop 9,73, objetivo 10,23 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    },
    "IRS": {
     "symbol": "IRS",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
-    "opening_range": {
-     "high": 11.1,
-     "low": 10.64,
-     "minutes": 15,
-     "bars": 3,
-     "of": 3,
-     "complete": true,
-     "avg_volume": 2653
-    },
-    "level": 11.1,
-    "last": {
-     "bar_start": "15:45",
-     "close": 11.04,
-     "vs_level_pct": -0.54
-    },
-    "trigger": {
-     "time": "2:55 PM",
-     "close_time": "14:55",
-     "bar_start": "14:50",
-     "bar_index": 64,
-     "price": 11.11,
-     "close": 11.114999771118164,
-     "volume": 813,
-     "volume_x": 0.31,
-     "pct_over": 0.14
-    },
-    "reason": "the 14:50 bar closed above the range high",
-    "plan": {
-     "entry": 11.11,
-     "stop": 10.87,
-     "target": 11.35,
-     "risk": 0.24,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": false,
-     "error": "only 2 full session(s) of IRS before 2026-11-25 in the data; the time machine needs at least 20"
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 60 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 225.0,
-     "notional": 2499.75,
-     "max_loss": 54.0,
-     "ticket": {
-      "symbol": "IRS",
-      "side": "compra",
-      "units": 225.0,
-      "type": "bracket",
-      "entry": 11.11,
-      "stop": 10.87,
-      "target": 11.35,
-      "flat_by": "15:55",
-      "text": "Comprar 225 IRS a mercado, stop 10,87, objetivo 11,35 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
+    "opening_range": null,
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "0 of 3 range bars closed; the range is set at 9:45"
    },
    "GLOB": {
     "symbol": "GLOB",
-    "date": "2026-11-25",
-    "status": "triggered",
-    "status_es": "disparó",
-    "phase": "rueda abierta",
+    "date": "2026-11-27",
+    "status": "waiting",
+    "status_es": "esperando",
+    "phase": "armando el rango",
     "opening_range": {
-     "high": 51.0,
-     "low": 49.27,
+     "high": 50.92,
+     "low": 50.17,
      "minutes": 15,
-     "bars": 3,
+     "bars": 1,
      "of": 3,
-     "complete": true,
-     "avg_volume": 22959
+     "complete": false,
+     "avg_volume": 10008
     },
-    "level": 51.0,
-    "last": {
-     "bar_start": "15:50",
-     "close": 50.38,
-     "vs_level_pct": -1.22
-    },
-    "trigger": {
-     "time": "1:50 PM",
-     "close_time": "13:50",
-     "bar_start": "13:45",
-     "bar_index": 51,
-     "price": 51.01,
-     "close": 51.0099983215332,
-     "volume": 28643,
-     "volume_x": 1.25,
-     "pct_over": 0.02
-    },
-    "reason": "the 13:45 bar closed above the range high",
-    "plan": {
-     "entry": 51.01,
-     "stop": 50.13,
-     "target": 51.89,
-     "risk": 0.88,
-     "reward_risk": 1.0,
-     "flat_by": "15:55",
-     "stop_label": "medio del rango de apertura"
-    },
-    "timemachine": {
-     "ok": true,
-     "kind": "intradía",
-     "mc": {
-      "replays": 10000,
-      "seed": 19,
-      "bars_left": 25,
-      "p_target": 0.16,
-      "p_stop": 0.1056,
-      "p_neither": 0.7344,
-      "p_green": 0.5273,
-      "median_close": 51.05,
-      "p5_close": 50.11,
-      "p95_close": 52.05,
-      "avg_R": 0.055,
-      "r_at_target": 1.0,
-      "pool_sessions": 52,
-      "until": "15:55",
-      "fan": [
-       [
-        51.01,
-        51.01,
-        51.01
-       ],
-       [
-        50.84,
-        51.02,
-        51.17
-       ],
-       [
-        50.77,
-        51.02,
-        51.27
-       ],
-       [
-        50.74,
-        51.02,
-        51.35
-       ],
-       [
-        50.69,
-        51.03,
-        51.41
-       ],
-       [
-        50.65,
-        51.03,
-        51.46
-       ],
-       [
-        50.6,
-        51.02,
-        51.49
-       ],
-       [
-        50.55,
-        51.02,
-        51.5
-       ],
-       [
-        50.52,
-        51.01,
-        51.54
-       ],
-       [
-        50.48,
-        51.01,
-        51.56
-       ],
-       [
-        50.45,
-        51.02,
-        51.61
-       ],
-       [
-        50.45,
-        51.02,
-        51.64
-       ],
-       [
-        50.43,
-        51.03,
-        51.66
-       ],
-       [
-        50.39,
-        51.03,
-        51.7
-       ],
-       [
-        50.38,
-        51.04,
-        51.74
-       ],
-       [
-        50.37,
-        51.04,
-        51.78
-       ],
-       [
-        50.35,
-        51.05,
-        51.8
-       ],
-       [
-        50.34,
-        51.06,
-        51.87
-       ],
-       [
-        50.34,
-        51.07,
-        51.9
-       ],
-       [
-        50.31,
-        51.07,
-        51.93
-       ],
-       [
-        50.3,
-        51.08,
-        51.96
-       ],
-       [
-        50.28,
-        51.09,
-        51.95
-       ],
-       [
-        50.25,
-        51.09,
-        52.01
-       ],
-       [
-        50.2,
-        51.08,
-        52.02
-       ],
-       [
-        50.17,
-        51.05,
-        52.04
-       ],
-       [
-        50.14,
-        51.05,
-        52.08
-       ]
-      ]
-     },
-     "lean": "target",
-     "verdict": "A favor: el precio llegó primero al objetivo en el 16,0 % de las simulaciones y al stop en el 10,6 %. El 73 % no tocó ninguno antes de las 15:55: ahí cuenta dónde termina el precio (resultado medio de todas: 0,06 veces lo arriesgado).",
-     "history": {
-      "label": "la misma ruptura en las sesiones reales",
-      "fired": 28,
-      "sessions": 52,
-      "target": 10,
-      "stop": 12,
-      "neither": 6,
-      "avg_R": -0.099
-     },
-     "note": "A simulation built from GLOB's own last 52 full sessions. It is not a prediction: earnings, news and halts can do things those sessions never did. Same seed, same numbers."
-    },
-    "risk": {
-     "verdict": "BLOCK",
-     "reasons": [
-      "horario: entradas sólo de 09:45 a 15:30 (hora de NY)",
-      "la ruptura fue hace 125 minutos (máximo 30)",
-      "el mercado está flojo y el motor no compra (exposure-coach: techo 1 %, priorizar liquidez)"
-     ],
-     "units": 49.0,
-     "notional": 2499.49,
-     "max_loss": 43.12,
-     "ticket": {
-      "symbol": "GLOB",
-      "side": "compra",
-      "units": 49.0,
-      "type": "bracket",
-      "entry": 51.01,
-      "stop": 50.13,
-      "target": 51.89,
-      "flat_by": "15:55",
-      "text": "Comprar 49 GLOB a mercado, stop 50,13, objetivo 51,89 y cerrar a las 15:55 NY",
-      "sent": false
-     }
-    }
+    "level": null,
+    "last": null,
+    "trigger": null,
+    "reason": "1 of 3 range bars closed; the range is set at 9:45"
    }
   }
  },
- "news": [],
+ "news": [
+  {
+   "ticker": "MELI",
+   "touches": [
+    "MELI"
+   ],
+   "title": "10 Best Strong Buy Stocks to Buy and Hold For the Next 5 Years",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/10-best-strong-buy-stocks-142359236.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T14:23:59+00:00",
+   "tags": [],
+   "new": true,
+   "id": "2bcc051f804c06fb",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Analyst Warns of $38,000 Bitcoin Crash as Trump Proposes Tariffs on 14 Trading Partners",
+   "link": "https://www.ccn.com/news/crypto/bitcoin-38k-analyst-downside-trump-14-trading-partners/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T14:07:16+00:00",
+   "tags": [
+    "macro"
+   ],
+   "new": true,
+   "id": "388d0c31f4a5e395",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD",
+    "ETH-USD"
+   ],
+   "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Friday Amid Technology Stock Rebound",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-140653942.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T14:06:53+00:00",
+   "tags": [
+    "macro"
+   ],
+   "new": true,
+   "id": "746a5692e89e6250",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Strategy Just Bought Bitcoin for the 4th Straight Week. So Why Aren't Crypto Investors Bullish on MSTR Stock?",
+   "link": "https://www.fool.com/investing/2026/11/27/strategy-just-bought-bitcoin-for-the-4th-straight-week-so-why-aren-t-crypto-investors-bullish-on-mstr-stock/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T14:03:12+00:00",
+   "tags": [],
+   "new": true,
+   "id": "a643a2a2f3d70739",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Stock Market Today: Dow Futures Jump 650 Points As Nvidia Rebounds; Anthropic, SpaceX, Tesla Rally (Live Coverage)",
+   "link": "https://finance.yahoo.com/m/86a4597f-ee47-3048-ae92-1a56fa4711e5/stock-market-today%3A-dow.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T14:00:02+00:00",
+   "tags": [
+    "macro"
+   ],
+   "new": true,
+   "id": "6743035c34ff11ea",
+   "form": null
+  },
+  {
+   "ticker": "BMA",
+   "touches": [
+    "BMA"
+   ],
+   "title": "Wall Street Bulls Look Optimistic About Banco Macro (BMA): Should You Buy?",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/wall-street-bulls-look-optimistic-133003767.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T13:30:03+00:00",
+   "tags": [],
+   "new": true,
+   "id": "693387ebaef1bff6",
+   "form": null
+  },
+  {
+   "ticker": "MELI",
+   "touches": [
+    "MELI"
+   ],
+   "title": "Inter (INTR) Stock Jumps 14.5% Premarket: Latin American Stocks Rally",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/inter-intr-stock-jumps-14-131533340.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T13:15:33+00:00",
+   "tags": [],
+   "new": true,
+   "id": "52359a46d39ec23d",
+   "form": null
+  },
+  {
+   "ticker": "MELI",
+   "touches": [
+    "MELI"
+   ],
+   "title": "Why Is MercadoLibre (MELI) Stock Up in Premarket Trading Today? Market Rally",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/why-mercadolibre-meli-stock-premarket-121533990.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T12:15:33+00:00",
+   "tags": [],
+   "new": true,
+   "id": "982dae31f2490c98",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "IREN vs. Core Scientific: Which AI Stock Is the Better Investment Now?",
+   "link": "https://finance.yahoo.com/technology/ai/articles/iren-vs-core-scientific-ai-121400735.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T12:14:00+00:00",
+   "tags": [],
+   "new": true,
+   "id": "c840cfb2dcfd050c",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Crypto Stocks Gain After Bitcoin Tops $61K In Tech Rebound, But Analysts Want A Move Above $62K",
+   "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/crypto-stocks-gain-after-bitcoin-tops-61-k-in-tech-rebound-but-analysts-want-a-move-above-62-k/cNbCsYgR9Ns?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T12:03:37+00:00",
+   "tags": [],
+   "new": true,
+   "id": "b3b06ca2442d5532",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "RippleX Product Head Wants XRP to Be a ‘First Class’ AI Payment Option as Bull Eyes $10 by Year-End",
+   "link": "https://www.ccn.com/news/crypto/ripplex-product-head-wants-xrp-to-be-a-first-class-ai-payment-option-as-bull-eyes-10-by-year-end/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T11:48:41+00:00",
+   "tags": [],
+   "new": true,
+   "id": "0791c4b5bf83750c",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD",
+    "ETH-USD",
+    "TRX-USD"
+   ],
+   "title": "USDT Supply Shrinks With Its Steepest Drop Since Bitcoin’s 2022 Bear Market",
+   "link": "https://www.ccn.com/news/crypto/usdt-supply-contraction-bitcoin-bear-market/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T11:37:13+00:00",
+   "tags": [],
+   "new": true,
+   "id": "bf809558cd5adbf8",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Cipher Shifts Toward HPC Leasing: Can It Achieve Stable Earnings?",
+   "link": "https://finance.yahoo.com/technology/ai/articles/cipher-shifts-toward-hpc-leasing-111700716.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T11:17:00+00:00",
+   "tags": [
+    "earnings"
+   ],
+   "new": true,
+   "id": "da4b29894655f793",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "BTC News: $7B Bitcoin Options Expiry Aftermath – What Happens Next?",
+   "link": "https://99bitcoins.com/news/bitcoin-btc/btc-news-7b-bitcoin-options-expiry-aftermath-what-happens-next/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T10:59:01+00:00",
+   "tags": [],
+   "new": true,
+   "id": "0ebd9bac59ac80af",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "One asset is 51% off this Black Friday",
+   "link": "https://www.thestreet.com/crypto/markets/one-asset-is-51-off-this-black-friday?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T10:49:44+00:00",
+   "tags": [],
+   "new": true,
+   "id": "c28df6a020841f61",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Bitcoin News Today: BTC Rebounds 8% – Is The Worst Over for Bitcoin Holders?",
+   "link": "https://www.coinspeaker.com/bitcoin-news-today-thanksgiving-holiday-pattern/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T10:44:10+00:00",
+   "tags": [],
+   "new": true,
+   "id": "b641acc4defc5d5a",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Swiss Bitcoin ETF: Bitcoin Wasn’t the Problem, Institutional Rules Were – BIT CEO",
+   "link": "https://cryptonews.com/news/swiss-bitcoin-etf-bit-ceo-exclusive/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T10:15:48+00:00",
+   "tags": [
+    "people"
+   ],
+   "new": true,
+   "id": "c774ad39d82ad4e5",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "KuCoin Drops Monero Monday; Its Pairs Carried Over Half of Tracked XMR Volume",
+   "link": "https://unchainedcrypto.com/kucoin-drops-monero-monday-its-pairs-carried-over-half-of-tracked-xmr-volume/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T09:45:28+00:00",
+   "tags": [],
+   "new": true,
+   "id": "563557f8274975c6",
+   "form": null
+  },
+  {
+   "ticker": "VIST",
+   "touches": [
+    "VIST"
+   ],
+   "title": "Zacks.com featured highlights include Vista Energy, Remitly Global, Riley Exploration Permian and Forum Energy Technologies",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/zacks-com-featured-highlights-vista-072900310.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T07:29:00+00:00",
+   "tags": [
+    "earnings"
+   ],
+   "new": true,
+   "id": "c6ce7e6ff7fd993a",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "LIVE – Crypto News Today: Why Is Bitcoin Up? Gold and Wall Street Rally Fuel BTC Bounce",
+   "link": "https://cryptonews.com/news/bitcoin-rises-from-grave-black-friday-crypto-news/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T07:18:34+00:00",
+   "tags": [],
+   "new": true,
+   "id": "74538d8f9ebb3388",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Bitcoin climbs to $61.7k; set for first positive week in 8",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-recovers-61-5k-set-062257549.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T06:22:57+00:00",
+   "tags": [],
+   "new": true,
+   "id": "305fad3d22f03cb4",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "How a 35-cent attack could expose Bitcoin wallet IP addresses",
+   "link": "http://videos.coindesk.com/previews/lUGLwF4n?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T04:17:18+00:00",
+   "tags": [],
+   "new": true,
+   "id": "52db68a62ceb5d58",
+   "form": null
+  },
+  {
+   "ticker": "SUPV",
+   "touches": [
+    "SUPV"
+   ],
+   "title": "Grupo Supervielle Targets 20% Real Return on Equity by 2031 With Lending, Cost-Cut Push",
+   "link": "https://www.marketbeat.com/instant-alerts/event-grupo-supervielle-targets-20-real-return-on-equity-by-2031-with-lending-cost-cut-push-2026-11-26/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T02:12:08+00:00",
+   "tags": [
+    "people"
+   ],
+   "new": true,
+   "id": "2d5881e1df54a022",
+   "form": null
+  },
+  {
+   "ticker": "SOL-USD",
+   "touches": [
+    "SOL-USD"
+   ],
+   "title": "Korea pulls the plug on crypto barons' grip over exchanges",
+   "link": "http://www.intellinews.com/korea-pulls-the-plug-on-crypto-barons-grip-over-exchanges-488533/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T00:06:26+00:00",
+   "tags": [],
+   "new": true,
+   "id": "43bc49fe38a40f1a",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "What Would It Take for XRP to Reach $1,000?",
+   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-would-it-take-for-xrp-to-reach-1000/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T22:17:48+00:00",
+   "tags": [],
+   "new": false,
+   "id": "8c28b7a68cdfce0d",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "A 30% Bitcoin crash hasn't shaken this asset manager's $1.6 million call",
+   "link": "https://www.thestreet.com/crypto/markets/a-30-bitcoin-crash-hasnt-shaken-this-asset-managers-1-6-million-call-?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T22:00:00+00:00",
+   "tags": [],
+   "new": false,
+   "id": "a3de20478e37ec8b",
+   "form": null
+  },
+  {
+   "ticker": "ADA-USD",
+   "touches": [
+    "ADA-USD",
+    "XRP-USD"
+   ],
+   "title": "XRP, Cardano or Stellar: Which Could Double First in 2027?",
+   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/xrp-cardano-or-stellar-which-could-double-first-in-2027/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T21:23:07+00:00",
+   "tags": [],
+   "new": false,
+   "id": "4b380f5844b2ae9f",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD",
+    "ETH-USD",
+    "XRP-USD"
+   ],
+   "title": "Bitcoin, XRP, Ethereum face brutal crash risk as key levels crack",
+   "link": "https://www.thestreet.com/crypto/markets/bitcoin-xrp-ethereum-face-brutal-crash-risk-as-key-levels-crack?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T21:00:00+00:00",
+   "tags": [],
+   "new": false,
+   "id": "669e9ba0c879e866",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Is Bitcoin a Good Investment for Building Wealth After a 50% Drop?",
+   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/is-bitcoin-a-good-investment-for-building-wealth-after-a-50-drop/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T20:50:17+00:00",
+   "tags": [],
+   "new": false,
+   "id": "fb5d4d45290b1b58",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "Buyers finally return to XRP",
+   "link": "https://www.thestreet.com/crypto/markets/buyers-finally-return-to-xrp?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T20:00:00+00:00",
+   "tags": [],
+   "new": false,
+   "id": "3748745e4c634630",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "XRP News: Thanksgiving Rally or December 1 Supply Shock?",
+   "link": "https://cryptonews.com/news/xrp-news-thanksgiving-rally-december-1-unlock/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T18:34:00+00:00",
+   "tags": [],
+   "new": false,
+   "id": "f50616e951cc4186",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "Bitcoin Holds Above $60K as Death Cross Clouds Thanksgiving Recovery",
+   "link": "https://decrypt.co/384079/bitcoin-holds-above-60k-as-death-cross-clouds-thanksgiving-recovery?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T18:15:29+00:00",
+   "tags": [],
+   "new": false,
+   "id": "1953b1420a74bead",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "Ripple Price Prediction: $0.93 Becomes Key Support on Turkish Bank News",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/ripple-price-prediction-0-93-172455499.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T17:24:55+00:00",
+   "tags": [],
+   "new": false,
+   "id": "421cd487ea52e714",
+   "form": null
+  },
+  {
+   "ticker": "MELI",
+   "touches": [
+    "MELI"
+   ],
+   "title": "MercadoLibre (MELI): Near-Term Margin Compression Masks Strong User and Credit Growth",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/mercadolibre-meli-near-term-margin-165411501.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T16:54:11+00:00",
+   "tags": [],
+   "new": false,
+   "id": "84de0125fbffba5d",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD",
+    "XRP-USD"
+   ],
+   "title": "Bitcoin Tops $60,000 as Risk Assets Rise in Holiday Trading",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-tops-60-000-risk-162823539.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T16:28:23+00:00",
+   "tags": [],
+   "new": false,
+   "id": "f6dbcfe8045f44ce",
+   "form": null
+  },
+  {
+   "ticker": "LINK-USD",
+   "touches": [
+    "LINK-USD"
+   ],
+   "title": "Fidelity Files For Spot Chainlink ETF On Nasdaq",
+   "link": "https://www.cryptoprowl.com/releases/fidelity-files-for-spot-chainlink-etf-on-nasdaq-8090?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T16:25:00+00:00",
+   "tags": [],
+   "new": false,
+   "id": "e7b7cff067c184a1",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD"
+   ],
+   "title": "Why Ethereum Is Racing Toward Hash-Based Signatures: Uneasy Money",
+   "link": "https://unchainedcrypto.com/why-ethereum-is-racing-toward-hash-based-signatures-uneasy-money/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T15:57:27+00:00",
+   "tags": [
+    "analyst"
+   ],
+   "new": false,
+   "id": "2d4f5ac988c5ccfd",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD"
+   ],
+   "title": "Bitcoin News: Swiss ETF Debut Meets $7B Options Expiry and US Strategic Reserve Push",
+   "link": "https://cryptonews.com/news/bitcoin-news-7b-options-expiry-swiss-etf-reserve-bill/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T15:38:32+00:00",
+   "tags": [],
+   "new": false,
+   "id": "186109079fa1bf45",
+   "form": null
+  },
+  {
+   "ticker": "GGAL",
+   "touches": [
+    "GGAL"
+   ],
+   "title": "What Grupo Financiero Galicia Investors Missed Before The Fall",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/grupo-financiero-galicia-investors-missed-150915994.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T15:09:15+00:00",
+   "tags": [
+    "earnings"
+   ],
+   "new": false,
+   "id": "7405d7307e054421",
+   "form": null
+  },
+  {
+   "ticker": "MELI",
+   "touches": [
+    "MELI"
+   ],
+   "title": "Michael Burry Just Flipped Bullish and Went on a Shopping Spree for Stocks",
+   "link": "https://247wallst.com/investing/2026/11/26/michael-burry-just-flipped-bullish-and-went-on-a-shopping-spree-for-stocks/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T14:52:16+00:00",
+   "tags": [],
+   "new": false,
+   "id": "de37f0e0e79d5bac",
+   "form": null
+  },
+  {
+   "ticker": "BNB-USD",
+   "touches": [
+    "BNB-USD"
+   ],
+   "title": "Cournot Raises $5M to Build AI-Native Oracle for Verifiable Intelligence",
+   "link": "https://decrypt.co/384036/cournot-raises-5m-to-build-ai-native-oracle-for-verifiable-intelligence?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T14:26:22+00:00",
+   "tags": [],
+   "new": false,
+   "id": "7151dfa7792d257f",
+   "form": null
+  },
+  {
+   "ticker": "LINK-USD",
+   "touches": [
+    "LINK-USD",
+    "XRP-USD"
+   ],
+   "title": "What XRP Did After Its First ETF and What Chainlink Could Do After Fidelity’s",
+   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/26/what-xrp-did-after-its-first-etf-and-what-chainlink-could-do-after-fidelitys/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T14:02:56+00:00",
+   "tags": [],
+   "new": false,
+   "id": "7be389f02d6af43a",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD",
+    "SOL-USD",
+    "TRX-USD"
+   ],
+   "title": "Polygon Brings Its Cross-Border Payments Stack to Coinbase’s Base",
+   "link": "https://decrypt.co/384023/polygon-cross-border-payments-stack-coinbase-base?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T14:01:02+00:00",
+   "tags": [],
+   "new": false,
+   "id": "c097f22c92aa90f2",
+   "form": null
+  },
+  {
+   "ticker": "YPF",
+   "touches": [
+    "YPF"
+   ],
+   "title": "Down 36.3% in 4 Weeks, Here's Why YPF Sociedad Anonima (YPF) Looks Ripe for a Turnaround",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/down-36-3-4-weeks-133501297.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T13:35:01+00:00",
+   "tags": [
+    "earnings"
+   ],
+   "new": false,
+   "id": "43e27e4e731a0a76",
+   "form": null
+  },
+  {
+   "ticker": "MELI",
+   "touches": [
+    "MELI"
+   ],
+   "title": "This Week In E-Commerce - Holiday Shopping Trends: Blending Online and In-Store Buys",
+   "link": "https://finance.yahoo.com/media-advertising/articles/week-e-commerce-holiday-shopping-123719566.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T12:37:19+00:00",
+   "tags": [],
+   "new": false,
+   "id": "b0e87f5470de3241",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "XRP Price Prediction: Two SEC Filings Value Ripple at $90 and $300",
+   "link": "https://99bitcoins.com/news/altcoins/xrp-price-prediction-two-sec-filings-value-ripple-at-90-and-300/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T11:28:52+00:00",
+   "tags": [],
+   "new": false,
+   "id": "75c3314e698c253e",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD"
+   ],
+   "title": "Crypto Market Faces 3 Critical Risks Heading Into December 2026",
+   "link": "https://beincrypto.com/crypto-market-outlook-december-2026-three-risks/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T11:26:32+00:00",
+   "tags": [],
+   "new": false,
+   "id": "2d244d540e347df0",
+   "form": null
+  },
+  {
+   "ticker": "DOGE-USD",
+   "touches": [
+    "DOGE-USD",
+    "ETH-USD"
+   ],
+   "title": "Can Shiba Inu Reach $1 in 2027? The Answer Might Shock You.",
+   "link": "https://www.fool.com/investing/2026/11/26/can-shiba-inu-reach-usd1-in-2027-answer-shock-you/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T10:27:02+00:00",
+   "tags": [],
+   "new": false,
+   "id": "8afc4a389ae84c4e",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD",
+    "SOL-USD",
+    "XRP-USD"
+   ],
+   "title": "Why Is Crypto Up Today? BTC Back Above $60K – is the Bull Market Back?",
+   "link": "https://cryptonews.com/news/why-is-crypto-up-today-btc-back-above-60k-bull-market-back/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T10:11:22+00:00",
+   "tags": [],
+   "new": false,
+   "id": "964c465c4cfab5ad",
+   "form": null
+  },
+  {
+   "ticker": "LINK-USD",
+   "touches": [
+    "LINK-USD",
+    "SOL-USD"
+   ],
+   "title": "Fidelity Files for a Spot Chainlink ETF, Following Grayscale and Bitwise",
+   "link": "https://unchainedcrypto.com/fidelity-files-for-a-spot-chainlink-etf-following-grayscale-and-bitwise/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T10:00:19+00:00",
+   "tags": [],
+   "new": false,
+   "id": "c65e4192afdfa836",
+   "form": null
+  },
+  {
+   "ticker": "SOL-USD",
+   "touches": [
+    "SOL-USD"
+   ],
+   "title": "Pump.fun Introduces New Fee to Combat Token Launch Manipulation and Boost PUMP Buybacks",
+   "link": "https://www.ccn.com/news/crypto/pump-fun-block0-fee-memecoin-manipulation-pump-buybacks/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T09:32:15+00:00",
+   "tags": [],
+   "new": false,
+   "id": "9962d171025cd6a4",
+   "form": null
+  },
+  {
+   "ticker": "ADA-USD",
+   "touches": [
+    "ADA-USD",
+    "DOGE-USD",
+    "SOL-USD",
+    "XRP-USD"
+   ],
+   "title": "Index Reshuffle Puts Hyperliquid’s HYPE in Franklin’s EZPZ Crypto ETF on Dec. 1",
+   "link": "https://unchainedcrypto.com/index-reshuffle-puts-hyperliquids-hype-in-franklins-ezpz-crypto-etf-on-dec-1/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T09:15:57+00:00",
+   "tags": [],
+   "new": false,
+   "id": "c9b7c6656b2ad334",
+   "form": null
+  },
+  {
+   "ticker": "SOL-USD",
+   "touches": [
+    "SOL-USD"
+   ],
+   "title": "Solana’s Next Big Move: The Future of Finance",
+   "link": "https://finance.yahoo.com/video/solana-next-big-move-future-090000892.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T09:00:00+00:00",
+   "tags": [],
+   "new": false,
+   "id": "8414a8897993f6e5",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD"
+   ],
+   "title": "Ethereum Price Reclaims $1,700: Network Activity Defies 39% Crash, $80M Shorts Liquidated",
+   "link": "https://99bitcoins.com/news/altcoins/ethereum-price-39-percent-crash-vitalik-eth-selloff/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T08:47:31+00:00",
+   "tags": [],
+   "new": false,
+   "id": "37f9f0e0bfa48013",
+   "form": null
+  },
+  {
+   "ticker": "ETH-USD",
+   "touches": [
+    "ETH-USD"
+   ],
+   "title": "Why Is an Ethereum ICO Whale Selling Now, After a Decade?",
+   "link": "https://beincrypto.com/ethereum-whale-2014-ico-sells-eth/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T08:38:26+00:00",
+   "tags": [],
+   "new": false,
+   "id": "de1b2e71c9e711c3",
+   "form": null
+  },
+  {
+   "ticker": "GGAL",
+   "touches": [
+    "GGAL"
+   ],
+   "title": "Galicia (GGAL) Q3 2026 Earnings Call Transcript",
+   "link": "https://www.fool.com/earnings/call-transcripts/2026/11/26/galicia-ggal-q3-2026-earnings-call-transcript/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T06:28:08+00:00",
+   "tags": [
+    "earnings",
+    "macro"
+   ],
+   "new": false,
+   "id": "5e77591842a48f8d",
+   "form": null
+  },
+  {
+   "ticker": "LINK-USD",
+   "touches": [
+    "LINK-USD"
+   ],
+   "title": "Fidelity Wants a Chainlink ETF. Who Is Actually Buying One?",
+   "link": "https://beincrypto.com/fidelity-chainlink-etf-filing-outflows/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-26T05:00:43+00:00",
+   "tags": [],
+   "new": false,
+   "id": "f2b36aaf1ae2feb0",
+   "form": null
+  }
+ ],
  "weekly": {
   "week_start": "2026-11-23",
   "trades": 0,
@@ -6926,6 +6382,6 @@
   "curve": []
  },
  "errors": {
-  "news": "The read operation timed out"
+  "news": "no SEC CIK for ADA-USD; no SEC CIK for AVAX-USD; SEC 8-K for BBAR: HTTP 400 for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000913059&type=8-K&dateb=&owner=include&count=8&output=atom"
  }
 }
