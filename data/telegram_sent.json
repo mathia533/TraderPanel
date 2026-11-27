@@ -23,9 +23,123 @@
   "leolopezdie-bit|report:2026-11-26": {
    "at": "2026-11-26T21:39:25.088Z",
    "status": "sin_telegram"
+  },
+  "mathia533|report:2026-11-27": {
+   "at": "2026-11-27T21:39:08.576Z",
+   "status": "enviado"
+  },
+  "mathia533|weekly:2026-11-23": {
+   "at": "2026-11-27T21:39:09.926Z",
+   "status": "enviado"
+  },
+  "mathia533|adr:CEPU:pattern:double_bottom:2026-11-05": {
+   "at": "2026-11-27T21:39:11.278Z",
+   "status": "enviado"
+  },
+  "leolopezdie-bit|report:2026-11-27": {
+   "at": "2026-11-27T21:39:12.379Z",
+   "status": "sin_telegram"
+  },
+  "leolopezdie-bit|weekly:2026-11-23": {
+   "at": "2026-11-27T21:39:12.379Z",
+   "status": "sin_telegram"
+  },
+  "leolopezdie-bit|adr:CEPU:pattern:double_bottom:2026-11-05": {
+   "at": "2026-11-27T21:39:12.379Z",
+   "status": "sin_telegram"
   }
  },
  "recent": [
+  {
+   "id": "adr:CEPU:pattern:double_bottom:2026-11-05",
+   "to": "leolopezdie-bit",
+   "src": "engine",
+   "who": null,
+   "ts": "2026-11-27T21:37:49.229773+00:00",
+   "kind": "adr",
+   "label": "CEPU",
+   "type": "info",
+   "reason": null,
+   "setup": null,
+   "price": null,
+   "status": "sin_telegram",
+   "at": "2026-11-27T21:39:12.379Z"
+  },
+  {
+   "id": "weekly:2026-11-23",
+   "to": "leolopezdie-bit",
+   "src": "engine",
+   "who": null,
+   "ts": "2026-11-27T21:37:49.229773+00:00",
+   "kind": "adr",
+   "label": "Semana",
+   "type": "info",
+   "reason": null,
+   "setup": null,
+   "price": null,
+   "status": "sin_telegram",
+   "at": "2026-11-27T21:39:12.379Z"
+  },
+  {
+   "id": "report:2026-11-27",
+   "to": "leolopezdie-bit",
+   "src": "engine",
+   "who": null,
+   "ts": "2026-11-27T21:37:49.229773+00:00",
+   "kind": "adr",
+   "label": "Cierre",
+   "type": "info",
+   "reason": null,
+   "setup": null,
+   "price": null,
+   "status": "sin_telegram",
+   "at": "2026-11-27T21:39:12.379Z"
+  },
+  {
+   "id": "adr:CEPU:pattern:double_bottom:2026-11-05",
+   "to": "mathia533",
+   "src": "engine",
+   "who": null,
+   "ts": "2026-11-27T21:37:49.229773+00:00",
+   "kind": "adr",
+   "label": "CEPU",
+   "type": "info",
+   "reason": null,
+   "setup": null,
+   "price": null,
+   "status": "enviado",
+   "at": "2026-11-27T21:39:11.278Z"
+  },
+  {
+   "id": "weekly:2026-11-23",
+   "to": "mathia533",
+   "src": "engine",
+   "who": null,
+   "ts": "2026-11-27T21:37:49.229773+00:00",
+   "kind": "adr",
+   "label": "Semana",
+   "type": "info",
+   "reason": null,
+   "setup": null,
+   "price": null,
+   "status": "enviado",
+   "at": "2026-11-27T21:39:09.926Z"
+  },
+  {
+   "id": "report:2026-11-27",
+   "to": "mathia533",
+   "src": "engine",
+   "who": null,
+   "ts": "2026-11-27T21:37:49.229773+00:00",
+   "kind": "adr",
+   "label": "Cierre",
+   "type": "info",
+   "reason": null,
+   "setup": null,
+   "price": null,
+   "status": "enviado",
+   "at": "2026-11-27T21:39:08.576Z"
+  },
   {
    "id": "report:2026-11-26",
    "to": "leolopezdie-bit",
@@ -117,7 +231,7 @@
    "at": "2026-11-25T21:40:19.904Z"
   }
  ],
- "last_run": "2026-11-27T20:55:47.490Z",
+ "last_run": "2026-11-27T21:39:07.135Z",
  "telegram": true,
  "last_error": null,
  "last_test": "2026-11-25T15:28:03.993Z",
