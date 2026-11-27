@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-27T19:38:01.967013+00:00",
+ "generated_at": "2026-11-27T20:38:17.268845+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -2023,47 +2023,49 @@
    "kind": "byma",
    "id": "GGAL",
    "label": "GGAL",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 4965.0,
-   "day_ch": 1.12,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 4970.0,
+   "day_ch": 1.22,
    "source": "yahoo",
    "degraded": false,
-   "score": 30,
+   "score": 14,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 5675.0,
-   "sma200": 6747.0,
+   "sma50": 5640.0,
+   "sma200": 6733.0,
    "vcp": {
     "rating": "No VCP",
-    "score": 7.0,
+    "score": 14.0,
     "state": "Invalid",
     "pattern": "Damaged",
     "pivot": 8725.0,
     "stop": 7474.5,
-    "distance_pct": -43.72,
+    "distance_pct": -43.04,
     "contractions": 1,
     "trend_score": 0,
-    "rs_score": 20,
+    "rs_score": 40,
     "weakest": "Trend Template (Stage 2)",
     "error": null
    },
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 34,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 3.26,
-    "volume_ratio_20d": 0.34,
+    "score": 0,
+    "trigger": "none",
+    "tags": [],
+    "day_gain_pct": 1.22,
+    "volume_ratio_20d": 1.35,
     "error": null
    },
    "scanner": {
-    "tags": [],
-    "labels": [],
-    "rsi": 42.2
+    "tags": [
+     "reclaim_ma20"
+    ],
+    "labels": [
+     "recuperó la media de 20"
+    ],
+    "rsi": 44.2
    },
    "news_ticker": "GGAL",
    "pipeline": {
@@ -2073,8 +2075,8 @@
      {
       "key": "scanner",
       "name": "Escáner",
-      "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 42,2)"
+      "status": "ok",
+      "text": "Recuperó la media de 20 · RSI 44,2"
      },
      {
       "key": "news",
@@ -2101,51 +2103,45 @@
    "kind": "byma",
    "id": "YPFD",
    "label": "YPFD",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 5750.0,
-   "day_ch": -3.28,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 5790.0,
+   "day_ch": -2.61,
    "source": "yahoo",
    "degraded": false,
-   "score": 37,
+   "score": 29,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 7620.0,
-   "sma200": 7174.0,
+   "sma50": 7553.0,
+   "sma200": 7175.0,
    "vcp": {
     "rating": "No VCP",
-    "score": 19.6,
+    "score": 29.1,
     "state": "Damaged",
     "pattern": "Damaged",
-    "pivot": 9220.0,
-    "stop": 7796.25,
-    "distance_pct": -35.52,
-    "contractions": 1,
+    "pivot": 8560.0,
+    "stop": 7722.0,
+    "distance_pct": -32.36,
+    "contractions": 2,
     "trend_score": 28.6,
     "rs_score": 70,
-    "weakest": "Contraction Quality",
+    "weakest": "Pivot Proximity",
     "error": null
    },
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 37,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 5.78,
-    "volume_ratio_20d": 0.62,
+    "score": 0,
+    "trigger": "none",
+    "tags": [],
+    "day_gain_pct": -2.61,
+    "volume_ratio_20d": 1.26,
     "error": null
    },
    "scanner": {
-    "tags": [
-     "oversold_bounce"
-    ],
-    "labels": [
-     "rebote de sobreventa"
-    ],
-    "rsi": 33.4
+    "tags": [],
+    "labels": [],
+    "rsi": 31.4
    },
    "news_ticker": "YPF",
    "pipeline": {
@@ -2155,8 +2151,8 @@
      {
       "key": "scanner",
       "name": "Escáner",
-      "status": "ok",
-      "text": "Rebote de sobreventa · RSI 33,4"
+      "status": "na",
+      "text": "Hoy no aparece ninguna señal técnica (RSI 31,4)"
      },
      {
       "key": "news",
@@ -2191,17 +2187,17 @@
    "kind": "byma",
    "id": "PAMP",
    "label": "PAMP",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 4480.0,
-   "day_ch": -2.29,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 4485.0,
+   "day_ch": -2.18,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 4867.0,
-   "sma200": 5001.0,
+   "sma50": 4846.0,
+   "sma200": 4999.0,
    "vcp": {
     "rating": "No VCP",
     "score": 38.7,
@@ -2209,7 +2205,7 @@
     "pattern": "Damaged",
     "pivot": 5665.0,
     "stop": 4811.4,
-    "distance_pct": -19.06,
+    "distance_pct": -20.83,
     "contractions": 3,
     "trend_score": 42.9,
     "rs_score": 80,
@@ -2219,23 +2215,17 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 44,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 3.27,
-    "volume_ratio_20d": 0.26,
+    "score": 0,
+    "trigger": "none",
+    "tags": [],
+    "day_gain_pct": -2.18,
+    "volume_ratio_20d": 0.74,
     "error": null
    },
    "scanner": {
-    "tags": [
-     "reclaim_ma20"
-    ],
-    "labels": [
-     "recuperó la media de 20"
-    ],
-    "rsi": 50.7
+    "tags": [],
+    "labels": [],
+    "rsi": 46.4
    },
    "news_ticker": "PAM",
    "pipeline": {
@@ -2245,8 +2235,8 @@
      {
       "key": "scanner",
       "name": "Escáner",
-      "status": "ok",
-      "text": "Recuperó la media de 20 · RSI 50,7"
+      "status": "na",
+      "text": "Hoy no aparece ninguna señal técnica (RSI 46,4)"
      },
      {
       "key": "news",
@@ -2263,47 +2253,47 @@
    "kind": "byma",
    "id": "BMA",
    "label": "BMA",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 9290.0,
-   "day_ch": 1.75,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 9260.0,
+   "day_ch": 1.42,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 10376.0,
-   "sma200": 11998.0,
+   "sma50": 10318.0,
+   "sma200": 11973.0,
    "vcp": {
     "rating": "No VCP",
-    "score": 11.6,
+    "score": 24.3,
     "state": "Invalid",
     "pattern": "Damaged",
-    "pivot": 15610.0,
-    "stop": 13464.0,
-    "distance_pct": -41.51,
-    "contractions": 1,
+    "pivot": 9500.0,
+    "stop": null,
+    "distance_pct": -2.53,
+    "contractions": 0,
     "trend_score": 14.3,
-    "rs_score": 40,
+    "rs_score": 50,
     "weakest": "Contraction Quality",
     "error": null
    },
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 38,
+    "score": 46,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 1.84,
-    "volume_ratio_20d": 0.39,
+    "day_gain_pct": 1.42,
+    "volume_ratio_20d": 1.13,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 37.7
+    "rsi": 41.0
    },
    "news_ticker": "BMA",
    "pipeline": {
@@ -2314,7 +2304,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 37,7)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 41)"
      },
      {
       "key": "news",
@@ -2339,17 +2329,17 @@
    "kind": "byma",
    "id": "ALUA",
    "label": "ALUA",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 851.5,
-   "day_ch": 1.07,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 844.0,
+   "day_ch": 0.18,
    "source": "yahoo",
    "degraded": false,
    "score": 46,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 826.56,
-   "sma200": 903.1,
+   "sma50": 826.0,
+   "sma200": 902.37,
    "vcp": {
     "rating": "No VCP",
     "score": 45.7,
@@ -2357,7 +2347,7 @@
     "pattern": "VCP-adjacent",
     "pivot": 910.0,
     "stop": 731.12,
-    "distance_pct": -7.42,
+    "distance_pct": -7.25,
     "contractions": 3,
     "trend_score": 42.9,
     "rs_score": 80,
@@ -2370,14 +2360,14 @@
     "score": 0,
     "trigger": "none",
     "tags": [],
-    "day_gain_pct": -0.18,
-    "volume_ratio_20d": 0.49,
+    "day_gain_pct": 0.18,
+    "volume_ratio_20d": 1.5,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 56.0
+    "rsi": 56.3
    },
    "news_ticker": null,
    "pipeline": {
@@ -2388,7 +2378,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 56)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 56,3)"
      },
      {
       "key": "news",
@@ -2405,26 +2395,26 @@
    "kind": "byma",
    "id": "TXAR",
    "label": "TXAR",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 699.0,
-   "day_ch": -0.99,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 701.0,
+   "day_ch": -0.71,
    "source": "yahoo",
    "degraded": false,
-   "score": 47,
+   "score": 54,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 697.18,
-   "sma200": 679.41,
+   "sma50": 697.8,
+   "sma200": 679.46,
    "vcp": {
-    "rating": "No VCP",
-    "score": 47.4,
+    "rating": "Weak VCP",
+    "score": 54.4,
     "state": "Pre-breakout",
     "pattern": "VCP-adjacent",
-    "pivot": 798.5,
+    "pivot": 750.0,
     "stop": 654.88,
-    "distance_pct": -11.58,
-    "contractions": 2,
+    "distance_pct": -6.53,
+    "contractions": 3,
     "trend_score": 71.5,
     "rs_score": 90,
     "weakest": "Volume Pattern",
@@ -2436,14 +2426,14 @@
     "score": 0,
     "trigger": "none",
     "tags": [],
-    "day_gain_pct": -0.42,
-    "volume_ratio_20d": 0.58,
+    "day_gain_pct": -0.71,
+    "volume_ratio_20d": 0.76,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 49.8
+    "rsi": 48.6
    },
    "news_ticker": null,
    "pipeline": {
@@ -2454,7 +2444,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 49,8)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 48,6)"
      },
      {
       "key": "news",
@@ -2470,7 +2460,7 @@
      "type": "double_bottom",
      "name": "Doble piso",
      "bias": "alcista",
-     "state": "ruptura",
+     "state": "formándose",
      "trigger": 705.0,
      "stop": 643.5,
      "target": 760.0,
@@ -2489,8 +2479,8 @@
        650.0
       ],
       [
-       "2026-11-26",
-       706.0
+       "2026-11-27",
+       701.0
       ]
      ],
      "why": "Dos mínimos en 657,50 y 650,00 con rebote a 705,00. Entrada si cierra arriba de 705,00."
@@ -2526,8 +2516,8 @@
        750.0
       ],
       [
-       "2026-11-26",
-       706.0
+       "2026-11-27",
+       701.0
       ]
      ],
      "why": "Cabeza en 798,50 entre hombros en 729,00 y 750,00; cuello en 668,25. Si cierra abajo del cuello, aviso de salida para el que está comprado."
@@ -2538,51 +2528,45 @@
    "kind": "byma",
    "id": "CEPU",
    "label": "CEPU",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 1877.0,
-   "day_ch": -2.39,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 1870.0,
+   "day_ch": -2.76,
    "source": "yahoo",
    "degraded": false,
-   "score": 37,
-   "signal": "NEUTRAL",
-   "stage4": false,
-   "sma50": 1918.0,
-   "sma200": 2177.0,
+   "score": 14,
+   "signal": "VENTA",
+   "stage4": true,
+   "sma50": 1912.0,
+   "sma200": 2174.0,
    "vcp": {
     "rating": "No VCP",
-    "score": 18.1,
-    "state": "Damaged",
+    "score": 14.5,
+    "state": "Invalid",
     "pattern": "Damaged",
     "pivot": 2491.0,
     "stop": 1980.0,
-    "distance_pct": -22.8,
+    "distance_pct": -24.93,
     "contractions": 1,
-    "trend_score": 14.3,
+    "trend_score": 0,
     "rs_score": 70,
-    "weakest": "Contraction Quality",
+    "weakest": "Trend Template (Stage 2)",
     "error": null
    },
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 37,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 4.06,
-    "volume_ratio_20d": 0.52,
+    "score": 0,
+    "trigger": "none",
+    "tags": [],
+    "day_gain_pct": -2.76,
+    "volume_ratio_20d": 1.15,
     "error": null
    },
    "scanner": {
-    "tags": [
-     "breakout_20d"
-    ],
-    "labels": [
-     "ruptura del máximo de 20 días"
-    ],
-    "rsi": 58.5
+    "tags": [],
+    "labels": [],
+    "rsi": 53.4
    },
    "news_ticker": "CEPU",
    "pipeline": {
@@ -2592,8 +2576,8 @@
      {
       "key": "scanner",
       "name": "Escáner",
-      "status": "ok",
-      "text": "Ruptura del máximo de 20 días · RSI 58,5"
+      "status": "na",
+      "text": "Hoy no aparece ninguna señal técnica (RSI 53,4)"
      },
      {
       "key": "news",
@@ -2610,17 +2594,17 @@
    "kind": "byma",
    "id": "TGSU2",
    "label": "TGSU2",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 7180.0,
-   "day_ch": -4.01,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 7410.0,
+   "day_ch": -0.94,
    "source": "yahoo",
    "degraded": false,
-   "score": 30,
+   "score": 20,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 8120.0,
-   "sma200": 8948.0,
+   "sma50": 8079.0,
+   "sma200": 8940.0,
    "vcp": {
     "rating": "No VCP",
     "score": 20.5,
@@ -2628,7 +2612,7 @@
     "pattern": "Damaged",
     "pivot": 9880.0,
     "stop": 7929.9,
-    "distance_pct": -24.29,
+    "distance_pct": -25.0,
     "contractions": 2,
     "trend_score": 0,
     "rs_score": 60,
@@ -2638,23 +2622,17 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 31,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 5.2,
-    "volume_ratio_20d": 0.25,
+    "score": 0,
+    "trigger": "none",
+    "tags": [],
+    "day_gain_pct": -0.94,
+    "volume_ratio_20d": 1.37,
     "error": null
    },
    "scanner": {
-    "tags": [
-     "reclaim_ma20"
-    ],
-    "labels": [
-     "recuperó la media de 20"
-    ],
-    "rsi": 48.1
+    "tags": [],
+    "labels": [],
+    "rsi": 46.5
    },
    "news_ticker": "TGS",
    "pipeline": {
@@ -2664,8 +2642,8 @@
      {
       "key": "scanner",
       "name": "Escáner",
-      "status": "ok",
-      "text": "Recuperó la media de 20 · RSI 48,1"
+      "status": "na",
+      "text": "Hoy no aparece ninguna señal técnica (RSI 46,5)"
      },
      {
       "key": "news",
@@ -2682,17 +2660,17 @@
    "kind": "byma",
    "id": "SUPV",
    "label": "SUPV",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 1777.0,
-   "day_ch": 0.45,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 1760.0,
+   "day_ch": -0.51,
    "source": "yahoo",
    "degraded": false,
-   "score": 30,
+   "score": 5,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 2201.0,
-   "sma200": 2662.0,
+   "sma50": 2184.0,
+   "sma200": 2654.0,
    "vcp": {
     "rating": "No VCP",
     "score": 5.0,
@@ -2700,7 +2678,7 @@
     "pattern": "Damaged",
     "pivot": 3535.0,
     "stop": 2826.45,
-    "distance_pct": -49.96,
+    "distance_pct": -50.21,
     "contractions": 1,
     "trend_score": 0,
     "rs_score": 20,
@@ -2710,19 +2688,17 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 39,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 2.79,
-    "volume_ratio_20d": 0.22,
+    "score": 0,
+    "trigger": "none",
+    "tags": [],
+    "day_gain_pct": -0.51,
+    "volume_ratio_20d": 0.99,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 37.1
+    "rsi": 36.6
    },
    "news_ticker": "SUPV",
    "pipeline": {
@@ -2733,7 +2709,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 37,1)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 36,6)"
      },
      {
       "key": "news",
@@ -2760,17 +2736,17 @@
    "kind": "byma",
    "id": "BBAR",
    "label": "BBAR",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 5385.0,
-   "day_ch": -0.92,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 5360.0,
+   "day_ch": -1.38,
    "source": "yahoo",
    "degraded": false,
-   "score": 28,
+   "score": 10,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 6599.0,
-   "sma200": 7996.0,
+   "sma50": 6551.0,
+   "sma200": 7974.0,
    "vcp": {
     "rating": "No VCP",
     "score": 10.1,
@@ -2778,7 +2754,7 @@
     "pattern": "Damaged",
     "pivot": 7040.0,
     "stop": null,
-    "distance_pct": -22.8,
+    "distance_pct": -23.86,
     "contractions": 0,
     "trend_score": 14.3,
     "rs_score": 20,
@@ -2788,19 +2764,17 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 28,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 1.3,
-    "volume_ratio_20d": 0.53,
+    "score": 0,
+    "trigger": "none",
+    "tags": [],
+    "day_gain_pct": -1.38,
+    "volume_ratio_20d": 1.32,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 34.6
+    "rsi": 33.3
    },
    "news_ticker": "BBAR",
    "pipeline": {
@@ -2811,7 +2785,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 34,6)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 33,3)"
      },
      {
       "key": "news",
@@ -2828,51 +2802,45 @@
    "kind": "byma",
    "id": "LOMA",
    "label": "LOMA",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 3048.0,
-   "day_ch": -3.79,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 3040.0,
+   "day_ch": -4.03,
    "source": "yahoo",
    "degraded": false,
-   "score": 47,
+   "score": 38,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 3032.0,
-   "sma200": 3254.0,
+   "sma50": 3031.0,
+   "sma200": 3253.0,
    "vcp": {
     "rating": "No VCP",
-    "score": 31.8,
+    "score": 38.2,
     "state": "Pre-breakout",
     "pattern": "VCP-adjacent",
     "pivot": 3890.0,
     "stop": 2838.82,
-    "distance_pct": -18.57,
-    "contractions": 1,
-    "trend_score": 57.2,
+    "distance_pct": -21.85,
+    "contractions": 3,
+    "trend_score": 42.9,
     "rs_score": 80,
-    "weakest": "Contraction Quality",
+    "weakest": "Pivot Proximity",
     "error": null
    },
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 47,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 4.37,
-    "volume_ratio_20d": 0.26,
+    "score": 0,
+    "trigger": "none",
+    "tags": [],
+    "day_gain_pct": -4.03,
+    "volume_ratio_20d": 1.57,
     "error": null
    },
    "scanner": {
-    "tags": [
-     "breakout_20d"
-    ],
-    "labels": [
-     "ruptura del máximo de 20 días"
-    ],
-    "rsi": 63.0
+    "tags": [],
+    "labels": [],
+    "rsi": 53.9
    },
    "news_ticker": "LOMA",
    "pipeline": {
@@ -2882,8 +2850,8 @@
      {
       "key": "scanner",
       "name": "Escáner",
-      "status": "ok",
-      "text": "Ruptura del máximo de 20 días · RSI 63"
+      "status": "na",
+      "text": "Hoy no aparece ninguna señal técnica (RSI 53,9)"
      },
      {
       "key": "news",
@@ -2900,25 +2868,25 @@
    "kind": "byma",
    "id": "COME",
    "label": "COME",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 30.27,
-   "day_ch": 4.13,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 30.46,
+   "day_ch": 4.78,
    "source": "yahoo",
    "degraded": false,
-   "score": 15,
+   "score": 19,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 35.52,
-   "sma200": 42.35,
+   "sma50": 35.3,
+   "sma200": 42.24,
    "vcp": {
     "rating": "No VCP",
-    "score": 15.0,
+    "score": 19.0,
     "state": "Invalid",
     "pattern": "Damaged",
     "pivot": 45.39,
     "stop": 38.62,
-    "distance_pct": -35.96,
+    "distance_pct": -32.89,
     "contractions": 3,
     "trend_score": 0,
     "rs_score": 20,
@@ -2929,22 +2897,23 @@
     "state": "REJECTED",
     "rating": "Reject",
     "score": 0,
-    "trigger": "dollar_breakout",
+    "trigger": "4pct_breakout",
     "tags": [
+     "4pct_breakout",
      "dollar_breakout"
     ],
-    "day_gain_pct": 3.09,
-    "volume_ratio_20d": 0.57,
+    "day_gain_pct": 4.78,
+    "volume_ratio_20d": 0.92,
     "error": null
    },
    "scanner": {
     "tags": [
-     "oversold_bounce"
+     "reclaim_ma20"
     ],
     "labels": [
-     "rebote de sobreventa"
+     "recuperó la media de 20"
     ],
-    "rsi": 35.1
+    "rsi": 43.5
    },
    "news_ticker": null,
    "pipeline": {
@@ -2955,7 +2924,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Rebote de sobreventa · RSI 35,1"
+      "text": "Recuperó la media de 20 · RSI 43,5"
      },
      {
       "key": "news",
@@ -2972,47 +2941,45 @@
    "kind": "byma",
    "id": "TECO2",
    "label": "TECO2",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 3680.0,
-   "day_ch": -3.16,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 3700.0,
+   "day_ch": -2.63,
    "source": "yahoo",
    "degraded": false,
-   "score": 53,
+   "score": 52,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 3894.0,
-   "sma200": 3849.0,
+   "sma50": 3879.0,
+   "sma200": 3848.0,
    "vcp": {
     "rating": "No VCP",
-    "score": 53.2,
+    "score": 51.7,
     "state": "Damaged",
     "pattern": "Damaged",
     "pivot": 4650.0,
     "stop": 3989.7,
-    "distance_pct": -18.28,
+    "distance_pct": -20.43,
     "contractions": 2,
     "trend_score": 42.9,
-    "rs_score": 90,
+    "rs_score": 80,
     "weakest": "Pivot Proximity",
     "error": null
    },
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 32,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 3.05,
-    "volume_ratio_20d": 0.54,
+    "score": 0,
+    "trigger": "none",
+    "tags": [],
+    "day_gain_pct": -2.63,
+    "volume_ratio_20d": 0.65,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 56.4
+    "rsi": 51.6
    },
    "news_ticker": "TEO",
    "pipeline": {
@@ -3023,7 +2990,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 56,4)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 51,6)"
      },
      {
       "key": "news",
@@ -3040,17 +3007,17 @@
    "kind": "byma",
    "id": "EDN",
    "label": "EDN",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 1111.0,
-   "day_ch": -0.18,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 1116.0,
+   "day_ch": 0.27,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 1484.0,
-   "sma200": 1851.0,
+   "sma50": 1468.0,
+   "sma200": 1846.0,
    "vcp": {
     "rating": "No VCP",
     "score": 4.0,
@@ -3058,7 +3025,7 @@
     "pattern": "Damaged",
     "pivot": 2160.0,
     "stop": 1782.0,
-    "distance_pct": -48.47,
+    "distance_pct": -48.33,
     "contractions": 1,
     "trend_score": 0,
     "rs_score": 0,
@@ -3068,23 +3035,19 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 40,
+    "score": 38,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 4.61,
-    "volume_ratio_20d": 0.39,
+    "day_gain_pct": 0.27,
+    "volume_ratio_20d": 1.04,
     "error": null
    },
    "scanner": {
-    "tags": [
-     "oversold_bounce"
-    ],
-    "labels": [
-     "rebote de sobreventa"
-    ],
-    "rsi": 31.0
+    "tags": [],
+    "labels": [],
+    "rsi": 31.6
    },
    "news_ticker": "EDN",
    "pipeline": {
@@ -3094,8 +3057,8 @@
      {
       "key": "scanner",
       "name": "Escáner",
-      "status": "ok",
-      "text": "Rebote de sobreventa · RSI 31"
+      "status": "na",
+      "text": "Hoy no aparece ninguna señal técnica (RSI 31,6)"
      },
      {
       "key": "news",
@@ -3112,51 +3075,45 @@
    "kind": "byma",
    "id": "CRES",
    "label": "CRES",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 1543.0,
-   "day_ch": -0.64,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 1520.0,
+   "day_ch": -2.12,
    "source": "yahoo",
    "degraded": false,
-   "score": 28,
-   "signal": "NEUTRAL",
-   "stage4": false,
-   "sma50": 1744.0,
-   "sma200": 1744.0,
+   "score": 16,
+   "signal": "VENTA",
+   "stage4": true,
+   "sma50": 1737.0,
+   "sma200": 1742.0,
    "vcp": {
     "rating": "No VCP",
-    "score": 21.1,
-    "state": "Damaged",
+    "score": 16.0,
+    "state": "Invalid",
     "pattern": "Damaged",
     "pivot": 1970.0,
     "stop": 1442.43,
-    "distance_pct": -21.17,
+    "distance_pct": -22.84,
     "contractions": 1,
-    "trend_score": 14.3,
-    "rs_score": 80,
-    "weakest": "Contraction Quality",
+    "trend_score": 0,
+    "rs_score": 70,
+    "weakest": "Trend Template (Stage 2)",
     "error": null
    },
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 28,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 5.93,
-    "volume_ratio_20d": 0.43,
+    "score": 0,
+    "trigger": "none",
+    "tags": [],
+    "day_gain_pct": -2.12,
+    "volume_ratio_20d": 1.3,
     "error": null
    },
    "scanner": {
-    "tags": [
-     "reclaim_ma20"
-    ],
-    "labels": [
-     "recuperó la media de 20"
-    ],
-    "rsi": 47.0
+    "tags": [],
+    "labels": [],
+    "rsi": 44.3
    },
    "news_ticker": "CRESY",
    "pipeline": {
@@ -3166,8 +3123,8 @@
      {
       "key": "scanner",
       "name": "Escáner",
-      "status": "ok",
-      "text": "Recuperó la media de 20 · RSI 47"
+      "status": "na",
+      "text": "Hoy no aparece ninguna señal técnica (RSI 44,3)"
      },
      {
       "key": "news",
@@ -3184,17 +3141,17 @@
    "kind": "byma",
    "id": "TRAN",
    "label": "TRAN",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 2450.0,
-   "day_ch": 4.17,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 2419.0,
+   "day_ch": 2.85,
    "source": "yahoo",
    "degraded": false,
-   "score": 30,
+   "score": 21,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 2509.0,
-   "sma200": 3462.0,
+   "sma50": 2494.0,
+   "sma200": 3454.0,
    "vcp": {
     "rating": "No VCP",
     "score": 20.6,
@@ -3202,7 +3159,7 @@
     "pattern": "Damaged",
     "pivot": 3845.0,
     "stop": 2989.8,
-    "distance_pct": -38.83,
+    "distance_pct": -37.09,
     "contractions": 3,
     "trend_score": 14.3,
     "rs_score": 20,
@@ -3212,13 +3169,13 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 37,
+    "score": 0,
     "trigger": "dollar_breakout",
     "tags": [
      "dollar_breakout"
     ],
-    "day_gain_pct": 5.38,
-    "volume_ratio_20d": 1.05,
+    "day_gain_pct": 2.85,
+    "volume_ratio_20d": 0.51,
     "error": null
    },
    "scanner": {
@@ -3228,7 +3185,7 @@
     "labels": [
      "ruptura del máximo de 20 días"
     ],
-    "rsi": 59.0
+    "rsi": 62.2
    },
    "news_ticker": null,
    "pipeline": {
@@ -3239,7 +3196,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Ruptura del máximo de 20 días · RSI 59"
+      "text": "Ruptura del máximo de 20 días · RSI 62,2"
      },
      {
       "key": "news",
@@ -3256,47 +3213,47 @@
    "kind": "byma",
    "id": "BYMA",
    "label": "BYMA",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 194.5,
-   "day_ch": -0.26,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 196.75,
+   "day_ch": 0.9,
    "source": "yahoo",
    "degraded": false,
-   "score": 24,
+   "score": 20,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 231.85,
-   "sma200": 282.96,
+   "sma50": 230.41,
+   "sma200": 282.27,
    "vcp": {
     "rating": "No VCP",
-    "score": 16.5,
+    "score": 19.5,
     "state": "Invalid",
     "pattern": "Damaged",
     "pivot": 317.5,
     "stop": 246.01,
-    "distance_pct": -38.58,
+    "distance_pct": -38.03,
     "contractions": 2,
     "trend_score": 0,
-    "rs_score": 20,
+    "rs_score": 40,
     "weakest": "Trend Template (Stage 2)",
     "error": null
    },
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 24,
-    "trigger": "dollar_breakout",
+    "score": 0,
+    "trigger": "9m_volume",
     "tags": [
-     "dollar_breakout"
+     "9m_volume"
     ],
-    "day_gain_pct": 0.91,
-    "volume_ratio_20d": 0.51,
+    "day_gain_pct": 0.9,
+    "volume_ratio_20d": 1.44,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 37.7
+    "rsi": 39.4
    },
    "news_ticker": null,
    "pipeline": {
@@ -3307,7 +3264,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 37,7)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 39,4)"
      },
      {
       "key": "news",
@@ -3324,17 +3281,17 @@
    "kind": "byma",
    "id": "METR",
    "label": "METR",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 1880.0,
-   "day_ch": -1.52,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 1907.0,
+   "day_ch": -0.1,
    "source": "yahoo",
    "degraded": false,
-   "score": 37,
+   "score": 27,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 2285.0,
-   "sma200": 2102.0,
+   "sma50": 2276.0,
+   "sma200": 2100.0,
    "vcp": {
     "rating": "No VCP",
     "score": 27.1,
@@ -3342,7 +3299,7 @@
     "pattern": "Damaged",
     "pivot": 2410.0,
     "stop": 1519.65,
-    "distance_pct": -20.79,
+    "distance_pct": -20.87,
     "contractions": 2,
     "trend_score": 14.3,
     "rs_score": 70,
@@ -3352,13 +3309,11 @@
    "burst": {
     "state": "REJECTED",
     "rating": "Reject",
-    "score": 37,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 4.26,
-    "volume_ratio_20d": 2.03,
+    "score": 0,
+    "trigger": "none",
+    "tags": [],
+    "day_gain_pct": -0.1,
+    "volume_ratio_20d": 0.84,
     "error": null
    },
    "scanner": {
@@ -3392,17 +3347,17 @@
    "kind": "byma",
    "id": "VALO",
    "label": "VALO",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 496.75,
-   "day_ch": -1.05,
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 497.5,
+   "day_ch": -0.9,
    "source": "yahoo",
    "degraded": false,
-   "score": 30,
+   "score": 27,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 528.54,
-   "sma200": 595.39,
+   "sma50": 527.91,
+   "sma200": 594.87,
    "vcp": {
     "rating": "No VCP",
     "score": 27.1,
@@ -3410,7 +3365,7 @@
     "pattern": "Damaged",
     "pivot": 650.0,
     "stop": 544.5,
-    "distance_pct": -22.77,
+    "distance_pct": -23.46,
     "contractions": 2,
     "trend_score": 14.3,
     "rs_score": 80,
@@ -3418,21 +3373,87 @@
     "error": null
    },
    "burst": {
-    "state": "WATCH_ONLY",
-    "rating": "Watch",
-    "score": 55,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 1.21,
-    "volume_ratio_20d": 0.69,
+    "state": "REJECTED",
+    "rating": "Reject",
+    "score": 0,
+    "trigger": "none",
+    "tags": [],
+    "day_gain_pct": -0.9,
+    "volume_ratio_20d": 0.9,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 39.5
+    "rsi": 37.7
+   },
+   "news_ticker": null,
+   "pipeline": {
+    "setup": null,
+    "verdict": null,
+    "stages": [
+     {
+      "key": "scanner",
+      "name": "Escáner",
+      "status": "na",
+      "text": "Hoy no aparece ninguna señal técnica (RSI 37,7)"
+     },
+     {
+      "key": "news",
+      "name": "Noticias",
+      "status": "na",
+      "text": "No hay fuente de noticias para este activo"
+     }
+    ]
+   },
+   "position": null,
+   "patterns": []
+  },
+  "byma:MIRG": {
+   "kind": "byma",
+   "id": "MIRG",
+   "label": "MIRG",
+   "date": "2026-11-27",
+   "live_date": null,
+   "last": 1735.0,
+   "day_ch": 0.29,
+   "source": "yahoo",
+   "degraded": false,
+   "score": 30,
+   "signal": "VENTA",
+   "stage4": true,
+   "sma50": 1747.0,
+   "sma200": 11411.0,
+   "vcp": {
+    "rating": "No VCP",
+    "score": 10.0,
+    "state": "Invalid",
+    "pattern": "Damaged",
+    "pivot": 17600.0,
+    "stop": 15864.75,
+    "distance_pct": -90.14,
+    "contractions": 1,
+    "trend_score": 0,
+    "rs_score": 0,
+    "weakest": "Trend Template (Stage 2)",
+    "error": null
+   },
+   "burst": {
+    "state": "WATCH_ONLY",
+    "rating": "Watch",
+    "score": 60,
+    "trigger": "dollar_breakout",
+    "tags": [
+     "dollar_breakout"
+    ],
+    "day_gain_pct": 0.29,
+    "volume_ratio_20d": 1.75,
+    "error": null
+   },
+   "scanner": {
+    "tags": [],
+    "labels": [],
+    "rsi": 45.0
    },
    "news_ticker": null,
    "pipeline": {
@@ -3443,7 +3464,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 39,5)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 45)"
      },
      {
       "key": "news",
@@ -3455,18 +3476,18 @@
       "key": "plan",
       "name": "Plan",
       "status": "ok",
-      "text": "Si el precio llega a $ 502,00, compra. Después vende con pérdida si baja a $ 490,00 (stop) o con ganancia si sube a $ 526,00 (objetivo)",
+      "text": "Si el precio llega a $ 1.735, compra. Después vende con pérdida si baja a $ 1.725 (stop) o con ganancia si sube a $ 1.755 (objetivo)",
       "plan": {
-       "entry": 502.0,
-       "stop": 490.0,
-       "target": 526.0
+       "entry": 1735.0,
+       "stop": 1725.0,
+       "target": 1755.0
       }
      },
      {
       "key": "timemachine",
       "name": "Time Machine",
-      "status": "ok",
-      "text": "Parejo: el precio llegó primero al objetivo en el 23,4 % de las simulaciones y al stop en el 52,5 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 31 de cada 100 (contando solo las que tocaron uno de los dos). En el pasado esta señal (ruptura del máximo de 20 días) apareció 33 veces en este activo: 13 llegaron al objetivo, 11 al stop y 9 a ninguno (resultado medio 0,6 veces lo arriesgado).",
+      "status": "block",
+      "text": "Muy en contra: el precio llegó primero al objetivo en el 5,9 % de las simulaciones y al stop en el 94,1 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 6 de cada 100 (contando solo las que tocaron uno de los dos). En el pasado esta señal (ruptura del máximo de 20 días) apareció 23 veces en este activo: 1 llegaron al objetivo, 22 al stop y 0 a ninguno (resultado medio -0,87 veces lo arriesgado).",
       "data": {
        "ok": true,
        "kind": "diario",
@@ -3474,131 +3495,63 @@
         "replays": 5000,
         "seed": 19,
         "bars_left": 5,
-        "p_target": 0.2338,
-        "p_stop": 0.5246,
-        "p_neither": 0.2416,
-        "p_green": 0.3922,
-        "median_close": 501.99,
-        "p5_close": 472.39,
-        "p95_close": 540.88,
-        "avg_R": 0.02,
+        "p_target": 0.0588,
+        "p_stop": 0.9412,
+        "p_neither": 0.0,
+        "p_green": 0.0588,
+        "median_close": 1724.17,
+        "p5_close": 1590.41,
+        "p95_close": 1845.73,
+        "avg_R": -0.824,
         "r_at_target": 2.0,
         "pool_sessions": 250,
         "until": "5 ruedas",
         "fan": [
          [
-          502.0,
-          502.0,
-          502.0
+          1735.0,
+          1735.0,
+          1735.0
          ],
          [
-          488.18,
-          501.6,
-          520.09
+          1677.91,
+          1735.0,
+          1786.95
          ],
          [
-          482.56,
-          501.52,
-          527.1
+          1651.43,
+          1729.74,
+          1806.84
          ],
          [
-          478.56,
-          501.69,
-          534.9
+          1628.42,
+          1724.97,
+          1825.86
          ],
          [
-          474.83,
-          501.9,
-          540.79
+          1606.03,
+          1723.26,
+          1834.3
          ],
          [
-          471.19,
-          501.67,
-          542.26
+          1588.89,
+          1721.04,
+          1851.32
          ]
         ]
        },
-       "lean": "even",
-       "verdict": "Parejo: el precio llegó primero al objetivo en el 23,4 % de las simulaciones y al stop en el 52,5 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 31 de cada 100 (contando solo las que tocaron uno de los dos).",
+       "lean": "stop_strong",
+       "verdict": "Muy en contra: el precio llegó primero al objetivo en el 5,9 % de las simulaciones y al stop en el 94,1 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 6 de cada 100 (contando solo las que tocaron uno de los dos).",
        "history": {
         "tag": "breakout_20d",
         "label": "ruptura del máximo de 20 días",
-        "fired": 33,
-        "target": 13,
-        "stop": 11,
-        "neither": 9,
-        "avg_R": 0.6
+        "fired": 23,
+        "target": 1,
+        "stop": 22,
+        "neither": 0,
+        "avg_R": -0.87
        },
        "note": "Simulación con las 250 velas diarias de este activo. No es una predicción: balances, noticias y feriados pueden hacer lo que el último año no hizo."
       }
-     }
-    ]
-   },
-   "position": null,
-   "patterns": []
-  },
-  "byma:MIRG": {
-   "kind": "byma",
-   "id": "MIRG",
-   "label": "MIRG",
-   "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 1730.0,
-   "day_ch": 0.0,
-   "source": "yahoo",
-   "degraded": false,
-   "score": 30,
-   "signal": "VENTA",
-   "stage4": true,
-   "sma50": 1749.0,
-   "sma200": 11508.0,
-   "vcp": {
-    "rating": "No VCP",
-    "score": 8.0,
-    "state": "Invalid",
-    "pattern": "Damaged",
-    "pivot": 17600.0,
-    "stop": 15864.75,
-    "distance_pct": -90.17,
-    "contractions": 1,
-    "trend_score": 0,
-    "rs_score": 0,
-    "weakest": "Trend Template (Stage 2)",
-    "error": null
-   },
-   "burst": {
-    "state": "REJECTED",
-    "rating": "Reject",
-    "score": 47,
-    "trigger": "dollar_breakout",
-    "tags": [
-     "dollar_breakout"
-    ],
-    "day_gain_pct": 0.87,
-    "volume_ratio_20d": 0.38,
-    "error": null
-   },
-   "scanner": {
-    "tags": [],
-    "labels": [],
-    "rsi": 44.3
-   },
-   "news_ticker": null,
-   "pipeline": {
-    "setup": null,
-    "verdict": null,
-    "stages": [
-     {
-      "key": "scanner",
-      "name": "Escáner",
-      "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 44,3)"
-     },
-     {
-      "key": "news",
-      "name": "Noticias",
-      "status": "na",
-      "text": "No hay fuente de noticias para este activo"
      }
     ]
    },
@@ -3627,8 +3580,8 @@
        1590.0
       ],
       [
-       "2026-11-26",
-       1730.0
+       "2026-11-27",
+       1735.0
       ]
      ],
      "why": "Dos mínimos en 1.630 y 1.590 con rebote a 1.895. Entrada si cierra arriba de 1.895."
@@ -3664,8 +3617,8 @@
        1895.0
       ],
       [
-       "2026-11-26",
-       1730.0
+       "2026-11-27",
+       1735.0
       ]
      ],
      "why": "Cabeza en 2.010 entre hombros en 1.880 y 1.895; cuello en 1.622. Si cierra abajo del cuello, aviso de salida para el que está comprado."
@@ -3678,8 +3631,8 @@
    "label": "BTC",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 59961.0,
-   "day_ch": -0.88,
+   "last": 59678.0,
+   "day_ch": -1.35,
    "source": "yahoo",
    "degraded": false,
    "score": 38,
@@ -3740,8 +3693,14 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "20 noticias recientes de BTC-USD (temas: directivos, macro). La última: «$7 Billion in Bitcoin Options Just Expired: Here’s What It Means»",
+      "text": "20 noticias recientes de BTC-USD (temas: directivos, macro). La última: «4 Scary Bitcoin Charts That Suggest This Bear Market Is Different»",
       "items": [
+       {
+        "title": "4 Scary Bitcoin Charts That Suggest This Bear Market Is Different",
+        "link": "https://decrypt.co/384177/bitcoin-4-scary-charts-crypto-winter-bear-market?.tsrc=rss",
+        "time": "2026-11-27T19:46:02+00:00",
+        "tags": []
+       },
        {
         "title": "$7 Billion in Bitcoin Options Just Expired: Here’s What It Means",
         "link": "https://decrypt.co/384154/7-billion-bitcoin-options-just-expired-what-it-means?.tsrc=rss",
@@ -3762,12 +3721,6 @@
         "link": "https://finance.yahoo.com/markets/stocks/articles/sector-financial-stocks-higher-friday-175851334.html?.tsrc=rss",
         "time": "2026-11-27T17:58:51+00:00",
         "tags": []
-       },
-       {
-        "title": "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
-        "link": "https://finance.yahoo.com/video/franklin-templeton-just-updated-crypto-173000925.html?.tsrc=rss",
-        "time": "2026-11-27T17:30:00+00:00",
-        "tags": []
        }
       ]
      }
@@ -3782,8 +3735,8 @@
    "label": "ETH",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 1673.0,
-   "day_ch": -0.84,
+   "last": 1664.0,
+   "day_ch": -1.4,
    "source": "yahoo",
    "degraded": false,
    "score": 14,
@@ -3884,8 +3837,8 @@
    "label": "SOL",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 72.35,
-   "day_ch": 2.0,
+   "last": 72.02,
+   "day_ch": 1.53,
    "source": "yahoo",
    "degraded": false,
    "score": 23,
@@ -3978,8 +3931,8 @@
    "label": "BNB",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 553.8,
-   "day_ch": 0.12,
+   "last": 552.38,
+   "day_ch": -0.14,
    "source": "yahoo",
    "degraded": false,
    "score": 32,
@@ -4058,8 +4011,8 @@
    "label": "XRP",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.9525,
-   "day_ch": 1.02,
+   "last": 0.9492,
+   "day_ch": 0.67,
    "source": "yahoo",
    "degraded": false,
    "score": 7,
@@ -4112,9 +4065,17 @@
      {
       "key": "news",
       "name": "Noticias",
-      "status": "ok",
-      "text": "17 noticias recientes de XRP-USD (temas: directivos, operación corporativa). La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
+      "status": "warn",
+      "text": "18 noticias recientes de XRP-USD (temas: balance, directivos, operación corporativa). La última: «What Will 50,000 XRP Be Worth by 2028?». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
+       {
+        "title": "What Will 50,000 XRP Be Worth by 2028?",
+        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/27/what-will-50000-xrp-be-worth-by-2028/?.tsrc=rss",
+        "time": "2026-11-27T19:32:20+00:00",
+        "tags": [
+         "earnings"
+        ]
+       },
        {
         "title": "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
         "link": "https://finance.yahoo.com/video/franklin-templeton-just-updated-crypto-173000925.html?.tsrc=rss",
@@ -4136,12 +4097,6 @@
         "tags": [
          "deal"
         ]
-       },
-       {
-        "title": "RippleX Product Head Wants XRP to Be a ‘First Class’ AI Payment Option as Bull Eyes $10 by Year-End",
-        "link": "https://www.ccn.com/news/crypto/ripplex-product-head-wants-xrp-to-be-a-first-class-ai-payment-option-as-bull-eyes-10-by-year-end/?.tsrc=rss",
-        "time": "2026-11-27T11:48:41+00:00",
-        "tags": []
        }
       ]
      }
@@ -4156,8 +4111,8 @@
    "label": "ADA",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.14983,
-   "day_ch": 0.97,
+   "last": 0.14924,
+   "day_ch": 0.57,
    "source": "yahoo",
    "degraded": false,
    "score": 22,
@@ -4238,8 +4193,8 @@
    "label": "DOGE",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.05797,
-   "day_ch": 2.81,
+   "last": 0.0577,
+   "day_ch": 2.33,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -4320,8 +4275,8 @@
    "label": "LINK",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 9.41,
-   "day_ch": 1.55,
+   "last": 9.38,
+   "day_ch": 1.22,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -4408,8 +4363,8 @@
    "label": "AVAX",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 6.67,
-   "day_ch": 1.29,
+   "last": 6.65,
+   "day_ch": 0.94,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -4476,8 +4431,8 @@
    "label": "TRX",
    "date": "2026-11-26",
    "live_date": "2026-11-27",
-   "last": 0.30065,
-   "day_ch": -0.99,
+   "last": 0.300459,
+   "day_ch": -1.06,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -4652,6 +4607,17 @@
    "why": "Momentum Burst Watch (watch only): revisar gráfico."
   },
   {
+   "kind": "byma",
+   "id": "MIRG",
+   "label": "MIRG",
+   "setup": "burst",
+   "score": 60,
+   "rating": "Watch",
+   "trigger": 1735.0,
+   "stop": 1725.0,
+   "why": "Momentum Burst Watch (watch only): revisar gráfico."
+  },
+  {
    "kind": "adr",
    "id": "CRESY",
    "label": "CRESY",
@@ -4660,17 +4626,6 @@
    "rating": "Watch",
    "trigger": 8.21,
    "stop": 7.64,
-   "why": "Momentum Burst Watch (watch only): revisar gráfico."
-  },
-  {
-   "kind": "byma",
-   "id": "VALO",
-   "label": "VALO",
-   "setup": "burst",
-   "score": 55,
-   "rating": "Watch",
-   "trigger": 502.0,
-   "stop": 490.0,
    "why": "Momentum Burst Watch (watch only): revisar gráfico."
   }
  ],
@@ -5159,6 +5114,38 @@
  },
  "news": [
   {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "4 Scary Bitcoin Charts That Suggest This Bear Market Is Different",
+   "link": "https://decrypt.co/384177/bitcoin-4-scary-charts-crypto-winter-bear-market?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T19:46:02+00:00",
+   "tags": [],
+   "new": true,
+   "id": "efec7f7cd2afcde1",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "What Will 50,000 XRP Be Worth by 2028?",
+   "link": "https://247wallst.com/investing/cryptocurrency/2026/11/27/what-will-50000-xrp-be-worth-by-2028/?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T19:32:20+00:00",
+   "tags": [
+    "earnings"
+   ],
+   "new": true,
+   "id": "b97dad86f83fb91c",
+   "form": null
+  },
+  {
    "ticker": "MELI",
    "touches": [
     "MELI"
@@ -5169,7 +5156,7 @@
    "kind": "headline",
    "time": "2026-11-27T18:53:03+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "6ca792918db38599",
    "form": null
   },
@@ -5557,21 +5544,6 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Strategy Just Bought Bitcoin for the 4th Straight Week. So Why Aren't Crypto Investors Bullish on MSTR Stock?",
-   "link": "https://www.fool.com/investing/2026/11/27/strategy-just-bought-bitcoin-for-the-4th-straight-week-so-why-aren-t-crypto-investors-bullish-on-mstr-stock/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-27T14:03:12+00:00",
-   "tags": [],
-   "new": false,
-   "id": "a643a2a2f3d70739",
-   "form": null
-  },
-  {
    "ticker": "SOL-USD",
    "touches": [
     "SOL-USD"
@@ -5582,7 +5554,7 @@
    "kind": "headline",
    "time": "2026-11-27T13:49:33+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "48aebd9987f02b69",
    "form": null
   },
@@ -6085,23 +6057,6 @@
    "new": false,
    "id": "8afc4a389ae84c4e",
    "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD",
-    "SOL-USD",
-    "XRP-USD"
-   ],
-   "title": "Why Is Crypto Up Today? BTC Back Above $60K – is the Bull Market Back?",
-   "link": "https://cryptonews.com/news/why-is-crypto-up-today-btc-back-above-60k-bull-market-back/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T10:11:22+00:00",
-   "tags": [],
-   "new": false,
-   "id": "964c465c4cfab5ad",
-   "form": null
   }
  ],
  "weekly": {
@@ -6394,39 +6349,6 @@
  ],
  "patterns": [
   {
-   "key": "byma:TXAR",
-   "kind": "byma",
-   "id": "TXAR",
-   "label": "TXAR",
-   "type": "double_bottom",
-   "name": "Doble piso",
-   "bias": "alcista",
-   "state": "ruptura",
-   "trigger": 705.0,
-   "stop": 643.5,
-   "target": 760.0,
-   "rr": 0.89,
-   "points": [
-    [
-     "2026-09-04",
-     657.5
-    ],
-    [
-     "2026-09-08",
-     705.0
-    ],
-    [
-     "2026-10-08",
-     650.0
-    ],
-    [
-     "2026-11-26",
-     706.0
-    ]
-   ],
-   "why": "Dos mínimos en 657,50 y 650,00 con rebote a 705,00. Entrada si cierra arriba de 705,00."
-  },
-  {
    "key": "byma:MIRG",
    "kind": "byma",
    "id": "MIRG",
@@ -6453,8 +6375,8 @@
      1590.0
     ],
     [
-     "2026-11-26",
-     1730.0
+     "2026-11-27",
+     1735.0
     ]
    ],
    "why": "Dos mínimos en 1.630 y 1.590 con rebote a 1.895. Entrada si cierra arriba de 1.895."
@@ -6493,6 +6415,39 @@
    "why": "Dos mínimos en 0,3017 y 0,2984 con rebote a 0,3277. Entrada si cierra arriba de 0,3277."
   },
   {
+   "key": "byma:TXAR",
+   "kind": "byma",
+   "id": "TXAR",
+   "label": "TXAR",
+   "type": "double_bottom",
+   "name": "Doble piso",
+   "bias": "alcista",
+   "state": "formándose",
+   "trigger": 705.0,
+   "stop": 643.5,
+   "target": 760.0,
+   "rr": 0.89,
+   "points": [
+    [
+     "2026-09-04",
+     657.5
+    ],
+    [
+     "2026-09-08",
+     705.0
+    ],
+    [
+     "2026-10-08",
+     650.0
+    ],
+    [
+     "2026-11-27",
+     701.0
+    ]
+   ],
+   "why": "Dos mínimos en 657,50 y 650,00 con rebote a 705,00. Entrada si cierra arriba de 705,00."
+  },
+  {
    "key": "byma:MIRG",
    "kind": "byma",
    "id": "MIRG",
@@ -6527,8 +6482,8 @@
      1895.0
     ],
     [
-     "2026-11-26",
-     1730.0
+     "2026-11-27",
+     1735.0
     ]
    ],
    "why": "Cabeza en 2.010 entre hombros en 1.880 y 1.895; cuello en 1.622. Si cierra abajo del cuello, aviso de salida para el que está comprado."
@@ -6568,8 +6523,8 @@
      750.0
     ],
     [
-     "2026-11-26",
-     706.0
+     "2026-11-27",
+     701.0
     ]
    ],
    "why": "Cabeza en 798,50 entre hombros en 729,00 y 750,00; cuello en 668,25. Si cierra abajo del cuello, aviso de salida para el que está comprado."
