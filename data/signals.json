@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-27T22:37:44.927581+00:00",
+ "generated_at": "2026-11-28T00:35:43.049372+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -34,10 +34,10 @@
  "markets": {
   "adr": {
    "gate": "restrictive",
-   "why": "exposure-coach: techo 2 %, priorizar liquidez",
+   "why": "exposure-coach: techo 3 %, priorizar liquidez",
    "benchmark": "SPY",
    "exposure": {
-    "ceiling_pct": 2,
+    "ceiling_pct": 3,
     "recommendation": "CASH_PRIORITY",
     "recommendation_es": "priorizar liquidez",
     "bias": "NEUTRAL",
@@ -139,8 +139,8 @@
   }
  },
  "us_market": {
-  "date": "2026-11-27",
-  "generated_at": "2026-11-27T13:38:33.485311+00:00",
+  "date": "2026-11-28",
+  "generated_at": "2026-11-28T00:35:43.049372+00:00",
   "errors": {},
   "breadth": {
    "score": 32.8,
@@ -149,7 +149,7 @@
    "as_of": null
   },
   "uptrend": {
-   "score": 21.0,
+   "score": 24.2,
    "zone": "Cautious",
    "guidance": "Defensive (30-60%)",
    "warnings": [
@@ -173,63 +173,63 @@
    "rows": [
     {
      "sector": "Healthcare",
-     "pct": 27.8,
+     "pct": 30.2,
      "trend": "Down"
     },
     {
      "sector": "Consumer Defensive",
-     "pct": 23.5,
-     "trend": "Down"
+     "pct": 24.2,
+     "trend": "Up"
     },
     {
      "sector": "Communication Services",
-     "pct": 21.4,
+     "pct": 24.0,
      "trend": "Down"
     },
     {
      "sector": "Technology",
-     "pct": 18.2,
+     "pct": 20.8,
      "trend": "Down"
     },
     {
      "sector": "Real Estate",
-     "pct": 15.5,
+     "pct": 18.6,
      "trend": "Down"
     },
     {
      "sector": "Consumer Cyclical",
-     "pct": 14.7,
+     "pct": 18.0,
      "trend": "Down"
     },
     {
      "sector": "Industrials",
-     "pct": 9.8,
+     "pct": 13.8,
      "trend": "Down"
     },
     {
      "sector": "Financial",
-     "pct": 7.8,
+     "pct": 10.4,
      "trend": "Down"
     },
     {
      "sector": "Basic Materials",
-     "pct": 4.6,
+     "pct": 8.0,
      "trend": "Down"
     },
     {
      "sector": "Utilities",
-     "pct": 2.7,
-     "trend": "Up"
+     "pct": 2.6,
+     "trend": "Down"
     },
     {
      "sector": "Energy",
-     "pct": 0.7,
+     "pct": 1.3,
      "trend": "Down"
     }
    ]
   },
   "exposure": {
-   "ceiling_pct": 2,
+   "ceiling_pct": 3,
    "recommendation": "CASH_PRIORITY",
    "recommendation_es": "priorizar liquidez",
    "bias": "NEUTRAL",
@@ -3227,9 +3227,9 @@
    "id": "bitcoin",
    "label": "BTC",
    "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 59662.0,
-   "day_ch": -1.38,
+   "live_date": "2026-11-28",
+   "last": 59891.0,
+   "day_ch": -1.0,
    "source": "yahoo",
    "degraded": false,
    "score": 38,
@@ -3290,33 +3290,30 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "20 noticias recientes de BTC-USD (temas: directivos, macro). La última: «4 Scary Bitcoin Charts That Suggest This Bear Market Is Different»",
+      "text": "20 noticias recientes de BTC-USD. La última: «Veteran economist says Bitcoin holders have little to brag about this Thanksgiving»",
       "items": [
+       {
+        "title": "Veteran economist says Bitcoin holders have little to brag about this Thanksgiving",
+        "link": "https://www.thestreet.com/crypto/markets/veteran-economist-says-bitcoin-holders-have-little-to-brag-about-this-thanksgiving?.tsrc=rss",
+        "time": "2026-11-28T00:30:00+00:00",
+        "tags": []
+       },
+       {
+        "title": "Analyst flags December correction before January breakout",
+        "link": "https://www.thestreet.com/crypto/markets/analyst-flags-december-correction-before-january-breakout?.tsrc=rss",
+        "time": "2026-11-28T00:00:00+00:00",
+        "tags": []
+       },
+       {
+        "title": "Bitcoin took Thanksgiving off, going 98 minutes without a block",
+        "link": "https://www.thestreet.com/crypto/markets/bitcoin-took-thanksgiving-off-going-98-minutes-without-a-block?.tsrc=rss",
+        "time": "2026-11-28T00:00:00+00:00",
+        "tags": []
+       },
        {
         "title": "4 Scary Bitcoin Charts That Suggest This Bear Market Is Different",
         "link": "https://decrypt.co/384177/bitcoin-4-scary-charts-crypto-winter-bear-market?.tsrc=rss",
         "time": "2026-11-27T19:46:02+00:00",
-        "tags": []
-       },
-       {
-        "title": "$7 Billion in Bitcoin Options Just Expired: Here’s What It Means",
-        "link": "https://decrypt.co/384154/7-billion-bitcoin-options-just-expired-what-it-means?.tsrc=rss",
-        "time": "2026-11-27T18:16:03+00:00",
-        "tags": []
-       },
-       {
-        "title": "Coinbase CEO issues bullish Bitcoin prediction as inflation fears grow",
-        "link": "https://www.thestreet.com/crypto/markets/coinbase-ceo-issues-bullish-bitcoin-warning-as-inflation-fears-grow?.tsrc=rss",
-        "time": "2026-11-27T18:14:46+00:00",
-        "tags": [
-         "people",
-         "macro"
-        ]
-       },
-       {
-        "title": "Sector Update: Financial Stocks Higher Friday Afternoon",
-        "link": "https://finance.yahoo.com/markets/stocks/articles/sector-financial-stocks-higher-friday-175851334.html?.tsrc=rss",
-        "time": "2026-11-27T17:58:51+00:00",
         "tags": []
        }
       ]
@@ -3331,9 +3328,9 @@
    "id": "ethereum",
    "label": "ETH",
    "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 1656.0,
-   "day_ch": -1.88,
+   "live_date": "2026-11-28",
+   "last": 1663.0,
+   "day_ch": -1.46,
    "source": "yahoo",
    "degraded": false,
    "score": 14,
@@ -3391,7 +3388,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "11 noticias recientes de ETH-USD (temas: analistas, macro). La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
+      "text": "10 noticias recientes de ETH-USD (temas: analistas, macro). La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
       "items": [
        {
         "title": "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
@@ -3433,9 +3430,9 @@
    "id": "solana",
    "label": "SOL",
    "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 71.44,
-   "day_ch": 0.72,
+   "live_date": "2026-11-28",
+   "last": 71.71,
+   "day_ch": 1.1,
    "source": "yahoo",
    "degraded": false,
    "score": 23,
@@ -3527,9 +3524,9 @@
    "id": "binancecoin",
    "label": "BNB",
    "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 552.03,
-   "day_ch": -0.2,
+   "live_date": "2026-11-28",
+   "last": 555.15,
+   "day_ch": 0.36,
    "source": "yahoo",
    "degraded": false,
    "score": 32,
@@ -3607,9 +3604,9 @@
    "id": "ripple",
    "label": "XRP",
    "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 0.9424,
-   "day_ch": -0.05,
+   "live_date": "2026-11-28",
+   "last": 0.9491,
+   "day_ch": 0.66,
    "source": "yahoo",
    "degraded": false,
    "score": 7,
@@ -3663,7 +3660,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "17 noticias recientes de XRP-USD (temas: balance, directivos, operación corporativa). La última: «Is 10,000 XRP Enough to Retire On by 2035?». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "text": "17 noticias recientes de XRP-USD (temas: balance, directivos, regulatorio). La última: «Is 10,000 XRP Enough to Retire On by 2035?». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "Is 10,000 XRP Enough to Retire On by 2035?",
@@ -3680,18 +3677,18 @@
         ]
        },
        {
+        "title": "XRP Price Prediction: Lending Protocol Approval Could Fuel XRP’s Relief Rally to $1.10",
+        "link": "https://finance.yahoo.com/markets/crypto/articles/xrp-price-prediction-lending-protocol-191829601.html?.tsrc=rss",
+        "time": "2026-11-27T19:18:29+00:00",
+        "tags": [
+         "regulatory"
+        ]
+       },
+       {
         "title": "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
         "link": "https://finance.yahoo.com/video/franklin-templeton-just-updated-crypto-173000925.html?.tsrc=rss",
         "time": "2026-11-27T17:30:00+00:00",
         "tags": []
-       },
-       {
-        "title": "How Much Will 1 Bitcoin Be Worth in 2035?",
-        "link": "https://247wallst.com/investing/cryptocurrency/2026/11/27/how-much-will-1-bitcoin-be-worth-in-2035/?.tsrc=rss",
-        "time": "2026-11-27T17:12:22+00:00",
-        "tags": [
-         "people"
-        ]
        }
       ]
      }
@@ -3705,9 +3702,9 @@
    "id": "cardano",
    "label": "ADA",
    "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 0.14764,
-   "day_ch": -0.51,
+   "live_date": "2026-11-28",
+   "last": 0.14823,
+   "day_ch": -0.11,
    "source": "yahoo",
    "degraded": false,
    "score": 22,
@@ -3781,9 +3778,9 @@
    "id": "dogecoin",
    "label": "DOGE",
    "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 0.05727,
-   "day_ch": 1.57,
+   "live_date": "2026-11-28",
+   "last": 0.05777,
+   "day_ch": 2.46,
    "source": "yahoo",
    "degraded": false,
    "score": 20,
@@ -3849,9 +3846,9 @@
    "id": "chainlink",
    "label": "LINK",
    "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 9.29,
-   "day_ch": 0.21,
+   "live_date": "2026-11-28",
+   "last": 9.37,
+   "day_ch": 1.03,
    "source": "yahoo",
    "degraded": false,
    "score": 29,
@@ -3931,9 +3928,9 @@
    "id": "avalanche-2",
    "label": "AVAX",
    "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 6.58,
-   "day_ch": -0.03,
+   "live_date": "2026-11-28",
+   "last": 6.62,
+   "day_ch": 0.58,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
@@ -3999,9 +3996,9 @@
    "id": "tron",
    "label": "TRX",
    "date": "2026-11-26",
-   "live_date": "2026-11-27",
-   "last": 0.300674,
-   "day_ch": -0.99,
+   "live_date": "2026-11-28",
+   "last": 0.300512,
+   "day_ch": -1.04,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
@@ -4628,6 +4625,51 @@
  },
  "news": [
   {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Veteran economist says Bitcoin holders have little to brag about this Thanksgiving",
+   "link": "https://www.thestreet.com/crypto/markets/veteran-economist-says-bitcoin-holders-have-little-to-brag-about-this-thanksgiving?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-28T00:30:00+00:00",
+   "tags": [],
+   "new": true,
+   "id": "d0e560fb5b6ae048",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Analyst flags December correction before January breakout",
+   "link": "https://www.thestreet.com/crypto/markets/analyst-flags-december-correction-before-january-breakout?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-28T00:00:00+00:00",
+   "tags": [],
+   "new": true,
+   "id": "15923bdfb8385eed",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Bitcoin took Thanksgiving off, going 98 minutes without a block",
+   "link": "https://www.thestreet.com/crypto/markets/bitcoin-took-thanksgiving-off-going-98-minutes-without-a-block?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-28T00:00:00+00:00",
+   "tags": [],
+   "new": true,
+   "id": "6fd27d861ad3a0bd",
+   "form": null
+  },
+  {
    "ticker": "XRP-USD",
    "touches": [
     "XRP-USD"
@@ -4638,7 +4680,7 @@
    "kind": "headline",
    "time": "2026-11-27T22:22:41+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "a41067d38bbee79c",
    "form": null
   },
@@ -4672,6 +4714,23 @@
    ],
    "new": false,
    "id": "b97dad86f83fb91c",
+   "form": null
+  },
+  {
+   "ticker": "XRP-USD",
+   "touches": [
+    "XRP-USD"
+   ],
+   "title": "XRP Price Prediction: Lending Protocol Approval Could Fuel XRP’s Relief Rally to $1.10",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/xrp-price-prediction-lending-protocol-191829601.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-27T19:18:29+00:00",
+   "tags": [
+    "regulatory"
+   ],
+   "new": true,
+   "id": "b834fc47a0c55ab9",
    "form": null
   },
   {
@@ -4989,23 +5048,6 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Signal House Publishes Record-Based Explainer on Bitcoin Latinum Lawsuit",
-   "link": "https://finance.yahoo.com/markets/crypto/articles/signal-house-publishes-record-based-150000418.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-27T15:00:00+00:00",
-   "tags": [
-    "legal"
-   ],
-   "new": false,
-   "id": "9dbff08060bb0d02",
-   "form": null
-  },
-  {
    "ticker": "ETH-USD",
    "touches": [
     "ETH-USD"
@@ -5038,26 +5080,8 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
+   "ticker": "ETH-USD",
    "touches": [
-    "BTC-USD"
-   ],
-   "title": "Analyst Warns of $38,000 Bitcoin Crash as Trump Proposes Tariffs on 14 Trading Partners",
-   "link": "https://www.ccn.com/news/crypto/bitcoin-38k-analyst-downside-trump-14-trading-partners/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-27T14:07:16+00:00",
-   "tags": [
-    "macro"
-   ],
-   "new": false,
-   "id": "388d0c31f4a5e395",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD",
     "ETH-USD"
    ],
    "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Friday Amid Technology Stock Rebound",
@@ -5539,36 +5563,6 @@
    "tags": [],
    "new": false,
    "id": "b0e87f5470de3241",
-   "form": null
-  },
-  {
-   "ticker": "XRP-USD",
-   "touches": [
-    "XRP-USD"
-   ],
-   "title": "XRP Price Prediction: Two SEC Filings Value Ripple at $90 and $300",
-   "link": "https://99bitcoins.com/news/altcoins/xrp-price-prediction-two-sec-filings-value-ripple-at-90-and-300/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T11:28:52+00:00",
-   "tags": [],
-   "new": false,
-   "id": "75c3314e698c253e",
-   "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD"
-   ],
-   "title": "Crypto Market Faces 3 Critical Risks Heading Into December 2026",
-   "link": "https://beincrypto.com/crypto-market-outlook-december-2026-three-risks/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T11:26:32+00:00",
-   "tags": [],
-   "new": false,
-   "id": "2d244d540e347df0",
    "form": null
   }
  ],

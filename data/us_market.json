@@ -1,6 +1,6 @@
 {
- "date": "2026-11-27",
- "generated_at": "2026-11-27T13:38:33.485311+00:00",
+ "date": "2026-11-28",
+ "generated_at": "2026-11-28T00:35:43.049372+00:00",
  "errors": {},
  "breadth": {
   "score": 32.8,
@@ -9,7 +9,7 @@
   "as_of": null
  },
  "uptrend": {
-  "score": 21.0,
+  "score": 24.2,
   "zone": "Cautious",
   "guidance": "Defensive (30-60%)",
   "warnings": [
@@ -33,63 +33,63 @@
   "rows": [
    {
     "sector": "Healthcare",
-    "pct": 27.8,
+    "pct": 30.2,
     "trend": "Down"
    },
    {
     "sector": "Consumer Defensive",
-    "pct": 23.5,
-    "trend": "Down"
+    "pct": 24.2,
+    "trend": "Up"
    },
    {
     "sector": "Communication Services",
-    "pct": 21.4,
+    "pct": 24.0,
     "trend": "Down"
    },
    {
     "sector": "Technology",
-    "pct": 18.2,
+    "pct": 20.8,
     "trend": "Down"
    },
    {
     "sector": "Real Estate",
-    "pct": 15.5,
+    "pct": 18.6,
     "trend": "Down"
    },
    {
     "sector": "Consumer Cyclical",
-    "pct": 14.7,
+    "pct": 18.0,
     "trend": "Down"
    },
    {
     "sector": "Industrials",
-    "pct": 9.8,
+    "pct": 13.8,
     "trend": "Down"
    },
    {
     "sector": "Financial",
-    "pct": 7.8,
+    "pct": 10.4,
     "trend": "Down"
    },
    {
     "sector": "Basic Materials",
-    "pct": 4.6,
+    "pct": 8.0,
     "trend": "Down"
    },
    {
     "sector": "Utilities",
-    "pct": 2.7,
-    "trend": "Up"
+    "pct": 2.6,
+    "trend": "Down"
    },
    {
     "sector": "Energy",
-    "pct": 0.7,
+    "pct": 1.3,
     "trend": "Down"
    }
   ]
  },
  "exposure": {
-  "ceiling_pct": 2,
+  "ceiling_pct": 3,
   "recommendation": "CASH_PRIORITY",
   "recommendation_es": "priorizar liquidez",
   "bias": "NEUTRAL",
