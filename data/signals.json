@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-28T04:18:06.816319+00:00",
+ "generated_at": "2026-11-28T08:20:03.807652+00:00",
  "engine": {
   "version": "2.0",
   "skills": [
@@ -675,7 +675,7 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "7 noticias recientes de MELI. La última: «'Big Short' Investor Michael Burry Thinks This Chinese Stock Is Worth About 60% More Than Its Price. Should You Buy?»",
+      "text": "6 noticias recientes de MELI. La última: «'Big Short' Investor Michael Burry Thinks This Chinese Stock Is Worth About 60% More Than Its Price. Should You Buy?»",
       "items": [
        {
         "title": "'Big Short' Investor Michael Burry Thinks This Chinese Stock Is Worth About 60% More Than Its Price. Should You Buy?",
@@ -1092,7 +1092,17 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de LOMA en las últimas horas: nada en contra"
+      "text": "1 noticias recientes de LOMA (temas: dividendos/recompra). La última: «Loma Negra (LOMA) Stock Could Be 30% Above Fair Value Despite Buyback Plan»",
+      "items": [
+       {
+        "title": "Loma Negra (LOMA) Stock Could Be 30% Above Fair Value Despite Buyback Plan",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/loma-negra-loma-stock-could-060849303.html?.tsrc=rss",
+        "time": "2026-11-28T06:08:49+00:00",
+        "tags": [
+         "capital"
+        ]
+       }
+      ]
      }
     ]
    },
@@ -2369,7 +2379,17 @@
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "No hubo noticias de LOMA en las últimas horas: nada en contra"
+      "text": "1 noticias recientes de LOMA (temas: dividendos/recompra). La última: «Loma Negra (LOMA) Stock Could Be 30% Above Fair Value Despite Buyback Plan»",
+      "items": [
+       {
+        "title": "Loma Negra (LOMA) Stock Could Be 30% Above Fair Value Despite Buyback Plan",
+        "link": "https://finance.yahoo.com/markets/stocks/articles/loma-negra-loma-stock-could-060849303.html?.tsrc=rss",
+        "time": "2026-11-28T06:08:49+00:00",
+        "tags": [
+         "capital"
+        ]
+       }
+      ]
      }
     ]
    },
@@ -3156,17 +3176,17 @@
    "kind": "cripto",
    "id": "bitcoin",
    "label": "BTC",
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "live_date": "2026-11-28",
-   "last": 60005.0,
-   "day_ch": -0.81,
+   "last": 59565.0,
+   "day_ch": -0.5,
    "source": "yahoo",
    "degraded": false,
-   "score": 38,
+   "score": 62,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 74679.0,
-   "sma200": 71920.0,
+   "sma50": 74242.0,
+   "sma200": 71811.0,
    "vcp": {
     "rating": "No VCP",
     "score": 27.6,
@@ -3174,7 +3194,7 @@
     "pattern": "Damaged",
     "pivot": 84840.05,
     "stop": 54598.07,
-    "distance_pct": -28.7,
+    "distance_pct": -29.44,
     "contractions": 2,
     "trend_score": 14.3,
     "rs_score": 60,
@@ -3182,71 +3202,152 @@
     "error": null
    },
    "burst": {
-    "state": "REJECTED",
-    "rating": "Reject",
-    "score": 38,
-    "trigger": "dollar_breakout",
+    "state": "WATCH_ONLY",
+    "rating": "Watch",
+    "score": 62,
+    "trigger": "range_expansion",
     "tags": [
-     "dollar_breakout",
+     "range_expansion",
      "9m_volume"
     ],
-    "day_gain_pct": 0.19,
-    "volume_ratio_20d": 0.64,
+    "day_gain_pct": -1.04,
+    "volume_ratio_20d": 0.95,
     "error": null
    },
    "scanner": {
     "tags": [
-     "oversold",
-     "oversold_bounce"
+     "oversold"
     ],
     "labels": [
-     "sobreventa (RSI < 30)",
-     "rebote de sobreventa"
+     "sobreventa (RSI < 30)"
     ],
-    "rsi": 28.0
+    "rsi": 26.9
    },
    "news_ticker": "BTC-USD",
    "pipeline": {
-    "setup": null,
-    "verdict": null,
+    "setup": "burst",
+    "verdict": "WATCH",
     "stages": [
      {
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Sobreventa (rsi < 30), rebote de sobreventa · RSI 28"
+      "text": "Sobreventa (rsi < 30) · RSI 26,9"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "20 noticias recientes de BTC-USD. La última: «Chamath Palihapitiya Warns AI’s ‘Alien Mathematics’ Could Break Bitcoin As AI Tackles 167-Year-Old Riemann Hypothesis»",
+      "text": "20 noticias recientes de BTC-USD (temas: directivos). La última: «There’s ‘A Tourist Element’ To Bitcoin, But True Believers Are Dug In At $60,000, Says Eric Balchunas»",
       "items": [
        {
-        "title": "Chamath Palihapitiya Warns AI’s ‘Alien Mathematics’ Could Break Bitcoin As AI Tackles 167-Year-Old Riemann Hypothesis",
-        "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/chamath-palihapitiya-ai-alien-mathematics-bitcoin-riemann-hypothesis/cNRRnyYR9VN?.tsrc=rss",
-        "time": "2026-11-28T04:00:03+00:00",
+        "title": "There’s ‘A Tourist Element’ To Bitcoin, But True Believers Are Dug In At $60,000, Says Eric Balchunas",
+        "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/there-s-a-tourist-element-to-bitcoin-but-true-believers-are-dug-in-at-60-000-says-eric-balchunas/cNRRtBxR9Vv?.tsrc=rss",
+        "time": "2026-11-28T07:58:52+00:00",
         "tags": []
        },
        {
-        "title": "Veteran economist says Bitcoin holders have little to brag about this Thanksgiving",
-        "link": "https://www.thestreet.com/crypto/markets/veteran-economist-says-bitcoin-holders-have-little-to-brag-about-this-thanksgiving?.tsrc=rss",
-        "time": "2026-11-28T00:30:00+00:00",
+        "title": "Michaël van de Poppe Says Bitcoin Could Hit $100,000 In First Quarter Of 2027",
+        "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/michael-van-de-poppe-says-bitcoin-could-hit-100-000-in-first-quarter-of-2027/cNRRruvR9Vs?.tsrc=rss",
+        "time": "2026-11-28T07:03:31+00:00",
         "tags": []
        },
        {
-        "title": "Analyst flags December correction before January breakout",
-        "link": "https://www.thestreet.com/crypto/markets/analyst-flags-december-correction-before-january-breakout?.tsrc=rss",
-        "time": "2026-11-28T00:00:00+00:00",
+        "title": "Bitcoin price falls below $60,000 as whales buy dip, ETF outflows mount",
+        "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-price-falls-below-60-062650457.html?.tsrc=rss",
+        "time": "2026-11-28T06:26:50+00:00",
         "tags": []
        },
        {
-        "title": "Bitcoin took Thanksgiving off, going 98 minutes without a block",
-        "link": "https://www.thestreet.com/crypto/markets/bitcoin-took-thanksgiving-off-going-98-minutes-without-a-block?.tsrc=rss",
-        "time": "2026-11-28T00:00:00+00:00",
-        "tags": []
+        "title": "Coinbase CEO Brian Armstrong Scales Back Bitcoin Prediction, Still Sees Nearly 7x Upside By 2030",
+        "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/coinbase-ceo-brian-armstrong-scales-back-bitcoin-prediction-still-sees-nearly-7x-upside-by-2030/cNRRYbqR9Vo?.tsrc=rss",
+        "time": "2026-11-28T05:18:47+00:00",
+        "tags": [
+         "people"
+        ]
        }
       ]
+     },
+     {
+      "key": "plan",
+      "name": "Plan",
+      "status": "ok",
+      "text": "Si el precio llega a US$ 59.866, compra. Después vende con pérdida si baja a US$ 58.759 (stop) o con ganancia si sube a US$ 62.080 (objetivo)",
+      "plan": {
+       "entry": 59866.37,
+       "stop": 58759.47,
+       "target": 62080.170000000006
+      }
+     },
+     {
+      "key": "timemachine",
+      "name": "Time Machine",
+      "status": "warn",
+      "text": "En contra: el precio llegó primero al objetivo en el 26,0 % de las simulaciones y al stop en el 66,8 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 28 de cada 100 (contando solo las que tocaron uno de los dos). En el pasado esta señal (ruptura del máximo de 20 días) apareció 25 veces en este activo: 5 llegaron al objetivo, 20 al stop y 0 a ninguno (resultado medio -0,4 veces lo arriesgado).",
+      "data": {
+       "ok": true,
+       "kind": "diario",
+       "mc": {
+        "replays": 5000,
+        "seed": 19,
+        "bars_left": 5,
+        "p_target": 0.2598,
+        "p_stop": 0.6678,
+        "p_neither": 0.0724,
+        "p_green": 0.3138,
+        "median_close": 59648.68,
+        "p5_close": 55487.99,
+        "p95_close": 64349.22,
+        "avg_R": -0.113,
+        "r_at_target": 2.0,
+        "pool_sessions": 250,
+        "until": "5 ruedas",
+        "fan": [
+         [
+          59866.37,
+          59866.37,
+          59866.37
+         ],
+         [
+          57912.62,
+          59846.47,
+          62199.46
+         ],
+         [
+          57015.1,
+          59813.31,
+          62879.56
+         ],
+         [
+          56374.84,
+          59721.06,
+          63548.14
+         ],
+         [
+          55870.18,
+          59663.18,
+          64060.79
+         ],
+         [
+          55392.13,
+          59564.16,
+          64428.34
+         ]
+        ]
+       },
+       "lean": "stop",
+       "verdict": "En contra: el precio llegó primero al objetivo en el 26,0 % de las simulaciones y al stop en el 66,8 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 28 de cada 100 (contando solo las que tocaron uno de los dos).",
+       "history": {
+        "tag": "breakout_20d",
+        "label": "ruptura del máximo de 20 días",
+        "fired": 25,
+        "target": 5,
+        "stop": 20,
+        "neither": 0,
+        "avg_R": -0.4
+       },
+       "note": "Simulación con las 250 velas diarias de este activo. No es una predicción: balances, noticias y feriados pueden hacer lo que el último año no hizo."
+      }
      }
     ]
    },
@@ -3257,25 +3358,25 @@
    "kind": "cripto",
    "id": "ethereum",
    "label": "ETH",
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "live_date": "2026-11-28",
-   "last": 1665.0,
-   "day_ch": -1.35,
+   "last": 1653.0,
+   "day_ch": -0.46,
    "source": "yahoo",
    "degraded": false,
-   "score": 14,
+   "score": 64,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 2167.0,
-   "sma200": 2110.0,
+   "sma50": 2151.0,
+   "sma200": 2106.0,
    "vcp": {
     "rating": "No VCP",
     "score": 13.6,
     "state": "Damaged",
     "pattern": "Damaged",
     "pivot": 2805.5,
-    "stop": 2297.34,
-    "distance_pct": -39.84,
+    "stop": 2382.09,
+    "distance_pct": -40.79,
     "contractions": 1,
     "trend_score": 14.3,
     "rs_score": 40,
@@ -3283,15 +3384,16 @@
     "error": null
    },
    "burst": {
-    "state": "REJECTED",
-    "rating": "Reject",
-    "score": 0,
-    "trigger": "9m_volume",
+    "state": "WATCH_ONLY",
+    "rating": "Watch",
+    "score": 64,
+    "trigger": "range_expansion",
     "tags": [
+     "range_expansion",
      "9m_volume"
     ],
-    "day_gain_pct": -0.18,
-    "volume_ratio_20d": 0.6,
+    "day_gain_pct": -1.58,
+    "volume_ratio_20d": 0.93,
     "error": null
    },
    "scanner": {
@@ -3301,24 +3403,24 @@
     "labels": [
      "sobreventa (RSI < 30)"
     ],
-    "rsi": 29.4
+    "rsi": 28.1
    },
    "news_ticker": "ETH-USD",
    "pipeline": {
-    "setup": null,
-    "verdict": null,
+    "setup": "burst",
+    "verdict": "WATCH",
     "stages": [
      {
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Sobreventa (rsi < 30) · RSI 29,4"
+      "text": "Sobreventa (rsi < 30) · RSI 28,1"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "7 noticias recientes de ETH-USD (temas: analistas, macro). La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
+      "text": "6 noticias recientes de ETH-USD (temas: analistas, macro). La última: «Franklin Templeton just updated its crypto ETF. Here's what you should know.»",
       "items": [
        {
         "title": "Franklin Templeton just updated its crypto ETF. Here's what you should know.",
@@ -3349,6 +3451,87 @@
         ]
        }
       ]
+     },
+     {
+      "key": "plan",
+      "name": "Plan",
+      "status": "ok",
+      "text": "Si el precio llega a US$ 1.661, compra. Después vende con pérdida si baja a US$ 1.633 (stop) o con ganancia si sube a US$ 1.716 (objetivo)",
+      "plan": {
+       "entry": 1661.08,
+       "stop": 1633.46,
+       "target": 1716.3199999999997
+      }
+     },
+     {
+      "key": "timemachine",
+      "name": "Time Machine",
+      "status": "warn",
+      "text": "En contra: el precio llegó primero al objetivo en el 27,9 % de las simulaciones y al stop en el 71,2 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 28 de cada 100 (contando solo las que tocaron uno de los dos). En el pasado esta señal (ruptura del máximo de 20 días) apareció 21 veces en este activo: 4 llegaron al objetivo, 17 al stop y 0 a ninguno (resultado medio -0,43 veces lo arriesgado).",
+      "data": {
+       "ok": true,
+       "kind": "diario",
+       "mc": {
+        "replays": 5000,
+        "seed": 19,
+        "bars_left": 5,
+        "p_target": 0.2794,
+        "p_stop": 0.7118,
+        "p_neither": 0.0088,
+        "p_green": 0.2866,
+        "median_close": 1652.37,
+        "p5_close": 1500.37,
+        "p95_close": 1827.78,
+        "avg_R": -0.147,
+        "r_at_target": 2.0,
+        "pool_sessions": 250,
+        "until": "5 ruedas",
+        "fan": [
+         [
+          1661.08,
+          1661.08,
+          1661.08
+         ],
+         [
+          1593.35,
+          1662.27,
+          1741.26
+         ],
+         [
+          1551.53,
+          1657.93,
+          1770.65
+         ],
+         [
+          1531.72,
+          1656.03,
+          1794.67
+         ],
+         [
+          1517.18,
+          1653.37,
+          1812.04
+         ],
+         [
+          1498.61,
+          1650.67,
+          1827.54
+         ]
+        ]
+       },
+       "lean": "stop",
+       "verdict": "En contra: el precio llegó primero al objetivo en el 27,9 % de las simulaciones y al stop en el 71,2 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 28 de cada 100 (contando solo las que tocaron uno de los dos).",
+       "history": {
+        "tag": "breakout_20d",
+        "label": "ruptura del máximo de 20 días",
+        "fired": 21,
+        "target": 4,
+        "stop": 17,
+        "neither": 0,
+        "avg_R": -0.43
+       },
+       "note": "Simulación con las 250 velas diarias de este activo. No es una predicción: balances, noticias y feriados pueden hacer lo que el último año no hizo."
+      }
      }
     ]
    },
@@ -3359,28 +3542,28 @@
    "kind": "cripto",
    "id": "solana",
    "label": "SOL",
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "live_date": "2026-11-28",
-   "last": 71.69,
-   "day_ch": 1.07,
+   "last": 71.09,
+   "day_ch": -0.68,
    "source": "yahoo",
    "degraded": false,
-   "score": 23,
+   "score": 25,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 91.28,
-   "sma200": 87.89,
+   "sma50": 90.52,
+   "sma200": 87.76,
    "vcp": {
     "rating": "No VCP",
-    "score": 23.1,
+    "score": 24.6,
     "state": "Damaged",
     "pattern": "Damaged",
     "pivot": 107.12,
     "stop": 95.27,
-    "distance_pct": -33.78,
+    "distance_pct": -33.18,
     "contractions": 2,
     "trend_score": 14.3,
-    "rs_score": 40,
+    "rs_score": 50,
     "weakest": "Pivot Proximity",
     "error": null
    },
@@ -3392,14 +3575,14 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": 0.77,
-    "volume_ratio_20d": 0.57,
+    "day_gain_pct": 0.91,
+    "volume_ratio_20d": 0.91,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 32.5
+    "rsi": 34.2
    },
    "news_ticker": "SOL-USD",
    "pipeline": {
@@ -3410,7 +3593,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 32,5)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 34,2)"
      },
      {
       "key": "news",
@@ -3447,17 +3630,17 @@
    "kind": "cripto",
    "id": "binancecoin",
    "label": "BNB",
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "live_date": "2026-11-28",
-   "last": 555.52,
-   "day_ch": 0.43,
+   "last": 550.82,
+   "day_ch": -0.61,
    "source": "yahoo",
    "degraded": false,
-   "score": 32,
+   "score": 55,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 677.74,
-   "sma200": 654.19,
+   "sma50": 674.12,
+   "sma200": 653.61,
    "vcp": {
     "rating": "No VCP",
     "score": 32.1,
@@ -3465,7 +3648,7 @@
     "pattern": "Damaged",
     "pivot": 760.69,
     "stop": 501.38,
-    "distance_pct": -27.28,
+    "distance_pct": -27.15,
     "contractions": 4,
     "trend_score": 14.3,
     "rs_score": 60,
@@ -3473,42 +3656,126 @@
     "error": null
    },
    "burst": {
-    "state": "REJECTED",
-    "rating": "Reject",
-    "score": 0,
-    "trigger": "9m_volume",
+    "state": "WATCH_ONLY",
+    "rating": "Watch",
+    "score": 55,
+    "trigger": "dollar_breakout",
     "tags": [
+     "dollar_breakout",
      "9m_volume"
     ],
-    "day_gain_pct": -0.07,
-    "volume_ratio_20d": 0.71,
+    "day_gain_pct": 0.18,
+    "volume_ratio_20d": 0.83,
     "error": null
    },
    "scanner": {
     "tags": [
-     "oversold"
+     "oversold",
+     "oversold_bounce"
     ],
     "labels": [
-     "sobreventa (RSI < 30)"
+     "sobreventa (RSI < 30)",
+     "rebote de sobreventa"
     ],
-    "rsi": 28.8
+    "rsi": 29.3
    },
    "news_ticker": "BNB-USD",
    "pipeline": {
-    "setup": null,
-    "verdict": null,
+    "setup": "burst",
+    "verdict": "WATCH",
     "stages": [
      {
       "key": "scanner",
       "name": "Escáner",
       "status": "ok",
-      "text": "Sobreventa (rsi < 30) · RSI 28,8"
+      "text": "Sobreventa (rsi < 30), rebote de sobreventa · RSI 29,3"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
       "text": "No hubo noticias de BNB-USD en las últimas horas: nada en contra"
+     },
+     {
+      "key": "plan",
+      "name": "Plan",
+      "status": "ok",
+      "text": "Si el precio llega a US$ 554,18, compra. Después vende con pérdida si baja a US$ 543,56 (stop) o con ganancia si sube a US$ 575,42 (objetivo)",
+      "plan": {
+       "entry": 554.18,
+       "stop": 543.56,
+       "target": 575.42
+      }
+     },
+     {
+      "key": "timemachine",
+      "name": "Time Machine",
+      "status": "ok",
+      "text": "Parejo: el precio llegó primero al objetivo en el 27,5 % de las simulaciones y al stop en el 63,3 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 30 de cada 100 (contando solo las que tocaron uno de los dos). En el pasado esta señal (ruptura del máximo de 20 días) apareció 29 veces en este activo: 6 llegaron al objetivo, 19 al stop y 4 a ninguno (resultado medio -0,15 veces lo arriesgado).",
+      "data": {
+       "ok": true,
+       "kind": "diario",
+       "mc": {
+        "replays": 5000,
+        "seed": 19,
+        "bars_left": 5,
+        "p_target": 0.2746,
+        "p_stop": 0.6332,
+        "p_neither": 0.0922,
+        "p_green": 0.3464,
+        "median_close": 553.52,
+        "p5_close": 510.54,
+        "p95_close": 593.84,
+        "avg_R": -0.033,
+        "r_at_target": 2.0,
+        "pool_sessions": 250,
+        "until": "5 ruedas",
+        "fan": [
+         [
+          554.18,
+          554.18,
+          554.18
+         ],
+         [
+          533.02,
+          554.55,
+          571.46
+         ],
+         [
+          526.59,
+          554.34,
+          579.41
+         ],
+         [
+          520.41,
+          554.09,
+          584.88
+         ],
+         [
+          513.87,
+          554.21,
+          588.57
+         ],
+         [
+          509.5,
+          553.7,
+          593.57
+         ]
+        ]
+       },
+       "lean": "even",
+       "verdict": "Parejo: el precio llegó primero al objetivo en el 27,5 % de las simulaciones y al stop en el 63,3 %. Como la ganancia es 2 veces lo que se arriesga, alcanza con ganar 33 de cada 100 para empatar, y ganó 30 de cada 100 (contando solo las que tocaron uno de los dos).",
+       "history": {
+        "tag": "breakout_20d",
+        "label": "ruptura del máximo de 20 días",
+        "fired": 29,
+        "target": 6,
+        "stop": 19,
+        "neither": 4,
+        "avg_R": -0.15
+       },
+       "note": "Simulación con las 250 velas diarias de este activo. No es una predicción: balances, noticias y feriados pueden hacer lo que el último año no hizo."
+      }
      }
     ]
    },
@@ -3519,17 +3786,17 @@
    "kind": "cripto",
    "id": "ripple",
    "label": "XRP",
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "live_date": "2026-11-28",
-   "last": 0.9514,
-   "day_ch": 0.9,
+   "last": 0.9411,
+   "day_ch": -0.73,
    "source": "yahoo",
    "degraded": false,
    "score": 7,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 1.180246,
-   "sma200": 1.229117,
+   "sma50": 1.171626,
+   "sma200": 1.226473,
    "vcp": {
     "rating": "No VCP",
     "score": 7.0,
@@ -3537,7 +3804,7 @@
     "pattern": "Damaged",
     "pivot": 1.62,
     "stop": 1.31,
-    "distance_pct": -41.8,
+    "distance_pct": -41.48,
     "contractions": 1,
     "trend_score": 0,
     "rs_score": 20,
@@ -3552,14 +3819,14 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": 0.64,
-    "volume_ratio_20d": 0.58,
+    "day_gain_pct": 0.54,
+    "volume_ratio_20d": 0.93,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 33.9
+    "rsi": 35.0
    },
    "news_ticker": "XRP-USD",
    "pipeline": {
@@ -3570,13 +3837,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 33,9)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 35)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "warn",
-      "text": "16 noticias recientes de XRP-USD (temas: balance, directivos, regulatorio). La última: «Is 10,000 XRP Enough to Retire On by 2035?». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
+      "text": "11 noticias recientes de XRP-USD (temas: balance, directivos, regulatorio). La última: «Is 10,000 XRP Enough to Retire On by 2035?». Ojo: la empresa presenta su balance pronto y el precio puede saltar fuerte para cualquier lado mientras la operación está abierta.",
       "items": [
        {
         "title": "Is 10,000 XRP Enough to Retire On by 2035?",
@@ -3617,17 +3884,17 @@
    "kind": "cripto",
    "id": "cardano",
    "label": "ADA",
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "live_date": "2026-11-28",
-   "last": 0.14802,
-   "day_ch": -0.25,
+   "last": 0.14613,
+   "day_ch": -1.44,
    "source": "yahoo",
    "degraded": false,
    "score": 22,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 0.191136,
-   "sma200": 0.197875,
+   "sma50": 0.189462,
+   "sma200": 0.197213,
    "vcp": {
     "rating": "No VCP",
     "score": 22.2,
@@ -3635,7 +3902,7 @@
     "pattern": "Damaged",
     "pivot": 0.15580600500106812,
     "stop": null,
-    "distance_pct": -4.76,
+    "distance_pct": -4.84,
     "contractions": 0,
     "trend_score": 0,
     "rs_score": 20,
@@ -3650,14 +3917,14 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": 1.81,
-    "volume_ratio_20d": 0.71,
+    "day_gain_pct": -0.09,
+    "volume_ratio_20d": 0.76,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 34.1
+    "rsi": 34.0
    },
    "news_ticker": "ADA-USD",
    "pipeline": {
@@ -3668,7 +3935,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 34,1)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 34)"
      },
      {
       "key": "news",
@@ -3693,25 +3960,25 @@
    "kind": "cripto",
    "id": "dogecoin",
    "label": "DOGE",
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "live_date": "2026-11-28",
-   "last": 0.05773,
-   "day_ch": 2.39,
+   "last": 0.05672,
+   "day_ch": -1.64,
    "source": "yahoo",
    "degraded": false,
-   "score": 20,
+   "score": 22,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 0.071832,
-   "sma200": 0.0813,
+   "sma50": 0.071304,
+   "sma200": 0.081032,
    "vcp": {
     "rating": "No VCP",
-    "score": 20.0,
+    "score": 22.2,
     "state": "Invalid",
     "pattern": "Damaged",
     "pivot": 0.0600849986076355,
     "stop": null,
-    "distance_pct": -6.16,
+    "distance_pct": -4.02,
     "contractions": 0,
     "trend_score": 0,
     "rs_score": 20,
@@ -3726,14 +3993,14 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": 0.75,
-    "volume_ratio_20d": 0.55,
+    "day_gain_pct": 2.27,
+    "volume_ratio_20d": 0.83,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 31.8
+    "rsi": 36.1
    },
    "news_ticker": "DOGE-USD",
    "pipeline": {
@@ -3744,7 +4011,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 31,8)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 36,1)"
      },
      {
       "key": "news",
@@ -3761,27 +4028,27 @@
    "kind": "cripto",
    "id": "chainlink",
    "label": "LINK",
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "live_date": "2026-11-28",
-   "last": 9.24,
-   "day_ch": -0.29,
+   "last": 9.16,
+   "day_ch": -2.11,
    "source": "yahoo",
    "degraded": false,
-   "score": 29,
+   "score": 26,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 10.92,
-   "sma200": 10.06,
+   "sma50": 10.86,
+   "sma200": 10.05,
    "vcp": {
     "rating": "No VCP",
-    "score": 29.2,
+    "score": 25.6,
     "state": "Damaged",
     "pattern": "Damaged",
     "pivot": 15.74,
     "stop": 12.01,
-    "distance_pct": -41.1,
+    "distance_pct": -40.56,
     "contractions": 1,
-    "trend_score": 42.9,
+    "trend_score": 28.6,
     "rs_score": 70,
     "weakest": "Contraction Quality",
     "error": null
@@ -3794,14 +4061,14 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": 2.46,
-    "volume_ratio_20d": 0.91,
+    "day_gain_pct": 0.93,
+    "volume_ratio_20d": 1.19,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 42.3
+    "rsi": 43.7
    },
    "news_ticker": "LINK-USD",
    "pipeline": {
@@ -3812,13 +4079,13 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 42,3)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 43,7)"
      },
      {
       "key": "news",
       "name": "Noticias",
       "status": "ok",
-      "text": "2 noticias recientes de LINK-USD (temas: suspensión). La última: «Property manager halts crypto buying as debts loom»",
+      "text": "1 noticias recientes de LINK-USD (temas: suspensión). La última: «Property manager halts crypto buying as debts loom»",
       "items": [
        {
         "title": "Property manager halts crypto buying as debts loom",
@@ -3827,12 +4094,6 @@
         "tags": [
          "halt"
         ]
-       },
-       {
-        "title": "Fidelity Files For Spot Chainlink ETF On Nasdaq",
-        "link": "https://www.cryptoprowl.com/releases/fidelity-files-for-spot-chainlink-etf-on-nasdaq-8090?.tsrc=rss",
-        "time": "2026-11-26T16:25:00+00:00",
-        "tags": []
        }
       ]
      }
@@ -3845,17 +4106,17 @@
    "kind": "cripto",
    "id": "avalanche-2",
    "label": "AVAX",
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "live_date": "2026-11-28",
-   "last": 6.62,
-   "day_ch": 0.5,
+   "last": 6.51,
+   "day_ch": -1.38,
    "source": "yahoo",
    "degraded": false,
    "score": 24,
    "signal": "NEUTRAL",
    "stage4": false,
-   "sma50": 8.54,
-   "sma200": 7.93,
+   "sma50": 8.47,
+   "sma200": 7.91,
    "vcp": {
     "rating": "No VCP",
     "score": 24.3,
@@ -3863,7 +4124,7 @@
     "pattern": "Damaged",
     "pivot": 7.203714847564697,
     "stop": null,
-    "distance_pct": -8.6,
+    "distance_pct": -8.32,
     "contractions": 0,
     "trend_score": 14.3,
     "rs_score": 40,
@@ -3878,14 +4139,14 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": -0.6,
-    "volume_ratio_20d": 0.78,
+    "day_gain_pct": 0.31,
+    "volume_ratio_20d": 0.9,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 32.7
+    "rsi": 33.2
    },
    "news_ticker": "AVAX-USD",
    "pipeline": {
@@ -3896,7 +4157,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 32,7)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 33,2)"
      },
      {
       "key": "news",
@@ -3913,28 +4174,28 @@
    "kind": "cripto",
    "id": "tron",
    "label": "TRX",
-   "date": "2026-11-26",
+   "date": "2026-11-27",
    "live_date": "2026-11-28",
-   "last": 0.300345,
-   "day_ch": -1.09,
+   "last": 0.300414,
+   "day_ch": -0.06,
    "source": "yahoo",
    "degraded": false,
    "score": 30,
    "signal": "VENTA",
    "stage4": true,
-   "sma50": 0.320649,
-   "sma200": 0.330838,
+   "sma50": 0.320009,
+   "sma200": 0.330586,
    "vcp": {
     "rating": "No VCP",
-    "score": 36.6,
+    "score": 31.6,
     "state": "Invalid",
     "pattern": "Damaged",
     "pivot": 0.34,
     "stop": 0.33,
-    "distance_pct": -10.69,
+    "distance_pct": -11.59,
     "contractions": 2,
-    "trend_score": 28.6,
-    "rs_score": 80,
+    "trend_score": 14.3,
+    "rs_score": 70,
     "weakest": "Pivot Proximity",
     "error": null
    },
@@ -3946,14 +4207,14 @@
     "tags": [
      "9m_volume"
     ],
-    "day_gain_pct": 0.02,
-    "volume_ratio_20d": 0.62,
+    "day_gain_pct": -1.01,
+    "volume_ratio_20d": 0.85,
     "error": null
    },
    "scanner": {
     "tags": [],
     "labels": [],
-    "rsi": 38.9
+    "rsi": 36.0
    },
    "news_ticker": "TRX-USD",
    "pipeline": {
@@ -3964,7 +4225,7 @@
       "key": "scanner",
       "name": "Escáner",
       "status": "na",
-      "text": "Hoy no aparece ninguna señal técnica (RSI 38,9)"
+      "text": "Hoy no aparece ninguna señal técnica (RSI 36)"
      },
      {
       "key": "news",
@@ -4015,8 +4276,8 @@
        0.2984
       ],
       [
-       "2026-11-26",
-       0.3037
+       "2026-11-27",
+       0.3006
       ]
      ],
      "why": "Dos mínimos en 0,3017 y 0,2984 con rebote a 0,3277. Entrada si cierra arriba de 0,3277."
@@ -4026,6 +4287,28 @@
  },
  "positions": [],
  "watch": [
+  {
+   "kind": "cripto",
+   "id": "ethereum",
+   "label": "ETH",
+   "setup": "burst",
+   "score": 64,
+   "rating": "Watch",
+   "trigger": 1661.08,
+   "stop": 1633.46,
+   "why": "Momentum Burst Watch (watch only): revisar gráfico."
+  },
+  {
+   "kind": "cripto",
+   "id": "bitcoin",
+   "label": "BTC",
+   "setup": "burst",
+   "score": 62,
+   "rating": "Watch",
+   "trigger": 59866.37,
+   "stop": 58759.47,
+   "why": "Momentum Burst Watch (watch only): revisar gráfico."
+  },
   {
    "kind": "adr",
    "id": "CEPU",
@@ -4046,6 +4329,17 @@
    "rating": "Watch",
    "trigger": 502.0,
    "stop": 490.0,
+   "why": "Momentum Burst Watch (watch only): revisar gráfico."
+  },
+  {
+   "kind": "cripto",
+   "id": "binancecoin",
+   "label": "BNB",
+   "setup": "burst",
+   "score": 55,
+   "rating": "Watch",
+   "trigger": 554.18,
+   "stop": 543.56,
    "why": "Momentum Burst Watch (watch only): revisar gráfico."
   }
  ],
@@ -4538,13 +4832,92 @@
    "touches": [
     "BTC-USD"
    ],
+   "title": "There’s ‘A Tourist Element’ To Bitcoin, But True Believers Are Dug In At $60,000, Says Eric Balchunas",
+   "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/there-s-a-tourist-element-to-bitcoin-but-true-believers-are-dug-in-at-60-000-says-eric-balchunas/cNRRtBxR9Vv?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-28T07:58:52+00:00",
+   "tags": [],
+   "new": true,
+   "id": "0b73d8aeb4fbf0bc",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Michaël van de Poppe Says Bitcoin Could Hit $100,000 In First Quarter Of 2027",
+   "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/michael-van-de-poppe-says-bitcoin-could-hit-100-000-in-first-quarter-of-2027/cNRRruvR9Vs?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-28T07:03:31+00:00",
+   "tags": [],
+   "new": true,
+   "id": "828d7f9d968ca74e",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Bitcoin price falls below $60,000 as whales buy dip, ETF outflows mount",
+   "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-price-falls-below-60-062650457.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-28T06:26:50+00:00",
+   "tags": [],
+   "new": true,
+   "id": "382fc84bc5ca5ffa",
+   "form": null
+  },
+  {
+   "ticker": "LOMA",
+   "touches": [
+    "LOMA"
+   ],
+   "title": "Loma Negra (LOMA) Stock Could Be 30% Above Fair Value Despite Buyback Plan",
+   "link": "https://finance.yahoo.com/markets/stocks/articles/loma-negra-loma-stock-could-060849303.html?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-28T06:08:49+00:00",
+   "tags": [
+    "capital"
+   ],
+   "new": true,
+   "id": "70bfee5d7d829549",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
+   "title": "Coinbase CEO Brian Armstrong Scales Back Bitcoin Prediction, Still Sees Nearly 7x Upside By 2030",
+   "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/coinbase-ceo-brian-armstrong-scales-back-bitcoin-prediction-still-sees-nearly-7x-upside-by-2030/cNRRYbqR9Vo?.tsrc=rss",
+   "source": "Yahoo Finance",
+   "kind": "headline",
+   "time": "2026-11-28T05:18:47+00:00",
+   "tags": [
+    "people"
+   ],
+   "new": true,
+   "id": "dd07c435359d71fe",
+   "form": null
+  },
+  {
+   "ticker": "BTC-USD",
+   "touches": [
+    "BTC-USD"
+   ],
    "title": "Chamath Palihapitiya Warns AI’s ‘Alien Mathematics’ Could Break Bitcoin As AI Tackles 167-Year-Old Riemann Hypothesis",
    "link": "https://stocktwits.com/news-articles/markets/cryptocurrency/chamath-palihapitiya-ai-alien-mathematics-bitcoin-riemann-hypothesis/cNRRnyYR9VN?.tsrc=rss",
    "source": "Yahoo Finance",
    "kind": "headline",
    "time": "2026-11-28T04:00:03+00:00",
    "tags": [],
-   "new": true,
+   "new": false,
    "id": "5d382c446d50cc31",
    "form": null
   },
@@ -4561,7 +4934,7 @@
    "tags": [
     "deal"
    ],
-   "new": true,
+   "new": false,
    "id": "b7bdef2fc4073ee7",
    "form": null
   },
@@ -4578,7 +4951,7 @@
    "tags": [
     "halt"
    ],
-   "new": true,
+   "new": false,
    "id": "113597eaeffe1d81",
    "form": null
   },
@@ -4881,38 +5254,6 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Before the bell: Wall Street goes Black Friday shopping. Is Bitcoin on the list?",
-   "link": "https://www.thestreet.com/crypto/markets/before-the-bell-wall-street-goes-black-friday-shopping-is-bitcoin-on-the-list?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-27T16:00:00+00:00",
-   "tags": [],
-   "new": false,
-   "id": "22ec576b7ad66305",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Coinbase CEO Says Bitcoin Investors Would Return After IPO Frenzy Fades",
-   "link": "https://www.cryptoprowl.com/releases/coinbase-ceo-says-bitcoin-investors-would-return-after-ipo-frenzy-fades-8101?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-27T15:57:00+00:00",
-   "tags": [
-    "people"
-   ],
-   "new": false,
-   "id": "433cab8f1e1dfdfa",
-   "form": null
-  },
-  {
    "ticker": "MELI",
    "touches": [
     "MELI"
@@ -4928,9 +5269,8 @@
    "form": null
   },
   {
-   "ticker": "BTC-USD",
+   "ticker": "ETH-USD",
    "touches": [
-    "BTC-USD",
     "ETH-USD"
    ],
    "title": "Bitcoin Reserve bill advances; ETF outflows top $5.3B",
@@ -4958,21 +5298,6 @@
    ],
    "new": false,
    "id": "8858285bed54958a",
-   "form": null
-  },
-  {
-   "ticker": "BTC-USD",
-   "touches": [
-    "BTC-USD"
-   ],
-   "title": "Tether Buys $10 Million Worth of Bitdeer Stock",
-   "link": "https://www.cryptoprowl.com/releases/tether-buys-10-million-worth-of-bitdeer-stock-8099?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-27T15:06:00+00:00",
-   "tags": [],
-   "new": false,
-   "id": "0584b4a27b05a20e",
    "form": null
   },
   {
@@ -5256,112 +5581,6 @@
    "tags": [],
    "new": false,
    "id": "669e9ba0c879e866",
-   "form": null
-  },
-  {
-   "ticker": "XRP-USD",
-   "touches": [
-    "XRP-USD"
-   ],
-   "title": "Buyers finally return to XRP",
-   "link": "https://www.thestreet.com/crypto/markets/buyers-finally-return-to-xrp?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T20:00:00+00:00",
-   "tags": [],
-   "new": false,
-   "id": "3748745e4c634630",
-   "form": null
-  },
-  {
-   "ticker": "XRP-USD",
-   "touches": [
-    "XRP-USD"
-   ],
-   "title": "XRP News: Thanksgiving Rally or December 1 Supply Shock?",
-   "link": "https://cryptonews.com/news/xrp-news-thanksgiving-rally-december-1-unlock/?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T18:34:00+00:00",
-   "tags": [],
-   "new": false,
-   "id": "f50616e951cc4186",
-   "form": null
-  },
-  {
-   "ticker": "XRP-USD",
-   "touches": [
-    "XRP-USD"
-   ],
-   "title": "Bitcoin Holds Above $60K as Death Cross Clouds Thanksgiving Recovery",
-   "link": "https://decrypt.co/384079/bitcoin-holds-above-60k-as-death-cross-clouds-thanksgiving-recovery?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T18:15:29+00:00",
-   "tags": [],
-   "new": false,
-   "id": "1953b1420a74bead",
-   "form": null
-  },
-  {
-   "ticker": "XRP-USD",
-   "touches": [
-    "XRP-USD"
-   ],
-   "title": "Ripple Price Prediction: $0.93 Becomes Key Support on Turkish Bank News",
-   "link": "https://finance.yahoo.com/markets/crypto/articles/ripple-price-prediction-0-93-172455499.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T17:24:55+00:00",
-   "tags": [],
-   "new": false,
-   "id": "421cd487ea52e714",
-   "form": null
-  },
-  {
-   "ticker": "MELI",
-   "touches": [
-    "MELI"
-   ],
-   "title": "MercadoLibre (MELI): Near-Term Margin Compression Masks Strong User and Credit Growth",
-   "link": "https://finance.yahoo.com/markets/stocks/articles/mercadolibre-meli-near-term-margin-165411501.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T16:54:11+00:00",
-   "tags": [],
-   "new": false,
-   "id": "84de0125fbffba5d",
-   "form": null
-  },
-  {
-   "ticker": "ETH-USD",
-   "touches": [
-    "ETH-USD",
-    "XRP-USD"
-   ],
-   "title": "Bitcoin Tops $60,000 as Risk Assets Rise in Holiday Trading",
-   "link": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-tops-60-000-risk-162823539.html?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T16:28:23+00:00",
-   "tags": [],
-   "new": false,
-   "id": "f6dbcfe8045f44ce",
-   "form": null
-  },
-  {
-   "ticker": "LINK-USD",
-   "touches": [
-    "LINK-USD"
-   ],
-   "title": "Fidelity Files For Spot Chainlink ETF On Nasdaq",
-   "link": "https://www.cryptoprowl.com/releases/fidelity-files-for-spot-chainlink-etf-on-nasdaq-8090?.tsrc=rss",
-   "source": "Yahoo Finance",
-   "kind": "headline",
-   "time": "2026-11-26T16:25:00+00:00",
-   "tags": [],
-   "new": false,
-   "id": "e7b7cff067c184a1",
    "form": null
   }
  ],
@@ -5937,8 +6156,8 @@
      0.2984
     ],
     [
-     "2026-11-26",
-     0.3037
+     "2026-11-27",
+     0.3006
     ]
    ],
    "why": "Dos mínimos en 0,3017 y 0,2984 con rebote a 0,3277. Entrada si cierra arriba de 0,3277."
@@ -6042,6 +6261,6 @@
   "curve": []
  },
  "errors": {
-  "news": "no SEC CIK for ADA-USD; no SEC CIK for AVAX-USD; SEC 8-K for BBAR: HTTP 503 for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000913059&type=8-K&dateb=&owner=include&count=8&output=atom"
+  "news": "no SEC CIK for ADA-USD; no SEC CIK for AVAX-USD; SEC 8-K for BBAR: HTTP 400 for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000913059&type=8-K&dateb=&owner=include&count=8&output=atom"
  }
 }
